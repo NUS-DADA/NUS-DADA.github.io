@@ -1,0 +1,1300 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Handout materials for DADA 2026 course">
+      
+      
+      
+        <link rel="canonical" href="https://NUS-DADA.github.io/DADA_2026_Materials/CourseMaterial/Topic4-2/HandoutMathFoundations/">
+      
+      
+        <link rel="prev" href="../../Topic4-1/HandoutCrypto/">
+      
+      
+        <link rel="next" href="../../Topic5/HandoutIPNetworks/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Topic4-2 - Introduction - DADA 2026 Course Materials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="DADA 2026 Course Materials" class="md-header__button md-logo" aria-label="DADA 2026 Course Materials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DADA 2026 Course Materials
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Topic4-2 - Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/NUS-DADA/DADA_2026_Materials" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DADA_2026_Materials
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DADA 2026 Course Materials" class="md-nav__button md-logo" aria-label="DADA 2026 Course Materials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DADA 2026 Course Materials
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/NUS-DADA/DADA_2026_Materials" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DADA_2026_Materials
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic1/HandoutITsecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic1 - IT security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic2/HandoutSocialEngineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic2 - Social Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic3/HandoutSystemsComplexity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic3 - Complexity and security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic4-1/HandoutCrypto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic4-1 - Computational complexity and cryptography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic4-2 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic4-2 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-functions-xor-and-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Basic functions: xor and log
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#groups-rings-and-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Groups, rings and fields
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modular-arithmetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modular arithmetic
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finite-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finite fields
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polynomial-arithmetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Polynomial arithmetic
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#primes-primes-primes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Primes... primes... primes...
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fermats-little-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fermat’s little theorem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eulers-theorem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Euler’s theorem
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic5/HandoutIPNetworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic5 - Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic6/HandoutCommTheory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic6 - Communication theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic7/HandoutWebApplications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic7 - Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic9/HandoutMachineArchitecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic9 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="introduction">Introduction</h1>
+<p>The mathematical foundations for computer security range from simple
+ones like addition, through to more complicated investigations into
+elliptic curves and so on. In this presentations, we limit ourselves to
+some basic notions that cover a wide range of security systems.</p>
+<h2 id="basic-functions-xor-and-log"><span id="sec:Basic-functions:-xor" label="sec:Basic-functions:-xor"></span>Basic functions: xor and log</h2>
+<p>We begin with the <strong><code>exclusive-or</code></strong> boolean function, which comes up
+constantly in <span style="color: black">c</span>omputer security. The
+ordinary <strong><code>or</code></strong> boolean function in mathematics means either
+<span style="color: black">one or the other</span>
+<span style="color: black"><em>or both</em></span><span style="color: black">.
+However the exclusive-or boolean function means either one or the
+other</span> <span style="color: black"><em>but not
+both</em></span><span style="color: black">.</span></p>
+<p>It is found as
+<strong><span style="color: black"><code>xor</code></span></strong><span style="color: black">
+or <span class="arithmatex">\(\oplus\)</span>, or in electronic circuit diagrams as
+<img alt="image" src="../../../images/xor.png" />, and is the same as</span>
+<span style="color: black"><em>addition mod
+2</em></span><span style="color: black">. The table below shows the truth
+table for a single bit.</span></p>
+<div class="center">
+
+| **$a$** | **$b$** |  **$a\oplus b$**  |
+|:-------:|:-------:|:-----------------:|
+|   $0$   |   $0$   |        $0$        |
+|   $0$   |   $1$   |        $1$        |
+|   $1$   |   $0$   |        $1$        |
+|   $1$   |   $1$   |        $0$        |
+
+</div>
+
+<p>The <strong><code>xor</code></strong> function is commutative and associative. We often use
+<strong><code>exclusive-or</code></strong> over bitstrings. If we wished to encode a message
+“<strong><code>ABC</code></strong>” using the <strong><code>xor</code></strong> function, we would first encode the
+message as a bit string using (say) the ASCII encoding, and derive the
+bitstring <strong><code>01000001.01000010.01000011</code></strong>. Each bit of this could then
+be <strong><code>xor’ed</code></strong> with a bit from a corresponding (random) bit string
+called the key:</p>
+<div class="center">
+
+|                   |                                                    |                                                    |                                                          |
+|:-----------------:|:--------------------------------------------------:|:--------------------------------------------------:|:--------------------------------------------------------:|
+|      Message      |                         A                          |                         B                          |                            C                             |
+|        $m$        | <span style="color: blue">`0 1 0 0 0 0 0 1`</span> | <span style="color: blue">`0 1 0 0 0 0 1 0`</span> | <span style="color: blue">`0 1 0 0 0 0 1 1 . . .`</span> |
+|      Key$=k$      | <span style="color: blue">`0 0 0 1 0 0 1 1`</span> | <span style="color: blue">`0 1 1 0 0 1 0 1`</span> | <span style="color: blue">`0 0 1 1 1 0 0 1 . . .`</span> |
+| $K(m)=m\oplus k$  | <span style="color: blue">`0 1 0 1 0 0 1 0`</span> | <span style="color: blue">`0 0 1 0 0 1 1 1`</span> | <span style="color: blue">`0 1 1 1 1 0 1 0 . . .`</span> |
+|      $K(m)$       |                         R                          |                         ’                          |                            z                             |
+
+</div>
+
+<p>The encoded message is “<strong><code>R’z</code></strong>”, and this message may be transmitted
+over an insecure network. At the receiver end, the key is assumed to be
+known, and a second <strong><code>xor</code></strong> operation restores the original message.
+If the <em>key</em> bit-stream is (essentially) random, and not known to an
+eavesdropper, then this is the most secure system known. It is called a
+one-time pad, or Vernam’s cipher. Of course if the key is known to an
+eavesdropper, then the eavesdropper can decode the message. The
+technique relies on the property of <strong><code>xor</code></strong> that
+<span class="arithmatex">\(m\oplus k\oplus k=m\)</span>.</p>
+<p>Logarithms, particularly <strong><code>logs base 2</code></strong>, are also extensively used in
+computer science, and also in computer security. A logarithm is an
+inverse of an exponential: <span class="arithmatex">\(y=\log_{2}x\)</span> is the same as <span class="arithmatex">\(2^{y}=x\)</span>. In
+the same way that <span class="arithmatex">\(\log_{10}x\)</span> gives the number of decimal digits needed
+to represent <span class="arithmatex">\(x\)</span>, <span class="arithmatex">\(\log_{2}x\)</span> gives the number of bits for <span class="arithmatex">\(x\)</span>.</p>
+<h2 id="groups-rings-and-fields"><span id="sec:Groups.-rings-and" label="sec:Groups.-rings-and"></span>Groups, rings and fields</h2>
+<p>Finite fields are important in the area of computer security. In the
+study of cryptography for example, we may be interested in taking a
+message <span class="arithmatex">\(m\)</span> and converting it to another message <span class="arithmatex">\(K(m)\)</span> by performing a
+series of operations on the bytes of the original message, as we just
+saw with the <span class="arithmatex">\(\oplus\)</span> operation. Common arithmetic operations that we
+use such as addition and multiplication are not in general suitable for
+this activity, as we often want the operations to be constrained to some
+set of message values or types. For example, if our message elements
+were (8-bit) bytes, and we were using addition, then the message
+<span class="arithmatex">\(m=\mathrm{0xff}\)</span>, and the operation <span class="arithmatex">\(+1\)</span> would result in an encrypted
+message <span class="arithmatex">\(K(m)=\mathrm{0x100}\)</span>, which cannot be stored in a byte. We can
+efficiently construct finite systems by, for example, instead of the
+operation <span class="arithmatex">\(+\)</span>, we might use addition <em>modulo</em> p, where p is a prime.</p>
+<p>Here are formal definitions for groups, rings and fields, the
+mathematical structures used for most modern cryptography.</p>
+<div class="definition">
+
+**Definition 1**. *A group $\{G,\bullet\}$ is a non-empty set $G$ with a
+binary operator $\bullet$, satisfying the following properties for all
+$a,b,c\in G$:*
+
+1.  ***Closure:** $G$ is closed under $\bullet$. That is
+    $a\bullet b\in G$.*
+
+2.  ***Associative:** $\bullet$ is associative on $G$. That is
+    $(a\bullet b)\bullet c=a\bullet(b\bullet c)$.*
+
+3.  ***Identity:** There is an identity element $I$ such that
+    $a\bullet I=I\bullet a=a$.*
+
+4.  ***Inverse:** Each element has a unique inverse $a^{-1}$ such that
+    $a^{-1}\bullet a=a\bullet a^{-1}=I$.*
+
+</div>
+
+<p>A group is <em>finite</em> if it has a finite number of elements, and it is
+called an <em>abelian</em> group if it is commutative. An example of an
+infinite group is<span style="color: black"> the set of</span>
+<span style="color: black"><em>integers</em></span>
+<span style="color: black">under addition, with identity <span class="arithmatex">\(0\)</span>. It is an
+infinite commutative group. </span></p>
+<div class="definition">
+
+**Definition 2**. *A ring $\{R,+,*\}$ is the set $R$ together with two
+binary operators $+$ and $*$ satisfying the following conditions for all
+$a,b,c\in R$:*
+
+1.  ***Closure for $*$:** $R$ is closed under $*$. That is $a*b\in R$.*
+
+2.  ***Abelian for $+$:** $R$ is an abelian group under addition. The
+    identity is $0$.*
+
+3.  ***Associative for $*$:** $a*(b*c)=(a*b)*c$.*
+
+4.  ***LR distributive:** $a*(b+c)=(a*b)+(a*c)$ and
+    $(a+b)*c=(a*c)+(b*c)$.*
+
+</div>
+
+<div class="definition">
+
+**Definition 3**. *A field (or rational domain) $\{F,+,*\}$ is the set
+$F$ together with two binary operators $+$ and $*$, which is a
+commutative ring, and also satisfies the following conditions for all
+$a,b\in F$, $c\in F\backslash0$:*
+
+1.  ***Identity for $*$:** There is an identity $1\in F$ such that
+    $1*a=a*1=a$.*
+
+2.  ***No zero divisor:** If $a*b=0$ then either $a=0$ or $b=0$.*
+
+3.  ***Inverse for $*$:** For each $c$, there is a $c^{-1}\in F$ such
+    that $c*c^{-1}=c^{-1}*c=1$.*
+
+</div>
+
+<p>A ring means we can do <span class="arithmatex">\(*,+,-\)</span> without leaving the set, but a field
+means we can do <span class="arithmatex">\(*,/,+,-\)</span> without leaving the set. Examples of infinite
+fields are the <span style="color: black"><em>rational numbers</em></span>
+<span style="color: black">Q, the</span>
+<span style="color: black"><em>reals</em></span>
+<span style="color: black"><span class="arithmatex">\(\mathbb{R}\)</span>, or the</span>
+<span style="color: black"><em>complex numbers</em></span>
+<span style="color: black"><span class="arithmatex">\(\mathbb{C}\)</span>, using</span> <span class="arithmatex">\(+\)</span> and
+<span class="arithmatex">\(*\)</span><span style="color: black">. </span></p>
+<h2 id="modular-arithmetic"><span id="sec:Modular-arithmetic" label="sec:Modular-arithmetic"></span>Modular arithmetic</h2>
+<p><span style="color: black">The</span>
+<strong><span style="color: black"><code>mod</code></span></strong><span style="color: black">
+operator returns the remainder (or residue) after integer division of
+its first argument by its second. In the case where the second argument
+is a power of two, the result can be calculated quickly using
+bitwise</span>
+<strong><span style="color: black"><code>and</code></span></strong><span style="color: black">
+with an appropriate bit-mask. Two numbers <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> are</span>
+<span style="color: black"><em>congruent modulo <span class="arithmatex">\(n\)</span></em></span>
+<span style="color: black">if <span class="arithmatex">\(a\,\mathrm{mod}\,n=b\,\mathrm{mod}\,n\)</span>.
+We write:</span><span style="color: black"> $<span class="arithmatex">\(\begin{aligned}
+12 &amp; \equiv &amp; 5\,\,\,\,\,(\mathrm{mod}\,7)\\
+12 &amp; \equiv &amp; 2\,\,\,\,\,(\mathrm{mod}\,5)
+\end{aligned}\)</span>$ </span><span style="color: black">This</span>
+<span style="color: black"><em>modular</em></span>
+<span style="color: black">arithmetic has various
+identities</span>[^1]<span style="color: black">:</span><span style="color: black">
+$<span class="arithmatex">\(\begin{aligned}
+(a\,\mathrm{mod}\,n)+(b\,\mathrm{mod}\,n) &amp; \equiv &amp; a+b\,\,\,\,\,(\mathrm{mod}\,n)\\
+(a\,\mathrm{mod}\,n)*(b\,\mathrm{mod}\,n) &amp; \equiv &amp; a*b\,\,\,\,\,(\mathrm{mod}\,n)
+\end{aligned}\)</span>$ </span><span style="color: black">The</span> <em>positive
+integers mod n</em> (<span class="arithmatex">\(Z_{n}\)</span>) form a group under addition. The elements are
+<span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(1\)</span>, <span class="arithmatex">\(2\)</span>, <span class="arithmatex">\(\ldots\)</span>, <span class="arithmatex">\(n-1\)</span>, and the identity is <span class="arithmatex">\(0\)</span>. The inverse of
+<span class="arithmatex">\(a\)</span> is <span class="arithmatex">\(n-a\)</span>.</p>
+<div class="center">
+
+|  <span style="color: black">$+$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** |
+|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
+| **<span style="color: black">0</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |
+| **<span style="color: black">1</span>** |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$0$</span>  |
+| **<span style="color: black">2</span>** |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |
+| **<span style="color: black">3</span>** |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |
+| **<span style="color: black">4</span>** |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |
+| **<span style="color: black">5</span>** |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |
+| **<span style="color: black">6</span>** |  <span style="color: black">$6$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |
+
+<span style="color: black"> </span>
+
+</div>
+
+<div class="center">
+
+<span style="color: black">  </span>
+
+|  <span style="color: black">$*$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** |
+|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
+| **<span style="color: black">0</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |
+| **<span style="color: black">1</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |
+| **<span style="color: black">2</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$5$</span>  |
+| **<span style="color: black">3</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$4$</span>  |
+| **<span style="color: black">4</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$3$</span>  |
+| **<span style="color: black">5</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$2$</span>  |
+| **<span style="color: black">6</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$1$</span>  |
+
+<span style="color: black">   </span>
+
+|  <span style="color: black">$a$</span>  | <span style="color: black">$-a$</span> | <span style="color: black">$a^{-1}$</span> |
+|:---------------------------------------:|:--------------------------------------:|:------------------------------------------:|
+| **<span style="color: black">0</span>** | <span style="color: black">$0$</span>  |                     -                      |
+| **<span style="color: black">1</span>** | <span style="color: black">$6$</span>  |   <span style="color: black">$1$</span>    |
+| **<span style="color: black">2</span>** | <span style="color: black">$5$</span>  |   <span style="color: black">$4$</span>    |
+| **<span style="color: black">3</span>** | <span style="color: black">$4$</span>  |   <span style="color: black">$5$</span>    |
+| **<span style="color: black">4</span>** | <span style="color: black">$3$</span>  |   <span style="color: black">$2$</span>    |
+| **<span style="color: black">5</span>** | <span style="color: black">$2$</span>  |   <span style="color: black">$3$</span>    |
+| **<span style="color: black">6</span>** | <span style="color: black">$1$</span>  |   <span style="color: black">$6$</span>    |
+
+</div>
+
+<p><span style="color: black">In cryptography, we are often interested in
+<span class="arithmatex">\(Z_{p}\)</span> where <span class="arithmatex">\(p\)</span> is a prime number. Observe what happens when we do
+modular arithmetic on <span class="arithmatex">\(Z_{7}\)</span>. The table above has the result of
+addition and multiplication modulo <span class="arithmatex">\(7\)</span> on the set of integers <span class="arithmatex">\(Z_{7}\)</span>,
+along with the additive and multiplicative inverses. Note that every
+item has an additive inverse, and that every item except <span class="arithmatex">\(0\)</span> has a
+multiplicative inverse, and so from our previous definitions, we know
+that <span class="arithmatex">\(Z_{7}\)</span> forms a field with <span class="arithmatex">\(+,*\)</span>. </span></p>
+<div class="center">
+
+|  <span style="color: black">$+$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** | **<span style="color: black">7</span>** |
+|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
+| **<span style="color: black">0</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |
+| **<span style="color: black">1</span>** |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$0$</span>  |
+| **<span style="color: black">2</span>** |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |
+| **<span style="color: black">3</span>** |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |
+| **<span style="color: black">4</span>** |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |
+| **<span style="color: black">5</span>** |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |
+| **<span style="color: black">6</span>** |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |
+| **<span style="color: black">7</span>** |  <span style="color: black">$7$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |
+
+<span style="color: black">  </span>
+
+</div>
+
+<div class="center">
+
+<span style="color: black"> </span>
+
+|  <span style="color: black">$*$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** | **<span style="color: black">7</span>** |
+|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
+| **<span style="color: black">0</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |
+| **<span style="color: black">1</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |
+| **<span style="color: black">2</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$6$</span>  |
+| **<span style="color: black">3</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$5$</span>  |
+| **<span style="color: black">4</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$4$</span>  |
+| **<span style="color: black">5</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$3$</span>  |
+| **<span style="color: black">6</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$2$</span>  |
+| **<span style="color: black">7</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$1$</span>  |
+
+<span style="color: black">   </span>
+
+|  <span style="color: black">$a$</span>  | <span style="color: black">$-a$</span> | <span style="color: black">$a^{-1}$</span> |
+|:---------------------------------------:|:--------------------------------------:|:------------------------------------------:|
+| **<span style="color: black">0</span>** | <span style="color: black">$0$</span>  |                     -                      |
+| **<span style="color: black">1</span>** | <span style="color: black">$7$</span>  |   <span style="color: black">$1$</span>    |
+| **<span style="color: black">2</span>** | <span style="color: black">$6$</span>  |                     -                      |
+| **<span style="color: black">3</span>** | <span style="color: black">$5$</span>  |   <span style="color: black">$3$</span>    |
+| **<span style="color: black">4</span>** | <span style="color: black">$4$</span>  |                     -                      |
+| **<span style="color: black">5</span>** | <span style="color: black">$3$</span>  |   <span style="color: black">$5$</span>    |
+| **<span style="color: black">6</span>** | <span style="color: black">$2$</span>  |                     -                      |
+| **<span style="color: black">7</span>** | <span style="color: black">$1$</span>  |   <span style="color: black">$7$</span>    |
+
+</div>
+
+<p><span style="color: black">Consider this set - <span class="arithmatex">\(Z_{8}\)</span>. Note that not
+every element in <span class="arithmatex">\(Z_{8}\)</span> has a multiplicative inverse, so this is not a
+field. </span></p>
+<h2 id="finite-fields"><span id="sec:Finite-fields" label="sec:Finite-fields"></span>Finite fields</h2>
+<p>Previously we had infinite fields of different types. It is of interest
+to note that <em>finite</em> fields of a particular size <span class="arithmatex">\(n\)</span> are unique modulo
+renaming of the set elements. This means that if you had a field of size
+<span class="arithmatex">\(7\)</span>, all other fields of size <span class="arithmatex">\(7\)</span> can be directly converted to the
+original field by just renaming the elements.</p>
+<p><span style="color: black">Another property of all finite fields is that
+their size must be <span class="arithmatex">\(p^{n}\)</span>, where <span class="arithmatex">\(p\)</span> is a prime, and <span class="arithmatex">\(n\)</span> is a positive
+integer. We use the notation <span class="arithmatex">\(\mathrm{GF}(p^{n})\)</span> to refer to such
+finite fields in honour of the French mathematician</span>
+É<span style="color: black">variste
+Galois</span>[^2]<span style="color: black">.</span> In cryptography we
+are generally interested in either
+<span style="color: black"><span class="arithmatex">\(\mathrm{GF}(p)\)</span> or <span class="arithmatex">\(\mathrm{GF}(2^{n})\)</span>. For
+example, <span class="arithmatex">\(\mathrm{GF}(2^{8})\)</span> is the basis for one of the processes
+inside AES, the Advanced Encryption Standard. </span></p>
+<p>Previously <span style="color: black"><span class="arithmatex">\(\mathrm{GF}(7)\)</span> was a field,
+however <span class="arithmatex">\(\mathrm{GF}(8)\)</span> does not look like a field, and yet <span class="arithmatex">\(2^{3}=8\)</span>.
+What is going on? </span></p>
+<p>Fields of the form <span style="color: black"><span class="arithmatex">\(\mathrm{GF}(2^{n})\)</span> use
+polynomial arithmetic where addition is like bitwise</span>
+<strong><span style="color: black"><code>xor</code></span></strong><span style="color: black">,
+and multiplication is done using polynomial arithmetic modulo <span class="arithmatex">\(2\)</span>. If
+the multiplication results in too large a polynomial, then we reduce it
+modulo an “</span><span style="color: black"><em>irreducible polynomial of
+degree <span class="arithmatex">\(n\)</span></em></span><span style="color: black">”. All of this requires
+some explanation.</span></p>
+<h2 id="polynomial-arithmetic"><span id="subsec:Polynomial-arithmetic" label="subsec:Polynomial-arithmetic"></span>Polynomial arithmetic</h2>
+<p><span style="color: black">Polynomials are expressions like
+<span class="arithmatex">\(3x^{5}+x^{2}+x+1\)</span>. More generally, a (univariate) polynomial of degree
+<span class="arithmatex">\(n\)</span> is <span class="arithmatex">\(\sum^{n}_{i=0}a_{i}x^{i}\)</span>. A particular set of such polynomials
+is the set where the coefficients <span class="arithmatex">\(a_{i}\)</span> belong to <span class="arithmatex">\(Z_{p}\)</span>. In the case
+where <span class="arithmatex">\(p=2\)</span>, then the coefficients are either <span class="arithmatex">\(0\)</span> or <span class="arithmatex">\(1\)</span>. In this
+restricted case, polynomial addition becomes the same as the</span>
+<strong><span style="color: black"><code>xor</code></span></strong><span style="color: black">
+function over the coefficients. </span>Consider the addition of <span class="arithmatex">\(3\)</span> and
+<span class="arithmatex">\(6\)</span>:</p>
+<div class="center">
+
+|          |         |     |         |     |     |     |     |
+|:--------:|:-------:|:---:|:-------:|:---:|:---:|:---:|:---:|
+|          | $3=011$ |     |         |     | $x$ | $+$ | $1$ |
+| $\oplus$ | $6=110$ | $+$ | $x^{2}$ | $+$ | $x$ |     |     |
+|          | $5=101$ |     | $x^{2}$ |     |     | $+$ | $1$ |
+
+</div>
+
+<p>Multiplication follows a similar pattern, but when
+<span style="color: black">the multiplication results in too large a
+polynomial, then we reduce it, by dividing it by an irreducible
+polynomial of degree <span class="arithmatex">\(n\)</span>, and take the residue. In the case of <span class="arithmatex">\(n=3\)</span>, a
+polynomial like <span class="arithmatex">\(x^{3}+x+1=1011\)</span> is irreducible. </span>An example,
+<span class="arithmatex">\(7\times7\)</span>:</p>
+<div class="center">
+
+|     |          |         |     |         |     |         |     |         |     |     |     |     |
+|:---:|:--------:|--------:|:---:|:-------:|:---:|:-------:|:---:|:-------:|:---:|:---:|:---:|:---:|
+|     |   $7=$   |   $111$ |     |         |     |         |     | $x^{2}$ | $+$ | $x$ | $+$ | $1$ |
+| $*$ |   $7=$   |   $111$ | $*$ |         |     |         |     | $x^{2}$ | $+$ | $x$ | $+$ | $1$ |
+|     |          |   $111$ |     |         |     |         |     | $x^{2}$ | $+$ | $x$ | $+$ | $1$ |
+|     | $\oplus$ |  $1110$ |     |         |     | $x^{3}$ | $+$ | $x^{2}$ | $+$ | $x$ |     |     |
+|     | $\oplus$ | $11100$ |     | $x^{4}$ | $+$ | $x^{3}$ | $+$ | $x^{2}$ |     |     |     |     |
+|     |          | $10101$ |     | $x^{4}$ |     |         | $+$ | $x^{2}$ |     |     | $+$ | $1$ |
+
+</div>
+
+<p>The result polynomial is too large, so we reduce it, using polynomial
+long division, with the result being the remainder:</p>
+<div class="center">
+
+|      |          $10$ |     |     |             |         |     |     |         |     | $x$ |     |     |
+|:----:|--------------:|----:|:---:|:-----------:|:-------:|:---:|:---:|:-------:|:---:|:---:|:---:|:---:|
+| 2-2  |       $10101$ |     |     | $x^{3}+x+1$ | $x^{4}$ |     | $+$ | $x^{2}$ |     |     | $+$ | $1$ |
+|      | <u>$1011$</u> |     |     |             | $x^{4}$ |     | $+$ | $x^{2}$ | $+$ | $x$ |     |     |
+| 6-11 |          $11$ |     |     |             |         |     |     |         |     | $x$ | $+$ | $1$ |
+
+</div>
+
+<p>Finally, we have that in
+<span style="color: black"><span class="arithmatex">\(\mathrm{GF}(2^{3})\)</span>, <span class="arithmatex">\(7*7=3\)</span>. </span>We now
+present the tables for arithmetic in
+<span style="color: black"><span class="arithmatex">\(\mathrm{GF}(2^{3})\)</span>:</span></p>
+<div class="center">
+
+|  <span style="color: black">$+$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** | **<span style="color: black">7</span>** |
+|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
+| **<span style="color: black">0</span>** |                   $0$                   |                   $1$                   |                   $2$                   |                   $3$                   |                   $4$                   |                   $5$                   |                   $6$                   |                   $7$                   |
+| **<span style="color: black">1</span>** |                   $1$                   |                   $0$                   |                   $3$                   |                   $2$                   |                   $5$                   |                   $4$                   |                   $7$                   |                   $6$                   |
+| **<span style="color: black">2</span>** |                   $2$                   |                   $3$                   |                   $0$                   |                   $1$                   |                   $6$                   |                   $7$                   |                   $4$                   |                   $5$                   |
+| **<span style="color: black">3</span>** |                   $3$                   |                   $2$                   |                   $1$                   |                   $0$                   |                   $7$                   |                   $6$                   |                   $5$                   |                   $4$                   |
+| **<span style="color: black">4</span>** |                   $4$                   |                   $5$                   |                   $6$                   |                   $7$                   |                   $0$                   |                   $1$                   |                   $2$                   |                   $3$                   |
+| **<span style="color: black">5</span>** |                   $5$                   |                   $4$                   |                   $7$                   |                   $6$                   |                   $1$                   |                   $0$                   |                   $3$                   |                   $2$                   |
+| **<span style="color: black">6</span>** |                   $6$                   |                   $7$                   |                   $4$                   |                   $5$                   |                   $2$                   |                   $3$                   |                   $0$                   |                   $1$                   |
+| **<span style="color: black">7</span>** |                   $7$                   |                   $6$                   |                   $5$                   |                   $4$                   |                   $3$                   |                   $2$                   |                   $1$                   |                   $0$                   |
+
+<span style="color: black">  </span>
+
+</div>
+
+<div class="center">
+
+<span style="color: black"> </span>
+
+|  <span style="color: black">$*$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** | **<span style="color: black">7</span>** |
+|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
+| **<span style="color: black">0</span>** |                   $0$                   |                   $0$                   |                   $0$                   |                   $0$                   |                   $0$                   |                   $0$                   |                   $0$                   |                   $0$                   |
+| **<span style="color: black">1</span>** |                   $0$                   |                   $1$                   |                   $2$                   |                   $3$                   |                   $4$                   |                   $5$                   |                   $6$                   |                   $7$                   |
+| **<span style="color: black">2</span>** |                   $0$                   |                   $2$                   |                   $4$                   |                   $6$                   |                   $3$                   |                   $1$                   |                   $7$                   |                   $5$                   |
+| **<span style="color: black">3</span>** |                   $0$                   |                   $3$                   |                   $6$                   |                   $5$                   |                   $7$                   |                   $4$                   |                   $1$                   |                   $2$                   |
+| **<span style="color: black">4</span>** |                   $0$                   |                   $4$                   |                   $3$                   |                   $7$                   |                   $6$                   |                   $2$                   |                   $5$                   |                   $1$                   |
+| **<span style="color: black">5</span>** |                   $0$                   |                   $5$                   |                   $1$                   |                   $4$                   |                   $2$                   |                   $7$                   |                   $3$                   |                   $6$                   |
+| **<span style="color: black">6</span>** |                   $0$                   |                   $6$                   |                   $7$                   |                   $1$                   |                   $5$                   |                   $3$                   |                   $2$                   |                   $4$                   |
+| **<span style="color: black">7</span>** |                   $0$                   |                   $7$                   |                   $5$                   |                   $2$                   |                   $1$                   |                   $6$                   |                   $4$                   |                   $3$                   |
+
+<span style="color: black">   </span>
+
+|  <span style="color: black">$a$</span>  | <span style="color: black">$-a$</span> | <span style="color: black">$a^{-1}$</span> |
+|:---------------------------------------:|:--------------------------------------:|:------------------------------------------:|
+| **<span style="color: black">0</span>** |                  $0$                   |                     -                      |
+| **<span style="color: black">1</span>** |                  $1$                   |                    $1$                     |
+| **<span style="color: black">2</span>** |                  $2$                   |                    $5$                     |
+| **<span style="color: black">3</span>** |                  $3$                   |                    $6$                     |
+| **<span style="color: black">4</span>** |                  $4$                   |                    $7$                     |
+| **<span style="color: black">5</span>** |                  $5$                   |                    $2$                     |
+| **<span style="color: black">6</span>** |                  $6$                   |                    $3$                     |
+| **<span style="color: black">7</span>** |                  $7$                   |                    $4$                     |
+
+</div>
+
+<p>Note that each non-zero element has a multiplicative inverse, and so we
+have a finite field of the form
+<span style="color: black"><span class="arithmatex">\(\mathrm{GF}(2^{n})\)</span>.</span></p>
+<h2 id="primes-primes-primes"><span style="color: black"><span id="sec:Primes...-primes...-primes..." label="sec:Primes...-primes...-primes..."></span>Primes... primes... primes...</span></h2>
+<p>In the previous section on finite fields, we were told that a property
+of all finite fields is that their size must be an integer power of a
+prime number. Prime numbers are fascinating, and even though they have
+few practical applications, they have been a preoccupation of
+mathematicians and philosophers for thousands of years.</p>
+<p>Can you think of any <em>real-world</em> example of primes in action? One would
+expect that after 2500 years of study we would be using primes
+everywhere. Apart from the use of primes in cryptography and certain
+mathematical proofs, there are very few real-world examples of primes:</p>
+<ol>
+<li>
+<p>Sometimes... a prime number of ball bearings arranged in a bearing,
+    to cut down on periodic wear (also <em>gear</em> teeth).</p>
+</li>
+<li>
+<p>Possibly... the 13 and 17-year periodic emergence of cicadas may be
+    due to coevolution with predators (that lost and became extinct).</p>
+</li>
+<li>
+<p>Is it just a coincidence that the numbers on the main Real Madrid
+    player’s jerseys are Carlos, No 3; Zidane, No 5; ...</p>
+</li>
+</ol>
+<div class="center">
+
+<img src="../../../images/beckham.jpg" alt="image" />
+
+</div>
+
+<p>Perhaps the enduring reason is because primes are <em>beautiful</em>.</p>
+<p>More recently, the world’s interest in primes has been reactivated
+because 2500 years of mathematics has failed to uncover some basic prime
+properties, and hence they make a good candidate for constructing
+difficult (impossible to decrypt) translations. We do know some
+properties of primes, but not others.</p>
+<div class="center">
+
+<img src="../../../images/pi1000.jpg" alt="image" />
+
+</div>
+
+<p>For example we do not know how to predict the next one in an arbitrary
+sequence, but we do know that the density is predictable. In the above
+figure, note that <span class="arithmatex">\(\pi(x)\)</span> (the number of primes less than <span class="arithmatex">\(x\)</span>) is
+locally random, but asymptotic to <span class="arithmatex">\(\frac{x}{\log x}\)</span>.</p>
+<p>As another example of an interesting prime property, consider this
+problem: <em>Is it possible to find an arbitrary sized sequence of numbers
+that are not primes?</em> The somewhat surprising answer to this is <em>YES</em>.
+If you want 42,000 not-primes in a row, calculate
+<span class="arithmatex">\(42001*\ldots*2*1=42001!\)</span>, and choose the numbers <span class="arithmatex">\(42001!+2\)</span>,
+<span class="arithmatex">\(42001!+3\)</span>.</p>
+<p>We now introduce “prime” theorems with particular applications in
+cryptography.</p>
+<h2 id="fermats-little-theorem"><span style="color: black">Fermat’s little theorem</span></h2>
+<p>Pierre de Fermat was a French amateur mathematician who contributed to
+calculus, number theory, analytic geometry and probability.</p>
+<div class="theorem">
+
+**Theorem 1**. *<span style="color: black">If $p$ is prime, and $a$ is a
+positive integer which is not divisible by $p$ (i.e.
+$\mathrm{gcd}(a,p)=1$), then
+$a^{p-1}\equiv1\,\,\,(\mathrm{mod}\,p)$.</span>*
+
+</div>
+
+<div class="center">
+
+| **<span style="color: black">`a`</span>** | <span style="color: black">$a^{1}$</span> | <span style="color: black">$a^{2}$</span> | <span style="color: black">$a^{3}$</span> | <span style="color: black">$a^{4}$</span> | <span style="color: black">$a^{5}$</span> | <span style="color: black">$a^{6}$</span> | <span style="color: black">$a^{7}$</span> | <span style="color: black">$a^{8}$</span> | <span style="color: black">$a^{9}$</span> | <span style="color: black">$a^{10}$</span> |
+|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|-------------------------------------------:|
+|     <span style="color: black">`2`</span> |     <span style="color: black">$2$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$8$</span> |     <span style="color: black">$5$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$7$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$6$</span> |      <span style="color: black">$1$</span> |
+|     <span style="color: black">`3`</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$1$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$4$</span> |      <span style="color: black">$1$</span> |
+|     <span style="color: black">`4`</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$1$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$3$</span> |      <span style="color: black">$1$</span> |
+|     <span style="color: black">`5`</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$1$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$9$</span> |      <span style="color: black">$1$</span> |
+|     <span style="color: black">`6`</span> |     <span style="color: black">$6$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$7$</span> |     <span style="color: black">$9$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$8$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$2$</span> |      <span style="color: black">$1$</span> |
+|     <span style="color: black">`7`</span> |     <span style="color: black">$7$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$2$</span> |     <span style="color: black">$3$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$6$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$8$</span> |      <span style="color: black">$1$</span> |
+|     <span style="color: black">`8`</span> |     <span style="color: black">$8$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$6$</span> |     <span style="color: black">$4$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$2$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$7$</span> |      <span style="color: black">$1$</span> |
+|     <span style="color: black">`9`</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$1$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$5$</span> |      <span style="color: black">$1$</span> |
+|    <span style="color: black">`10`</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$1$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$1$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$1$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$1$</span> |    <span style="color: black">$10$</span> |      <span style="color: black">$1$</span> |
+
+</div>
+
+<p><span style="color: black">The above table shows Fermat’s theorem in
+operation. Notice that <span class="arithmatex">\(a^{10}\)</span> is always <span class="arithmatex">\(1\)</span>, but that sometimes
+<span class="arithmatex">\(a^{n}=1\)</span> for <span class="arithmatex">\(n&lt;10\)</span>. When <span class="arithmatex">\(1\)</span> occurs earlier, the <span class="arithmatex">\(n\)</span>th powers are
+always numbers that evenly divide <span class="arithmatex">\(p-1\)</span>. </span></p>
+<div style="color: black">
+
+<div class="definition">
+
+**Definition 4**. *Values of a for which the whole row is needed are
+called generators.*
+
+</div>
+
+</div>
+
+<p>In modern cryptography we are often doing calculations with large
+numbers, perhaps ones with 1000s of digits.
+<span style="color: black">Consider the following problem:</span></p>
+<pre><code>&lt;span style=&quot;color: black&quot;&gt;result=&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;62247027506732273704655645590797926890623986483292191309020787710924&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;86991072740587065198907810173838994978267934813009677708927826601313&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;55777365361484044783800851222817392261341421370762400507026834564501&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;61478881858016233581815507729190060733863810985820998417753776670372&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;86814739670120315712396914000184822340352355906455155667534102473964&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;53541377412583676260706359331048403293779053704648771069764131865422&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;62299505280557584280574185802694213299802280179325494560628948940739&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;34448228464915119714116869895958794732025285742690180232449402567101&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;05083114967356334295809219455711191131246974627173111242792554453321&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;16504914530077241996189357298508605206780120789880835525222341940514&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;58556732086842042388893209157040799864871901064991230860288657545878&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;54838031902109935110264503891544145872580747830622294066978047059698&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;08888224976779404912792017633095411318555938776800816778624695807909&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;49705787192596277127796303487781814106147375370904627195995589087276&lt;/span&gt;
+&lt;span style=&quot;color: black&quot;&gt;8469943 mod 13 = 5&lt;/span&gt;
+</code></pre>
+<p><span style="color: black">A quick way to work out problems like the
+above one is to use</span>
+<strong><span style="color: black"><code>bc</code></span></strong><span style="color: black">,
+an arbitrary precision calculator. It has a language that supports
+arbitrary precision numbers.</span></p>
+<p>However, our new knowledge of Fermat’s little theorem give us much more
+effective ways of calculating some large problems. For example,
+<span style="color: black">an interesting observation that can be made
+here is that because <span class="arithmatex">\(a\)</span> to a power mod <span class="arithmatex">\(p\)</span> always starts repeating
+after the power reaches <span class="arithmatex">\(p-1\)</span>:
+$<span class="arithmatex">\(a^{x}\,\mathrm{mod}\,p=a^{x\,\mathrm{mod}\,(p-1)}\,\mathrm{mod}\,p.\)</span>$
+An example of the use of this: $<span class="arithmatex">\(\begin{aligned}
+\mathrm{result} &amp; = &amp; 7^{1215}\,\mathrm{mod}\,13\\
+ &amp; = &amp; 7^{1215\,\mathrm{mod}\,12}\,\mathrm{mod}\,13\\
+ &amp; = &amp; 343\,\mathrm{mod}\,13\\
+ &amp; = &amp; 5
+\end{aligned}\)</span>$ </span>We have reduced a problem that requires computer
+assistance to one that can be performed mentally.</p>
+<h2 id="eulers-theorem"><span style="color: black">Euler’s theorem</span></h2>
+<p><span style="color: black">Leonhard Euler (April 15, 1707 - September
+18, 1783) was a Swiss mathematician and physicist, and was one of the
+first researchers to apply calculus to physics. Born and educated in
+Switzerland, he was deeply religious throughout his life, and worked as
+a professor of mathematics in Saint Petersburg and Berlin. He was a
+prolific researcher despite being completely blind for the last
+seventeen years of his life, during which time he produced much of his
+work.</span></p>
+<div class="theorem">
+
+**Theorem 2**. *For every $a$ and $n$ that are relatively prime:
+$$a^{\phi(n)}\equiv1\,\,\,\,\,(\mathrm{mod}\,n)$$ where $\phi(n)$ is the
+totient function and $p_{1}$, $\ldots$ , $p_{m}$ are all the prime
+numbers that divide evenly into $n$, including $n$ itself in case it is
+a prime.*
+
+</div>
+
+<p>Euler’s totient function <span class="arithmatex">\(\phi(n)\)</span> returns the number of positive
+integers less than <span class="arithmatex">\(n\)</span> and relatively prime to <span class="arithmatex">\(n\)</span>. Fermat’s theorem is
+a specific case of the more general Euler’s theorem. We can see this by
+considering the (Fermat) case where <span class="arithmatex">\(n\)</span> is a prime, and then
+<span class="arithmatex">\(a^{\phi(n)}\,\mathrm{mod}\,n=a^{n-1}\,\mathrm{mod}\,n=1\)</span>. When <span class="arithmatex">\(n\)</span> is a
+product of two primes: <span class="arithmatex">\(n=pq\)</span>, then
+$<span class="arithmatex">\(\phi(n)=n(1-1/p)(1-1/q)=(p-1)(q-1)\)</span>$ and so if <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(pq\)</span> are
+relatively prime, then
+$<span class="arithmatex">\(a^{(p-1)(q-1)}\equiv1\,\,\,\,\,(\mathrm{mod}\,pq)\)</span>$
+<span style="color: black">The table below shows Euler’s theorem in
+operation</span>[^3]<span style="color: black">:</span></p>
+<div class="center">
+
+| **$a^{1}$** | **$a^{2}$** | **$a^{3}$** | **$a^{4}$** | **$a^{5}$** | **$a^{6}$** | **$a^{7}$** | **$a^{8}$** | **$a^{9}$** | **$a^{10}$** | **$a^{11}$** | **$a^{12}$** | **$a^{13}$** | **$a^{14}$** |
+|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:------------:|:------------:|:------------:|:------------:|:------------:|
+|   ***2***   |      4      |      8      |      1      |      2      |      4      |      8      |      1      |      2      |      4       |      8       |      1       |      2       |      4       |
+|   ***3***   |      9      |     12      |      6      |      3      |      9      |     12      |      6      |      3      |      9       |      12      |      6       |      3       |      9       |
+|   ***4***   |      1      |      4      |      1      |      4      |      1      |      4      |      1      |      4      |      1       |      4       |      1       |      4       |      1       |
+|   ***5***   |     10      |      5      |     10      |      5      |     10      |      5      |     10      |      5      |      10      |      5       |      10      |      5       |      10      |
+|   ***6***   |      6      |      6      |      6      |      6      |      6      |      6      |      6      |      6      |      6       |      6       |      6       |      6       |      6       |
+|   ***7***   |      4      |     13      |      1      |      7      |      4      |     13      |      1      |      7      |      4       |      13      |      1       |      7       |      4       |
+|   ***8***   |      4      |      2      |      1      |      8      |      4      |      2      |      1      |      8      |      4       |      2       |      1       |      8       |      4       |
+|   ***9***   |      6      |      9      |      6      |      9      |      6      |      9      |      6      |      9      |      6       |      9       |      6       |      9       |      6       |
+|  ***10***   |     10      |     10      |     10      |     10      |     10      |     10      |     10      |     10      |      10      |      10      |      10      |      10      |      10      |
+|  ***11***   |      1      |     11      |      1      |     11      |      1      |     11      |      1      |     11      |      1       |      11      |      1       |      11      |      1       |
+|  ***12***   |      9      |      3      |      6      |     12      |      9      |      3      |      6      |     12      |      9       |      3       |      6       |      12      |      9       |
+|  ***13***   |      4      |      7      |      1      |     13      |      4      |      7      |      1      |     13      |      4       |      7       |      1       |      13      |      4       |
+|  ***14***   |      1      |     14      |      1      |     14      |      1      |     14      |      1      |     14      |      1       |      14      |      1       |      14      |      1       |
+
+</div>
+
+<p><span style="color: black">Note that <span class="arithmatex">\(1\)</span> is reached when the power is
+<span class="arithmatex">\(8\)</span>, for numbers with no divisors in common with <span class="arithmatex">\(15\)</span>, such as
+<span class="arithmatex">\(2,4,7,8,11,13\)</span> and <span class="arithmatex">\(14\)</span>. For <span class="arithmatex">\(3,5,6,9,10\)</span> and <span class="arithmatex">\(12\)</span>, it is never
+<span class="arithmatex">\(1\)</span>.</span></p>
+<p>[^1]: Note that sometimes we write
+    <span style="color: black"><span class="arithmatex">\(a\,\mathrm{mod}\,n=b\,\mathrm{mod}\,n\)</span>
+    and sometimes <span class="arithmatex">\(a\equiv b\,\,\,\,(\mathrm{mod}\,n)\)</span></span>. Both
+    notations are acceptable.</p>
+<p>[^2]: Galois developed the original ideas of group theory. He also
+    regularly failed his exams! His physics teacher described him in
+    this way: <em>“He knows absolutely nothing. I have been told that this
+    student has mathematical ability; this certainly astonishes me.
+    Judging by his examination, he seems of little intelligence, or has
+    hidden his intelligence so well that I found it impossible to detect
+    it</em>. He was imprisoned in 1831 over a dinnertime toast, and just
+    before his death (possibly in a gunfight over a paramour), he wrote
+    a letter describing the connection between group theory and the
+    solutions of polynomial equations. He was only 20 when he died. So
+    sad.</p>
+<p>[^3]: <span style="color: black">Arithmetic in the exponent is taken mod
+    <span class="arithmatex">\(\phi(n)\)</span>, so that
+    <span class="arithmatex">\(a^{x}\,\mbox{{mod}}\,n=a^{x\,\mbox{{mod}}\,\phi(n)}\,\mbox{{mod}}\,n\)</span>,
+    if <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(n\)</span> are relatively prime. In the case where <span class="arithmatex">\(n=pq\)</span>,
+    <span class="arithmatex">\(a^{k\phi(n)+1}\,\mbox{{mod}}\,n=a\)</span> for all <span class="arithmatex">\(a\)</span>.</span></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes", "toc.integrate", "navigation.path"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
