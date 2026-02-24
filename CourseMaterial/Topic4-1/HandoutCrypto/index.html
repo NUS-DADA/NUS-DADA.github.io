@@ -1,0 +1,1113 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Handout materials for DADA 2026 course">
+      
+      
+      
+        <link rel="canonical" href="https://NUS-DADA.github.io/DADA_2026_Materials/CourseMaterial/Topic4-1/HandoutCrypto/">
+      
+      
+        <link rel="prev" href="../../Topic3/HandoutSystemsComplexity/">
+      
+      
+        <link rel="next" href="../../Topic4-2/HandoutMathFoundations/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Topic4-1 - Computational complexity and cryptography - DADA 2026 Course Materials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#computational-complexity-and-cryptography" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="DADA 2026 Course Materials" class="md-header__button md-logo" aria-label="DADA 2026 Course Materials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DADA 2026 Course Materials
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Topic4-1 - Computational complexity and cryptography
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/NUS-DADA/DADA_2026_Materials" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DADA_2026_Materials
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DADA 2026 Course Materials" class="md-nav__button md-logo" aria-label="DADA 2026 Course Materials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DADA 2026 Course Materials
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/NUS-DADA/DADA_2026_Materials" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DADA_2026_Materials
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic1/HandoutITsecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic1 - IT security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic2/HandoutSocialEngineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic2 - Social Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic3/HandoutSystemsComplexity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic3 - Complexity and security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic4-1 - Computational complexity and cryptography
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic4-1 - Computational complexity and cryptography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historical-cryptography" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Historical cryptography
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#todaysssshhhh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Today...sssshhhh
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moving-to-modern-cryptography" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Moving to modern cryptography
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#one-way-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One-way functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pki-public-key-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PKI - Public Key Infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rsa-rivest-shamir-adelman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RSA (Rivest, Shamir, Adelman)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defences
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic4-2/HandoutMathFoundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic4-2 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic5/HandoutIPNetworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic5 - Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic6/HandoutCommTheory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic6 - Communication theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic7/HandoutWebApplications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic7 - Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic9/HandoutMachineArchitecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic9 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="computational-complexity-and-cryptography">Computational complexity and cryptography</h1>
+<h2 id="introduction">Introduction</h2>
+<p>In historical times, all sorts of schemes were constructed to provide
+secrecy, but they mostly relied on making a cryptographic system so
+complex and confusing that a person could not understand or try out all
+key possibilities. Nowadays, computers can try a vast number of key
+possibilities, and these techniques are no longer adequate.</p>
+<p>In modern cryptography (as opposed to historical cryptography) we look
+out for operations that are easy to do one way, say of <span class="arithmatex">\({\cal O}(k)\)</span>,
+and difficult to reverse and do the other way: perhaps
+<span class="arithmatex">\({\cal O}(e^{k})\)</span>.</p>
+<p>Our modern cryptographic systems can be made arbitrarily hard, by using
+large key sizes, where the enumeration of all the keys, even by a fast
+cluster of computers, is still too difficult. For example, if we were to
+use a keysize of 128 bits, then the keyspace is
+<span class="arithmatex">\(2^{128}=340,282,366,920,938,463,463,374,607,431,768,211,456\)</span>. To try
+out all those possible keys, using a cluster of 1,000,000 computers,
+each able to try 1,000,000,000 keys per second, would take
+<span class="arithmatex">\(10,790,283,070,806,014\)</span> years.</p>
+<p>Mathematical systems are used to provide the mechanisms for modern
+cryptography. The reason for this is we can use mathematical systems
+that we know work for <em>all</em> sizes of numbers. For example, if we were to
+use the property that all numbers that are the product of two primes
+have a unique factorization, we know that this is true for small numbers
+(because we can check by trying them out), but we also know that it
+works for big numbers - even if they have thousands of digits - because
+it has been proved for all numbers, not just the ones we have tried out.</p>
+<p>Another common property that we want for our mathematical mechanisms is
+that we want them to have a limited/fixed size. If our computations
+could grow arbitrarily, we would need more and more memory to store the
+results of computations. It is common to use fixed maximum size numbers
+in the mathematical mechanisms used for cryptography. One class of
+mathematical systems that has both these properties (i.e. well-defined
+operations that are limited in size), are the finite fields. Such finite
+fields have a fixed maximum size (hence the term finite), and by
+definition, the operations over that field are well defined.</p>
+<p>When we do addition and multiplication modulo a prime, the resultant
+system (values and operations), is well defined, and also finite. This
+is a first example of a finite field, and it does not matter if the
+prime is 7, or <span class="arithmatex">\(22953686867719691230002707821868552601124472329079\)</span>: all
+the operations work exactly as expected: addition and multiplication
+modulo a prime is a finite field. In addition, the operation
+<span class="arithmatex">\(g^{a}\bmod p\)</span> is easy to calculate, if <span class="arithmatex">\(p\)</span> is a prime and <span class="arithmatex">\(g\)</span> and <span class="arithmatex">\(a\)</span>
+are large numbers. However, finding the value <span class="arithmatex">\(a\)</span> given <span class="arithmatex">\(g\)</span>,<span class="arithmatex">\(p\)</span> and
+<span class="arithmatex">\(g^{a}\bmod p\)</span> is hard. We know the operations will work correctly,
+because it is a finite field, and we have a function easy to do one way
+<span class="arithmatex">\({\cal O}(k)\)</span>, and difficult to reverse <span class="arithmatex">\({\cal O}(e^{k})\)</span>, where <span class="arithmatex">\(k\)</span> is
+the number of bits used to represent <span class="arithmatex">\(a\)</span>. This is the basis of Diffie
+Hellman Key exchange, an asymmetric scheme used for generating new keys.</p>
+<p>Another example is <span class="arithmatex">\(C=P+Q\)</span> on a discrete elliptic curve defined over a
+number field (The + is a funny curve operation which is easy to do). But
+it is hard to calculate <span class="arithmatex">\(P=C-Q\)</span>. This is the basis of ECC, Elliptic
+Curve Cryptography.</p>
+<p>Most modern cryptographic schemes are well rooted in well understood
+structures such as this.</p>
+<h2 id="historical-cryptography">Historical cryptography</h2>
+<p>Over 2000 years ago, Cæsar (100-44BC) is reputed to have encoded
+messages to his battalions.</p>
+<div class="center">
+
+|               **`I    C L A V D I V S`**               |
+|:------------------------------------------------------:|
+|  **`A B C D E F G H I K L M N O P Q R S T V X Y Z`**   |
+| **`X Y Z A B C D E F G H I K L M N O P Q R S T V`**` ` |
+|               **`F    Z H X R A F R P`**               |
+
+</div>
+
+<p>He did[^1] this using (what is now called) a Cæsar, or rotation cipher,
+in which we replace each letter in a message, with another letter, by
+rotating the alphabet some fixed number of characters. In Cæsar’s
+original cipher, it was always just a leftwise rotation of 3 characters.
+We can specify a Cæsar cipher by just noting the number of characters
+that the alphabet is rotated. The number of different useful ciphers
+(the key size) is just <span class="arithmatex">\(25\)</span> for a <span class="arithmatex">\(26\)</span> letter alphabet. We can
+mathematize a rotation cipher like this: $<span class="arithmatex">\(\begin{array}{lll}
+E(k,p) &amp; = &amp; p+k\bmod26\\
+D(k,c) &amp; = &amp; c-k\bmod26
+\end{array}\)</span>$ These days, we would call this a <strong>mono-alphabetic
+substitution cipher</strong>, in that we just do a single substitution - every
+time we see the character A it is translated to an X. If instead, we
+were to use a number of different substitutions, one after the other,
+and then repeat until the end of our message, we would have a
+<strong>poly-alphabetic substituion cipher</strong>. Early cipher machines, were of
+this sort.</p>
+<div class="center">
+
+<img src="../../../images/topview.jpg" style="height:3cm" alt="image" />  
+<img src="../../../images/enigma36.jpg" style="height:3cm" alt="image" />
+
+</div>
+
+<p>In the 1920’s, a German company marketed a series of devices for
+encrypting and decrypting messages. The devices used electro-mechanical
+rotors to generate what appeared to be random characters from a source
+message. However a matching device, with a special key, could decode the
+messages. These <em>Enigma</em> devices were extensively used by the German
+military to communicate before and during World War II, in the belief
+that the “random” characters could not be decoded.</p>
+<p>If you believe in the movie world (as of course every right-thinking
+person does), then you may already know that the American Navy captured
+a German submarine and recovered an Enigma machine and codebook, leading
+to the allies being able to decode the German messages (the movie
+U-571). The movie is of course nonsense, but the real story is just as
+exciting, and does not require the heroes to be good looking and have
+easily pronounceable names.</p>
+<blockquote>
+<p><em>Three students from the Department of Mathematics at the University
+of Poznan were assigned to work on the problem, and by 1933, the
+Polish Ciphers Office was able to decode messages, although slowly. In
+1938, the Germans changed the encoding of the Enigma machines, and the
+Poles had to develop a machine to decode the new messages. This
+machine was completed quickly, and the Poles were aware of the date of
+the imminent invasion of Poland. As a result of this information,
+Poland delivered working Enigma copies to the English about two weeks
+before the invasion of Poland. English cryptographers at Bletchley
+Park, including Alan Turing, developed many systems for decoding
+encoded German (and other) transmissions. On 9 May 1941 the Royal Navy
+escort destroyers Bulldog and Broadway captured the U-110 submarine,
+complete with a genuine Enigma machine, and active code books. From
+this date on, the English could decode most German military
+transmissions.</em></p>
+</blockquote>
+<p>I would like to be able to show you a working Enigma machine, but I do
+not have a spare $1M on me today, so instead, I show the M209:</p>
+<div class="center">
+
+![image](../../images/IMG_1313.jpg)
+
+</div>
+
+<p>The M-209 is a portable, mechanical cipher machine used by the US
+military primarily in World War II. The M-209 was designed by Swedish
+cryptographer Boris Hagelin in response to a request for such a portable
+cipher machine, and was an improvement of an earlier machine, the C-36.</p>
+<h2 id="todaysssshhhh">Today...sssshhhh</h2>
+<p>Today we do the same sort of things, but we use software, which works on
+blocks of bits, instead of characters. In most modern cryptography, we
+are not really doing much different from these old ideas, except that we
+work on bits, not characters, and the size of the problem has changed.
+Instead of having an alphabet of 26 letters/symbols, we might have an
+alphabet which consists of a block of bits. If the block bitsize was
+(say) 128 bits, then we have effectively a substitution cipher for
+<span class="arithmatex">\(2^{128}\)</span> symbols. This change in size is significant - a (brute force)
+attack on a cryptographic scheme previously might have been possible,
+but now with huge keysizes, the possibility of a brute-force attack
+succeeding may be low.</p>
+<p>But some things have changed. In 1976 Diffie and Hellman published the
+paper “<em>New Directions in Cryptography</em>” , which first introduced the
+idea of <em>public</em> key cryptography. Public key cryptography relies on the
+use of enciphering functions which are very hard to decipher unless you
+have a deciphering key. In a public key system, each participant
+generates a pair of keys <span class="arithmatex">\((k_{1},k_{2})\)</span>, where either key can be used
+to encrypt, with the other key being used to decrypt. The keys have the
+property that you cannot generate one of the keys knowing the other;
+they are not <em>symmetric</em>. Each participant then publishes one of the
+keys, keeping the other private. Key <span class="arithmatex">\(k_{1}\)</span> is kept secret and used to
+encrypt a message, key <span class="arithmatex">\(k_{2}\)</span> is made public and may be used to decrypt
+the message.</p>
+<p>From the manual pages for ssh, the secure-shell:</p>
+<p><em>The program ssh is for logging into a remote machine and for executing
+commands on a remote machine. It provides secure encrypted
+communications between two untrusted hosts over an insecure network.
+Other connections can also be forwarded over the secure channel. Users
+must prove their identity to the remote machine using one of several
+methods depending on the protocol version. The scheme is based on
+public-key cryptography: cryptosystems where encryption and decryption
+are done using separate keys, and it is not possible to derive the
+decryption key from the encryption key.</em></p>
+<h2 id="moving-to-modern-cryptography">Moving to modern cryptography</h2>
+<p>There are only three underlying building blocks used for building modern
+cryptographic systems in IT security:</p>
+<ol>
+<li>
+<p>Symmetric ciphers: where the keys used for encrypting and decrypting
+    are the same, or easily derived from each other.</p>
+</li>
+<li>
+<p>Asymmetric ciphers: where the keys used for encrypting and
+    decrypting are different, and not easily derived from each other.</p>
+</li>
+<li>
+<p>Hash functions: which take a message and produce a check code. Hash
+    functions are quite different from ciphers, in that there is not
+    really a notion of reversing a hashed value. (There is no
+    corresponding unhash function).</p>
+</li>
+</ol>
+<p>A symmetric cipher encrypts a message, with the same key used at both
+the transmitter and receiver:</p>
+<div class="center">
+
+<img src="../../../images/sharedkey.png" alt="image"  style="width: 70%;"/>
+
+</div>
+
+<p>An asymmetric cipher looks much the same, but note that the keys are
+different:</p>
+<div class="center">
+
+<img src="../../../images/ch9f1-a.png" alt="image"  style="width: 100%;"/>
+
+</div>
+
+<p>Public key/asymmetric schemes may be used for encrypting data directly.
+In the figure above, a transmitter encrypts the message using the public
+key of the recipient. Since the private key may not be generated easily
+from the public key, the recipient is reasonably sure that no-one else
+can decrypt the data.</p>
+<div class="center">
+
+<img src="../../../images/ch9f1-b.png" alt="image"  style="width: 100%;"/>
+
+</div>
+
+<p>We can also use public key schemes to provide authentication. If one
+machine wants to <em>authentically</em> transmit information, it encodes using
+both its private key and the recipient’s public key as seen below. The
+second machine uses the others public key and its own private key to
+decode.</p>
+<h2 id="one-way-functions">One-way functions</h2>
+<p>To build asymmetric ciphers and systems, it is common to use what
+cryptographers call one-way functions. These functions are easy to
+compute the output given some input, but hard to reverse. Not
+impossible. Hard. Here, “easy” and “hard” might be <span class="arithmatex">\({\cal O}(n)\)</span> versus
+<span class="arithmatex">\({\cal O}(10^{n})\)</span>.</p>
+<p>An example of a one-way function is the discrete logarithm function in
+which it is relatively easy to calculate <span class="arithmatex">\(n=g^{k}\,\mathrm{mod}\,p\)</span>
+given <span class="arithmatex">\(g\)</span>, <span class="arithmatex">\(k\)</span> and <span class="arithmatex">\(p\)</span>, but difficult to calculate <span class="arithmatex">\(k\)</span> in the same
+equation, given <span class="arithmatex">\(g\)</span>, <span class="arithmatex">\(n\)</span> and <span class="arithmatex">\(p\)</span>.</p>
+<p>The Diffie-Hellman paper introduced a new technique which allowed two
+separated users to <em>create</em> and <em>share</em> a secret key. A third party
+listening to all communications between the two separated users is not
+realistically able to calculate the shared key.</p>
+<div class="center">
+
+<img src="../../../images/diffie.png" alt="image"  style="width: 80%;"/>
+
+</div>
+
+<p>Consider the participants in the system above. Firstly, it is common to
+use the names Bob, Ted, Carol and Alice (from the movie of the same
+name) when discussing cryptosystems. Secondly, we consider the knowledge
+held by each of the participants. The knowledge held by each of the
+participants is different.</p>
+<p>All participants know two system parameters <span class="arithmatex">\(p\)</span> - a large prime number,
+and <span class="arithmatex">\(g\)</span> - an integer less than <span class="arithmatex">\(p\)</span>, with certain constraints on <span class="arithmatex">\(g\)</span>.
+Alice and Bob each have a secret value (Alice has <span class="arithmatex">\(a\)</span> and Bob has <span class="arithmatex">\(b\)</span>)
+which they do not divulge to anyone. Alice and Bob each calculate and
+exchange a public key (<span class="arithmatex">\(g^{a}\,\mathrm{mod}\,p\)</span> for Alice and
+<span class="arithmatex">\(g^{b}\,\mathrm{mod}\,p\)</span> for Bob). Ted knows <span class="arithmatex">\(g\)</span>, <span class="arithmatex">\(p\)</span>,
+<span class="arithmatex">\(g^{a}\,\mathrm{mod}\,p\)</span> and <span class="arithmatex">\(g^{b}\,\mathrm{mod}\,p\)</span>, but neither <span class="arithmatex">\(a\)</span>
+nor <span class="arithmatex">\(b\)</span>.</p>
+<p>Both Alice and Bob can now calculate the value
+<span class="arithmatex">\(g^{ab}\mbox{\,\ mod\,\ }p\)</span>:</p>
+<ul>
+<li>
+<p>Alice calculates
+  <span class="arithmatex">\((g^{b}\,\mathrm{mod}\,p)^{a}\,\mathrm{mod}\,p=(g^{b})^{a}\,\mathrm{mod}\,p\)</span>.</p>
+</li>
+<li>
+<p>Bob calculates
+  <span class="arithmatex">\((g^{a}\,\mathrm{mod}\,p)^{b}\,\mathrm{mod}\,p=(g^{a})^{b}\,\mathrm{mod}\,p\)</span><strong>.</strong></p>
+</li>
+</ul>
+<p>And of course
+<span class="arithmatex">\((g^{b})^{a}\,\mathrm{mod}\,p=(g^{a})^{b}\,\mathrm{mod}\,p=g^{ab}\,\mathrm{mod}\,p\)</span>:
+the shared key. Ted has a much more difficult problem. It is difficult
+to calculate <span class="arithmatex">\(g^{ab}\,\mathrm{mod}\,p\)</span> without knowing either <span class="arithmatex">\(a\)</span> or
+<span class="arithmatex">\(b\)</span>. In the table we show the relative runtimes for cipher operations
+and solving the discrete logarithm problem.</p>
+<div class="center">
+
+| **Bit size** | **Enciphering** |                           **Discrete logarithm solution**                           |
+|:------------:|:---------------:|:-----------------------------------------------------------------------------------:|
+|      10      |       10        |                                         23                                          |
+|     100      |       100       |                                      1,386,282                                      |
+|    1,000     |      1,000      |                           612,700,000,000,000,000,000,000                           |
+|    10,000    |     10,000      | 722,600,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000........ |
+
+</div>
+
+<p>The algorithmic run-time of the (so-far best) algorithm for solving the
+discrete logarithm problem is in $<span class="arithmatex">\(O(e^{c\sqrt{r\log r}})\)</span>$ where <span class="arithmatex">\(c\)</span> is
+small, but <span class="arithmatex">\(\geq1\)</span>, and <span class="arithmatex">\(r\)</span> is the number of bits in the number. By
+contrast, the enciphering and deciphering process may be done in <span class="arithmatex">\(O(r)\)</span>.</p>
+<p>Note that we can calculate expressions like <span class="arithmatex">\(g^{x}\,\mathrm{mod}\,p\)</span>
+relatively easily, even when <span class="arithmatex">\(g\)</span>, <span class="arithmatex">\(x\)</span> and <span class="arithmatex">\(p\)</span> are large. The following
+code shows an algorithm which calculates <span class="arithmatex">\(g^{Q}\,\mathrm{mod}\,p\)</span>, and
+never has to calculate a larger number than <span class="arithmatex">\(p^{2}\)</span>:</p>
+<pre><code>c := 1;  { attempting to calculate mod($g^{Q}$,p) }
+x := 0; 
+while x&lt;&gt;Q do 
+   begin 
+      x := x+1; 
+      c := mod(c\*g,p) 
+   end; 
+{ Now c contains mod ($g^{Q}$,p) } 
+</code></pre>
+<h2 id="pki-public-key-infrastructure">PKI - Public Key Infrastructure</h2>
+<p>Public key systems are much more useful for secure transactions, due to
+the difficulty in forging messages unless you know the secret key used
+to encrypt it. However it requires secure distribution of (public) keys.</p>
+<p>PKI is a system of digital certificates, and distribution algorithms to
+ensure the authority of key pairs. There is no single agreed-upon
+standard for setting up a PKI.</p>
+<p>The company <span class="arithmatex">\(\mathrm{VeriSign}^{\circledR}\)</span> is one commercial company
+which provides a wide range of PKI services. Their software is not
+publicly available (i.e. not open-source). According
+to<span class="arithmatex">\(\mathrm{VeriSign}^{\circledR}\)</span>, they have</p>
+<blockquote>
+<p><em>... a fully integrated enterprise solution designed to secure
+intranet, extranet, and Internet applications...</em></p>
+<p><em>Built on open standards to ensure maximum flexibility, the VeriSign
+Managed PKI service allows interoperability with virtually any
+application or device, and is pre-integrated with leading
+off-the-shelf solutions...</em></p>
+</blockquote>
+<p>The open standards referred to include the PKCS standard series from
+RSA, which define many aspects of PKI. For example:</p>
+<ul>
+<li>
+<p>PKCS #3: Diffie-Hellman Key Agreement Standard</p>
+</li>
+<li>
+<p>PKCS #8: Private-Key Information Syntax Standard</p>
+</li>
+<li>
+<p>PKCS #10: Certification Request Syntax Standard</p>
+</li>
+</ul>
+<h2 id="rsa-rivest-shamir-adelman">RSA (Rivest, Shamir, Adelman)</h2>
+<p>Another example of a cryptographic one-way function is the function
+multiply. It is easy to multiply two numbers, and can normally be done
+in a time proportional to the number of digits in the numbers. However,
+if you multiply two large primes, and ask someone to factorize the
+resultant composite number, this is a problem which takes time in the
+order of the size of the numbers. The largest composite that has been
+factorized in a challenge had only 320 digits, but you can easily
+multiply 32000 digit numbers.</p>
+<p>This problem is known as the prime factorization problem, and it forms
+the basis for RSA asymmetric cryptography. Below are outlined the four
+processes needed for RSA encryption:</p>
+<p><strong>To create public key <span class="arithmatex">\(K_{p}\)</span>:</strong></p>
+<ol>
+<li>
+<p>Select two different large primes <span class="arithmatex">\(P\)</span> and <span class="arithmatex">\(Q\)</span>.</p>
+</li>
+<li>
+<p>Assign <span class="arithmatex">\(x=(P-1)(Q-1)\)</span>.</p>
+</li>
+<li>
+<p>Choose <span class="arithmatex">\(E\)</span> relative prime to <span class="arithmatex">\(x\)</span>. (This must satisfy a condition for
+    <span class="arithmatex">\(K_{s}\)</span>)</p>
+</li>
+<li>
+<p>Assign <span class="arithmatex">\(N=P*Q\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(K_{p}\)</span> is <span class="arithmatex">\(N\)</span> concatenated with <span class="arithmatex">\(E\)</span>.</p>
+</li>
+</ol>
+<p><strong>To create private (secret) key <span class="arithmatex">\(K_{s}\)</span>:</strong></p>
+<ol>
+<li>
+<p>Choose <span class="arithmatex">\(D\)</span>: <span class="arithmatex">\(D*E\,\mathrm{mod}\,x=1\)</span>.</p>
+</li>
+<li>
+<p><span class="arithmatex">\(K_{s}\)</span> is <span class="arithmatex">\(N\)</span> concatenated with <span class="arithmatex">\(D\)</span>.</p>
+</li>
+</ol>
+<p><strong>We encode plain text <span class="arithmatex">\(m\)</span> by:</strong></p>
+<ol>
+<li>
+<p>Pretend <span class="arithmatex">\(m\)</span> is a number.</p>
+</li>
+<li>
+<p>Calculate <span class="arithmatex">\(c=m^{E}\,\mathrm{mod}\,N\)</span>.</p>
+</li>
+</ol>
+<p><strong>To decode <span class="arithmatex">\(c\)</span> back to <span class="arithmatex">\(m\)</span>:</strong></p>
+<ol>
+<li>Calculate <span class="arithmatex">\(m=c^{D}\,\mathrm{mod}\,N\)</span>.</li>
+</ol>
+<h2 id="defences">Defences</h2>
+<p>Attackers of cryptographic schemes have various things to try. For
+example:</p>
+<ul>
+<li>
+<p>Can the keysize be reduced, perhaps by convincing systems to use a
+  lower grade of encryption? This is the mechanism used by NSA to spy on
+  HTTPS/SSL connections.</p>
+</li>
+<li>
+<p>Can the key be brute-forced? Can some pre-computation scheme be used,
+  storing the results on a disk?</p>
+</li>
+<li>
+<p>Can the key be predicted? Keys are often generated as needed by
+  generating numbers using pseudo random number generators.</p>
+</li>
+</ul>
+<p>The defences against these attacks are simple:</p>
+<ul>
+<li>
+<p>Do not downgrade encryption, or at least warn users if this is
+  happening.</p>
+</li>
+<li>
+<p>Use large sized keys, that are randomly generated, using high quality
+  random number generators. If the key size is huge, neither
+  brute-force, nor pre-computation would be feasible.</p>
+</li>
+<li>
+<p>Perhaps use actual random number generator chips instead of pseudo
+  random number generators.</p>
+</li>
+</ul>
+<p>Historically, there was a human barrier, that limited the size of keys.
+Now with computers, we have to use much larger keys. A general approach
+is to use systems in which the use time goes up perhaps by the number of
+bits in the key <span class="arithmatex">\({\cal O}(k)\)</span>, but the attack time goes up much faster -
+perhaps by the actual size of the key <span class="arithmatex">\({\cal O}(2^{k})\)</span>. Schemes like
+this can be made arbitrarily hard: still be usable, but with infeasible
+attack times.</p>
+<p>[^1]: Suetonius wrote “<em>... if he had anything confidential to say, he
+    wrote it in cipher, that is, by so changing the order of the letters
+    of the alphabet, that not a word could be made out. If anyone wishes
+    to decipher these, and get at their meaning, he must substitute the
+    fourth letter of the alphabet, namely D, for A, and so with the
+    others</em>”. Note that many Internet sources get this the wrong way
+    around, substituting A for D when encrypting, not decrypting.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes", "toc.integrate", "navigation.path"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

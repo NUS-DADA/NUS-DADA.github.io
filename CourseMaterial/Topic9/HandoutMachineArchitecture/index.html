@@ -1,0 +1,824 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Handout materials for DADA 2026 course">
+      
+      
+      
+        <link rel="canonical" href="https://NUS-DADA.github.io/DADA_2026_Materials/CourseMaterial/Topic9/HandoutMachineArchitecture/">
+      
+      
+        <link rel="prev" href="../../Topic7/HandoutWebApplications/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>Topic9 - Introduction - DADA 2026 Course Materials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="DADA 2026 Course Materials" class="md-header__button md-logo" aria-label="DADA 2026 Course Materials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DADA 2026 Course Materials
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Topic9 - Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/NUS-DADA/DADA_2026_Materials" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DADA_2026_Materials
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DADA 2026 Course Materials" class="md-nav__button md-logo" aria-label="DADA 2026 Course Materials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DADA 2026 Course Materials
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/NUS-DADA/DADA_2026_Materials" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DADA_2026_Materials
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic1/HandoutITsecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic1 - IT security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic2/HandoutSocialEngineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic2 - Social Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic3/HandoutSystemsComplexity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic3 - Complexity and security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic4-1/HandoutCrypto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic4-1 - Computational complexity and cryptography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic4-2/HandoutMathFoundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic4-2 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic5/HandoutIPNetworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic5 - Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic6/HandoutCommTheory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic6 - Communication theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic7/HandoutWebApplications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic7 - Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic9 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic9 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#descent-into-the-darkness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descent into the darkness...
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="introduction">Introduction</h1>
+<p>We have seen how complex systems can give rise to insecurity. This
+complexity can just as easily be in the internal architecture of the
+computer, not the internal architecture of the application. Given
+complex computer architectures it is difficult to make a secure system;
+there are so many interfaces and APIs to consider. In addition, there
+are some computer-architecture based attacks that somehow transcend the
+attack surfaces that come about through interfaces and APIs.</p>
+<p>They still come about through complexity but the complexity is about the
+internal architecture of the computer, not the internal architecture of
+the application. I’m talking about buffer overflows, heap overflows and
+so on.</p>
+<h2 id="descent-into-the-darkness">Descent into the darkness...</h2>
+<p>There is a simple model of processes/programs, which goes something like
+this:</p>
+<blockquote>
+<p>You have programs, and their data, which are found in the memory of a
+computer. Some computers have separate program and data space[^1], but
+most commonly these days, memory chips hold both instructions and
+data, although the corresponding memory caches may not. The resultant
+architecture is called a modified Harvard architecture.</p>
+</blockquote>
+<p>Sounds obvious enough, but it turns out that there are a wide range of
+attacks on programs or processes, based on their arrangement in the
+memory chips of a computer.</p>
+<p>When we program in a high-level language, we are insulated from these
+details: we might have a program with some variables:</p>
+<pre><code>int global_j;
+int fac( int n ) {
+   int j=0;
+   if n=0 then
+      return 1
+   else
+      return n\*fac(n-1)
+}
+...
+   char \*h=malloc(10);
+   global_j=5;
+   print(fac(global_j));
+...
+</code></pre>
+<p>This form of the program (the source form) shields us from the details
+of the locations of the program and the variables. For the program to
+run, we do not particularly care where in memory the program or data are
+stored - we are mostly just concerned that they are stored somewhere.</p>
+<div class="center">
+
+![image](../../images/memabstract.png)
+
+</div>
+
+<p>However as I mentioned before, there are attacks that start from
+knowledge of the locations in memory where such things are stored. In
+class we will look at some of these attacks, but in the meanwhile, just
+accept that with knowledge of the memory usage of a process, it might be
+possible for an attacker to devise an attack.</p>
+<p>Programs have various uses for program memory, and generally put things
+together by use. So if you know where one global variable is, you can
+assume the others will be nearby.</p>
+<ol>
+<li>
+<p><strong>Globals:</strong> for global variables such as the variable <code>global_j</code> in
+    the program above.</p>
+</li>
+<li>
+<p><strong>Text:</strong> for the program code such as the function <code>fac</code> in the
+    program.</p>
+</li>
+<li>
+<p><strong>Dlls:</strong> for shared library functions such as the function <code>print</code>.</p>
+</li>
+<li>
+<p><strong>Stack:</strong> for temporary/local variables (<code>n</code>,<code>j</code>), and function
+    management.</p>
+</li>
+<li>
+<p><strong>Heap:</strong> for dynamically created variables such as the variable <code>h</code>
+    in the program above.</p>
+</li>
+</ol>
+<p>This terms globals, text, dll, stack and heap are common and kind of
+historical. Here is a small program which prints out addresses of the
+program code, and variables of different types:</p>
+<div class="center">
+
+![image](../../images/winxp.png)
+
+</div>
+
+<p>With this program, in this particular environment (WinXP), the locations
+of the items are the same every time we run the program. Here is the
+program:</p>
+<pre><code>int global_j = 0;
+void main () {
+    char \*h = malloc(10);
+    int j = 0;
+    printf (Globals: %p, text: %p,
+             dlls: %p, stack: %p, heap: %p\n,
+             &amp;global_j, main, (int \*)printf, &amp;j, h);
+} 
+</code></pre>
+<p>Note that the address of a variable <code>j</code> is given as <code>&amp;j</code>, and memory is
+malloc’ed, and we have both global and local variables.</p>
+<h1 id="address-space-layout-randomization">Address Space Layout Randomization</h1>
+<p>In order to reduce the likelihood of a successful memory attack on a
+program, the designers and builders of operating systems have been
+developing various schemes to make things difficult. One of the simplest
+schemes, is to randomize memory locations, each time the program runs.
+This is called ASLR (Address Space Layout Randomization), and is one of
+a number of techniques for improving an application’s robustness against
+attacks.</p>
+<p>Unfortunately, different operating systems use different approaches.</p>
+<p>For example, when I recently tried some GNU+linux systems, I found that
+on one of them (with the particular compiler, OS and configuration they
+had) the OS randomized the set {dlls,stack,heap}, omitting to randomize
+global variables and the text segment. Another experiment involving
+Solaris only randomized {stack}. MacOSX randomized {globals,text} - it
+may not bother with the stack for other reasons (BSD based computers
+like Macs have stacks arranged with no execution possible on the stack).
+WinXP did nothing.</p>
+<p>More modern versions of Windows (Win7) randomized everything, but, only
+if you specifically asked for it, and if your program was compiled to
+support such randomization (i.e you had to opt-in, rather than opt-out).
+To me this seemed like a bad choice of fail-safe defaults, but more
+wiser Windows people than me tell me that many Windows applications
+would break if you turn on ASLR. Most of the OS itself runs with
+ASLR[^2].</p>
+<p>If you wish to try this yourself using gcc, remember to tell the
+compiler that you want to generate position independant code:</p>
+<pre><code>gcc -pie -fPIC -o move3 move3.c
+</code></pre>
+<p>I have summarized the results of my experiments below:</p>
+<div class="center">
+
+| **OS**              | **Globals** | **Text** | **Dlls** | **Stack** | **Heap** |
+|:--------------------|:-----------:|:--------:|:--------:|:---------:|:--------:|
+| **Linux**           |      Y      |    Y     |    Y     |     Y     |    Y     |
+| **Linux sma0**      |     \-      |    \-    |    Y     |     Y     |    Y     |
+| **Solaris sunfire** |     \-      |    \-    |    \-    |     Y     |    \-    |
+| **OSX - old**       |      Y      |    Y     |    \-    |    \-     |    \-    |
+| **OSX - new**       |      Y      |    Y     |    Y     |     Y     |    Y     |
+| **WinXP**           |     \-      |    \-    |    \-    |    \-     |    \-    |
+| **Win7**            |      Y      |    Y     |    Y     |     Y     |    Y     |
+
+</div>
+
+<p>Yay for Windows 7! Except why-oh-why is it opt-in instead of opt-out?</p>
+<p>A lesson to be learnt from all of this is encapsulated in the monster
+mitigation rule from OWASP: <strong>Lock down your environment</strong>. If you were
+building an application, and you were concerned with security with the
+application, at some stage you should audit the environment - what is
+the compiler? OS? What properties (i.e. ASLR) are operating? Are they
+actually working? Do not believe sales brochures - I am afraid that you
+actually have to test the environment.</p>
+<h1 id="protecting-the-stack">Protecting the stack</h1>
+<p>Another aspect of memory management from a security viewpoint is
+protecting the stack from an attacker. As we saw last week, it is
+possible for an attacker to overwrite important values on a stack by
+overflowing a buffer. As a result of this overflow, one of the early
+attacks then led to running a program stored on the stack in that
+buffer!</p>
+<p>To prevent against this sort of attack, there are various methods,
+including</p>
+<ol>
+<li>
+<p>preventing execution of data as a program (In windows this is called
+    DEP, and actually is in WinXP).</p>
+</li>
+<li>
+<p>preventing buffers from overflowing into sensitive areas of the
+    stack.</p>
+</li>
+</ol>
+<p>The first point is something that the OS can control - if it disables
+execution in the memory used for stack (as in BSD).</p>
+<p>The second point is often managed by compilers, with help from friendly
+OS’s. Various techniques are used, but one of the most common revolves
+around the use of a sacrificial variable called a canary, placed just
+above the programs/processes data/variables, and just below the
+sensitive areas of the stack. Consider the following function:</p>
+<pre><code>int f(char \* outside) {
+   char buf[10];
+   strcpy( buf,outside );
+}
+</code></pre>
+<p>The sensitive areas come into play at the time a function returns. If a
+buffer has been over-flowed, then the canary also gets changed or
+overwritten, and later when the function returns things start going bad.
+During normal function returns, the processor executes instructions like
+the following:</p>
+<pre><code>**   ** ...
+    call strcpy
+    leave 
+    ret 
+</code></pre>
+<p>Code is inserted into the programs to check the value of the canary just
+before the function returns. In the following code we see a canary being
+checked just before a function returns:</p>
+<pre><code>** **   call strcpy
+    movl -4(%ebp), %edx
+    xorl %gs:20, %edx
+    je .L3
+    call \_\_stack_chk_fail 
+.L3: 
+    leave
+    ret
+</code></pre>
+<p>The detail of the extra code is not too important, but what it does is
+check that the canary has the same value as found in memory location
+<code>%gs:20</code>, and if not it calls a system function <code>stack_chk_fail</code>.</p>
+<p>Both the GNU compilers (gcc) and the Windows compilers (like Microsoft
+Visual C++) do this sort of stack protection. Sure - it slows down the
+program a very small amount, but the extra safety is worth gold.</p>
+<h1 id="defences">Defences...</h1>
+<p>Check inputs, check outputs, recheck. Build using packages, dont
+re-invent the wheel. Defensive programming, turn on stackguard etc....</p>
+<p>We have seen some methods used to mitigate memory based attacks on
+applications. Again, the samples shown are only the tip of the iceberg.
+A lesson to be learnt is to: <strong>Lock down your environment</strong>.</p>
+<p>[^1]: ... called the Harvard architecture...</p>
+<p>[^2]: If you want to experiment with your own Windows ASLR features, you
+    can find EMET and procexp.exe.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes", "toc.integrate", "navigation.path"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
