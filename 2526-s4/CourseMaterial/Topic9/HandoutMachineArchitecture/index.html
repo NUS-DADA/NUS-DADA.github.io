@@ -586,7 +586,7 @@ int fac( int n ) {
 of the locations of the program and the variables. For the program to
 run, we do not particularly care where in memory the program or data are
 stored - we are mostly just concerned that they are stored somewhere.</p>
-<div class="center">
+<div style="text-align: center;">
 
 ![image](../../images/memabstract.png)
 
@@ -624,7 +624,7 @@ assume the others will be nearby.</p>
 <p>This terms globals, text, dll, stack and heap are common and kind of
 historical. Here is a small program which prints out addresses of the
 program code, and variables of different types:</p>
-<div class="center">
+<div style="text-align: center;">
 
 ![image](../../images/winxp.png)
 
@@ -673,7 +673,7 @@ compiler that you want to generate position independant code:</p>
 <pre><code>gcc -pie -fPIC -o move3 move3.c
 </code></pre>
 <p>I have summarized the results of my experiments below:</p>
-<div class="center">
+<div style="text-align: center;">
 
 | **OS**              | **Globals** | **Text** | **Dlls** | **Stack** | **Heap** |
 |:--------------------|:-----------:|:--------:|:--------:|:---------:|:--------:|

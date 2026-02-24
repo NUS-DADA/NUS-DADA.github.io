@@ -664,7 +664,7 @@ interconnectivity ...</p>
 <p>Sounds nice enough, but it turns out that the reality is a little
 different. There are logical networks, physical networks, networks built
 on networks, heirarchies, zones and so on.</p>
-<div class="center">
+<div style="text-align: center;">
 
 <img src="../../../images/networks.png" alt="image"  style="width: 90%;"/>
 
@@ -696,7 +696,7 @@ some sort of configuration database. A network administrator tries to
 ensure that the router rules prevent unauthorized access to machines
 from hosts on the Internet, while still allowing connections from the
 local network(s).</p>
-<div class="center">
+<div style="text-align: center;">
 
 <img src="../../../images/DMZLevel1.jpg" alt="image"  style="width: 80%;"/>
 
@@ -713,7 +713,7 @@ identifying the particular interface on each computer. When computers
 transfer messages to other computers, we add addressing and other
 information to each message to help route messages through the wider
 network.</p>
-<div class="center">
+<div style="text-align: center;">
 
 <img src="../../../images/packets.png" alt="image"  style="width: 60%;"/>
 
@@ -739,7 +739,7 @@ who wishes to specify a new protocol and they are commented
 on/vetted/improved by the internet community before final distribution.</p>
 <p>The IP network layer addressing scheme uses four bytes[^4], and is often
 written as dotted decimal, or hex numbers:</p>
-<div class="center">
+<div style="text-align: center;">
 
 | **Decimal**  |   **Hex**   |
 |:------------:|:-----------:|
@@ -793,7 +793,7 @@ an incorrect mask can result in confusion.</p>
 host part all 0s, and the one with the host part all 1s. You cannot
 allocate these addresses to machines. They are used for broadcasting to
 all machines on the same network.</p>
-<div class="center">
+<div style="text-align: center;">
 
 <img src="../../../images/ip.png" alt="image"  style="width: 60%;"/>
 
@@ -815,7 +815,7 @@ This has two uses:</p>
 </li>
 </ol>
 <p>Worldwide, there are five classes of IP address ranges:</p>
-<div class="center">
+<div style="text-align: center;">
 
 | Class |      Who for       | Prefix    |   Size   |  Number  |
 |:-----:|:------------------:|:----------|:--------:|:--------:|
@@ -844,7 +844,7 @@ the IP addresses have been allocated!</p>
 </li>
 </ol>
 <h2 id="layers">Layers</h2>
-<div class="center">
+<div style="text-align: center;">
 
 <img src="../../../images/osi-ip.png" alt="image"  style="width: 70%;"/>
 
@@ -908,7 +908,7 @@ Gateway Routing Protocol.</p>
 <h3 id="static-or-fixed-routing">Static or fixed routing</h3>
 <p>We might use a technique such as the shortest path - here a path could
 be <em>how long</em> or <em>how many hops</em> or some other metric.</p>
-<div class="center">
+<div style="text-align: center;">
 
 <img src="../../../images/hops.png" alt="image"  style="width: 80%;"/>
 
@@ -933,7 +933,7 @@ routers exchange information about their tables.</p>
 The figures represent the metrics attached to each route, and note that
 the route BD is about to change from a metric of 3 (meaning not so good)
 to 1 (meaning good).</p>
-<div class="center">
+<div style="text-align: center;">
 
 <img src="../../../images/router.png" alt="image"  style="width: 70%;"/>
 
@@ -941,7 +941,7 @@ to 1 (meaning good).</p>
 
 <p>Before the change, router D has the following table, giving it’s view of
 the best routes:</p>
-<div class="center">
+<div style="text-align: center;">
 
 | Destination | Delay | Route |
 |:-----------:|:-----:|:-----:|
@@ -956,7 +956,7 @@ the best routes:</p>
 </div>
 
 <p>Router B then sends to D it’s version of the router table:</p>
-<div class="center">
+<div style="text-align: center;">
 
 | Destination | Delay | Route |
 |:-----------:|:-----:|:-----:|
@@ -971,7 +971,7 @@ the best routes:</p>
 </div>
 
 <p>Router D then rewrites it’s table to reflect the new information:</p>
-<div class="center">
+<div style="text-align: center;">
 
 | Destination | Delay | Route |
 |:-----------:|:-----:|:-----:|
