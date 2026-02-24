@@ -641,7 +641,7 @@ or <span class="arithmatex">\(\oplus\)</span>, or in electronic circuit diagrams
 <span style="color: black"><em>addition mod
 2</em></span><span style="color: black">. The table below shows the truth
 table for a single bit.</span></p>
-<div style="text-align: center;">
+<p align="center">
 
 | **$a$** | **$b$** |  **$a\oplus b$**  |
 |:-------:|:-------:|:-----------------:|
@@ -650,7 +650,7 @@ table for a single bit.</span></p>
 |   $1$   |   $0$   |        $1$        |
 |   $1$   |   $1$   |        $0$        |
 
-</div>
+</p>
 
 <p>The <strong><code>xor</code></strong> function is commutative and associative. We often use
 <strong><code>exclusive-or</code></strong> over bitstrings. If we wished to encode a message
@@ -659,7 +659,7 @@ message as a bit string using (say) the ASCII encoding, and derive the
 bitstring <strong><code>01000001.01000010.01000011</code></strong>. Each bit of this could then
 be <strong><code>xor’ed</code></strong> with a bit from a corresponding (random) bit string
 called the key:</p>
-<div style="text-align: center;">
+<p align="center">
 
 |                   |                                                    |                                                    |                                                          |
 |:-----------------:|:--------------------------------------------------:|:--------------------------------------------------:|:--------------------------------------------------------:|
@@ -669,7 +669,7 @@ called the key:</p>
 | $K(m)=m\oplus k$  | <span style="color: blue">`0 1 0 1 0 0 1 0`</span> | <span style="color: blue">`0 0 1 0 0 1 1 1`</span> | <span style="color: blue">`0 1 1 1 1 0 1 0 . . .`</span> |
 |      $K(m)$       |                         R                          |                         ’                          |                            z                             |
 
-</div>
+</p>
 
 <p>The encoded message is “<strong><code>R’z</code></strong>”, and this message may be transmitted
 over an insecure network. At the receiver end, the key is assumed to be
@@ -796,7 +796,7 @@ $<span class="arithmatex">\(\begin{aligned}
 integers mod n</em> (<span class="arithmatex">\(Z_{n}\)</span>) form a group under addition. The elements are
 <span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(1\)</span>, <span class="arithmatex">\(2\)</span>, <span class="arithmatex">\(\ldots\)</span>, <span class="arithmatex">\(n-1\)</span>, and the identity is <span class="arithmatex">\(0\)</span>. The inverse of
 <span class="arithmatex">\(a\)</span> is <span class="arithmatex">\(n-a\)</span>.</p>
-<div style="text-align: center;">
+<p align="center">
 
 |  <span style="color: black">$+$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** |
 |:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
@@ -810,9 +810,9 @@ integers mod n</em> (<span class="arithmatex">\(Z_{n}\)</span>) form a group und
 
 <span style="color: black"> </span>
 
-</div>
+</p>
 
-<div style="text-align: center;">
+<p align="center">
 
 <span style="color: black">  </span>
 
@@ -838,7 +838,7 @@ integers mod n</em> (<span class="arithmatex">\(Z_{n}\)</span>) form a group und
 | **<span style="color: black">5</span>** | <span style="color: black">$2$</span>  |   <span style="color: black">$3$</span>    |
 | **<span style="color: black">6</span>** | <span style="color: black">$1$</span>  |   <span style="color: black">$6$</span>    |
 
-</div>
+</p>
 
 <p><span style="color: black">In cryptography, we are often interested in
 <span class="arithmatex">\(Z_{p}\)</span> where <span class="arithmatex">\(p\)</span> is a prime number. Observe what happens when we do
@@ -848,7 +848,7 @@ along with the additive and multiplicative inverses. Note that every
 item has an additive inverse, and that every item except <span class="arithmatex">\(0\)</span> has a
 multiplicative inverse, and so from our previous definitions, we know
 that <span class="arithmatex">\(Z_{7}\)</span> forms a field with <span class="arithmatex">\(+,*\)</span>. </span></p>
-<div style="text-align: center;">
+<p align="center">
 
 |  <span style="color: black">$+$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** | **<span style="color: black">7</span>** |
 |:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
@@ -863,9 +863,9 @@ that <span class="arithmatex">\(Z_{7}\)</span> forms a field with <span class="a
 
 <span style="color: black">  </span>
 
-</div>
+</p>
 
-<div style="text-align: center;">
+<p align="center">
 
 <span style="color: black"> </span>
 
@@ -893,7 +893,7 @@ that <span class="arithmatex">\(Z_{7}\)</span> forms a field with <span class="a
 | **<span style="color: black">6</span>** | <span style="color: black">$2$</span>  |                     -                      |
 | **<span style="color: black">7</span>** | <span style="color: black">$1$</span>  |   <span style="color: black">$7$</span>    |
 
-</div>
+</p>
 
 <p><span style="color: black">Consider this set - <span class="arithmatex">\(Z_{8}\)</span>. Note that not
 every element in <span class="arithmatex">\(Z_{8}\)</span> has a multiplicative inverse, so this is not a
@@ -935,7 +935,7 @@ restricted case, polynomial addition becomes the same as the</span>
 <strong><span style="color: black"><code>xor</code></span></strong><span style="color: black">
 function over the coefficients. </span>Consider the addition of <span class="arithmatex">\(3\)</span> and
 <span class="arithmatex">\(6\)</span>:</p>
-<div style="text-align: center;">
+<p align="center">
 
 |          |         |     |         |     |     |     |     |
 |:--------:|:-------:|:---:|:-------:|:---:|:---:|:---:|:---:|
@@ -943,7 +943,7 @@ function over the coefficients. </span>Consider the addition of <span class="ari
 | $\oplus$ | $6=110$ | $+$ | $x^{2}$ | $+$ | $x$ |     |     |
 |          | $5=101$ |     | $x^{2}$ |     |     | $+$ | $1$ |
 
-</div>
+</p>
 
 <p>Multiplication follows a similar pattern, but when
 <span style="color: black">the multiplication results in too large a
@@ -951,7 +951,7 @@ polynomial, then we reduce it, by dividing it by an irreducible
 polynomial of degree <span class="arithmatex">\(n\)</span>, and take the residue. In the case of <span class="arithmatex">\(n=3\)</span>, a
 polynomial like <span class="arithmatex">\(x^{3}+x+1=1011\)</span> is irreducible. </span>An example,
 <span class="arithmatex">\(7\times7\)</span>:</p>
-<div style="text-align: center;">
+<p align="center">
 
 |     |          |         |     |         |     |         |     |         |     |     |     |     |
 |:---:|:--------:|--------:|:---:|:-------:|:---:|:-------:|:---:|:-------:|:---:|:---:|:---:|:---:|
@@ -962,11 +962,11 @@ polynomial like <span class="arithmatex">\(x^{3}+x+1=1011\)</span> is irreducibl
 |     | $\oplus$ | $11100$ |     | $x^{4}$ | $+$ | $x^{3}$ | $+$ | $x^{2}$ |     |     |     |     |
 |     |          | $10101$ |     | $x^{4}$ |     |         | $+$ | $x^{2}$ |     |     | $+$ | $1$ |
 
-</div>
+</p>
 
 <p>The result polynomial is too large, so we reduce it, using polynomial
 long division, with the result being the remainder:</p>
-<div style="text-align: center;">
+<p align="center">
 
 |      |          $10$ |     |     |             |         |     |     |         |     | $x$ |     |     |
 |:----:|--------------:|----:|:---:|:-----------:|:-------:|:---:|:---:|:-------:|:---:|:---:|:---:|:---:|
@@ -974,13 +974,13 @@ long division, with the result being the remainder:</p>
 |      | <u>$1011$</u> |     |     |             | $x^{4}$ |     | $+$ | $x^{2}$ | $+$ | $x$ |     |     |
 | 6-11 |          $11$ |     |     |             |         |     |     |         |     | $x$ | $+$ | $1$ |
 
-</div>
+</p>
 
 <p>Finally, we have that in
 <span style="color: black"><span class="arithmatex">\(\mathrm{GF}(2^{3})\)</span>, <span class="arithmatex">\(7*7=3\)</span>. </span>We now
 present the tables for arithmetic in
 <span style="color: black"><span class="arithmatex">\(\mathrm{GF}(2^{3})\)</span>:</span></p>
-<div style="text-align: center;">
+<p align="center">
 
 |  <span style="color: black">$+$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** | **<span style="color: black">7</span>** |
 |:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
@@ -995,9 +995,9 @@ present the tables for arithmetic in
 
 <span style="color: black">  </span>
 
-</div>
+</p>
 
-<div style="text-align: center;">
+<p align="center">
 
 <span style="color: black"> </span>
 
@@ -1025,7 +1025,7 @@ present the tables for arithmetic in
 | **<span style="color: black">6</span>** |                  $6$                   |                    $3$                     |
 | **<span style="color: black">7</span>** |                  $7$                   |                    $4$                     |
 
-</div>
+</p>
 
 <p>Note that each non-zero element has a multiplicative inverse, and so we
 have a finite field of the form
@@ -1054,11 +1054,11 @@ mathematical proofs, there are very few real-world examples of primes:</p>
     player’s jerseys are Carlos, No 3; Zidane, No 5; ...</p>
 </li>
 </ol>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/beckham.jpg" alt="image" />
 
-</div>
+</p>
 
 <p>Perhaps the enduring reason is because primes are <em>beautiful</em>.</p>
 <p>More recently, the world’s interest in primes has been reactivated
@@ -1066,11 +1066,11 @@ because 2500 years of mathematics has failed to uncover some basic prime
 properties, and hence they make a good candidate for constructing
 difficult (impossible to decrypt) translations. We do know some
 properties of primes, but not others.</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/pi1000.jpg" alt="image" />
 
-</div>
+</p>
 
 <p>For example we do not know how to predict the next one in an arbitrary
 sequence, but we do know that the density is predictable. In the above
@@ -1096,7 +1096,7 @@ $a^{p-1}\equiv1\,\,\,(\mathrm{mod}\,p)$.</span>*
 
 </div>
 
-<div style="text-align: center;">
+<p align="center">
 
 | **<span style="color: black">`a`</span>** | <span style="color: black">$a^{1}$</span> | <span style="color: black">$a^{2}$</span> | <span style="color: black">$a^{3}$</span> | <span style="color: black">$a^{4}$</span> | <span style="color: black">$a^{5}$</span> | <span style="color: black">$a^{6}$</span> | <span style="color: black">$a^{7}$</span> | <span style="color: black">$a^{8}$</span> | <span style="color: black">$a^{9}$</span> | <span style="color: black">$a^{10}$</span> |
 |------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|-------------------------------------------:|
@@ -1110,7 +1110,7 @@ $a^{p-1}\equiv1\,\,\,(\mathrm{mod}\,p)$.</span>*
 |     <span style="color: black">`9`</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$1$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$5$</span> |      <span style="color: black">$1$</span> |
 |    <span style="color: black">`10`</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$1$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$1$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$1$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$1$</span> |    <span style="color: black">$10$</span> |      <span style="color: black">$1$</span> |
 
-</div>
+</p>
 
 <p><span style="color: black">The above table shows Fermat’s theorem in
 operation. Notice that <span class="arithmatex">\(a^{10}\)</span> is always <span class="arithmatex">\(1\)</span>, but that sometimes
@@ -1195,7 +1195,7 @@ relatively prime, then
 $<span class="arithmatex">\(a^{(p-1)(q-1)}\equiv1\,\,\,\,\,(\mathrm{mod}\,pq)\)</span>$
 <span style="color: black">The table below shows Euler’s theorem in
 operation</span>[^3]<span style="color: black">:</span></p>
-<div style="text-align: center;">
+<p align="center">
 
 | **$a^{1}$** | **$a^{2}$** | **$a^{3}$** | **$a^{4}$** | **$a^{5}$** | **$a^{6}$** | **$a^{7}$** | **$a^{8}$** | **$a^{9}$** | **$a^{10}$** | **$a^{11}$** | **$a^{12}$** | **$a^{13}$** | **$a^{14}$** |
 |:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:------------:|:------------:|:------------:|:------------:|:------------:|
@@ -1213,7 +1213,7 @@ operation</span>[^3]<span style="color: black">:</span></p>
 |  ***13***   |      4      |      7      |      1      |     13      |      4      |      7      |      1      |     13      |      4       |      7       |      1       |      13      |      4       |
 |  ***14***   |      1      |     14      |      1      |     14      |      1      |     14      |      1      |     14      |      1       |      14      |      1       |      14      |      1       |
 
-</div>
+</p>
 
 <p><span style="color: black">Note that <span class="arithmatex">\(1\)</span> is reached when the power is
 <span class="arithmatex">\(8\)</span>, for numbers with no divisors in common with <span class="arithmatex">\(15\)</span>, such as

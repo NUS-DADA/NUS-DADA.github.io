@@ -581,11 +581,11 @@
 underlying physical laws, representations and constraints to consider.
 Beginning with representations of data and interference/noise, we can
 derive physical limits on the rate of data transmission.</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/alogdig.png" alt="image"  style="width: 45%;"/>
 
-</div>
+</p>
 
 <p>An analog signal is a continuous valued signal. A digital signal is
 considered to only exist at discrete levels. The (time domain) diagrams
@@ -603,12 +603,12 @@ $<span class="arithmatex">\(\sum^{\infty}_{n=1}\,\frac{1}{n}\sin(2\pi nf)\mbox{\
 We may also represent these signals by frequency domain diagrams, which
 plot the amplitude against <em>frequency</em>. These alternative
 representations are shown below:</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/harm1.png" style="height:3.4cm" alt="image" />
 <img src="../../../images/harm2.png" style="height:3.4cm" alt="image" />
 
-</div>
+</p>
 
 <h2 id="fourier-analysis">Fourier analysis</h2>
 <p>When we represent periodic functions as a sum of simple sine (and
@@ -623,7 +623,7 @@ then we normally write the corresponding frequency domain function as
 transformation: $<span class="arithmatex">\(f(t)\leftrightarrow F(\omega)\)</span>$ There are various
 <em>flavours</em> of Fourier analysis depending on the types of functions in
 each domain. The table below summarizes the methods used.</p>
-<div style="text-align: center;">
+<p align="center">
 
 | **Time domain**       |                    | **Frequency domain**  | **Description**                |
 |:----------------------|:------------------:|:----------------------|:-------------------------------|
@@ -632,17 +632,17 @@ each domain. The table below summarizes the methods used.</p>
 | Discrete, periodic    | $\rightleftarrows$ | Discrete, periodic    | **Discrete Fourier series**    |
 | Discrete, aperiodic   | $\rightleftarrows$ | Continuous, periodic  | **Discrete Fourier transform** |
 
-</div>
+</p>
 
 <p>We can see an example of this deconstruction or construction of
 waveforms by examining a bipolar square wave which can be created by
 summing the terms:
 $<span class="arithmatex">\(\frac{4}{\pi}(sin(2\pi ft)+\frac{1}{3}sin(6\pi ft)+\frac{1}{5}sin(10\pi ft)+\frac{1}{7}sin(14\pi ft)+...)\)</span>$</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/fourier.png" alt="image"  style="width: 50%;"/>
 
-</div>
+</p>
 
 <p>In the figure above, we see four plots, showing the resultant waveforms
 if we sum the first few terms in the series. As we add more terms, the
@@ -659,7 +659,7 @@ function <span class="arithmatex">\(f(t)\)</span>, which is the function <span c
 $<span class="arithmatex">\(F(\omega)=\int^{\infty}_{-\infty}f(t)e^{-j\omega t}dt\)</span>$ The inverse
 transform is
 <span class="arithmatex">\(f(t)=\frac{1}{2\pi}\int^{\infty}_{-\infty}F(\omega)e^{j\omega t}d\omega\)</span>.</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/ftsin.png" alt="image"  style="width: 30%;"/>
 <img src="../../../images/ftsin3x.png" alt="image"  style="width: 30%;"/>
@@ -668,7 +668,7 @@ transform is
 <img src="../../../images/ftthinpulse.png" alt="image"  style="width: 30%;"/>
 <img src="../../../images/ftexp.png" alt="image"  style="width: 30%;"/>
 
-</div>
+</p>
 
 <p>In the figures above we see various simple transforms. Note that if a
 function in one domain is <em>widened</em>, its transform <em>narrows</em>.</p>
@@ -690,11 +690,11 @@ f(t)\times g(t) & \leftrightarrow & F(\omega)\star G(\omega)
 <p>The convolution of <span class="arithmatex">\(f(t)\)</span> and <span class="arithmatex">\(g(t)\)</span> has a <em>graphical</em> interpretation.
 We can use the graphical interpretation to easily predict the functions
 that result from complex signal filtering or sampling.</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/ftsample.png" alt="image"  style="width: 70%;"/>
 
-</div>
+</p>
 
 <p>In the above figure, we see a sine wave and a sampling window, each with
 their own Fourier transform. By multiplying the two waveforms, we end up
@@ -773,11 +773,11 @@ rates.</p>
 <h2 id="bit-transmission">Bit transmission</h2>
 <p>We may send our data <em>synchronised</em> (meaning clocked) or
 <em>asynchronously</em> (without a clock):</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/asnyc.png" alt="image"  style="width: 80%;"/>
 
-</div>
+</p>
 
 <p>Here we have asynchronous transmission. The reception algorithm is:</p>
 <ul>
@@ -796,12 +796,12 @@ rates.</p>
 </ul>
 <p>The implication of this is that both ends must agree on a rate of
 transmission.</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/bipolar.png" alt="image"  style="width: 45%;"/>  
 <img src="../../../images/manch.png" alt="image"  style="width: 45%;"/>
 
-</div>
+</p>
 
 <p>In Bipolar encoding, a ’1’ is transmitted with a positive pulse, a ’0’
 with a negative pulse. Since each bit contains an initial transition
@@ -811,11 +811,11 @@ This is sometimes called ’return to zero’ encoding.</p>
 each bit cell. A binary ’0’ causes a high to low transition, a binary
 ’1’ is a low to high transition. The clock retrieval circuitry is
 slightly more complex than before.</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/screenshot.png" alt="image"  style="width: 100%;"/>
 
-</div>
+</p>
 
 <p>Sometimes decoding these signals is difficult, the signals are buried in
 other signals. Here is some processed data retrieved from an NFC card by
@@ -844,20 +844,20 @@ per change in signal, we could only send 6,000 bits/sec. Common
 modulation methods focus on sending multiple bits per change to increase
 data rates (up to the maximum determined by noise - Shannon). The most
 common method is phase modulation, shown below:</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/pm.png" alt="image"  style="width: 80%;"/>
 
-</div>
+</p>
 
 <p>We can also send different amplitudes at the different phases. The
 following phase plots indicate useful phase/amplitude values:</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/qam1.png" alt="image" />  
 <img src="../../../images/qam2.png" alt="image" />
 
-</div>
+</p>
 
 <p>These schemes use multiple amplitudes and phases. They are called
 QAM[^2]. The one on the left has 2 amplitudes and 4 phases giving a
@@ -948,7 +948,7 @@ again, so there is room for technological advancement.</p>
 digital data transmission. We have WiFi, bluetooth, and other digitial
 wireless transmission standards. F</p>
 <h2 id="sample-layer-1-standards">Sample ’layer 1’ standards</h2>
-<div style="text-align: center;">
+<p align="center">
 
 | **Standard**     | **Method** | **Speed** | **Dist** | **Type** |
 |:-----------------|:-----------|:----------|:---------|:--------:|
@@ -963,7 +963,7 @@ wireless transmission standards. F</p>
 | **Token Ring**   | 0,+5V      | 16Mb/s    | 1.5km    |   ring   |
 | **S. Spect.**    | Radio      | 2Mb/s     | 2km      |  M/drop  |
 
-</div>
+</p>
 
 <p>In the table above, we summarise various signalling/communication
 standards related to computer communications. They range in speed from

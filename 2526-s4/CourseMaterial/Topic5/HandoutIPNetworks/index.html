@@ -664,11 +664,11 @@ interconnectivity ...</p>
 <p>Sounds nice enough, but it turns out that the reality is a little
 different. There are logical networks, physical networks, networks built
 on networks, heirarchies, zones and so on.</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/networks.png" alt="image"  style="width: 90%;"/>
 
-</div>
+</p>
 
 <p>Consider the two models above, the one on the left representing a very
 simple and abstract view - computers are all connected via the Internet;
@@ -696,11 +696,11 @@ some sort of configuration database. A network administrator tries to
 ensure that the router rules prevent unauthorized access to machines
 from hosts on the Internet, while still allowing connections from the
 local network(s).</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/DMZLevel1.jpg" alt="image"  style="width: 80%;"/>
 
-</div>
+</p>
 
 <p>A modern computer (inter)network consists of networks with locally
 attached host computers, interconnected by routers in an almost chaotic
@@ -713,11 +713,11 @@ identifying the particular interface on each computer. When computers
 transfer messages to other computers, we add addressing and other
 information to each message to help route messages through the wider
 network.</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/packets.png" alt="image"  style="width: 60%;"/>
 
-</div>
+</p>
 
 <p>We call the little messages with routing information <em>packets</em>,
 visualized above. A big message (say an email) may be sent in lots of
@@ -739,13 +739,13 @@ who wishes to specify a new protocol and they are commented
 on/vetted/improved by the internet community before final distribution.</p>
 <p>The IP network layer addressing scheme uses four bytes[^4], and is often
 written as dotted decimal, or hex numbers:</p>
-<div style="text-align: center;">
+<p align="center">
 
 | **Decimal**  |   **Hex**   |
 |:------------:|:-----------:|
 | 156.59.209.1 | 9C.3B.D1.01 |
 
-</div>
+</p>
 
 <p>This address defines an interface not a host. - a host may have one, two
 or more interfaces, each with different IP network layer addresses[^5].</p>
@@ -793,11 +793,11 @@ an incorrect mask can result in confusion.</p>
 host part all 0s, and the one with the host part all 1s. You cannot
 allocate these addresses to machines. They are used for broadcasting to
 all machines on the same network.</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/ip.png" alt="image"  style="width: 60%;"/>
 
-</div>
+</p>
 
 <p>The figure above shows the structure of an IP packet. The <strong><em>’ihl’</em></strong>
 field gives the header length in 32 bit chunks. Notice that our IP
@@ -815,7 +815,7 @@ This has two uses:</p>
 </li>
 </ol>
 <p>Worldwide, there are five classes of IP address ranges:</p>
-<div style="text-align: center;">
+<p align="center">
 
 | Class |      Who for       | Prefix    |   Size   |  Number  |
 |:-----:|:------------------:|:----------|:--------:|:--------:|
@@ -825,7 +825,7 @@ This has two uses:</p>
 |   D   |     Multicast      | 1110xx... |    1     | $2^{28}$ |
 |   E   |      Reserved      | 11110x... |    1     | $2^{27}$ |
 
-</div>
+</p>
 
 <p>Note:<br />
 there is no way to ask for a single organizational IP address, and this
@@ -844,11 +844,11 @@ the IP addresses have been allocated!</p>
 </li>
 </ol>
 <h2 id="layers">Layers</h2>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/osi-ip.png" alt="image"  style="width: 70%;"/>
 
-</div>
+</p>
 
 <p>This model provides a framework to hang your understanding of computer
 networking on.</p>
@@ -908,11 +908,11 @@ Gateway Routing Protocol.</p>
 <h3 id="static-or-fixed-routing">Static or fixed routing</h3>
 <p>We might use a technique such as the shortest path - here a path could
 be <em>how long</em> or <em>how many hops</em> or some other metric.</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/hops.png" alt="image"  style="width: 80%;"/>
 
-</div>
+</p>
 
 <p>If <strong>hops</strong> were used for our metric, <strong><u>ABC</u></strong> is the shortest
 path from machine #1 to machine #2. However, if <strong>delay</strong> was used,
@@ -933,15 +933,15 @@ routers exchange information about their tables.</p>
 The figures represent the metrics attached to each route, and note that
 the route BD is about to change from a metric of 3 (meaning not so good)
 to 1 (meaning good).</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/router.png" alt="image"  style="width: 70%;"/>
 
-</div>
+</p>
 
 <p>Before the change, router D has the following table, giving it’s view of
 the best routes:</p>
-<div style="text-align: center;">
+<p align="center">
 
 | Destination | Delay | Route |
 |:-----------:|:-----:|:-----:|
@@ -953,10 +953,10 @@ the best routes:</p>
 |      F      |   1   |   F   |
 |      G      |   2   |   F   |
 
-</div>
+</p>
 
 <p>Router B then sends to D it’s version of the router table:</p>
-<div style="text-align: center;">
+<p align="center">
 
 | Destination | Delay | Route |
 |:-----------:|:-----:|:-----:|
@@ -968,10 +968,10 @@ the best routes:</p>
 |      F      |   2   |   D   |
 |      G      |   3   |   C   |
 
-</div>
+</p>
 
 <p>Router D then rewrites it’s table to reflect the new information:</p>
-<div style="text-align: center;">
+<p align="center">
 
 | Destination | Delay | Route |
 |:-----------:|:-----:|:-----:|
@@ -983,7 +983,7 @@ the best routes:</p>
 |      F      |   1   |   F   |
 |      G      |   2   |   F   |
 
-</div>
+</p>
 
 <p>Router D can determine from router B’s information that there is a
 better route to router A than the direct one. This algorithm responds to

@@ -678,7 +678,7 @@ structures such as this.</p>
 <h2 id="historical-cryptography">Historical cryptography</h2>
 <p>Over 2000 years ago, Cæsar (100-44BC) is reputed to have encoded
 messages to his battalions.</p>
-<div style="text-align: center;">
+<p align="center">
 
 |               **`I    C L A V D I V S`**               |
 |:------------------------------------------------------:|
@@ -686,7 +686,7 @@ messages to his battalions.</p>
 | **`X Y Z A B C D E F G H I K L M N O P Q R S T V`**` ` |
 |               **`F    Z H X R A F R P`**               |
 
-</div>
+</p>
 
 <p>He did[^1] this using (what is now called) a Cæsar, or rotation cipher,
 in which we replace each letter in a message, with another letter, by
@@ -705,12 +705,12 @@ were to use a number of different substitutions, one after the other,
 and then repeat until the end of our message, we would have a
 <strong>poly-alphabetic substituion cipher</strong>. Early cipher machines, were of
 this sort.</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/topview.jpg" style="height:3cm" alt="image" />  
 <img src="../../../images/enigma36.jpg" style="height:3cm" alt="image" />
 
-</div>
+</p>
 
 <p>In the 1920’s, a German company marketed a series of devices for
 encrypting and decrypting messages. The devices used electro-mechanical
@@ -745,11 +745,11 @@ transmissions.</em></p>
 </blockquote>
 <p>I would like to be able to show you a working Enigma machine, but I do
 not have a spare $1M on me today, so instead, I show the M209:</p>
-<div style="text-align: center;">
+<p align="center">
 
 ![image](../../images/IMG_1313.jpg)
 
-</div>
+</p>
 
 <p>The M-209 is a portable, mechanical cipher machine used by the US
 military primarily in World War II. The M-209 was designed by Swedish
@@ -810,30 +810,30 @@ cryptographic systems in IT security:</p>
 </ol>
 <p>A symmetric cipher encrypts a message, with the same key used at both
 the transmitter and receiver:</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/sharedkey.png" alt="image"  style="width: 70%;"/>
 
-</div>
+</p>
 
 <p>An asymmetric cipher looks much the same, but note that the keys are
 different:</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/ch9f1-a.png" alt="image"  style="width: 100%;"/>
 
-</div>
+</p>
 
 <p>Public key/asymmetric schemes may be used for encrypting data directly.
 In the figure above, a transmitter encrypts the message using the public
 key of the recipient. Since the private key may not be generated easily
 from the public key, the recipient is reasonably sure that no-one else
 can decrypt the data.</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/ch9f1-b.png" alt="image"  style="width: 100%;"/>
 
-</div>
+</p>
 
 <p>We can also use public key schemes to provide authentication. If one
 machine wants to <em>authentically</em> transmit information, it encodes using
@@ -854,11 +854,11 @@ equation, given <span class="arithmatex">\(g\)</span>, <span class="arithmatex">
 separated users to <em>create</em> and <em>share</em> a secret key. A third party
 listening to all communications between the two separated users is not
 realistically able to calculate the shared key.</p>
-<div style="text-align: center;">
+<p align="center">
 
 <img src="../../../images/diffie.png" alt="image"  style="width: 80%;"/>
 
-</div>
+</p>
 
 <p>Consider the participants in the system above. Firstly, it is common to
 use the names Bob, Ted, Carol and Alice (from the movie of the same
@@ -891,7 +891,7 @@ the shared key. Ted has a much more difficult problem. It is difficult
 to calculate <span class="arithmatex">\(g^{ab}\,\mathrm{mod}\,p\)</span> without knowing either <span class="arithmatex">\(a\)</span> or
 <span class="arithmatex">\(b\)</span>. In the table we show the relative runtimes for cipher operations
 and solving the discrete logarithm problem.</p>
-<div style="text-align: center;">
+<p align="center">
 
 | **Bit size** | **Enciphering** |                           **Discrete logarithm solution**                           |
 |:------------:|:---------------:|:-----------------------------------------------------------------------------------:|
@@ -900,7 +900,7 @@ and solving the discrete logarithm problem.</p>
 |    1,000     |      1,000      |                           612,700,000,000,000,000,000,000                           |
 |    10,000    |     10,000      | 722,600,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000........ |
 
-</div>
+</p>
 
 <p>The algorithmic run-time of the (so-far best) algorithm for solving the
 discrete logarithm problem is in $<span class="arithmatex">\(O(e^{c\sqrt{r\log r}})\)</span>$ where <span class="arithmatex">\(c\)</span> is
