@@ -678,25 +678,25 @@ efficiently construct finite systems by, for example, instead of the
 operation <span class="arithmatex">\(+\)</span>, we might use addition <em>modulo</em> p, where p is a prime.</p>
 <p>Here are formal definitions for groups, rings and fields, the
 mathematical structures used for most modern cryptography.</p>
-<p><strong>Definition 1</strong>. <em>A group <span class="arithmatex">\(\{G,\bullet\}\)</span> is a non-empty set <span class="arithmatex">\(G\)</span> with a
+<p><strong>Definition 1</strong>. A group <span class="arithmatex">\(\{G,\bullet\}\)</span> is a non-empty set <span class="arithmatex">\(G\)</span> with a
 binary operator <span class="arithmatex">\(\bullet\)</span>, satisfying the following properties for all
-<span class="arithmatex">\(a,b,c\in G\)</span>:</em></p>
+<span class="arithmatex">\(a,b,c\in G\)</span>:</p>
 <ol>
 <li>
-<p><em><strong>Closure:</strong> <span class="arithmatex">\(G\)</span> is closed under <span class="arithmatex">\(\bullet\)</span>. That is
-    <span class="arithmatex">\(a\bullet b\in G\)</span>.</em></p>
+<p><strong>Closure:</strong> <span class="arithmatex">\(G\)</span> is closed under <span class="arithmatex">\(\bullet\)</span>. That is
+    <span class="arithmatex">\(a\bullet b\in G\)</span>.</p>
 </li>
 <li>
-<p><em><strong>Associative:</strong> <span class="arithmatex">\(\bullet\)</span> is associative on <span class="arithmatex">\(G\)</span>. That is
-    <span class="arithmatex">\((a\bullet b)\bullet c=a\bullet(b\bullet c)\)</span>.</em></p>
+<p><strong>Associative:</strong> <span class="arithmatex">\(\bullet\)</span> is associative on <span class="arithmatex">\(G\)</span>. That is
+    <span class="arithmatex">\((a\bullet b)\bullet c=a\bullet(b\bullet c)\)</span>.</p>
 </li>
 <li>
-<p><em><strong>Identity:</strong> There is an identity element <span class="arithmatex">\(I\)</span> such that
-    <span class="arithmatex">\(a\bullet I=I\bullet a=a\)</span>.</em></p>
+<p><strong>Identity:</strong> There is an identity element <span class="arithmatex">\(I\)</span> such that
+    <span class="arithmatex">\(a\bullet I=I\bullet a=a\)</span>.</p>
 </li>
 <li>
-<p><em><strong>Inverse:</strong> Each element has a unique inverse <span class="arithmatex">\(a^{-1}\)</span> such that
-    <span class="arithmatex">\(a^{-1}\bullet a=a\bullet a^{-1}=I\)</span>.</em></p>
+<p><strong>Inverse:</strong> Each element has a unique inverse <span class="arithmatex">\(a^{-1}\)</span> such that
+    <span class="arithmatex">\(a^{-1}\bullet a=a\bullet a^{-1}=I\)</span>.</p>
 </li>
 </ol>
 <p>A group is <em>finite</em> if it has a finite number of elements, and it is
@@ -705,40 +705,40 @@ infinite group is the set of
 <em>integers</em>
 under addition, with identity <span class="arithmatex">\(0\)</span>. It is an
 infinite commutative group. </p>
-<p><strong>Definition 2</strong>. <em>A ring <span class="arithmatex">\(\{R,+,*\}\)</span> is the set <span class="arithmatex">\(R\)</span> together with two
+<p><strong>Definition 2</strong>. A ring <span class="arithmatex">\(\{R,+,*\}\)</span> is the set <span class="arithmatex">\(R\)</span> together with two
 binary operators <span class="arithmatex">\(+\)</span> and <span class="arithmatex">\(*\)</span> satisfying the following conditions for all
-<span class="arithmatex">\(a,b,c\in R\)</span>:</em></p>
+<span class="arithmatex">\(a,b,c\in R\)</span>:</p>
 <ol>
 <li>
-<p><em><strong>Closure for <span class="arithmatex">\(*\)</span>:</strong> <span class="arithmatex">\(R\)</span> is closed under <span class="arithmatex">\(*\)</span>. That is <span class="arithmatex">\(a*b\in R\)</span>.</em></p>
+<p><strong>Closure for <span class="arithmatex">\(*\)</span>:</strong> <span class="arithmatex">\(R\)</span> is closed under <span class="arithmatex">\(*\)</span>. That is <span class="arithmatex">\(a*b\in R\)</span>.</p>
 </li>
 <li>
-<p><em><strong>Abelian for <span class="arithmatex">\(+\)</span>:</strong> <span class="arithmatex">\(R\)</span> is an abelian group under addition. The
-    identity is <span class="arithmatex">\(0\)</span>.</em></p>
+<p><strong>Abelian for <span class="arithmatex">\(+\)</span>:</strong> <span class="arithmatex">\(R\)</span> is an abelian group under addition. The
+    identity is <span class="arithmatex">\(0\)</span>.</p>
 </li>
 <li>
-<p><em><strong>Associative for <span class="arithmatex">\(*\)</span>:</strong> <span class="arithmatex">\(a*(b*c)=(a*b)*c\)</span>.</em></p>
+<p><strong>Associative for <span class="arithmatex">\(*\)</span>:</strong> <span class="arithmatex">\(a*(b*c)=(a*b)*c\)</span>.</p>
 </li>
 <li>
-<p><em><strong>LR distributive:</strong> <span class="arithmatex">\(a*(b+c)=(a*b)+(a*c)\)</span> and
-    <span class="arithmatex">\((a+b)*c=(a*c)+(b*c)\)</span>.</em></p>
+<p><strong>LR distributive:</strong> <span class="arithmatex">\(a*(b+c)=(a*b)+(a*c)\)</span> and
+    <span class="arithmatex">\((a+b)*c=(a*c)+(b*c)\)</span>.</p>
 </li>
 </ol>
-<p><strong>Definition 3</strong>. <em>A field (or rational domain) <span class="arithmatex">\(\{F,+,*\}\)</span> is the set
+<p><strong>Definition 3</strong>. A field (or rational domain) <span class="arithmatex">\(\{F,+,*\}\)</span> is the set
 <span class="arithmatex">\(F\)</span> together with two binary operators <span class="arithmatex">\(+\)</span> and <span class="arithmatex">\(*\)</span>, which is a
 commutative ring, and also satisfies the following conditions for all
-<span class="arithmatex">\(a,b\in F\)</span>, <span class="arithmatex">\(c\in F\backslash0\)</span>:</em></p>
+<span class="arithmatex">\(a,b\in F\)</span>, <span class="arithmatex">\(c\in F\backslash0\)</span>:</p>
 <ol>
 <li>
-<p><em><strong>Identity for <span class="arithmatex">\(*\)</span>:</strong> There is an identity <span class="arithmatex">\(1\in F\)</span> such that
-    <span class="arithmatex">\(1*a=a*1=a\)</span>.</em></p>
+<p><strong>Identity for <span class="arithmatex">\(*\)</span>:</strong> There is an identity <span class="arithmatex">\(1\in F\)</span> such that
+    <span class="arithmatex">\(1*a=a*1=a\)</span>.</p>
 </li>
 <li>
-<p><em><strong>No zero divisor:</strong> If <span class="arithmatex">\(a*b=0\)</span> then either <span class="arithmatex">\(a=0\)</span> or <span class="arithmatex">\(b=0\)</span>.</em></p>
+<p><strong>No zero divisor:</strong> If <span class="arithmatex">\(a*b=0\)</span> then either <span class="arithmatex">\(a=0\)</span> or <span class="arithmatex">\(b=0\)</span>.</p>
 </li>
 <li>
-<p><em><strong>Inverse for <span class="arithmatex">\(*\)</span>:</strong> For each <span class="arithmatex">\(c\)</span>, there is a <span class="arithmatex">\(c^{-1}\in F\)</span> such
-    that <span class="arithmatex">\(c*c^{-1}=c^{-1}*c=1\)</span>.</em></p>
+<p><strong>Inverse for <span class="arithmatex">\(*\)</span>:</strong> For each <span class="arithmatex">\(c\)</span>, there is a <span class="arithmatex">\(c^{-1}\in F\)</span> such
+    that <span class="arithmatex">\(c*c^{-1}=c^{-1}*c=1\)</span>.</p>
 </li>
 </ol>
 <p>A ring means we can do <span class="arithmatex">\(*,+,-\)</span> without leaving the set, but a field
@@ -1870,10 +1870,10 @@ cryptography.</p>
 <h2 id="fermats-little-theorem">Fermat’s little theorem</h2>
 <p>Pierre de Fermat was a French amateur mathematician who contributed to
 calculus, number theory, analytic geometry and probability.</p>
-<p><strong>Theorem 1</strong>. <em>If <span class="arithmatex">\(p\)</span> is prime, and <span class="arithmatex">\(a\)</span> is a
+<p><strong>Theorem 1</strong>. If <span class="arithmatex">\(p\)</span> is prime, and <span class="arithmatex">\(a\)</span> is a
 positive integer which is not divisible by <span class="arithmatex">\(p\)</span> (i.e.
 <span class="arithmatex">\(\mathrm{gcd}(a,p)=1\)</span>), then
-<span class="arithmatex">\(a^{p-1}\equiv1\,\,\,(\mathrm{mod}\,p)\)</span>.</em></p>
+<span class="arithmatex">\(a^{p-1}\equiv1\,\,\,(\mathrm{mod}\,p)\)</span>.*</p>
 <div align="center">
 <table>
 <thead>
@@ -2019,8 +2019,8 @@ always numbers that evenly divide <span class="arithmatex">\(p-1\)</span>. </p>
 <div style="color: black">
 
 
-**Definition 4**. *Values of a for which the whole row is needed are
-called generators.*
+**Definition 4**. Values of a for which the whole row is needed are
+called generators.
 
 
 </div>
@@ -2072,11 +2072,11 @@ a professor of mathematics in Saint Petersburg and Berlin. He was a
 prolific researcher despite being completely blind for the last
 seventeen years of his life, during which time he produced much of his
 work.</p>
-<p><strong>Theorem 2</strong>. <em>For every <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(n\)</span> that are relatively prime:
+<p><strong>Theorem 2</strong>. For every <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(n\)</span> that are relatively prime:
 $<span class="arithmatex">\(a^{\phi(n)}\equiv1\,\,\,\,\,(\mathrm{mod}\,n)\)</span>$ where <span class="arithmatex">\(\phi(n)\)</span> is the
 totient function and <span class="arithmatex">\(p_{1}\)</span>, <span class="arithmatex">\(\ldots\)</span> , <span class="arithmatex">\(p_{m}\)</span> are all the prime
 numbers that divide evenly into <span class="arithmatex">\(n\)</span>, including <span class="arithmatex">\(n\)</span> itself in case it is
-a prime.</em></p>
+a prime.</p>
 <p>Euler’s totient function <span class="arithmatex">\(\phi(n)\)</span> returns the number of positive
 integers less than <span class="arithmatex">\(n\)</span> and relatively prime to <span class="arithmatex">\(n\)</span>. Fermat’s theorem is
 a specific case of the more general Euler’s theorem. We can see this by
