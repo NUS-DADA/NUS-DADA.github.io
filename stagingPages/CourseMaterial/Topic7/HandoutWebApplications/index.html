@@ -1,0 +1,899 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Handout materials for DADA 2026 course">
+      
+      
+      
+        <link rel="canonical" href="https://NUS-DADA.github.io/DADA_2026_Materials/CourseMaterial/Topic7/HandoutWebApplications/">
+      
+      
+        <link rel="prev" href="../../Topic6/HandoutOtherNetworks/">
+      
+      
+        <link rel="next" href="../../Topic9/HandoutMachineArchitecture/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>Topic7 - Intro - DADA 2026 Course Materials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#intro" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="DADA 2026 Course Materials" class="md-header__button md-logo" aria-label="DADA 2026 Course Materials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DADA 2026 Course Materials
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Topic7 - Intro
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/NUS-DADA/DADA_2026_Materials" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DADA_2026_Materials
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DADA 2026 Course Materials" class="md-nav__button md-logo" aria-label="DADA 2026 Course Materials" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DADA 2026 Course Materials
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/NUS-DADA/DADA_2026_Materials" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DADA_2026_Materials
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic1/HandoutITsecurity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic1 - IT security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic2/HandoutSocialEngineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic2 - Social Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic3/HandoutSystemsComplexity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic3 - Complexity and security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic4-1/HandoutCrypto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic4-1 - Computational complexity and cryptography
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic4-2/HandoutMathFoundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic4-2 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic5/HandoutIPNetworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic5 - Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic6 - Communication theory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topic6 - Communication theory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic6/HandoutCommTheory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Communication theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic6/HandoutOtherNetworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic7 - Intro
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic7 - Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#descent-into-the-darkness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descent into the darkness...
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic9/HandoutMachineArchitecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic9 - Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p class="pdf-download"><a href="../HandoutWebApplications.pdf" class="md-button md-button--primary" download>&#11015;&nbsp;Download&nbsp;PDF</a></p>
+
+<h1 id="intro">Intro</h1>
+<p>The common pattern “web application” can be done in many ways.
+Previously, we saw various application architectures:</p>
+<div align="center">
+<p><img src="../../../images/webapp.jpg" alt="image"  style="width: 70%;"/></p>
+</div>
+<p>The common pattern “web application” in the above example, has the web
+server clearly separated from the application server, which is, in a
+sense, removed from the details of the web application. The application
+server may include notions of sessions, but not frames, HTML and so on.
+Similarly the requests to the data server may be removed from the
+details of which database is in use and so on.</p>
+<p>It turns out that a relatively easy attack surface are these internal
+links, between the components of the application.</p>
+<p>To understand in detail the mechanism behind these attacks, we must
+consider several of the components, including how we use markup
+languages to build web applications.</p>
+<h3 id="descent-into-the-darkness">Descent into the darkness...</h3>
+<p>“Imagine a world with no URLS.” Well - it once existed. But then along
+came Tim Berners-Lee in 1989, with his suggestion to use a particular
+markup meta-language with links, for managing and linking information.
+At that time hypertext and markup languages were common, but TimBL
+thought it would be pretty neat to link all that with Internet
+protocols, and so along came <strong><code>http://web.site/document.html</code></strong> (and
+<strong><code>ftp://web.site/doc</code></strong>, and <strong><code>rtsp://abc.def/g</code></strong>).</p>
+<div align="center">
+<p><img src="../../../images/minalpage.png" alt="image"  style="width: 60%;"/></p>
+</div>
+<p>The original markup language used was called HTML (Hyper-Text Markup
+Language) and is based on an ancient markup language SGML (Standard
+Generalized Markup Language). The following text is valid HTML for the
+above:</p>
+<pre><code class="language-html">DADA example&lt;/h1&gt;
+&lt;b&gt;Typically&lt;/b&gt; something like &lt;I&gt;this&lt;/I&gt;.
+</code></pre>
+<p>The original vision was for a gigantic network of interlinked documents,
+rendered nicely on your workstation, but kept on a server: the WWW,
+<em>wone web to wule them all and in the darkness bind them</em>. In essence
+such a network would be reasonably safe - it is a read-only system, and
+all documents on a server should be public, right?</p>
+<p>The problem of course was with the masses. Always a troublesome group of
+people. They pretty quickly got bored, and wanted documents to sing and
+dance, and change according to whim. The solution to this was to provide
+for active content in WWW documents. The can of worms was opened...</p>
+<h1 id="active-content-client-side">Active content - client side</h1>
+<p>In an abstract sense, there are two standard ways that have been
+promoted for providing active content. The two ways are:</p>
+<ol>
+<li>
+<p>Client side - where the web server sends you or your browser a
+    program which you run.</p>
+</li>
+<li>
+<p>Server side - where the web server runs a program (or a script) on
+    your behalf.</p>
+</li>
+</ol>
+<p>Starting with the client side, when you use Java applets, or Javascript,
+you are using this method for providing active content. The web server
+stores the Java program, and it is downloaded to your computer to be
+executed on your computer. There are obvious security issues here, and
+Sun’s Java (originally in the HotJava browser) attempted to address
+these issues right from the beginning. The main idea was that the Java
+programs could not execute directly on the processor in your computer -
+they were executable code for a Java machine (which does not exist), not
+for an Intel processor. When the browser downloaded the program from the
+server, it would then run a “Java Virtual Machine”, which would
+interpret the executable code, and place limits on what that code can
+do. Conceptually Java still operates in this way.</p>
+<p>The general rule for client side active content that (hopefully)
+protects us, is that all code that the server sends your browser to
+execute will be limited in its ability. This is ensured by running such
+code inside a virtual machine, with well-defined limits on access
+between the virtual machine, and your real machine. These systems are
+fairly well implemented, and attacks on your computer system using this
+route require someone to install the bad code on the server, and find a
+way to bypass the controls on the virtual machine. With care, with good
+management of the software on your computer, and with well-protected
+web-sites, such avenues of attack can be limited.</p>
+<h1 id="active-content-server-side">Active content - server side</h1>
+<p>Another technique for providing active content, is for the server to
+execute code on your behalf. A common way in which this is done, is to
+encode programs in web pages, which are executed by the server before
+sending you the web page. This way is commonly called server-side
+scripting, and when you use PHP, ASP or CGI, this is what is happening.
+An example of a PHP script embedded in a web page is this:</p>
+<pre><code class="language-php">DADA example&lt;/h3&gt;
+&lt;?php
+   $i = 3;
+   while ($i &gt;= 0) {
+      print Hello World $i&lt;p&gt;;
+      $i--;
+   }
+?&gt;
+</code></pre>
+<p>The code inside the <strong><code>&lt;?php</code></strong> and <strong><code>?&gt;</code></strong> tags is executed in a PHP
+interpreter on the web server, and a web page sent to the client. The
+actual web page returned is</p>
+<pre><code class="language-html">DADA example&lt;/h3&gt;
+Hello World 3&lt;p&gt;
+Hello World 2&lt;p&gt;...
+</code></pre>
+<p>Unfortunately, as we saw in class, a malicious user may be able to
+convince the script to execute something different from what is expected
+on the server.</p>
+<h1 id="sql-injection">SQL injection</h1>
+<p>Consider the following code for showing student grades - it puts up a
+form, in which the user fills in his or her student matriculation ID:</p>
+<pre><code class="language-html">DADA injection demo&lt;/h3&gt; 
+...
+&lt;hr&gt; Student grade result system... 
+&lt;form action=grades.php action=get&gt; 
+  Student ID: &lt;input type=text name=matric/&gt; 
+  &lt;input type=submit/&gt; 
+&lt;/form&gt;
+</code></pre>
+<p>The value filled in by the user is passed to the following PHP server
+code in the variable <strong><code>$matric</code></strong>, and is used to do a SQL database
+lookup, to find the mark for the corresponding user:</p>
+<pre><code class="language-php">&lt;?php
+   ..login to SQL database, with correct access (?)..
+   $sql = SELECT ‘marks‘ FROM ‘test‘.‘mrks‘ 
+                  WHERE userName=’$matric’; 
+   $result = mysql_query($cmd[$cnt]) 
+      or die(’An error occured: ’ . mysql_error());
+   $row = mysql_fetch_assoc($result));
+   $row_text = $row[’marks’];
+   print Mark for $matric so far...
+?&gt;
+</code></pre>
+<p>Unfortunately, there is no check on the input coming from the form, and
+so as we saw in class, we can convince the code executing on the server
+to update the marks. For anyone. Errk.</p>
+<p>The specific attack shown here is the SQL injection, but many similar
+attacks may be possible if unchecked user input (from the browser) is
+used as input to a program running on the server.</p>
+<h1 id="one-partial-solution-to-this-attack">One (partial) solution to this attack</h1>
+<p>One possible way of restricting this attack is based on our knowledge of
+hash functions from class. We change the SQL command to the following:</p>
+<pre><code>$sql = SELECT ‘marks‘ FROM ‘test‘.‘mrks‘ 
+        WHERE MD5(userName)=’.md5($matric).’; 
+</code></pre>
+<p>In this case, the user input in <strong><code>$matric</code></strong> is hashed and compared in
+the SQL server with a hashed username. It is hard for someone to insert
+in an injection when all input is hashed.</p>
+<h1 id="cross-site-scripting">Cross site scripting</h1>
+<p>In cross site scripting, a web based application without good input or
+output validation controls, can be coerced into returning deceptive or
+bad web pages, and provide mechanisms for stealing data.</p>
+<p>An example of such an uncontrolled application is the comments.php
+application which provides a forum for student comments. The code has a
+form for inputting data something like this:</p>
+<pre><code class="language-html">DADA Comment system&lt;/h3&gt;
+&lt;form action=comments.php?method=1 action=get&gt; 
+  Student ID: &lt;input type=text name=matric/&gt;&lt;br/&gt; 
+  Password: &lt;input type=password name=pass/&gt;&lt;br/&gt; 
+  Comment: &lt;input type=text size= name=comment/&gt; 
+  &lt;input type=submit value=Submit your comment!/&gt; 
+&lt;/form&gt;
+</code></pre>
+<p>In addition it has some active content for inserting and retrieving
+comments from some sort of database.</p>
+<pre><code class="language-php">&lt;?php 
+   ... if usercode and password OK ... 
+   ... update comments from $comment...
+   fputs($fp,$comment) or exit(Cannot write to file); 
+   ... find other comments, put in variable $data ...
+   echo $data;
+?&gt;
+</code></pre>
+<p>In use, students can insert malicious (say Javascript) code in their
+comment, and when others read the comment, they will execute the code.</p>
+<h1 id="one-partial-solution-to-this-attack_1">One (partial) solution to this attack</h1>
+<p>One possible way of restricting this attack is based on an idea of
+restricting all input and output to be absolutely standard HTML. We
+force no Javascript on either input or output. A sample library which
+does this is HTMLPurify, which we use as follows:</p>
+<pre><code class="language-php">&lt;?php
+   require_once ’HTMLPurifier.auto.php’; 
+   require_once ’HTMLPurifier.func.php’; 
+   ...
+   ... find other comments, put in variable $data ...
+   $goodhtml = HTMLPurifier($data); 
+   echo $goodhtml;
+?&gt; 
+</code></pre>
+<p>The library will ensure that only standard HTML is output back to the
+browser.</p>
+<h1 id="defences">Defences...</h1>
+<p>Perhaps we would be best to start with the 8 guidelines we saw in the
+complexity lecture, and the use of frameworks. In class we see the use
+of various software mechanisms to check and validate the inputs and
+outputs, to and from a software module.</p>
+<p>We have seen some avenues for attack on web-based applications. The
+samples shown are only the tip of the iceberg, and the classification I
+use is completely arbitrary, however, I think all the presentations are
+fairly accurate.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.indexes", "toc.integrate", "navigation.path"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
