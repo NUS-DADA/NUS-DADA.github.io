@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -641,17 +641,39 @@ or <span class="arithmatex">\(\oplus\)</span>, or in electronic circuit diagrams
 <span style="color: black"><em>addition mod
 2</em></span><span style="color: black">. The table below shows the truth
 table for a single bit.</span></p>
-<p align="center">
-
-| **$a$** | **$b$** |  **$a\oplus b$**  |
-|:-------:|:-------:|:-----------------:|
-|   $0$   |   $0$   |        $0$        |
-|   $0$   |   $1$   |        $1$        |
-|   $1$   |   $0$   |        $1$        |
-|   $1$   |   $1$   |        $0$        |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(b\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a\oplus b\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>The <strong><code>xor</code></strong> function is commutative and associative. We often use
 <strong><code>exclusive-or</code></strong> over bitstrings. If we wished to encode a message
 “<strong><code>ABC</code></strong>” using the <strong><code>xor</code></strong> function, we would first encode the
@@ -659,18 +681,50 @@ message as a bit string using (say) the ASCII encoding, and derive the
 bitstring <strong><code>01000001.01000010.01000011</code></strong>. Each bit of this could then
 be <strong><code>xor’ed</code></strong> with a bit from a corresponding (random) bit string
 called the key:</p>
-<p align="center">
-
-|                   |                                                    |                                                    |                                                          |
-|:-----------------:|:--------------------------------------------------:|:--------------------------------------------------:|:--------------------------------------------------------:|
-|      Message      |                         A                          |                         B                          |                            C                             |
-|        $m$        | <span style="color: blue">`0 1 0 0 0 0 0 1`</span> | <span style="color: blue">`0 1 0 0 0 0 1 0`</span> | <span style="color: blue">`0 1 0 0 0 0 1 1 . . .`</span> |
-|      Key$=k$      | <span style="color: blue">`0 0 0 1 0 0 1 1`</span> | <span style="color: blue">`0 1 1 0 0 1 0 1`</span> | <span style="color: blue">`0 0 1 1 1 0 0 1 . . .`</span> |
-| $K(m)=m\oplus k$  | <span style="color: blue">`0 1 0 1 0 0 1 0`</span> | <span style="color: blue">`0 0 1 0 0 1 1 1`</span> | <span style="color: blue">`0 1 1 1 1 0 1 0 . . .`</span> |
-|      $K(m)$       |                         R                          |                         ’                          |                            z                             |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Message</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">C</td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(m\)</span></td>
+<td style="text-align: center;"><span style="color: blue"><code>0 1 0 0 0 0 0 1</code></span></td>
+<td style="text-align: center;"><span style="color: blue"><code>0 1 0 0 0 0 1 0</code></span></td>
+<td style="text-align: center;"><span style="color: blue"><code>0 1 0 0 0 0 1 1 . . .</code></span></td>
+</tr>
+<tr>
+<td style="text-align: center;">Key<span class="arithmatex">\(=k\)</span></td>
+<td style="text-align: center;"><span style="color: blue"><code>0 0 0 1 0 0 1 1</code></span></td>
+<td style="text-align: center;"><span style="color: blue"><code>0 1 1 0 0 1 0 1</code></span></td>
+<td style="text-align: center;"><span style="color: blue"><code>0 0 1 1 1 0 0 1 . . .</code></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(K(m)=m\oplus k\)</span></td>
+<td style="text-align: center;"><span style="color: blue"><code>0 1 0 1 0 0 1 0</code></span></td>
+<td style="text-align: center;"><span style="color: blue"><code>0 0 1 0 0 1 1 1</code></span></td>
+<td style="text-align: center;"><span style="color: blue"><code>0 1 1 1 1 0 1 0 . . .</code></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(K(m)\)</span></td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">’</td>
+<td style="text-align: center;">z</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>The encoded message is “<strong><code>R’z</code></strong>”, and this message may be transmitted
 over an insecure network. At the receiver end, the key is assumed to be
 known, and a second <strong><code>xor</code></strong> operation restores the original message.
@@ -796,50 +850,231 @@ $<span class="arithmatex">\(\begin{aligned}
 integers mod n</em> (<span class="arithmatex">\(Z_{n}\)</span>) form a group under addition. The elements are
 <span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(1\)</span>, <span class="arithmatex">\(2\)</span>, <span class="arithmatex">\(\ldots\)</span>, <span class="arithmatex">\(n-1\)</span>, and the identity is <span class="arithmatex">\(0\)</span>. The inverse of
 <span class="arithmatex">\(a\)</span> is <span class="arithmatex">\(n-a\)</span>.</p>
-<p align="center">
-
-|  <span style="color: black">$+$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** |
-|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
-| **<span style="color: black">0</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |
-| **<span style="color: black">1</span>** |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$0$</span>  |
-| **<span style="color: black">2</span>** |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |
-| **<span style="color: black">3</span>** |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |
-| **<span style="color: black">4</span>** |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |
-| **<span style="color: black">5</span>** |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |
-| **<span style="color: black">6</span>** |  <span style="color: black">$6$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |
-
-<span style="color: black"> </span>
-
-</p>
-
-<p align="center">
-
-<span style="color: black">  </span>
-
-|  <span style="color: black">$*$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** |
-|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
-| **<span style="color: black">0</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |
-| **<span style="color: black">1</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |
-| **<span style="color: black">2</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$5$</span>  |
-| **<span style="color: black">3</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$4$</span>  |
-| **<span style="color: black">4</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$3$</span>  |
-| **<span style="color: black">5</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$2$</span>  |
-| **<span style="color: black">6</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$1$</span>  |
-
-<span style="color: black">   </span>
-
-|  <span style="color: black">$a$</span>  | <span style="color: black">$-a$</span> | <span style="color: black">$a^{-1}$</span> |
-|:---------------------------------------:|:--------------------------------------:|:------------------------------------------:|
-| **<span style="color: black">0</span>** | <span style="color: black">$0$</span>  |                     -                      |
-| **<span style="color: black">1</span>** | <span style="color: black">$6$</span>  |   <span style="color: black">$1$</span>    |
-| **<span style="color: black">2</span>** | <span style="color: black">$5$</span>  |   <span style="color: black">$4$</span>    |
-| **<span style="color: black">3</span>** | <span style="color: black">$4$</span>  |   <span style="color: black">$5$</span>    |
-| **<span style="color: black">4</span>** | <span style="color: black">$3$</span>  |   <span style="color: black">$2$</span>    |
-| **<span style="color: black">5</span>** | <span style="color: black">$2$</span>  |   <span style="color: black">$3$</span>    |
-| **<span style="color: black">6</span>** | <span style="color: black">$1$</span>  |   <span style="color: black">$6$</span>    |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(+\)</span></span></th>
+<th style="text-align: center;"><strong><span style="color: black">0</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">1</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">2</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">3</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">4</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">5</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">6</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">0</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">1</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">2</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">3</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">4</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">5</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">6</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: black"> </span></p>
+</div>
+<div align="center">
+<p><span style="color: black">  </span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(*\)</span></span></th>
+<th style="text-align: center;"><strong><span style="color: black">0</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">1</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">2</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">3</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">4</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">5</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">6</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">0</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">1</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">2</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">3</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">4</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">5</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">6</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: black">   </span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(a\)</span></span></th>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(-a\)</span></span></th>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(a^{-1}\)</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">0</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">1</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">2</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">3</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">4</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">5</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">6</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p><span style="color: black">In cryptography, we are often interested in
 <span class="arithmatex">\(Z_{p}\)</span> where <span class="arithmatex">\(p\)</span> is a prime number. Observe what happens when we do
 modular arithmetic on <span class="arithmatex">\(Z_{7}\)</span>. The table above has the result of
@@ -848,53 +1083,274 @@ along with the additive and multiplicative inverses. Note that every
 item has an additive inverse, and that every item except <span class="arithmatex">\(0\)</span> has a
 multiplicative inverse, and so from our previous definitions, we know
 that <span class="arithmatex">\(Z_{7}\)</span> forms a field with <span class="arithmatex">\(+,*\)</span>. </span></p>
-<p align="center">
-
-|  <span style="color: black">$+$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** | **<span style="color: black">7</span>** |
-|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
-| **<span style="color: black">0</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |
-| **<span style="color: black">1</span>** |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$0$</span>  |
-| **<span style="color: black">2</span>** |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |
-| **<span style="color: black">3</span>** |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |
-| **<span style="color: black">4</span>** |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |
-| **<span style="color: black">5</span>** |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |
-| **<span style="color: black">6</span>** |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |
-| **<span style="color: black">7</span>** |  <span style="color: black">$7$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |
-
-<span style="color: black">  </span>
-
-</p>
-
-<p align="center">
-
-<span style="color: black"> </span>
-
-|  <span style="color: black">$*$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** | **<span style="color: black">7</span>** |
-|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
-| **<span style="color: black">0</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$0$</span>  |
-| **<span style="color: black">1</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$7$</span>  |
-| **<span style="color: black">2</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$6$</span>  |
-| **<span style="color: black">3</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$5$</span>  |
-| **<span style="color: black">4</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$4$</span>  |
-| **<span style="color: black">5</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$1$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$3$</span>  |
-| **<span style="color: black">6</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$0$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$2$</span>  |
-| **<span style="color: black">7</span>** |  <span style="color: black">$0$</span>  |  <span style="color: black">$7$</span>  |  <span style="color: black">$6$</span>  |  <span style="color: black">$5$</span>  |  <span style="color: black">$4$</span>  |  <span style="color: black">$3$</span>  |  <span style="color: black">$2$</span>  |  <span style="color: black">$1$</span>  |
-
-<span style="color: black">   </span>
-
-|  <span style="color: black">$a$</span>  | <span style="color: black">$-a$</span> | <span style="color: black">$a^{-1}$</span> |
-|:---------------------------------------:|:--------------------------------------:|:------------------------------------------:|
-| **<span style="color: black">0</span>** | <span style="color: black">$0$</span>  |                     -                      |
-| **<span style="color: black">1</span>** | <span style="color: black">$7$</span>  |   <span style="color: black">$1$</span>    |
-| **<span style="color: black">2</span>** | <span style="color: black">$6$</span>  |                     -                      |
-| **<span style="color: black">3</span>** | <span style="color: black">$5$</span>  |   <span style="color: black">$3$</span>    |
-| **<span style="color: black">4</span>** | <span style="color: black">$4$</span>  |                     -                      |
-| **<span style="color: black">5</span>** | <span style="color: black">$3$</span>  |   <span style="color: black">$5$</span>    |
-| **<span style="color: black">6</span>** | <span style="color: black">$2$</span>  |                     -                      |
-| **<span style="color: black">7</span>** | <span style="color: black">$1$</span>  |   <span style="color: black">$7$</span>    |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(+\)</span></span></th>
+<th style="text-align: center;"><strong><span style="color: black">0</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">1</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">2</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">3</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">4</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">5</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">6</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">7</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">0</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">1</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">2</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">3</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">4</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">5</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">6</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">7</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: black">  </span></p>
+</div>
+<div align="center">
+<p><span style="color: black"> </span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(*\)</span></span></th>
+<th style="text-align: center;"><strong><span style="color: black">0</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">1</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">2</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">3</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">4</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">5</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">6</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">7</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">0</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">1</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">2</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">3</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">4</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">5</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">6</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">7</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: black">   </span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(a\)</span></span></th>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(-a\)</span></span></th>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(a^{-1}\)</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">0</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(0\)</span></span></td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">1</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">2</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">3</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">4</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">5</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">6</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">7</span></strong></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: center;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p><span style="color: black">Consider this set - <span class="arithmatex">\(Z_{8}\)</span>. Note that not
 every element in <span class="arithmatex">\(Z_{8}\)</span> has a multiplicative inverse, so this is not a
 field. </span></p>
@@ -935,98 +1391,515 @@ restricted case, polynomial addition becomes the same as the</span>
 <strong><span style="color: black"><code>xor</code></span></strong><span style="color: black">
 function over the coefficients. </span>Consider the addition of <span class="arithmatex">\(3\)</span> and
 <span class="arithmatex">\(6\)</span>:</p>
-<p align="center">
-
-|          |         |     |         |     |     |     |     |
-|:--------:|:-------:|:---:|:-------:|:---:|:---:|:---:|:---:|
-|          | $3=011$ |     |         |     | $x$ | $+$ | $1$ |
-| $\oplus$ | $6=110$ | $+$ | $x^{2}$ | $+$ | $x$ |     |     |
-|          | $5=101$ |     | $x^{2}$ |     |     | $+$ | $1$ |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(3=011\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(x\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(\oplus\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6=110\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{2}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(x\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(5=101\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{2}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>Multiplication follows a similar pattern, but when
 <span style="color: black">the multiplication results in too large a
 polynomial, then we reduce it, by dividing it by an irreducible
 polynomial of degree <span class="arithmatex">\(n\)</span>, and take the residue. In the case of <span class="arithmatex">\(n=3\)</span>, a
 polynomial like <span class="arithmatex">\(x^{3}+x+1=1011\)</span> is irreducible. </span>An example,
 <span class="arithmatex">\(7\times7\)</span>:</p>
-<p align="center">
-
-|     |          |         |     |         |     |         |     |         |     |     |     |     |
-|:---:|:--------:|--------:|:---:|:-------:|:---:|:-------:|:---:|:-------:|:---:|:---:|:---:|:---:|
-|     |   $7=$   |   $111$ |     |         |     |         |     | $x^{2}$ | $+$ | $x$ | $+$ | $1$ |
-| $*$ |   $7=$   |   $111$ | $*$ |         |     |         |     | $x^{2}$ | $+$ | $x$ | $+$ | $1$ |
-|     |          |   $111$ |     |         |     |         |     | $x^{2}$ | $+$ | $x$ | $+$ | $1$ |
-|     | $\oplus$ |  $1110$ |     |         |     | $x^{3}$ | $+$ | $x^{2}$ | $+$ | $x$ |     |     |
-|     | $\oplus$ | $11100$ |     | $x^{4}$ | $+$ | $x^{3}$ | $+$ | $x^{2}$ |     |     |     |     |
-|     |          | $10101$ |     | $x^{4}$ |     |         | $+$ | $x^{2}$ |     |     | $+$ | $1$ |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: right;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(7=\)</span></td>
+<td style="text-align: right;"><span class="arithmatex">\(111\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{2}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(x\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(*\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7=\)</span></td>
+<td style="text-align: right;"><span class="arithmatex">\(111\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(*\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{2}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(x\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"><span class="arithmatex">\(111\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{2}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(x\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(\oplus\)</span></td>
+<td style="text-align: right;"><span class="arithmatex">\(1110\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{3}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{2}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(x\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(\oplus\)</span></td>
+<td style="text-align: right;"><span class="arithmatex">\(11100\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{4}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{3}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{2}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"><span class="arithmatex">\(10101\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{4}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{2}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>The result polynomial is too large, so we reduce it, using polynomial
 long division, with the result being the remainder:</p>
-<p align="center">
-
-|      |          $10$ |     |     |             |         |     |     |         |     | $x$ |     |     |
-|:----:|--------------:|----:|:---:|:-----------:|:-------:|:---:|:---:|:-------:|:---:|:---:|:---:|:---:|
-| 2-2  |       $10101$ |     |     | $x^{3}+x+1$ | $x^{4}$ |     | $+$ | $x^{2}$ |     |     | $+$ | $1$ |
-|      | <u>$1011$</u> |     |     |             | $x^{4}$ |     | $+$ | $x^{2}$ | $+$ | $x$ |     |     |
-| 6-11 |          $11$ |     |     |             |         |     |     |         |     | $x$ | $+$ | $1$ |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: right;"><span class="arithmatex">\(10\)</span></th>
+<th style="text-align: right;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="arithmatex">\(x\)</span></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">2-2</td>
+<td style="text-align: right;"><span class="arithmatex">\(10101\)</span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{3}+x+1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{4}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{2}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: right;"><u><span class="arithmatex">\(1011\)</span></u></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{4}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(x^{2}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(x\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">6-11</td>
+<td style="text-align: right;"><span class="arithmatex">\(11\)</span></td>
+<td style="text-align: right;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="arithmatex">\(x\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(+\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>Finally, we have that in
 <span style="color: black"><span class="arithmatex">\(\mathrm{GF}(2^{3})\)</span>, <span class="arithmatex">\(7*7=3\)</span>. </span>We now
 present the tables for arithmetic in
 <span style="color: black"><span class="arithmatex">\(\mathrm{GF}(2^{3})\)</span>:</span></p>
-<p align="center">
-
-|  <span style="color: black">$+$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** | **<span style="color: black">7</span>** |
-|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
-| **<span style="color: black">0</span>** |                   $0$                   |                   $1$                   |                   $2$                   |                   $3$                   |                   $4$                   |                   $5$                   |                   $6$                   |                   $7$                   |
-| **<span style="color: black">1</span>** |                   $1$                   |                   $0$                   |                   $3$                   |                   $2$                   |                   $5$                   |                   $4$                   |                   $7$                   |                   $6$                   |
-| **<span style="color: black">2</span>** |                   $2$                   |                   $3$                   |                   $0$                   |                   $1$                   |                   $6$                   |                   $7$                   |                   $4$                   |                   $5$                   |
-| **<span style="color: black">3</span>** |                   $3$                   |                   $2$                   |                   $1$                   |                   $0$                   |                   $7$                   |                   $6$                   |                   $5$                   |                   $4$                   |
-| **<span style="color: black">4</span>** |                   $4$                   |                   $5$                   |                   $6$                   |                   $7$                   |                   $0$                   |                   $1$                   |                   $2$                   |                   $3$                   |
-| **<span style="color: black">5</span>** |                   $5$                   |                   $4$                   |                   $7$                   |                   $6$                   |                   $1$                   |                   $0$                   |                   $3$                   |                   $2$                   |
-| **<span style="color: black">6</span>** |                   $6$                   |                   $7$                   |                   $4$                   |                   $5$                   |                   $2$                   |                   $3$                   |                   $0$                   |                   $1$                   |
-| **<span style="color: black">7</span>** |                   $7$                   |                   $6$                   |                   $5$                   |                   $4$                   |                   $3$                   |                   $2$                   |                   $1$                   |                   $0$                   |
-
-<span style="color: black">  </span>
-
-</p>
-
-<p align="center">
-
-<span style="color: black"> </span>
-
-|  <span style="color: black">$*$</span>  | **<span style="color: black">0</span>** | **<span style="color: black">1</span>** | **<span style="color: black">2</span>** | **<span style="color: black">3</span>** | **<span style="color: black">4</span>** | **<span style="color: black">5</span>** | **<span style="color: black">6</span>** | **<span style="color: black">7</span>** |
-|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|:---------------------------------------:|
-| **<span style="color: black">0</span>** |                   $0$                   |                   $0$                   |                   $0$                   |                   $0$                   |                   $0$                   |                   $0$                   |                   $0$                   |                   $0$                   |
-| **<span style="color: black">1</span>** |                   $0$                   |                   $1$                   |                   $2$                   |                   $3$                   |                   $4$                   |                   $5$                   |                   $6$                   |                   $7$                   |
-| **<span style="color: black">2</span>** |                   $0$                   |                   $2$                   |                   $4$                   |                   $6$                   |                   $3$                   |                   $1$                   |                   $7$                   |                   $5$                   |
-| **<span style="color: black">3</span>** |                   $0$                   |                   $3$                   |                   $6$                   |                   $5$                   |                   $7$                   |                   $4$                   |                   $1$                   |                   $2$                   |
-| **<span style="color: black">4</span>** |                   $0$                   |                   $4$                   |                   $3$                   |                   $7$                   |                   $6$                   |                   $2$                   |                   $5$                   |                   $1$                   |
-| **<span style="color: black">5</span>** |                   $0$                   |                   $5$                   |                   $1$                   |                   $4$                   |                   $2$                   |                   $7$                   |                   $3$                   |                   $6$                   |
-| **<span style="color: black">6</span>** |                   $0$                   |                   $6$                   |                   $7$                   |                   $1$                   |                   $5$                   |                   $3$                   |                   $2$                   |                   $4$                   |
-| **<span style="color: black">7</span>** |                   $0$                   |                   $7$                   |                   $5$                   |                   $2$                   |                   $1$                   |                   $6$                   |                   $4$                   |                   $3$                   |
-
-<span style="color: black">   </span>
-
-|  <span style="color: black">$a$</span>  | <span style="color: black">$-a$</span> | <span style="color: black">$a^{-1}$</span> |
-|:---------------------------------------:|:--------------------------------------:|:------------------------------------------:|
-| **<span style="color: black">0</span>** |                  $0$                   |                     -                      |
-| **<span style="color: black">1</span>** |                  $1$                   |                    $1$                     |
-| **<span style="color: black">2</span>** |                  $2$                   |                    $5$                     |
-| **<span style="color: black">3</span>** |                  $3$                   |                    $6$                     |
-| **<span style="color: black">4</span>** |                  $4$                   |                    $7$                     |
-| **<span style="color: black">5</span>** |                  $5$                   |                    $2$                     |
-| **<span style="color: black">6</span>** |                  $6$                   |                    $3$                     |
-| **<span style="color: black">7</span>** |                  $7$                   |                    $4$                     |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(+\)</span></span></th>
+<th style="text-align: center;"><strong><span style="color: black">0</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">1</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">2</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">3</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">4</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">5</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">6</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">7</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">0</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">1</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">2</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">3</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">4</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">5</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">6</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">7</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: black">  </span></p>
+</div>
+<div align="center">
+<p><span style="color: black"> </span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(*\)</span></span></th>
+<th style="text-align: center;"><strong><span style="color: black">0</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">1</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">2</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">3</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">4</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">5</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">6</span></strong></th>
+<th style="text-align: center;"><strong><span style="color: black">7</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">0</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">1</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">2</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">3</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">4</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">5</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">6</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">7</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: black">   </span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(a\)</span></span></th>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(-a\)</span></span></th>
+<th style="text-align: center;"><span style="color: black"><span class="arithmatex">\(a^{-1}\)</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">0</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(0\)</span></td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">1</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">2</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">3</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">4</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">5</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(5\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">6</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(6\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><span style="color: black">7</span></strong></td>
+<td style="text-align: center;"><span class="arithmatex">\(7\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>Note that each non-zero element has a multiplicative inverse, and so we
 have a finite field of the form
 <span style="color: black"><span class="arithmatex">\(\mathrm{GF}(2^{n})\)</span>.</span></p>
@@ -1054,24 +1927,18 @@ mathematical proofs, there are very few real-world examples of primes:</p>
     player’s jerseys are Carlos, No 3; Zidane, No 5; ...</p>
 </li>
 </ol>
-<p align="center">
-
-<img src="../../../images/beckham.jpg" alt="image" />
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/beckham.jpg" alt="image" /></p>
+</div>
 <p>Perhaps the enduring reason is because primes are <em>beautiful</em>.</p>
 <p>More recently, the world’s interest in primes has been reactivated
 because 2500 years of mathematics has failed to uncover some basic prime
 properties, and hence they make a good candidate for constructing
 difficult (impossible to decrypt) translations. We do know some
 properties of primes, but not others.</p>
-<p align="center">
-
-<img src="../../../images/pi1000.jpg" alt="image" />
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/pi1000.jpg" alt="image" /></p>
+</div>
 <p>For example we do not know how to predict the next one in an arbitrary
 sequence, but we do know that the density is predictable. In the above
 figure, note that <span class="arithmatex">\(\pi(x)\)</span> (the number of primes less than <span class="arithmatex">\(x\)</span>) is
@@ -1096,22 +1963,144 @@ $a^{p-1}\equiv1\,\,\,(\mathrm{mod}\,p)$.</span>*
 
 </div>
 
-<p align="center">
-
-| **<span style="color: black">`a`</span>** | <span style="color: black">$a^{1}$</span> | <span style="color: black">$a^{2}$</span> | <span style="color: black">$a^{3}$</span> | <span style="color: black">$a^{4}$</span> | <span style="color: black">$a^{5}$</span> | <span style="color: black">$a^{6}$</span> | <span style="color: black">$a^{7}$</span> | <span style="color: black">$a^{8}$</span> | <span style="color: black">$a^{9}$</span> | <span style="color: black">$a^{10}$</span> |
-|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|------------------------------------------:|-------------------------------------------:|
-|     <span style="color: black">`2`</span> |     <span style="color: black">$2$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$8$</span> |     <span style="color: black">$5$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$7$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$6$</span> |      <span style="color: black">$1$</span> |
-|     <span style="color: black">`3`</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$1$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$4$</span> |      <span style="color: black">$1$</span> |
-|     <span style="color: black">`4`</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$1$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$3$</span> |      <span style="color: black">$1$</span> |
-|     <span style="color: black">`5`</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$1$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$9$</span> |      <span style="color: black">$1$</span> |
-|     <span style="color: black">`6`</span> |     <span style="color: black">$6$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$7$</span> |     <span style="color: black">$9$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$8$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$2$</span> |      <span style="color: black">$1$</span> |
-|     <span style="color: black">`7`</span> |     <span style="color: black">$7$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$2$</span> |     <span style="color: black">$3$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$6$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$8$</span> |      <span style="color: black">$1$</span> |
-|     <span style="color: black">`8`</span> |     <span style="color: black">$8$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$6$</span> |     <span style="color: black">$4$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$2$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$7$</span> |      <span style="color: black">$1$</span> |
-|     <span style="color: black">`9`</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$5$</span> |     <span style="color: black">$1$</span> |     <span style="color: black">$9$</span> |     <span style="color: black">$4$</span> |     <span style="color: black">$3$</span> |     <span style="color: black">$5$</span> |      <span style="color: black">$1$</span> |
-|    <span style="color: black">`10`</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$1$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$1$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$1$</span> |    <span style="color: black">$10$</span> |     <span style="color: black">$1$</span> |    <span style="color: black">$10$</span> |      <span style="color: black">$1$</span> |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: right;"><strong><span style="color: black"><code>a</code></span></strong></th>
+<th style="text-align: right;"><span style="color: black"><span class="arithmatex">\(a^{1}\)</span></span></th>
+<th style="text-align: right;"><span style="color: black"><span class="arithmatex">\(a^{2}\)</span></span></th>
+<th style="text-align: right;"><span style="color: black"><span class="arithmatex">\(a^{3}\)</span></span></th>
+<th style="text-align: right;"><span style="color: black"><span class="arithmatex">\(a^{4}\)</span></span></th>
+<th style="text-align: right;"><span style="color: black"><span class="arithmatex">\(a^{5}\)</span></span></th>
+<th style="text-align: right;"><span style="color: black"><span class="arithmatex">\(a^{6}\)</span></span></th>
+<th style="text-align: right;"><span style="color: black"><span class="arithmatex">\(a^{7}\)</span></span></th>
+<th style="text-align: right;"><span style="color: black"><span class="arithmatex">\(a^{8}\)</span></span></th>
+<th style="text-align: right;"><span style="color: black"><span class="arithmatex">\(a^{9}\)</span></span></th>
+<th style="text-align: right;"><span style="color: black"><span class="arithmatex">\(a^{10}\)</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><span style="color: black"><code>2</code></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(8\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(10\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(9\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span style="color: black"><code>3</code></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(9\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(9\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span style="color: black"><code>4</code></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(9\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(9\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span style="color: black"><code>5</code></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(9\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(9\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span style="color: black"><code>6</code></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(9\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(10\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(8\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span style="color: black"><code>7</code></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(10\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(9\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(8\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span style="color: black"><code>8</code></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(8\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(9\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(6\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(10\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(2\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(7\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span style="color: black"><code>9</code></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(9\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(9\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(4\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(3\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(5\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span style="color: black"><code>10</code></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(10\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(10\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(10\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(10\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(10\)</span></span></td>
+<td style="text-align: right;"><span style="color: black"><span class="arithmatex">\(1\)</span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p><span style="color: black">The above table shows Fermat’s theorem in
 operation. Notice that <span class="arithmatex">\(a^{10}\)</span> is always <span class="arithmatex">\(1\)</span>, but that sometimes
 <span class="arithmatex">\(a^{n}=1\)</span> for <span class="arithmatex">\(n&lt;10\)</span>. When <span class="arithmatex">\(1\)</span> occurs earlier, the <span class="arithmatex">\(n\)</span>th powers are
@@ -1195,26 +2184,238 @@ relatively prime, then
 $<span class="arithmatex">\(a^{(p-1)(q-1)}\equiv1\,\,\,\,\,(\mathrm{mod}\,pq)\)</span>$
 <span style="color: black">The table below shows Euler’s theorem in
 operation</span>[^3]<span style="color: black">:</span></p>
-<p align="center">
-
-| **$a^{1}$** | **$a^{2}$** | **$a^{3}$** | **$a^{4}$** | **$a^{5}$** | **$a^{6}$** | **$a^{7}$** | **$a^{8}$** | **$a^{9}$** | **$a^{10}$** | **$a^{11}$** | **$a^{12}$** | **$a^{13}$** | **$a^{14}$** |
-|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:-----------:|:------------:|:------------:|:------------:|:------------:|:------------:|
-|   ***2***   |      4      |      8      |      1      |      2      |      4      |      8      |      1      |      2      |      4       |      8       |      1       |      2       |      4       |
-|   ***3***   |      9      |     12      |      6      |      3      |      9      |     12      |      6      |      3      |      9       |      12      |      6       |      3       |      9       |
-|   ***4***   |      1      |      4      |      1      |      4      |      1      |      4      |      1      |      4      |      1       |      4       |      1       |      4       |      1       |
-|   ***5***   |     10      |      5      |     10      |      5      |     10      |      5      |     10      |      5      |      10      |      5       |      10      |      5       |      10      |
-|   ***6***   |      6      |      6      |      6      |      6      |      6      |      6      |      6      |      6      |      6       |      6       |      6       |      6       |      6       |
-|   ***7***   |      4      |     13      |      1      |      7      |      4      |     13      |      1      |      7      |      4       |      13      |      1       |      7       |      4       |
-|   ***8***   |      4      |      2      |      1      |      8      |      4      |      2      |      1      |      8      |      4       |      2       |      1       |      8       |      4       |
-|   ***9***   |      6      |      9      |      6      |      9      |      6      |      9      |      6      |      9      |      6       |      9       |      6       |      9       |      6       |
-|  ***10***   |     10      |     10      |     10      |     10      |     10      |     10      |     10      |     10      |      10      |      10      |      10      |      10      |      10      |
-|  ***11***   |      1      |     11      |      1      |     11      |      1      |     11      |      1      |     11      |      1       |      11      |      1       |      11      |      1       |
-|  ***12***   |      9      |      3      |      6      |     12      |      9      |      3      |      6      |     12      |      9       |      3       |      6       |      12      |      9       |
-|  ***13***   |      4      |      7      |      1      |     13      |      4      |      7      |      1      |     13      |      4       |      7       |      1       |      13      |      4       |
-|  ***14***   |      1      |     14      |      1      |     14      |      1      |     14      |      1      |     14      |      1       |      14      |      1       |      14      |      1       |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a^{1}\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a^{2}\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a^{3}\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a^{4}\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a^{5}\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a^{6}\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a^{7}\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a^{8}\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a^{9}\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a^{10}\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a^{11}\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a^{12}\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a^{13}\)</span></strong></th>
+<th style="text-align: center;"><strong><span class="arithmatex">\(a^{14}\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong><em>2</em></strong></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><em>3</em></strong></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><em>4</em></strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><em>5</em></strong></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><em>6</em></strong></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><em>7</em></strong></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><em>8</em></strong></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><em>9</em></strong></td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><em>10</em></strong></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><em>11</em></strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><em>12</em></strong></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">9</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><em>13</em></strong></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><em>14</em></strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p><span style="color: black">Note that <span class="arithmatex">\(1\)</span> is reached when the power is
 <span class="arithmatex">\(8\)</span>, for numbers with no divisors in common with <span class="arithmatex">\(15\)</span>, such as
 <span class="arithmatex">\(2,4,7,8,11,13\)</span> and <span class="arithmatex">\(14\)</span>. For <span class="arithmatex">\(3,5,6,9,10\)</span> and <span class="arithmatex">\(12\)</span>, it is never

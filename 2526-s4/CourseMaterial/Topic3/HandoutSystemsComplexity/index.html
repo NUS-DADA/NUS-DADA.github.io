@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -611,12 +611,9 @@ just as easily have led to theft or illegal activities.</p>
 <p>The first example, the Ariane-5 launcher, failed because of differences
 in the environment. Specifically, the difference between the horizontal
 acceleration of the Ariane-5, and the Ariane-4.</p>
-<p align="center">
-
-<img src="../../../images/ariane.png" alt="image"  style="width: 70%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/ariane.png" alt="image"  style="width: 70%;"/></p>
+</div>
 <p>The Ariane-5 launcher blew up in 1996 because of a software error. The
 error which ultimately led to its destruction about 40 seconds after
 lift off on its maiden flight was clearly identified in the report of
@@ -639,13 +636,10 @@ service call on Mars would be an expensive proposition (a $1B
 proposition), and so it was critical that the software error was
 corrected. On the Rover, a critical process was blocked forever by an
 unimportant process, a priority <em>inversion</em>.</p>
-<p align="center">
-
-<img src="../../../images/pathfinder.png" alt="image"  style="width: 43%;"/>
-<img src="../../../images/priorityinversion.png" alt="image"  style="width: 54%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/pathfinder.png" alt="image"  style="width: 43%;"/>
+<img src="../../../images/priorityinversion.png" alt="image"  style="width: 54%;"/></p>
+</div>
 <p>The spacecraft began experiencing total system resets with loss of data
 each time, due to this priority inversion. In the diagram to the right
 we see higher priority task <span class="arithmatex">\(\tau_{1}\)</span> blocked by a lower priority task
@@ -695,22 +689,16 @@ time. Complex systems have flaws.</p>
 <p>Modern software systems have a range of architectures, and are dependent
 on the application. However, some fixed structures have become apparent,
 and form “design patterns” for building software.</p>
-<p align="center">
-
-<img src="../../../images/data_warehouse_architecture.jpg" alt="image"  style="width: 90%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/data_warehouse_architecture.jpg" alt="image"  style="width: 90%;"/></p>
+</div>
 <p>For example the common pattern “data warehouse”. A data warehouse is a
 centralized store for data from many sources, transforming them into a
 common, multidimensional dataset for efficient querying and analysis. It
 is a core component of many businesses.</p>
-<p align="center">
-
-<img src="../../../images/webapp.jpg" alt="image"  style="width: 90%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/webapp.jpg" alt="image"  style="width: 90%;"/></p>
+</div>
 <p>The common pattern “web application” can be done in many ways. In the
 above example, the web server is clearly separated from the application
 server, which is, in a sense, removed from the details of the web
@@ -917,21 +905,15 @@ init 
    AtoB!err(0) 
 } 
 </code></pre>
-<p align="center">
-
-<img src="../../../images/promela.png" alt="image"  style="width: 40%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/promela.png" alt="image"  style="width: 40%;"/></p>
+</div>
 <p>The system has two application processes (A and B), communicating with
 each other using a protocol implemented with two other <em>transfer</em>
 processes.</p>
-<p align="center">
-
-<img src="../../../images/ispin.png" alt="image"  style="width: 70%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/ispin.png" alt="image"  style="width: 70%;"/></p>
+</div>
 <p>The spin tool may then be used to either exhaustively check the model,
 or to simulate and display results as above.</p>
 <h1 id="summary">Summary</h1>
@@ -956,12 +938,9 @@ that ensure correctness).</p>
 directly related to system security, because it involved a failure of a
 protocol. The protocol had been in continuous use for 21 years, and
 failed because of race conditions in the protocol.</p>
-<p align="center">
-
-<embed src="../../images/ClaytonTunnel.png" />
-
-</p>
-
+<div align="center">
+<p><embed src="../../images/ClaytonTunnel.png" /></p>
+</div>
 <p>In England in 1861, a poorly constructed protocol failed causing a train
 to crash into another. The protocol’s function was to ensure that only
 one train could be in the Clayton Tunnel at a time. At each end of the

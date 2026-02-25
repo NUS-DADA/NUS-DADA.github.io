@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -586,12 +586,9 @@ int fac( int n ) {
 of the locations of the program and the variables. For the program to
 run, we do not particularly care where in memory the program or data are
 stored - we are mostly just concerned that they are stored somewhere.</p>
-<p align="center">
-
-<img src="../../../images/memabstract.png" alt="image" />
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/memabstract.png" alt="image" /></p>
+</div>
 <p>However as I mentioned before, there are attacks that start from
 knowledge of the locations in memory where such things are stored. In
 class we will look at some of these attacks, but in the meanwhile, just
@@ -624,12 +621,9 @@ assume the others will be nearby.</p>
 <p>This terms globals, text, dll, stack and heap are common and kind of
 historical. Here is a small program which prints out addresses of the
 program code, and variables of different types:</p>
-<p align="center">
-
-<img src="../../../images/winxp.png" alt="image" />
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/winxp.png" alt="image" /></p>
+</div>
 <p>With this program, in this particular environment (WinXP), the locations
 of the items are the same every time we run the program. Here is the
 program:</p>
@@ -673,20 +667,78 @@ compiler that you want to generate position independant code:</p>
 <pre><code>gcc -pie -fPIC -o move3 move3.c
 </code></pre>
 <p>I have summarized the results of my experiments below:</p>
-<p align="center">
-
-| **OS**              | **Globals** | **Text** | **Dlls** | **Stack** | **Heap** |
-|:--------------------|:-----------:|:--------:|:--------:|:---------:|:--------:|
-| **Linux**           |      Y      |    Y     |    Y     |     Y     |    Y     |
-| **Linux sma0**      |     \-      |    \-    |    Y     |     Y     |    Y     |
-| **Solaris sunfire** |     \-      |    \-    |    \-    |     Y     |    \-    |
-| **OSX - old**       |      Y      |    Y     |    \-    |    \-     |    \-    |
-| **OSX - new**       |      Y      |    Y     |    Y     |     Y     |    Y     |
-| **WinXP**           |     \-      |    \-    |    \-    |    \-     |    \-    |
-| **Win7**            |      Y      |    Y     |    Y     |     Y     |    Y     |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>OS</strong></th>
+<th style="text-align: center;"><strong>Globals</strong></th>
+<th style="text-align: center;"><strong>Text</strong></th>
+<th style="text-align: center;"><strong>Dlls</strong></th>
+<th style="text-align: center;"><strong>Stack</strong></th>
+<th style="text-align: center;"><strong>Heap</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Linux</strong></td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Linux sma0</strong></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Solaris sunfire</strong></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>OSX - old</strong></td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>OSX - new</strong></td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>WinXP</strong></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Win7</strong></td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">Y</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>Yay for Windows 7! Except why-oh-why is it opt-in instead of opt-out?</p>
 <p>A lesson to be learnt from all of this is encapsulated in the monster
 mitigation rule from OWASP: <strong>Lock down your environment</strong>. If you were

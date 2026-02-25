@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -581,12 +581,9 @@
 underlying physical laws, representations and constraints to consider.
 Beginning with representations of data and interference/noise, we can
 derive physical limits on the rate of data transmission.</p>
-<p align="center">
-
-<img src="../../../images/alogdig.png" alt="image"  style="width: 45%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/alogdig.png" alt="image"  style="width: 45%;"/></p>
+</div>
 <p>An analog signal is a continuous valued signal. A digital signal is
 considered to only exist at discrete levels. The (time domain) diagrams
 are commonly used when considering signals. If you use an oscilloscope,
@@ -603,13 +600,10 @@ $<span class="arithmatex">\(\sum^{\infty}_{n=1}\,\frac{1}{n}\sin(2\pi nf)\mbox{\
 We may also represent these signals by frequency domain diagrams, which
 plot the amplitude against <em>frequency</em>. These alternative
 representations are shown below:</p>
-<p align="center">
-
-<img src="../../../images/harm1.png" style="height:3.4cm" alt="image" />
-<img src="../../../images/harm2.png" style="height:3.4cm" alt="image" />
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/harm1.png" style="height:3.4cm" alt="image" />
+<img src="../../../images/harm2.png" style="height:3.4cm" alt="image" /></p>
+</div>
 <h2 id="fourier-analysis">Fourier analysis</h2>
 <p>When we represent periodic functions as a sum of simple sine (and
 cosine) waveforms, it is known as <em>Fourier Analysis</em> after Jean-Baptiste
@@ -623,27 +617,51 @@ then we normally write the corresponding frequency domain function as
 transformation: $<span class="arithmatex">\(f(t)\leftrightarrow F(\omega)\)</span>$ There are various
 <em>flavours</em> of Fourier analysis depending on the types of functions in
 each domain. The table below summarizes the methods used.</p>
-<p align="center">
-
-| **Time domain**       |                    | **Frequency domain**  | **Description**                |
-|:----------------------|:------------------:|:----------------------|:-------------------------------|
-| Continuous, periodic  | $\rightleftarrows$ | Discrete, aperiodic   | **Fourier series**             |
-| Continuous, aperiodic | $\rightleftarrows$ | Continuous, aperiodic | **Fourier transform**          |
-| Discrete, periodic    | $\rightleftarrows$ | Discrete, periodic    | **Discrete Fourier series**    |
-| Discrete, aperiodic   | $\rightleftarrows$ | Continuous, periodic  | **Discrete Fourier transform** |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Time domain</strong></th>
+<th style="text-align: center;"></th>
+<th style="text-align: left;"><strong>Frequency domain</strong></th>
+<th style="text-align: left;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Continuous, periodic</td>
+<td style="text-align: center;"><span class="arithmatex">\(\rightleftarrows\)</span></td>
+<td style="text-align: left;">Discrete, aperiodic</td>
+<td style="text-align: left;"><strong>Fourier series</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Continuous, aperiodic</td>
+<td style="text-align: center;"><span class="arithmatex">\(\rightleftarrows\)</span></td>
+<td style="text-align: left;">Continuous, aperiodic</td>
+<td style="text-align: left;"><strong>Fourier transform</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Discrete, periodic</td>
+<td style="text-align: center;"><span class="arithmatex">\(\rightleftarrows\)</span></td>
+<td style="text-align: left;">Discrete, periodic</td>
+<td style="text-align: left;"><strong>Discrete Fourier series</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">Discrete, aperiodic</td>
+<td style="text-align: center;"><span class="arithmatex">\(\rightleftarrows\)</span></td>
+<td style="text-align: left;">Continuous, periodic</td>
+<td style="text-align: left;"><strong>Discrete Fourier transform</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>We can see an example of this deconstruction or construction of
 waveforms by examining a bipolar square wave which can be created by
 summing the terms:
 $<span class="arithmatex">\(\frac{4}{\pi}(sin(2\pi ft)+\frac{1}{3}sin(6\pi ft)+\frac{1}{5}sin(10\pi ft)+\frac{1}{7}sin(14\pi ft)+...)\)</span>$</p>
-<p align="center">
-
-<img src="../../../images/fourier.png" alt="image"  style="width: 50%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/fourier.png" alt="image"  style="width: 50%;"/></p>
+</div>
 <p>In the figure above, we see four plots, showing the resultant waveforms
 if we sum the first few terms in the series. As we add more terms, the
 plot more closely approximates a square wave. Note that there is a
@@ -659,17 +677,14 @@ function <span class="arithmatex">\(f(t)\)</span>, which is the function <span c
 $<span class="arithmatex">\(F(\omega)=\int^{\infty}_{-\infty}f(t)e^{-j\omega t}dt\)</span>$ The inverse
 transform is
 <span class="arithmatex">\(f(t)=\frac{1}{2\pi}\int^{\infty}_{-\infty}F(\omega)e^{j\omega t}d\omega\)</span>.</p>
-<p align="center">
-
-<img src="../../../images/ftsin.png" alt="image"  style="width: 30%;"/>
+<div align="center">
+<p><img src="../../../images/ftsin.png" alt="image"  style="width: 30%;"/>
 <img src="../../../images/ftsin3x.png" alt="image"  style="width: 30%;"/>
-<img src="../../../images/ftsq.png" alt="image"  style="width: 30%;"/>  
+<img src="../../../images/ftsq.png" alt="image"  style="width: 30%;"/><br />
 <img src="../../../images/ftpulse.png" alt="image"  style="width: 30%;"/>
 <img src="../../../images/ftthinpulse.png" alt="image"  style="width: 30%;"/>
-<img src="../../../images/ftexp.png" alt="image"  style="width: 30%;"/>
-
-</p>
-
+<img src="../../../images/ftexp.png" alt="image"  style="width: 30%;"/></p>
+</div>
 <p>In the figures above we see various simple transforms. Note that if a
 function in one domain is <em>widened</em>, its transform <em>narrows</em>.</p>
 <h2 id="convolution">Convolution</h2>
@@ -690,12 +705,9 @@ f(t)\times g(t) & \leftrightarrow & F(\omega)\star G(\omega)
 <p>The convolution of <span class="arithmatex">\(f(t)\)</span> and <span class="arithmatex">\(g(t)\)</span> has a <em>graphical</em> interpretation.
 We can use the graphical interpretation to easily predict the functions
 that result from complex signal filtering or sampling.</p>
-<p align="center">
-
-<img src="../../../images/ftsample.png" alt="image"  style="width: 70%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/ftsample.png" alt="image"  style="width: 70%;"/></p>
+</div>
 <p>In the above figure, we see a sine wave and a sampling window, each with
 their own Fourier transform. By multiplying the two waveforms, we end up
 with a single cycle of the sine wave, and we can deduce its frequency
@@ -773,12 +785,9 @@ rates.</p>
 <h2 id="bit-transmission">Bit transmission</h2>
 <p>We may send our data <em>synchronised</em> (meaning clocked) or
 <em>asynchronously</em> (without a clock):</p>
-<p align="center">
-
-<img src="../../../images/asnyc.png" alt="image"  style="width: 80%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/asnyc.png" alt="image"  style="width: 80%;"/></p>
+</div>
 <p>Here we have asynchronous transmission. The reception algorithm is:</p>
 <ul>
 <li>
@@ -796,13 +805,10 @@ rates.</p>
 </ul>
 <p>The implication of this is that both ends must agree on a rate of
 transmission.</p>
-<p align="center">
-
-<img src="../../../images/bipolar.png" alt="image"  style="width: 45%;"/>  
-<img src="../../../images/manch.png" alt="image"  style="width: 45%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/bipolar.png" alt="image"  style="width: 45%;"/>  
+<img src="../../../images/manch.png" alt="image"  style="width: 45%;"/></p>
+</div>
 <p>In Bipolar encoding, a ’1’ is transmitted with a positive pulse, a ’0’
 with a negative pulse. Since each bit contains an initial transition
 away from zero volts, a simple circuit can extract this clock signal.
@@ -811,12 +817,9 @@ This is sometimes called ’return to zero’ encoding.</p>
 each bit cell. A binary ’0’ causes a high to low transition, a binary
 ’1’ is a low to high transition. The clock retrieval circuitry is
 slightly more complex than before.</p>
-<p align="center">
-
-<img src="../../../images/screenshot.png" alt="image"  style="width: 100%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/screenshot.png" alt="image"  style="width: 100%;"/></p>
+</div>
 <p>Sometimes decoding these signals is difficult, the signals are buried in
 other signals. Here is some processed data retrieved from an NFC card by
 my students. Any algorithm to retrieve the bits must cope with the
@@ -844,21 +847,15 @@ per change in signal, we could only send 6,000 bits/sec. Common
 modulation methods focus on sending multiple bits per change to increase
 data rates (up to the maximum determined by noise - Shannon). The most
 common method is phase modulation, shown below:</p>
-<p align="center">
-
-<img src="../../../images/pm.png" alt="image"  style="width: 80%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/pm.png" alt="image"  style="width: 80%;"/></p>
+</div>
 <p>We can also send different amplitudes at the different phases. The
 following phase plots indicate useful phase/amplitude values:</p>
-<p align="center">
-
-<img src="../../../images/qam1.png" alt="image" />  
-<img src="../../../images/qam2.png" alt="image" />
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/qam1.png" alt="image" />  
+<img src="../../../images/qam2.png" alt="image" /></p>
+</div>
 <p>These schemes use multiple amplitudes and phases. They are called
 QAM[^2]. The one on the left has 2 amplitudes and 4 phases giving a
 total of 3 bits per change. In the other example, we are sending 4
@@ -948,23 +945,91 @@ again, so there is room for technological advancement.</p>
 digital data transmission. We have WiFi, bluetooth, and other digitial
 wireless transmission standards. F</p>
 <h2 id="sample-layer-1-standards">Sample ’layer 1’ standards</h2>
-<p align="center">
-
-| **Standard**     | **Method** | **Speed** | **Dist** | **Type** |
-|:-----------------|:-----------|:----------|:---------|:--------:|
-| **WiFi**         | +/- 12v    | 10MB/s    | 100m     |  P to P  |
-|                  |            |           | 100m     |  P to P  |
-| **Bluetooth**    | +/-1v      | 220Kb/s   | 1.5km    |  M/drop  |
-| **Radio**        | 0,+5v      | 9600Kb/s  | 10m      |  P to P  |
-| **E/net/UTP**    | 0,-1.2v    | 1000 Mb/s | 90m      |  P to P  |
-|                  |            |           | 185m     |  M/drop  |
-|                  |            |           | 500m     |  M/drop  |
-| **Fibre (FDDI)** | Light      | 125Mb/s   | 200km    |   ring   |
-| **Token Ring**   | 0,+5V      | 16Mb/s    | 1.5km    |   ring   |
-| **S. Spect.**    | Radio      | 2Mb/s     | 2km      |  M/drop  |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Standard</strong></th>
+<th style="text-align: left;"><strong>Method</strong></th>
+<th style="text-align: left;"><strong>Speed</strong></th>
+<th style="text-align: left;"><strong>Dist</strong></th>
+<th style="text-align: center;"><strong>Type</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>WiFi</strong></td>
+<td style="text-align: left;">+/- 12v</td>
+<td style="text-align: left;">10MB/s</td>
+<td style="text-align: left;">100m</td>
+<td style="text-align: center;">P to P</td>
+</tr>
+<tr>
+<td style="text-align: left;"> </td>
+<td style="text-align: left;"> </td>
+<td style="text-align: left;"> </td>
+<td style="text-align: left;">100m</td>
+<td style="text-align: center;">P to P</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Bluetooth</strong></td>
+<td style="text-align: left;">+/-1v</td>
+<td style="text-align: left;">220Kb/s</td>
+<td style="text-align: left;">1.5km</td>
+<td style="text-align: center;">M/drop</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Radio</strong></td>
+<td style="text-align: left;">0,+5v</td>
+<td style="text-align: left;">9600Kb/s</td>
+<td style="text-align: left;">10m</td>
+<td style="text-align: center;">P to P</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>E/net/UTP</strong></td>
+<td style="text-align: left;">0,-1.2v</td>
+<td style="text-align: left;">1000 Mb/s</td>
+<td style="text-align: left;">90m</td>
+<td style="text-align: center;">P to P</td>
+</tr>
+<tr>
+<td style="text-align: left;"> </td>
+<td style="text-align: left;"> </td>
+<td style="text-align: left;"> </td>
+<td style="text-align: left;">185m</td>
+<td style="text-align: center;">M/drop</td>
+</tr>
+<tr>
+<td style="text-align: left;"> </td>
+<td style="text-align: left;"> </td>
+<td style="text-align: left;"> </td>
+<td style="text-align: left;">500m</td>
+<td style="text-align: center;">M/drop</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Fibre (FDDI)</strong></td>
+<td style="text-align: left;">Light</td>
+<td style="text-align: left;">125Mb/s</td>
+<td style="text-align: left;">200km</td>
+<td style="text-align: center;">ring</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Token Ring</strong></td>
+<td style="text-align: left;">0,+5V</td>
+<td style="text-align: left;">16Mb/s</td>
+<td style="text-align: left;">1.5km</td>
+<td style="text-align: center;">ring</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>S. Spect.</strong></td>
+<td style="text-align: left;">Radio</td>
+<td style="text-align: left;">2Mb/s</td>
+<td style="text-align: left;">2km</td>
+<td style="text-align: center;">M/drop</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>In the table above, we summarise various signalling/communication
 standards related to computer communications. They range in speed from
 Kb/s to Gb/s (a range of about 1,000,000:1). The maximum design

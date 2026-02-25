@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -664,12 +664,9 @@ interconnectivity ...</p>
 <p>Sounds nice enough, but it turns out that the reality is a little
 different. There are logical networks, physical networks, networks built
 on networks, heirarchies, zones and so on.</p>
-<p align="center">
-
-<img src="../../../images/networks.png" alt="image"  style="width: 90%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/networks.png" alt="image"  style="width: 90%;"/></p>
+</div>
 <p>Consider the two models above, the one on the left representing a very
 simple and abstract view - computers are all connected via the Internet;
 the one on the right showing various heirarchies of networks, with
@@ -696,12 +693,9 @@ some sort of configuration database. A network administrator tries to
 ensure that the router rules prevent unauthorized access to machines
 from hosts on the Internet, while still allowing connections from the
 local network(s).</p>
-<p align="center">
-
-<img src="../../../images/DMZLevel1.jpg" alt="image"  style="width: 80%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/DMZLevel1.jpg" alt="image"  style="width: 80%;"/></p>
+</div>
 <p>A modern computer (inter)network consists of networks with locally
 attached host computers, interconnected by routers in an almost chaotic
 manner as seen above. Communications between host computers can follow
@@ -713,12 +707,9 @@ identifying the particular interface on each computer. When computers
 transfer messages to other computers, we add addressing and other
 information to each message to help route messages through the wider
 network.</p>
-<p align="center">
-
-<img src="../../../images/packets.png" alt="image"  style="width: 60%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/packets.png" alt="image"  style="width: 60%;"/></p>
+</div>
 <p>We call the little messages with routing information <em>packets</em>,
 visualized above. A big message (say an email) may be sent in lots of
 these little packets, which have a header at the beginning containing
@@ -739,14 +730,22 @@ who wishes to specify a new protocol and they are commented
 on/vetted/improved by the internet community before final distribution.</p>
 <p>The IP network layer addressing scheme uses four bytes[^4], and is often
 written as dotted decimal, or hex numbers:</p>
-<p align="center">
-
-| **Decimal**  |   **Hex**   |
-|:------------:|:-----------:|
-| 156.59.209.1 | 9C.3B.D1.01 |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Decimal</strong></th>
+<th style="text-align: center;"><strong>Hex</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">156.59.209.1</td>
+<td style="text-align: center;">9C.3B.D1.01</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>This address defines an interface not a host. - a host may have one, two
 or more interfaces, each with different IP network layer addresses[^5].</p>
 <ul>
@@ -793,12 +792,9 @@ an incorrect mask can result in confusion.</p>
 host part all 0s, and the one with the host part all 1s. You cannot
 allocate these addresses to machines. They are used for broadcasting to
 all machines on the same network.</p>
-<p align="center">
-
-<img src="../../../images/ip.png" alt="image"  style="width: 60%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/ip.png" alt="image"  style="width: 60%;"/></p>
+</div>
 <p>The figure above shows the structure of an IP packet. The <strong><em>’ihl’</em></strong>
 field gives the header length in 32 bit chunks. Notice that our IP
 addresses fit into the 32 bit source and destination address fields.</p>
@@ -815,18 +811,56 @@ This has two uses:</p>
 </li>
 </ol>
 <p>Worldwide, there are five classes of IP address ranges:</p>
-<p align="center">
-
-| Class |      Who for       | Prefix    |   Size   |  Number  |
-|:-----:|:------------------:|:----------|:--------:|:--------:|
-|   A   | Huge organization  | 0xxxxx... | $2^{24}$ | $2^{7}$  |
-|   B   | Large organization | 10xxxx... | $2^{16}$ | $2^{14}$ |
-|   C   | Small organization | 110xxx... | $2^{8}$  | $2^{21}$ |
-|   D   |     Multicast      | 1110xx... |    1     | $2^{28}$ |
-|   E   |      Reserved      | 11110x... |    1     | $2^{27}$ |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Class</th>
+<th style="text-align: center;">Who for</th>
+<th style="text-align: left;">Prefix</th>
+<th style="text-align: center;">Size</th>
+<th style="text-align: center;">Number</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">Huge organization</td>
+<td style="text-align: left;">0xxxxx...</td>
+<td style="text-align: center;"><span class="arithmatex">\(2^{24}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2^{7}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">Large organization</td>
+<td style="text-align: left;">10xxxx...</td>
+<td style="text-align: center;"><span class="arithmatex">\(2^{16}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2^{14}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">Small organization</td>
+<td style="text-align: left;">110xxx...</td>
+<td style="text-align: center;"><span class="arithmatex">\(2^{8}\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2^{21}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">Multicast</td>
+<td style="text-align: left;">1110xx...</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="arithmatex">\(2^{28}\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">Reserved</td>
+<td style="text-align: left;">11110x...</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="arithmatex">\(2^{27}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>Note:<br />
 there is no way to ask for a single organizational IP address, and this
 accounts for the unfortunate situation we are getting to - nearly all
@@ -844,12 +878,9 @@ the IP addresses have been allocated!</p>
 </li>
 </ol>
 <h2 id="layers">Layers</h2>
-<p align="center">
-
-<img src="../../../images/osi-ip.png" alt="image"  style="width: 70%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/osi-ip.png" alt="image"  style="width: 70%;"/></p>
+</div>
 <p>This model provides a framework to hang your understanding of computer
 networking on.</p>
 <p>The protocol specifies how communication is performed with the layer at
@@ -908,12 +939,9 @@ Gateway Routing Protocol.</p>
 <h3 id="static-or-fixed-routing">Static or fixed routing</h3>
 <p>We might use a technique such as the shortest path - here a path could
 be <em>how long</em> or <em>how many hops</em> or some other metric.</p>
-<p align="center">
-
-<img src="../../../images/hops.png" alt="image"  style="width: 80%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/hops.png" alt="image"  style="width: 80%;"/></p>
+</div>
 <p>If <strong>hops</strong> were used for our metric, <strong><u>ABC</u></strong> is the shortest
 path from machine #1 to machine #2. However, if <strong>delay</strong> was used,
 and AB=1, AD=3, BE=2, DE=1, EF=1, BC=6 and FC=1, then the metric
@@ -933,58 +961,157 @@ routers exchange information about their tables.</p>
 The figures represent the metrics attached to each route, and note that
 the route BD is about to change from a metric of 3 (meaning not so good)
 to 1 (meaning good).</p>
-<p align="center">
-
-<img src="../../../images/router.png" alt="image"  style="width: 70%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/router.png" alt="image"  style="width: 70%;"/></p>
+</div>
 <p>Before the change, router D has the following table, giving it’s view of
 the best routes:</p>
-<p align="center">
-
-| Destination | Delay | Route |
-|:-----------:|:-----:|:-----:|
-|      A      |   5   |   A   |
-|      B      |   3   |   B   |
-|      C      |   3   |   F   |
-|      D      |   0   |   -   |
-|      E      |   4   |   F   |
-|      F      |   1   |   F   |
-|      G      |   2   |   F   |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Destination</th>
+<th style="text-align: center;">Delay</th>
+<th style="text-align: center;">Route</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">A</td>
+</tr>
+<tr>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">B</td>
+</tr>
+<tr>
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr>
+<td style="text-align: center;">G</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">F</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>Router B then sends to D it’s version of the router table:</p>
-<p align="center">
-
-| Destination | Delay | Route |
-|:-----------:|:-----:|:-----:|
-|      A      |   3   |   A   |
-|      B      |   0   |   -   |
-|      C      |   2   |   C   |
-|      D      |   1   |   D   |
-|      E      |   5   |   A   |
-|      F      |   2   |   D   |
-|      G      |   3   |   C   |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Destination</th>
+<th style="text-align: center;">Delay</th>
+<th style="text-align: center;">Route</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">A</td>
+</tr>
+<tr>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">C</td>
+</tr>
+<tr>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">D</td>
+</tr>
+<tr>
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">A</td>
+</tr>
+<tr>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">D</td>
+</tr>
+<tr>
+<td style="text-align: center;">G</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">C</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>Router D then rewrites it’s table to reflect the new information:</p>
-<p align="center">
-
-| Destination | Delay | Route |
-|:-----------:|:-----:|:-----:|
-|      A      |   4   |   B   |
-|      B      |   1   |   B   |
-|      C      |   3   |   F   |
-|      D      |   0   |   -   |
-|      E      |   4   |   F   |
-|      F      |   1   |   F   |
-|      G      |   2   |   F   |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Destination</th>
+<th style="text-align: center;">Delay</th>
+<th style="text-align: center;">Route</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">B</td>
+</tr>
+<tr>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">B</td>
+</tr>
+<tr>
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">-</td>
+</tr>
+<tr>
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr>
+<td style="text-align: center;">G</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">F</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>Router D can determine from router B’s information that there is a
 better route to router A than the direct one. This algorithm responds to
 good news quickly and bad news slowly[^8].</p>

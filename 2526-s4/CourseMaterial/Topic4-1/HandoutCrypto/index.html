@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -678,16 +678,26 @@ structures such as this.</p>
 <h2 id="historical-cryptography">Historical cryptography</h2>
 <p>Over 2000 years ago, Cæsar (100-44BC) is reputed to have encoded
 messages to his battalions.</p>
-<p align="center">
-
-|               **`I    C L A V D I V S`**               |
-|:------------------------------------------------------:|
-|  **`A B C D E F G H I K L M N O P Q R S T V X Y Z`**   |
-| **`X Y Z A B C D E F G H I K L M N O P Q R S T V`**` ` |
-|               **`F    Z H X R A F R P`**               |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong><code>I    C L A V D I V S</code></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong><code>A B C D E F G H I K L M N O P Q R S T V X Y Z</code></strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><code>X Y Z A B C D E F G H I K L M N O P Q R S T V</code></strong><code></code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong><code>F    Z H X R A F R P</code></strong></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>He did[^1] this using (what is now called) a Cæsar, or rotation cipher,
 in which we replace each letter in a message, with another letter, by
 rotating the alphabet some fixed number of characters. In Cæsar’s
@@ -705,13 +715,10 @@ were to use a number of different substitutions, one after the other,
 and then repeat until the end of our message, we would have a
 <strong>poly-alphabetic substituion cipher</strong>. Early cipher machines, were of
 this sort.</p>
-<p align="center">
-
-<img src="../../../images/topview.jpg" style="height:3cm" alt="image" />  
-<img src="../../../images/enigma36.jpg" style="height:3cm" alt="image" />
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/topview.jpg" style="height:3cm" alt="image" />  
+<img src="../../../images/enigma36.jpg" style="height:3cm" alt="image" /></p>
+</div>
 <p>In the 1920’s, a German company marketed a series of devices for
 encrypting and decrypting messages. The devices used electro-mechanical
 rotors to generate what appeared to be random characters from a source
@@ -745,12 +752,9 @@ transmissions.</em></p>
 </blockquote>
 <p>I would like to be able to show you a working Enigma machine, but I do
 not have a spare $1M on me today, so instead, I show the M209:</p>
-<p align="center">
-
-<img src="../../../images/IMG_1313.jpg" alt="image" />
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/IMG_1313.jpg" alt="image" /></p>
+</div>
 <p>The M-209 is a portable, mechanical cipher machine used by the US
 military primarily in World War II. The M-209 was designed by Swedish
 cryptographer Boris Hagelin in response to a request for such a portable
@@ -810,31 +814,22 @@ cryptographic systems in IT security:</p>
 </ol>
 <p>A symmetric cipher encrypts a message, with the same key used at both
 the transmitter and receiver:</p>
-<p align="center">
-
-<img src="../../../images/sharedkey.png" alt="image"  style="width: 70%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/sharedkey.png" alt="image"  style="width: 70%;"/></p>
+</div>
 <p>An asymmetric cipher looks much the same, but note that the keys are
 different:</p>
-<p align="center">
-
-<img src="../../../images/ch9f1-a.png" alt="image"  style="width: 100%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/ch9f1-a.png" alt="image"  style="width: 100%;"/></p>
+</div>
 <p>Public key/asymmetric schemes may be used for encrypting data directly.
 In the figure above, a transmitter encrypts the message using the public
 key of the recipient. Since the private key may not be generated easily
 from the public key, the recipient is reasonably sure that no-one else
 can decrypt the data.</p>
-<p align="center">
-
-<img src="../../../images/ch9f1-b.png" alt="image"  style="width: 100%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/ch9f1-b.png" alt="image"  style="width: 100%;"/></p>
+</div>
 <p>We can also use public key schemes to provide authentication. If one
 machine wants to <em>authentically</em> transmit information, it encodes using
 both its private key and the recipient’s public key as seen below. The
@@ -854,12 +849,9 @@ equation, given <span class="arithmatex">\(g\)</span>, <span class="arithmatex">
 separated users to <em>create</em> and <em>share</em> a secret key. A third party
 listening to all communications between the two separated users is not
 realistically able to calculate the shared key.</p>
-<p align="center">
-
-<img src="../../../images/diffie.png" alt="image"  style="width: 80%;"/>
-
-</p>
-
+<div align="center">
+<p><img src="../../../images/diffie.png" alt="image"  style="width: 80%;"/></p>
+</div>
 <p>Consider the participants in the system above. Firstly, it is common to
 use the names Bob, Ted, Carol and Alice (from the movie of the same
 name) when discussing cryptosystems. Secondly, we consider the knowledge
@@ -891,17 +883,39 @@ the shared key. Ted has a much more difficult problem. It is difficult
 to calculate <span class="arithmatex">\(g^{ab}\,\mathrm{mod}\,p\)</span> without knowing either <span class="arithmatex">\(a\)</span> or
 <span class="arithmatex">\(b\)</span>. In the table we show the relative runtimes for cipher operations
 and solving the discrete logarithm problem.</p>
-<p align="center">
-
-| **Bit size** | **Enciphering** |                           **Discrete logarithm solution**                           |
-|:------------:|:---------------:|:-----------------------------------------------------------------------------------:|
-|      10      |       10        |                                         23                                          |
-|     100      |       100       |                                      1,386,282                                      |
-|    1,000     |      1,000      |                           612,700,000,000,000,000,000,000                           |
-|    10,000    |     10,000      | 722,600,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000........ |
-
-</p>
-
+<div align="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Bit size</strong></th>
+<th style="text-align: center;"><strong>Enciphering</strong></th>
+<th style="text-align: center;"><strong>Discrete logarithm solution</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">23</td>
+</tr>
+<tr>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">1,386,282</td>
+</tr>
+<tr>
+<td style="text-align: center;">1,000</td>
+<td style="text-align: center;">1,000</td>
+<td style="text-align: center;">612,700,000,000,000,000,000,000</td>
+</tr>
+<tr>
+<td style="text-align: center;">10,000</td>
+<td style="text-align: center;">10,000</td>
+<td style="text-align: center;">722,600,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000........</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>The algorithmic run-time of the (so-far best) algorithm for solving the
 discrete logarithm problem is in $<span class="arithmatex">\(O(e^{c\sqrt{r\log r}})\)</span>$ where <span class="arithmatex">\(c\)</span> is
 small, but <span class="arithmatex">\(\geq1\)</span>, and <span class="arithmatex">\(r\)</span> is the number of bits in the number. By
