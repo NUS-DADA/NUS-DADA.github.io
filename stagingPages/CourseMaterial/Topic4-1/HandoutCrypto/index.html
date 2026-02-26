@@ -803,10 +803,12 @@ original cipher, it was always just a leftwise rotation of 3 characters.
 We can specify a Cæsar cipher by just noting the number of characters
 that the alphabet is rotated. The number of different useful ciphers
 (the key size) is just <span class="arithmatex">\(25\)</span> for a <span class="arithmatex">\(26\)</span> letter alphabet. We can
-mathematize a rotation cipher like this: $<span class="arithmatex">\(\begin{array}{lll}
+mathematize a rotation cipher like this:</p>
+<div class="arithmatex">\[\begin{array}{lll}
 E(k,p) &amp; = &amp; p+k\bmod26\\
 D(k,c) &amp; = &amp; c-k\bmod26
-\end{array}\)</span>$ These days, we would call this a <strong>mono-alphabetic
+\end{array}\]</div>
+<p>These days, we would call this a <strong>mono-alphabetic
 substitution cipher</strong>, in that we just do a single substitution - every
 time we see the character A it is translated to an X. If instead, we
 were to use a number of different substitutions, one after the other,
