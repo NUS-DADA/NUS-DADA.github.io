@@ -770,11 +770,11 @@ We write:</p>
 <p>This
 <em>modular</em>
 arithmetic has various
-identities[^1]:
-$<span class="arithmatex">\(\begin{aligned}
+identities[^1]:</p>
+<div class="arithmatex">\[\begin{aligned}
 (a\,\mathrm{mod}\,n)+(b\,\mathrm{mod}\,n) &amp; \equiv &amp; a+b\,\,\,\,\,(\mathrm{mod}\,n)\\
 (a\,\mathrm{mod}\,n)*(b\,\mathrm{mod}\,n) &amp; \equiv &amp; a*b\,\,\,\,\,(\mathrm{mod}\,n)
-\end{aligned}\)</span>$</p>
+\end{aligned}\]</div>
 <p>The <em>positive
 integers mod n</em> (<span class="arithmatex">\(Z_{n}\)</span>) form a group under addition. The elements are
 <span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(1\)</span>, <span class="arithmatex">\(2\)</span>, <span class="arithmatex">\(\ldots\)</span>, <span class="arithmatex">\(n-1\)</span>, and the identity is <span class="arithmatex">\(0\)</span>. The inverse of
@@ -2058,9 +2058,9 @@ arbitrary precision numbers.</p>
 effective ways of calculating some large problems. For example,
 an interesting observation that can be made
 here is that because <span class="arithmatex">\(a\)</span> to a power mod <span class="arithmatex">\(p\)</span> always starts repeating
-after the power reaches <span class="arithmatex">\(p-1\)</span>:
-$<span class="arithmatex">\(a^{x}\,\mathrm{mod}\,p=a^{x\,\mathrm{mod}\,(p-1)}\,\mathrm{mod}\,p.\)</span>$
-An example of the use of this:</p>
+after the power reaches <span class="arithmatex">\(p-1\)</span>:</p>
+<div class="arithmatex">\[a^{x}\,\mathrm{mod}\,p=a^{x\,\mathrm{mod}\,(p-1)}\,\mathrm{mod}\,p.\]</div>
+<p>An example of the use of this:</p>
 <div class="arithmatex">\[\begin{aligned}
 \mathrm{result} &amp; = &amp; 7^{1215}\,\mathrm{mod}\,13\\
  &amp; = &amp; 7^{1215\,\mathrm{mod}\,12}\,\mathrm{mod}\,13\\
@@ -2078,8 +2078,8 @@ a professor of mathematics in Saint Petersburg and Berlin. He was a
 prolific researcher despite being completely blind for the last
 seventeen years of his life, during which time he produced much of his
 work.</p>
-<p><strong>Theorem 2</strong>. For every <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(n\)</span> that are relatively prime:
-$<span class="arithmatex">\(a^{\phi(n)}\equiv1\,\,\,\,\,(\mathrm{mod}\,n)\)</span>$</p>
+<p><strong>Theorem 2</strong>. For every <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(n\)</span> that are relatively prime:</p>
+<div class="arithmatex">\[a^{\phi(n)}\equiv1\,\,\,\,\,(\mathrm{mod}\,n)\]</div>
 <p>where <span class="arithmatex">\(\phi(n)\)</span> is the
 totient function and <span class="arithmatex">\(p_{1}\)</span>, <span class="arithmatex">\(\ldots\)</span> , <span class="arithmatex">\(p_{m}\)</span> are all the prime
 numbers that divide evenly into <span class="arithmatex">\(n\)</span>, including <span class="arithmatex">\(n\)</span> itself in case it is
@@ -2089,12 +2089,12 @@ integers less than <span class="arithmatex">\(n\)</span> and relatively prime to
 a specific case of the more general Euler’s theorem. We can see this by
 considering the (Fermat) case where <span class="arithmatex">\(n\)</span> is a prime, and then
 <span class="arithmatex">\(a^{\phi(n)}\,\mathrm{mod}\,n=a^{n-1}\,\mathrm{mod}\,n=1\)</span>. When <span class="arithmatex">\(n\)</span> is a
-product of two primes: <span class="arithmatex">\(n=pq\)</span>, then
-$<span class="arithmatex">\(\phi(n)=n(1-1/p)(1-1/q)=(p-1)(q-1)\)</span>$</p>
+product of two primes: <span class="arithmatex">\(n=pq\)</span>, then</p>
+<div class="arithmatex">\[\phi(n)=n(1-1/p)(1-1/q)=(p-1)(q-1)\]</div>
 <p>and so if <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(pq\)</span> are
-relatively prime, then
-$<span class="arithmatex">\(a^{(p-1)(q-1)}\equiv1\,\,\,\,\,(\mathrm{mod}\,pq)\)</span>$
-The table below shows Euler’s theorem in
+relatively prime, then</p>
+<div class="arithmatex">\[a^{(p-1)(q-1)}\equiv1\,\,\,\,\,(\mathrm{mod}\,pq)\]</div>
+<p>The table below shows Euler’s theorem in
 operation[^3]:</p>
 <div align="center">
 <table>
