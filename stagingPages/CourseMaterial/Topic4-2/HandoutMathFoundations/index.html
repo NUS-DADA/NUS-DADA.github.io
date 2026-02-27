@@ -936,19 +936,19 @@ bitwise
 with an appropriate bit-mask. Two numbers <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(b\)</span> are
 <em>congruent
 modulo</em> <span class="arithmatex">\(n\)</span>
-if <span class="arithmatex">\(a\thinspace \mathrm{mod}\thinspace n=b\thinspace \mathrm{mod}\thinspace n\)</span>.
+if <span class="arithmatex">\(a\,\mathrm{mod}\,n=b\,\mathrm{mod}\,n\)</span>.
 We write:</p>
 <div class="arithmatex">\[\begin{aligned}
-12 &amp; \equiv &amp; 5\thinspace \thinspace \thinspace \thinspace \thinspace (\mathrm{mod}\thinspace 7)\\
-12 &amp; \equiv &amp; 2\thinspace \thinspace \thinspace \thinspace \thinspace (\mathrm{mod}\thinspace 5)
+12 &amp; \equiv &amp; 5\,\,\,\,\,(\mathrm{mod}\,7)\\
+12 &amp; \equiv &amp; 2\,\,\,\,\,(\mathrm{mod}\,5)
 \end{aligned}\]</div>
 <p>This
 <em>modular</em>
 arithmetic has various
 identities<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>:</p>
 <div class="arithmatex">\[\begin{aligned}
-(a\thinspace \mathrm{mod}\thinspace n)+(b\thinspace \mathrm{mod}\thinspace n) &amp; \equiv &amp; a+b\thinspace \thinspace \thinspace \thinspace \thinspace (\mathrm{mod}\thinspace n)\\
-(a\thinspace \mathrm{mod}\thinspace n)*(b\thinspace \mathrm{mod}\thinspace n) &amp; \equiv &amp; a*b\thinspace \thinspace \thinspace \thinspace \thinspace (\mathrm{mod}\thinspace n)
+(a\,\mathrm{mod}\,n)+(b\,\mathrm{mod}\,n) &amp; \equiv &amp; a+b\,\,\,\,\,(\mathrm{mod}\,n)\\
+(a\,\mathrm{mod}\,n)*(b\,\mathrm{mod}\,n) &amp; \equiv &amp; a*b\,\,\,\,\,(\mathrm{mod}\,n)
 \end{aligned}\]</div>
 <p>The <em>positive
 integers mod n</em> (<span class="arithmatex">\(Z_{n}\)</span>) form a group under addition. The elements are
@@ -2052,7 +2052,7 @@ calculus, number theory, analytic geometry and probability.</p>
 <p><strong>Theorem 1</strong>. If <span class="arithmatex">\(p\)</span> is prime, and <span class="arithmatex">\(a\)</span> is a
 positive integer which is not divisible by <span class="arithmatex">\(p\)</span> (i.e.
 <span class="arithmatex">\(\mathrm{gcd}(a,p)=1\)</span>), then
-<span class="arithmatex">\(a^{p-1}\equiv1\thinspace \thinspace \thinspace (\mathrm{mod}\thinspace p)\)</span>.*</p>
+<span class="arithmatex">\(a^{p-1}\equiv1\,\,\,(\mathrm{mod}\,p)\)</span>.*</p>
 <div align="center">
 <table>
 <thead>
@@ -2234,12 +2234,12 @@ effective ways of calculating some large problems. For example,
 an interesting observation that can be made
 here is that because <span class="arithmatex">\(a\)</span> to a power mod <span class="arithmatex">\(p\)</span> always starts repeating
 after the power reaches <span class="arithmatex">\(p-1\)</span>:</p>
-<div class="arithmatex">\[a^{x}\thinspace \mathrm{mod}\thinspace p=a^{x\thinspace \mathrm{mod}\thinspace (p-1)}\thinspace \mathrm{mod}\thinspace p.\]</div>
+<div class="arithmatex">\[a^{x}\,\mathrm{mod}\,p=a^{x\,\mathrm{mod}\,(p-1)}\,\mathrm{mod}\,p.\]</div>
 <p>An example of the use of this:</p>
 <div class="arithmatex">\[\begin{aligned}
-\mathrm{result} &amp; = &amp; 7^{1215}\thinspace \mathrm{mod}\thinspace 13\\
- &amp; = &amp; 7^{1215\thinspace \mathrm{mod}\thinspace 12}\thinspace \mathrm{mod}\thinspace 13\\
- &amp; = &amp; 343\thinspace \mathrm{mod}\thinspace 13\\
+\mathrm{result} &amp; = &amp; 7^{1215}\,\mathrm{mod}\,13\\
+ &amp; = &amp; 7^{1215\,\mathrm{mod}\,12}\,\mathrm{mod}\,13\\
+ &amp; = &amp; 343\,\mathrm{mod}\,13\\
  &amp; = &amp; 5
 \end{aligned}\]</div>
 <p>We have reduced a problem that requires computer
@@ -2254,7 +2254,7 @@ prolific researcher despite being completely blind for the last
 seventeen years of his life, during which time he produced much of his
 work.</p>
 <p><strong>Theorem 2</strong>. For every <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(n\)</span> that are relatively prime:</p>
-<div class="arithmatex">\[a^{\phi(n)}\equiv1\thinspace \thinspace \thinspace \thinspace \thinspace (\mathrm{mod}\thinspace n)\]</div>
+<div class="arithmatex">\[a^{\phi(n)}\equiv1\,\,\,\,\,(\mathrm{mod}\,n)\]</div>
 <p>where <span class="arithmatex">\(\phi(n)\)</span> is the
 totient function and <span class="arithmatex">\(p_{1}\)</span>, <span class="arithmatex">\(\ldots\)</span> , <span class="arithmatex">\(p_{m}\)</span> are all the prime
 numbers that divide evenly into <span class="arithmatex">\(n\)</span>, including <span class="arithmatex">\(n\)</span> itself in case it is
@@ -2263,12 +2263,12 @@ a prime.</p>
 integers less than <span class="arithmatex">\(n\)</span> and relatively prime to <span class="arithmatex">\(n\)</span>. Fermat’s theorem is
 a specific case of the more general Euler’s theorem. We can see this by
 considering the (Fermat) case where <span class="arithmatex">\(n\)</span> is a prime, and then
-<span class="arithmatex">\(a^{\phi(n)}\thinspace \mathrm{mod}\thinspace n=a^{n-1}\thinspace \mathrm{mod}\thinspace n=1\)</span>. When <span class="arithmatex">\(n\)</span> is a
+<span class="arithmatex">\(a^{\phi(n)}\,\mathrm{mod}\,n=a^{n-1}\,\mathrm{mod}\,n=1\)</span>. When <span class="arithmatex">\(n\)</span> is a
 product of two primes: <span class="arithmatex">\(n=pq\)</span>, then</p>
 <div class="arithmatex">\[\phi(n)=n(1-1/p)(1-1/q)=(p-1)(q-1)\]</div>
 <p>and so if <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(pq\)</span> are
 relatively prime, then</p>
-<div class="arithmatex">\[a^{(p-1)(q-1)}\equiv1\thinspace \thinspace \thinspace \thinspace \thinspace (\mathrm{mod}\thinspace pq)\]</div>
+<div class="arithmatex">\[a^{(p-1)(q-1)}\equiv1\,\,\,\,\,(\mathrm{mod}\,pq)\]</div>
 <p>The table below shows Euler’s theorem in
 operation<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>:</p>
 <div align="center">
@@ -2511,13 +2511,13 @@ operation<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>:</p>
 <hr />
 <ol>
 <li id="fn:1">
-<p>Note that sometimes we write <span class="arithmatex">\(a\thinspace \mathrm{mod}\thinspace n=b\thinspace \mathrm{mod}\thinspace n\)</span> and sometimes <span class="arithmatex">\(a\equiv b\thinspace \thinspace \thinspace \thinspace (\mathrm{mod}\thinspace n)\)</span>. Both notations are acceptable.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Note that sometimes we write <span class="arithmatex">\(a\,\mathrm{mod}\,n=b\,\mathrm{mod}\,n\)</span> and sometimes <span class="arithmatex">\(a\equiv b\,\,\,\,(\mathrm{mod}\,n)\)</span>. Both notations are acceptable.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:2">
 <p>Galois developed the original ideas of group theory. He also regularly failed his exams! His physics teacher described him in this way: <em>“He knows absolutely nothing. I have been told that this student has mathematical ability; this certainly astonishes me. Judging by his examination, he seems of little intelligence, or has hidden his intelligence so well that I found it impossible to detect it</em>. He was imprisoned in 1831 over a dinnertime toast, and just before his death (possibly in a gunfight over a paramour), he wrote a letter describing the connection between group theory and the solutions of polynomial equations. He was only 20 when he died. So sad.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p>Arithmetic in the exponent is taken mod <span class="arithmatex">\(\phi(n)\)</span>, so that <span class="arithmatex">\(a^{x}\thinspace \mbox{{mod}}\thinspace n=a^{x\thinspace \mbox{{mod}}\thinspace \phi(n)}\thinspace \mbox{{mod}}\thinspace n\)</span>, if <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(n\)</span> are relatively prime. In the case where <span class="arithmatex">\(n=pq\)</span>, <span class="arithmatex">\(a^{k\phi(n)+1}\thinspace \mbox{{mod}}\thinspace n=a\)</span> for all <span class="arithmatex">\(a\)</span>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p>Arithmetic in the exponent is taken mod <span class="arithmatex">\(\phi(n)\)</span>, so that <span class="arithmatex">\(a^{x}\,\mbox{{mod}}\,n=a^{x\,\mbox{{mod}}\,\phi(n)}\,\mbox{{mod}}\,n\)</span>, if <span class="arithmatex">\(a\)</span> and <span class="arithmatex">\(n\)</span> are relatively prime. In the case where <span class="arithmatex">\(n=pq\)</span>, <span class="arithmatex">\(a^{k\phi(n)+1}\,\mbox{{mod}}\,n=a\)</span> for all <span class="arithmatex">\(a\)</span>.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
