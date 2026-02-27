@@ -421,7 +421,7 @@ so on.</p>
 this:</p>
 <blockquote>
 <p>You have programs, and their data, which are found in the memory of a
-computer. Some computers have separate program and data space[^1], but
+computer. Some computers have separate program and data space<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>, but
 most commonly these days, memory chips hold both instructions and
 data, although the corresponding memory caches may not. The resultant
 architecture is called a modified Harvard architecture.</p>
@@ -524,7 +524,7 @@ support such randomization (i.e you had to opt-in, rather than opt-out).
 To me this seemed like a bad choice of fail-safe defaults, but more
 wiser Windows people than me tell me that many Windows applications
 would break if you turn on ASLR. Most of the OS itself runs with
-ASLR[^2].</p>
+ASLR<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
 <p>If you wish to try this yourself using gcc, remember to tell the
 compiler that you want to generate position independant code:</p>
 <pre><code>gcc -pie -fPIC -o move3 move3.c
@@ -675,8 +675,17 @@ re-invent the wheel. Defensive programming, turn on stackguard etc....</p>
 <p>We have seen some methods used to mitigate memory based attacks on
 applications. Again, the samples shown are only the tip of the iceberg.
 A lesson to be learnt is to: <strong>Lock down your environment</strong>.</p>
-<p>[^1]: ... called the Harvard architecture...</p>
-<p>[^2]: If you want to experiment with your own Windows ASLR features, you can find EMET and procexp.exe.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>... called the Harvard architecture...&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>If you want to experiment with your own Windows ASLR features, you can find EMET and procexp.exe.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 

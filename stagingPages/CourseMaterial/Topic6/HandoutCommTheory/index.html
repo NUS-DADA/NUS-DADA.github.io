@@ -849,7 +849,7 @@ network.</p>
 signal and noise are a maximum (that they are random). In practical
 systems, signals rarely have maximum entropy, and we can do better.
 There may be methods to compress the data perhaps by differentiating
-between lossy and lossless compression schemes[^1]. A signal with an
+between lossy and lossless compression schemes<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. A signal with an
 entropy of <span class="arithmatex">\(0.5\)</span> may not be compressed more than 2:1 unless you use a
 lossy compression scheme.</p>
 <h1 id="sending-signals">Sending signals...</h1>
@@ -956,7 +956,7 @@ following phase plots indicate useful phase/amplitude values:</p>
 <img src="../../../images/qam2.png" alt="image" /></p>
 </div>
 <p>These schemes use multiple amplitudes and phases. They are called
-QAM[^2]. The one on the left has 2 amplitudes and 4 phases giving a
+QAM<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. The one on the left has 2 amplitudes and 4 phases giving a
 total of 3 bits per change. In the other example, we are sending 4
 bits/change (4 bits/baud).</p>
 <p>It is common when sending data using a communication scheme to compress
@@ -1037,7 +1037,7 @@ these lines, the waveform is dramatically changed.</p>
 <p><strong>FIBRE OPTICS (Generally point to point):</strong> Fibre optic technology is
 rapidly replacing other techniques for long distance telephone lines. It
 is also used for large traffic networks, as current technology can
-transmit data at about 1,000Mbps over 1km. The FDDI[^3] standard
+transmit data at about 1,000Mbps over 1km. The FDDI<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup> standard
 specifies 100Mbps over 200km. The Shannon limit is much higher than this
 again, so there is room for technological advancement.</p>
 <p><strong>RADIO. (Multiple Access):</strong> Radio is often the transmission medium for
@@ -1135,9 +1135,20 @@ Kb/s to Gb/s (a range of about 1,000,000:1). The maximum design
 distances range from 10m to 200km (a range of about 20,000:1). All are
 in common use at present, and are considered adequate in their
 application area.</p>
-<p>[^1]: JPEG and Wavelet compression schemes can achieve huge data size reductions without visible impairment of images, but the restored images are not the same as the original ones; they just look the same. The lossless compression schemes used in PkZip, gzip or GIF files (LZW) cannot achieve compression ratios as high as that found in JPEG.</p>
-<p>[^2]: Quadrature Amplitude Modulation.</p>
-<p>[^3]: Fibre Optic Distributed Data Interface</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>JPEG and Wavelet compression schemes can achieve huge data size reductions without visible impairment of images, but the restored images are not the same as the original ones; they just look the same. The lossless compression schemes used in PkZip, gzip or GIF files (LZW) cannot achieve compression ratios as high as that found in JPEG.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Quadrature Amplitude Modulation.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Fibre Optic Distributed Data Interface&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 

@@ -815,18 +815,18 @@ the routing information. An important point about this is that there are
 many ways to change or modify the content of the messages, and the extra
 added routing information.</p>
 <h2 id="ip-mechanisms-addressing-and-layers">IP mechanisms, addressing and layers</h2>
-<p>IP[^1] is perhaps the most widely distributed network layer protocol. It
+<p>IP<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> is perhaps the most widely distributed network layer protocol. It
 belongs to a set of protocols, called IP, developed over the last 25
 years. Initially the IP suite was developed for the US military as a
-research project into fault[^2] tolerant networks. The protocols cover
+research project into fault<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> tolerant networks. The protocols cover
 from <em>network</em> to <em>application</em> layers, and are continually being
 developed. IPv6 is a development of IP, giving a larger address space,
 and support for alternative carriers.</p>
-<p>IP is documented in a set of documents called the RFCs[^3]. There is an
+<p>IP is documented in a set of documents called the RFCs<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>. There is an
 RFC for every protocol in the IP suite. An RFC is initiated by anyone
 who wishes to specify a new protocol and they are commented
 on/vetted/improved by the internet community before final distribution.</p>
-<p>The IP network layer addressing scheme uses four bytes[^4], and is often
+<p>The IP network layer addressing scheme uses four bytes<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>, and is often
 written as dotted decimal, or hex numbers:</p>
 <div align="center">
 <table>
@@ -845,7 +845,7 @@ written as dotted decimal, or hex numbers:</p>
 </table>
 </div>
 <p>This address defines an interface not a host. - a host may have one, two
-or more interfaces, each with different IP network layer addresses[^5].</p>
+or more interfaces, each with different IP network layer addresses<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>.</p>
 <ul>
 <li>
 <p>Each interface has at least one unique address.</p>
@@ -995,7 +995,7 @@ layer, for example between network and network link addresses.</p>
 transmit to, it can find out if the other machine belongs to the same
 network. If it does, the machine needs to find out the datalink address
 of the other machine, so that it can directly send the message.</p>
-<p>The protocol to do this is called ARP[^6].</p>
+<p>The protocol to do this is called ARP<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>.</p>
 <h3 id="arp">ARP</h3>
 <p>An <strong>ARP request</strong> for the specified <em>network</em> address is sent to the
 <em>datalink</em> broadcast address. Machines that know the translation between
@@ -1025,7 +1025,7 @@ schemes used internally:</p>
 </ul>
 <p>If you have a group of networks connected by routers, we have to
 distribute routing information. RIP is one such router protocol. Routers
-listen for, and broadcast RIP[^7] packets out all interfaces. In this
+listen for, and broadcast RIP<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup> packets out all interfaces. In this
 way, the routers can learn about adjacent networks. You can query the
 state of routing tables on most routers. The structure of IP subnetting
 minimizes the number of routes that a router has to keep track of. It is
@@ -1212,7 +1212,7 @@ the best routes:</p>
 </div>
 <p>Router D can determine from router B’s information that there is a
 better route to router A than the direct one. This algorithm responds to
-good news quickly and bad news slowly[^8].</p>
+good news quickly and bad news slowly<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup>.</p>
 <h2 id="ip-spoofing">IP spoofing</h2>
 <p>IP spoofing refers to computer attacks where a hacker writes a program,
 which sends IP packets that have falsified <em>from</em> addresses in the
@@ -1349,14 +1349,35 @@ segment, and then looks for patterns that indicate an intrusion.</p>
 their importance and type.</p>
 <h1 id="defences">Defences...</h1>
 <p>Vigilance, standards, use of standard APIs etc</p>
-<p>[^1]: <strong><u>I</u></strong>nternet <strong><u>P</u></strong>rotocol</p>
-<p>[^2]: The <em>fault</em> the US military was concerned with could tactfully be called a <em>’nuclear’</em> issue...</p>
-<p>[^3]: Request for Comments.</p>
-<p>[^4]: Four bytes will allow over 4,000,000,000 different machine addresses, and this was considered adequate 25 years ago. However a wasteful allocation scheme has resulted in much of this address space being used up.</p>
-<p>[^5]: The IP <em>network</em> layer address is often called the <strong><em>’IP address’</em></strong>.</p>
-<p>[^6]: Address Resolution Protocol.</p>
-<p>[^7]: Routing Information Protocol.</p>
-<p>[^8]: The problem here is commonly known as the <em>count-to-infinity</em> problem. The routers slowly add to their metrics for the bad path - each router thinking it has a slightly better path through another misinformed router.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p><strong><u>I</u></strong>nternet <strong><u>P</u></strong>rotocol&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>The <em>fault</em> the US military was concerned with could tactfully be called a <em>’nuclear’</em> issue...&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Request for Comments.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Four bytes will allow over 4,000,000,000 different machine addresses, and this was considered adequate 25 years ago. However a wasteful allocation scheme has resulted in much of this address space being used up.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>The IP <em>network</em> layer address is often called the <strong><em>’IP address’</em></strong>.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>Address Resolution Protocol.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>Routing Information Protocol.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>The problem here is commonly known as the <em>count-to-infinity</em> problem. The routers slowly add to their metrics for the bad path - each router thinking it has a slightly better path through another misinformed router.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
