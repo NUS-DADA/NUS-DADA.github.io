@@ -71,7 +71,7 @@ href="https://hugh.myddns.me/Askbox/">Q</a><span>]</span></p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/FieldsRingsAndGroups.png"
+<img data-src="../../images/FieldsRingsAndGroups.png"
 style="height: auto; width:100.0%" alt="image" />
 </div>
 </div>
@@ -244,9 +244,9 @@ not “look” nice</h2>
 <div class="dada-frame-body">
 <div class="center">
 <div class="image-grid">
-<img data-src="../../../images/ECC1.png" style="max-width: none; width: auto; height:4.5cm"
+<img data-src="../../images/ECC1.png" style="max-width: none; width: auto; height:4.5cm"
 alt="image" />
-<img data-src="../../../images/ECC2.png" style="max-width: none; width: auto; height:4.5cm"
+<img data-src="../../images/ECC2.png" style="max-width: none; width: auto; height:4.5cm"
 alt="image" />
 </div>
 </div>
@@ -557,7 +557,7 @@ class="math inline">\mathbb{Z}_{N}</span> </span></li>
 <div class="center">
 <div class="dada-fbox"
 style="width: 70%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/FieldsRingsAndGroups.png"
+<img data-src="../../images/FieldsRingsAndGroups.png"
 style="height: auto; width:100.0%" alt="image" />
 </div>
 </div>
@@ -585,7 +585,7 @@ style="color: black">nothing</span></span> (!)</span></p>
 </section>
 <section class="slide level2">
 <h2><span class="math inline">17^{\mathrm{th}}</span> century Frenchman
-Pierre de Fermat<img data-src="../../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm"
+Pierre de Fermat<img data-src="../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm"
 alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="block">
@@ -957,7 +957,7 @@ class="math inline">1</span></span></span></span></td>
 </div>
 </section>
 <section class="slide level2">
-<h2>Fermat’s little theorem<img data-src="../../../images/Zp.png"
+<h2>Fermat’s little theorem<img data-src="../../images/Zp.png"
 style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="block">
@@ -1056,7 +1056,7 @@ class="math inline">{a^{29}\bmod13=a^{29\bmod12}\bmod13=a^{5}\bmod13}</span></sp
 <section class="slide level2">
 <h2>Another example <span
 class="math inline">\text{result}=7^{1215}\bmod13</span><img
-data-src="../../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+data-src="../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="block">
 <div class="block-title">
@@ -1125,10 +1125,10 @@ style="width: 75%; border: 2px solid black; background-color: white; box-sizing:
 <tbody>
 <tr>
 <td style="text-align: center;"><img
-data-src="../../../images/Euler1707-1783.png" style="height: auto; width:100.0%"
+data-src="../../images/Euler1707-1783.png" style="height: auto; width:100.0%"
 alt="image" />  </td>
 <td style="text-align: center;">  <img
-data-src="../../../images/MeAndMyMateEuler.png" style="height: auto; width:100.0%"
+data-src="../../images/MeAndMyMateEuler.png" style="height: auto; width:100.0%"
 alt="image" /></td>
 </tr>
 </tbody>
@@ -1138,7 +1138,7 @@ alt="image" /></td>
 </section>
 <section class="slide level2">
 <h2>Euler’s theorem - a generalization of Fermat’s<img
-data-src="../../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+data-src="../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="block">
 <div class="block-title block-title-hfill">
@@ -1255,7 +1255,7 @@ N=a^{N-1}\bmod N=1}</span></span></p>
 </div>
 </section>
 <section class="slide level2">
-<h2>Special cases<img data-src="../../../images/ZN.png"
+<h2>Special cases<img data-src="../../images/ZN.png"
 style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="exampleblock">
@@ -1358,7 +1358,7 @@ style="color: blue"><span class="math inline">15</span></span>.</p>
 </section>
 <section class="slide level2">
 <h2>Euler table for <span class="math inline">N=15</span>, <span
-class="math inline">\phi(N)=8</span><img data-src="../../../images/ZN.png"
+class="math inline">\phi(N)=8</span><img data-src="../../images/ZN.png"
 style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="center">
@@ -1852,7 +1852,7 @@ class="math inline">a^{28}\bmod15=a^{28\bmod8}\bmod15=a^{4}\bmod15</span></span>
 </div>
 </section>
 <section class="slide level2">
-<h2>Quadratic residues<img data-src="../../../images/Zp.png"
+<h2>Quadratic residues<img data-src="../../images/Zp.png"
 style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="block">
@@ -1965,17 +1965,17 @@ computationally easy.</span></p>
 </div>
 </section>
 <section class="slide level2">
-<h2>Identifying quadratic residues<img data-src="../../../images/Zp.png"
-style="max-width: none; width: auto; height:0.3cm" alt="image" /> <img data-src="../../../images/ZN.png"
+<h2>Identifying quadratic residues<img data-src="../../images/Zp.png"
+style="max-width: none; width: auto; height:0.3cm" alt="image" /> <img data-src="../../images/ZN.png"
 style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="center">
 <div class="image-grid">
-<img data-src="../../../images/Legendre.jpeg" style="max-width: none; width: auto; height:1.5cm"
+<img data-src="../../images/Legendre.jpeg" style="max-width: none; width: auto; height:1.5cm"
 alt="image" />
-<img data-src="../../../images/QRvsNQR.png" style="max-width: none; width: auto; height:1.5cm"
+<img data-src="../../images/QRvsNQR.png" style="max-width: none; width: auto; height:1.5cm"
 alt="image" />
-<img data-src="../../../images/Carl_Jacobi.jpeg" style="max-width: none; width: auto; height:1.5cm"
+<img data-src="../../images/Carl_Jacobi.jpeg" style="max-width: none; width: auto; height:1.5cm"
 alt="image" />
 </div>
 </div>
@@ -2097,8 +2097,8 @@ class="math inline">\mathbb{Z}_{N}</span> </span></li>
 </div>
 </section>
 <section class="slide level2">
-<h2>Complexity of basic arithmetic<img data-src="../../../images/Zp.png"
-style="max-width: none; width: auto; height:0.3cm" alt="image" /> <img data-src="../../../images/ZN.png"
+<h2>Complexity of basic arithmetic<img data-src="../../images/Zp.png"
+style="max-width: none; width: auto; height:0.3cm" alt="image" /> <img data-src="../../images/ZN.png"
 style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="block">
@@ -2199,7 +2199,7 @@ library, and Java “BigInteger” classes. </span></p>
 </div>
 </section>
 <section class="slide level2">
-<h2>On finding generators:<img data-src="../../../images/Zp.png"
+<h2>On finding generators:<img data-src="../../images/Zp.png"
 style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="center">
@@ -2287,12 +2287,12 @@ generator.</span></li>
 </section>
 <section class="slide level2">
 <h2>CRT - the Chinese Remainder Theorem<img
-data-src="../../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+data-src="../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox"
 style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/ChineseEx.png" style="height: auto; width:100.0%"
+<img data-src="../../images/ChineseEx.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -2300,7 +2300,7 @@ alt="image" />
 </section>
 <section class="slide level2">
 <h2>CRT - the Chinese Remainder Theorem<img
-data-src="../../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+data-src="../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="exampleblock">
 <div class="block-title">
@@ -2360,7 +2360,7 @@ class="math inline">23,128</span></span> (and so on).</p>
 </div>
 </section>
 <section class="slide level2">
-<h2>Euclidean algorithm<img data-src="../../../images/ZN.png"
+<h2>Euclidean algorithm<img data-src="../../images/ZN.png"
 style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="exampleblock">
@@ -2420,7 +2420,7 @@ style="background-color: rgb(128,255,255); width: 90%; margin-left: auto; margin
 </div>
 </section>
 <section class="slide level2">
-<h2>Extended Euclidean algorithm<img data-src="../../../images/ZN.png"
+<h2>Extended Euclidean algorithm<img data-src="../../images/ZN.png"
 style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="block">
@@ -2543,7 +2543,7 @@ class="math inline">\mathbb{Z}_{N}</span></span></li>
 </section>
 <section class="slide level2">
 <h2>Easy problems in <span class="math inline">\mathbb{Z}_{p}</span><img
-data-src="../../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+data-src="../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="block">
 <div class="block-title">
@@ -2636,7 +2636,7 @@ symbol).</span></p>
 <section class="slide level2">
 <h2>Believed to be hard problems in <span
 class="math inline">\mathbb{Z}_{p}</span><img
-data-src="../../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+data-src="../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="block">
 <div class="block-title">
@@ -2702,7 +2702,7 @@ style="color: black">...</span></span></li>
 </section>
 <section class="slide level2">
 <h2>Easy problems in <span class="math inline">\mathbb{Z}_{N}</span><img
-data-src="../../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+data-src="../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="block">
 <div class="block-title">
@@ -2741,7 +2741,7 @@ style="color: black"> symbol.</span></p>
 </section>
 <section class="slide level2">
 <h2>Hard problems in <span class="math inline">\mathbb{Z}_{N}</span>
-<img data-src="../../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm"
+<img data-src="../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm"
 alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="block">
@@ -2876,7 +2876,7 @@ style="color: black">.</span></p>
 <h2>Bilinear maps/pairings</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/BilinearMap.png" style="max-width: none; width: auto; height:3.5cm"
+<p><img data-src="../../images/BilinearMap.png" style="max-width: none; width: auto; height:3.5cm"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -3007,13 +3007,13 @@ style="width: 65%; border: 2px solid black; background-color: white; box-sizing:
 <tr>
 <td style="text-align: center;"><span style="color: blue"><span
 class="math inline">G\rightarrow</span></span></td>
-<td style="text-align: center;"><img data-src="../../../images/Z_5.png"
+<td style="text-align: center;"><img data-src="../../images/Z_5.png"
 style="max-width: none; width: auto; height:1.9cm" alt="image" /></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><span style="color: blue"><span
 class="math inline">G_{T}\rightarrow</span></span></td>
 <td style="text-align: center;"><img
-data-src="../../../images/PartZ_11.png" style="max-width: none; width: auto; height:1.9cm"
+data-src="../../images/PartZ_11.png" style="max-width: none; width: auto; height:1.9cm"
 alt="image" /></td>
 </tr>
 </tbody>
@@ -3079,7 +3079,7 @@ invertible.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 40%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/OWFtoiO.png" style="height: auto; width:100.0%"
+<img data-src="../../images/OWFtoiO.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -3126,8 +3126,8 @@ through to multilinear maps for indistinguishability obfuscation.</p>
 </section>
 <section class="slide level2">
 <h2>Presented as <span class="dada-emph">one-way</span> functions<img
-data-src="../../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /> <img
-data-src="../../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+data-src="../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /> <img
+data-src="../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="exampleblock">
 <div class="block-title">
@@ -3203,8 +3203,8 @@ style="color: blue"> Rabin’s scheme</span><span style="color: black">.
 </div>
 </section>
 <section class="slide level2">
-<h2>Summary<img data-src="../../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm"
-alt="image" /> <img data-src="../../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm"
+<h2>Summary<img data-src="../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm"
+alt="image" /> <img data-src="../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm"
 alt="image" /></h2>
 <div class="dada-frame-body">
 <div class="block">

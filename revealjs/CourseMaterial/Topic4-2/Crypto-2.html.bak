@@ -73,9 +73,9 @@ href="https://hugh.myddns.me/Askbox/">Q</a><span>]</span></p>
 <div class="dada-fbox"
 style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div class="image-grid">
-<img data-src="../../../images/Robert_W_Floyd.png" style="max-width: none; width: auto; height:4cm"
+<img data-src="../../images/Robert_W_Floyd.png" style="max-width: none; width: auto; height:4cm"
 alt="image" />
-<img data-src="../../../images/CycleTrail.png" style="max-width: none; width: auto; height:4cm"
+<img data-src="../../images/CycleTrail.png" style="max-width: none; width: auto; height:4cm"
 alt="image" />
 </div>
 </div>
@@ -217,7 +217,7 @@ birthday attack</span></li>
 <h2>Symmetric key systems</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/sharedkey.png" style="height: auto; width:100.0%"
+<p><img data-src="../../images/sharedkey.png" style="height: auto; width:100.0%"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -237,7 +237,7 @@ to use it.</p>
 <h2>Asymmetric key systems</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/rsa1.png" style="height: auto; width:100.0%"
+<p><img data-src="../../images/rsa1.png" style="height: auto; width:100.0%"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -270,10 +270,10 @@ keys, and the keys cannot be derived from each other.</span></p>
 <tbody>
 <tr>
 <td style="text-align: center;"><img
-data-src="../../../images/encryptPK.png" style="max-width: none; width: auto; height:3cm"
+data-src="../../images/encryptPK.png" style="max-width: none; width: auto; height:3cm"
 alt="image" /> </td>
 <td style="text-align: center;">  <img
-data-src="../../../images/authenticatePK.png" style="max-width: none; width: auto; height:3cm"
+data-src="../../images/authenticatePK.png" style="max-width: none; width: auto; height:3cm"
 alt="image" /></td>
 </tr>
 </tbody>
@@ -313,10 +313,10 @@ only Bob could have sent it.</span></span></p>
 <table>
 <tbody>
 <tr>
-<td style="text-align: center;"><img data-src="../../../images/badauth.png"
+<td style="text-align: center;"><img data-src="../../images/badauth.png"
 style="max-width: none; width: auto; height:3cm" alt="image" /></td>
 <td style="text-align: center;"><img
-data-src="../../../images/goodauth.png" style="max-width: none; width: auto; height:3cm"
+data-src="../../images/goodauth.png" style="max-width: none; width: auto; height:3cm"
 alt="image" /></td>
 </tr>
 </tbody>
@@ -352,7 +352,7 @@ the hash of the file.</span></p>
 <h2>Man-in-the-middle for Public Keys</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/mimpk.png" style="height: auto; width:75.0%"
+<p><img data-src="../../images/mimpk.png" style="height: auto; width:75.0%"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -624,9 +624,9 @@ Fermat’s little theorem?</span></li>
 <div class="dada-fbox"
 style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div class="image-grid">
-<img data-src="../../../images/RivestShamirAdelman.png"
+<img data-src="../../images/RivestShamirAdelman.png"
 style="max-width: none; width: auto; height:2.6cm" alt="image" />
-<img data-src="../../../images/rsa1.png" style="max-width: none; width: auto; height:2.6cm"
+<img data-src="../../images/rsa1.png" style="max-width: none; width: auto; height:2.6cm"
 alt="image" />
 </div>
 </div>
@@ -821,12 +821,12 @@ class="table-with-borders table-col-no-left-border table-col-no-right-border tab
 <table>
 <tbody>
 <tr>
-<td style="border-right: none; text-align: center;"><img src="../../../images/ecc1.png"
+<td style="border-right: none; text-align: center;"><img src="../../images/ecc1.png"
 style="max-width: none; width: auto; height:2.8cm" alt="image" /></td>
-<td style="border-left: none; text-align: center;"><img src="../../../images/ecc2.png"
+<td style="border-left: none; text-align: center;"><img src="../../images/ecc2.png"
 style="max-width: none; width: auto; height:2.8cm" alt="image" /></td>
 <td style="border-right: none; text-align: center;"></td>
-<td style="border-left: none; text-align: center;"><img src="../../../images/ECC1.png"
+<td style="border-left: none; text-align: center;"><img src="../../images/ECC1.png"
 style="max-width: none; width: auto; height:2.8cm" alt="image" /></td>
 </tr>
 </tbody>
@@ -1116,7 +1116,7 @@ class="math inline">512</span></span></span></td>
 <h2>Best attack on ECC so far is Pollard-rho/Floyd!</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/CycleTrail7.png" style="max-width: none; width: auto; height:2.5cm"
+<p><img data-src="../../images/CycleTrail7.png" style="max-width: none; width: auto; height:2.5cm"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -1185,7 +1185,7 @@ Q\end{array}}</span></span></span></p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 45%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/One-way-functions-an-illustration.png"
+<img data-src="../../images/One-way-functions-an-illustration.png"
 style="max-width: none; width: auto; height:3cm" alt="image" />
 </div>
 </div>
@@ -1269,7 +1269,7 @@ class="table-with-borders table-col-no-left-border table-col-no-right-border tab
 <tbody>
 <tr>
 <td style="text-align: center;"><img
-data-src="../../../images/2010-05-14-USCYBERCOM_Logo_Cropped-660x660.jpg"
+data-src="../../images/2010-05-14-USCYBERCOM_Logo_Cropped-660x660.jpg"
 style="height: auto; width:100.0%" alt="image" />  </td>
 <td style="text-align: left;"></td>
 </tr>
@@ -1432,7 +1432,7 @@ style="color: blue">80</span></span></td>
 <h2>Cryptographic hashes</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/hash2.png" style="height: auto; width:90.0%"
+<p><img data-src="../../images/hash2.png" style="height: auto; width:90.0%"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -1594,7 +1594,7 @@ tradeoff).</span></span>  </p></td>
 <td style="text-align: center;"><p> </p>
 <div class="center">
 <p><span class="dada-font-tiny"><span style="color: black">’<img
-data-src="../../../images/rainbowtbl1.png" style="height: auto; width:100.0%"
+data-src="../../images/rainbowtbl1.png" style="height: auto; width:100.0%"
 alt="image" /></span></span></p>
 </div></td>
 </tr>
@@ -1609,7 +1609,7 @@ alt="image" /></span></span></p>
 <h2>Reversing the hash</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/rainbowtbl2.png" style="max-width: none; width: auto; height:3.4cm"
+<p><img data-src="../../images/rainbowtbl2.png" style="max-width: none; width: auto; height:3.4cm"
 alt="image" /></p>
 </div>
 <div class="exampleblock">
@@ -1658,7 +1658,7 @@ so on.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 45%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/ohpcrack.png" style="max-width: none; width: auto; height:5cm"
+<img data-src="../../images/ohpcrack.png" style="max-width: none; width: auto; height:5cm"
 alt="image" />
 </div>
 </div>
@@ -1717,7 +1717,7 @@ class="table-with-borders table-col-no-left-border table-col-no-right-border tab
 <tbody>
 <tr>
 <td style="text-align: center;"><img
-data-src="../../../images/birthdayparadox.jpg" style="max-width: none; width: auto; height:3cm"
+data-src="../../images/birthdayparadox.jpg" style="max-width: none; width: auto; height:3cm"
 alt="image" /></td>
 <td style="text-align: left;"><p><span class="dada-font-footnotesize">It
 is NOT the likelihood that someone shares a specific person’s birthday.
@@ -1831,9 +1831,9 @@ f(f(x_{0}))\rightarrow\ldots</span></h2>
 <div class="dada-fbox"
 style="width: 36%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div class="image-grid">
-<img data-src="../../../images/Robert_W_Floyd.png" style="max-width: none; width: auto; height:1.5cm"
+<img data-src="../../images/Robert_W_Floyd.png" style="max-width: none; width: auto; height:1.5cm"
 alt="image" />
-<img data-src="../../../images/CycleTrail.png" style="max-width: none; width: auto; height:1.5cm"
+<img data-src="../../images/CycleTrail.png" style="max-width: none; width: auto; height:1.5cm"
 alt="image" />
 </div>
 </div>
@@ -1888,7 +1888,7 @@ class="math inline">x_{0}\rightarrow f(x_{0})\rightarrow
 f(f(x_{0}))\rightarrow\ldots</span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/CycleTrail.png" style="height: auto; width:35.0%"
+<p><img data-src="../../images/CycleTrail.png" style="height: auto; width:35.0%"
 alt="image" /></p>
 </div>
 <div class="exampleblock">
@@ -1929,7 +1929,7 @@ at the beginning of the loop (where the collision is).</p>
 <h2>Finding a collision with floyd.py</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/CycleTrail2.png" style="height: auto; width:40.0%"
+<p><img data-src="../../images/CycleTrail2.png" style="height: auto; width:40.0%"
 alt="image" /></p>
 </div>
 <div class="exampleblock">
@@ -1966,7 +1966,7 @@ hugh@comp %</code></pre>
 <h2>Practical use in a message/digest collision attack</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/CycleTrail3.png" style="height: auto; width:35.0%"
+<p><img data-src="../../images/CycleTrail3.png" style="height: auto; width:35.0%"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -2014,7 +2014,7 @@ g(0001) &amp; = &amp; \mathrm{Bob~is~a~difficult~and....}
 <h2>Code changes for the collision attack</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/CycleTrail3.png" style="height: auto; width:24.0%"
+<p><img data-src="../../images/CycleTrail3.png" style="height: auto; width:24.0%"
 alt="image" /></p>
 </div>
 <div class="exampleblock">
@@ -2067,10 +2067,10 @@ H}(g(x))</span></h2>
 </tr>
 <tr>
 <td style="text-align: center;"><img
-data-src="../../../images/CycleTrail4.png" style="height: auto; width:35.0%"
+data-src="../../images/CycleTrail4.png" style="height: auto; width:35.0%"
 alt="image" /></td>
 <td style="text-align: center;"><img
-data-src="../../../images/CycleTrail3.png" style="height: auto; width:35.0%"
+data-src="../../images/CycleTrail3.png" style="height: auto; width:35.0%"
 alt="image" /></td>
 </tr>
 <tr>

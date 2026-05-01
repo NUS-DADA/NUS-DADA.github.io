@@ -72,7 +72,7 @@ href="https://hugh.myddns.me/Askbox/">Q</a><span>]</span></p>
 <div class="dada-fbox"
 style="width: 85%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <embed
-data-src="\string&quot;../../../images/DNSSEC illustration\string&quot;.eps"
+data-src="\string&quot;../../images/DNSSEC illustration\string&quot;.eps"
 style="height:6.6cm" />
 </div>
 </div>
@@ -288,7 +288,7 @@ href="https://en.wikipedia.org/wiki/Cross-Border_Interbank_Payment_SystemStanley
 <div class="center">
 <div class="dada-fbox"
 style="width: 32%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/swift1.png" style="max-width: none; width: auto; height:3.3cm"
+<img data-src="../../images/swift1.png" style="max-width: none; width: auto; height:3.3cm"
 alt="image" />
 </div>
 </div>
@@ -327,7 +327,7 @@ multiple countries, and a significant effort.</p>
 <h2>Case study 2: Man-in-the-middle for Public Keys</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/mimpk.png" style="height: auto; width:75.0%"
+<p><img data-src="../../images/mimpk.png" style="height: auto; width:75.0%"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -423,11 +423,11 @@ discarded. Even now the work-around is awkward.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 50%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/pk1.png" style="height: auto; width:100.0%" alt="image" />
+<img data-src="../../images/pk1.png" style="height: auto; width:100.0%" alt="image" />
 </div>
 <div class="dada-fbox"
 style="width: 33%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/pkbnz.png" style="height: auto; width:100.0%"
+<img data-src="../../images/pkbnz.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -457,7 +457,7 @@ href="https://archiv.infsec.ethz.ch/education/fs08/secsem/bleichenbacher98.pdf">
 <div class="dada-font-footnotesize">
 <div class="dada-fbox"
 style="width: 55%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/PKCS1PaddingFormat.png" style="height: auto; width:100.0%"
+<img data-src="../../images/PKCS1PaddingFormat.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -560,7 +560,7 @@ href="https://weakdh.org/">X</a><span>]</span></span></h2>
 <div class="center">
 <div class="dada-fbox"
 style="width: 53%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/logjam1.png" style="max-width: none; width: auto; height:4cm"
+<img data-src="../../images/logjam1.png" style="max-width: none; width: auto; height:4cm"
 alt="image" />
 </div>
 </div>
@@ -606,7 +606,7 @@ done</span><span style="color: black">?</span></p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 60%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/NSAVPNTURMOIL.png" style="max-width: none; width: auto; height:4cm"
+<img data-src="../../images/NSAVPNTURMOIL.png" style="max-width: none; width: auto; height:4cm"
 alt="image" />
 </div>
 </div>
@@ -675,7 +675,7 @@ prime</span><span style="color: black">, of 3 out of the 4 steps:
 <div class="center">
 <div class="dada-fbox"
 style="width: 49%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/precomp.png" style="max-width: none; width: auto; height:1.5cm"
+<img data-src="../../images/precomp.png" style="max-width: none; width: auto; height:1.5cm"
 alt="image" />
 </div>
 </div>
@@ -709,7 +709,7 @@ style="color: black"> (2048-bit or stronger).</span></p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 45%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/C17_10-3.gif" style="height: auto; width:100.0%"
+<img data-src="../../images/C17_10-3.gif" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -768,7 +768,7 @@ Challenge response protocol for password checking...
 </div>
 <div class="block-content">
 <div class="center">
-<p><img data-src="../../../images/snoop.png" style="height: auto; width:65.0%"
+<p><img data-src="../../images/snoop.png" style="height: auto; width:65.0%"
 alt="image" /></p>
 </div>
 </div>
@@ -887,7 +887,7 @@ style="width: 65%; border: 2px solid black; background-color: white; box-sizing:
 <table>
 <tbody>
 <tr>
-<td style="text-align: center;"> <img data-src="../../../images/krb1.png"
+<td style="text-align: center;"> <img data-src="../../images/krb1.png"
 style="max-width: none; width: auto; height:6.5cm" alt="image" />  </td>
 <td style="text-align: center;"><p> </p>
 <div class="block">
@@ -927,7 +927,7 @@ communications. There is a Key Distribution Center (KDC).</p>
 <h2>Kerberos</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/kerb1.png" style="max-width: none; width: auto; height:3cm"
+<p><img data-src="../../images/kerb1.png" style="max-width: none; width: auto; height:3cm"
 alt="image" /></p>
 </div>
 <div class="exampleblock">
@@ -1461,12 +1461,12 @@ href="https://docs.particle.io/photon-2/">i4</a><span>]</span></span></h2>
 <div class="center">
 <div class="dada-fbox"
 style="width: 45%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/iot1.png" style="max-width: none; width: auto; height:3.5cm"
+<img data-src="../../images/iot1.png" style="max-width: none; width: auto; height:3.5cm"
 alt="image" />
 </div>
 <div class="dada-fbox"
 style="width: 45%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/iot2.png" style="max-width: none; width: auto; height:3.5cm"
+<img data-src="../../images/iot2.png" style="max-width: none; width: auto; height:3.5cm"
 alt="image" />
 </div>
 </div>
@@ -1544,7 +1544,7 @@ Single token needed for access...
 <div class="center">
 <div class="dada-fbox"
 style="width: 65%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/iot3.png" style="max-width: none; width: auto; height:6cm" alt="image" />
+<img data-src="../../images/iot3.png" style="max-width: none; width: auto; height:6cm" alt="image" />
 </div>
 </div>
 </div>
@@ -1557,17 +1557,17 @@ style="width: 65%; border: 2px solid black; background-color: white; box-sizing:
 <div class="center">
 <div class="dada-fbox"
 style="width: 25%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/Poster.jpg" style="max-width: none; width: auto; height:4.7cm"
+<img data-src="../../images/Poster.jpg" style="max-width: none; width: auto; height:4.7cm"
 alt="image" />
 </div>
 <div class="dada-fbox"
 style="width: 24%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/gp05Redacted.png" style="max-width: none; width: auto; height:4.7cm"
+<img data-src="../../images/gp05Redacted.png" style="max-width: none; width: auto; height:4.7cm"
 alt="image" />
 </div>
 <div class="dada-fbox"
 style="width: 24%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/gp05UnRedacted.png" style="max-width: none; width: auto; height:4.7cm"
+<img data-src="../../images/gp05UnRedacted.png" style="max-width: none; width: auto; height:4.7cm"
 alt="image" />
 </div>
 </div>

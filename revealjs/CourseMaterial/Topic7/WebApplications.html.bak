@@ -72,7 +72,7 @@ href="https://hugh.myddns.me/Askbox/">Q</a><span>]</span></p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 65%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/first.png" style="max-width: none; width: auto; height:6.5cm"
+<img data-src="../../images/first.png" style="max-width: none; width: auto; height:6.5cm"
 alt="image" />
 </div>
 </div>
@@ -240,9 +240,9 @@ do?</span></li>
 <div class="dada-fbox"
 style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div class="image-grid">
-<img data-src="../../../images/semicoloninjection1.png" style="max-width: none; width: auto; height:4cm"
+<img data-src="../../images/semicoloninjection1.png" style="max-width: none; width: auto; height:4cm"
 alt="image" />
-<img data-src="../../../images/DCS_true.png" style="max-width: none; width: auto; height:4cm"
+<img data-src="../../images/DCS_true.png" style="max-width: none; width: auto; height:4cm"
 alt="image" />
 </div>
 </div>
@@ -267,7 +267,7 @@ usernames and passwords</span> for remote mounting a file system:</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 39%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/DCS_true.png" style="max-width: none; width: auto; height:4cm"
+<img data-src="../../images/DCS_true.png" style="max-width: none; width: auto; height:4cm"
 alt="image" />
 </div>
 </div>
@@ -311,7 +311,7 @@ extra access).</p>
 <div class="dada-fbox"
 style="width: 78%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <img
-data-src="../../../images/where-there-is-a-shell-there-is-a-way-unix-img-2342342-538x300_c.jpg"
+data-src="../../images/where-there-is-a-shell-there-is-a-way-unix-img-2342342-538x300_c.jpg"
 style="max-width: none; width: auto; height:6cm" alt="image" />
 </div>
 </div>
@@ -374,7 +374,7 @@ on web servers, DHCP...</p>
 I’m shellshocked!
 <div class="dada-fbox"
 style="width: 8%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/ss_effectsof_shellshock.jpg"
+<img data-src="../../images/ss_effectsof_shellshock.jpg"
 style="height: auto; width:100.0%" alt="image" />
 </div>
 Better get bash fixed ASAP methinks.
@@ -418,7 +418,7 @@ do?</span></li>
 <h2>A web application injection...</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/sqlinjection1.png" style="height: auto; width:85.0%"
+<p><img data-src="../../images/sqlinjection1.png" style="height: auto; width:85.0%"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -462,7 +462,7 @@ new string which is a (SQL) query to a database.</span></p>
 </div>
 <div class="dada-fbox"
 style="width: 12%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/new-request-a-quote-form.jpg"
+<img data-src="../../images/new-request-a-quote-form.jpg"
 style="height: auto; width:8.0%" alt="image" />
 </div>
 </div>
@@ -472,7 +472,7 @@ style="height: auto; width:8.0%" alt="image" />
 <div class="dada-font-footnotesize">
 <div class="dada-fbox"
 style="width: 13%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/sql_injection.gif" style="height: auto; width:15.0%"
+<img data-src="../../images/sql_injection.gif" style="height: auto; width:15.0%"
 alt="image" />
 </div>
 <div class="dada-bubble"
@@ -506,7 +506,7 @@ called the “</span></p>
 <h2>The result is BAD...</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/sqlinjection2.png" style="height: auto; width:85.0%"
+<p><img data-src="../../images/sqlinjection2.png" style="height: auto; width:85.0%"
 alt="image" /></p>
 </div>
 <div class="alertblock">
@@ -582,7 +582,7 @@ SELECT {*} FROM info WHERE &#39;t&#39; = &#39;t&#39;;</code></pre>
 <div class="center">
 <div class="dada-fbox"
 style="width: 75%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/nussec-1.png" style="max-width: none; width: auto; height:4cm"
+<img data-src="../../images/nussec-1.png" style="max-width: none; width: auto; height:4cm"
 alt="image" />
 </div>
 </div>
@@ -655,7 +655,7 @@ style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-ri
 <div class="center">
 <div class="dada-fbox"
 style="width: 78%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/KirstySQLi.png" style="max-width: none; width: auto; height:6cm"
+<img data-src="../../images/KirstySQLi.png" style="max-width: none; width: auto; height:6cm"
 alt="image" />
 </div>
 </div>
@@ -1047,9 +1047,9 @@ href="https://hugh.myddns.me/media/movies/XSSReflected.srt.mp4">3</a><span>]</sp
 <div class="dada-fbox"
 style="width: 87%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div class="image-grid">
-<img data-src="../../../images/XSSStored.png" style="max-width: none; width: auto; height:4.5cm"
+<img data-src="../../images/XSSStored.png" style="max-width: none; width: auto; height:4.5cm"
 alt="image" />
-<img data-src="../../../images/XSSReflected.png" style="max-width: none; width: auto; height:4.5cm"
+<img data-src="../../images/XSSReflected.png" style="max-width: none; width: auto; height:4.5cm"
 alt="image" />
 </div>
 </div>
@@ -1092,7 +1092,7 @@ style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-ri
 <div class="center">
 <div class="dada-fbox"
 style="width: 70%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/csrf.jpg" style="height: auto; width:100.0%"
+<img data-src="../../images/csrf.jpg" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1111,7 +1111,7 @@ style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-ri
 <div class="center">
 <div class="dada-fbox"
 style="width: 70%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/clickjack.png" style="height: auto; width:100.0%"
+<img data-src="../../images/clickjack.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1160,7 +1160,7 @@ style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-ri
 <div class="center">
 <div class="dada-fbox"
 style="width: 78%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/KevinXSS.png" style="max-width: none; width: auto; height:6cm"
+<img data-src="../../images/KevinXSS.png" style="max-width: none; width: auto; height:6cm"
 alt="image" />
 </div>
 </div>
@@ -1411,7 +1411,7 @@ href="https://www.rapid7.com/blog/post/2018/07/24/under-the-hoodie-2018-lessons-
 <div class="center">
 <div class="dada-fbox"
 style="width: 85%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/OWASPTop10.png" style="max-width: none; width: auto; height:3cm"
+<img data-src="../../images/OWASPTop10.png" style="max-width: none; width: auto; height:3cm"
 alt="image" />
 </div>
 <div class="dada-font-footnotesize">
@@ -1449,7 +1449,7 @@ hacking. In the end they help you remediate issues.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 75%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/Top4.png" style="max-width: none; width: auto; height:4cm" alt="image" />
+<img data-src="../../images/Top4.png" style="max-width: none; width: auto; height:4cm" alt="image" />
 </div>
 </div>
 <div class="exampleblock">
@@ -1482,7 +1482,7 @@ systems at least annually.</span></li>
 <div class="center">
 <div class="dada-fbox"
 style="width: 75%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/PenTestingSatges.png" style="height: auto; width:100.0%"
+<img data-src="../../images/PenTestingSatges.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1513,7 +1513,7 @@ href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-115.
 <tr>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"> <img
-data-src="../../../images/ScopeDoc.png" style="max-width: none; width: auto; height:6.7cm" alt="image" />
+data-src="../../images/ScopeDoc.png" style="max-width: none; width: auto; height:6.7cm" alt="image" />
   </td>
 </tr>
 </tbody>
@@ -1528,7 +1528,7 @@ data-src="../../../images/ScopeDoc.png" style="max-width: none; width: auto; hei
 <div class="center">
 <div class="dada-fbox"
 style="width: 85%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/wstg-1-6.png" style="max-width: none; width: auto; height:6.5cm"
+<img data-src="../../images/wstg-1-6.png" style="max-width: none; width: auto; height:6.5cm"
 alt="image" />
 </div>
 <p>...</p>
@@ -1543,7 +1543,7 @@ href="https://www.exploit-db.com/google-hacking-database">i9</a><span>]</span></
 <div class="center">
 <div class="dada-fbox"
 style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/GHDB.png" style="height: auto; width:100.0%"
+<img data-src="../../images/GHDB.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1578,7 +1578,7 @@ class="dada-bold"><code>intitle:"Network Camera" inurl:main.cgi</code></span>
 <div class="center">
 <div class="dada-fbox"
 style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/Burp1.png" style="max-width: none; width: auto; height:6.7cm"
+<img data-src="../../images/Burp1.png" style="max-width: none; width: auto; height:6.7cm"
 alt="image" />
 </div>
 </div>
@@ -1594,10 +1594,10 @@ style="width: 92%; border: 2px solid black; background-color: white; box-sizing:
 <table>
 <tbody>
 <tr>
-<td style="text-align: center;"><img data-src="../../../images/Ensign.png"
+<td style="text-align: center;"><img data-src="../../images/Ensign.png"
 style="max-width: none; width: auto; height:6.5cm" alt="image" /> </td>
 <td style="text-align: center;"> <img
-data-src="../../../images/Offensive.png" style="max-width: none; width: auto; height:6.5cm"
+data-src="../../images/Offensive.png" style="max-width: none; width: auto; height:6.5cm"
 alt="image" /></td>
 </tr>
 </tbody>

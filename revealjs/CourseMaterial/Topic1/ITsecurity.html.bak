@@ -55,7 +55,7 @@ href="https://hugh.myddns.me/Askbox/">Q</a><span>]</span></p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/Family1a.png" style="height: auto; width:100.0%"
+<img data-src="../../images/Family1a.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -67,7 +67,7 @@ alt="image" />
 <div class="center">
 <div class="dada-fbox"
 style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/150201.jpg" style="height: auto; width:100.0%"
+<img data-src="../../images/150201.jpg" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 <figure>
@@ -137,9 +137,9 @@ class="table-with-borders table-col-no-left-border table-col-no-right-border tab
 <tbody>
 <tr>
 <td style="text-align: center;">  <img
-src="../../../images/defence_against.jpg" style="max-width: none; width: auto; max-height: none; height:324px"
+src="../../images/defence_against.jpg" style="max-width: none; width: auto; max-height: none; height:324px"
 alt="image" />  </td>
-<td style="border-right: none; text-align: center;">  <img src="../../../images/hughhead2.png"
+<td style="border-right: none; text-align: center;">  <img src="../../images/hughhead2.png"
 style="max-width: none; width: auto; max-height: none; height:324px" alt="image" />  </td>
 <td style="border-left: none; text-align: left;"><span style="color: blue"> </span> <span
 style="color: blue"> </span> <span style="color: blue"> </span><br />
@@ -147,7 +147,7 @@ style="color: blue"> </span> <span style="color: blue"> </span><br />
 <span style="color: blue">Hugh Anderson</span><br />
 <span style="color: blue">COM2: #02-34</span></td>
 <td style="border-right: none; text-align: center;">  <img
-src="../../../images/ChuaYaoXuanPhoto.jpg" style="max-width: none; width: auto; max-height: none; height:324px"
+src="../../images/ChuaYaoXuanPhoto.jpg" style="max-width: none; width: auto; max-height: none; height:324px"
 alt="image" />  </td>
 <td style="border-left: none; text-align: left;"><span style="color: blue"> </span> <span
 style="color: blue"> </span>  <span style="color: blue"></span><br />
@@ -318,7 +318,7 @@ points. If you think “Over 9000!”, then it is “Over 9000!”.</p>
 <span class="dada-bold"></span>
 <div class="dada-fbox"
 style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/2025-2.png" style="height: auto; width:100.0%"
+<img data-src="../../images/2025-2.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -338,11 +338,11 @@ href="https://hugh.myddns.me/media/movies/gp3.mp4">2</a><span>]</span></span></h
 <div class="dada-fbox"
 style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div class="image-grid">
-<img data-src="../../../images/gp03Poster.png" style="max-width: none; width: auto; max-height: none; height:464px"
+<img data-src="../../images/gp03Poster.png" style="max-width: none; width: auto; max-height: none; height:464px"
 alt="image" />
-<img data-src="../../../images/gp05Poster.png" style="max-width: none; width: auto; max-height: none; height:464px"
+<img data-src="../../images/gp05Poster.png" style="max-width: none; width: auto; max-height: none; height:464px"
 alt="image" />
-<img data-src="../../../images/gp06Poster.png" style="max-width: none; width: auto; max-height: none; height:464px"
+<img data-src="../../images/gp06Poster.png" style="max-width: none; width: auto; max-height: none; height:464px"
 alt="image" />
 </div>
 </div>
@@ -474,7 +474,7 @@ href="https://attackmap.sonicwall.com/live-attack-map/">i6</a><span>]</span></sp
 <div class="center">
 <div class="dada-fbox"
 style="width: 53%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/norse.png" style="height: auto; width:100.0%"
+<img data-src="../../images/norse.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -498,7 +498,7 @@ some level of protection. But still the attacks continue.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 50%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/php_by_day-1.png" style="height: auto; width:100.0%"
+<img data-src="../../images/php_by_day-1.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -524,9 +524,9 @@ day. Nowadays it takes about 5 hours.</p>
 <div class="dada-fbox"
 style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div class="image-grid">
-<img data-src="../../../images/DBSATMFraud.png" style="max-width: none; width: auto; max-height: none; height:486px"
+<img data-src="../../images/DBSATMFraud.png" style="max-width: none; width: auto; max-height: none; height:486px"
 alt="image" />
-<img data-src="../../../images/skimarrest.png" style="max-width: none; width: auto; max-height: none; height:486px"
+<img data-src="../../images/skimarrest.png" style="max-width: none; width: auto; max-height: none; height:486px"
 alt="image" />
 </div>
 </div>
@@ -568,25 +568,25 @@ class="table-with-borders table-col-no-left-border table-col-no-right-border tab
 <table>
 <thead>
 <tr>
-<th style="text-align: center;"><img data-src="../../../images/skim1-2.jpg"
+<th style="text-align: center;"><img data-src="../../images/skim1-2.jpg"
 style="max-width: none; width: auto; max-height: none; height:302px" alt="image" /></th>
 <th style="text-align: center;"><img
-data-src="../../../images/ATMcardreader.jpg" style="max-width: none; width: auto; max-height: none; height:302px"
+data-src="../../images/ATMcardreader.jpg" style="max-width: none; width: auto; max-height: none; height:302px"
 alt="image" /></th>
 <th style="text-align: center;"><img
-data-src="../../../images/ATMcardskimmer.jpg" style="max-width: none; width: auto; max-height: none; height:302px"
+data-src="../../images/ATMcardskimmer.jpg" style="max-width: none; width: auto; max-height: none; height:302px"
 alt="image" /></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: center;"><img
-data-src="../../../images/smallcam.jpg" style="max-width: none; width: auto; max-height: none; height:281px"
+data-src="../../images/smallcam.jpg" style="max-width: none; width: auto; max-height: none; height:281px"
 alt="image" /></td>
-<td style="text-align: center;"><img data-src="../../../images/atm10.png"
+<td style="text-align: center;"><img data-src="../../images/atm10.png"
 style="max-width: none; width: auto; max-height: none; height:281px" alt="image" /></td>
 <td style="text-align: center;"><img
-data-src="../../../images/Skimmer5.png" style="max-width: none; width: auto; max-height: none; height:281px"
+data-src="../../images/Skimmer5.png" style="max-width: none; width: auto; max-height: none; height:281px"
 alt="image" /></td>
 </tr>
 </tbody>
@@ -616,7 +616,7 @@ href="https://hugh.myddns.me/media/pdfs/National-Security-Archive-2018-09-06-PAR
 <div class="center">
 <div class="dada-fbox"
 style="width: 50%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/swift1.png" style="height: auto; width:100.0%"
+<img data-src="../../images/swift1.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -641,7 +641,7 @@ and the money was lost.</p>
 <div class="dada-font-footnotesize">
 <div class="dada-fbox"
 style="width: 35%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/waikato-dhb-photo.jpg" style="height: auto; width:100.0%"
+<img data-src="../../images/waikato-dhb-photo.jpg" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -681,7 +681,7 @@ operations and so on.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 40%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/dhb.png" style="height: auto; width:100.0%" alt="image" />
+<img data-src="../../images/dhb.png" style="height: auto; width:100.0%" alt="image" />
 </div>
 </div>
 <div class="block">
@@ -753,7 +753,7 @@ Consequences...
 <div class="dada-font-footnotesize dada-hfill-layout">
 <div class="dada-fbox"
 style="width: 13%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/KeithNg.png" style="height: auto; width:100.0%"
+<img data-src="../../images/KeithNg.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 Keith became a real journalist! WINZ officers were promoted!
@@ -770,7 +770,7 @@ href="https://hugh.myddns.me/media/movies/Diesel-1.mp4">7</a><span>]</span></spa
 <div class="center">
 <div class="dada-fbox"
 style="width: 55%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/diesel.jpg" style="height: auto; width:100.0%"
+<img data-src="../../images/diesel.jpg" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -804,7 +804,7 @@ class="table-with-borders table-col-no-left-border table-col-no-right-border tab
 <tbody>
 <tr>
 <td style="text-align: center;"><img
-data-src="../../../images/dependency_2x.png" style="max-width: none; width: auto; max-height: none; height:594px"
+data-src="../../images/dependency_2x.png" style="max-width: none; width: auto; max-height: none; height:594px"
 alt="image" /></td>
 <td style="text-align: left;"><p>  <span
 class="dada-font-footnotesize"><span class="dada-emph">Relied on in
@@ -969,7 +969,7 @@ style="color: blue">impediment</span> to using the system.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 27%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/lpi.png" style="height: auto; width:100.0%" alt="image" />
+<img data-src="../../images/lpi.png" style="height: auto; width:100.0%" alt="image" />
 </div>
 </div>
 <div class="block">
@@ -1010,7 +1010,7 @@ much <span style="color: blue">higher levels of assurance</span> than
 <div class="center">
 <div class="dada-fbox"
 style="width: 25%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/masks.png" style="height: auto; width:100.0%"
+<img data-src="../../images/masks.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1125,7 +1125,7 @@ href="https://www.cl.cam.ac.uk/~rja14/book.html">ctrl-i8</a><span>]</span></span
 <div class="center">
 <div class="dada-fbox"
 style="width: 35%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/polincmechass.png" style="height: auto; width:100.0%"
+<img data-src="../../images/polincmechass.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1164,7 +1164,7 @@ guarding and maintaining the system, and the attackers.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 25%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/911.png" style="height: auto; width:100.0%" alt="image" />
+<img data-src="../../images/911.png" style="height: auto; width:100.0%" alt="image" />
 </div>
 </div>
 <div class="block">
@@ -1270,7 +1270,7 @@ communication.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 40%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/hospital.png" style="height: auto; width:100.0%"
+<img data-src="../../images/hospital.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1404,7 +1404,7 @@ effect of a vulnerability.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 35%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/triangle2.jpg" style="height: auto; width:100.0%"
+<img data-src="../../images/triangle2.jpg" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1519,15 +1519,15 @@ style="width: 70%; border: 2px solid black; background-color: white; box-sizing:
 <table>
 <tbody>
 <tr>
-<td style="text-align: center;"><img data-src="../../../images/attack1.png"
+<td style="text-align: center;"><img data-src="../../images/attack1.png"
 style="max-width: none; width: auto; max-height: none; height:292px" alt="image" /></td>
-<td style="text-align: center;"><img data-src="../../../images/attack2.png"
+<td style="text-align: center;"><img data-src="../../images/attack2.png"
 style="max-width: none; width: auto; max-height: none; height:292px" alt="image" /></td>
 </tr>
 <tr>
-<td style="text-align: center;"><img data-src="../../../images/attack3.png"
+<td style="text-align: center;"><img data-src="../../images/attack3.png"
 style="max-width: none; width: auto; max-height: none; height:292px" alt="image" /></td>
-<td style="text-align: center;"><img data-src="../../../images/attack4.png"
+<td style="text-align: center;"><img data-src="../../images/attack4.png"
 style="max-width: none; width: auto; max-height: none; height:292px" alt="image" /></td>
 </tr>
 </tbody>
@@ -1553,7 +1553,7 @@ Fabrication, remind us of the routes taken.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 70%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/security.jpg" style="height: auto; width:100.0%"
+<img data-src="../../images/security.jpg" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1617,9 +1617,9 @@ class="table-with-borders table-col-no-left-border table-col-no-right-border tab
 <tbody>
 <tr>
 <td style="text-align: center;"><img
-data-src="../../../images/polincmechass.png" style="max-width: none; width: auto; max-height: none; height:324px"
+data-src="../../images/polincmechass.png" style="max-width: none; width: auto; max-height: none; height:324px"
 alt="image" /></td>
-<td style="text-align: left;"><img data-src="../../../images/Carr.png"
+<td style="text-align: left;"><img data-src="../../images/Carr.png"
 style="max-width: none; width: auto; max-height: none; height:324px" alt="image" /></td>
 </tr>
 </tbody>

@@ -55,7 +55,7 @@ href="https://satellitemap.space/?constellation=starlink">i9</a><span>]</span></
 <div class="center">
 <div class="dada-fbox"
 style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/Starlink.png" style="max-width: none; width: auto; height:6.5cm"
+<img data-src="../../images/Starlink.png" style="max-width: none; width: auto; height:6.5cm"
 alt="image" />
 </div>
 </div>
@@ -199,7 +199,7 @@ Moments in time...
 <div class="center">
 <div class="dada-fbox"
 style="width: 60%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/topInternetHistory.png" style="max-width: none; width: auto; height:6cm"
+<img data-src="../../images/topInternetHistory.png" style="max-width: none; width: auto; height:6cm"
 alt="image" />
 </div>
 </div>
@@ -216,11 +216,11 @@ href="https://hugh.myddns.me/media/movies/ITCrowd-2.srt.mp4">2</a><span>]</span>
 <div class="dada-fbox"
 style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div class="image-grid">
-<img data-src="../../../images/1969_4-node_map.gif" style="max-width: none; width: auto; max-height: none; height:432px"
+<img data-src="../../images/1969_4-node_map.gif" style="max-width: none; width: auto; max-height: none; height:432px"
 alt="image" />
-<img data-src="../../../images/arpanet-4.jpg" style="max-width: none; width: auto; max-height: none; height:432px"
+<img data-src="../../images/arpanet-4.jpg" style="max-width: none; width: auto; max-height: none; height:432px"
 alt="image" />
-<img data-src="../../../images/imp_log.jpg" style="max-width: none; width: auto; max-height: none; height:432px"
+<img data-src="../../images/imp_log.jpg" style="max-width: none; width: auto; max-height: none; height:432px"
 alt="image" />
 </div>
 </div>
@@ -252,9 +252,9 @@ href="https://hugh.myddns.me/media/movies/Intnet1.mp4">9</a><span>]</span></span
 <div class="dada-fbox"
 style="width: 93%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div class="image-grid">
-<img data-src="../../../images/networks.png" style="max-width: none; width: auto; max-height: none; height:594px"
+<img data-src="../../images/networks.png" style="max-width: none; width: auto; max-height: none; height:594px"
 alt="image" />
-<img data-src="../../../images/IntNet1.png" style="max-width: none; width: auto; max-height: none; height:594px"
+<img data-src="../../images/IntNet1.png" style="max-width: none; width: auto; max-height: none; height:594px"
 alt="image" />
 </div>
 </div>
@@ -284,7 +284,7 @@ Internet.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 45%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/DMZLevel1.jpg" style="max-width: none; width: auto; max-height: none; height:540px"
+<img data-src="../../images/DMZLevel1.jpg" style="max-width: none; width: auto; max-height: none; height:540px"
 alt="image" />
 </div>
 </div>
@@ -309,7 +309,7 @@ Internet side :)</p>
 <h2>Systems, networks...</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/Internet2.png" style="height: auto; width:70.0%"
+<p><img data-src="../../images/Internet2.png" style="height: auto; width:70.0%"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -366,7 +366,7 @@ style="color: blue">Not too hard.</span></p>
 <h2>Internet hacking scenario #1: Malicious DNS</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/dnshack1.png" style="height: auto; width:35.0%"
+<p><img data-src="../../images/dnshack1.png" style="height: auto; width:35.0%"
 alt="image" /></p>
 </div>
 <div class="alertblock">
@@ -398,7 +398,7 @@ login information and proceeds to empty your account.</span></p>
 <h2>Internet hacking scenario #2: Malicious website</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/keylog1.png" style="height: auto; width:35.0%"
+<p><img data-src="../../images/keylog1.png" style="height: auto; width:35.0%"
 alt="image" /></p>
 </div>
 <div class="alertblock">
@@ -429,7 +429,7 @@ to control your machine...</span></p>
 <h2>Internet hacking scenario #3: Home Wifi insecurity</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/wifihack1.png" style="height: auto; width:35.0%"
+<p><img data-src="../../images/wifihack1.png" style="height: auto; width:35.0%"
 alt="image" /></p>
 </div>
 <div class="alertblock">
@@ -460,7 +460,7 @@ class="hfill-right"> <span>[</span><a
 href="https://codebutler.github.io/firesheep/">X</a><span>]</span></span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/starbucks1.png" style="height: auto; width:39.0%"
+<p><img data-src="../../images/starbucks1.png" style="height: auto; width:39.0%"
 alt="image" /></p>
 </div>
 <div class="alertblock">
@@ -507,7 +507,7 @@ TLS...</span></li>
 href="https://datatracker.ietf.org/doc/html/rfc791">ctrl-i1</a><span>]</span></span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/packets.png" style="height: auto; width:60.0%"
+<p><img data-src="../../images/packets.png" style="height: auto; width:60.0%"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -593,7 +593,7 @@ layers.</span></p>
 <h2>Looking at computer communication</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/osi-ip.png" style="max-width: none; width: auto; height:4cm"
+<p><img data-src="../../images/osi-ip.png" style="max-width: none; width: auto; height:4cm"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -647,7 +647,7 @@ layer:</span></dt>
 <div class="center">
 <div class="dada-fbox"
 style="width: 50%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/ipencap.png" style="max-width: none; width: auto; height:5cm"
+<img data-src="../../images/ipencap.png" style="max-width: none; width: auto; height:5cm"
 alt="image" />
 </div>
 </div>
@@ -677,13 +677,13 @@ style="width: 95%; border: 2px solid black; background-color: white; box-sizing:
 <tbody>
 <tr>
 <td style="text-align: center;"><img
-data-src="../../../images/Skynet_layout.jpg" style="max-width: none; width: auto; height:3cm"
+data-src="../../images/Skynet_layout.jpg" style="max-width: none; width: auto; height:3cm"
 alt="image" /></td>
 <td style="text-align: left;"><span class="dada-font-footnotesize"><span
 style="color: red">It seems like we cannot trust the protocols or the
 machines!</span></span></td>
 <td style="text-align: center;"><img
-data-src="../../../images/01_img02.jpg" style="max-width: none; width: auto; height:3cm"
+data-src="../../images/01_img02.jpg" style="max-width: none; width: auto; height:3cm"
 alt="image" /></td>
 </tr>
 </tbody>
@@ -746,7 +746,7 @@ TLS...</span></li>
 <div class="center">
 <div class="dada-fbox"
 style="width: 85%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/wireshark3.png" style="height: auto; width:100.0%"
+<img data-src="../../images/wireshark3.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -770,7 +770,7 @@ inspect the contents of the traffic, broken down by layer.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 40%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/doomscrolling.png" style="height: auto; width:100.0%"
+<img data-src="../../images/doomscrolling.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -809,7 +809,7 @@ do what we want.</p>
 <h2>Trust issue #1: ARP</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/arppoison.png" style="height: auto; width:65.0%"
+<p><img data-src="../../images/arppoison.png" style="height: auto; width:65.0%"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -835,7 +835,7 @@ href="https://hugh.myddns.me/media/movies/ARPDNS.mp4">4</a>,<a
 href="https://en.wikipedia.org/wiki/ARP_spoofing">i3</a><span>]</span></span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/arppoison1.png" style="height: auto; width:50.0%"
+<p><img data-src="../../images/arppoison1.png" style="height: auto; width:50.0%"
 alt="image" /></p>
 </div>
 <div class="alertblock">
@@ -877,7 +877,7 @@ send the frame to the incorrect host.</p>
 <h2>Trust issue #2: DHCP (Dynamic Host Configuration Protocol)</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/dhcp1.png" style="height: auto; width:65.0%"
+<p><img data-src="../../images/dhcp1.png" style="height: auto; width:65.0%"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -898,7 +898,7 @@ offer it a useable IP and DNS address, with the DHCPOFFER response.</p>
 <h2>Trust issue #2: DHCP spoofing</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/dhcp2.png" style="height: auto; width:65.0%"
+<p><img data-src="../../images/dhcp2.png" style="height: auto; width:65.0%"
 alt="image" /></p>
 </div>
 <div class="alertblock">
@@ -930,7 +930,7 @@ style="width: 30%; border: 2px solid black; background-color: white; box-sizing:
 <tr>
 <td style="text-align: center;"><p> </p>
 <div class="center">
-<p><img data-src="../../../images/ipaddr.png" style="height: auto; width:90.0%"
+<p><img data-src="../../images/ipaddr.png" style="height: auto; width:90.0%"
 alt="image" /></p>
 </div>
 <p> </p></td>
@@ -980,7 +980,7 @@ href="https://web.archive.org/web/20120210182541/http://www.cert.org/incident_no
 <div class="center">
 <div class="dada-fbox"
 style="width: 68%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/nmap-matrix2log-cropped-1.png"
+<img data-src="../../images/nmap-matrix2log-cropped-1.png"
 style="max-width: none; width: auto; height:5cm" alt="image" />
 </div>
 </div>
@@ -1000,7 +1000,7 @@ It is just a movie, but you should be paranoid...
 <h2>Consider browsing to a URL </h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/dnshack1.png" style="height: auto; width:70.0%"
+<p><img data-src="../../images/dnshack1.png" style="height: auto; width:70.0%"
 alt="image" /></p>
 </div>
 <div class="alertblock">
@@ -1072,7 +1072,7 @@ href="https://hugh.myddns.me/media/movies/MITM.mp4">5</a><span>]</span></span></
 <div class="center">
 <div class="dada-fbox"
 style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/ettercap.png" style="height: auto; width:100.0%"
+<img data-src="../../images/ettercap.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1106,9 +1106,9 @@ attacks.</span></p>
 <div class="dada-fbox"
 style="width: 89%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div class="image-grid">
-<img data-src="../../../images/SamBrowneLayer4.png" style="max-width: none; width: auto; height:4.5cm"
+<img data-src="../../images/SamBrowneLayer4.png" style="max-width: none; width: auto; height:4.5cm"
 alt="image" />
-<img data-src="../../../images/SamBrowneLayer7.png" style="max-width: none; width: auto; height:4.5cm"
+<img data-src="../../images/SamBrowneLayer7.png" style="max-width: none; width: auto; height:4.5cm"
 alt="image" />
 </div>
 </div>
@@ -1238,13 +1238,13 @@ class="table-with-borders table-col-no-left-border table-col-no-right-border tab
 <table>
 <tbody>
 <tr>
-<td style="text-align: center;"><img data-src="../../../images/SSL.png"
+<td style="text-align: center;"><img data-src="../../images/SSL.png"
 style="max-width: none; width: auto; height:3cm" alt="image" /></td>
 <td style="text-align: center;"><img
-data-src="../../../images/1024px-Taher_Elgamal_it-sa_2010.jpeg"
+data-src="../../images/1024px-Taher_Elgamal_it-sa_2010.jpeg"
 style="max-width: none; width: auto; height:3cm" alt="image" /></td>
 <td style="text-align: center;"> <img
-data-src="../../../images/ssl_handshake.png" style="max-width: none; width: auto; height:3cm"
+data-src="../../images/ssl_handshake.png" style="max-width: none; width: auto; height:3cm"
 alt="image" /></td>
 </tr>
 </tbody>
@@ -1348,7 +1348,7 @@ href="https://www.faqs.org/rfcs/rfc4301.html">X</a><span>]</span></span></h2>
 <div class="center">
 <div class="dada-fbox"
 style="width: 40%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/IPv4AndIPv6.png" style="height: auto; width:100.0%"
+<img data-src="../../images/IPv4AndIPv6.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>

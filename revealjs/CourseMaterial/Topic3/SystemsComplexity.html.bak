@@ -71,7 +71,7 @@ href="https://hugh.myddns.me/Askbox/">Q</a><span>]</span></p>
 href="https://hugh.myddns.me/media/movies/ariane.mp4">1</a><span>]</span></span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/ariane.png" style="height: auto; width:75.0%"
+<p><img data-src="../../images/ariane.png" style="height: auto; width:75.0%"
 alt="image" /></p>
 </div>
 </div>
@@ -232,7 +232,7 @@ computer software crashed, killing giraffes.</span></li>
 <div class="center">
 <div class="dada-fbox"
 style="width: 20%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/engineering.png" style="height: auto; width:100.0%"
+<img data-src="../../images/engineering.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -279,7 +279,7 @@ be said for software systems.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 70%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/ClaytonTunnel.png" style="height: auto; width:100.0%"
+<img data-src="../../images/ClaytonTunnel.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -322,12 +322,12 @@ class="table-with-borders table-col-no-left-border table-col-no-right-border tab
 <table>
 <tbody>
 <tr>
-<td style="border-right: none; text-align: left;"><img src="../../../images/pathfinder.png"
+<td style="border-right: none; text-align: left;"><img src="../../images/pathfinder.png"
 style="max-width: none; width: auto; max-height: none; height:432px" alt="image" /></td>
 <td style="border-left: none; text-align: center;"></td>
 <td style="border-right: none; text-align: center;"></td>
 <td style="border-left: none; text-align: left;"><img
-src="../../../images/priorityinversion.png" style="max-width: none; width: auto; max-height: none; height:432px"
+src="../../images/priorityinversion.png" style="max-width: none; width: auto; max-height: none; height:432px"
 alt="image" /></td>
 </tr>
 <tr>
@@ -368,9 +368,9 @@ class="table-with-borders table-col-no-left-border table-col-no-right-border tab
 <tbody>
 <tr>
 <td style="text-align: center;"><img
-data-src="../../../images/data_warehouse_architecture.jpg"
+data-src="../../images/data_warehouse_architecture.jpg"
 style="max-width: none; width: auto; max-height: none; height:400px" alt="image" /></td>
-<td style="text-align: center;"><img data-src="../../../images/webapp.jpg"
+<td style="text-align: center;"><img data-src="../../images/webapp.jpg"
 style="max-width: none; width: auto; max-height: none; height:400px" alt="image" /></td>
 </tr>
 </tbody>
@@ -402,10 +402,10 @@ class="table-with-borders table-col-no-left-border table-col-no-right-border tab
 <tbody>
 <tr>
 <td style="text-align: center;"><img
-data-src="../../../images/largeswdesign1.png" style="max-width: none; width: auto; max-height: none; height:486px"
+data-src="../../images/largeswdesign1.png" style="max-width: none; width: auto; max-height: none; height:486px"
 alt="image" /></td>
 <td style="text-align: center;"><img
-data-src="../../../images/largeswdesign2.png" style="max-width: none; width: auto; max-height: none; height:486px"
+data-src="../../images/largeswdesign2.png" style="max-width: none; width: auto; max-height: none; height:486px"
 alt="image" /></td>
 </tr>
 </tbody>
@@ -658,7 +658,7 @@ For evaluating security of machines
 <tbody>
 <tr>
 <td style="text-align: center;"><span class="dada-font-footnotesize">
-<img data-src="../../../images/Rainbow-Books.jpg" style="height: auto; width:100.0%"
+<img data-src="../../images/Rainbow-Books.jpg" style="height: auto; width:100.0%"
 alt="image" /></span></td>
 <td style="text-align: center;"><span class="dada-font-footnotesize">The
 NSA created various documents describing the criteria for evaluating the
@@ -1073,11 +1073,11 @@ style="color: blue">}</span></span><span style="color: black">.
 <div class="dada-fbox"
 style="width: 85%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div class="image-grid">
-<img data-src="../../../images/mnarc.png" style="max-width: none; width: auto; max-height: none; height:270px"
+<img data-src="../../images/mnarc.png" style="max-width: none; width: auto; max-height: none; height:270px"
 alt="image" />
-<img data-src="../../../images/noreadup.png" style="max-width: none; width: auto; max-height: none; height:270px"
+<img data-src="../../images/noreadup.png" style="max-width: none; width: auto; max-height: none; height:270px"
 alt="image" />
-<img data-src="../../../images/nowritedown.png" style="max-width: none; width: auto; max-height: none; height:270px"
+<img data-src="../../images/nowritedown.png" style="max-width: none; width: auto; max-height: none; height:270px"
 alt="image" />
 </div>
 </div>
@@ -1139,7 +1139,7 @@ Like sales, marketing, invasion plans...
 <table>
 <tbody>
 <tr>
-<td style="text-align: center;"><img data-src="../../../images/lattice.png"
+<td style="text-align: center;"><img data-src="../../images/lattice.png"
 style="max-width: none; width: auto; max-height: none; height:324px" alt="image" /></td>
 <td style="text-align: left;">  <span class="dada-font-footnotesize">A
 security category <span style="color: blue"><span
@@ -1283,7 +1283,7 @@ and how to build security systems that are provably secure.</p>
 href="https://www.commoncriteriaportal.org/files/epfiles/st_vid9513-st.pdf">i1</a><span>]</span></span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/datadiode.png" style="height: auto; width:40.0%"
+<p><img data-src="../../images/datadiode.png" style="height: auto; width:40.0%"
 alt="image" /></p>
 </div>
 <div class="exampleblock">
@@ -1309,7 +1309,7 @@ href="https://en.wikipedia.org/wiki/Biba_Model">i5</a><span>]</span></span></h2>
 <div class="center">
 <div class="dada-fbox"
 style="width: 35%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/Biba1.png" style="height: auto; width:100.0%"
+<img data-src="../../images/Biba1.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1478,7 +1478,7 @@ href="https://en.wikipedia.org/wiki/Brewer_and_Nash_model">i6</a><span>]</span><
 <div class="center">
 <div class="dada-fbox"
 style="width: 50%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/GreatWall_small.jpg" style="height: auto; width:100.0%"
+<img data-src="../../images/GreatWall_small.jpg" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1566,7 +1566,7 @@ BIBA, Chinese wall</span></li>
 <div class="center">
 <div class="dada-fbox"
 style="width: 15%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/Wikipedia-logo-nowords-bgwhite-200px.jpg"
+<img data-src="../../images/Wikipedia-logo-nowords-bgwhite-200px.jpg"
 style="height: auto; width:100.0%" alt="image" />
 </div>
 </div>
@@ -1617,7 +1617,7 @@ Modelling a system
 </div>
 <div class="block-content">
 <div class="center">
-<p><img data-src="../../../images/closedsystem.png" style="height: auto; width:50.0%"
+<p><img data-src="../../images/closedsystem.png" style="height: auto; width:50.0%"
 alt="image" /></p>
 </div>
 </div>
@@ -1628,7 +1628,7 @@ Synthesizing a system
 </div>
 <div class="block-content">
 <div class="center">
-<p><img data-src="../../../images/opensystem.png" style="height: auto; width:50.0%"
+<p><img data-src="../../images/opensystem.png" style="height: auto; width:50.0%"
 alt="image" /></p>
 </div>
 </div>
@@ -1641,7 +1641,7 @@ alt="image" /></p>
 href="https://en.wikipedia.org/wiki/Model_checking">i7</a><span>]</span></span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/verificationsetting.png"
+<p><img data-src="../../images/verificationsetting.png"
 style="height: auto; width:60.0%" alt="image" /></p>
 </div>
 <div class="block">
@@ -1684,7 +1684,7 @@ trace leading to the error.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 65%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/ispin.png" style="height: auto; width:100.0%"
+<img data-src="../../images/ispin.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1780,7 +1780,7 @@ class="dada-font-footnotesize"><span class="dada-bold">The
 <tr>
 <td style="border-right: none; text-align: center;"><div style="background-color: white">
 <div class="center">
-<p><img src="../../../images/promela.png" style="max-width: none; width: auto; max-height: none; height:454px"
+<p><img src="../../images/promela.png" style="max-width: none; width: auto; max-height: none; height:454px"
 alt="image" /></p>
 </div>
 </div></td>
@@ -1931,7 +1931,7 @@ style="width: 95%; border: 2px solid black; background-color: white; box-sizing:
 <table>
 <tbody>
 <tr>
-<td style="text-align: left;"><img data-src="../../../images/mars2.jpg"
+<td style="text-align: left;"><img data-src="../../images/mars2.jpg"
 style="max-width: none; width: auto; max-height: none; height:745px" alt="image" /></td>
 <td style="text-align: left;"><p><span
 class="dada-font-tiny"><code> </code><span
@@ -1972,7 +1972,7 @@ AllTasks() = HiPri() ||| MedPri() ||| LowPri();
 <h2>Another example system...</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/crossing.png" style="height: auto; width:70.0%"
+<p><img data-src="../../images/crossing.png" style="height: auto; width:70.0%"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -1993,7 +1993,7 @@ activities, and the gate’s status.</p>
 <h2>Modelling the system...</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/parallel.png" style="height: auto; width:55.0%"
+<p><img data-src="../../images/parallel.png" style="height: auto; width:55.0%"
 alt="image" /></p>
 </div>
 <div class="block">
