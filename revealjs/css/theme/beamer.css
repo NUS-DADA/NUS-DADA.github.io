@@ -1,0 +1,1072 @@
+/* Load Computer Modern webfonts from the dreampulse CDN.
+   These fonts serve as fallbacks only.  The primary font is Helvetica/Arial
+   (see .reveal font-family below) because the PDF presentation uses
+   \usepackage{times} which loads NimbusSanL (a free Helvetica clone) as the
+   LaTeX sans-serif family; since beamer uses sans-serif by default, ALL slide
+   text in the PDF renders in NimbusSanL-Regu / NimbusSanL-Bold.
+   'Computer Modern Bright' and 'Computer Modern Sans' are kept as fallbacks
+   for completeness.
+   Pinned to commit e9977be (2022-02-19) - the latest release of the font set. */
+@import url('https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@e9977be1283466992a2dede47a342655d8426fee/fonts.css');
+
+/* ── Font-size table ─────────────────────────────────────────────────────────
+   One CSS custom property per standard LaTeX font-size command.
+   Every font-size rule in this file references one of these variables, so
+   adjusting a single value here resizes every element at that LaTeX level.
+
+   Values are in px relative to the reveal.js slide canvas (1920 × 1080 px).
+   Reveal.js applies a CSS transform: scale(N) to the canvas so that it fits
+   the browser viewport while maintaining the 16:9 aspect ratio — all px
+   values scale proportionally with the canvas, giving correct sizes at every
+   viewport dimension.  (Equivalent vw values at 1920 px canvas width are
+   shown in parentheses for reference.)
+   ─────────────────────────────────────────────────────────────────────────── */
+:root {
+    --dada-font-tiny:          25px; /* \tiny         (≈ 1.30vw at 1920 px)    */
+    --dada-font-scriptsize:    33px; /* \scriptsize   (≈ 1.74vw)               */
+    --dada-font-footnotesize:  38px; /* \footnotesize (≈ 1.96vw) block baseline */
+    --dada-font-small:         42px; /* \small        (≈ 2.17vw) tables/badges  */
+    --dada-font-normalsize:    46px; /* \normalsize   (≈ 2.39vw)               */
+    --dada-font-large:         50px; /* \large        (≈ 2.61vw) body text      */
+    --dada-font-Large:         60px; /* \Large        (≈ 3.13vw) frame title h2 */
+    --dada-font-LARGE:         72px; /* \LARGE        (≈ 3.76vw) section title  */
+    --dada-font-huge:          87px; /* \huge         (≈ 4.51vw)               */
+    --dada-font-Huge:         104px; /* \Huge         (≈ 5.41vw)               */
+}
+
+/* ── Outer viewport background ───────────────────────────────────────────────
+   body and .reveal provide a black background for the area outside the slide
+   canvas (letterbox bars that appear when the browser viewport does not exactly
+   match the 16:9 slide ratio).  The gradient is applied only to .reveal .slides
+   (the 1920×1080 canvas element that reveal.js scales to fit the viewport), so
+   it is confined to the slide area and does not bleed into the bars. */
+body {
+    background: black;
+}
+
+.reveal {
+background: black;
+font-family: Helvetica, 'Helvetica Neue', Arial, 'Computer Modern Bright', 'CMU Bright', 'Computer Modern Sans', 'CMU Sans Serif', sans-serif;
+/* Root cause confirmed by `pdffonts`: the PDF presentation embeds
+   NimbusSanL-Regu and NimbusSanL-Bold (the free metric-compatible Helvetica
+   clone loaded by \usepackage{times} in LaTeX).  Since beamer uses sans-serif
+   as its default family, ALL slide text — frame titles, body, bullets — is
+   rendered in NimbusSanL.  NimbusSanL is glyph-compatible with Helvetica:
+   tight apertures (nearly-closed 'C'), uniform stroke widths, and bold weight
+   that matches the PDF without needing an artificial text-stroke.  Helvetica
+   and Arial are system-font equivalents available on all modern OS; CMU fonts
+   are kept only as last-resort fallbacks.  No letter-spacing adjustment is
+   needed because Helvetica/Arial natural tracking already matches the PDF. */
+-webkit-font-smoothing: antialiased;
+text-rendering: geometricPrecision;
+}
+
+/* Apply the slide gradient to the canvas element (.slides) so that it covers
+   exactly the 1920×1080 px slide area that reveal.js scales to fit the viewport.
+   The body and .reveal backgrounds above catch anything outside that area. */
+.reveal .slides {
+    background: linear-gradient(to bottom, #e6e6ff, #ffe6e6);
+}
+
+
+.reveal .slides section {
+
+    position: absolute !important;
+    left: 0px !important;
+    width: 90% !important;
+    height: 100%;
+    top: 0px !important;
+    margin-top: 0 !important;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-bottom: 20px;
+    padding-top: 0px !important;
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+
+/* Sections nested inside vertical-stack parents (reveal.js 2D navigation) must
+   not add a second layer of margin/width reduction.  Without this rule, the
+   90%/5% values above compound for every nesting level, making nested sections
+   narrower (90% of 90% = 81% instead of 90% of the 1920 px canvas) and shifted
+   further right.  That in turn causes h2 title bars to not reach the right edge
+   of the frame, and the text inside them to start too far from the left.  Reset
+   nested sections to fill their parent at position 0 so they align identically
+   to top-level sections. */
+.reveal .slides section section {
+    width: 100% !important;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* ── Vertical centring: title slide ─────────────────────────────────────────
+   The pandoc-generated title slide has id="title-slide".  Flex column with
+   justify-content:center vertically centres h1.title, p.author and p.date
+   as a group within the full slide height. */
+.reveal .slides section#title-slide {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ── Vertical centring: content slides with h2 title bar ────────────────────
+   Each frame slide is <section class="slide level2"> whose first direct child
+   is always the <h2> blue bar, followed by a single <div class="dada-frame-body">
+   that wraps all body content (added by beamer-frame-fix.lua).
+
+   Layout strategy:
+     • The section is a flex column so h2 and dada-frame-body stack vertically.
+     • h2 is flex-shrink:0 (never compressed) and margin-bottom:0 (no gap below).
+     • dada-frame-body gets flex:1 so it takes all remaining height after h2.
+     • Within dada-frame-body, justify-content:center centres the body content
+       vertically in the remaining space.  min-height:0 allows shrinking when
+       content is taller than the available space.
+
+   This approach is robust against any hidden/extra elements (e.g. reveal.js
+   <aside class="notes">) that may follow the body div, since the centering
+   depends only on the dada-frame-body wrapper, not on :last-child selectors. */
+.reveal .slides section.slide.level2 {
+    display: flex !important;
+    flex-direction: column;
+}
+
+.reveal .slides section.slide.level2 > h2 {
+    flex-shrink: 0;
+    margin-bottom: 0 !important;
+}
+
+.reveal .slides section.slide.level2 > .dada-frame-body {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.reveal h1{
+    text-align: center !important;
+    padding-left: 3% !important;
+    padding-top: 5% !important;
+    padding-bottom: 5% !important;
+    padding-right: 3% !important;
+    margin-top: 10%;
+    margin-bottom: 7%;
+    font-weight: bold;
+    font-size: var(--dada-font-LARGE);
+    border-radius: 25px;
+    color: white;
+    text-align: center;
+    background: #3333b3;
+    width: 100% !important;
+    /* Use border-box so that padding is included in the 100% width, preventing
+       the padded box from overflowing its containing section and breaking the
+       symmetric left/right centering of section-title slides (Administrivia,
+       Setting the stage, …). */
+    box-sizing: border-box;
+}
+
+.reveal h1.title {
+    text-align: center !important;
+    padding-left: 3% !important;
+    padding-top: 5% !important;
+    padding-bottom: 5% !important;
+    padding-right: 3% !important;
+/*     margin-left: 6% !important; */
+    margin-top: 6%;
+    margin-left: 3% !important;
+    margin-right: 3% !important;
+/*     width: 80% !important; */
+    width: auto !important;
+    font-weight: bold;
+    font-size: var(--dada-font-LARGE);
+    border-radius: 25px;
+    box-shadow: 5px 5px 10px grey;
+}
+
+.reveal p.author, .reveal p.date {
+    text-align: center;
+}
+
+.reveal .controls {
+    color: #223d7114
+}
+
+.reveal h2 {
+    margin-top: 0 !important;
+    background: linear-gradient(to right, #3333b3, #000000);
+    margin-left: -6%;
+    margin-right: 0;
+    margin-bottom: 2%;
+    width: 112% !important;
+    font-size: var(--dada-font-Large);
+    font-weight: bold;
+    line-height: 1;
+    padding-bottom: 0.5%;
+    padding-top: 0.5%;
+    color: white;
+    text-align: left;
+    padding-left: 3%;
+    padding-right: 2%;
+    /* Use border-box so that padding is included in the 112% width.
+       Layout geometry (all values are in px, relative to the 1920 × 1080
+       reveal.js slide canvas; reveal.js scales the entire canvas uniformly):
+         • .slides canvas     = 1920 px wide (set as inline style by reveal.js)
+         • section (abs pos)  = 90% of 1920 px = 1728 px
+                                margin-left = 5% of 1920 px = 96 px
+                              → section left edge = 96 px from canvas left
+       For the h2 bar to bleed slightly past both canvas edges (the bleed is
+       clipped by reveal.js's overflow:hidden on the scaled viewport):
+         margin-left = −6%  → h2 left  = 96 − 103.7 = −7.7 px (tiny bleed)
+         width       = 112% → h2 right = −7.7 + 1935.4 = 1927.7 px (7.7 px bleed)
+         padding-left = 3%  → content left  ≈ −7.7 + 58.1 = 50.4 px (≈ 2.6%)
+         padding-right = 2% → content right ≈ 1927.7 − 38.7 = 1889 px (≈ 98.4%)
+       The sub-pixel bleed on each side is clipped by the browser viewport
+       and is not visible; it ensures no white sliver appears at the edges. */
+    box-sizing: border-box;
+    /* Flex layout so that .hfill-right spans are vertically centred and pushed
+       to the right without relying on float, which can place the element below
+       the title text when it appears after the text in DOM order. */
+    display: flex;
+    align-items: center;
+}
+
+/* Links inside slide-title headings must stay white against the blue bar */
+.reveal h2 a,
+.reveal h2 a:visited,
+.reveal h2 a:hover {
+    color: white;
+}
+
+/* Links inside the front title h1 must stay white on the blue background */
+.reveal h1 a,
+.reveal h1 a:visited,
+.reveal h1 a:hover {
+    color: white;
+}
+
+/* \hfill groups in frame titles: beamer-frame-fix.lua adds the class
+   "hfill-right" to Spans that begin with a Space and contain a Link,
+   matching the {\footnotesize{}\hfill{} [links]} pattern that LaTeX uses
+   to push link lists to the right margin of a frame title.
+   h2 uses display:flex so margin-left:auto pushes the span to the right
+   while align-items:center keeps it vertically centred with the title text. */
+.reveal h2 .hfill-right {
+    margin-left: auto;
+    flex-shrink: 0;
+    font-size: var(--dada-font-footnotesize);
+    line-height: 1;
+}
+
+
+
+.reveal li,
+.reveal p {
+font-size: var(--dada-font-large);
+padding-top: 30px;
+}
+
+/* A <p> that pandoc places directly inside a <li> (e.g. when \par appears
+   inside a list item) would otherwise pick up the 30px padding-top above,
+   creating a visible blank line before every bullet.  It also inherits
+   var(--dada-font-large) from the enclosing <li>, and since .reveal p also sets
+   var(--dada-font-large) the sizes compound.  Reset both
+   here so that <li><p>…</p></li> looks identical to <li>…</li>. */
+.reveal li > p {
+padding-top: 0;
+padding-bottom: 0;
+margin-top: 0;
+margin-bottom: 0;
+font-size: 1em;
+}
+
+.reveal li li {
+font-size: 1em;
+}
+
+.reveal p {
+text-align: justify;
+}
+
+/* KaTeX math font-size fix: KaTeX's own stylesheet sets font-size:1.21em on
+   .katex, making inline math ~21% larger than the surrounding text.  In a
+   LaTeX document inline math should be the same optical size as the
+   surrounding text, so override it to 1em (inherit from the parent).  This
+   applies equally inside .dada-font-* wrapper divs, ensuring that math in
+   footnotesize/scriptsize/etc. contexts is not disproportionately large.
+   Explicitly reset letter-spacing and -webkit-text-stroke as a defensive
+   measure: KaTeX uses its own fonts (KaTeX_Main etc.) and manages glyph
+   spacing internally via its own metrics; any inherited prose adjustments
+   must not interfere. */
+.reveal .katex {
+    font-size: 1em;
+    letter-spacing: normal;
+    -webkit-text-stroke: 0;
+}
+
+/* Ensure every image maintains its natural aspect ratio by default.
+   The Image Lua filter in beamer-frame-fix.lua adds explicit height="auto"
+   to all images, but this CSS rule acts as an additional safety net.
+   max-width:100% prevents images from overflowing their container.
+   Inline styles set by pandoc (e.g. style="height:54%") take precedence
+   over this rule and are not affected. */
+.reveal .slides img {
+    max-width: 100%;
+    height: auto;
+}
+
+.reveal p img, .reveal p video {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    /* max-width:100% ensures images cannot overflow their paragraph container.
+       width:auto and height:auto (from .reveal .slides img above) allow the
+       browser to scale both dimensions proportionally when an image is wider
+       than its container.  Removed max-height:350px which was causing
+       aspect-ratio distortion: when combined with an explicit width (e.g.
+       style="width:100%" from pandoc), max-height clipped the height without
+       adjusting the width, stretching the image. */
+    max-width: 100%;
+}
+
+.reveal li {
+list-style-position: inside;
+display: list-item;
+}
+
+.reveal ol, .reveal ul {
+/*     display: inline-block; */
+    text-align: left;
+    margin: 0px;
+    padding-left: 3em;
+    }
+
+.reveal ul ul, .reveal ul ol, .reveal ol ol, .reveal ol ul {
+    display: block;
+    margin-left: 2em;
+    list-style-type: square;
+    padding-left: 0;
+}
+
+/* ── Description lists (LaTeX \begin{description}) ──────────────────────────
+   Pandoc converts \begin{description}…\item[term] def\end{description} to
+   <dl><dt>term</dt><dd><p>def</p></dd></dl>.  Without explicit rules, <dt>
+   is a block element at browser-default font-size on its own line, and <dd>
+   is indented on the next line.
+
+   CSS grid (max-content + 1fr) places all <dt>s in a right-aligned column
+   sized to the widest term, with <dd>s filling the remaining width.  This
+   makes every colon/separator align vertically (right-justified term column)
+   while the definition text starts at the same horizontal position across
+   all items — matching the LaTeX \description appearance.
+
+   row-gap matches the inter-item spacing of bullet-point lists: 30px in the
+   general context; overridden to 2px inside .block-content where the li
+   padding-top override also applies.
+
+   Pandoc always wraps <dd> content in a <p>.  Zeroing its margin/padding
+   prevents it from adding unwanted space inside the grid cell.
+
+   Inside .block-content, dl dt and dl dd are overridden to var(--dada-font-footnotesize) and the
+   dl row-gap is reduced to 2px (matching block-content li spacing).
+   ────────────────────────────────────────────────────────────────────────── */
+.reveal dl {
+    margin: 0;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 0.5em;
+    row-gap: 30px;
+    text-align: justify;
+}
+.reveal dl dt {
+    font-weight: bold;
+    font-size: var(--dada-font-large);
+    text-align: right;
+    align-self: baseline;
+}
+.reveal dl dd {
+    margin: 0;
+    font-size: var(--dada-font-large);
+    align-self: baseline;
+}
+/* Pandoc wraps <dd> content in <p>.  Zero its margin/padding so no extra
+   space appears inside the grid cell. */
+.reveal dl dd > p {
+    margin: 0;
+    padding: 0;
+}
+
+/* ── TOC / Outline slides: scoped under .dada-toc ──────────────────────────
+   \begin{dada-toc}…\end{dada-toc} in the generated LaTeX becomes a
+   <div class="dada-toc"> in reveal.js HTML.  All rules below are scoped
+   to that wrapper so that regular content lists are unaffected.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* Section-level numbered list: hide default decimal counter; use a custom
+   circular navy badge via ::before instead. */
+.reveal .dada-toc ol {
+    counter-reset: dada-toc-sec;
+    list-style: none;
+    padding-left: 0.2em;
+    margin: 0;
+}
+
+.reveal .dada-toc ol > li {
+    list-style: none;
+    counter-increment: dada-toc-sec;
+    padding-top: 18px;
+    font-weight: bold;
+}
+
+/* Draw the numbered navy ball before each section item */
+.reveal .dada-toc ol > li::before {
+    content: counter(dada-toc-sec);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #2a2a8c;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    min-width: 1.3em;
+    height: 1.3em;
+    font-size: var(--dada-font-small);
+    margin-right: 0.35em;
+    vertical-align: middle;
+    line-height: 1;
+    padding: 0.05em;
+    box-sizing: border-box;
+}
+
+/* Grey out the section number circle only when the section's own title text
+   is greyed out.  Use direct-child combinators (> span, > p > span) so that
+   greyed subsection items nested inside the section's <ul> do NOT trigger
+   this rule.  pandoc converts \textcolor{lightgray}{…} to
+   <span style="color: lightgray">; Plain blocks produce a bare span directly
+   inside <li>, Para blocks produce <p> then <span>. */
+.reveal .dada-toc ol > li:has(> span[style*="lightgray"])::before,
+.reveal .dada-toc ol > li:has(> p > span[style*="lightgray"])::before {
+    background: lightgray;
+    color: #666;
+}
+
+/* Subsection-level bullet list: hide default markers; use filled navy
+   circle via ::before instead. */
+.reveal .dada-toc ul {
+    list-style: none;
+    padding-left: 2.8em;
+    margin: 0;
+}
+
+.reveal .dada-toc ul > li {
+    list-style: none;
+    padding-top: 8px;
+    font-weight: normal;
+}
+
+/* Draw the filled navy circle before each subsection item */
+.reveal .dada-toc ul > li::before {
+    content: "";
+    display: inline-block;
+    background: #2a2a8c;
+    border-radius: 50%;
+    width: 0.5em;
+    height: 0.5em;
+    margin-right: 0.45em;
+    vertical-align: middle;
+}
+
+/* Grey out the subsection bullet circle when the item text is greyed out.
+   pandoc converts \textcolor{lightgray}{…} to <span style="color: lightgray">. */
+.reveal .dada-toc ul > li:has(span[style*="lightgray"])::before {
+    background: lightgray;
+}
+
+/* Ensure <strong> inside section items is always visibly bold.
+   reveal.js CDN reset.css uses strong { font-weight: bolder } which can
+   render as normal-weight if the parent inherits a non-bold weight.
+   Setting it explicitly here guarantees bold rendering. */
+.reveal .dada-toc strong {
+    font-weight: bold;
+}
+
+/* Ensure <p> inside dada-toc list items doesn't add unwanted padding */
+.reveal .dada-toc li > p {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1em;
+}
+
+.reveal video {
+/*    margin-top: 30px;*/
+    max-height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding-top: 30px;
+}
+
+.reveal.overview {
+top: 0%;
+left: 0%;
+}
+
+
+.reveal div.thm {
+
+    margin-right: 5%;
+    margin-left:5%;
+    margin-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 0%;
+    padding-bottom: 2%;
+    border-radius:15px;
+    background: #eaeaf3;
+    box-shadow: 5px 5px 10px grey;
+}
+
+.reveal div.thm h3 {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-right: 1%;
+    padding-left: 3%;
+    width: 100.8% !important;
+    margin-right: -2.4%;
+    margin-left: -2.4%;
+    margin-bottom: 0;
+    border-radius: 15px 15px 0px 0px;
+    font-size: var(--dada-font-large);
+    background: #3333b3;
+    color: white;
+    text-align: left;
+}
+
+.reveal div.thm p {
+
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding-top: 1%;
+
+}
+
+.reveal div.thm ul {
+    display: contents;
+}
+
+.reveal div.thm ul li {
+    padding-left: 3%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+}
+
+/* ── Beamer-style block environments ──────────────────────────────────── */
+/* Pandoc generates <div class="block">, <div class="alertblock">, and     */
+/* <div class="exampleblock"> for the corresponding LaTeX environments.    */
+/* beamer-frame-fix.lua restructures each into:                            */
+/*   <div class="[type]">                                                  */
+/*     <div class="block-title">Title</div>                                */
+/*     <div class="block-content">…content…</div>                          */
+/*   </div>                                                                */
+
+.reveal div.block,
+.reveal div.exampleblock,
+.reveal div.alertblock {
+    margin: 22px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.25);
+    text-align: left;
+}
+
+.reveal div.block .block-title,
+.reveal div.exampleblock .block-title,
+.reveal div.alertblock .block-title {
+    padding: 5px 12px;
+    font-weight: bold;
+    font-size: var(--dada-font-large);
+    color: white;
+}
+
+.reveal div.block .block-content,
+.reveal div.exampleblock .block-content,
+.reveal div.alertblock .block-content {
+    padding: 8px 15px;
+    line-height: 1.2;
+}
+
+/* Reset font sizes inside block content.
+   The global .reveal li, .reveal p rule sets font-size: var(--dada-font-large); override it
+   to a smaller value that matches the \footnotesize used in the source LaTeX. */
+.reveal div.block .block-content p,
+.reveal div.exampleblock .block-content p,
+.reveal div.alertblock .block-content p {
+    font-size: var(--dada-font-footnotesize);
+    padding-top: 4px;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.reveal div.block .block-content li,
+.reveal div.exampleblock .block-content li,
+.reveal div.alertblock .block-content li {
+    font-size: var(--dada-font-footnotesize);
+    padding-top: 2px;
+}
+
+/* Match description-list term and body to the block-content font size so
+   the term (dt) is the same size as the body text (dd), only bold.
+   Also reduce row-gap to match the block-content li spacing (2px). */
+.reveal div.block .block-content dl,
+.reveal div.exampleblock .block-content dl,
+.reveal div.alertblock .block-content dl {
+    row-gap: 2px;
+}
+.reveal div.block .block-content dl dt,
+.reveal div.exampleblock .block-content dl dt,
+.reveal div.alertblock .block-content dl dt {
+    font-size: var(--dada-font-footnotesize);
+}
+.reveal div.block .block-content dl dd,
+.reveal div.exampleblock .block-content dl dd,
+.reveal div.alertblock .block-content dl dd {
+    font-size: var(--dada-font-footnotesize);
+}
+
+/* Standard block — blue, matching the existing h2/div.thm colour scheme */
+.reveal div.block {
+    background-color: #eaeaf3;
+}
+.reveal div.block .block-title {
+    background-color: #3333b3;
+}
+
+/* Example block — green */
+.reveal div.exampleblock {
+    background-color: #e8f5e9;
+}
+.reveal div.exampleblock .block-title {
+    background-color: #2e7d32;
+}
+
+/* Alert block — red */
+.reveal div.alertblock {
+    background-color: #fce8e8;
+}
+.reveal div.alertblock .block-title {
+    background-color: #b33333;
+}
+
+/* \hfill support inside block/alertblock/exampleblock titles.
+   When fix-tex-image-refs.py converts \hfill{} to \textcolor{dada-hfill}{}
+   inside a block title argument, beamer-frame-fix.lua splits the title at
+   the hfill position and wraps it in a "block-title-hfill" div containing
+   "block-title-left" and "block-title-right" spans.  Flex layout then pushes
+   the right part to the far right of the coloured title bar, replicating the
+   LaTeX \hfill spacing effect. */
+.reveal .block-title.block-title-hfill {
+    display: flex;
+    align-items: center;
+}
+.reveal .block-title.block-title-hfill .block-title-right {
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+/* \hfill push-to-right for dada-font-* divs that contain inline text AND a
+   dada-fbox (e.g. "text:\hfill{}" + fcolorbox in a list item).
+   fix-tex-image-refs.py step 2a merges adjacent same-size groups, so the
+   text and the fcolorbox end up in the same dada-font-* Div.  The dada-font-*
+   Div handler (beamer-frame-fix.lua) detects this "mixed" Div and adds the
+   "dada-hfill-layout" class; this CSS then arranges the inline text on the
+   left and the dada-fbox on the right, replicating the LaTeX \hfill effect. */
+.reveal .dada-hfill-layout {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.reveal .dada-hfill-layout > .dada-fbox {
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.reveal pre {
+    display: block;
+    position: relative;
+    width: 90%;
+    margin: 20px auto;
+    text-align: left;
+    font-size: var(--dada-font-footnotesize);
+    font-family: monospace;
+    line-height: 1.2em;
+    word-wrap: break-word;
+    /* Monospace code uses fixed-width glyphs; reset the global tracking and
+       stroke adjustments that target proportional prose text only. */
+    letter-spacing: normal;
+    -webkit-text-stroke: 0;
+}
+
+.reveal pre code.sourceCode {
+    display: block;
+    padding: .25em;
+    overflow: auto;
+    word-wrap: normal;
+    color: black;
+    background: #f7f7f7;
+    border: 1px solid #d7d7d7;
+    box-shadow: 0 0 1em #eee;
+    border-radius: .3em;
+}
+
+.reveal .progress {
+    position: absolute;
+    display: none;
+    height: 5px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #3333b380;
+    color: #3333b3;
+}
+
+/* Tables converted from LaTeX tabular environments (text-only tables such as
+   the assessment grade table and the temperature/nationality table).
+   pandoc generates a standard <table> from the re-parsed tabular content. */
+.reveal .slides table {
+    border-collapse: collapse;
+    margin: 0.4em auto;
+    font-size: var(--dada-font-small);
+}
+
+.reveal .slides table th,
+.reveal .slides table td {
+    padding: 3px 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+/* table-with-borders: LaTeX tabulars that specified explicit borders via |
+   in the column spec or \hline / \cline in the body.  beamer-frame-fix.lua
+   wraps the re-parsed Table in a <div class="table-with-borders [modifiers]">
+   and adds modifier classes to suppress the specific outer borders that the
+   LaTeX column spec or body did NOT request.  The base rule adds borders on
+   all four sides of every cell; modifier classes selectively override edges:
+   - table-col-no-borders       col spec has no | at all: remove all col borders
+   - table-col-no-left-border   col spec has no leading |:  no left outer border
+   - table-col-no-right-border  col spec has no trailing |: no right outer border
+   - table-row-no-top-border    body has no leading \hline: no top outer border
+   - table-row-no-bottom-border body has no trailing \hline: no bottom outer border
+
+   Examples of resulting border sets:
+   {|l|c|}  with \hline everywhere  → all borders (no modifier classes)
+   {c|c|c}  with \hline in body     → inner col borders + inner row borders only
+   {|l|c|c|c|c|c|c|c} with \hline  → all borders except right outer col
+   {lll}    with \cline only        → inner row border only (no col borders) */
+
+.reveal .slides .table-with-borders table th,
+.reveal .slides .table-with-borders table td {
+    border: 1px solid #888;
+}
+
+/* No column borders at all (col spec has no | separators).
+   Removes left and right borders from every cell so only row rules show. */
+.reveal .slides .table-with-borders.table-col-no-borders table th,
+.reveal .slides .table-with-borders.table-col-no-borders table td {
+    border-left: none;
+    border-right: none;
+}
+
+/* No left outer column border (col spec does not start with |). */
+.reveal .slides .table-with-borders.table-col-no-left-border table th:first-child,
+.reveal .slides .table-with-borders.table-col-no-left-border table td:first-child {
+    border-left: none;
+}
+
+/* No right outer column border (col spec does not end with |). */
+.reveal .slides .table-with-borders.table-col-no-right-border table th:last-child,
+.reveal .slides .table-with-borders.table-col-no-right-border table td:last-child {
+    border-right: none;
+}
+
+/* No top outer row border (body has no leading \hline before the first row). */
+.reveal .slides .table-with-borders.table-row-no-top-border table thead:first-child tr:first-child th,
+.reveal .slides .table-with-borders.table-row-no-top-border table thead:first-child tr:first-child td,
+.reveal .slides .table-with-borders.table-row-no-top-border table tbody:first-child tr:first-child th,
+.reveal .slides .table-with-borders.table-row-no-top-border table tbody:first-child tr:first-child td {
+    border-top: none;
+}
+
+/* No bottom outer row border (body has no trailing \hline after the last row). */
+.reveal .slides .table-with-borders.table-row-no-bottom-border table tbody:last-child tr:last-child th,
+.reveal .slides .table-with-borders.table-row-no-bottom-border table tbody:last-child tr:last-child td {
+    border-bottom: none;
+}
+
+/* Inner row border between pandoc TableBody sections.  When \cline (or \hline)
+   separates content rows, beamer-frame-fix.lua prepends \hline to the next
+   content row so that pandoc creates a new TableBody section for it; the CSS
+   below then renders the section boundary as a top border.  This also handles
+   the standard head→body boundary that pandoc emits as thead+tbody. */
+.reveal .slides .table-with-borders table thead + tbody tr:first-child th,
+.reveal .slides .table-with-borders table thead + tbody tr:first-child td,
+.reveal .slides .table-with-borders table tbody + tbody tr:first-child th,
+.reveal .slides .table-with-borders table tbody + tbody tr:first-child td {
+    border-top: 1px solid #888;
+}
+
+/* Spacer rows for double-\hline gaps.  beamer-frame-fix.lua inserts a
+   <tr class="spacer"> before each content row that was preceded by two
+   consecutive \hline directives in the LaTeX source.  The spacer appears as
+   a thin (~4 px) transparent gap, matching the visual double-line effect in
+   the PDF.  No border on any edge; background matches the slide background
+   so the gap reads as empty space rather than a coloured band. */
+.reveal .slides .table-with-borders table tr.spacer td,
+.reveal .slides .table-with-borders table tr.spacer th {
+    padding: 0;
+    height: 4px;
+    border: none !important;
+    background-color: transparent;
+    line-height: 0;
+}
+
+.reveal .slides table th {
+    font-weight: bold;
+}
+
+/* Image grid: multiple images extracted from a LaTeX tabular environment
+   (e.g. a 3×2 ATM-attacks layout with 6 photos).
+   fix-tex-image-refs.py collects all \includegraphics commands from the
+   fbox/fcolorbox and beamer-frame-fix.lua wraps them in this div so they
+   display side-by-side in a flex row rather than stacking vertically. */
+.reveal .slides .image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.reveal .slides .image-grid img {
+    max-height: 302px;
+    max-width: 32%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: inline-block;
+    margin: 0;
+}
+
+/* Framed image box from LyX Box Boxed inset (fcolorbox/fbox wrapping a
+   minipage with a single image or text).  Width, border, and background-color
+   are applied as an inline style by beamer-frame-fix.lua.
+   display:inline-block + vertical-align:bottom aligns the bottom of the image
+   box with the surrounding text baseline, so inline images sit with their
+   lower edge on the text line (matching LaTeX [t] minipage behaviour).
+   Font-size is set here so content inherits it without needing a <p>
+   intermediary.  margin:0.25em (no "auto") prevents the browser from centering
+   individual boxes that happen to be the only child of their parent. */
+.reveal .slides .dada-fbox {
+    display: inline-block;
+    vertical-align: bottom;
+    max-width: 100%;
+    margin: 0.25em;
+    padding: 5pt;
+    box-sizing: border-box;
+    font-size: var(--dada-font-large);
+}
+
+/* A single dada-fbox inside a \begin{center}...\end{center} block should
+   remain block-level and auto-margin-centred (the original behaviour). */
+.reveal .slides div.center .dada-fbox {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reveal .slides .dada-fbox img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+/* Images inside table cells within a framed box: the .dada-fbox img rule sets
+   display:block and margin:0, which makes block-level images ignore the
+   text-align:center applied by pandoc to th/td elements for "c" columns.
+   Override margin to auto so block images are horizontally centred in the
+   cell.  Specificity (0,3,3) beats .dada-fbox img at (0,3,1). */
+.reveal .slides .dada-fbox table th img,
+.reveal .slides .dada-fbox table td img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Code blocks (\begin{verbatim} from lyxcode) inside a dada-fbox.
+   Override reveal.js defaults so the <pre> fills the box width and doesn't
+   add excessive margins.  font-weight: bold mirrors the \textbf wrapping
+   that LyX applies to every lyxcode line in beamer presentations.
+   font-size at 70% of --dada-font-footnotesize keeps code noticeably smaller
+   than the surrounding prose so it reads as a code listing, not body text. */
+.reveal .slides .dada-fbox pre {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-size: calc(0.7 * var(--dada-font-footnotesize));
+}
+
+/* Any <p> or <li> that still appears inside a dada-fbox (e.g. from a table
+   rendered inside the box) should have no extra margin or padding. The
+   font-size is inherited from .dada-fbox itself, so no override is needed. */
+.reveal .slides .dada-fbox p,
+.reveal .slides .dada-fbox li {
+    padding-top: 0;
+    margin: 0;
+}
+
+/* Inside a beamer block, fcolorbox text should match the block body font.
+   Target the .dada-fbox div itself (for bare inline content) as well as any
+   <p>/<li> that may still appear inside it from table content. */
+.reveal div.block .block-content .dada-fbox,
+.reveal div.exampleblock .block-content .dada-fbox,
+.reveal div.alertblock .block-content .dada-fbox,
+.reveal div.block .block-content .dada-fbox p,
+.reveal div.exampleblock .block-content .dada-fbox p,
+.reveal div.alertblock .block-content .dada-fbox p,
+.reveal div.block .block-content .dada-fbox li,
+.reveal div.exampleblock .block-content .dada-fbox li,
+.reveal div.alertblock .block-content .dada-fbox li {
+    font-size: var(--dada-font-footnotesize);
+}
+
+/* ── dada-lyxcode: coloured code block (from \begin{lyxcode}…\end{lyxcode}) */
+/* The inline style on .dada-lyxcode sets the text color (e.g. blue).        */
+/* font-weight: bold and font-family: monospace mirror the \textbf\texttt    */
+/* wrappers LyX uses for every lyxcode line in beamer presentations.         */
+/* white-space: pre preserves indentation from the verbatim content.         */
+.reveal .slides .dada-lyxcode pre,
+.reveal .slides .dada-lyxcode code {
+    font-weight: bold;
+    font-size: calc(0.7 * var(--dada-font-footnotesize));
+    white-space: pre;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    text-align: left;
+    color: inherit;
+}
+
+.reveal .slides .dada-lyxcode {
+    text-align: left;
+}
+
+/* ── dada-bubble: coloured callout box (from \rawbubble / \bubble) ──────── */
+/* Width, background-color, and alignment margins are applied as an inline   */
+/* style by beamer-frame-fix.lua; these rules provide the visual styling.    */
+.reveal .slides .dada-bubble {
+    display: block;
+    border-radius: 8px;
+    padding: 8px 15px;
+    margin: 2% 0;
+    box-sizing: border-box;
+    text-align: left;
+    box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+}
+
+.reveal .slides .dada-bubble p {
+    font-size: var(--dada-font-footnotesize);
+    line-height: 1.2;
+    margin: 0;
+    padding: 2px 0;
+}
+
+.reveal.cube .slides section:not(.stack):before {
+    background: rgba(0, 0, 0, 0) !important;
+}
+
+.reveal.cube .slides section:not(.stack):after {
+    box-shadow: 0px 95px 25px rgba(0, 0, 0, 0) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   LaTeX font-size preservation: dada-font-SIZE classes
+   Applied by \begin{dada-font-SIZE}…\end{dada-font-SIZE} block environments
+   that fix-tex-image-refs.py generates from {\SIZE content} LaTeX groups.
+
+   Each class must list .reveal .dada-font-SIZE p / li / td / dt / dd
+   explicitly to beat the specificity of the global .reveal p and .reveal li
+   rules already declared above.  A CSS custom property cannot achieve that
+   specificity boost, and a CSS preprocessor is not part of this project's
+   build chain – so the per-class repetition is intentional and correct.
+
+   Sizes mirror the standard LaTeX font scale for a 10pt base document.
+   --------------------------------------------------------------------------- */
+.reveal .dada-font-tiny,
+.reveal .dada-font-tiny p, .reveal .dada-font-tiny li,
+.reveal .dada-font-tiny td, .reveal .dada-font-tiny dt,
+.reveal .dada-font-tiny dd { font-size: var(--dada-font-tiny); }
+
+.reveal .dada-font-scriptsize,
+.reveal .dada-font-scriptsize p, .reveal .dada-font-scriptsize li,
+.reveal .dada-font-scriptsize td, .reveal .dada-font-scriptsize dt,
+.reveal .dada-font-scriptsize dd { font-size: var(--dada-font-scriptsize); }
+
+.reveal .dada-font-footnotesize,
+.reveal .dada-font-footnotesize p, .reveal .dada-font-footnotesize li,
+.reveal .dada-font-footnotesize td, .reveal .dada-font-footnotesize dt,
+.reveal .dada-font-footnotesize dd { font-size: var(--dada-font-footnotesize); }
+
+.reveal .dada-font-small,
+.reveal .dada-font-small p, .reveal .dada-font-small li,
+.reveal .dada-font-small td, .reveal .dada-font-small dt,
+.reveal .dada-font-small dd { font-size: var(--dada-font-small); }
+
+.reveal .dada-font-normalsize,
+.reveal .dada-font-normalsize p, .reveal .dada-font-normalsize li,
+.reveal .dada-font-normalsize td, .reveal .dada-font-normalsize dt,
+.reveal .dada-font-normalsize dd { font-size: var(--dada-font-normalsize); }
+
+.reveal .dada-font-large,
+.reveal .dada-font-large p, .reveal .dada-font-large li,
+.reveal .dada-font-large td, .reveal .dada-font-large dt,
+.reveal .dada-font-large dd { font-size: var(--dada-font-large); }
+
+.reveal .dada-font-Large,
+.reveal .dada-font-Large p, .reveal .dada-font-Large li,
+.reveal .dada-font-Large td, .reveal .dada-font-Large dt,
+.reveal .dada-font-Large dd { font-size: var(--dada-font-Large); }
+
+.reveal .dada-font-LARGE,
+.reveal .dada-font-LARGE p, .reveal .dada-font-LARGE li,
+.reveal .dada-font-LARGE td, .reveal .dada-font-LARGE dt,
+.reveal .dada-font-LARGE dd { font-size: var(--dada-font-LARGE); }
+
+.reveal .dada-font-huge,
+.reveal .dada-font-huge p, .reveal .dada-font-huge li,
+.reveal .dada-font-huge td, .reveal .dada-font-huge dt,
+.reveal .dada-font-huge dd { font-size: var(--dada-font-huge); }
+
+.reveal .dada-font-Huge,
+.reveal .dada-font-Huge p, .reveal .dada-font-Huge li,
+.reveal .dada-font-Huge td, .reveal .dada-font-Huge dt,
+.reveal .dada-font-Huge dd { font-size: var(--dada-font-Huge); }
+
+/* ---------------------------------------------------------------------------
+   \textbf and \emph rendering: dada-bold / dada-emph CSS classes
+   beamer-frame-fix.lua converts pandoc Strong/Emph AST nodes to Spans with
+   these classes so that bold and italic rendering is not suppressed by the
+   reveal.js CDN CSS reset.
+   --------------------------------------------------------------------------- */
+.reveal .dada-bold { font-weight: bold; }
+.reveal .dada-emph { font-style: italic; }

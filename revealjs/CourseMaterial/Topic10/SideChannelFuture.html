@@ -1,0 +1,3213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Hugh Anderson [Q]">
+  <title>DADA2026:10 Defence against the Dark Arts Tenth topic - Side channels, and the Future?</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/beamer.css" id="theme">
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN" && texText && texText.nodeType === 3) {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css" />
+  <link rel="stylesheet" href="../../css/theme/beamer.css"/>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">DADA2026:10<br />
+Defence against the Dark Arts<br />
+Tenth topic - Side channels, and the Future?</h1>
+  <p class="author">Hugh Anderson <span>[</span><a
+href="https://hugh.myddns.me/Askbox/">Q</a><span>]</span></p>
+  <p class="date">July, 2026</p>
+</section>
+
+<section class="slide level2">
+<h2>Remember this in school?(I promise to use it later)</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 60%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/annotatedshamirgraph.png" style="max-width: none; width: auto; height:7cm"
+alt="image" />
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Where are we?</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+The topics: Attack surfaces so far...
+</div>
+<div class="block-content">
+<dl>
+<dt><span><span
+style="color: gray">Introduction (in May):</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Warfare, ... and Human weaknesses.
+</span></p>
+</div>
+</dd>
+<dt><span><span style="color: gray"><span
+class="dada-emph">System</span></span><span
+style="color: gray"> Complexity:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Fight back with design principles,
+standards and formal methods. </span></p>
+</div>
+</dd>
+<dt><span><span style="color: gray">Crypto 1:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Traditional systems - substitution and
+permutation. (Pre 1976).</span></p>
+</div>
+</dd>
+<dt><span><span style="color: gray">Crypto 2:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">(Post 1976) Asymmetric systems: OWF,
+computational complexity, hashes. </span></p>
+</div>
+</dd>
+<dt><span><span style="color: gray">IP Networks:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Layered structure designed for resilience,
+not security. Hardening the Internet. </span></p>
+</div>
+</dd>
+<dt><span><span style="color: gray">OtherNets:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Other communication worlds that largely
+rely on security-by-obscurity. </span></p>
+</div>
+</dd>
+<dt><span><span style="color: gray">Web Apps:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Weaknesses and defences for web
+applications. </span></p>
+</div>
+</dd>
+<dt><span><span style="color: gray">Infrastructure:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Banking, PKI, the DNS, IoT, media.
+</span></p>
+</div>
+</dd>
+<dt><span><span
+style="color: gray">Machine Architecture:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Issues with hardware - timing and race
+conditions, caching and so on. </span></p>
+</div>
+</dd>
+</dl>
+<div class="dada-font-footnotesize">
+<div style="color: black">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<dl>
+<dt><span><span style="color: black">Side</span><span
+style="color: gray"> </span><span
+style="color: black">Channels:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: black"><span class="dada-bold">Today we will look
+at side-channel attacks, where other properties of a computation (speed,
+radiation, temperature...) can be used to attack systems. We will then
+finish off the course with a look to some advanced, non-obvious
+ideas.</span></span></p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: blue"><span class="dada-bold">Side
+Channels</span></span>
+<ul>
+<li>Timing: Exponentiation attack</li>
+<li>Cache timing: attack on Montgomery ladder!</li>
+<li>Fault injections</li>
+<li>Side channel attacks on smartcards</li>
+</ul></li>
+<li><span style="color: blue"><span class="dada-bold">Non-obvious
+applications and attacks</span></span>
+<ul>
+<li>Secret Sharing (SS)<span>[</span>Administrative controls:
+SOD<span>]</span></li>
+<li>Secure multi-party computation (MPC)<span>[</span>Data privacy
+issues<span>]</span></li>
+<li>Oblivious transfer (OT)
+<span>[</span>Non-repudiation<span>]</span></li>
+<li>Quantum communication and
+computation<span>[</span>Post...<span>]</span></li>
+</ul></li>
+<li><span style="color: blue"><span class="dada-bold">The
+end...</span></span></li>
+</ol>
+</div>
+</div>
+</section>
+<section>
+<section id="side-channels" class="title-slide slide level1">
+<h1>Side Channels</h1>
+
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: blue"><span class="dada-bold">Side
+Channels</span></span>
+<ul>
+<li><span class="dada-bold">Timing: Exponentiation attack</span></li>
+<li><span style="color: lightgray">Cache timing: attack on Montgomery
+ladder!</span></li>
+<li><span style="color: lightgray">Fault injections</span></li>
+<li><span style="color: lightgray">Side channel attacks on
+smartcards</span></li>
+</ul></li>
+<li><span style="color: lightgray">Non-obvious applications and
+attacks</span>
+<ul>
+<li><span style="color: lightgray">Secret Sharing
+(SS)<span>[</span>Administrative controls: SOD<span>]</span></span></li>
+<li><span style="color: lightgray">Secure multi-party computation
+(MPC)<span>[</span>Data privacy issues<span>]</span></span></li>
+<li><span style="color: lightgray">Oblivious transfer (OT)
+<span>[</span>Non-repudiation<span>]</span></span></li>
+<li><span style="color: lightgray">Quantum communication and
+computation<span>[</span>Post...<span>]</span></span></li>
+</ul></li>
+<li><span style="color: lightgray">The end...</span></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Timing attack on exponentiation<span class="hfill-right">
+<span>[</span><a
+href="https://paulkocher.com/doc/TimingAttacks.pdf">ctrl-i1</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Efficient exponentiation
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The first example of a timing attack on exponentiation (as in RSA)
+was introduced by Paul Kocher in 1995 (see
+<span>[</span>ctrl-i1<span>]</span> above), while he was an
+undergraduate at Stanford. The attack attempts to find the key<span
+style="color: blue"> <span class="math inline">k</span></span>, and
+exploits how efficient exponentiation is carried out.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>Note that RSA does repeated multiplication, and ECC/Elgamal use point
+addition, an analog of exponentiation. The algorithms use doubling and
+look the same:</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<table>
+<tbody>
+<tr>
+<td style="text-align: center;"><span
+class="dada-font-footnotesize"><span
+class="dada-bold">RSA</span></span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span
+class="dada-font-footnotesize"><span
+class="dada-bold">ECC</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><div class="dada-fbox"
+style="width: 50%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>To compute </code><span
+class="math inline">c^{d}\bmod
+N</span><code> in RSA</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>Q = 1;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>foreach bit in key d {</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>Q = Q</code><span><code>*</code></span><code>Q mod N;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>if (bit==1) {</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>Q = Q</code><span><code>*</code></span><code>c mod N;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>}</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>}</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>return Q;</code></span></span></p>
+</div></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><div class="dada-fbox"
+style="width: 30%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>To compute </code><span
+class="math inline">kP</span><code> in ECC</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>Q = O;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>foreach bit in key k {</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>Q = 2Q;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>if (bit==1) {</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>Q = Q + P;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>}</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>}</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>return Q;</code></span></span></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Attacker’s capability and goal</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Assumptions on the attacker’s capabilities
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Consider the RSA algorithm, and multiplication. For any <span
+style="color: blue">2</span> integers<span style="color: blue"> <span
+class="math inline">x,y</span></span>, the adversary can determine the
+time taken to compute<span style="color: blue"> <span
+class="math inline">x\times y\bmod N</span></span>. The adversary can
+send any <span style="color: blue"><span
+class="math inline">c</span></span> to the decryption oracle and measure
+the time taken by the oracle. That is, the time taken to compute<span
+style="color: blue"> <span class="math inline">c^{d}\bmod
+N</span></span></p>
+</div>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">
+The main idea
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>First, note that for different values of the bits in the key, the
+loop takes different times. It takes longer if the bit is a <span
+style="color: blue">1</span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>The attacker sends large numbers of randomly drawn ciphertexts to the
+oracle, and measures the time taken for each computation. The attacker
+simulates the behaviour of the oracle for <span
+style="color: blue"><span
+class="math inline">b_{0}=0,b_{0}=1</span></span> and tries to find
+timing correlations with the actual measured time. Once it has a best
+guess for<span style="color: blue"> <span
+class="math inline">b_{0}</span></span> it moves on to<span
+style="color: blue"> <span class="math inline">b_{1}</span></span> and
+so on through the bits, an iterative process.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>The attack</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/timecorrelation.png" style="max-width: none; width: auto; height:2.5cm"
+alt="image" /></p>
+</div>
+<div class="center">
+<p> </p>
+</div>
+<div class="alertblock">
+<div class="block-title">
+Midway through the attack
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The attacker knows <span style="color: blue"><span
+class="math inline">b_{0},\ldots b_{4}</span></span>, and is trying to
+discover<span style="color: blue"> <span
+class="math inline">b_{5}</span></span> by repeatedly querying the
+oracle with a new<span style="color: blue"> <span
+class="math inline">c</span></span>, and getting the time<span
+style="color: blue"> <span class="math inline">t</span></span>. The
+adversary then</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize">Determines<span
+style="color: blue"> <span
+class="math inline">t_{0\ldots4}</span></span>, with knowledge of the
+algorithm, and <span style="color: blue"><span
+class="math inline">b_{0},\ldots b_{4}</span></span>.</span></li>
+<li><span class="dada-font-footnotesize">Determines<span
+style="color: blue"> <span class="math inline">t_{5}^{0}</span></span>,
+the time if the bit in the key was<span style="color: blue">
+0</span>.</span></li>
+<li><span class="dada-font-footnotesize">Determines<span
+style="color: blue"> <span class="math inline">t_{5}^{1}</span></span>,
+the time if the bit in the key was <span
+style="color: blue">1</span>.</span></li>
+</ul>
+<div class="dada-font-footnotesize">
+<p>Now either<span style="color: blue"> <span
+class="math inline">t=t_{0...4}+t_{5}^{0}+x</span></span> or<span
+style="color: blue"> <span
+class="math inline">t=t_{0...4}+t_{5}^{1}+x</span></span> (along with
+noise). The attacker builds two distributions<span style="color: blue">
+<span class="math inline">T_{0}</span> </span> and <span
+style="color: blue"><span class="math inline">T_{1}</span>.</span> If
+the oracle’s actual-time distribution <span style="color: blue"><span
+class="math inline">T</span></span> correlates better with <span
+style="color: blue"><span class="math inline">T_{0},</span></span> then
+<span style="color: blue"><span
+class="math inline">b_{5}=0</span></span>, otherwise<span
+style="color: blue"> <span
+class="math inline">b_{5}=1</span></span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>The algorithm continues until all bits of the key are retrieved.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>What do we do about this attack?</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+The Montgomery ladder:
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Both functions return the same result as before, but now they run in
+a constant time. Note that RSA still does multiplication, and Elgamal
+still uses point addition, and the algorithms still use doubling and
+look the same:</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<table>
+<tbody>
+<tr>
+<td style="text-align: center;"><span
+class="dada-font-footnotesize"><span
+class="dada-bold">RSA</span></span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span
+class="dada-font-footnotesize"><span
+class="dada-bold">ECC</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><div class="dada-fbox"
+style="width: 45%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>To compute </code><span
+class="math inline">c^{d}\bmod
+N</span><code> in RSA</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>R0 = c;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>R1 = c </code><span><code>*</code></span><code> c mod N;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>foreach bit in key d {</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>if (bit==0) {</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>R1 = R0 </code><span><code>*</code></span><code> R1 mod N;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>R0 = R0 </code><span><code>*</code></span><code> R0 mod N;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>} else {</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>R0 = R0 </code><span><code>*</code></span><code> R1 mod N;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>R1 = R1 </code><span><code>*</code></span><code> R1 mod N;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>}</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>}</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>return R0;</code></span></span></p>
+</div></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><div class="dada-fbox"
+style="width: 35%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>To compute </code><span
+class="math inline">kP</span><code> in ECC</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>R0 = O;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>R1 = P;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>foreach bit in key k {</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>if (bit==0) {</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>R1 = R0 + R1;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>R0 = 2R0;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>} else {</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>R0 = R0 + R1;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>R1 = 2R1;</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>}</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>}</code></span></span></p>
+<p><span class="dada-font-tiny"><span
+style="color: black"><code>return R0;</code></span></span></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+<p>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: blue"><span class="dada-bold">Side
+Channels</span></span>
+<ul>
+<li><span style="color: lightgray">Timing: Exponentiation
+attack</span></li>
+<li><span class="dada-bold">Cache timing: attack on Montgomery
+ladder!</span></li>
+<li><span style="color: lightgray">Fault injections</span></li>
+<li><span style="color: lightgray">Side channel attacks on
+smartcards</span></li>
+</ul></li>
+<li><span style="color: lightgray">Non-obvious applications and
+attacks</span>
+<ul>
+<li><span style="color: lightgray">Secret Sharing
+(SS)<span>[</span>Administrative controls: SOD<span>]</span></span></li>
+<li><span style="color: lightgray">Secure multi-party computation
+(MPC)<span>[</span>Data privacy issues<span>]</span></span></li>
+<li><span style="color: lightgray">Oblivious transfer (OT)
+<span>[</span>Non-repudiation<span>]</span></span></li>
+<li><span style="color: lightgray">Quantum communication and
+computation<span>[</span>Post...<span>]</span></span></li>
+</ul></li>
+<li><span style="color: lightgray">The end...</span></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Attack involves ECC, memory caches, timing...<span
+class="hfill-right"> <span>[</span><a
+href="https://eprint.iacr.org/2014/140.pdf">ctrl-i2</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+OpenSSL: An important bit of security software
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>OpenSSL is used in about 60% of all web based ssl (https) servers. As
+a result of this we are <span class="dada-emph">very</span> interested
+in bugs in openssl. It may be the software most closely examined for
+security errors - all 700,000 lines of code!</p>
+</div>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">
+What is the (one second) attack?
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>From the paper at <span>[</span>i2<span>]</span> above:<span
+style="color: blue"> </span></p>
+</div>
+<blockquote>
+<div class="dada-font-footnotesize">
+<p>“Our attack recovers the scalar k and thus the secret key of the
+signer and would therefore allow unlimited forgeries.”</p>
+</div>
+</blockquote>
+<div class="dada-font-footnotesize">
+<p>The attack is a side channel attack. An attacker can determine if
+code has been cached or not. If it has been used, then it will be
+cached.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>OpenSSL is built with security in mind, so (of course) it uses the
+Montgomery ladder, that runs in constant time. Weirdly, the attack is a
+<span class="dada-emph">timing</span> attack (on the cache for the
+Montgomery ladder code).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Attack is directed at the instruction cache...</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/opensslattack1.png" style="max-width: none; width: auto; height:5.8cm"
+alt="image" /></p>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+As openssl program runs, it caches the code...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Each time we fetch a new instruction, the cache is filled. The next
+time we access that instruction, it happens quickly, UNLESS someone
+clears the cache.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>If bit is a “1”, THIS is cached...</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/opensslattack2.png" style="max-width: none; width: auto; height:5.8cm"
+alt="image" /></p>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+As openssl program runs, it caches the code...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The attacker can determine this by seeing how fast the four
+cachelines A,B,C,D are loaded, by trying to load one of them, and timing
+the attempt.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>If bit is a “0”, THIS is cached...</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/opensslattack3.png" style="max-width: none; width: auto; height:5.8cm"
+alt="image" /></p>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+As openssl program runs, it caches the code...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>If the bit is a 0, then the attacker determine this once again by
+seeing how fast the cachelines load. Afterwards, the attacker clears the
+cache.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>OpenSSL timing</h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">
+Original openssl-1.0.1f/crypto/ec/ec2_mult.c...
+</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<pre><code>if (word &amp; mask) {
+   if (!gf2m_Madd(..., x1, ... ) goto err;
+   if (!gf2m_Mdouble(..., x2, ... ) goto err;
+} else {
+   if (!gf2m_Madd(..., x2, ... ) goto err;
+   if (!gf2m_Mdouble(..., x1, ... ) goto err;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>Each bit of a key is being tested, and depending on the bit we take
+two different paths. The paths operate on different memory locations
+which are cached, and an attacker can discover that, because the memory
+location loads faster. An attacker can determine each bit.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+Fixed openssl-1.0.1g/crypto/ec/ec2_mult.c...
+</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<pre><code>BN_consttime_swap(word &amp; mask, x1, x2,...
+if (!gf2m_Madd(..., x1, ... ) goto err;
+if (!gf2m_Mdouble(..., x2, ... ) goto err;
+BN_consttime_swap(word &amp; mask, x1, x2,...</code></pre>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>A constant time swap to put variables in the same memory
+locations.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: blue"><span class="dada-bold">Side
+Channels</span></span>
+<ul>
+<li><span style="color: lightgray">Timing: Exponentiation
+attack</span></li>
+<li><span style="color: lightgray">Cache timing: attack on Montgomery
+ladder!</span></li>
+<li><span class="dada-bold">Fault injections</span></li>
+<li><span style="color: lightgray">Side channel attacks on
+smartcards</span></li>
+</ul></li>
+<li><span style="color: lightgray">Non-obvious applications and
+attacks</span>
+<ul>
+<li><span style="color: lightgray">Secret Sharing
+(SS)<span>[</span>Administrative controls: SOD<span>]</span></span></li>
+<li><span style="color: lightgray">Secure multi-party computation
+(MPC)<span>[</span>Data privacy issues<span>]</span></span></li>
+<li><span style="color: lightgray">Oblivious transfer (OT)
+<span>[</span>Non-repudiation<span>]</span></span></li>
+<li><span style="color: lightgray">Quantum communication and
+computation<span>[</span>Post...<span>]</span></span></li>
+</ul></li>
+<li><span style="color: lightgray">The end...</span></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Fault injection<span class="hfill-right"> <span>[</span><a
+href="https://hugh.myddns.me/media/pdfs/faults.pdf">ctrl-i3</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+The idea of getting secrets through injecting faults
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>This idea was first discussed in D Boneh, RA DeMillo, RJ Lipton,
+<span class="dada-emph">“On the importance of checking cryptographic
+protocols for faults”</span>, CRYPTO, 1997, with an update at
+<span>[</span>ctrl-i3<span>]</span> above.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>The adversary observes the behavior of a device when some components
+are faulty. From the behavior, the adversary infers a secret.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>The fault could be injected by the adversary. Very often, although
+the adversary can inject a fault, the adversary cannot predict the
+outcome. For example, the adversary can flip some bits in a particular
+register but does not know which bits will be flipped and be unable to
+read the register.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+Using CRT in RSA to speed up decryption about <span
+class="math inline">4\times</span>
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Rather than<span style="color: blue"> <span
+class="math inline">c^{d}\bmod N</span></span>, instead compute<span
+style="color: blue"> <span class="math inline">e_{1}=c^{d}\bmod
+p</span></span>, and <span style="color: blue"><span
+class="math inline">e_{2}=c^{d}\bmod q</span></span>, and then</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 40%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span class="math inline">{c^{d}\bmod
+N=(ae_{1}+be_{2})\bmod N}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>where<span style="color: blue"> <span class="math inline">a=1\bmod
+p,a=0\bmod q,b=0\bmod p,b=1\bmod q</span></span> (pre-computed). This is
+possible because the factorization of<span style="color: blue"> <span
+class="math inline">N</span></span> could be kept around.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Fault injection</h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">
+If exponentiation is using CRT...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Assume the attacker can obtain the output <span
+style="color: blue"><span class="math inline">m=(ae_{1}+be_{2})\bmod
+N</span></span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>The attacker can introduce noise/errors during the computation
+of<span style="color: blue"> <span
+class="math inline">e_{1}</span></span>, and no error during the
+computation of<span style="color: blue"> <span
+class="math inline">e_{2}</span></span>. Hence the attacker obtains</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 30%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span
+class="math inline">{m&#39;=(ae&#39;_{1}+be_{2})\bmod
+N}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>Now, the attacker computes <span style="color: blue"><span
+class="math inline">\mathrm{gcd}(m\begingroup\def\b@ld{bold}
+  \text{\ifx\math@version\b@ld\bfseries\textendash}\endgroup\else\textendash\fi
+m&#39;,N)</span></span>. The gcd is either<span style="color: blue">
+<span class="math inline">p</span></span> or <span
+style="color: blue"><span class="math inline">q</span></span>.</p>
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Why does it work?
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Note that<span style="color: blue"> <span
+class="math inline">m-m&#39;=a(e_{1}-e&#39;_{1})\bmod N</span></span>,
+and that <span style="color: blue"><span class="math inline">a=0\bmod
+q</span></span> (but is not zero). If <span style="color: blue"><span
+class="math inline">m\begingroup\def\b@ld{bold}
+  \text{\ifx\math@version\b@ld\bfseries\textendash}\endgroup\else\textendash\fi
+m&#39;</span></span> is not divisible by<span style="color: blue"> <span
+class="math inline">p</span></span>, then</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 30%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span
+class="math inline">{\mathrm{gcd}(m-m&#39;,N)=q}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: blue"><span class="dada-bold">Side
+Channels</span></span>
+<ul>
+<li><span style="color: lightgray">Timing: Exponentiation
+attack</span></li>
+<li><span style="color: lightgray">Cache timing: attack on Montgomery
+ladder!</span></li>
+<li><span style="color: lightgray">Fault injections</span></li>
+<li><span class="dada-bold">Side channel attacks on
+smartcards</span></li>
+</ul></li>
+<li><span style="color: lightgray">Non-obvious applications and
+attacks</span>
+<ul>
+<li><span style="color: lightgray">Secret Sharing
+(SS)<span>[</span>Administrative controls: SOD<span>]</span></span></li>
+<li><span style="color: lightgray">Secure multi-party computation
+(MPC)<span>[</span>Data privacy issues<span>]</span></span></li>
+<li><span style="color: lightgray">Oblivious transfer (OT)
+<span>[</span>Non-repudiation<span>]</span></span></li>
+<li><span style="color: lightgray">Quantum communication and
+computation<span>[</span>Post...<span>]</span></span></li>
+</ul></li>
+<li><span style="color: lightgray">The end...</span></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Class 1 attacker (the outsider) hack</h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">
+Only a little equipment needed...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The outsider does not have electron microscopes or FIB units, or even
+Nitric acid! Life is tough sometimes. The <span
+style="color: blue">outsider</span> notices that when power is first
+applied, the <span style="color: blue">smart card outputs an
+identification string</span> on the serial OUT line:</p>
+</div>
+<div class="center">
+<div class="dada-fbox"
+style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<pre><code>Vsn 0.97</code></pre>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>The outsider knows that the software is very small, and probably
+<span style="color: blue">stores strings</span> like “Vsn 0.97” in 9
+bytes of memory, the 8 bytes of the string, <span
+style="color: blue">terminated by a null</span> (a byte with all zeroes
+in its bits). The outsider surmises that the<span style="color: blue">
+code is probably</span> like this:</p>
+</div>
+<div class="center">
+<div class="dada-fbox"
+style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<pre><code>void printit( char buf[] ) {
+   int i=0;
+   while ( buf[i]!=0 ) {
+      serialtx(buf[i] );
+      i=i+1;
+   }
+}
+...
+   printit( ``Vsn 0.97&#39;&#39; );</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Smartcard constant time loop</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/lowhack1.png" style="max-width: none; width: auto; height:3cm"
+alt="image" /></p>
+</div>
+<div class="alertblock">
+<div class="block-title">
+Timing diagram for the printit() while loop...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The <span style="color: blue">instructions</span> executed are <span
+style="color: blue">predictable</span>. After transmitting the character
+for
+<code>buf</code><span><code>[</code></span><code>1</code><span><code>]</code></span><code>:</code></p>
+</div>
+<ol>
+<li><span class="dada-font-footnotesize">The<code> i </code> variable is
+incremented (<span style="color: blue"><code>inc i</code></span>
+)</span></li>
+<li><span class="dada-font-footnotesize">The CPU branches to the
+beginning of the while loop (<span
+style="color: blue"><code>bra loop</code></span> )</span></li>
+<li><span class="dada-font-footnotesize">The value in
+<code>buf</code><span><code>[</code></span><code>i</code><span><code>]</code></span><code> </code>
+is loaded (<span
+style="color: blue"><code>ld buf</code><span><code>[</code></span><code>i</code><span><code>]</code></span></span>
+)</span></li>
+<li><span class="dada-font-footnotesize">If it is equal to 0, then
+branch to the end of the loop (<span
+style="color: blue"><code>beq end</code></span> )</span></li>
+<li><span class="dada-font-footnotesize">Otherwise transmit the next
+character...</span></li>
+</ol>
+<div class="dada-font-footnotesize">
+<p>There is a <span style="color: blue">constant delay</span> between
+the character and these instructions.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Class 1 attacker hack 1: glitch it!</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/emfsmart.png" style="max-width: none; width: auto; height:4.5cm"
+alt="image" /></p>
+</div>
+<div class="alertblock">
+<div class="block-title">
+A "glitch" attack...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>By timing a <span style="color: blue">pulse/glitch</span> to occur
+exactly <span style="color: blue">when the software checks</span> the
+test at the beginning of the while loop, (it is always a fixed time
+after the previous character), attacker can make the <span
+style="color: blue">test always succeed. i.e. </span><span
+style="color: blue"><code>buf</code><span><code>[</code></span><code>i</code><span><code>]</code></span><code>!=0</code></span><span
+style="color: blue"> will always be </span><span
+style="color: blue"><code>TRUE</code></span><span
+style="color: blue">.</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<p>A <span style="color: blue">glitch</span> may be a <span
+style="color: blue">spark</span>, a <span
+style="color: blue">variation</span> of the <span
+style="color: blue">power supply</span>, or some other activity.
+Hardware to do this is cheaply available (e.g. in most EE labs).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Class 1 attacker hack 1: glitch</h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">
+A "glitch" attack...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">If </span><span
+style="color: blue"><code>buf</code><span><code>[</code></span><code>i</code><span><code>]</code></span><code>!=0</code></span><span
+style="color: blue"> is always </span><span
+style="color: blue"><code>TRUE</code></span><span
+style="color: blue">...</span> The code acts like this:</p>
+</div>
+<div class="center">
+<div class="dada-fbox"
+style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<pre><code>void printit( char buf[] ) {
+   int i=0;
+   while ( TRUE ) {
+      serialtx(buf[i] );
+      i=i+1;
+   }
+}
+...</code></pre>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>As a result, the serial data line <span style="color: blue">continues
+to output</span> serial data corresponding to the <span
+style="color: blue">entire memory</span> of the processor (program and
+data). Note that in small systems like this, <span
+style="color: blue">memory is not protected</span>, and
+<code>buf</code><span><code>[</code></span><code>0</code><span><code>]</code></span><code>...buf</code><span><code>[</code></span><code>65536</code><span><code>]</code></span>
+is <span style="color: blue">ALL of memory</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Class 1 attacker hack 2: timing attack on smartcard</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/timehack.png" style="height: auto; width:30.0%"
+alt="image" /></p>
+</div>
+<div class="block">
+<div class="block-title">
+Observe behaviour externally by measuring current...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The current trace gives <span style="color: blue">evidence</span>
+about the computation - <span style="color: blue">type</span> and <span
+style="color: blue">timing</span>.</p>
+</div>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">
+What is the attack?
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>An accurate measure of the time of computation leads to an
+attack.</p>
+</div>
+<div class="dada-font-footnotesize">
+<p>Thfollowing slide<span style="color: blue"> has an example of a
+timing attack</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Timing attack...</h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">
+The most fantastic thing in the universe...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The case of a function to test an 8-digit PIN number:</p>
+</div>
+<div class="center">
+<div class="dada-fbox"
+style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<pre><code>void testPIN( char buf[] ) {
+   int i=0;
+   while ( i&lt;9 ) {
+      if ( buf[i]!=password[i] ) {
+         return NOMATCH;
+      }
+      i=i+1;
+   }
+   return MATCH;
+}</code></pre>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>Instead of requiring<span style="color: blue"> <span
+class="math inline">10^{8}=100,000,000</span> attempts</span> at the
+password, our attack algorithm <span style="color: blue">only required
+<span class="math inline">80</span></span>. The attack involved <span
+style="color: blue">precise measurement </span> of the time for the
+function while trying out PINs.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Side channel attacks</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Summary
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>These attacks are very real, and here we have only looked at a few of
+the known attacks. In general side-channel attacks are implementation or
+system dependant, not related to the <span
+class="dada-emph">hardness</span> of the (crypto/security) problem.
+Caches, timing, power consumption, sound, light, radio waves, faults and
+so on - all have been used.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>In any case they have been shown to achieve success with vastly
+smaller number of trials/attacks, than would be expected through (for
+example) root finding, discrete logs or factorization.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>Though the underlying mathematical structures seem good, to implement
+security systems we must think out of the box, like the attackers, and
+handle unexpected side channel attacks.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="non-obvious-applications-and-attacks"
+class="title-slide slide level1">
+<h1>Non-obvious applications and attacks</h1>
+
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: lightgray">Side Channels</span>
+<ul>
+<li><span style="color: lightgray">Timing: Exponentiation
+attack</span></li>
+<li><span style="color: lightgray">Cache timing: attack on Montgomery
+ladder!</span></li>
+<li><span style="color: lightgray">Fault injections</span></li>
+<li><span style="color: lightgray">Side channel attacks on
+smartcards</span></li>
+</ul></li>
+<li><span style="color: blue"><span class="dada-bold">Non-obvious
+applications and attacks</span></span>
+<ul>
+<li><span class="dada-bold">Secret Sharing
+(SS)<span>[</span>Administrative controls: SOD<span>]</span></span></li>
+<li><span style="color: lightgray">Secure multi-party computation
+(MPC)<span>[</span>Data privacy issues<span>]</span></span></li>
+<li><span style="color: lightgray">Oblivious transfer (OT)
+<span>[</span>Non-repudiation<span>]</span></span></li>
+<li><span style="color: lightgray">Quantum communication and
+computation<span>[</span>Post...<span>]</span></span></li>
+</ul></li>
+<li><span style="color: lightgray">The end...</span></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Musings on information security goals and crypto...</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 32%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/FutureWorld.png" style="max-width: none; width: auto; height:1.8cm"
+alt="image" />
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Security issues abound in our brave new digital world...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>... constructed from <span class="dada-bold"><span
+class="dada-emph">distributed</span></span>, chaotically networked,
+randomly configured, randomly updated, software and machines. <span
+style="color: blue">This is all </span><span class="dada-emph"><span
+style="color: blue">a bit of a worry</span></span><span
+style="color: blue">.</span><a href="#/fn1" class="footnote-ref"
+id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</div>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">
+Crypto and CIA (Confidentiality, Integrity and Availability)...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>We have Crypto! <span class="dada-bold">AES, RSA, Diffie Hellman,
+ECC</span>, keeping things <span class="dada-bold">C</span>, <span
+class="dada-bold">I</span>, and maybe <span class="dada-bold">A</span>,
+whenever we use apps. Hopefully it all works. <span
+class="dada-emph"><span
+style="color: magenta">Hopefully</span></span><span
+style="color: magenta">...</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>For <span class="dada-bold">C</span>, we rely on <span
+class="dada-emph">easy</span> and <span class="dada-emph">hard</span>
+functions which we <span class="dada-emph">assume</span> to exist.<span
+style="color: red">(Caution <span>[</span>1<span>]</span>)</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<p>For <span class="dada-bold">I</span>, we trust in <span
+class="dada-emph">authorities</span>. How many authorities? Well...
+consider <span class="dada-bold">https</span>.<span
+style="color: red">(Caution <span>[</span>2<span>]</span>)</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Three (crypto) ideas...</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Down with authorities!
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>We will look at modern <span style="color: blue">distributed</span>
+systems with <span style="color: blue">no authorities</span>, and with
+quite <span style="color: blue">different goals/application
+areas</span>.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+Three high-level schemes if there is time
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Here are three non-trivial schemes. Each addresses a particular
+requirement, beyond basic <span class="dada-bold">CIA</span> ones.
+Existing <span class="dada-bold">CIA</span> techniques may be used as
+building blocks in these schemes. <span style="color: blue">A consistent
+theme is that these schemes are designed to work without having to trust
+an authority. </span></p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>I will present each of the three schemes in the following way:</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize">The underlying motivation for
+the particular scheme; <span class="dada-bold"><span
+class="dada-emph">what</span></span> and <span class="dada-bold"><span
+class="dada-emph">why</span></span>.</span></li>
+<li><span class="dada-font-footnotesize">The underlying ideas: the
+scaffolding, activities, procedures; <span class="dada-bold"><span
+class="dada-emph">how</span></span>.</span></li>
+<li><span class="dada-font-footnotesize">Summary and
+implementations.</span></li>
+</ul>
+<div class="dada-font-footnotesize">
+<p>Some slides may be skipped over...</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Motivating (bad) example for sharing a secret</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 76%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="image-grid">
+<img data-src="../../images/1024px-WinonaSavingsBankVault.jpeg"
+style="max-width: none; width: auto; height:2.2cm" alt="image" />
+<img data-src="../../images/Combo.png" style="max-width: none; width: auto; height:2.2cm"
+alt="image" />
+<img data-src="../../images/ManagersShares-0.png" style="max-width: none; width: auto; height:2.2cm"
+alt="image" />
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title block-title-hfill">
+<span class="block-title-left">Are bank managers
+trustworthy?</span><span
+class="block-title-right"><span>[</span>Separation of
+Duty<span>]</span></span>
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>A bank has a safe that can be opened using a secret pin<span
+style="color: blue"> <span class="math inline">k</span></span>. The
+secret<span style="color: blue"> <span
+class="math inline">k</span></span> is to be kept by 3 managers. When
+three of them get together the safe can be opened. How can secret <span
+style="color: blue"><span class="math inline">k</span></span> be
+shared?</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>Here is a simple method. Suppose <span style="color: blue"><span
+class="math inline">k</span> </span> is a 6 decimal digits sequence. The
+dealer splits it into 3 equal parts, i.e <span style="color: blue"><span
+class="math inline">k=s_{1}\mathbin{\mathmakebox[\widthof{${+}\m@th$}]{+\hskip-1emplus1fil+}}s_{2}\mathbin{\mathmakebox[\widthof{${+}\m@th$}]{+\hskip-1emplus1fil+}}s_{3}</span></span>.
+<span style="color: blue"><span
+class="math inline">\mathrm{Manager}_{i}</span> </span> will get the
+“share”<span style="color: blue"> <span
+class="math inline">s_{i}</span></span>. Hence, each manager will keep 2
+digits.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: magenta">Question:</span> Suppose<span
+style="color: blue"> <span
+class="math inline">\mathrm{Manager}_{1}</span></span> and<span
+style="color: blue"> <span
+class="math inline">\mathrm{Manager}_{2}</span> </span> are malicious.
+They combine their shares and try to open the safe. How many
+combinations do they have to try in the worst case?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Activities of a secret sharing scheme</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Definition <span
+class="math inline">\mathrm{SS}=(\mathrm{Init},\mathrm{Share},\mathrm{Reconstruct})</span>
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>A dealer has a secret to share among some set of <span
+style="color: blue"><span class="math inline">w</span></span>
+participants<span style="color: blue"> <span class="math inline">{\cal
+P}=\left\{ P_{1},\ldots,P_{w}\right\}</span></span> by giving each a
+share. Any<span style="color: blue"> <span class="math inline">t</span>
+</span> participants should be able to pool their shares and reconstruct
+the secret.</p>
+</div>
+<dl>
+<dt><span><span style="color: blue"><span
+class="math inline">\mathrm{Init}(n,w)</span></span>:</span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p>The dealer chooses and initializes the SS scheme.<span
+style="color: blue"> <span class="math inline">n</span></span> is the
+security parameter,<span style="color: blue"> <span
+class="math inline">w</span></span> is the number of participants.</p>
+</div>
+</dd>
+<dt><span><span style="color: blue"><span
+class="math inline">\mathrm{Share}(k,t,{\cal
+P})</span></span>:</span></dt>
+<dd>
+<div class="dada-font-footnotesize dada-hfill-layout">
+Input is secret<span style="color: blue"> <span
+class="math inline">k</span></span>, and<span style="color: blue"> <span
+class="math inline">t</span></span>: the number of participants to
+reconstruct the secret. The output is<span style="color: blue"> <span
+class="math inline">{\cal S}</span></span>, the shares for each
+participant in <span style="color: blue"><span class="math inline">{\cal
+P}</span></span>:
+<div class="dada-fbox"
+style="width: 20%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span class="math inline">{{\cal
+S}\leftarrow\mathrm{Share}(k,t,{\cal P})}</span></span></p>
+</div>
+</div>
+</div>
+</dd>
+<dt><span><span style="color: blue"><span
+class="math inline">\mathrm{Reconstruct}({\cal
+S})</span></span>:</span></dt>
+<dd>
+<div class="dada-font-footnotesize dada-hfill-layout">
+Returns key<span style="color: blue"> <span
+class="math inline">k</span></span> (from at least<span
+style="color: blue"> <span class="math inline">t</span> </span> shares):
+<div class="dada-fbox"
+style="width: 20%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span
+class="math inline">{k\leftarrow\mathrm{Reconstruct}(S)}</span></span></p>
+</div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+Secret sharing properties...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The principal property of a scheme like this is that you would want
+to show that <span class="dada-emph"><span
+style="color: blue">collusion</span></span> is not possible. This can be
+done mathematically, which we will not go into here :) <span
+class="dada-emph"><span style="color: red">Whew! </span></span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>A better way to split/share the secret...</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 62%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="image-grid">
+<img data-src="../../images/Combo.png" style="max-width: none; width: auto; height:2.7cm"
+alt="image" />
+<img data-src="../../images/ManagersShares.png" style="max-width: none; width: auto; height:2.7cm"
+alt="image" />
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Use a hidden sum policy...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>We will use the definition of the SS scheme to show this
+construction.</p>
+</div>
+<dl>
+<dt><span><span style="color: blue"><span
+class="math inline">\mathrm{Init}(10^{6},3)</span></span>:</span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p>We specify<span style="color: blue"> <span
+class="math inline">10^{6}</span></span> keys, and <span
+style="color: blue"><span class="math inline">3</span> </span>
+participants in total.</p>
+</div>
+</dd>
+<dt><span><span style="color: blue"><span
+class="math inline">\mathrm{Share}(k,3,{\cal
+P})</span></span>:</span></dt>
+<dd>
+<div class="dada-font-footnotesize dada-hfill-layout">
+Randomly pick keys<span style="color: blue"> <span
+class="math inline">s_{1},s_{2}</span></span>, from<span
+style="color: blue"> <span
+class="math inline">\mathbb{Z}_{10^{6}}</span></span>, and compute<span
+style="color: blue"> <span
+class="math inline">s_{3}=(k-s_{1}-s_{2})\bmod10^{6}</span></span>. Send
+shares <span style="color: blue"><span
+class="math inline">s_{i}</span></span> to the managers:
+<div class="dada-fbox"
+style="width: 25%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span
+class="math inline">{P_{1},P_{2},P_{3}\leftarrow
+s_{1},s_{2},s_{3}}</span><span class="math inline"></span></span></p>
+</div>
+</div>
+</div>
+</dd>
+<dt><span><span style="color: blue"><span
+class="math inline">\mathrm{Reconstruct}(S)</span></span>:</span></dt>
+<dd>
+<div class="dada-font-footnotesize dada-hfill-layout">
+Returns the key<span style="color: blue"> <span
+class="math inline">k</span></span>:
+<div class="dada-fbox"
+style="width: 30%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span
+class="math inline">{k=(s_{1}+s_{2}+s_{3})\bmod10^{6}}</span></span></p>
+</div>
+</div>
+</div>
+</dd>
+</dl>
+<div class="dada-font-footnotesize">
+<p><span style="color: red">Question: </span> If<span
+style="color: blue"> <span class="math inline">P_{1}</span></span>
+and<span style="color: blue"> <span
+class="math inline">P_{2}</span></span> colluded using<span
+style="color: blue"> <span
+class="math inline">s_{1},s_{2}</span></span>, what are the number of
+possible<span style="color: blue"> <span
+class="math inline">k</span></span> values?</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>This construction is (provably) <span class="dada-emph"><span
+style="color: blue">unconditionally collusion
+resistant</span></span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Threshold secret sharing<span>[</span>for
+resilience<span>]</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 49%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="image-grid">
+<img data-src="../../images/Combo.png" style="max-width: none; width: auto; height:2.2cm"
+alt="image" />
+<img data-src="../../images/ManagersShares-5.png" style="max-width: none; width: auto; height:2.2cm"
+alt="image" />
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Threshold schemes have <span class="math inline">t&lt;w</span>
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Consider <span class="dada-emph">this</span> requirement: any <span
+style="color: blue"><span class="math inline">3</span> </span> of<span
+style="color: blue"> <span class="math inline">5</span></span> managers
+can open a safe, but a single manager cannot. Schemes with such a
+requirement are <span class="dada-emph">threshold</span> schemes
+(if<span style="color: blue"> <span
+class="math inline">t=w</span></span> it is just a <span
+class="dada-emph">sharing</span> scheme).</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>Here is an example of such a situation in the real-world: perhaps
+some number of board members of a company can keep shares of the key to
+the company’s secret IP. Of the board members, any <span
+style="color: blue"><span class="math inline">4</span> </span> (say) can
+divulge the secret, but it takes <span style="color: blue"><span
+class="math inline">4</span></span> (not<span style="color: blue"> <span
+class="math inline">3</span></span>, not <span style="color: blue"><span
+class="math inline">2</span></span> )...</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+Definition of a <span class="math inline">(t,w)</span>-threshold scheme
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>A<span style="color: blue"> <span
+class="math inline">(t,w)\mhyphen\mathrm{threshold}</span></span> scheme
+is an SS scheme with<span style="color: blue"> <span
+class="math inline">t&lt;w</span></span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>With this scheme, <span style="color: blue"><span
+class="math inline">t</span></span> participants can compute <span
+style="color: blue"><span class="math inline">k</span></span>, but no
+group of <span style="color: blue"><span
+class="math inline">t-1</span></span> participants can do so.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Shamir’s <span class="math inline">(t,w)</span>-threshold scheme(I
+told you...)</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 35%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/annotatedshamirgraph.png"
+style="max-width: none; width: auto; height:4.5cm" alt="image" />
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Intuition behind Shamir’s <span
+class="math inline">(t,w)</span>-threshold scheme (for <span
+class="math inline">(3,w)</span>)
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The main idea is based on having sufficient points to fully define a
+polynomial curve. Once we have defined the curve we can find where it
+crosses the Y axis (that is our secret key <span
+style="color: blue"><span class="math inline">f(0)=k</span></span> ). In
+our case we use a polynomial of degree <span style="color: blue"><span
+class="math inline">2</span></span> (a quadratic), and need <span
+style="color: blue">3</span> points on the curve to fully define it.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>As a result, any <span style="color: blue">3</span> of the
+participants can find out the key.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Summary<span class="hfill-right"> <span>[</span><a
+href="https://github.com/MatrixAI/Polykey">i6</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">
+Why and what... (motivation and structure)
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Secret sharing </span><span
+style="color: blue">distributes responsibility</span><span
+style="color: black"> for something amongst people (or in our case
+computers, systems, modules). An example of separation of
+duty.</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">We saw that digital secret sharing has a
+particular shape or signature:</span><span style="color: blue"> <span
+class="math inline">\mathrm{Init}(n,w)</span></span><span
+style="color: black">,</span><span style="color: blue"> <span
+class="math inline">\mathrm{Share}(k,t,{\cal P})</span></span><span
+style="color: black">, and </span><span style="color: blue"><span
+class="math inline">\mathrm{Reconstruct}(S)</span></span><span
+style="color: black">, and that we could come up with different SS
+schemes, all within the same signature.</span></p>
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+How... (Mechanisms and Tool/software support)
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: black">We saw two ways of doing secret sharing (a
+bad way and a good way), and we looked at Rabin’s </span><span
+style="color: blue"><span class="math inline">t-w</span> </span><span
+style="color: black">scheme based on polynomials.</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">There are many open source, and commercial
+implementations of SS. For example, see <span>[</span>i6<span>]</span>
+above.</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: lightgray">Side Channels</span>
+<ul>
+<li><span style="color: lightgray">Timing: Exponentiation
+attack</span></li>
+<li><span style="color: lightgray">Cache timing: attack on Montgomery
+ladder!</span></li>
+<li><span style="color: lightgray">Fault injections</span></li>
+<li><span style="color: lightgray">Side channel attacks on
+smartcards</span></li>
+</ul></li>
+<li><span style="color: blue"><span class="dada-bold">Non-obvious
+applications and attacks</span></span>
+<ul>
+<li><span style="color: lightgray">Secret Sharing
+(SS)<span>[</span>Administrative controls: SOD<span>]</span></span></li>
+<li><span class="dada-bold">Secure multi-party computation
+(MPC)<span>[</span>Data privacy issues<span>]</span></span></li>
+<li><span style="color: lightgray">Oblivious transfer (OT)
+<span>[</span>Non-repudiation<span>]</span></span></li>
+<li><span style="color: lightgray">Quantum communication and
+computation<span>[</span>Post...<span>]</span></span></li>
+</ul></li>
+<li><span style="color: lightgray">The end...</span></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Motivating example for MPC<span class="hfill-right">
+<span>[</span><a
+href="https://hugh.myddns.me/media/movies/MPCGolpedelDestino1a-1.srt.mp4">1</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="image-grid">
+<img data-src="../../images/MPCKevin.png" style="max-width: none; width: auto; height:4.45cm"
+alt="image" />
+<img data-src="../../images/MPC-google.2" style="max-width: none; width: auto; height:4.45cm"
+alt="image" />
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+MPC is useful for (say) “Federated Learning”
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Imagine that Ebay, Amazon, AliExpress... all wanted to build a <span
+style="color: magenta">(ML) model</span>, to recommend next purchases,
+based on buying patterns gleaned from all of their<span
+style="color: blue"> internal data</span>. This would be useful to all
+of them, but none of them would want to reveal their<span
+style="color: blue"> internal data</span>. All of them want the <span
+style="color: magenta">model</span>, as it will be more accurate if it
+is learnt from all their <span style="color: blue">data</span>. The
+solution? <span class="dada-bold">MPC</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Activities of an MPC scheme for any computable <span
+class="math inline">{\cal F}()</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Definition <span
+class="math inline">\mathrm{MPC}=(\mathrm{Init},\mathrm{Share},\mathrm{Eval},\mathrm{Reconstruct})</span>
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Participants have secrets<span style="color: blue"> <span
+class="math inline">k_{i}</span></span>, which they do not wish to
+reveal. However, they do wish to compute a composite function<span
+style="color: blue"> <span class="math inline">{\cal
+F}(k_{1},k_{2},\ldots,k_{w})</span></span>. Participants distribute
+shares of the secrets, evaluate the shares of the function<span
+style="color: blue"> <span class="math inline">{\cal F}()</span></span>,
+and then reconstruct the value from the resulting shares.</p>
+</div>
+<dl>
+<dt><span><span style="color: blue"><span
+class="math inline">\mathrm{Init}(n,{\cal P})</span></span>:</span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p>For initialization,<span style="color: blue"> <span
+class="math inline">n</span></span> is the security parameter,<span
+style="color: blue"> <span class="math inline">{\cal P}</span></span> is
+the set of participants.</p>
+</div>
+</dd>
+<dt><span><span style="color: blue"><span
+class="math inline">\mathrm{Share}({\cal K})</span></span>:</span></dt>
+<dd>
+<div class="dada-font-footnotesize dada-hfill-layout">
+The inputs are the secrets<span style="color: blue"> <span
+class="math inline">{\cal K}</span></span>. The output is<span
+style="color: blue"> <span class="math inline">{\cal S}</span></span>,
+the shares:
+<div class="dada-fbox"
+style="width: 20%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span class="math inline">{{\cal
+S}\leftarrow\mathrm{Share}({\cal K})}</span><span
+class="math inline"></span></span></p>
+</div>
+</div>
+</div>
+</dd>
+<dt><span><span style="color: blue"><span
+class="math inline">\mathrm{Eval}({\cal S})</span></span>:</span></dt>
+<dd>
+<div class="dada-font-footnotesize dada-hfill-layout">
+Input is<span style="color: blue"> <span class="math inline">{\cal
+S}</span></span>. Outputs are the function shares<span
+style="color: blue"> <span class="math inline">{\cal F}_{s}=\left\langle
+f_{s_{i}},\ldots,f_{s_{w}}\right\rangle</span></span>:
+<div class="dada-fbox"
+style="width: 20%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span class="math inline">{{\cal
+F}_{s}\leftarrow\mathrm{Eval}({\cal S})}</span></span></p>
+</div>
+</div>
+</div>
+</dd>
+<dt><span><span style="color: blue"><span
+class="math inline">\mathrm{Reconstruct}({\cal
+F}_{s})</span></span>:</span></dt>
+<dd>
+<div class="dada-font-footnotesize dada-hfill-layout">
+Returns the final function value.
+<div class="dada-fbox"
+style="width: 22%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span
+class="math inline">{f\leftarrow\mathrm{Reconstruct}({\cal
+F}_{s})}</span></span></p>
+</div>
+</div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+SS and MPC...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Note that <span style="color: blue"><span
+class="math inline">\mathrm{Share}</span></span> and <span
+style="color: blue"><span
+class="math inline">\mathrm{Reconstruct}</span></span> are the same
+ideas seen in the secret sharing scheme. A theorem shows that for any
+(computable)<span style="color: blue"> <span class="math inline">{\cal
+F}()</span></span>, there is a protocol for MPC, based on secret
+sharing.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Can we compute a <span class="dada-emph">single</span> bit without
+revealing?</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><img data-src="../../images/dining_cryptographers_2_pg6_left.gif"
+style="height: auto; width:55.0%" alt="image" /></p>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+The Dining Cryptographers...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>A group of three cryptographers are dining at a restaurant. When they
+ask for the bill, the waiter tells them that the meal has been paid for,
+by someone who wants to remain <span class="dada-emph">anonymous</span>.
+The only other table has someone from the <span
+style="color: red">NSA</span>, so the cryptographers want to find out if
+the <span style="color: red">NSA</span> guy paid, or one of their own
+group (without revealing if they themselves paid).</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: red">Question: </span> Can they find out if one
+of their own group paid for the meal?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>A no-reveal protocol for computing one bit</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><img data-src="../../images/dining_cryptographers_2_pg6_left.gif"
+style="height: auto; width:35.0%" alt="image" /></p>
+</div>
+</div>
+<div class="block">
+<div class="block-title block-title-hfill">
+<span class="block-title-left">The Dining Cryptographers protocol...
+</span><span class="block-title-right">(XOR?)</span>
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Each pair of adjacent cryptographers privately decide on a randomly
+chosen bit (0/1). Maybe behind the menu? Each cryptographer knows their
+own “I paid” status (just 1 bit). If they did not pay for the meal, they
+announce the XOR of their two neighbours. Otherwise they announce the
+reverse.</p>
+</div>
+<div class="center">
+<p><img data-src="../../images/DiningCryptographers-1.png"
+style="height: auto; width:19.0%" alt="image" /></p>
+</div>
+<div class="dada-font-footnotesize">
+<p>The parity of the values is 1 if (any) one of them paid for the
+meal.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Dining cryptographers is an MPC!</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title block-title-hfill">
+<span class="block-title-left">The “flow” for dining
+cryptographers:</span><span class="block-title-right">(XOR is <span
+class="math inline">\oplus</span>)</span>
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Assume that the cryptographers (Alice, Bob and Charles) each have
+their private secrets <span style="color: blue"><span
+class="math inline">\left\langle
+k_{a},k_{b},k_{c}\right\rangle</span></span>, each being a value <span
+style="color: blue"><span class="math inline">(0/1)</span> </span>
+indicating if they paid for the meal. There are two cases - either all
+are<span style="color: blue"> <span class="math inline">0</span></span>,
+or one is<span style="color: blue"> <span
+class="math inline">1</span></span>. We want to compute the function
+<span style="color: blue"><span class="math inline">f={\cal
+F}(k_{a},k_{b},k_{c})\mathrel{\overset{\textsf{def}}{=}}k_{a}\oplus
+k_{b}\oplus k_{c}</span></span>, which will indicate if one of the
+cryptographers paid for the meal. The <span
+class="dada-emph">flow</span> is as follows:</p>
+</div>
+<div class="center">
+<div class="dada-font-tiny">
+<div class="dada-fbox"
+style="width: 65%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<div class="dada-font-tiny">
+<p><span style="color: blue"><span
+class="math inline">\begin{array}{lcrll}
+\mathinner{\color{black}\left\langle \mathrm{fn},\right.} &amp;
+{\color{black}\mathrm{input}}\mathpunct{\color{black},} &amp;
+\mathinner{\color{black}\left.\mathrm{output}\right\rangle }\\
+\left\langle {\cal F},\right. &amp; \left\langle
+k_{a},k_{b},k_{c}\right\rangle , &amp; \left.\ldots\right\rangle \\
+\mathrm{} &amp;  &amp;  &amp; \longleftarrow &amp; \mathrm{Share()}\\
+\left\langle {\cal F},\right. &amp; \left\langle \begin{array}{l}
+\left\langle k_{a},s_{ac},s_{ab}\right\rangle ,\\
+\left\langle k_{b},s_{ab},s_{bc}\right\rangle ,\\
+\left\langle k_{c},s_{bc},s_{ac}\right\rangle
+\end{array}\right\rangle , &amp; \left.\ldots\right\rangle \\
+&amp;  &amp;  &amp; \longleftarrow &amp; \mathrm{Eval()}\\
+\left\langle {\cal F},\right. &amp; \ldots, &amp; \left.\left\langle
+\begin{array}{l}
+a\leftarrow k_{a}\oplus s_{ac}\oplus s_{ab},\\
+b\leftarrow k_{b}\oplus s_{ab}\oplus s_{bc},\\
+c\leftarrow k_{c}\oplus s_{bc}\oplus s_{ac}
+\end{array}\right\rangle \right\rangle \\
+\mathrm{} &amp;  &amp;  &amp; \longleftarrow &amp;
+\mathrm{Reconstruct()}\\
+\left\langle \ldots,\right. &amp; \ldots, &amp; \left.f\leftarrow
+a\oplus b\oplus c\right\rangle
+\end{array}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>The final value computed is the desired value:</p>
+</div>
+<div class="center">
+<div class="dada-font-tiny">
+<div class="dada-fbox"
+style="width: 65%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<div class="dada-font-tiny">
+<p><span style="color: blue"><span
+class="math inline">\begin{array}{lclcl}
+f &amp; = &amp; a\oplus b\oplus c\\
+&amp; = &amp; k_{a}\oplus s_{ac}\oplus s_{ab}\oplus k_{b}\oplus
+s_{ab}\oplus s_{bc}\oplus k_{c}\oplus s_{bc}\oplus s_{ac}\\
+&amp; = &amp; k_{a}\oplus k_{b}\oplus k_{c} &amp; = &amp; {\cal
+F}(k_{a},k_{b},k_{c})
+\end{array}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Brilliant idea: Computers are made from “circuits”<span
+class="hfill-right"> <span>[</span><a
+href="https://cronokirby.com/posts/2022/05/explaining-yaos-garbled-circuits/">ctrl-i7</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 97%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="image-grid">
+<img data-src="../../images/Andrew_Yao.jpeg" style="max-width: none; width: auto; height:2.7cm"
+alt="image" />
+<img data-src="../../images/ANDGATE.png" style="max-width: none; width: auto; height:2.7cm"
+alt="image" />
+<img data-src="../../images/FullAdder.png" style="max-width: none; width: auto; height:2.7cm"
+alt="image" />
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Yao invented “garbled” circuits to do MPC efficiently
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Andrew Yao (MIT, Stanford, Berkeley, Tsinghua University, Turing
+award) came up with a wonderful idea. He pointed out that computable
+functions can be worked out on computers (duh!), and that computers can
+be constructed out of (just) two types of gates. So for any function it
+is possible to construct a circuit using these two gates to calculate
+that function.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>The second part of his wonderful idea was to invent a way of
+encrypting these simple computations using a <span
+style="color: blue">labelling</span> of the wires that interconnect the
+gates of the circuit. Participants can <span
+style="color: magenta">evaluate</span> the output without knowing values
+of inputs, by <span style="color: magenta">decrypting</span> the garbled
+circuit. Yao’s garbled circuits are commonly used now for MPCs.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Summary<span class="hfill-right"> <span>[</span><a
+href="https://www.researchgate.net/profile/Antoine-Bagula/publication/369417303_A_Review_of_Federated_Learning_Algorithms_Frameworks_Applications/links/641ac99f315dfb4cce9ee13f/A-Review-of-Federated-Learning-Algorithms-Frameworks-Applications.pdf">ctrl-i8</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">
+Why and what... (motivation and structure)
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: black">MPC allows us to effectively use
+(distributed) data, while </span><span style="color: blue">addressing
+privacy and data-sharing concerns</span><span style="color: black">, in
+both the commercial and private world. </span></p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">We saw that MPC also has a particular
+shape or signature:</span><span style="color: blue"> <span
+class="math inline">\mathrm{Init}(n,{\cal P})</span></span><span
+style="color: black">,</span><span style="color: blue"> <span
+class="math inline">\mathrm{Share}({\cal K})</span></span><span
+style="color: black">,</span><span style="color: blue"> <span
+class="math inline">\mathrm{Eval}({\cal S})</span></span><span
+style="color: black">, and </span><span style="color: blue"><span
+class="math inline">\mathrm{Reconstruct}({\cal
+F}_{s})</span></span><span style="color: black">, and that different MPC
+schemes could all use the same signature.</span></p>
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+How... (Mechanisms and Tool/software support)
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: black">We saw a one-bit MPC technique, and gave a
+shout-out to Yao’s garbled circuits.</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">There are many open source, and commercial
+implementations of MPC. You could start by looking at reviews such as
+the one at <span>[</span>i8<span>]</span> above, and then perhaps
+open-source and sometimes experimental frameworks:</span></p>
+</div>
+<ul>
+<li><span class="dada-font-tiny"><span style="color: black"><a
+href="https://www.apheris.com/resources/blog/top-7-open-source-frameworks-for-federated-learning "
+class="uri">https://www.apheris.com/resources/blog/top-7-open-source-frameworks-for-federated-learning
+</a></span></span></li>
+<li><span class="dada-font-tiny"><span style="color: black"><a
+href="https://github.com/rdragos/awesome-mpc"
+class="uri">https://github.com/rdragos/awesome-mpc</a></span></span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: lightgray">Side Channels</span>
+<ul>
+<li><span style="color: lightgray">Timing: Exponentiation
+attack</span></li>
+<li><span style="color: lightgray">Cache timing: attack on Montgomery
+ladder!</span></li>
+<li><span style="color: lightgray">Fault injections</span></li>
+<li><span style="color: lightgray">Side channel attacks on
+smartcards</span></li>
+</ul></li>
+<li><span style="color: blue"><span class="dada-bold">Non-obvious
+applications and attacks</span></span>
+<ul>
+<li><span style="color: lightgray">Secret Sharing
+(SS)<span>[</span>Administrative controls: SOD<span>]</span></span></li>
+<li><span style="color: lightgray">Secure multi-party computation
+(MPC)<span>[</span>Data privacy issues<span>]</span></span></li>
+<li><span class="dada-bold">Oblivious transfer (OT)
+<span>[</span>Non-repudiation<span>]</span></span></li>
+<li><span style="color: lightgray">Quantum communication and
+computation<span>[</span>Post...<span>]</span></span></li>
+</ul></li>
+<li><span style="color: lightgray">The end...</span></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Motivating OT examples (online gambling, contract signing)</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 67%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="image-grid">
+<img
+data-src="../../images/top-10-online-gambling-companies-selling-excitement-through-online-betting-services.png"
+style="max-width: none; width: auto; height:2.5cm" alt="image" />
+<img data-src="../../images/SimpsonsLawyer.png" style="max-width: none; width: auto; height:2.5cm"
+alt="image" />
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Are lawyers trustworthy?
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>In large transactions, we often rely on lawyers, or documents, and we
+sign along with the other parties. In these scenarios, we are trusting
+an authority. Can we have contracts that do not rely on trusted
+authorities? Yes - with oblivious transfer (OT).</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>The lawyer-less technique of signing the contract, and then sending
+it off to the other party is not advantageous to you. <span
+class="dada-emph">You</span> have agreed, <span
+class="dada-emph">they</span> have not. There may even be an advantage
+to the other party; the seller knows you have agreed to buy the house -
+maybe they can get a better price?</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>Contract signing systems often turn this indeterminate period on its
+head, with no advantage to either party to delay anything.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>A mechanism for oblivious transfer</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-font-footnotesize">
+<table>
+<tbody>
+<tr>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"> <img
+data-src="../../images/Alice_par_John_Tenniel_32.png"
+style="max-width: none; width: auto; height:6.8cm" alt="image" />   </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>A mechanism for oblivious transfer</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 15%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/13hourclock.jpg" style="max-width: none; width: auto; height:2cm"
+alt="image" />
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+So what are these mysterious problems and numbers?
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Let us agree that factorizing a large
+number</span><span style="color: blue"> <span
+class="math inline">N=p\times q</span></span><span style="color: black">
+can be made as hard as we like (</span><span style="color: blue"><span
+class="math inline">p</span></span><span style="color: black">
+and</span><span style="color: blue"> <span
+class="math inline">q</span></span><span style="color: black"> are large
+primes): see <a
+href="https://en.wikipedia.org/wiki/RSA_Factoring_Challenge"
+class="uri">https://en.wikipedia.org/wiki/RSA_Factoring_Challenge</a>.</span></p>
+</div>
+<div class="dada-font-scriptsize">
+<p><span style="color: black"><span>[</span>1<span>]</span></span></p>
+</div>
+<div class="dada-font-footnotesize">
+<p>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Let us also agree if Alice
+computes</span><span style="color: blue"> <span
+class="math inline">N=p\times q</span></span><span style="color: black">
+using two large, random primes, she knows that if she sends</span><span
+style="color: blue"> <span class="math inline">N</span></span><span
+style="color: black"> to Bob, he will be unable to factor it.</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<div style="color: black">
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Finally - lets remember that square
+integers have two square roots. </span><span style="color: blue">For
+example <span class="math inline">\sqrt{16}=\pm4</span>. </span><span
+style="color: black">Also - in the modulo/clock arithmetic world...
+modulo a prime, numbers also have two square roots!</span><span
+style="color: blue"> </span></p>
+</div>
+<div class="dada-font-footnotesize dada-hfill-layout">
+<span style="color: blue"></span>
+<div class="dada-fbox"
+style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">For example (modulo 13): <span
+class="math inline">4\times4=3~(\bmod13)</span>, and <span
+class="math inline">9\times9=3~(\bmod13)</span>.</span><span
+style="color: black"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">It may not surprise you to learn that,
+again in modulo/clock arithmetic world but now modulo </span><span
+style="color: blue"><span class="math inline">N</span></span><span
+style="color: black">, that square numbers have four square roots - two
+pairs!</span></p>
+</div>
+<div class="dada-font-footnotesize dada-hfill-layout">
+<span style="color: blue"></span>
+<div class="dada-fbox"
+style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">For example (modulo <span
+class="math inline">35</span>). The square roots of <span
+class="math inline">16</span> are <span
+class="math inline">4,11,24</span> and <span
+class="math inline">31</span>. </span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>If Bob can factorize a number, he wins a coin toss!</h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">
+Rabin’s (distributed) OT algorithm to toss a coin...
+</div>
+<div class="block-content">
+<ol>
+<li><div class="dada-font-footnotesize dada-hfill-layout">
+<span style="color: black">Alice gets two primes  </span><span
+style="color: blue"><span class="math inline">p,q</span></span><span
+style="color: black">, calculates  </span><span
+style="color: blue"><span class="math inline">N=p\times
+q</span></span><span style="color: black">, and sends </span><span
+style="color: blue"><span class="math inline">N</span> </span><span
+style="color: black">to Bob:</span><span style="color: blue"> </span>
+<div class="dada-fbox"
+style="width: 16%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span
+class="math inline">N=5\times7=35</span> </span></p>
+</div>
+</div>
+</div></li>
+<li><div class="dada-font-footnotesize dada-hfill-layout">
+<span style="color: black">Bob selects random  </span><span
+style="color: blue"><span class="math inline">x</span></span><span
+style="color: black">, and sends </span><span style="color: blue"> <span
+class="math inline">y=x^{2}~(\bmod N)</span></span><span
+style="color: black">  to Alice:  </span><span
+style="color: blue"></span>
+<div class="dada-fbox"
+style="width: 25%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span
+class="math inline">y=31^{2}~(\bmod35)=16</span></span></p>
+</div>
+</div>
+</div></li>
+<li><span class="dada-font-footnotesize"><span
+style="color: black">Alice calculates the four square roots of <span
+class="math inline">16</span>, and sends one of these back to Bob.
+</span></span></li>
+</ol>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 60%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span
+class="math inline">\hspace{0.2in}\begin{array}{ccccccc}
+4^{2}\bmod35 &amp; = &amp; 16 &amp; \mathrm{} &amp; 31^{2}\bmod35 &amp;
+= &amp; 16\\
+24^{2}\bmod35 &amp; = &amp; 16 &amp;  &amp; 11^{2}\bmod35 &amp; = &amp;
+16
+\end{array}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol>
+<li><span class="dada-font-footnotesize"><span style="color: black">If
+Bob receives </span><span style="color: blue"> <span
+class="math inline">x</span></span><span style="color: black">
+ or </span><span style="color: blue"> <span
+class="math inline">-x</span></span><span style="color: black">, he
+learns nothing, but if he receives one of the others:</span></span></li>
+</ol>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 60%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span
+class="math inline">\begin{array}{lcl}
+\text{GCD}(24+31,35) &amp; = &amp; \text{GCD}(55,35)\\
+&amp; = &amp; 5
+\end{array}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Bob can calculate a factor! This shows a
+way that Alice can obliviously transfer either X or Y (A solution or not
+a solution), with exactly 50% likelihood.</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Contract signing and oblivious transfer</h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">
+We can use oblivious transfer for contract signing...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Oblivious transfer is a scheme where Alice
+sends either X or Y to Bob, but does not know which. </span></p>
+</div>
+<div class="dada-font-footnotesize">
+<div style="color: black">
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Oblivious transfer can be used for
+contract-signing, where:</span></p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize"><span style="color: black">Up
+to a certain point neither party is bound, but after that point both
+parties are bound</span></span></li>
+<li><span class="dada-font-footnotesize"><span
+style="color: black">Either party can prove that the other party
+signed</span></span></li>
+</ul>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Alice and Bob exchange many signed
+oblivious-transfer messages, each possibly transfering one or another of
+a pair of secrets. They are becoming “more” bound by a contract with
+ever-increasing probability...</span></p>
+</div>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">
+What if someone tries to terminate early?
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: black">In the event of early termination of the
+contract, either party can take the messages they have to an
+adjudicator, who chooses a random probability value (42% say) before
+looking at the messages.</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<div style="color: black">
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">If messages are over 42% then both parties
+are bound. If less then both parties are free.</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: lightgray">Side Channels</span>
+<ul>
+<li><span style="color: lightgray">Timing: Exponentiation
+attack</span></li>
+<li><span style="color: lightgray">Cache timing: attack on Montgomery
+ladder!</span></li>
+<li><span style="color: lightgray">Fault injections</span></li>
+<li><span style="color: lightgray">Side channel attacks on
+smartcards</span></li>
+</ul></li>
+<li><span style="color: blue"><span class="dada-bold">Non-obvious
+applications and attacks</span></span>
+<ul>
+<li><span style="color: lightgray">Secret Sharing
+(SS)<span>[</span>Administrative controls: SOD<span>]</span></span></li>
+<li><span style="color: lightgray">Secure multi-party computation
+(MPC)<span>[</span>Data privacy issues<span>]</span></span></li>
+<li><span style="color: lightgray">Oblivious transfer (OT)
+<span>[</span>Non-repudiation<span>]</span></span></li>
+<li><span class="dada-bold">Quantum communication and
+computation<span>[</span>Post...<span>]</span></span></li>
+</ul></li>
+<li><span style="color: lightgray">The end...</span></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Quantum physics<span class="hfill-right"> <span>[</span><a
+href="https://www.dwavesys.com/">X</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+First interest: Quantum computing...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold">1.</span> Quantum <span
+style="color: blue"><span class="dada-emph">computers</span></span> may
+be able to compute <span style="color: blue">HARD</span> problems
+quickly (such as factorizing large composites).</p>
+</div>
+<div style="color: blue">
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<p><span style="color: blue">How?</span></p>
+<div class="dada-font-footnotesize">
+<p>The underlying data elements are quantum bits (qubits), not limited
+to just 0,1 states - instead considered to be a <span
+style="color: blue">superposition</span> of states. An <span
+style="color: blue">operation</span> performed on a qubit is <span
+style="color: blue">performed</span> on <span style="color: blue">all
+the states</span> simultaneously. We will look at Shor’s algorithm.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>DWave systems <span>[</span>X<span>]</span> have sold the first
+commercial quantum computer, with (evidently) 128 qubits. However, it is
+unable to perform Shor’s algorithm.</p>
+</div>
+<div class="dada-font-footnotesize">
+<p>It is likely that no effective quantum computer has yet been built
+that could factor a large composite.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Shor’s Algorithm<span class="hfill-right"> <span>[</span><a
+href="https://hugh.myddns.me/media/pdfs/shor.factoring.pdf">ctrl-i9</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">
+A very slow way to find factors of <span class="math inline">p \times
+q</span>?
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Choose some number <span class="math inline">a</span>, with no
+factors in common with <span class="math inline">pq</span>. (Of course
+if your number <span class="math inline">a</span> does have factors in
+common with <span class="math inline">pq</span>, you have either
+discovered <span class="math inline">p</span> or <span
+class="math inline">q</span>). Imagine you calculate <span
+class="math inline">a^{2},a^{3},a^{4}</span>, all modulo <span
+class="math inline">pq</span>, until the sequence repeats for the first
+time (perhaps after <span class="math inline">r</span> steps). The
+repetition value <span class="math inline">r</span> evenly divides <span
+class="math inline">(p-1)(q-1)</span>. Have a look at the Euler table in
+slide set Crypto4-3, slide 15 - it shows the powers modulo <span
+class="math inline">15=pq=3\times5</span>, and all repetitions divide
+<span class="math inline">(p-1)(q-1)=8</span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>In addition, <span class="math inline">a^{r}\equiv1\bmod pq</span>. ,
+and since this was the first repetition, <span
+class="math inline">b=a^{\frac{r}{2}}\neq1\bmod pq</span>. But, <span
+class="math inline">b^{2}\equiv1\bmod pq</span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>We have four square roots of 1: <span class="math inline">\pm1</span>
+and <span class="math inline">\pm b</span>. If we know <span
+class="math inline">b</span>, we can calculate the factors of <span
+class="math inline">pq</span> (as we saw in oblivious transfer).</p>
+</div>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">
+It is slow because...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>...the sequences may be very very long. So this is not some secret
+fast algorithm if you have to calculate long sequences <span
+class="math inline">a^{2},a^{3},a^{4}</span>, all modulo <span
+class="math inline">pq</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Shor’s Algorithm<span class="hfill-right"> <span>[</span><a
+href="https://hugh.myddns.me/media/websites/clock/clock2.html">ctrl-i4</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 46%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/clocks.tiff" style="max-width: none; width: auto; height:5cm"
+alt="image" />
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+Find repetition values for all powers simultaneously:
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>A Quantum register holds all possible values at the same time, and we
+perform an amplifying operation, that only leaves stable repetition
+values.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>Mark the same times every day. Only the clock with a rate that we are
+interested in remains.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Quantum “communication”<span class="hfill-right"> <span>[</span><a
+href="https://hugh.myddns.me/media/pdfs/BB84.pdf">ctrl-i5</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/quantum.png" style="max-width: none; width: auto; height:3.5cm"
+alt="image" /></p>
+</div>
+<div class="block">
+<div class="block-title">
+Second interest: Quantum “communication” (BB84)
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold">2.</span> Quantum <span
+style="color: blue"><span class="dada-emph">“cryptography”</span></span>
+uses laws of quantum mechanics - Heisenberg Uncertainty applies to some
+pairs <span style="color: blue">(of properties)</span> of (atomic)
+particles. Measuring one property affects another.</p>
+</div>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p>A snooper is easily detected, and there are various protocols for
+using quantum effects to share keys.</p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+BB84: Key sharing protocol
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Alice randomly chooses one of four polarizations: rectlinear: (0,90),
+or diagonal (45,135) (degrees).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Alice and Bob’s protocol</h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">
+BB84: choose bits - no reveal
+</div>
+<div class="block-content">
+<ol>
+<li><span class="dada-font-footnotesize">Alice records what she has
+sent. Bob randomly chooses polarizations, and for each one reads the
+resultant value. (If he chooses correctly, gets a valid 1 or 0, if not
+randomly gets 1 or 0).</span></li>
+<li><span class="dada-font-footnotesize">Bob tells Alice the
+polarizations he has used: diag, diag, rectilinear, diag</span></li>
+<li><span class="dada-font-footnotesize">Alice replies by telling Bob
+which ones were correct. (1,3,4, 8,9,10 12,17)</span></li>
+<li><span class="dada-font-footnotesize">They now have 5000
+(approximately) bits in common.</span></li>
+</ol>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">
+BB84: Harry has a problem
+</div>
+<div class="block-content">
+<ol>
+<li><span class="dada-font-footnotesize">If Harry the hacker senses some
+of the photons, he will affect the photon.</span></li>
+<li><span class="dada-font-footnotesize">Bob and Alice compare a subset
+of the bits that they think they know to detect snooping.</span></li>
+<li><span class="dada-font-footnotesize">If no snooping, then rest of
+bits are likely to be OK.</span></li>
+</ol>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Current state
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Quantum “BB84” systems are now available, operating over reasonably
+long (40km) fibre.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Wrapping up</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Applications: it is not just encryption!
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Formal (mathematical) crypto has found its way into a range of
+application areas: <span class="dada-bold"><span
+style="color: cyan">public-key encryption, signatures, IBE, MPC,
+MPKE,</span></span><span style="color: cyan"> </span><span
+style="color: magenta">non-interactive zero knowledge (NIZK) and
+non-interactive witness-indistinguishable (NIWI) proof systems,
+time-locked encryption, witness encryptions, 2-round MPC,
+attribute-based encryption, deniable encryption, functional encryption,
+quantum money...</span></p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+Building blocks: It is not just factorizing and Dlog!
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>In a sense, the core of modern crypto centres on complexity ideas -
+hard vs easy, <span style="color: blue"><span
+class="math inline">\mathrm{P}\neq\mathrm{NP}</span></span>, and though
+the notions of the (hopefully hard) factorization and Dlog based
+constructions have worked so far, we already know of polynomial-time
+(quantum) solutions for most of the systems based on these. This drives
+the interest in other bases, perhaps ones with relevance in the
+post-quantum world.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>A not-complete list of core hardness ideas that have been used, or
+could be applied:<span style="color: cyan"> </span><span
+class="dada-bold"><span style="color: cyan">factorization, Dlog,
+bilinear maps</span></span><span style="color: blue">,</span> <span
+style="color: magenta">learning with errors (LWE), learning parity with
+noise (LPN), multilinear maps, iO ideas, latticed-based crypto...
+</span></p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="the-end..." class="title-slide slide level1">
+<h1>The end...</h1>
+
+</section>
+<section class="slide level2">
+<h2>Where did we go?</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+The Attack Surfaces...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: black">In this course, each session looked at a
+particular attack surface, with some exploration of the attacks, and
+then advice on remediation.</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<div style="color: black">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">In May I characterized the current IT
+security situation as warfare. Since then, we explored:</span></p>
+</div>
+<dl>
+<dt><span><span
+style="color: black">Social Engineering (in May):</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Fighting human weaknesses with awareness.
+</span></p>
+</div>
+</dd>
+<dt><span><span
+style="color: black">System Complexity:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Issues with our complex systems.
+</span></p>
+</div>
+</dd>
+<dt><span><span style="color: black">Crypto:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Pre/post 1976. Encryption and hashes and
+computational complexity.</span></p>
+</div>
+</dd>
+<dt><span><span style="color: black">IP Networks:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">For resilience, not security. Hardening is
+a bit ad-hoc. </span></p>
+</div>
+</dd>
+<dt><span><span style="color: black">OtherNets:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Other networks that rely on
+security-by-obscurity. </span></p>
+</div>
+</dd>
+<dt><span><span
+style="color: black">Web Applications:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">XSS, injections. Fight back with
+awareness/tools. </span></p>
+</div>
+</dd>
+<dt><span><span style="color: black">Machines:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Memory/cache issues. Fight back with DEP,
+ASLR etc.</span></p>
+</div>
+</dd>
+<dt><span><span style="color: black">Side Channels:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Timing, faults. Fight back with constant
+time functions and...</span></p>
+</div>
+</dd>
+</dl>
+<div class="dada-font-footnotesize">
+<div style="color: black">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Finally we looked at some of the future
+directions for secure systems based on distributed (non-heirarchical)
+systems. </span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>End statement...</h2>
+<div class="dada-frame-body">
+<div class="dada-font-footnotesize">
+<div class="dada-bubble"
+style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span>It has been a privilege to have presented to you, and I hope I
+have shown you a few things that are interesting to you, and help you in
+the future...</span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-fbox"
+style="width: 55%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/QandA.png" style="max-width: none; width: auto; height:5.5cm"
+alt="image" />
+</div>
+</div>
+</div>
+</section></section>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>“In the beginning the Internet was created. This has
+made a lot of people very angry and been widely regarded as a bad move”.
+(<span class="math inline">\approx</span> Douglas Adams)<a
+href="#/fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/search/search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+
+        height: 1080,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

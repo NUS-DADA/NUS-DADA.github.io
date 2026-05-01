@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DADA2026:5 Defence against the Dark Arts Fifth topic - IP networks [H6]</title>
+<meta name="author" content="Hugh Anderson [Q]">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css">
+<link rel="stylesheet" href="beamer_Warsaw.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { const mathElements = document.getElementsByClassName("math"); const macros = {"\\qed": "\\tag*{$\\colorlet{colorsave}{.}\\color{black}\\blacksquare\\color{colorsave}$}", "\\concat": "\\mathbin{\\mathmakebox[\\widthof{${+}\\m@th$}]{+\\hskip-1emplus1fil+}}", "\\myeq": "\\mathrel{\\overset{{\\textsf{def}}}{=}}", "\\raggedright": "\\leftskip=0pt \\rightskip=0pt plus 0cm"}; for (let i = 0; i < mathElements.length; i++) {  const texText = mathElements[i].firstChild;  if (mathElements[i].tagName === "SPAN" && texText && texText.nodeType === 3) {   katex.render(texText.data, mathElements[i], {    displayMode: mathElements[i].classList.contains("display"),    throwOnError: false, macros: macros, fleqn: false   });  } }});</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="title-slide" class="dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Networks (Warning - no mathematics inside)</span><span class="dada-topbar-other">Attacks and defences</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<div class="dada-title-content">
+<h1 class="title">DADA2026:5 <br>Defence against the Dark Arts<br>Fifth topic - IP networks [<a href="https://hugh.myddns.me/media/pdfs/HandoutIPNetworks.pdf">H6</a>]</h1>
+<div class="dada-title-authors">
+<p class="author">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</p>
+<p class="institute">National University of Singapore<br>School of Computing</p>
+<p class="date">July, 2026</p>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (IP) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">1/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">IP networks...</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://satellitemap.space/?constellation=starlink">i9</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 100%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/Starlink.png" style="width: auto; height:245px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">2/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Where are we?</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">The topics: Attack surfaces so far...</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Introduction</span></span> <span style="color: gray"><span class="dada-font-footnotesize">(in</span></span> <span style="color: gray"><span class="dada-font-footnotesize">May):</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Warfare,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> with an indistinct enemy.</span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Social</span></span> <span style="color: gray"><span class="dada-font-footnotesize">Engineering</span></span> <span style="color: gray"><span class="dada-font-footnotesize">(in</span></span> <span style="color: gray"><span class="dada-font-footnotesize">May):</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Examples - phishing,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> vishing,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> tricking.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> Human weaknesses.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-emph"><span class="dada-font-footnotesize">System</span></span></span> <span style="color: gray"><span class="dada-font-footnotesize">Complexity:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Fight back with design principles,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> standards and formal methods.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Crypto</span></span> <span style="color: gray"><span class="dada-font-footnotesize">1:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Traditional systems - substitution and permutation.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> (Pre 1976).</span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Crypto</span></span> <span style="color: gray"><span class="dada-font-footnotesize">2:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> (Post 1976) Asymmetric systems:</span></span><span style="color: gray"><span class="dada-font-footnotesize"> OWF,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> computational complexity,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> hashes.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+</dl>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><dl><dt><span><span style="color: black"><span class="dada-font-footnotesize">IP</span></span> <span style="color: black"><span class="dada-font-footnotesize">Networks:</span></dt><dd><p></span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">Today we will look at the Internet, exploring a little of the motivation and history of the development of the IP protocols. Sadly, security was never much of an issue during the early development of the Internet. We will look at various tools and work on hardening the Internet.</span></span></span></p></dd></dl></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">3/40</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Networks (Warning - no mathematics inside)</span><span class="dada-topbar-other">Attacks and defences</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Networks (Warning - no mathematics inside)</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Sources of insecurity - complex computer systems</li>
+<li>Basics of Internet traffic</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Attacks and defences</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Exploration of attacks</li>
+<li>IP specific defences - IPv6, TLS...</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (IP) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/40</div>
+</section>
+<section>
+<section id="networks-(warning---no-mathematics-inside)" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Networks (Warning - no mathematics inside)</span><span class="dada-topbar-other">Attacks and defences</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Sources of insecurity - complex computer systems</span><span class="dada-topbar-subsection-other">Basics of Internet traffic</span></div>
+</div>
+<h1>Networks (Warning - no mathematics inside)</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (IP) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/40</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Networks (Warning - no mathematics inside)</span><span class="dada-topbar-other">Attacks and defences</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Sources of insecurity - complex computer systems</span><span class="dada-topbar-subsection-other">Basics of Internet traffic</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Networks (Warning - no mathematics inside)</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Sources of insecurity - complex computer systems</li>
+<li><span style="color: lightgray">Basics of Internet traffic</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Attacks and defences</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Exploration of attacks</span></li>
+<li><span style="color: lightgray">IP specific defences - IPv6, TLS...</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (IP) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Internet history</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Moments in time...</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 60%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/topInternetHistory.png" style="width: auto; height:226px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">5/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">What is the Internet?...</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/ITCrowd-1.srt.mp4">1</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/ITCrowd-2.srt.mp4">2</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/1969_4-node_map.gif" style="width: auto; height:410px; max-width: none; max-height: none" alt="image"> <img class="dada-inline-img" data-src="images/arpanet-4.jpg" style="width: auto; height:410px; max-width: none; max-height: none" alt="image"> <img class="dada-inline-img" data-src="images/imp_log.jpg" style="width: auto; height:410px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">The first network, the first router, the first message...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The original network diagramming tool was a </span><span style="color: blue"><span class="dada-font-footnotesize">pencil</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and the </span><span style="color: blue"><span class="dada-font-footnotesize">first network had four routers</span></span><span class="dada-font-footnotesize"> (originally called </span><span style="color: blue"><span class="dada-font-footnotesize">IMPs</span></span><span class="dada-font-footnotesize">),</span><span class="dada-font-footnotesize"> and four nodes (At UCSB,</span><span class="dada-font-footnotesize"> UCLA,</span><span class="dada-font-footnotesize"> SRI and University of Utah).</span><span class="dada-font-footnotesize"> The first successful transmission was from UCLA to SRI in October 1969,</span><span class="dada-font-footnotesize"> and was recorded in the UCLA logbook.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">6/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Structure of networks now...</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/Intnet1.mp4">9</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 93%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/networks.png" style="width: auto; height:564px; max-width: none; max-height: none" alt="image"> <img class="dada-inline-img" data-src="images/IntNet1.png" style="width: auto; height:564px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Trees and lattices...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The </span><span style="color: blue"><span class="dada-font-footnotesize">topology</span></span><span class="dada-font-footnotesize"> of the Internet,</span><span class="dada-font-footnotesize"> particularly nearer the &#x27;edge&#x27; of the Internet,</span><span class="dada-font-footnotesize"> appears more like a </span><span style="color: blue"><span class="dada-font-footnotesize">tree</span></span><span class="dada-font-footnotesize"> than a </span><span style="color: blue"><span class="dada-font-footnotesize">lattice</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and we use the </span><span style="color: blue"><span class="dada-font-footnotesize">routers</span></span><span class="dada-font-footnotesize"> to </span><span style="color: blue"><span class="dada-font-footnotesize">control</span></span><span class="dada-font-footnotesize"> access to and from the smaller local networks.</span><span class="dada-font-footnotesize"> In 2026 there are about 17 billion computers on the Internet.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">7/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Firewalls</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 45%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/DMZLevel1.jpg" style="width: auto; height:513px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">When a router is protecting you...</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Firewalls</span></span><span class="dada-font-footnotesize"> are brick walls often found in wooden buildings and are supposed to prevent the spread of fire.</span><span class="dada-font-footnotesize"> In networking we use the same idea - the </span><span style="color: blue"><span class="dada-font-footnotesize">firewall is a router</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> which limits access to and from the Internet.</span><span class="dada-font-footnotesize"> We normally imagine that the fire is on the Internet side :)</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">8/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Systems, networks...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 70.0%">
+<img data-src="../images/Internet2.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Consider the Internet - lots of room for damage</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">No real management except the Internet standards,</span><span class="dada-font-footnotesize"> and seriously complex.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">9/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Internet attack possibilities</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">One of, or some combination of...</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Close</span></span><span class="dada-font-footnotesize"> to you...</span></p>
+<ol>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Your WiFi link(s)</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Your PCs</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Servers local to your organization (file,</span><span class="dada-font-footnotesize"> name servers,</span><span class="dada-font-footnotesize"> etc)</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Your router(s)</span></div></li>
+</ol>
+<p><span class="dada-font-footnotesize">But </span><span style="color: blue"><span class="dada-font-footnotesize">far away</span></span><span class="dada-font-footnotesize"> too...</span></p>
+<ol>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Routers on the Internet</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Remote servers that you trust.</span><span class="dada-font-footnotesize"> For example:</span><span class="dada-font-footnotesize"> DNS for names like gmail.com,</span><span class="dada-font-footnotesize"> ebay,</span><span class="dada-font-footnotesize"> Amazon,</span><span class="dada-font-footnotesize"> Sony PSN,</span><span class="dada-font-footnotesize"> your bank&#x27;s web site...</span></div></li>
+</ol>
+<p><span class="dada-font-footnotesize">Who does all of this?</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">Anonymous people</span></span><span class="dada-font-footnotesize"> with (a) a computer,</span><span class="dada-font-footnotesize"> and (b) an Internet connection.</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">Not too hard.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">10/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Internet hacking scenario #1: Malicious DNS</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 35.0%">
+<img data-src="../images/dnshack1.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">A server you trust lies to you...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">You connect to </span><span style="color: blue"><span class="dada-font-footnotesize">dbs.com.sg</span></span><span class="dada-font-footnotesize"> to do some banking.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: magenta"><span class="dada-font-footnotesize">But...</span></span><span style="color: magenta"><span class="dada-font-footnotesize"> A local DNS (Domain name system) server lies to your computer,</span></span><span style="color: magenta"><span class="dada-font-footnotesize"> and connects you to hackers.r.us who have put up a spoof version of the bank&#x27;s web site.</span></span><span style="color: magenta"><span class="dada-font-footnotesize"> </span></span></p>
+<p><span style="color: red"><span class="dada-font-footnotesize">The spoof version collects your password and login information and proceeds to empty your account.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">11/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Internet hacking scenario #2: Malicious website</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 35.0%">
+<img data-src="../images/keylog1.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">A server you trust lies to you...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">A web site </span><span style="color: blue"><span class="dada-font-footnotesize">fastdownloads.org.uk</span></span><span class="dada-font-footnotesize"> says it will</span><span style="color: blue"><span class="dada-font-footnotesize"> improve your Internet experience</span></span><span class="dada-font-footnotesize"> by </span><span style="color: blue"><span class="dada-font-footnotesize">225%</span></span><span class="dada-font-footnotesize">!</span><span class="dada-font-footnotesize"> You say </span><span style="color: blue"><span class="dada-font-footnotesize">yes</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and it installs a </span><span class="dada-emph"><span class="dada-font-footnotesize">useful</span></span><span class="dada-font-footnotesize"> bit of software.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: red"><span class="dada-font-footnotesize">Actually - it installs something which sends every key you type to hackers.r.us,</span></span><span style="color: red"><span class="dada-font-footnotesize"> and/or allows someone in Guatemala to control your machine...</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">12/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Internet hacking scenario #3: Home Wifi insecurity</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 35.0%">
+<img data-src="../images/wifihack1.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">You overestimate how safe your home is...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Your next door neighbour </span><span style="color: blue"><span class="dada-font-footnotesize">observes your wifi </span></span><span class="dada-font-footnotesize">network.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: red"><span class="dada-font-footnotesize">Your neighbour hacks your network authentication password,</span></span><span style="color: red"><span class="dada-font-footnotesize"> and from then on,</span></span><span style="color: red"><span class="dada-font-footnotesize"> uses your Internet link,</span></span><span style="color: red"><span class="dada-font-footnotesize"> and monitors your traffic to and from the Internet,</span></span><span style="color: red"><span class="dada-font-footnotesize"> retrieving your passwords etc...</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">13/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Internet hacking scenario #4: Public Wifi insecurity</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://codebutler.github.io/firesheep/">X</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 39.0%">
+<img data-src="../images/starbucks1.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">You overestimate how safe Starbucks is. You look at facebook...</div>
+<div class="block-content">
+<p><span style="color: red"><span class="dada-font-footnotesize">A cluster of 12 yr-olds there are using Firesheep,</span></span><span style="color: red"><span class="dada-font-footnotesize"> and steal a cookie and take over your facebook session,</span></span><span style="color: red"><span class="dada-font-footnotesize"> posting all sorts of </span></span><span style="color: red">“</span><span style="color: red"><span class="dada-font-footnotesize">funny</span></span><span style="color: red">”</span><span style="color: red"><span class="dada-font-footnotesize"> stuff</span></span><sup class="dada-fn-ref">1</sup><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-footnotes">
+<hr class="dada-fn-rule">
+<ul class="dada-fn-list">
+<li><sup>1</sup> This led to facebook changing to https-by-default.</li>
+</ul>
+</div>
+<div class="dada-slide-num">14/40</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Networks (Warning - no mathematics inside)</span><span class="dada-topbar-other">Attacks and defences</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Sources of insecurity - complex computer systems</span><span class="dada-topbar-subsection-current">Basics of Internet traffic</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Networks (Warning - no mathematics inside)</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Sources of insecurity - complex computer systems</span></li>
+<li>Basics of Internet traffic</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Attacks and defences</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Exploration of attacks</span></li>
+<li><span style="color: lightgray">IP specific defences - IPv6, TLS...</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (IP) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">15/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Internet basics: routing and packets...</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://datatracker.ietf.org/doc/html/rfc791">ctrl-i1</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 60.0%">
+<img data-src="../images/packets.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Internet traffic sent in packets...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">The original design,</span></span><span style="color: black"><span class="dada-font-footnotesize"> specified in the wonderfully passively named </span></span><span style="color: blue"><span class="dada-font-footnotesize">RFCs</span></span><span style="color: black"><span class="dada-font-footnotesize"> (Requests For Comments) was for a network </span></span><span style="color: blue"><span class="dada-font-footnotesize">resilient</span></span><span style="color: black"><span class="dada-font-footnotesize"> against nuclear attacks,</span></span><span style="color: black"><span class="dada-font-footnotesize"> to allow the US military to respond to attack from Russia in the 1960s.</span></span><span style="color: black"><span class="dada-font-footnotesize"> No thought was given to </span></span><span style="color: blue"><span class="dada-font-footnotesize">security</span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> only resilience,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and there is lots of opportunity to modify and corrupt messages;</span></span><span style="color: black"><span class="dada-font-footnotesize"> routing information,</span></span><span style="color: black"><span class="dada-font-footnotesize"> spoofing etc.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">16/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Looking at computer communication</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">A layered reference model for communication...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">A layered model provides a </span><span style="color: blue"><span class="dada-font-footnotesize">framework</span></span><span class="dada-font-footnotesize"> to hang your understanding of computer networking on.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The protocol specifies how </span><span style="color: blue"><span class="dada-font-footnotesize">communication</span></span><span class="dada-font-footnotesize"> is performed with the </span><span style="color: blue"><span class="dada-font-footnotesize">layer at the same level </span></span><span class="dada-font-footnotesize">in the other computer.</span><span class="dada-font-footnotesize"> This does not for instance mean that the network layer directly communicates with the network layer in the other computer,</span><span class="dada-font-footnotesize"> instead each layer </span><span style="color: blue"><span class="dada-font-footnotesize">uses the services</span></span><span class="dada-font-footnotesize"> provided by the layer below it,</span><span class="dada-font-footnotesize"> and </span><span style="color: blue"><span class="dada-font-footnotesize">provides services</span></span><span class="dada-font-footnotesize"> to the layer above it.</span><span class="dada-font-footnotesize"> </span></p>
+<p><span class="dada-font-footnotesize">The definition of services between adjacent layers is called an </span><span style="color: blue"><span class="dada-font-footnotesize">interface</span></span><span class="dada-bold"><span class="dada-font-footnotesize">.</span></span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">What are the </span><span style="color: blue"><span class="dada-font-footnotesize">advantages</span></span><span class="dada-font-footnotesize"> of the layered structure?</span><span class="dada-font-footnotesize"> </span></p>
+<ol>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">We can </span><span style="color: blue"><span class="dada-font-footnotesize">change layers</span></span><span class="dada-font-footnotesize"> as needed,</span><span class="dada-font-footnotesize"> the interface remains constant.</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">The networking software is easier to write,</span><span class="dada-font-footnotesize"> as it has been </span><span style="color: blue"><span class="dada-font-footnotesize">modularized</span></span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">The client software is </span><span style="color: blue"><span class="dada-font-footnotesize">simpler</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> as it only needs to know the interface.</span><span class="dada-font-footnotesize"> </span></div></li>
+</ol>
+<p><span class="dada-font-footnotesize">Note that a </span><span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">protocol</span></span></span><span class="dada-font-footnotesize"> specifies the </span><span style="color: blue"><span class="dada-font-footnotesize">interaction between peer layers</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> An </span><span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">interface</span></span></span><span class="dada-font-footnotesize"> specifies the</span><span style="color: blue"><span class="dada-font-footnotesize"> interactions between adjacent layers.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">17/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Looking at computer communication</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox">
+<img data-src="../images/osi-ip.png" style="width: auto; height:151px; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">The ISO OSI reference model and the IP reference model...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The Internet does not use the 7 layered model.</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">It only has four layers:</span></span></p>
+<dl>
+<dt><span><span class="dada-font-footnotesize">IP</span> <span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">application</span></span></span> <span class="dada-font-footnotesize">layer:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> for comms between applications on different platforms.</span></p>
+</dd>
+<dt><span><span class="dada-font-footnotesize">IP</span> <span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">transport</span></span></span> <span class="dada-font-footnotesize">layer:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> for sessions,</span><span class="dada-font-footnotesize"> and network independance.</span></p>
+</dd>
+<dt><span><span class="dada-font-footnotesize">IP</span> <span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">network</span></span></span> <span class="dada-font-footnotesize">layer:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> for managing routing and addressing.</span></p>
+</dd>
+<dt><span><span class="dada-font-footnotesize">IP</span> <span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">network-access</span></span></span> <span class="dada-font-footnotesize">or</span> <span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">link</span></span></span> <span class="dada-font-footnotesize">layer:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> medium,</span><span class="dada-font-footnotesize"> connectors cables independance.</span></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">18/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Packet (detail) on the Internet</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 50%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/ipencap.png" style="width: auto; height:189px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Each layer encapsulates the previous one...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Note that in this way,</span><span class="dada-font-footnotesize"> even if you are just sending a single character/byte,</span><span class="dada-font-footnotesize"> by the time it is on it&#x27;s way,</span><span class="dada-font-footnotesize"> it may be hundreds of bytes long.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">19/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Summary</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://datatracker.ietf.org/doc/html/rfc791">ctrl-i1</a><span class="dada-font-footnotesize">,</span><a href="https://datatracker.ietf.org/doc/html/rfc1149">ctrl-i8</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/Skynet_layout.jpg" style="width: auto; height:113px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-footnotesize">It seems like we cannot trust the protocols or the machines!</span></span></td><td style="text-align: center;"><img data-src="images/01_img02.jpg" style="width: auto; height:113px; max-width: none; max-height: none" alt="image"></td></tr></tbody></table></div>
+</div>
+<div class="block">
+<div class="block-title">It just got so much worse...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Communication between computers comes in many flavours of </span><span class="dada-emph"><span class="dada-font-footnotesize">protocol</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and at different levels.</span></p>
+<p><span class="dada-font-footnotesize">Not only multiple machines that could cause problems,</span><span class="dada-font-footnotesize"> but also multiple protocols at multiple levels.</span></p>
+<p><span class="dada-font-footnotesize">No administrative centre,</span><span class="dada-font-footnotesize"> just general agreement to use the RFCs,</span><span class="dada-font-footnotesize"> not much in the way of police!</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">20/40</div>
+</section>
+</section>
+<section>
+<section id="attacks-and-defences" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Networks (Warning - no mathematics inside)</span><span class="dada-topbar-current">Attacks and defences</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Exploration of attacks</span><span class="dada-topbar-subsection-other">IP specific defences - IPv6, TLS...</span></div>
+</div>
+<h1>Attacks and defences</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (IP) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">21/40</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Networks (Warning - no mathematics inside)</span><span class="dada-topbar-current">Attacks and defences</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Exploration of attacks</span><span class="dada-topbar-subsection-other">IP specific defences - IPv6, TLS...</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Networks (Warning - no mathematics inside)</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Sources of insecurity - complex computer systems</span></li>
+<li><span style="color: lightgray">Basics of Internet traffic</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Attacks and defences</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Exploration of attacks</li>
+<li><span style="color: lightgray">IP specific defences - IPv6, TLS...</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (IP) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">21/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Looking at a packet</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 85%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/wireshark3.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Wireshark displaying an ethernet frame...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Wireshark captures and displays network traffic,</span><span class="dada-font-footnotesize"> not only IP protocols,</span><span class="dada-font-footnotesize"> but also many of the other communication protocols.</span><span class="dada-font-footnotesize"> You can inspect the contents of the traffic,</span><span class="dada-font-footnotesize"> broken down by layer.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">22/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">“Trust” when using our computer?</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 40%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/doomscrolling.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Not an exhaustive list by any stretch...</div>
+<div class="block-content">
+<ol>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Open the laptop:</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">Use remote services to configure (DHCP,</span><span class="dada-font-footnotesize"> DNS,</span><span class="dada-font-footnotesize"> ARP,</span><span class="dada-font-footnotesize"> NTP) via routers.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Start a browser with a particular URL:</span></span><span class="dada-font-footnotesize"> Use remote services (DNS,</span><span class="dada-font-footnotesize"> ARP) via routers.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Request a web page:</span></span><span class="dada-font-footnotesize"> Use remote services (HTTP,</span><span class="dada-font-footnotesize"> ARP) via routers.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Automatic updates:</span></span><span class="dada-font-footnotesize"> Use remote services (DNS,</span><span class="dada-font-footnotesize"> ARP,</span><span class="dada-font-footnotesize"> HTTPS) via routers.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">PKI certificates:</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">If they are signed they must be good right?</span></div></li>
+</ol>
+<p><span class="dada-font-footnotesize">In general </span><span style="color: blue"><span class="dada-font-footnotesize">we trust </span></span><span class="dada-font-footnotesize">each one of these remote </span><span style="color: blue"><span class="dada-font-footnotesize">services and routers </span></span><span class="dada-font-footnotesize">to do what we want.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">23/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Trust issue #1: ARP</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 65.0%">
+<img data-src="../images/arppoison.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">MAC address for point-to-point communication...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">On Ethernet,</span><span class="dada-font-footnotesize"> when we wish to send a transmission to another host,</span><span class="dada-font-footnotesize"> we can broadcast it,</span><span class="dada-font-footnotesize"> but normally we use ARP (Address Resolution Protocol),</span><span class="dada-font-footnotesize"> to find out the specific MAC address for the required IP address.</span><span class="dada-font-footnotesize"> We then send it to that MAC address,</span><span class="dada-font-footnotesize"> and other hosts will ignore the transmission.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">24/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Trust issue #1: ARP poisoning</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/ARPDNS.mp4">4</a><span class="dada-font-footnotesize">,</span><a href="https://en.wikipedia.org/wiki/ARP_spoofing">i3</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 50.0%">
+<img data-src="../images/arppoison1.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Mechanism can be used to subvert any traffic...</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: blue"><span class="dada-font-footnotesize">Example</span></span><span class="dada-font-footnotesize">:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> your ARP cache has been </span><span style="color: blue"><span class="dada-font-footnotesize">poisoned</span></span><span class="dada-font-footnotesize"> convincing you that your local router </span><span style="color: blue"><span class="dada-font-footnotesize">192.168.100.1</span></span><span class="dada-font-footnotesize"> is at MAC address </span><span style="color: blue"><span class="dada-font-footnotesize">00:11:22:33:44:55</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> This happens to be a hacking machine on your network.</span><span class="dada-font-footnotesize"> You send your packets addressed to that machine (which responds to convince you it is </span><span style="color: blue"><span class="dada-font-footnotesize">192.168.100.1</span></span><span class="dada-font-footnotesize">).</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-font-footnotesize">Example</span></span><span class="dada-font-footnotesize">:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> your router&#x27;s ARP cache has been </span><span style="color: blue"><span class="dada-font-footnotesize">poisoned</span></span><span class="dada-font-footnotesize"> to convince it to reply to the hacking machine instead of your PC.</span></p>
+</dd>
+</dl>
+<p><span class="dada-font-footnotesize">If your host&#x27;s ARP cache has an incorrect value,</span><span class="dada-font-footnotesize"> you will instead send the frame to the incorrect host.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">25/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Trust issue #2: DHCP (Dynamic Host Configuration Protocol)</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 65.0%">
+<img data-src="../images/dhcp1.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Before you do anything...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">When a host&#x27;s interface starts or restarts,</span><span class="dada-font-footnotesize"> it sends out a DHCPDISCOVER broadcast,</span><span class="dada-font-footnotesize"> asking for a nearby authoritative DHCP server to offer it a useable IP and DNS address,</span><span class="dada-font-footnotesize"> with the DHCPOFFER response.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">26/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Trust issue #2: DHCP spoofing</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 65.0%">
+<img data-src="../images/dhcp2.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Configure host? Sounds easy! What can go wrong?</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">There is no security at all in the process,</span><span class="dada-font-footnotesize"> so maybe something can go wrong.</span><span class="dada-font-footnotesize"> A malicious DHCP server tells you a </span><span style="color: blue"><span class="dada-font-footnotesize">bad router</span></span><span class="dada-font-footnotesize"> or a bad </span><span style="color: blue"><span class="dada-font-footnotesize">DNS server.</span></span><span class="dada-font-footnotesize"> From then on you send all your DNS requests to this server,</span><span class="dada-font-footnotesize"> and our cached mapping for </span><span style="color: blue"><span class="dada-font-footnotesize">dbs.com.sg</span></span><span class="dada-font-footnotesize"> is incorrect.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">27/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Messin&#x27; with addressin&#x27;</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/Everywhere.mp4">3</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 100%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><div class="dada-fbox" style="width: 30%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/ipaddr.png" style="height: auto; width:90.0%; max-width: none; max-height: none" alt="image"></p></div></div></td><td style="text-align: center;"><div class="dada-fbox" style="width: 55%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><ul><li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Application layer:</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">Various (higher level) protocols,</span><span class="dada-font-footnotesize"> and names (</span><span style="color: blue"><span class="dada-font-footnotesize">dbs.com.sg</span></span><span class="dada-font-footnotesize">) rather than IP addresses</span></div></li><li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Transport layer:</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">your PC will use specific ports,</span><span class="dada-font-footnotesize"> with specific (transport-layer) protocols such as TCP or UDP.</span><span class="dada-font-footnotesize"> (</span><span style="color: blue"><span class="dada-font-footnotesize">TCP,IP,PORT</span></span><span class="dada-font-footnotesize">).</span></div></li><li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Network layer:</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">your PC will aquire an IP address(es) (</span><span style="color: blue"><span class="dada-font-footnotesize">203.127.2.6</span></span><span class="dada-font-footnotesize">) to identify your machine to others.</span></div></li><li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Link layer:</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">network hardware in your PC comes with a factory built-in world-wide media access control (MAC) address.</span><span class="dada-font-footnotesize"> For ethernet</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize">f8:1e:df:e2:b4:63</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> It is easy to forge MAC addresses.</span></div></li></ul></div></td></tr></tbody></table></div>
+</div>
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span><span class="dada-font-footnotesize">Each layer has its own mode of addressing,</span><span class="dada-font-footnotesize"> with automatic translations from MAC to network addresses (</span><span style="color: blue"><span class="dada-font-footnotesize">ARP</span></span><span class="dada-font-footnotesize">),</span><span class="dada-font-footnotesize"> and from names to IP addresses (</span><span style="color: blue"><span class="dada-font-footnotesize">DNS</span></span><span class="dada-font-footnotesize">).</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">28/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Which ports? What services?</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/matrix1.srt.mp4">6</a><span class="dada-font-footnotesize">,</span><a href="https://web.archive.org/web/20120210182541/http://www.cert.org/incident_notes/IN-2001-12.html">i4</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 68%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/nmap-matrix2log-cropped-1.png" style="width: auto; height:189px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">It is just a movie, but you should be paranoid...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Systems are dangerously easy to subvert.</span><span class="dada-font-footnotesize"> And look!</span><span class="dada-font-footnotesize"> nmap!</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">29/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Consider browsing to a URL</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 70.0%">
+<img data-src="../images/dnshack1.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">We saw this before...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">When your browser wishes to look at a web-site (dbs.com.sg say),</span><span class="dada-font-footnotesize"> your machine queries a nearby DNS (name) server.</span><span class="dada-font-footnotesize"> It belongs to a world-wide system of caching DNS servers,</span><span class="dada-font-footnotesize"> and knows what to do if it does not have the mapping from name to IP address.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">30/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Trust issue #3: DNS poisoning</span></h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">Sounds foolproof, what can possibly go wrong?</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Well - there is little security in the process,</span><span class="dada-font-footnotesize"> so maybe </span></p>
+<ul>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Your</span></span><span class="dada-font-footnotesize"> own </span><span style="color: blue"><span class="dada-font-footnotesize">cache</span></span><span class="dada-font-footnotesize"> could have been </span><span style="color: blue"><span class="dada-font-footnotesize">poisoned</span></span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Your local </span><span style="color: blue"><span class="dada-font-footnotesize">server</span></span><span class="dada-font-footnotesize">&#x27;</span><span style="color: blue"><span class="dada-font-footnotesize">s cache</span></span><span class="dada-font-footnotesize"> could have been </span><span style="color: blue"><span class="dada-font-footnotesize">poisoned</span></span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">A server </span><span style="color: blue"><span class="dada-font-footnotesize">upstream</span></span><span class="dada-font-footnotesize"> of your DNS could be </span><span style="color: blue"><span class="dada-font-footnotesize">poisoned</span></span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">An </span><span style="color: blue"><span class="dada-font-footnotesize">ARP cache</span></span><span class="dada-font-footnotesize"> is </span><span style="color: blue"><span class="dada-font-footnotesize">poisoned</span></span><span class="dada-font-footnotesize"> somewhere (see slide 25)</span></div></li>
+</ul>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">For example:</span></span><span class="dada-font-footnotesize"> a machine on your local network sees your DNS request for dbs.com.sg and responds quickly with corrupt information (91.207.5.138).</span><span class="dada-font-footnotesize"> From then on your computer sends all your network traffic to the corrupt address;</span><span class="dada-font-footnotesize"> your cache is poisoned.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Another example:</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">a machine on an upstream network sees your DNS server&#x27;s request for dbs.com.sg and responds quickly with corrupt information (91.207.5.138).</span><span class="dada-font-footnotesize"> From then on your computer sends all your network traffic to the corrupt address;</span><span class="dada-font-footnotesize"> the DNS server&#x27;s cache is poisoned.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">31/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Platform for IP attacks: Ettercap</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/MITM.mp4">5</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/ettercap.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Spoofing, logging, DNS, ARP, DHCP</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Ettercap is a platform for a wide range of network specific attacks - for example it can easily do any of the attacks we have just seen.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">32/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Layer 4 and 7 DoS/DDoS attacks (Sam Bowne/DEFCON)</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/SamBowneLayer4.srt.mp4">7</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/SamBowneLayer7.srt.mp4">8</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span><span class="dada-font-footnotesize">Sam Bowne explains about (ISO OSI) Layer 4 and 7 attacks.</span></span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 89%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/SamBrowneLayer4.png" style="width: auto; height:170px; max-width: none; max-height: none" alt="image">   <img class="dada-inline-img" data-src="images/SamBrowneLayer7.png" style="width: auto; height:170px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">33/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Another vector: the routers to (re) direct traffic</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">And they are computers...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Since the Internet </span><span style="color: blue"><span class="dada-font-footnotesize">topology/connectivity</span></span><span class="dada-font-footnotesize"> can </span><span style="color: blue"><span class="dada-font-footnotesize">change</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> the routers continually </span><span style="color: blue"><span class="dada-font-footnotesize">exchange </span></span><span style="color: blue">“</span><span style="color: blue"><span class="dada-font-footnotesize">routing information</span></span><span style="color: blue">”</span><span style="color: blue"><span class="dada-font-footnotesize">.</span></span><span class="dada-font-footnotesize"> This is in line with the original goals of a system which can survive nuclear attacks on parts of the network.</span></p>
+<p><span class="dada-font-footnotesize">Routing information is communicated using routing protocols,</span><span class="dada-font-footnotesize"> for example:</span></p>
+<dl>
+<dt><span><span style="color: blue"><span class="dada-font-footnotesize">RIP:</span></dt>
+<dd>
+<p></span></span><span class="dada-font-footnotesize"> (Routing Information Protocol) an older protocol for exchanging routing information.</span><span class="dada-font-footnotesize"> Your PC understands RIP,</span><span class="dada-font-footnotesize"> but most routers ignore it these days.</span><span class="dada-font-footnotesize"> Not all.</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-font-footnotesize">IGRP:</span></dt>
+<dd>
+<p></span></span><span class="dada-font-footnotesize"> (Interior Gateway Routing Protocol) is a proprietary (CISCO) protocol,</span><span class="dada-font-footnotesize"> created to overcome limitations of RIP for large networks.</span><span class="dada-font-footnotesize"> </span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-font-footnotesize">BGP:</span></dt>
+<dd>
+<p></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">(Border Gateway Protocol) makes most routing decisions on the Internet.</span><span class="dada-font-footnotesize"> </span></p>
+</dd>
+</dl>
+<p><span class="dada-font-footnotesize">These </span><span style="color: blue"><span class="dada-font-footnotesize">protocols update tables/caches</span></span><span class="dada-font-footnotesize"> in each connected router to allow it to make decisions where to send IP traffic.</span><span class="dada-font-footnotesize"> </span><span style="color: red"><span class="dada-font-footnotesize">These routers themselves can be lied to (in terms of routing info),</span></span><span style="color: red"><span class="dada-font-footnotesize"> and can be hacked.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">34/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Summary</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Many opportunities for manipulation:</div>
+<div class="block-content">
+<ol>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Your </span><span style="color: blue"><span class="dada-font-footnotesize">configuration</span></span><span class="dada-font-footnotesize"> information could be </span><span style="color: blue"><span class="dada-font-footnotesize">altered</span></span><span class="dada-font-footnotesize"> (your PC gets bad IP addresses,</span><span class="dada-font-footnotesize"> DNS servers,</span><span class="dada-font-footnotesize"> routers)</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Your PC can be convinced to send your traffic via a hacker&#x27;s computer for </span><span style="color: blue"><span class="dada-font-footnotesize">man-in-the-middle</span></span><span class="dada-font-footnotesize"> attacks</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Your ability to </span><span style="color: blue"><span class="dada-font-footnotesize">map</span></span><span class="dada-font-footnotesize"> names to IP addresses,</span><span class="dada-font-footnotesize"> and IP addresses to hardware MAC addresses can be </span><span style="color: blue"><span class="dada-font-footnotesize">manipulated</span></span><span class="dada-font-footnotesize"> (DNS and ARP poisoning)</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Resources on a server can be exhausted to do DoS.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Ongoing </span><span style="color: blue"><span class="dada-font-footnotesize">sessions</span></span><span class="dada-font-footnotesize"> you have initiated (for example to get a web page) can be </span><span style="color: blue"><span class="dada-font-footnotesize">hijacked</span></span><span class="dada-font-footnotesize"> midway through.</span></div></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">35/40</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Networks (Warning - no mathematics inside)</span><span class="dada-topbar-current">Attacks and defences</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Exploration of attacks</span><span class="dada-topbar-subsection-current">IP specific defences - IPv6, TLS...</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Networks (Warning - no mathematics inside)</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Sources of insecurity - complex computer systems</span></li>
+<li><span style="color: lightgray">Basics of Internet traffic</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Attacks and defences</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Exploration of attacks</span></li>
+<li>IP specific defences - IPv6, TLS...</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (IP) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">36/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">TLS</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">i5</a><span class="dada-font-footnotesize">,</span><a href="https://tools.ietf.org/html/rfc5246 ">X</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 85%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/SSL.png" style="width: auto; height:113px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="images/1024px-Taher_Elgamal_it-sa_2010.jpeg" style="width: auto; height:113px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="images/ssl_handshake.png" style="width: auto; height:113px; max-width: none; max-height: none" alt="image"></td></tr></tbody></table></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Transport Layer Security service (originally SSL)</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">SSL was developed by Taher Elgamal at Netscape for it&#x27;s browser in 1995.</span><span class="dada-font-footnotesize"> TLS is an IETF standard see [X] above.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Public key cryptography is used to </span><span style="color: blue"><span class="dada-font-footnotesize">authenticate</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and negotiate </span><span style="color: blue"><span class="dada-font-footnotesize">encryption</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> for ordinary </span><span style="color: blue"><span class="dada-font-footnotesize">symmetric key</span></span><span class="dada-font-footnotesize"> communication (3-DES,</span><span class="dada-font-footnotesize"> AES...),</span><span class="dada-font-footnotesize"> with new session keys for each connection.</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">37/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">TLS has problems too</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://web.archive.org/web/20170614120918/https://www.ietf.org/mail-archive/web/tls/current/msg03928.html">ctrl-i6</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">Summary/key points...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Standard protocols (HTTP,</span><span class="dada-font-footnotesize"> SMTP ...) are </span>“<span style="color: blue"><span class="dada-font-footnotesize">tunnelled</span></span>”<span class="dada-font-footnotesize"> through the SSL layer.</span><span style="color: blue"><span class="dada-font-footnotesize"> PKI,PK</span></span><span class="dada-font-footnotesize"> are used for </span><span style="color: blue"><span class="dada-font-footnotesize">authentication</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and to </span><span style="color: blue"><span class="dada-font-footnotesize">exchange</span></span><span class="dada-font-footnotesize"> session keys.</span><span style="color: blue"><span class="dada-font-footnotesize"> Symmetric</span></span><span class="dada-font-footnotesize"> protocols (such as 3DES) are used for encryption.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The protocol includes an idea of not just public/private keys,</span><span class="dada-font-footnotesize"> but public keys authenticated by a </span><span style="color: blue"><span class="dada-font-footnotesize">certifying authority</span></span><span class="dada-font-footnotesize">.</span></p>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Web no longer secure, civilization will soon collapse...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Unfortunately,</span><span class="dada-font-footnotesize"> in 2009,</span><span class="dada-font-footnotesize"> various attacks on SSL/TLS were discovered,</span><span class="dada-font-footnotesize"> from </span><span style="color: blue"><span class="dada-font-footnotesize">loopholes</span></span><span class="dada-font-footnotesize"> in the </span><span style="color: blue"><span class="dada-font-footnotesize">protocol</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> An attacker is able to </span><span style="color: blue"><span class="dada-font-footnotesize">execute any HTTP transaction</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> authenticated by a legitimate user </span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">You can read about it at [ctrl-i6] above.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">It allows a man-in-the-middle to inject a </span><span style="color: blue"><span class="dada-font-footnotesize">chosen plaintext prefix</span></span><span class="dada-font-footnotesize"> into the encrypted data stream.</span><span class="dada-font-footnotesize"> An “authentication gap” exists during a renegotiation process during which </span><span style="color: blue"><span class="dada-font-footnotesize">separate SSL/TLS connections</span></span><span class="dada-font-footnotesize"> can be </span><span style="color: blue"><span class="dada-font-footnotesize">put together</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> Fixes were done in early 2010,</span><span class="dada-font-footnotesize"> but </span><span style="color: blue"><span class="dada-font-footnotesize">many servers and browsers still not fixed</span></span><span class="dada-font-footnotesize">.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">38/40</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">IPsec</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/Intnet2.mp4">i7</a><span class="dada-font-footnotesize">,</span><a href="https://www.faqs.org/rfcs/rfc4301.html">X</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 40%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/IPv4AndIPv6.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">IPsec is a set of standards:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Intended to support communication security between networked computers,</span><span class="dada-font-footnotesize"> particularly in the newer </span><span style="color: blue"><span class="dada-font-footnotesize">IPv6</span></span><span class="dada-font-footnotesize"> (IP Next-Generation) network.</span><span class="dada-font-footnotesize"> IPsec software is available in Windows,</span><span class="dada-font-footnotesize"> Linux,</span><span class="dada-font-footnotesize"> and on routers on the Internet (see [XX] above).</span><span class="dada-font-footnotesize"> </span></p>
+<p><span class="dada-font-footnotesize">IPsec may be used in a range of ways,</span><span class="dada-font-footnotesize"> including to provide VPNs (Virtual Private Networks) flexibly.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Why do we need IPsec VPNs when we already have TLS (and SSH)</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">With TLS/ we set up </span><span style="color: blue"><span class="dada-font-footnotesize">individual encrypted links</span></span><span class="dada-font-footnotesize"> for each application.</span><span class="dada-font-footnotesize"> In a professional environment we may want </span><span style="color: blue"><span class="dada-font-footnotesize">end-to-end encryption</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> where all traffic is encrypted (not just the https traffic).</span><span class="dada-font-footnotesize"> IPsec can flexibly set up and tunnel as needed.</span><span class="dada-font-footnotesize"> IPsec takes care to use (high end) cryptography for all purposes - IPv6 and IPsec are all designed with security in mind.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">39/40</div>
+</section>
+<section class="slide level2 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Networks (Warning - no mathematics inside)</span><span class="dada-topbar-current">Attacks and defences</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Exploration of attacks</span><span class="dada-topbar-subsection-current">IP specific defences - IPv6, TLS...</span></div>
+</div>
+<h2><span class="dada-title-main">Summary: IP networks</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Today, we have seen...</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">History</span></span><span class="dada-font-footnotesize"> - We visited the birth of the Internet,</span><span class="dada-font-footnotesize"> and saw that its design was primarily driven by resilience concerns.</span><span class="dada-font-footnotesize"> We looked at it&#x27;s growth and complexity.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">IP Protocol weaknesses</span></span><span class="dada-font-footnotesize"> - We looked at the layered structure of communication,</span><span class="dada-font-footnotesize"> and saw how both complexity and a lack of security focus make for a range of issues;</span><span class="dada-font-footnotesize"> attacks on ARP,</span><span class="dada-font-footnotesize"> the DNS,</span><span class="dada-font-footnotesize"> DHCP,</span><span class="dada-font-footnotesize"> web servers and so on.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">The future</span></span><span class="dada-font-footnotesize"> - The next generation of the Internet has a fair amount of security built in,</span><span class="dada-font-footnotesize"> and as we adopt IPv6 and IPsec more and more,</span><span class="dada-font-footnotesize"> some of these issues will go away.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (IP) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">40/40</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>Reveal.initialize({hash: true, width: 1920, height: 1080, margin: 0});</script>
+</body>
+</html>

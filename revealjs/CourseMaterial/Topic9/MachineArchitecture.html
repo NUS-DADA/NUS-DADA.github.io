@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Hugh Anderson [Q]">
+  <title>DADA2026:9 Defence against the Dark Arts Ninth topic - Machine architecture [H10]</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/beamer.css" id="theme">
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN" && texText && texText.nodeType === 3) {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css" />
+  <link rel="stylesheet" href="../../css/theme/beamer.css"/>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">DADA2026:9<br />
+Defence against the Dark Arts<br />
+Ninth topic - Machine architecture <span>[</span><a
+href="https://hugh.myddns.me/media/pdfs/HandoutMachineArchitecture.pdf">H10</a><span>]</span></h1>
+  <p class="author">Hugh Anderson <span>[</span><a
+href="https://hugh.myddns.me/Askbox/">Q</a><span>]</span></p>
+  <p class="date">July, 2026</p>
+</section>
+
+<section class="slide level2">
+<h2>Important times/dates<span class="hfill-right"> <span>[</span><a
+href="https://hugh.myddns.me/media/movies/gp01.mp4">1</a>,<a
+href="https://hugh.myddns.me/media/movies/gp05.mp4">2</a>,<a
+href="https://hugh.myddns.me/media/movies/gp04.mp4">3</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Work this week...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Thursday 17th, 10am</span>: In the seminar
+room we will have a 40 minute, 20 question MCQ test. Samples sent to you
+this morning.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Friday 18th, 10am</span>: Last time for the
+free poster printing. However, you can of course get it printed
+elsewhere, although it will cost about $20.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Friday 18th, 10pm</span>: Submission of
+paper, poster, and video to me (via “Canvas/DADA/Assignment”). Let’s
+look at some sample videos.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Saturday 19th, 9am</span>: Poster showcase
+09:00 to 13:00</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize">You will have your poster, and
+a table if needed, and random visitors.</span></li>
+<li><span class="dada-font-footnotesize">Prepare a 10 second
+presentation (for anyone), and a 1 minute presentation (for colleagues),
+and then...</span></li>
+<li><span class="dada-font-footnotesize">At least one person at your
+poster at all times, so perhaps a roster?</span></li>
+<li><span class="dada-font-footnotesize">I will be passing out
+assessment sheets for assessing the other groups.</span></li>
+</ul>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Saturday 19th, evening</span>: Ceremony and
+awards.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Memory...</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 70%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/memories.jpg" style="max-width: none; width: auto; height:6.5cm"
+alt="image" />
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Where are we?</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+The topics: Attack surfaces so far...
+</div>
+<div class="block-content">
+<dl>
+<dt><span><span
+style="color: gray">Introduction (in May):</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Warfare, with an indistinct
+enemy.</span></p>
+</div>
+</dd>
+<dt><span><span
+style="color: gray">Social Engineering (in May):</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Examples - phishing, vishing, tricking.
+Human weaknesses. </span></p>
+</div>
+</dd>
+<dt><span><span style="color: gray"><span
+class="dada-emph">System</span></span><span
+style="color: gray"> Complexity:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Fight back with design principles,
+standards and formal methods. </span></p>
+</div>
+</dd>
+<dt><span><span style="color: gray">Crypto 1:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Traditional systems - substitution and
+permutation. (Pre 1976).</span></p>
+</div>
+</dd>
+<dt><span><span style="color: gray">Crypto 2:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">(Post 1976) Asymmetric systems: OWF,
+computational complexity, hashes. </span></p>
+</div>
+</dd>
+<dt><span><span style="color: gray">IP Networks:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Layered structure designed for resilience,
+not security. Hardening the Internet. </span></p>
+</div>
+</dd>
+<dt><span><span style="color: gray">OtherNets:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Other communication worlds that largely
+rely on security-by-obscurity. </span></p>
+</div>
+</dd>
+<dt><span><span style="color: gray">Web Apps:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Weaknesses and defences for web
+applications. </span></p>
+</div>
+</dd>
+<dt><span><span style="color: gray">Infrastructure:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: gray">Banking, PKI, the DNS, IoT, media.
+</span></p>
+</div>
+</dd>
+</dl>
+<div class="dada-font-footnotesize">
+<div style="color: black">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<dl>
+<dt><span><span style="color: black">Machine</span><span
+style="color: gray"> </span><span
+style="color: black">Architecture:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: black"><span class="dada-bold">Today we will look
+at hardware, in particular how the internal arrangement of computers
+lead to a range of issues. Uncontrolled use of memory and caches can
+lead to timing/race conditions, overflows, and unexpected behaviours. We
+will focus on memory here, but there is a cache attack in the next
+(side-channel) session.</span></span></p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: blue"><span class="dada-bold">Attacks on
+memory...</span></span>
+<ul>
+<li>The buffer overflow attack</li>
+<li>General advice for safe practice</li>
+</ul></li>
+<li><span style="color: blue"><span class="dada-bold">Hiding secrets:
+data and algorithms</span></span>
+<ul>
+<li>Hiding secrets</li>
+<li>Security hardware</li>
+</ul></li>
+</ol>
+</div>
+</div>
+</section>
+<section>
+<section id="attacks-on-memory..." class="title-slide slide level1">
+<h1>Attacks on memory...</h1>
+
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: blue"><span class="dada-bold">Attacks on
+memory...</span></span>
+<ul>
+<li><span class="dada-bold">The buffer overflow attack</span></li>
+<li><span style="color: lightgray">General advice for safe
+practice</span></li>
+</ul></li>
+<li><span style="color: lightgray">Hiding secrets: data and
+algorithms</span>
+<ul>
+<li><span style="color: lightgray">Hiding secrets</span></li>
+<li><span style="color: lightgray">Security hardware</span></li>
+</ul></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>How programs use memory for data</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Storing a C string will come back to haunt us...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">In C</span>, a string like
+<code>Hello</code> is stored in six successive bytes, the five
+characters, and a NULL terminating character. This allows compact
+representation, and fast access to a string.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">In Java</span> for contrast, a string is
+stored as an object. For a five character string, the storage takes up
+48 bytes: An object containing the actual characters; an integer offset
+into the array at which the string starts; the length of the string; and
+another int. This results in non-compact representation, and slow
+access.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>When memory is needed for a program, the OS allocates memory:</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize">The calls to access memory are
+<span style="color: blue"><code>malloc()</code></span> and <span
+style="color: blue"><code>free()</code></span>.</span></li>
+<li><span class="dada-font-footnotesize">Java maintains its own heap,
+separate from the system heap.</span></li>
+<li><span class="dada-font-footnotesize">When lots of allocations and
+deallocations are being made, the heap may become fragmented, and the OS
+will run a <span style="color: blue">garbage collector </span> to fix up
+the heap from time to time.</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Machine architecture: visualizing memory</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 64%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/memabstract.png" style="max-width: none; width: auto; height:5cm"
+alt="image" />
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Location of “variables”?
+</div>
+<div class="block-content">
+<p>When programs execute/run, they use memory locations/variables. These
+variables, at any given time, may reside in various locations in the
+computer.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Process use of memory</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 97%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="image-grid">
+<img data-src="../../images/processmemory.png" style="max-width: none; width: auto; height:3.5cm"
+alt="image" />
+<img data-src="../../images/vm.png" style="max-width: none; width: auto; height:3.5cm" alt="image" />
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Virtual memory, physical memory, and translations...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The processes, and the OS kernel, each have their <span
+style="color: blue">own view of memory</span>, somehow mapped/translated
+to the real (physical) memory. Modern operating systems and hardware
+give <span style="color: blue">each process</span> an <span
+style="color: blue">individual</span> address <span
+style="color: blue">space</span> - starting at <span
+class="dada-bold">0x0</span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>A translation unit maps this <span class="dada-emph">virtual</span>
+address to a real <span class="dada-emph">physical</span> address, in
+fixed size pages.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>VM=paging+segments (+disk)...<span class="hfill-right">
+<span>[</span><a
+href="https://hugh.myddns.me/media/movies/Architect1.srt.mp4">4</a><span>]</span></span>
+</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/mapping.png" style="height: auto; width:80.0%"
+alt="image" /></p>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+Disk can be used to store contents of memory
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The part of the disk used in this way is called the <span
+class="dada-bold"><span class="dada-emph">’swap’</span></span> - it may
+be either a file used for the purpose, or a partition of disk.</p>
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Page fault
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>When a VM system attempts to find a page, and does not find one, it
+is known as a <span class="dada-bold"><span class="dada-emph">page
+fault</span></span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>When a page fault occurs, the OS must <span
+class="dada-emph">replace</span> a page in memory, efficiently, with the
+new one.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Sample memory arrangement: Linux ELF format</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Program, shared libraries, stack...
+</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox"
+style="width: 97%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<table>
+<tbody>
+<tr>
+<td style="text-align: center;"><div class="center">
+<p><img data-src="../../images/linuxelfusermemory.2"
+style="max-width: none; width: auto; height:4.5cm" alt="image" /></p>
+</div>
+<p>   </p></td>
+<td style="text-align: center;"><div class="dada-fbox"
+style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<span class="dada-font-footnotesize">This is just one possible
+arrangement of virtual memory (the view that the process has of its
+memory in a Linux system). In this arrangement, the stack is at the top
+of the memory, and grows downwards.</span>
+<div style="color: dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<p><span class="dada-font-footnotesize">Hooray for computer scientists,
+who famously believe that both stacks and trees grow
+downwards.</span></p>
+<div style="color: dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<p><span class="dada-font-footnotesize">The code and its fixed storage
+is at the bottom end of memory, and the malloc’ed memory is “above” the
+program. Libraries are found at 0x40000000.</span></p>
+<div style="color: dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<p><span class="dada-font-footnotesize">The odd names are historical.
+BSS stood for “Block Starting Symbol”, the segment of memory where
+variables would be stored. The data area was for values that were
+pre-loaded.</span></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>How programs use memory for return addresses</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/stackretaddress.png" style="height: auto; width:80.0%"
+alt="image" /></p>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+A little warning...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Return addresses are nested on the stack. If you follow the program,
+starting at main(), you will see that during the program run, the stack
+grows and shrinks.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Memory attack 1: simple Program</h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">
+A pretty simple program...
+</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox"
+style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<embed data-src="../../images/vulnerable.c" style="width:100.0%" />
+</div>
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+When we run it:
+</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox"
+style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-lyxcode" style="color: rgb(0,0,255);">
+<pre><code>[hugh@pnp176-44 programs]$ ./vulnerable test
+Argument is test
+[hugh@pnp176-44 programs]$</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<pre><code>but...</code></pre>
+</div>
+</section>
+<section class="slide level2">
+<h2>Memory attack 1: stack buffer overflow<span class="hfill-right">
+<span>[</span><a
+href="https://hugh.myddns.me/media/movies/Ovflo1a.srt.mp4">5</a>,<a
+href="https://phrack.org/issues/49/14#article">ctrl-i1</a><span>]</span></span>
+</h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">
+Normal operation, and when the buffer “overflows”
+</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox"
+style="width: 13%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<table>
+<tbody>
+<tr>
+<td style="text-align: center;"><div class="center">
+<p><img data-src="../../images/mem.V" style="max-width: none; width: auto; height:5cm"
+alt="image" /></p>
+</div>
+<p>   </p></td>
+<td style="text-align: center;"><div class="dada-fbox"
+style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+On the left we see detail of the stack usage for a buffer, variables,
+and the “return” address.
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p>To the right we see the buffer overwriting the local variables in the
+frame, and then changing the return address.</p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p>The payload in the “EGG” is structured to provide some exploit. It
+has multiple return addresses, and since the stack may be moving,
+multiple no-ops.</p>
+</div></td>
+<td style="text-align: center;"><div class="center">
+<p><img data-src="../../images/mem1.2.V" style="max-width: none; width: auto; height:5cm"
+alt="image" /></p>
+</div>
+<p> </p></td>
+<td style="text-align: center;"><div class="center">
+<p><img data-src="../../images/mem2.V" style="max-width: none; width: auto; height:5cm"
+alt="image" /></p>
+</div>
+<p> </p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Payload code for an exploit</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+A C program which calls a shell...
+</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-font-footnotesize">
+
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>At the left we see some C source code for running the program
+/bin/sh. On the right we see assembler code with extra OS nonsense
+removed.</p>
+</div>
+</div>
+</div>
+<div class="dada-bubble"
+style="background-color: rgb(128,255,128); width: 80%; margin-left: auto; margin-right: 0;">
+<div class="dada-font-footnotesize">
+<p>Note that the binary code program has “zeroes” in it, and these will
+have to be removed if strcpy is to copy the program onto the stack. We
+can use translations like:</p>
+</div>
+<p><br />
+</p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Using the buffer overflow attack</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/hackwebserver3.png" style="max-width: none; width: auto; height:3.3cm"
+alt="image" /></p>
+</div>
+<div class="block">
+<div class="block-title">
+3 examples of situations in which we can use it
+</div>
+<div class="block-content">
+<ol>
+<li><span class="dada-font-footnotesize">A <span
+style="color: blue">server</span> (say a web server) that expects a
+query, and returns a response.</span></li>
+<li><span class="dada-font-footnotesize">A CGI/ASP or perl <span
+style="color: blue">script</span> inside a web server.</span></li>
+<li><span class="dada-font-footnotesize">A <span
+style="color: blue">SUID</span> <span style="color: blue">root</span>
+program on a UNIX system.</span></li>
+</ol>
+</div>
+</div>
+<div class="dada-bubble"
+style="background-color: rgb(128,255,128); width: 80%; margin-left: auto; margin-right: 0;">
+<div class="dada-font-footnotesize">
+<p>Find a program that has a <span style="color: blue">buffer</span>,
+... and that does not check its <span style="color: blue">bounds</span>.
+Then deliver an <span style="color: blue">EGG</span> to it to overflow
+the buffer.</p>
+</div>
+<div class="dada-font-footnotesize">
+<p>Overwrite <span style="color: blue">stack</span> return address with
+address of <span style="color: blue">OUR</span> code.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Memory attack 1: web server code...</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-lyxcode"><pre><code><span style="color:rgb(0,0,0)">void process(int newsockfd) {</span>
+ <span style="color:rgb(0,0,0)">  char line[512];</span>
+ <span style="color:rgb(0,0,0)">  ...</span>
+ <span style="color:rgb(0,0,0)"> </span>  <span style="color:rgb(255,0,0)">...NEXT BIT DOESNT CHECK ARRAY SIZE! i.e. n&lt;511</span>
+ <span style="color:rgb(0,0,0)">  while (n&gt;0 &amp;&amp; c!=&#x27; n&#x27;) {</span>
+ <span style="color:rgb(0,0,0)">     n = read (newsockfd, &amp;c, 1);</span>
+ <span style="color:rgb(0,0,0)">     ... add it to line[idx++]...</span>
+ 
+ <span style="color:rgb(0,0,0)">   ...</span>
+ <span style="color:rgb(0,0,0)">  return;</span></code></pre></div>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">
+The general operation of this web server is hackable...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>It matches our attack mechanism: A web server receives a file spec
+(index.html), and does not properly check a buffer that it puts the spec
+into.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>We replace the file spec with <span style="color: blue">EGG</span>.
+Note that we will have to use a specialized <span
+style="color: blue">program</span> to deliver the EGG (i.e. not a
+browser)</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Memory attack 2: return to libc!<span class="hfill-right">
+<span>[</span><a
+href="https://en.wikipedia.org/wiki/Return-to-libc_attack">i2</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/libc.png" style="max-width: none; width: auto; height:6cm"
+alt="image" /></p>
+</div>
+<div class="alertblock">
+<div class="block-title">
+Run code already in libc...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>If, for example, we cannot execute/run code on the stack, then we can
+still use a buffer overflow, to “point to” some library function, like
+execv(), which will run a named program we provide.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Memory attack 3: return oriented programming<span
+class="hfill-right"> <span>[</span><a
+href="https://en.wikipedia.org/wiki/Return-oriented_programming">i3</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/rop.png" style="max-width: none; width: auto; height:6cm"
+alt="image" /></p>
+</div>
+<div class="alertblock">
+<div class="block-title">
+Even with DEP: find code snippets, and overwrite stack...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Again, with DEP, we may be able to find snippets of executable code
+elsewhere, and then use a series of stack addresses to jump to those
+code snippets.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Memory attack 4: heap overflow<span class="hfill-right">
+<span>[</span><a
+href="https://web.archive.org/web/20230401153759/http://www.h-online.com/security/features/A-Heap-of-Risk-747161.html">i4</a>,<a
+href="https://web.archive.org/web/20190115052942/https://docs.microsoft.com/en-us/security-updates/securitybulletins/2009/ms09-062">i5</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">
+The younger sibling of the buffer overflow
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The <span style="color: blue">heap</span> is managed by the OS as a
+<span style="color: blue">doubly linked data structure</span>,
+containing a header, and the memory to be allocated.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>The attacker starts by constructing/coding something that results in
+the OS allocating and deallocating memory from the heap. Then:</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize">After the <span
+style="color: blue"><code>malloc()</code></span>, the program writes to
+the memory, and then returns it using <span
+style="color: blue"><code>free()</code></span>. By careful choice of
+what we write to the memory, we can overwrite the NEXT header in the
+heap.</span></li>
+<li><span class="dada-font-footnotesize">The <span
+style="color: blue">OS</span> then merges this <span
+class="dada-emph">freed-up</span> memory, manipulating the headers in
+order to do so. It rewrites values in the previous headers that are
+dependent on the values in the next headers.</span></li>
+<li><span class="dada-font-footnotesize">If the next header is modified
+to point to some place where a return address is being kept, then we can
+run crafted code.</span></li>
+</ul>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>For more info see <span>[</span>i4<span>]</span> and
+<span>[</span>i5<span>]</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Memory attack 4: heap overflow</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/heapmgmt2.png" style="height: auto; width:80.0%"
+alt="image" /></p>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+The normal free() and merge...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The OS heap management <span style="color: blue">software
+automatically rewrites</span> the values of the forward and backward
+links, using the values in the <span class="dada-emph">next</span>
+links.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Memory attack 4: heap overflow</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/heapmgmt3.png" style="height: auto; width:80.0%"
+alt="image" /></p>
+</div>
+<div class="alertblock">
+<div class="block-title">
+Consider the scenario where attacker changes pointers...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The attacker uses the OS GC to <span style="color: blue">write the
+address of malicious code into a </span><span style="color: blue"><span
+class="dada-emph">return-address</span></span> location, as for the
+buffer overflow.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Stack protection</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Three methods to make overflow attacks harder:
+</div>
+<div class="block-content">
+<ol>
+<li><span class="dada-font-footnotesize"><span style="color: blue">Not
+allow execution of code</span> in the stack segment (as in
+MacOSX/openBSD) - but note that ROP still can get through. This is
+called <span style="color: blue">DEP</span> (Data Execution Prevention),
+and is available in a modern OS. Note however that embedded systems may
+have no such protections.</span></li>
+<li><span class="dada-font-footnotesize">Randomly <span
+style="color: blue">move</span> the starting stack for processes. This
+is called <span style="color: blue">ASLR</span> (Address Space Layout
+Randomisation), and is available in a modern OS. Note however that again
+embedded systems may have no such protections.</span></li>
+<li><span class="dada-font-footnotesize">Put a value just below the
+return address (a <span style="color: blue">canary</span> ), and check
+it before doing a return from subroutine. It is hard to overwrite the
+return address without overwriting the canary.</span></li>
+</ol>
+</div>
+</div>
+<div class="dada-bubble"
+style="background-color: rgb(128,255,128); width: 80%; margin-left: auto; margin-right: 0;">
+<div class="dada-font-footnotesize">
+<p>Windows and linux/gnu systems include a wide range of protection
+against stack/heap overflows: They include the removal of commonly
+targeted data structures, heap entry metadata randomization, the heap
+header is more complex, there are randomized heap base addresses,
+function pointers are encoded, as well as the normal<span
+style="color: blue"> DEP </span> and <span
+style="color: blue">ASLR</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Memory attack 5: OpenSSL Heartbeat</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+What is a heartbeat in openssl?
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>A heartbeat is an extension to TLS, to allow a client to check if a
+TLS server is still alive (rather than renegotiating the connection). It
+is described in <a href="https://tools.ietf.org/html/rfc6520"
+class="uri">https://tools.ietf.org/html/rfc6520</a>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>The general idea is that clients can request a heartbeat, sending a
+heartbeat_request message with this structure:</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-footnotesize">
+<p><code>struct {</code></p>
+</div>
+<pre><code>      HeartbeatMessageType type;
+      uint16 payload_length;
+      opaque payload[payload_length];
+      ...
+} HeartbeatMessage;</code></pre>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>The server will send back the payload in a matching
+heartbeat_response.</p>
+</div>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">
+What is the issue?
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>What if the client lied about the payload_length?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Memory attack 5: OpenSSL Heartbleed<span class="hfill-right">
+<span>[</span><a
+href="https://en.wikipedia.org/wiki/Heartbleed">i6</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 58%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/heartbleed.png" style="max-width: none; width: auto; height:6cm"
+alt="image" />
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">
+Request and response different...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Though heartbleed has an easy fix, there still are systems vulnerable
+to it.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Memory attack 5: OpenSSL Heartbleed</h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">
+Original openssl-1.0.1f/ssl/d1_both.c...
+</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<pre><code>/{*} Read type and payload length first {*}/
+     hbtype = {*}p++;
+     n2s(p, payload);
+     pl = p; ...</code></pre>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>The original source gets the type from the record that p points to,
+and puts it into hbtype. It then copies the next two bytes into the
+variable payload. This is the length of the payload, and is done without
+checking. The variable pl is the payload, which is echoed without more
+checking.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+Fixed openssl-1.0.1g/ssl/d1_both.c...
+</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<pre><code>/{*} Read type and payload length first {*}/
+     hbtype = {*}p++;
+     n2s(p, payload);
+     if (1 + 2 + payload + 16 &gt; s-&gt;s3-&gt;rrec.length)
+           return 0; /{*} silently discard {*}/
+     pl = p; ...</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Memory attack 6: Malloc hack</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+In 1999 Microsoft had an error to fix in the login code...
+</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox"
+style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<pre><code>// ... Allocate some memory for the password:
+buffer = malloc( MaxPasswordSize );
+// ... Put the password into this buffer, and use it to log in.
+// ... Then return the memory to the OS:
+free( buffer );</code></pre>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>The password was <span style="color: blue">left in clear text</span>
+in the memory of the computer, and the NEXT user of the computer could
+search the heap of the computer and discover it. The fix was to clear
+the buffer:</p>
+</div>
+<div class="center">
+<div class="dada-fbox"
+style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<pre><code>// ... Zero out the contents of the buffer before returning it
+bzero( buffer, MaxPasswordSize );
+free( buffer );</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">
+The error returned...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">In 2001 </span> it was discovered that
+(after <span class="dada-emph">improvements</span> made to the Microsoft
+compilers) the <span style="color: blue">password was back</span> in
+clear text in memory! What can possibly be wrong with this <span
+style="color: blue"><span class="dada-emph">obviously
+correct</span></span><span style="color: blue"> code</span>?</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: blue"><span class="dada-bold">Attacks on
+memory...</span></span>
+<ul>
+<li><span style="color: lightgray">The buffer overflow
+attack</span></li>
+<li><span class="dada-bold">General advice for safe practice</span></li>
+</ul></li>
+<li><span style="color: lightgray">Hiding secrets: data and
+algorithms</span>
+<ul>
+<li><span style="color: lightgray">Hiding secrets</span></li>
+<li><span style="color: lightgray">Security hardware</span></li>
+</ul></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Some useful practices</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+For system developers or coders...
+</div>
+<div class="block-content">
+<ul>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">Check</span> for use of safe memory <span
+style="color: blue">technologies</span>.</span></li>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">Check</span> the use of <span
+style="color: blue">parameters</span> and buffers/arrays.</span></li>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">Overwrite secrets </span> as soon as possible (and
+watch for compiler optimization).</span></li>
+<li><span class="dada-font-footnotesize"><span style="color: blue">White
+hat approach: code conservatively</span>. Make interfaces explicit, not
+implicit, and minimize them. Check and recheck safety properties, and
+consider using programming-by-contract.</span></li>
+<li><span class="dada-font-footnotesize"><span style="color: blue">Wear
+a black hat </span> from time to time.</span></li>
+</ul>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+You should also control the environment...
+</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: blue">Compiler:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p>Does it implement some sort of stack protection?</p>
+</div>
+</dd>
+<dt><span><span style="color: blue">Libraries:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p>Do they implement good stack protection technology?</p>
+</div>
+</dd>
+<dt><span><span style="color: blue">Runtime:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p>Does it use the OS heap or it’s own?</p>
+</div>
+</dd>
+<dt><span><span style="color: blue">OS:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p>Is it recent? Are there any known attacks on it?</p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Parameters and buffers/arrays</h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">
+Consider your source code. Ask yourself..
+</div>
+<div class="block-content">
+<ul>
+<li><span class="dada-font-footnotesize">Is there any way at all that
+your program takes <span style="color: blue">input</span> from outside
+(In 99% of programs the answer is YES BTW).</span></li>
+<li><span class="dada-font-footnotesize">Do you ensure that the <span
+style="color: blue">input</span> is <span
+style="color: blue">constrained</span> to be within the range of values
+you expect? As early as possible?</span></li>
+</ul>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>Can an <span style="color: blue">index</span> be <span
+style="color: blue">outside the range</span> you have specified?</p>
+</div>
+<div class="center">
+<div class="dada-fbox"
+style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<pre><code>idx=10;
+while (idx&gt;0) {
+   ... body ...
+}</code></pre>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>Consider the above code in a multi-threaded system - does the body of
+the while loop get executed at least once? (i.e. Ensure <span
+style="color: blue">no </span><span style="color: blue"><span
+class="dada-emph">indirect</span></span><span style="color: blue">
+interfaces </span> between code segments.)</p>
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+There is no way of avoiding secrets in memory...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>...but once you have used a secret, you should <span
+style="color: blue">immediately overwrite</span> it. This will reduce a
+<span style="color: blue">window of opportunity</span> to an
+attacker.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Conservative code: modularity<span class="hfill-right">
+<span>[</span><a
+href="https://en.wikipedia.org/wiki/Modular_programming">i7</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 42%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/Capture.png" style="max-width: none; width: auto; height:3.5cm"
+alt="image" />
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Software design, modular programming...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Modular design</span> (see
+<span>[</span>i7<span>]</span> above) is an effective way of building
+software.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>In a good modular design<span style="color: blue"> concerns are
+separated </span> such that</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize">modules are more or less <span
+style="color: blue">stand alone</span>, and that</span></li>
+<li><span class="dada-font-footnotesize">when they do depend upon other
+modules of the system the<span style="color: blue"> interfaces are
+explicit</span>.</span></li>
+</ul>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>The system designer/coder should reduce or <span
+style="color: blue">minimize</span> the <span
+style="color: blue">dependencies</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Conservative code: explicit interfaces</h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">
+Do not hide away interaction between modules...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>If two modules share a variable, this should be explicit, and not
+hidden:</p>
+</div>
+<div class="center">
+
+</div>
+<div class="center">
+<div class="dada-fbox"
+style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<pre><code>var x;
+module1() {
+   manipulate x...
+}
+...
+module42() {
+   manipulate x...
+}</code></pre>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>In the above code - two modules both rely on the shared variable, but
+if you read the code for<span style="color: blue"> </span><span
+style="color: blue"><code>module1()</code></span>, there is no clear
+indication that it is also being manipulated by<span
+style="color: blue"> module42()</span>. When you reason to yourself
+about the correctness of <span
+style="color: blue"><code>module1()</code></span>, you may forget the
+effect of <span style="color: blue"><code>module42()</code></span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>It is possible to reason about<span style="color: blue"> </span><span
+style="color: blue"><span class="dada-emph">tiny</span></span> segments
+of code in a program, but ... even the fanciest designer or coder <span
+style="color: blue">cannot</span> correctly <span
+style="color: blue">reason</span> about<span style="color: blue">
+</span><span style="color: blue"><span
+class="dada-emph">small</span></span> programs, let alone <span
+style="color: blue"><span class="dada-emph">large</span></span> ones. If
+you are using variables across modules MAKE THEIR USE EXPLICIT.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Conservative code: design by contract<span class="hfill-right">
+<span>[</span><a
+href="https://en.wikipedia.org/wiki/Design_by_contract">i8</a>,<a
+href="https://en.wikipedia.org/wiki/Eiffel_(programming_language)">i9</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Software design, design-by-contract, code-contracts...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Contracts are an approach to <span style="color: blue">defensive
+programming</span>. It is an effective way of <span
+style="color: blue">checking and rechecking safety properties </span>
+(see <span>[</span>i8<span>]</span> above).</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>In a good design-by-contract design, the <span
+style="color: blue">components and interfaces</span> between them are
+precisely <span style="color: blue">defined</span> using</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">preconditions (requires)</span>. What does the
+component expect?</span></li>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">postconditions (ensures)</span>. What does the
+component guarantee?</span></li>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">invariants. </span> What does the component
+maintain?</span></li>
+</ul>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>These definitions are called <span style="color: blue"><span
+class="dada-emph">contracts</span></span>. Bertrand Meyer coined the
+design-by-contract term when developing the language <span
+style="color: blue">Eiffel</span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<p>There is at least some support for contracts in some languages,
+including <span style="color: blue">Java, Spec#, .NET</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Conservative code: requires, ensures, invariants</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<pre><code>class interface
+    ACCOUNT
+feature -- Access
+      balance: INTEGER             -- Current balance
+      deposit_count: INTEGER       -- Number of deposits
+feature -- Element change
+      deposit (sum: INTEGER)       -- Add `sum&#39; to account.
+        require
+            non_negative: sum &gt;= 0
+        ensure
+            one_more_deposit: deposit_count = old deposit_count + 1
+            updated: balance = old balance + sum
+invariant
+    consistent_balance: balance = all_deposits.total
+end -- class interface ACCOUNT</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+When you want to ensure a safety property is always kept
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>In the above (Eiffel) code, if any part of the contract is broken,
+the run time system traps to some handler for the error.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>If there is no handler, the program exits, with the name of the
+broken part of the contract.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Wear a black hat...</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/blackandwhite.png" style="height: auto; width:80.0%"
+alt="image" /></p>
+</div>
+<div class="block">
+<div class="block-title">
+... from time to time ...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Cautious, conservative</span> programming
+is the main defense, but occasionally you need to put on your <span
+style="color: blue">black hat</span>, and find out what the attackers
+have discovered recently...</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Testing and finding flaws</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Still theoretical...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>One aspect in engineering the security of software is that even one
+flaw in software may lead to a security issue. This leads to everything
+weighted on the side of the attacker:</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize">Lets say people find one flaw
+in 100 hours of testing/use.</span></li>
+<li><span class="dada-font-footnotesize">Let us also assume that there
+are <span class="math inline">100,000</span> errors in a large software
+product. A company employs testers for <span
+class="math inline">100,000</span> hours, and discover <span
+class="math inline">1000</span> flaws.</span></li>
+</ul>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">
+Unfortunately:
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>An attacker discovers one flaw, in <span
+class="math inline">100</span> hours, and the likelihood that the
+testers have found this specific error is only 1%.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>The math favours the attacker.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>S/W development for security</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+A sub species of S/W development...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Aspects of engineering the security of software may include extra
+work in areas such as design reviews and testing, along with
+administrative duties such as system and configuration management and
+post mortems.</p>
+</div>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">
+Design and code review:
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>One study suggested that security flaws are found in a large software
+project at the following times:</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize">17% found when doing system
+design inspection</span></li>
+<li><span class="dada-font-footnotesize">19% found when doing component
+design inspection</span></li>
+<li><span class="dada-font-footnotesize">15% found when looking at the
+code</span></li>
+<li><span class="dada-font-footnotesize">30% found when doing
+integration testing</span></li>
+<li><span class="dada-font-footnotesize">16% found afterwards during
+general testing.</span></li>
+</ul>
+<div class="dada-font-footnotesize">
+<p>Of course we have no idea how many errors are left in the code.</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="hiding-secrets-data-and-algorithms"
+class="title-slide slide level1">
+<h1>Hiding secrets: data and algorithms</h1>
+
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: lightgray">Attacks on memory...</span>
+<ul>
+<li><span style="color: lightgray">The buffer overflow
+attack</span></li>
+<li><span style="color: lightgray">General advice for safe
+practice</span></li>
+</ul></li>
+<li><span style="color: blue"><span class="dada-bold">Hiding secrets:
+data and algorithms</span></span>
+<ul>
+<li><span class="dada-bold">Hiding secrets</span></li>
+<li><span style="color: lightgray">Security hardware</span></li>
+</ul></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Secrets come in lots of flavours<span class="hfill-right">
+<span>[</span><a
+href="https://hugh.myddns.me/media/movies/MariaSharapovaOnSecrets2.srt.mp4">6</a><span>]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 36%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/topsecret.png" style="max-width: none; width: auto; height:3.1cm"
+alt="image" />
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Not just secret keys...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>We have seen how <span style="color: blue">secrets</span> can be
+useful, particularly for keeping <span style="color: blue">keys</span>
+for cryptography.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>Secrets may also be <span
+style="color: blue">algorithmic</span>...</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize">An encryption
+algorithm</span></li>
+<li><span class="dada-font-footnotesize">A particular protocol (sequence
+of communications).</span></li>
+<li><span class="dada-font-footnotesize">A hashing
+algorithm.</span></li>
+</ul>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>These secrets are programs, not data. <span style="color: blue">How
+do we keep all these sorts of secrets? </span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Applications running on PCs, phones, ...</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/compilation.png" style="max-width: none; width: auto; height:3cm"
+alt="image" /></p>
+</div>
+<div class="block">
+<div class="block-title">
+Consider the compilation process...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Often, the <span style="color: blue">executable</span> is
+distributed, not the source. RMS points out many reasons why this is
+<span style="color: blue">most likely a bad idea</span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>But, in a <span class="dada-emph">security</span> scenario, you may
+think that by only distributing your executable code, you can <span
+style="color: blue">hide your source code </span><span
+style="color: blue"><span class="dada-emph">secrets</span></span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<p>This is a <span style="color: blue">silly idea</span>. You should
+keep no secrets in source code.</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize">You should not have source code
+secrets (remember the notion of <span style="color: blue">open
+design</span> ), and</span></li>
+<li><span class="dada-font-footnotesize">you cannot hide things by using
+compilation.</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Applications are an open book...</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 85%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="image-grid">
+<img data-src="../../images/boomerang.png" style="max-width: none; width: auto; height:3.8cm"
+alt="image" />
+<img data-src="../../images/jad.png" style="max-width: none; width: auto; height:3.8cm" alt="image" />
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Decompilation and Compilation...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>If the platform is sufficiently complex (e.g, Windows, GNU+Linux,
+Android, Symbian), then it is likely that <span
+style="color: blue">sources for any application could be generated
+easily</span>, so if you intend to distribute your application to other
+users, and it relied on some secret in the code, that secret is
+unsafe.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>Of course - <span style="color: blue">you can still have
+secrets</span>. They must be kept separately. (Do I detect an example of
+<span class="dada-bold"><span style="color: blue">Least common
+mechanism:</span></span> Minimize the amount of mechanism common to more
+than one user and depended on by all users?)</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Possible locations for secrets</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 52%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="image-grid">
+<img data-src="../../images/morehidingsecrets.png" style="height: auto; width:35.0%"
+alt="image" />
+<img data-src="../../images/extrasecrets.png" style="height: auto; width:37.0%"
+alt="image" />
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+File, program, OS, brain, and also Dongles, smart cards...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Consider all the possible locations for secrets. Relying on external
+agents is not a bad idea, particularly if they are built with security
+in mind.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Summary...</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+There is no such thing as a safe PC...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Secrets may be data, or algorithmic.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Complex platforms are unsuitable for hiding
+secrets </span> - they are open to attacks:</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">physical</span> (someone breaks open a box and
+steals a disk containing secrets), or</span></li>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">software based</span> (someone manages to install or
+otherwise hack either an application or a whole OS).</span></li>
+</ul>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>A strategy for getting around this is to somehow install the secret
+on a <span style="color: blue"><span
+class="dada-emph">portable</span></span><span style="color: blue">
+computer system</span> that is harder to attack (more resistant to
+tampering), and possibly, resistant to theft.</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">Examples</span> of this approach are found
+everywhere (smart cards, SIM cards...).</span></li>
+<li><span class="dada-font-footnotesize">Such external devices typically
+contain small computers with small amounts of memory.</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: lightgray">Attacks on memory...</span>
+<ul>
+<li><span style="color: lightgray">The buffer overflow
+attack</span></li>
+<li><span style="color: lightgray">General advice for safe
+practice</span></li>
+</ul></li>
+<li><span style="color: blue"><span class="dada-bold">Hiding secrets:
+data and algorithms</span></span>
+<ul>
+<li><span style="color: lightgray">Hiding secrets</span></li>
+<li><span class="dada-bold">Security hardware</span></li>
+</ul></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Classes of attackers for security hardware</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+For tamper-resistant portable devices...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Anderson outlines this classification:</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize"><span style="color: blue">Class
+1 attackers: </span> Clever <span style="color: blue">outsiders</span>,
+who may not have detailed knowledge of the inner workings of the
+system</span></li>
+<li><span class="dada-font-footnotesize"><span style="color: blue">Class
+2 attackers: Insiders</span>, with detailed system
+knowledge.</span></li>
+<li><span class="dada-font-footnotesize"><span style="color: blue">Class
+3 attackers: Governments</span>, the Mafia - who may have money and time
+to burn. May also have strong motivation.</span></li>
+</ul>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>Anderson points out that <span style="color: blue">persistence and
+cunning</span> are some of the hallmarks of an effective attacker, and
+that sometimes the class 1 attacker can do things that the class 3
+attacker failed to do.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>We have both invasive and non-invasive attacks:</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">Invasive: </span> the semiconductor chip is
+decapsulated, and direct attacks made on the circuitry. Some of these
+attacks require expensive equipment.</span></li>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">Non-invasive: </span> we manipulate the device
+without decapsulation. May need only inexpensive equipment.</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Typical hardware on a Smart/SIM card</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/simplesmart.png" style="max-width: none; width: auto; height:4cm"
+alt="image" /></p>
+</div>
+<div class="block">
+<div class="block-title">
+A high-security Smart/SIM card controller
+</div>
+<div class="block-content">
+<ul>
+<li><span class="dada-font-footnotesize">CPU, memory and IO are under
+the (gold) <span style="color: blue">connector</span>. They are all in
+<span style="color: blue">one chip</span>, and the components are
+connected by (internal) busses.</span></li>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">Reader</span> must<span style="color: blue"> supply
+power</span> and a <span style="color: blue">clock</span> to operate the
+CPU.</span></li>
+<li><span class="dada-font-footnotesize">Only external signaling is a
+<span style="color: blue">single line IN</span> and a<span
+style="color: blue"> single line OUT</span>.</span></li>
+<li><span class="dada-font-footnotesize"><span style="color: blue">Data
+bits are serialized. </span> 1010011 above might correspond to the byte
+(hex) 0x53, perhaps corresponding to the ASCII letter S.</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Fuses: sample security-specific feature</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/blownfuse.png" style="max-width: none; width: auto; height:4cm"
+alt="image" /></p>
+</div>
+<div class="block">
+<div class="block-title">
+For devices like these...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The <span style="color: blue">chips</span> come from the factory
+<span style="color: blue">all the same</span>, and need to be
+programmed.</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize">When the devices are
+manufactured, the <span style="color: blue">memory</span> (PROM) can be
+<span style="color: blue">read and written from outside</span> using the
+serial port.</span></li>
+<li><span class="dada-font-footnotesize">Once the device has been
+uniquely programmed, a <span style="color: blue">fuse</span> is blown.
+This fuse is just a track in the IC, and is blown by providing too much
+current.</span></li>
+</ul>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>A blown fuse means <span style="color: blue">no more ( external)
+reading and writing</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Fuses: Class 3 attacker hack: rewiring</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/highhack1.png" style="max-width: none; width: auto; height:4.5cm"
+alt="image" /></p>
+</div>
+<div class="alertblock">
+<div class="block-title">
+Assuming you happen to have some fancy equipment
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Recipe: </span> Take a common household
+electron microscope, a focused ion beam tool, and various other items.
+And then...</p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">Expose chip</span> using chemical and/or laser
+cutting (decapsulation).</span></li>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">Re-connect the fuse</span> using deposition or tiny
+probes.</span></li>
+<li><span class="dada-font-footnotesize"><span style="color: blue">Read
+the memory</span> using the serial port.</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Summary: Machine architecture...</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Today we have seen...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Memory</span> - We looked at the complex
+nature of memory in modern computers. The systems we use are a response
+to flexibility and speed concerns, but have given rise to a range of
+attacks, requiring a range of protections.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Overflows</span> - We looked at attacks
+based on buffer overflows, and the programming and systems used to
+minimize the possibility of these attacks. In the programming arena we
+have modular programming styles and design-by-contract. System support
+includes DEP and ASLR.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Hiding Secrets</span> - Finally we looked
+at devices for hiding secrets, and their unusual features. These devices
+sometimes have the most secure chips!</p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/search/search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+
+        height: 1080,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

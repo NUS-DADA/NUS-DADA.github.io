@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DADA2026:3 Defence against the Dark Arts Third topic - Complex Systems [H3]</title>
+<meta name="author" content="Hugh Anderson [Q]">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css">
+<link rel="stylesheet" href="beamer_Warsaw.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { const mathElements = document.getElementsByClassName("math"); const macros = {"\\raggedright": "\\leftskip=0pt \\rightskip=0pt plus 0cm"}; for (let i = 0; i < mathElements.length; i++) {  const texText = mathElements[i].firstChild;  if (mathElements[i].tagName === "SPAN" && texText && texText.nodeType === 3) {   katex.render(texText.data, mathElements[i], {    displayMode: mathElements[i].classList.contains("display"),    throwOnError: false, macros: macros, fleqn: false   });  } }});</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="title-slide" class="dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Overview - the scale of the problem</span><span class="dada-topbar-other">Fighting back</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<div class="dada-title-content">
+<h1 class="title">DADA2026:3 <br>Defence against the Dark Arts<br>Third topic - Complex Systems [<a href="https://hugh.myddns.me/media/pdfs/HandoutSystemsComplexity.pdf">H3</a>]</h1>
+<div class="dada-title-authors">
+<p class="author">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</p>
+<p class="institute">National University of Singapore<br>School of Computing</p>
+<p class="date">July, 2026</p>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Systems complexity</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">1/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">A warning...</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/ariane.mp4">1</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75.0%">
+<img data-src="../images/ariane.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+</div>
+<div class="dada-slide-num">2/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Where are we?</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">The topics: Attack surfaces so far...</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Introduction</span></span> <span style="color: gray"><span class="dada-font-footnotesize">(in</span></span> <span style="color: gray"><span class="dada-font-footnotesize">May):</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Warfare,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> with an indistinct enemy.</span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Social</span></span> <span style="color: gray"><span class="dada-font-footnotesize">Engineering</span></span> <span style="color: gray"><span class="dada-font-footnotesize">(in</span></span> <span style="color: gray"><span class="dada-font-footnotesize">May):</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Examples - phishing,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> vishing,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> tricking.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> Human weaknesses.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+</dl>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><dl><dt><span><span style="color: black"><span class="dada-font-footnotesize">System</span></span> <span style="color: black"><span class="dada-font-footnotesize">Complexity:</span></dt><dd><p></span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">Today we will look at how the complex nature of the computer systems and applications we build lead to errors, purely because of this system complexity. We fight back against this unexpected source of errors by adopting standards, and methods that history has shown to be effective. We will also look at some mathematically-based tools that can support the development and testing of systems.</span></span></span></p></dd></dl></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">3/42</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Overview - the scale of the problem</span><span class="dada-topbar-other">Fighting back</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Overview - the scale of the problem</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Motivation</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Fighting back</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Design principles and standards</li>
+<li>Security models - confinement, BLP, BIBA, Chinese wall</li>
+<li>Formal Methods</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Systems complexity</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/42</div>
+</section>
+<section>
+<section id="overview---the-scale-of-the-problem" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Overview - the scale of the problem</span><span class="dada-topbar-other">Fighting back</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Motivation</span></div>
+</div>
+<h1>Overview - the scale of the problem</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Systems complexity</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/42</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Overview - the scale of the problem</span><span class="dada-topbar-other">Fighting back</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Motivation</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Overview - the scale of the problem</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Motivation</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Fighting back</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Design principles and standards</span></li>
+<li><span style="color: lightgray">Security models - confinement, BLP, BIBA, Chinese wall</span></li>
+<li><span style="color: lightgray">Formal Methods</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Systems complexity</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Do we really need any motivation???</span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">Software is considered less reliable. Two warranties:</div>
+<div class="block-content">
+<ol>
+<li><div class="dada-li-text"><span style="color: black"><span class="dada-font-footnotesize">PC Manufacturer warrants that (a) the SOFTWARE will perform substantially in accordance with the accompanying written materials for a period of ninety (90) days from the date of receipt,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and (b) any Microsoft hardware accompanying the SOFTWARE will be free from defects in materials and workmanship under normal use and service for a period of one (1) year from the date of receipt.</span></span></div></li>
+<li><div class="dada-li-text"><span style="color: black"><span class="dada-font-footnotesize">ACCTON warrants to the original owner that the product delivered in this package will be free from defects in material and workmanship for the lifetime of the product.</span></span></div></li>
+</ol>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">from RISKS...</div>
+<div class="block-content">
+<ul>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">The LA counties pension fund lost US$1,200,000,000 through programming error.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">A Mercedes 500SE with graceful no-skid brake computers left 200m skid marks.</span><span class="dada-font-footnotesize"> A passenger was killed.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">A computer controlled elevator door in Ottawa killed two people.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">An automated toilet seat in Paris killed a child.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">The Amsterdam air-freight computer software crashed,</span><span class="dada-font-footnotesize"> killing giraffes.</span></div></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">5/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Complexity causes chaos</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 20%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/engineering.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Abstraction and software engineering...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Consider these two approaches to checking system behaviour:</span></span></p>
+<ol>
+<li><div class="dada-li-text"><span class="dada-emph">“</span><span class="dada-emph"><span class="dada-font-footnotesize">model it using a small C program</span></span>”<span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> </span><span class="dada-emph">“</span><span class="dada-emph"><span class="dada-font-footnotesize">Run it a few times and see what happens</span></span>”<span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> or perhaps </span><span class="dada-emph">“</span><span class="dada-emph"><span class="dada-font-footnotesize">Start with a file with one record of each type,</span></span><span class="dada-emph"><span class="dada-font-footnotesize"> then try a bigger file until a pattern emerges</span></span>”<span class="dada-font-footnotesize">.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Turn to mathematics for help.</span><span class="dada-font-footnotesize"> </span></div></li>
+</ol>
+<p><span class="dada-font-footnotesize">When software engineers meet a problem that is too large or difficult to understand,</span><span class="dada-font-footnotesize"> they sometimes have a poor attitude,</span><span class="dada-font-footnotesize"> choosing (1) above instead of more serious engineering techniques.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">A central issue with IT security is the complexity of modern systems,</span><span class="dada-font-footnotesize"> and our inability to correctly reason about,</span><span class="dada-font-footnotesize"> or even enumerate,</span><span class="dada-font-footnotesize"> the behaviour of modern software systems.</span><span class="dada-font-footnotesize"> When we build a bridge,</span><span class="dada-font-footnotesize"> in general,</span><span class="dada-font-footnotesize"> using more bricks makes the bridge more stable.</span><span class="dada-font-footnotesize"> The same cannot be said for software systems.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">6/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Concurrency causes catastrophe</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 70%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/ClaytonTunnel.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">Concurrency can be hard:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Signallers,</span><span class="dada-font-footnotesize"> flags,</span><span class="dada-font-footnotesize"> bells,</span><span class="dada-font-footnotesize"> train drivers,</span><span class="dada-font-footnotesize"> trains,</span><span class="dada-font-footnotesize"> ...</span><span class="dada-font-footnotesize"> and a tunnel.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The Clayton tunnel disaster.</span><span class="dada-font-footnotesize"> 21 years of faultless operation of a bad protocol.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">7/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Example: Mars pathfinder mission in 1997</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/MarsShort.mp4">2</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/ChinaMars.mp4">4</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">Ran into serious problems: a priority inversion!</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><colgroup><col style="width: 35%"><col><col><col style="width: 55%"></colgroup><tbody><tr><td style="text-align: center;"><img data-src="../images/pathfinder.png" style="width: auto; height:410px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center;"></td><td style="text-align: center; border-left: 1px solid black;"></td><td style="text-align: center;"><img data-src="images/priorityinversion.png" style="width: auto; height:410px; max-width: none; max-height: none" alt="image"></td></tr><tr><td style="text-align: center;"><div class="dada-fbox" style="width: 100%; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">The spacecraft was experiencing total system resets with loss of data each time due to priority inversion.</span></p></div></td><td style="text-align: center;"></td><td style="text-align: center; border-left: 1px solid black;"></td><td style="text-align: center;"><div class="dada-fbox" style="width: 100%; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">Higher priority task </span><span class="dada-font-footnotesize"><span class="math inline">\tau_{1}</span></span><span class="dada-font-footnotesize"> is blocked by the lower priority task holding a shared resource.</span><span class="dada-font-footnotesize"> The lower priority task </span><span class="dada-font-footnotesize"><span class="math inline">\tau_{3}</span></span><span class="dada-font-footnotesize"> has acquired this resource and then been preempted by the medium priority task </span><span class="dada-font-footnotesize"><span class="math inline">\tau_{2}</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> In summary,</span><span class="dada-font-footnotesize"> </span><span class="dada-font-footnotesize"><span class="math inline">\tau_{2}</span></span><span class="dada-font-footnotesize"> is blocking </span><span class="dada-font-footnotesize"><span class="math inline">\tau_{1}</span></span><span class="dada-font-footnotesize">.</span></p></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">8/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Software systems are complex...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 100%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/data_warehouse_architecture.jpg" style="width: auto; height:399px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="images/webapp.jpg" style="width: auto; height:399px; max-width: none; max-height: none" alt="image"></td></tr></tbody></table></div>
+</div>
+<div class="block">
+<div class="block-title">We think of them (and teach them) as if they were like the ones above</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">In these systems,</span><span class="dada-font-footnotesize"> there are relatively simple heirarchical structures with clear(ish) interfaces between them.</span><span class="dada-font-footnotesize"> In practice,</span><span class="dada-font-footnotesize"> things are rarely that simple.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">9/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Software systems are complex...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 100%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/largeswdesign1.png" style="width: auto; height:486px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="images/largeswdesign2.png" style="width: auto; height:486px; max-width: none; max-height: none" alt="image"></td></tr></tbody></table></div>
+</div>
+<div class="block">
+<div class="block-title">Many (larger) systems are like these</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">In these systems there are multiple software modules,</span><span class="dada-font-footnotesize"> perhaps spread over multiple platforms,</span><span class="dada-font-footnotesize"> with purpose-built interfaces between them.</span><span class="dada-font-footnotesize"> The likelihood of such complex systems being error-free is minimal.</span><span class="dada-font-footnotesize"> It is difficult to reason about even 3 interacting concurrent systems.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">10/42</div>
+</section>
+</section>
+<section>
+<section id="fighting-back" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Overview - the scale of the problem</span><span class="dada-topbar-current">Fighting back</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Design principles and standards</span><span class="dada-topbar-subsection-other">Security models - confinement, BLP, BIBA, Chinese wall</span><span class="dada-topbar-subsection-other">Formal Methods</span></div>
+</div>
+<h1>Fighting back</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Systems complexity</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">11/42</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Overview - the scale of the problem</span><span class="dada-topbar-current">Fighting back</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Design principles and standards</span><span class="dada-topbar-subsection-other">Security models - confinement, BLP, BIBA, Chinese wall</span><span class="dada-topbar-subsection-other">Formal Methods</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Overview - the scale of the problem</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Motivation</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Fighting back</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Design principles and standards</li>
+<li><span style="color: lightgray">Security models - confinement, BLP, BIBA, Chinese wall</span></li>
+<li><span style="color: lightgray">Formal Methods</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Systems complexity</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">11/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Saltzer and Schroeder&#x27;s design principles</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/pdfs/protection_information.pdf">ctrl-i2</a><span class="dada-font-footnotesize">,</span><a href="https://www.emergentchaos.com/the-security-principles-of-saltzer-and-schroeder">ctrl-i3</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">8 key points from paper summarized below:</div>
+<div class="block-content">
+<ul>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Economy of mechanism:</span></span></span><span class="dada-font-footnotesize"> Keep design as simple and small as possible.</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Fail-safe defaults:</span></span></span><span class="dada-font-footnotesize"> Base access decisions on permission rather than exclusion.</span><span class="dada-font-footnotesize"> The default is no access.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Complete mediation:</span></span></span><span class="dada-font-footnotesize"> Every access to every object must be checked for authority.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Open design:</span></span></span><span class="dada-font-footnotesize"> The design should not be secret.</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Separation of privilege:</span></span></span><span class="dada-font-footnotesize"> Two keys are better than one.</span><span class="dada-font-footnotesize"> No single event can compromise the system.</span><span class="dada-font-footnotesize"> Dual controls.</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Least privilege:</span></span></span><span class="dada-font-footnotesize"> Every program and every user of the system should operate using the least set of privileges necessary to complete the job.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Least common mechanism:</span></span></span><span class="dada-font-footnotesize"> Minimize the amount of mechanism common to more than one user and depended on by all users.</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Psychological acceptability:</span></span></span><span class="dada-font-footnotesize"> Human interfaces should be easy to use.</span></div></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">12/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Design principles for complexity: Principle #1</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Economy of mechanism</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">KISS - keep it simple (stupid)</span></span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Why?</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">Fewer errors,</span><span class="dada-font-footnotesize"> and checking correctness is easier.</span></p>
+<p><span class="dada-font-footnotesize">Complex mechanisms make more assumptions,</span><span class="dada-font-footnotesize"> and it is hard to test for all these assumptions.</span></p>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Economy of mechanism failure (so far)</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">IPSEC:</span><span class="dada-font-footnotesize"> Can do almost everything to secure TCP/IP but it is complex,</span><span class="dada-font-footnotesize"> and implementations vary in behaviour,</span><span class="dada-font-footnotesize"> and sometimes are incompatible with other implementations.</span><span class="dada-font-footnotesize"> </span></p>
+<p><span class="dada-font-footnotesize">Perhaps this is because it was designed by committee?</span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Economy of mechanism success</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">People switch to SSL VPNs which are much simpler,</span><span class="dada-font-footnotesize"> proven,</span><span class="dada-font-footnotesize"> compatible,</span><span class="dada-font-footnotesize"> robust...</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">13/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Design principles for complexity: Principle #7</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Least common mechanism</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Clients (subjects/processes) should </span><span style="color: blue"><span class="dada-font-footnotesize">minimize</span></span><span class="dada-font-footnotesize"> the amount of </span><span style="color: blue"><span class="dada-font-footnotesize">mechanism</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">common</span></span><span class="dada-font-footnotesize"> to more than one user and depended on by all users.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Why?</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">A common mechanism may provide a path of information leaks (Confinement/Covert storage channels).</span><span class="dada-font-footnotesize"> Common mechanisms must be trustworthy - what if a user found a way to corrupt or damage the shared mechanism,</span><span class="dada-font-footnotesize"> and as a result all users were affected?</span><span class="dada-font-footnotesize"> By default,</span><span class="dada-font-footnotesize"> clients should not share anything.</span></p>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Least common mechanism failure</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Microsoft NT architecture:</span><span class="dada-font-footnotesize"> FTP and Web services on the same computer shared a common thread pool.</span><span class="dada-font-footnotesize"> </span></p>
+<p><span class="dada-font-footnotesize">Exhausting the FTP thread pool will cause failed connection requests for the Web service.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Least common mechanism success</div>
+<div class="block-content">
+<ul>
+<li><div class="dada-li-text"><span style="color: blue">libc</span></div></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">14/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Sample design rules</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Possible rules arising from the principles</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">We can infer from the design principles a sensible set of rules to apply to software design and development.</span><span class="dada-font-footnotesize"> For example,</span><span class="dada-font-footnotesize"> we might have:</span></p>
+<ul>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Use a </span><span style="color: blue"><span class="dada-font-footnotesize">standard design </span></span><span class="dada-font-footnotesize">pattern - Is your system architecture a well understood pattern?</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Minimize</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">subsytems</span></span><span class="dada-font-footnotesize"> - Is each component of a composite system actually necessary?</span><span class="dada-font-footnotesize"> Can we remove a sub component entirely?</span><span class="dada-font-footnotesize"> This sort of optimization may be done at the design phase.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Minimize the interfaces</span></span><span class="dada-font-footnotesize"> - Between each component are interfaces (perhaps communication or just calls).</span><span class="dada-font-footnotesize"> We should minimize the interfaces,</span><span class="dada-font-footnotesize"> only leaving those that are absolutely necessary.</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Make </span><span style="color: blue"><span class="dada-font-footnotesize">explicit</span></span><span class="dada-font-footnotesize"> the interfaces - We should also make such interfaces explicit.</span><span class="dada-font-footnotesize"> It is a very bad idea to have a component that relies on something in another component,</span><span class="dada-font-footnotesize"> with no explicit annotation that tells you of this reliance.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Isolate</span></span><span class="dada-font-footnotesize"> components - Is each component stand-alone?</span><span class="dada-font-footnotesize"> Does it always do its job,</span><span class="dada-font-footnotesize"> even if all the components it commuicates with are lying to it?</span></div></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">15/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Security standards: the Rainbow documents</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://irp.fas.org/nsa/rainbow/std001.htm">ctrl-i8</a><span class="dada-font-footnotesize">,</span><a href="https://www.niap-ccevs.org/publications/">X</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">For evaluating security of machines</div>
+<div class="block-content">
+<table>
+<tbody>
+<tr>
+<td style="text-align: center;"><div class="dada-fbox" style="width: 384.0px; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/Rainbow-Books.jpg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div></td>
+<td style="text-align: center;"><div class="dada-fbox" style="width: 60%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">The NSA created various documents describing the criteria for evaluating the security behaviour of machines.</span><span class="dada-font-footnotesize"> These criteria were published in a series of documents with brightly coloured covers,</span><span class="dada-font-footnotesize"> and hence the name Rainbow Documents.</span></p></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">TCSEC document</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The DOD 5200.28-STD - </span>“<span class="dada-font-footnotesize">Department of Defense </span><span style="color: blue"><span class="dada-font-footnotesize">Trusted Computer System Evaluation Criteria</span></span>”<span class="dada-font-footnotesize"> at [i8] above,</span><span class="dada-font-footnotesize"> provides a </span><span style="color: blue"><span class="dada-font-footnotesize">standard</span></span><span class="dada-font-footnotesize"> to manufacturers (for security features related to confidentiality),</span><span class="dada-font-footnotesize"> to provide DoD components with a metric with which to </span><span style="color: blue"><span class="dada-font-footnotesize">evaluate</span></span><span class="dada-font-footnotesize"> the degree of </span><span style="color: blue"><span class="dada-font-footnotesize">trust</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and to provide a basis for </span><span style="color: blue"><span class="dada-font-footnotesize">specifying</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">security</span></span><span class="dada-font-footnotesize"> requirements in acquisition specifications.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Some of the Rainbow series have been superceded by the Common Criteria Evaluation and Validation Scheme (CCEVS).</span><span class="dada-font-footnotesize"> For background and further information,</span><span class="dada-font-footnotesize"> see the CCEVS web site at [X] above.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">16/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Old security standards: Peculiar language...</span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">Extracted from the document (TCSEC)...</div>
+<div class="block-content">
+<ul>
+<li><div class="dada-li-text"><span style="color: black"><span class="dada-emph"><span class="dada-font-footnotesize">The TCB</span></span></span><sup class="dada-fn-ref">1</sup><span style="color: black"><span class="dada-emph"><span class="dada-font-footnotesize"> shall require users to identify themselves to it before beginning to perform any other actions that the TCB is expected to mediate.</span></span></span><span style="color: black"><span class="dada-emph"><span class="dada-font-footnotesize"> </span></span></span></div></li>
+<li><div class="dada-li-text"><span style="color: black"><span class="dada-emph"><span class="dada-font-footnotesize">Furthermore,</span></span></span><span style="color: black"><span class="dada-emph"><span class="dada-font-footnotesize"> the TCB shall use a protected mechanism (e.g.,</span></span></span><span style="color: black"><span class="dada-emph"><span class="dada-font-footnotesize"> passwords) to authenticate the user&#x27;s identity.</span></span></span><span style="color: black"><span class="dada-emph"><span class="dada-font-footnotesize"> </span></span></span></div></li>
+</ul>
+</div>
+</div>
+<div class="block">
+<div class="block-title">TCSEC (The Orange book) - the first rating system for security</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">C1</span></span></span><span class="dada-font-footnotesize"></span></dt>
+<dd>
+<p>- For </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">same-level</span></span></span><span class="dada-font-footnotesize"> security access.</span><span class="dada-font-footnotesize"> Not currently used.</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">C2</span></span></span><span class="dada-font-footnotesize"></span></dt>
+<dd>
+<p>- </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Controlled access protection</span></span></span><span class="dada-font-footnotesize"> - users are individually accountable for their actions.</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">B1</span></span></span><span class="dada-font-footnotesize"></span></dt>
+<dd>
+<p>- </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Mandatory BLP policies</span></span></span><span class="dada-font-footnotesize"> - for more secure systems handling classified data.</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">B2</span></span></span><span class="dada-font-footnotesize"></span></dt>
+<dd>
+<p>- </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">structured protection</span></span></span><span class="dada-font-footnotesize"> - mandatory access control for all objects in the system.</span><span class="dada-font-footnotesize"> Formal models.</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">B3</span></span></span><span class="dada-font-footnotesize"></span></dt>
+<dd>
+<p>- </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">security domains</span></span></span><span class="dada-font-footnotesize"> - more controls,</span><span class="dada-font-footnotesize"> minimal complexity,</span><span class="dada-font-footnotesize"> provable consistency of model.</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">A1</span></span></span><span class="dada-font-footnotesize"></span></dt>
+<dd>
+<p>- </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Verified design</span></span></span><span class="dada-font-footnotesize"> - consistency proofs between model and specification.</span></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="dada-footnotes">
+<hr class="dada-fn-rule">
+<ul class="dada-fn-list">
+<li><sup>1</sup> Trusted Computing Base.</li>
+</ul>
+</div>
+<div class="dada-slide-num">17/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Security standards: formal evaluation - CC (In China ISCCC)</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://www.commoncriteriaportal.org/">X</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">The Common Criteria and its predecessor ITSEC derive from...</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">National</span></span></span><span class="dada-font-footnotesize"> security evaluation </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">criteria</span></span></span><span class="dada-font-footnotesize"> from multiple countries,</span><span class="dada-font-footnotesize"> see [X] above.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">A </span>“<span class="dada-font-footnotesize">sponsor</span>”<span class="dada-font-footnotesize"> determines operational requirements,</span><span class="dada-font-footnotesize"> threats and security objectives.</span><span class="dada-font-footnotesize"> CC specifies the </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">interactions</span></span></span><span class="dada-font-footnotesize"> and documents between the sponsor and the evaluator.</span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Levels as in TCSEC</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">There are various levels of evaluation:</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">E0..E6</span></span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> with </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">E6</span></span></span><span class="dada-font-footnotesize"> giving the highest level of assurance - it requires two independant formal verifications.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The first </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">E6</span></span></span><span class="dada-font-footnotesize"> certification of a smart-card system was in 1998,</span><span class="dada-font-footnotesize"> for smart-cards used as electronic purses - that is they carry value,</span><span class="dada-font-footnotesize"> and forgery must be impossible.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The certification encompassed the communication with the card,</span><span class="dada-font-footnotesize"> as well as the software within the card,</span><span class="dada-font-footnotesize"> and at the bank.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">18/42</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Overview - the scale of the problem</span><span class="dada-topbar-current">Fighting back</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Design principles and standards</span><span class="dada-topbar-subsection-current">Security models - confinement, BLP, BIBA, Chinese wall</span><span class="dada-topbar-subsection-other">Formal Methods</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Overview - the scale of the problem</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Motivation</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Fighting back</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Design principles and standards</span></li>
+<li>Security models - confinement, BLP, BIBA, Chinese wall</li>
+<li><span style="color: lightgray">Formal Methods</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Systems complexity</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">19/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Preliminaries - formal (mathematical) security models</span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">The sciences do not try to explain,they hardly even try to interpret,they mainly make models.[J.von Neumann]</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Definition:</span></span><span class="dada-font-footnotesize"> </span><span style="color: magenta"><span class="dada-emph"><span class="dada-font-footnotesize">a range of formal policies/methods for specifying the security of a system in terms of a (mathematical) model.</span></span></span><span style="color: magenta"><span class="dada-emph"><span class="dada-font-footnotesize"> </span></span></span></p>
+</div>
+</div>
+<div class="block">
+<div class="block-title">A three step approach</div>
+<div class="block-content">
+<ol>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Have or develop some sort of formal </span><span style="color: blue"><span class="dada-font-footnotesize">model</span></span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Determine and formalize some interesting/required </span><span style="color: blue"><span class="dada-font-footnotesize">properties</span></span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Check</span><span style="color: blue"><span class="dada-font-footnotesize">/verify</span></span><span class="dada-font-footnotesize"> the properties hold for the model,</span><span class="dada-font-footnotesize"> and then </span><span style="color: blue"><span class="dada-font-footnotesize">verify</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">implementations.</span></span></div></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">20/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Sample problem: Confinement and covert channels</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Secret channels for leaking information</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The </span><span style="color: blue"><span class="dada-font-footnotesize">confinement</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">problem is one of</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">preventing a system from leaking</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">(possibly partial) information.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Sometimes a system can have an </span><span style="color: blue"><span class="dada-font-footnotesize">unexpected path of transmission</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">of data,</span></span><span style="color: black"><span class="dada-font-footnotesize"> termed a covert channel,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and through the use of this covert channel information may be leaked either by a malicious program,</span></span><span style="color: black"><span class="dada-font-footnotesize"> or by accident.</span></span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Classification of covert channels</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">We categorize covert channels into two:</span></p>
+<ol>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Storage channels:</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">using the presence or absence of objects.</span></span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Timing channels:</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">using the speed of events.</span></span></div></li>
+</ol>
+<p><span class="dada-font-footnotesize">We can attempt to </span><span style="color: blue"><span class="dada-font-footnotesize">identify</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">covert channels by building a</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">shared resource matrix</span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> determining which processes can read and write which resources.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">21/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Confinement and covert channels</span></h2>
+<div class="dada-frame-body">
+<div class="dada-bubble" style="background-color: rgb(255,128,128); width: 90%; margin-left: auto; margin-right: 0;">
+<p><span><span style="color: black"><span class="dada-font-footnotesize">An unscrupulous program could modify access permissions on a file to transmit a low data-rate message to another program.</span></span></span></p>
+</div>
+<div class="block">
+<div class="block-title">Specifying properties formally</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">By tabulating the types of data in a system,</span><span class="dada-font-footnotesize"> and the properties of the operations (read,</span><span class="dada-font-footnotesize"> write,</span><span class="dada-font-footnotesize"> execute,</span><span class="dada-font-footnotesize"> transitive),</span><span class="dada-font-footnotesize"> it may be possible to specify that the system cannot leak information or be used to transfer information.</span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">NRL Pump: example of a one-way network</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">For confidentiality it is OK for data to go from low to high security levels.</span><span class="dada-font-footnotesize"> However,</span><span class="dada-font-footnotesize"> communication protocols (TCP/IP etc) include ACK messages (from high to low) to acknowledge reception of data.</span><span class="dada-font-footnotesize"> A malicious participant at the high level could have a covert channel by altering the timing of the ACKs.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">To prevent this,</span><span class="dada-font-footnotesize"> the NRL network pump is the router between the high and low levels,</span><span class="dada-font-footnotesize"> and buffers the packets,</span><span class="dada-font-footnotesize"> sending ACKs back to the low level.</span><span class="dada-font-footnotesize"> The ACKS vary in time randomly (although related to a moving average of previous overall activity).</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">22/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Bell-LaPadula, confidentiality model</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/newmatrix1a.srt.mp4">3</a><span class="dada-font-footnotesize">,</span><a href="https://en.wikipedia.org/wiki/Bell%E2%80%93LaPadula_model">i4</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/pdfs/belllapadula1.pdf">ctrl-i9</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">BLP from the names of the two authors of [ctrl-i9]</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Military</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">style model to assure</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">confidentiality</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">services.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Security levels are in a (total) ordering formalizing a policy which </span><span style="color: blue"><span class="dada-font-footnotesize">restricts information flow</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">from a higher security level to a lower security level.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">BLP has four levels of security:</div>
+<div class="block-content">
+<ol>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Top secret (</span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">T</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">)</span></span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Secret (</span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">S</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">)</span></span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Confidential (</span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">C</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">)</span></span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Unclassified (</span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">U</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">)</span></span></div></li>
+</ol>
+<p><span class="dada-font-footnotesize">where </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize"><span class="math inline">\boldsymbol{T&gt;S&gt;C&gt;U}</span></span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span><span style="color: black"><span class="dada-font-footnotesize"> Access operations visualized using an access control matrix,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and are drawn from</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">{</span></span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">read</span></span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">,</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">write</span></span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">23/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Import of the properties</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 85%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/mnarc.png" style="width: auto; height:270px; max-width: none; max-height: none" alt="image"> <img class="dada-inline-img" data-src="images/noreadup.png" style="width: auto; height:270px; max-width: none; max-height: none" alt="image"> <img class="dada-inline-img" data-src="images/nowritedown.png" style="width: auto; height:270px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">We can view them as the activities in a secure building</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Our security policy for confidentiality is that we do not want items to be leaked (downwards).</span><span class="dada-font-footnotesize"> The rules are:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">No read-up-1</span></span></span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">:</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">can</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">read</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">o</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">if and only if</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">l_{o}\leq l_{s}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p><p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">No write-down-1</span></span></span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">:</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">can</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">write</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">o</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">if and only if</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">l_{s}\leq l_{o}</span></span></span><span class="dada-font-footnotesize">.</span></p></div>
+</div>
+<p><span class="dada-font-footnotesize">Note that Bell and LaPadula turned Military confidentiality processes into simple mathematics,</span><span class="dada-font-footnotesize"> which is much more compact that text descriptions,</span><span class="dada-font-footnotesize"> and allows for further analysis.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">24/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">BLP extended includes categories</span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">Like sales, marketing, invasion plans...</div>
+<div class="block-content">
+<table>
+<tbody>
+<tr>
+<td style="text-align: center;"><img data-src="../images/lattice.png" style="width: auto; height:216px; max-width: none; max-height: none" alt="image"></td>
+<td style="text-align: left; border-left: 1px solid black;"><div class="dada-fbox" style="width: 85%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">A security category </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c\in{\cal C}</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">is used to classify objects in the model,</span></span><span style="color: black"><span class="dada-font-footnotesize"> with any object belonging to a set of categories.</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">l</span></span></span><span class="dada-font-footnotesize"> is a level,</span><span class="dada-font-footnotesize"> as in the simple BLP on the previous slide.</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c</span></span></span><span class="dada-font-footnotesize"> is a category.</span></p><p><span style="color: black"><span class="dada-font-footnotesize">Each pair</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">(l\times c)</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">is termed a</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">security level</span></span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and forms a</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">lattice</span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="dada-bubble" style="background-color: rgb(128,255,255); width: 90%; margin-left: auto; margin-right: 0;">
+<p><span><span class="dada-font-footnotesize">A security level </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">(l,c)</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">dominates</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">(l&#x27;,c&#x27;)</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">(written</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize"><span class="math inline">\boldsymbol{(l,c)\text{ dom }(l&#x27;,c&#x27;)}</span></span></span></span><span style="color: black"><span class="dada-font-footnotesize">) if</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">l&#x27;\leq l</span></span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c&#x27;\subseteq c</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></span></p>
+</div>
+<div class="exampleblock">
+<div class="block-title">Properties for the new extended model</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The new properties are:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">No read-up:</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">can </span><span class="dada-bold"><span class="dada-font-footnotesize">read</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">o</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">if and only if </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize"><span class="math inline">\boldsymbol{s\text{ dom }o}</span></span></span></span><span class="dada-font-footnotesize">.</span></p><p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">No write-down:</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">can </span><span class="dada-bold"><span class="dada-font-footnotesize">write</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">o</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">if and only if </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize"><span class="math inline">\boldsymbol{o\text{ dom }s}</span></span></span></span><span class="dada-font-footnotesize">.</span></p><p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Discretionary:</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">can </span><span class="dada-bold"><span class="dada-font-footnotesize">read/write</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">o</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">if and only if </span><span style="color: blue"><span class="dada-font-footnotesize">no-read-up</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">no-write-down</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and </span><span style="color: blue"><span class="dada-font-footnotesize">access permitted</span></span><span class="dada-font-footnotesize"> by discretionary policy.</span></p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">25/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">BLP security</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">The security theorem</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">A system is considered </span><span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">secure</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">in the current state if</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">all</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">the current</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">accesses</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">are</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">permitted</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">by the properties.</span></span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">A </span><span style="color: blue"><span class="dada-font-footnotesize">transition</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">from one state to the next is considered</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">secure</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">if it goes from one secure state to another secure state.</span></span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The basic </span><span style="color: blue"><span class="dada-font-footnotesize">security theorem</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">states that if the initial state of a system is secure,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and if all state transitions are secure,</span></span><span style="color: black"><span class="dada-font-footnotesize"> then the system will always be secure.</span></span></p>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Note the limitations of this system</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">BLP is a static model,</span><span class="dada-font-footnotesize"> not providing techniques for changing access rights or security levels</span><sup class="dada-fn-ref">2</sup><span class="dada-font-footnotesize">.</span></p>
+<p><span class="dada-font-footnotesize">However the model does demonstrate initial ideas into how to model,</span><span class="dada-font-footnotesize"> and how to build security systems that are provably secure.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-footnotes">
+<hr class="dada-fn-rule">
+<ul class="dada-fn-list">
+<li><sup>2</sup> You might want to explore the Harrison-Ruzo-Ullman model for this capability.</li>
+</ul>
+</div>
+<div class="dada-slide-num">26/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Data Pump/Diode: E6 Certified, and BLP!<span class="dada-font-footnotesize"> </span></span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://www.commoncriteriaportal.org/files/epfiles/st_vid9513-st.pdf">i1</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 40.0%">
+<img data-src="../images/datadiode.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Security hardware for networking</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The term </span>“<span class="dada-font-footnotesize">data diode</span>”<span class="dada-font-footnotesize"> is used for a special purpose router device,</span><span class="dada-font-footnotesize"> which sits between (say) a high security network,</span><span class="dada-font-footnotesize"> and a lower security network.</span><span class="dada-font-footnotesize"> It endeavours to only allow transmission of information from low to high.</span><span class="dada-font-footnotesize"> Such systems are used in the military and high-security organisations.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">27/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Biba model, integrity</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://en.wikipedia.org/wiki/Biba_Model">i5</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 35%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/Biba1.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">A different kind of assurance</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Biba model is concerned with the </span><span style="color: blue"><span class="dada-font-footnotesize">Trustworthiness</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">of data and programs - assurance for</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-emph"><span class="dada-font-footnotesize">integrity</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">services.</span></span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">It uses levels like </span><span class="dada-bold"><span class="dada-font-footnotesize">clean</span></span><span class="dada-font-footnotesize"> or </span><span class="dada-bold"><span class="dada-font-footnotesize">dirty</span></span><span class="dada-font-footnotesize"> (in reference,</span><span class="dada-font-footnotesize"> say,</span><span class="dada-font-footnotesize"> to database entries).</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Biba model is a kind of </span><span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">dual</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">for Bell-LaPadula.</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-emph"><span class="dada-font-footnotesize">integrity</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">vs</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-emph"><span class="dada-font-footnotesize">confidentiality</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Approach like BLP, only integrity instead of confidentiality:</div>
+<div class="block-content">
+<ul>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">The integrity levels </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">{\cal I}</span></span></span><span class="dada-font-footnotesize"> are ordered as for the security levels</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Function </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">i:{\cal O}\rightarrow{\cal I}</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> (</span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">i:{\cal S}\rightarrow{\cal I}</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">)</span></span><span class="dada-font-footnotesize"> which returns the integrity level of an object (subject).</span><span class="dada-font-footnotesize"> </span></div></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">28/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Biba properties</span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">Strict integrity policy rules</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">No read-down:</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">can </span><span class="dada-bold"><span class="dada-font-footnotesize">read</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">o</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">iff</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">i(s)\leq i(o)</span></span></span><span class="dada-font-footnotesize">.</span></p><p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">No write-up:</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">can </span><span class="dada-bold"><span class="dada-font-footnotesize">write</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">o</span></span></span><span class="dada-font-footnotesize"> iff</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">i(o)\leq i(s)</span></span></span><span class="dada-font-footnotesize">.</span></p><p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">No invoke-up:</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s_{1}</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">can </span><span class="dada-bold"><span class="dada-font-footnotesize">execute</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s_{2}</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">iff</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">i(s_{2})\leq i(s_{1})</span></span></span><span class="dada-font-footnotesize">.</span></p></div>
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">Low-watermark policy rules</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Biba models can have </span><span style="color: blue"><span class="dada-font-footnotesize">dynamic</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">integrity levels,</span></span><span style="color: black"><span class="dada-font-footnotesize"> where the level of a subject reduces if it accesses an object at a lower level (i.e.</span></span><span style="color: black"><span class="dada-font-footnotesize"> it</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">got dirty</span></span></span><span style="color: black"><span class="dada-font-footnotesize">).</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">No write-up</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">and </span></span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">No invoke-up:</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">(as before)</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p><p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Subject lowers</span></span></span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">:</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">if</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">reads</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">o</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">then</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">i&#x27;(s)=\text{min}(i(s),i(o))</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p></div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Direct modification only (ring) policy rules</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">No write-up</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">and </span></span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">No invoke-up:</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">(as before)</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p><p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">All read:</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s</span></span></span><span class="dada-font-footnotesize"> can </span><span class="dada-bold"><span class="dada-font-footnotesize">read</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">o</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">regardless.</span></p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">29/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">The Chinese wall model</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://en.wikipedia.org/wiki/Brewer_and_Nash_model">i6</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 50%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/GreatWall_small.jpg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Separation of duty</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Subjects cannot work for their client&#x27;s competitors</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> We can write this in a similar fashion to the BLP model,</span><span class="dada-font-footnotesize"> using the notation</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">y(c)</span></span></span><span class="dada-font-footnotesize"> for c&#x27;s </span><span style="color: blue"><span class="dada-font-footnotesize">company</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">x(c)</span></span></span><span class="dada-font-footnotesize"> for c&#x27;s </span><span style="color: blue"><span class="dada-font-footnotesize">competitiors</span></span><span class="dada-font-footnotesize">.</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">SimpleProperty:</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">can</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">access</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">if and only if for all</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c&#x27;</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-font-footnotesize">that</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-font-footnotesize">can read,</span></span><span style="color: black"><span class="dada-font-footnotesize"> either</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">y(c)\not\in x(c&#x27;)</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> or</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">y(c)=y(c&#x27;)</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p><p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">*-Property:</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">can</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">write</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c</span></span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">only if</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">s</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-font-footnotesize">cannot read any</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c&#x27;</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-font-footnotesize">with</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">x(c&#x27;)\not=\emptyset</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> and </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">y(c)\not=y(c&#x27;)</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">30/42</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Overview - the scale of the problem</span><span class="dada-topbar-current">Fighting back</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Design principles and standards</span><span class="dada-topbar-subsection-other">Security models - confinement, BLP, BIBA, Chinese wall</span><span class="dada-topbar-subsection-current">Formal Methods</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Overview - the scale of the problem</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Motivation</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Fighting back</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Design principles and standards</span></li>
+<li><span style="color: lightgray">Security models - confinement, BLP, BIBA, Chinese wall</span></li>
+<li>Formal Methods</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Systems complexity</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">31/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">How formal is formal?</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 15%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/Wikipedia-logo-nowords-bgwhite-200px.jpg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">What are formal methods?</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Formal methods involve the use of mathematically based techniques for the specification,</span><span class="dada-font-footnotesize"> development and verification of software and hardware systems</span><sup class="dada-fn-ref">3</sup><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> Formal methods typically use some assortment of </span>“<span class="dada-font-footnotesize">computer science</span>”<span class="dada-font-footnotesize"> fundamentals - process calculi,</span><span class="dada-font-footnotesize"> automata theory...</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Formal </span><span style="color: blue"><span class="dada-font-footnotesize">specifications</span></span><span class="dada-font-footnotesize"> precisely describe a system to be developed and it&#x27;s properties.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The </span><span style="color: blue"><span class="dada-font-footnotesize">verification</span></span><span class="dada-font-footnotesize"> of a system involves proving or disproving the correctness of a system with respect to the formal specification or property.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Model checking is one well established approach to verification.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-footnotes">
+<hr class="dada-fn-rule">
+<ul class="dada-fn-list">
+<li><sup>3</sup> Well, according to Wikipedia :)</li>
+</ul>
+</div>
+<div class="dada-slide-num">32/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Steps towards assurance...</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Modelling a system</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 50.0%">
+<img data-src="../images/closedsystem.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Synthesizing a system</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 50.0%">
+<img data-src="../images/opensystem.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">33/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Model checking in a slide...</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://en.wikipedia.org/wiki/Model_checking">i7</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 60.0%">
+<img data-src="../images/verificationsetting.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Properties and behaviour:</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">\mathrm{TS}</span></span></span><span class="dada-font-footnotesize"> represents the </span><span style="color: blue"><span class="dada-font-footnotesize">behaviour</span></span><span class="dada-font-footnotesize"> of the system,</span><span class="dada-font-footnotesize"> expressed as the </span><span style="color: blue"><span class="dada-font-footnotesize">allowable set of traces</span></span><span class="dada-font-footnotesize"> (or computations) of the system.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">A model-checker </span><span style="color: blue"><span class="dada-font-footnotesize">checks</span></span><span class="dada-font-footnotesize"> if this </span><span class="dada-emph"><span class="dada-font-footnotesize">behaviour</span></span><span class="dada-font-footnotesize"> of the system is a subset of the set of traces induced by an arbitrary property </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">\phi</span></span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> returning </span><span style="color: blue"><span class="dada-font-footnotesize">YES</span></span><span class="dada-font-footnotesize"> or </span><span style="color: blue"><span class="dada-font-footnotesize">NO</span></span><span class="dada-font-footnotesize">.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">When the model checker returns NO,</span><span class="dada-font-footnotesize"> it provides a counter-example - a trace leading to the error.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">34/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Example: Promela and spin</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 65%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/ispin.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="dada-bubble" style="background-color: rgb(128,255,255); width: 90%; margin-left: auto; margin-right: 0;">
+<p><span><span class="dada-font-footnotesize">Spin is the </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">checker</span></span></span><span class="dada-font-footnotesize"> for Promela models.</span><span class="dada-font-footnotesize"> It allows you to make assertions about the model:</span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize"> assert(some_boolean_condition);</span></span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize"> </span></span></span></span></p>
+</div>
+</div>
+<div class="dada-slide-num">35/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Promela and spin</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">What is Promela?</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">language</span></span></span><span class="dada-font-footnotesize"> Promela is &#x27;C&#x27; like,</span><span class="dada-font-footnotesize"> with an initialization procedure.</span><span class="dada-font-footnotesize"> It can model asynchronous or synchronous,</span><span class="dada-font-footnotesize"> deterministic or non-deterministic systems.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">It supports model checking with both safety and liveness assertions.</span><span class="dada-font-footnotesize"> What this means,</span><span class="dada-font-footnotesize"> is that in addition to boolean assertions scattered throughout the model,</span><span class="dada-font-footnotesize"> we can make time/temporal based assertions/claims.</span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Examples of these extended claims?</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-bold"><span class="dada-emph"><span class="dada-font-footnotesize">We got here again without making any progress!</span></span></span></span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The support for temporal claims takes the form of:</span></p>
+<ul>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Endstate</span></span></span><span class="dada-font-footnotesize"> labels - for determining valid endstates </span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Progress</span></span></span><span class="dada-font-footnotesize"> labels - claim no non-progress cycles </span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Never</span></span></span><span class="dada-font-footnotesize"> claims - impossible temporal assertions </span></div></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">36/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Promela example</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 100%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><colgroup><col><col><col><col style="width: 864.0px"></colgroup><tbody><tr><td style="text-align: center; border-bottom: 1px solid black;"><span class="dada-bold"><span class="dada-font-footnotesize">4 processes,</span></span> <span class="dada-bold"><span class="dada-font-footnotesize">6 channels...</span></span></td><td style="text-align: center; border-bottom: 1px solid black;"></td><td style="text-align: center; border-bottom: 1px solid black; border-left: 1px solid black;"></td><td style="text-align: center; border-bottom: 1px solid black;"><span class="dada-bold"><span class="dada-font-footnotesize">The</span></span> <span class="dada-bold">“</span> <span class="dada-bold"><span class="dada-font-footnotesize">mainline</span></span> <span class="dada-bold">”</span></td></tr><tr><td style="text-align: center;"><img data-src="../images/promela.png" style="width: auto; height:378px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center;"></td><td style="text-align: center; border-left: 1px solid black;"></td><td style="text-align: center;"><div class="dada-fbox" style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><pre><code class="language-bash" data-trim data-noescape>mtype = {ack,nak,err,next,accept}
+init
+{
+   chan AtoB = [1] of { mtype,byte };
+   chan BtoA = [1] of { mtype,byte };
+   chan Ain  = [2] of { mtype,byte };
+   chan Bin  = [2] of { mtype,byte };
+   chan Aout = [2] of { mtype,byte };
+   chan Bout = [2] of { mtype,byte };
+   atomic {
+      run application( Ain,Aout );
+      run xfer( Aout,Ain,BtoA,AtoB );
+      run xfer( Bout,Bin,AtoB,BtoA );
+      run application( Bin,Bout )
+   };
+   AtoB!err(0)
+}
+
+
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="dada-bubble" style="background-color: rgb(128,255,255); width: 90%; margin-left: auto; margin-right: 0;">
+<p><span><span class="dada-font-footnotesize">This is Lynch&#x27;s protocol - with two applications sending data continuously to each other.</span><span class="dada-font-footnotesize"> Lynch&#x27;s protocol was described in detail,</span><span class="dada-font-footnotesize"> used for many years,</span><span class="dada-font-footnotesize"> but had a flaw.</span><span class="dada-font-footnotesize"> It could get into a state where it would no longer send data one way.</span></span></p>
+</div>
+</div>
+<div class="dada-slide-num">37/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Promela example</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 100%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><colgroup><col style="width: 672.0px"><col style="width: 768.0px"></colgroup><tbody><tr><td style="text-align: center; border-bottom: 1px solid black;"><span class="dada-bold"><span class="dada-font-footnotesize">Transfer/protocol rules</span></span></td><td style="text-align: center; border-bottom: 1px solid black; border-left: 1px solid black;"><span class="dada-bold"><span class="dada-font-footnotesize">An application for testing</span></span></td></tr><tr><td style="text-align: center;"><div class="dada-fbox" style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><pre><code class="language-bash" data-trim data-noescape>proctype xfer(chan in,out,chin,chout)
+{
+   byte o,i;
+   in?next(o);
+   do
+      ::chin?nak(i) -&gt; out!accept(i);
+                       chout!ack(o)
+      ::chin?ack(i) -&gt; out!accept(i);
+                       in?next(o);
+                       chout!ack(o)
+      ::chin?err(i) -&gt; chout!nak(o)
+   od
+}
+
+
+</code></pre></div></td><td style="text-align: center; border-left: 1px solid black;"><div class="dada-fbox" style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><pre><code class="language-bash" data-trim data-noescape>#define MAX 10
+proctype application(chan in,out)
+{
+   int i=0,j=0,lasti=0;
+   do
+      ::in?accept(i) -&gt;
+        assert( i==lasti );
+        if
+           ::(lasti!=MAX) -&gt; lasti=lasti+1
+           ::(lasti==MAX)
+        fi
+      ::out!next(j) -&gt;
+        if
+           ::(j!=MAX) -&gt; j=j+1
+           ::(j==MAX)
+        fi
+   od
+}
+
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="dada-bubble" style="background-color: rgb(128,255,255); width: 90%; margin-left: auto; margin-right: 0;">
+<p><span><span class="dada-font-footnotesize">The assertion tests if the last message had a correct number,</span><span class="dada-font-footnotesize"> and is always OK.</span><span class="dada-font-footnotesize"> But one of the applications can make no progress.</span><span class="dada-font-footnotesize"> Formal methods catch these hard-to-find errors.</span></span></p>
+</div>
+</div>
+<div class="dada-slide-num">38/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">A (CSP) model for the pathfinder software</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 100%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><colgroup><col><col style="width: 960.0px"></colgroup><tbody><tr><td style="text-align: center;"><img data-src="../images/mars2.jpg" style="width: auto; height:745px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><div class="dada-fbox" style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><pre><code class="language-bash" data-trim data-noescape>#define idle 0;
+#define wait 1;
+#define run 2;
+var L=idle;
+var H=idle;
+var M=idle;
+var mutex=true;
+
+GetMutex() = [mutex]aquire{mutex=false;} -&gt; Skip();
+FreeMutex() = [!mutex]release{mutex=true;} -&gt; Skip();
+
+HiPri() = getHP{H=wait;M=idle;} -&gt; GetMutex();
+runHP -&gt; DoHigh();
+DoHigh() = endHP{H=run;} -&gt; FreeMutex();
+idleHP{H=idle;} -&gt; HiPri();
+
+MedPri() = [H!=run]runMP{M=run;} -&gt; MedPri();
+
+LowPri() = [H==idle&amp;&amp;M==idle]getLP{L=wait;} -&gt; GetMutex();
+[H==idle&amp;&amp;M==idle]runLP -&gt; DoLow();
+DoLow() = [H==idle&amp;&amp;M==idle]endLP{L=run;} -&gt; FreeMutex();
+[H==idle&amp;&amp;M==idle]idleLP{L=idle;} -&gt; LowPri();
+
+AllTasks() = HiPri() ||| MedPri() ||| LowPri();
+
+#assert AllTasks() deadlockfree;
+
+#assert AllTasks() |= [](getHP -&gt; &lt;&gt;endHP);
+
+
+
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+<div class="dada-slide-num">39/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Another example system...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 70.0%">
+<img data-src="../images/crossing.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Train, gate, controller</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">In this system,</span><span class="dada-font-footnotesize"> we have multiple interacting components.</span><span class="dada-font-footnotesize"> The controller attempts to open and close the gate based on the train&#x27;s activities,</span><span class="dada-font-footnotesize"> and the gate&#x27;s status.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">40/42</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Modelling the system...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 55.0%">
+<img data-src="../images/parallel.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Construct the overall model from 3 simple models</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">We can easily model each of the components,</span><span class="dada-font-footnotesize"> and can imagine an algorithm to construct the parallel composition of them.This model can be analysed with tools.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">41/42</div>
+</section>
+<section class="slide level2 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Overview - the scale of the problem</span><span class="dada-topbar-current">Fighting back</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Design principles and standards</span><span class="dada-topbar-subsection-other">Security models - confinement, BLP, BIBA, Chinese wall</span><span class="dada-topbar-subsection-current">Formal Methods</span></div>
+</div>
+<h2><span class="dada-title-main">Summary: Systems Complexity</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Today, we have seen...</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Examples</span></span><span class="dada-font-footnotesize"> - Complex systems are everywhere,</span><span class="dada-font-footnotesize"> and a lot of software is produced without much thought for complexity.</span><span class="dada-font-footnotesize"> Programmers and software designers should adopt better engineering approaches.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Architectures</span></span><span class="dada-font-footnotesize"> - There are standard design patterns in software that should be adopted.</span><span class="dada-font-footnotesize"> Dont re-invent the wheel.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Standards and formal methods</span></span><span class="dada-font-footnotesize"> - Hugh emphasized that mathematically-based tools can be used for developing better software,</span><span class="dada-font-footnotesize"> giving more assurance of the outcome.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Systems complexity</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">42/42</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script>Reveal.initialize({hash: true, width: 1920, height: 1080, margin: 0, plugins: [RevealHighlight]});</script>
+</body>
+</html>

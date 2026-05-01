@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DADA2026:8 Defence against the Dark Arts Eighth topic - Infrastructure</title>
+<meta name="author" content="Hugh Anderson [Q]">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css">
+<link rel="stylesheet" href="beamer_Warsaw.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { const mathElements = document.getElementsByClassName("math"); const macros = {"\\qed": "\\tag*{$\\colorlet{colorsave}{.}\\color{black}\\blacksquare\\color{colorsave}$}", "\\concat": "\\mathbin{\\mathmakebox[\\widthof{${+}\\m@th$}]{+\\hskip-1emplus1fil+}}", "\\myeq": "\\mathrel{\\overset{{\\textsf{def}}}{=}}", "\\raggedright": "\\leftskip=0pt \\rightskip=0pt plus 0cm"}; for (let i = 0; i < mathElements.length; i++) {  const texText = mathElements[i].firstChild;  if (mathElements[i].tagName === "SPAN" && texText && texText.nodeType === 3) {   katex.render(texText.data, mathElements[i], {    displayMode: mathElements[i].classList.contains("display"),    throwOnError: false, macros: macros, fleqn: false   });  } }});</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="title-slide" class="dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Authentication, logging in...</span><span class="dada-topbar-other">Other infrastructural building blocks</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<div class="dada-title-content">
+<h1 class="title">DADA2026:8 <br>Defence against the Dark Arts<br>Eighth topic - Infrastructure</h1>
+<div class="dada-title-authors">
+<p class="author">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</p>
+<p class="institute">National University of Singapore<br>School of Computing</p>
+<p class="date">July, 2026</p>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Infrastructure</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">1/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Building better support systems</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 85%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/DNSSECillustration.png" style="width: auto; height:249px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">2/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Where are we?</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">The topics: Attack surfaces so far...</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Introduction</span></span> <span style="color: gray"><span class="dada-font-footnotesize">(in</span></span> <span style="color: gray"><span class="dada-font-footnotesize">May):</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Warfare,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> with an indistinct enemy.</span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Social</span></span> <span style="color: gray"><span class="dada-font-footnotesize">Engineering</span></span> <span style="color: gray"><span class="dada-font-footnotesize">(in</span></span> <span style="color: gray"><span class="dada-font-footnotesize">May):</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Examples - phishing,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> vishing,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> tricking.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> Human weaknesses.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-emph"><span class="dada-font-footnotesize">System</span></span></span> <span style="color: gray"><span class="dada-font-footnotesize">Complexity:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Fight back with design principles,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> standards and formal methods.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Crypto</span></span> <span style="color: gray"><span class="dada-font-footnotesize">1:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Traditional systems - substitution and permutation.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> (Pre 1976).</span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Crypto</span></span> <span style="color: gray"><span class="dada-font-footnotesize">2:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> (Post 1976) Asymmetric systems:</span></span><span style="color: gray"><span class="dada-font-footnotesize"> OWF,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> computational complexity,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> hashes.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">IP</span></span> <span style="color: gray"><span class="dada-font-footnotesize">Networks:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Layered structure designed for resilience,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> not security.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> Hardening the Internet.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">OtherNets:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Other communication worlds that largely rely on security-by-obscurity.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Web</span></span> <span style="color: gray"><span class="dada-font-footnotesize">Apps:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Weaknesses and defences for web applications.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+</dl>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><dl><dt><span><span style="color: black"><span class="dada-font-footnotesize">Infrastructure:</span></dt><dd><p></span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">Today we will look at infrastructural elements: banking, PKI, the DNS, IoT devices and media. We will also be looking at some of the underlying mechanisms used to build these systems.</span></span></span></p></dd></dl></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">3/33</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Authentication, logging in...</span><span class="dada-topbar-other">Other infrastructural building blocks</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Authentication, logging in...</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Banking systems, Public key infrastructure</li>
+<li>Authentication without passing passwords</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Other infrastructural building blocks</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Voting</li>
+<li>Hardware... IoT, DVD, DNS...</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Infrastructure</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/33</div>
+</section>
+<section>
+<section id="authentication,-logging-in..." class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Authentication, logging in...</span><span class="dada-topbar-other">Other infrastructural building blocks</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Banking systems, Public key infrastructure</span><span class="dada-topbar-subsection-other">Authentication without passing passwords</span></div>
+</div>
+<h1>Authentication, logging in...</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Infrastructure</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/33</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Authentication, logging in...</span><span class="dada-topbar-other">Other infrastructural building blocks</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Banking systems, Public key infrastructure</span><span class="dada-topbar-subsection-other">Authentication without passing passwords</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Authentication, logging in...</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Banking systems, Public key infrastructure</li>
+<li><span style="color: lightgray">Authentication without passing passwords</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Other infrastructural building blocks</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Voting</span></li>
+<li><span style="color: lightgray">Hardware... IoT, DVD, DNS...</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Infrastructure</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Case study 1: SWIFT (for sending money overseas)</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://en.wikipedia.org/wiki/SWIFT">i1</a><span class="dada-font-footnotesize">,</span><a href="https://en.wikipedia.org/wiki/Cross-Border_Interbank_Payment_System">X</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">SWIFT (Society for Worldwide International Financial Telecommunications)</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">It was set up before PK and had an unusual set of constraints.</span><span class="dada-font-footnotesize"> Banks did not trust the system (i.e.</span><span class="dada-font-footnotesize"> they did not want dishonest SWIFT people to steal from them),</span><span class="dada-font-footnotesize"> and authenticity was independent of confidentiality because France forbade cryptography (!).</span></p>
+<hr style="border: none; border-top: 4px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Systems also had to enforce non-repudiation,</span><span class="dada-font-footnotesize"> and had to support the control of transactions under some policy or other (two-controls,</span><span class="dada-font-footnotesize"> balancing of books).</span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">SWIFT mechanisms</div>
+<div class="block-content">
+<ul>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Authentication:</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">Messages have a MAC (Message Authentication Code - a keyed hash function) attached.</span><span class="dada-font-footnotesize"> Banks would exchange Keys for the MAC in face-to-face meetings,</span><span class="dada-font-footnotesize"> or via third channels (certainly not via SWIFT).</span><span class="dada-font-footnotesize"> As a result SWIFT took no part in authentication.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Non-repudiation:</span></span><span class="dada-font-footnotesize"> Countries log messages at a regional processing centre (RGP),</span><span class="dada-font-footnotesize"> before sending on to SWIFT.</span><span class="dada-font-footnotesize"> RGPs are more or less independent.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Confidentiality:</span></span><span class="dada-font-footnotesize"> Used proprietary encryption devices,</span><span class="dada-font-footnotesize"> keys were hand-carried for distribution.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Dual controls:</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">Roles were separated - one clerk entered data,</span><span class="dada-font-footnotesize"> another checked and sent it.</span></div></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">5/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Case study 1: SWIFT</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://en.wikipedia.org/wiki/Stanley_Mark_Rifkin">i2</a><span class="dada-font-footnotesize">,</span><a href="https://en.wikipedia.org/wiki/Cross-Border_Interbank_Payment_SystemStanley_Mark_Rifkin">i6</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 32%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/swift1.png" style="width: auto; height:124px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">We saw this before... What has gone wrong?</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">For 20 years it ran well without any external fraud.</span><span class="dada-font-footnotesize"> Since 1996 SWIFT has used PK cryptography.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Most frauds have an insider bypassing a dual control.</span><span class="dada-font-footnotesize"> Stanley Rifkin,</span><span class="dada-font-footnotesize"> a computer consultant,</span><span class="dada-font-footnotesize"> got hold of an authorization code,</span><span class="dada-font-footnotesize"> and used this to authorize a transfer of $10M worth of diamonds.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">In February 2016,</span><span class="dada-font-footnotesize"> attackers tried to steal US$951 Million from Bangladesh Bank,</span><span class="dada-font-footnotesize"> the central bank of Bangladesh,</span><span class="dada-font-footnotesize"> using the SWIFT network.</span><span class="dada-font-footnotesize"> They succeeded in getting $81M.</span><span class="dada-font-footnotesize"> The attack involved long term study and infiltration of the bank head office,</span><span class="dada-font-footnotesize"> multiple </span>“<span class="dada-font-footnotesize">runners</span>”<span class="dada-font-footnotesize"> in multiple countries,</span><span class="dada-font-footnotesize"> and a significant effort.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">6/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Case study 2: Man-in-the-middle for Public Keys</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75.0%">
+<img data-src="../images/mimpk.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Motivation for PKI (repeat from Crypto-2)</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">We see that a man-in-the-middle can return a bad (public) key to Alice,</span></span><span style="color: black"><span class="dada-font-footnotesize"> who incorrectly assumes it is from Bob.</span></span><span style="color: black"><span class="dada-font-footnotesize"> From then on she encrypts using a key that Harry made,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and who also has the matching secret key.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">7/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Case study 2: Man-in-the-middle for Public Keys</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Motivation for PKI:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">How to ensure that keys belong to Bob?</span></p>
+<blockquote class="dada-quote">
+<p><span class="dada-font-footnotesize">Need some </span><span style="color: blue"><span class="dada-font-footnotesize">trusted authority/heirarchy</span></span><span class="dada-font-footnotesize"> to certify that keys are OK.</span><span class="dada-font-footnotesize"> (Verisign,</span><span class="dada-font-footnotesize"> Entrust...)</span></p>
+</blockquote>
+<hr style="border: none; border-top: 4px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">How to </span><span style="color: blue"><span class="dada-font-footnotesize">trust</span></span><span class="dada-font-footnotesize"> the Authority?</span></p>
+<blockquote class="dada-quote">
+<p><span class="dada-font-footnotesize">Authority&#x27;s </span><span style="color: blue"><span class="dada-font-footnotesize">public credentials</span></span><span class="dada-font-footnotesize"> are already resident on your machine...</span></p>
+</blockquote>
+<hr style="border: none; border-top: 4px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">What does the Authority do?</span><span class="dada-font-footnotesize"> </span></p>
+<blockquote class="dada-quote">
+<p><span class="dada-font-footnotesize">It digitally signs a certificate using it&#x27;s private key.</span><span class="dada-font-footnotesize"> The certificate binds a public key to Bob.</span></p>
+</blockquote>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">The mechanism:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The overall mechanism provides </span><span style="color: blue"><span class="dada-font-footnotesize">certificates</span></span><span class="dada-font-footnotesize"> that contain </span><span style="color: blue"><span class="dada-font-footnotesize">public keys,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> bound to identities</span></span><span class="dada-font-footnotesize"> (web sites for example).</span><span class="dada-font-footnotesize"> Certifying authorities provide some </span><span style="color: blue"><span class="dada-font-footnotesize">level of trust</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> providing certificates.</span></p>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Main points...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">We have to trust (certifying) authorities.</span><span class="dada-font-footnotesize"> We may not know WHO our computer trusts,</span><span class="dada-font-footnotesize"> and bad certificates originally had no way of being discarded.</span><span class="dada-font-footnotesize"> Even now the work-around is awkward.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">8/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Case study 2: The certification mechanism</span></h2>
+<div class="dada-frame-body">
+<div class="dada-inline-row">
+<div class="center">
+<div class="dada-fbox" style="width: 45%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/pk1.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 29%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/pkbnz.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">The RA and CA and you</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Your organisation communicates with the RA (Registration Authority),</span><span class="dada-font-footnotesize"> passes them a public key,</span><span class="dada-font-footnotesize"> and convinces them that they are the rightful owners of the domain or web site.</span><span class="dada-font-footnotesize"> Once the RA is convinced,</span><span class="dada-font-footnotesize"> it gets the CA (Certifying authority) to digitally sign the public key with the name/ID,</span><span class="dada-font-footnotesize"> binding them together in a </span>“<span class="dada-font-footnotesize">certificate</span>”<span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> This is passed back to the organisation.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">9/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Case study 2: A padding attack on RSA</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://archiv.infsec.ethz.ch/education/fs08/secsem/bleichenbacher98.pdf">ctrl-i7</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 55%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/PKCS1PaddingFormat.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">PKCS#1 padding attack from 1998</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">In 1998,</span><span class="dada-font-footnotesize"> Daniel Bleichenbacher from Bell labs published a padding oracle attack on PKCS#1 (and hence SSL V3.0).</span><span class="dada-font-footnotesize"> The attack is based on the fact that RSA is homomorphic with respect to multiplication.</span><span class="dada-font-footnotesize"> In addition,</span><span class="dada-font-footnotesize"> some (web) servers can act as padding oracles.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">In SSL/TLS,</span><span class="dada-font-footnotesize"> during the initial negotiation,</span><span class="dada-font-footnotesize"> critical keys are sent,</span><span class="dada-font-footnotesize"> encrypted using RSA.</span><span class="dada-font-footnotesize"> A padding oracle attack can retrieve this &quot;pre&quot;master secret key,</span><span class="dada-font-footnotesize"> in what has been called the </span>“<span class="dada-font-footnotesize">million message</span>”<span class="dada-font-footnotesize"> attack.</span><span class="dada-font-footnotesize"> The details of this attack are found in the paper,</span><span class="dada-font-footnotesize"> but it is not dissimilar to the padding oracle attack in Lab2;</span><span class="dada-font-footnotesize"> multiple messages are sent to the server,</span><span class="dada-font-footnotesize"> which responds differently if the format of the padding is correct or incorrect.</span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">“Fixing” PKCS#1</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The approach taken to fix this was to ask vendors to add extra countermeasures:</span><span class="dada-font-footnotesize"> primarily returning uninformative server responses.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">10/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Case study 2: Revisiting PKCS#1</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-bock.pdf">ctrl-i8</a><span class="dada-font-footnotesize">,</span><a href="https://www.usenix.org/conference/usenixsecurity18/presentation/bock">X</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">Key Exchange in 2018: RSA, (ECC) DH, (ECC) Ephemeral DH</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">In 2018,</span><span class="dada-font-footnotesize"> Hanno Böck and others decided to see what the (RSA) situation was after 20 years.</span><span class="dada-font-footnotesize"> They were astonished that it did not seem to be fixed.</span><span class="dada-font-footnotesize"> They managed to identify that Paypal,</span><span class="dada-font-footnotesize"> Apple,</span><span class="dada-font-footnotesize"> Ebay,</span><span class="dada-font-footnotesize"> Facebook,</span><span class="dada-font-footnotesize"> Cisco and others were all vulnerable to Bleichenbacher&#x27;s attack!</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">It gets worse...</span></p>
+<ol>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Hanno managed to use the padding oracle to sign a message of their own using Facebook&#x27;s private key.</span><span class="dada-font-footnotesize"> They did not retrieve the key,</span><span class="dada-font-footnotesize"> but could get the server to sign a message for them!</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">They found that some of the biggest vendors of web systems (for example Cisco ACE) still provided insecure RSA-based TLS.</span><span class="dada-font-footnotesize"> Cisco ACE ONLY provides RSA,</span><span class="dada-font-footnotesize"> and will not update it - it is out of support.</span><span class="dada-font-footnotesize"> </span></div></li>
+</ol>
+<p><span class="dada-font-footnotesize">Hmmmmmm...</span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Standards bodies in 2022</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">In 2022,</span><span class="dada-font-footnotesize"> all NIST/ISO/IEC standards are driven by formal (mathematical) analysis.</span><span class="dada-font-footnotesize"> Crypto has to be </span><span class="dada-emph"><span class="dada-font-footnotesize">proved</span></span><span class="dada-font-footnotesize"> correct.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">11/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Case study 3: Weak DH</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://weakdh.org/">X</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 53%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/logjam1.png" style="width: auto; height:151px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">June 2013: Snowden releases NSA documents...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">...</span></span><span style="color: black"><span class="dada-font-footnotesize"> and in them we discover that </span></span><span style="color: blue"><span class="dada-font-footnotesize">NSA</span></span><span style="color: black"><span class="dada-font-footnotesize"> has been </span></span><span style="color: blue"><span class="dada-font-footnotesize">routinely listening</span></span><span style="color: black"><span class="dada-font-footnotesize"> in on skype calls,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and intercepting IPsec and https:// conversations.</span></span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">My colleague Martin suggests that,</span></span><span style="color: black"><span class="dada-font-footnotesize"> in this day and age,</span></span><span style="color: black"><span class="dada-font-footnotesize"> most people couldn&#x27;t care less.</span></span><span style="color: black"><span class="dada-font-footnotesize"> Maybe he is right.</span></span><span style="color: black"><span class="dada-font-footnotesize"> But in any case,</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize">how can it be done</span></span><span style="color: black"><span class="dada-font-footnotesize">?</span></span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">In October 2015,</span><span class="dada-font-footnotesize"> a plausible explanation was revealed (see [X] above).</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">12/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Case study 3: large scale monitoring of IPSec</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 60%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/NSAVPNTURMOIL.png" style="width: auto; height:151px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Architecture of an NSA system from leaked document</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Notice the diagram is clearly indicating the IKE (Internet Key Exchange),</span></span><span style="color: black"><span class="dada-font-footnotesize"> and the </span></span><span style="color: blue"><span class="dada-font-footnotesize">use of IPsec</span></span><span style="color: black"><span class="dada-font-footnotesize"> - the AH and ESP packets.</span></span></p>
+<p><span style="color: black"><span class="dada-font-footnotesize">There is so much supporting material,</span></span><span style="color: black"><span class="dada-font-footnotesize"> that it is clear that this is </span></span><span style="color: blue"><span class="dada-font-footnotesize">not FUD</span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> but is a </span></span><span style="color: blue"><span class="dada-font-footnotesize">real mechanism</span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> in use since at least 2009.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+<p><span style="color: black"><span class="dada-font-footnotesize">It relies on the use of the</span></span><span style="color: blue"><span class="dada-font-footnotesize"> fixed large primes</span></span><span style="color: black"><span class="dada-font-footnotesize"> used in </span></span><span style="color: blue"><span class="dada-font-footnotesize">Diffie-Hellman</span></span><span style="color: black"><span class="dada-font-footnotesize"> key exchange software.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">13/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Case study 3: large scale monitoring of IPSec</span></h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">How does it all work?</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Initially,</span></span><span style="color: black"><span class="dada-font-footnotesize"> the Diffie-Hellman key exchange is </span></span><span style="color: blue"><span class="dada-font-footnotesize">downgraded</span></span><span style="color: black"><span class="dada-font-footnotesize"> to one using smaller (</span></span><span style="color: blue"><span class="dada-font-footnotesize">EXPORT-GRADE</span></span><span style="color: black"><span class="dada-font-footnotesize">) bitsize primes.</span></span><span style="color: black"><span class="dada-font-footnotesize"> The IKE (Internet Key Exchange) values are sent to a supercomputer,</span></span><span style="color: black"><span class="dada-font-footnotesize"> which </span></span><span style="color: blue"><span class="dada-font-footnotesize">returns actual keys</span></span><span style="color: black"><span class="dada-font-footnotesize"> within 15 minutes.</span></span><span style="color: black"><span class="dada-font-footnotesize"> On a modern computer/PC?</span></span><span style="color: black"><span class="dada-font-footnotesize"> About 30 seconds.</span></span></p>
+</div>
+</div>
+<div class="block">
+<div class="block-title">Solved <span class="math inline">y=g^{x}\bmod p</span> discrete log problem? ... No.</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Common (NFS) algorithm can use </span></span><span style="color: blue"><span class="dada-font-footnotesize">pre-computation</span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> for a </span></span><span style="color: blue"><span class="dada-font-footnotesize">specific prime</span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> of 3 out of the 4 steps:</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 49%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/precomp.png" style="width: auto; height:56px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">What do we do about it? (From the paper)</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">On the </span></span><span style="color: blue"><span class="dada-font-footnotesize">Browser</span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> you must check you have the updates which stop *you* being vulnerable.</span></span><span style="color: black"><span class="dada-font-footnotesize"> On the </span></span><span style="color: blue"><span class="dada-font-footnotesize">Server</span></span><span style="color: black"><span class="dada-font-footnotesize"> you must</span></span><span style="color: blue"><span class="dada-font-footnotesize"> Disable Export Cipher Suites</span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize">use (Ephemeral) Elliptic-Curve Diffie-Hellman (ECDHE)</span></span><span style="color: black"><span class="dada-font-footnotesize"> and use a</span></span><span style="color: blue"><span class="dada-font-footnotesize"> Strong,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> Diffie Hellman Group</span></span><span style="color: black"><span class="dada-font-footnotesize"> (2048-bit or stronger).</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">14/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Case study 4: The DNS</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 45%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/C17_10-3.gif" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">A heirarchy, root servers, domains, local...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Forms a tree,</span><span class="dada-font-footnotesize"> and a new request at a leaf has to traverse the tree.</span><span class="dada-font-footnotesize"> A  distributed database,</span><span class="dada-font-footnotesize"> with distributed caching of recent name requests.</span><span class="dada-font-footnotesize"> The distributed nature of the DNS provides plenty of opportunity to inject in false entries.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">There are various approaches to harden the DNS.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">15/33</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Authentication, logging in...</span><span class="dada-topbar-other">Other infrastructural building blocks</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Banking systems, Public key infrastructure</span><span class="dada-topbar-subsection-current">Authentication without passing passwords</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Authentication, logging in...</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Banking systems, Public key infrastructure</span></li>
+<li>Authentication without passing passwords</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Other infrastructural building blocks</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Voting</span></li>
+<li><span style="color: lightgray">Hardware... IoT, DVD, DNS...</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Infrastructure</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">16/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Challenge response</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/Batman2a.srt.mp4">1</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Challenge response protocol for password checking...</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 65.0%">
+<img data-src="../images/snoop.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">17/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Challenge-response protocol (Windows)</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">When a client needs to, it connects and negotiates</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">In reply the server returns an 8 byte,</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">random</span></span><span class="dada-font-footnotesize"> value,</span><span class="dada-font-footnotesize"> stored in the server after the reply is sent and known as the </span><span style="color: blue"><span class="dada-bold"><span class="dada-emph"><span class="dada-font-footnotesize">challenge</span></span></span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> It is </span><span style="color: blue"><span class="dada-font-footnotesize">different</span></span><span class="dada-font-footnotesize"> for every client connection.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The </span><span style="color: blue"><span class="dada-font-footnotesize">client</span></span><span class="dada-font-footnotesize"> then uses the hashed password,</span><span class="dada-font-footnotesize"> appended with 5 null bytes,</span><span class="dada-font-footnotesize"> as three 56 bit DES keys,</span><span class="dada-font-footnotesize"> to encrypt the challenge 8 byte value,</span><span class="dada-font-footnotesize"> forming a 24 byte value.</span><span class="dada-font-footnotesize"> There are </span><span class="dada-emph"><span class="dada-font-footnotesize">two</span></span><span class="dada-font-footnotesize"> hashes of the user&#x27;s password,</span><span class="dada-font-footnotesize"> and </span><span class="dada-emph"><span class="dada-font-footnotesize">both</span></span><span class="dada-font-footnotesize"> responses are returned to the server,</span><span class="dada-font-footnotesize"> giving two 24 byte values known as the </span><span style="color: blue"><span class="dada-bold"><span class="dada-emph"><span class="dada-font-footnotesize">response</span></span></span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The server reproduces the above calculation,</span><span class="dada-font-footnotesize"> using its own value of the hashed password and the challenge value that it kept during the initial protocol negotiation.</span><span class="dada-font-footnotesize"> It then </span><span style="color: blue"><span class="dada-font-footnotesize">checks</span></span><span class="dada-font-footnotesize"> and if everything </span><span style="color: blue"><span class="dada-font-footnotesize">matches</span></span><span class="dada-font-footnotesize"> exactly,</span><span class="dada-font-footnotesize"> then the client knew the correct password and is allowed access.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">There are good points about this:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The server never knows or stores the </span><span class="dada-emph"><span class="dada-font-footnotesize">cleartext</span></span><span class="dada-font-footnotesize"> of the users password - just the 16 byte hashed values derived from it,</span><span class="dada-font-footnotesize"> and the cleartext password or 16 byte hashed values are never transmitted over the network - thus increasing security.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">18/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Challenge-response protocol (Windows)</span></h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">However, there is also a bad side:</div>
+<div class="block-content">
+<ul>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">The 16 byte hashed values are a &quot;password equivalent&quot;.</span><span class="dada-font-footnotesize"> You cannot derive the users password from them,</span><span class="dada-font-footnotesize"> but they can be used in a modified client to gain access to a server.</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">The initial protocol negotiation is generally insecure,</span><span class="dada-font-footnotesize"> and can be hijacked in a range of ways.</span><span class="dada-font-footnotesize"> One common hijack involves convincing the server to allow clear-text passwords.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Despite functionality added to NT to protect unauthorized access to the SAM,</span><span class="dada-font-footnotesize"> the mechanism is trivially insecure</span></div></li>
+</ul>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Attacks on Windows (NT) systems...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Even </span><span class="dada-emph"><span class="dada-font-footnotesize">without</span></span><span class="dada-font-footnotesize"> network access,</span><span class="dada-font-footnotesize"> it is possible by various means to access the SAM password hashes,</span><span class="dada-font-footnotesize"> and </span><span class="dada-emph"><span class="dada-font-footnotesize">with</span></span><span class="dada-font-footnotesize"> network access it is easy.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The attack considered here is the use of either a dictionary,</span><span class="dada-font-footnotesize"> or brute force attack directly on the password hashes (which must be first collected somehow).</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">19/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Kerberos/Cerberus</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 100%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><div class="dada-fbox" style="width: 21%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/krb1.png" style="width: auto; height:245px; max-width: none; max-height: none" alt="image"></p></div></div></td><td style="text-align: center;"><div class="dada-fbox" style="width: 70%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="block"><div class="block-title">What is it?</div><div class="block-content"><p><span class="dada-font-footnotesize">Kerberos is a network </span><span class="dada-bold"><span class="dada-emph"><span class="dada-font-footnotesize">authentication</span></span></span><span class="dada-font-footnotesize"> protocol.</span><span class="dada-font-footnotesize"> It provides strong authentication for client/server applications using symmetric or public key cryptography.</span></p><hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">Kerberos is freely available in source form,</span><span class="dada-font-footnotesize"> and also is in commercial products (Windows uses Kerberos for login).</span></p></div></div><div class="block"><div class="block-title">status collapsedAuthentication... and encryption.</div><div class="block-content"><p><span class="dada-font-footnotesize">Client and server prove their identity,</span><span class="dada-font-footnotesize"> and encrypt all of their communications.</span><span class="dada-font-footnotesize"> There is a Key Distribution Center (KDC).</span></p><hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">Kerberos uses a Needham-Schroeder symmetric key protocol.</span></p></div></div></div></td></tr></tbody></table></div>
+</div>
+</div>
+<div class="dada-slide-num">20/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Kerberos</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox">
+<img data-src="../images/kerb1.png" style="width: auto; height:113px; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Sequence of messages for granting tickets</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">When a client first authenticates to Kerberos,</span></span><span style="color: black"><span class="dada-font-footnotesize"> she:</span></span></p>
+<ol>
+<li><div class="dada-li-text"><span style="color: black"><span class="dada-font-footnotesize">Talks to KDC,</span></span><span style="color: black"><span class="dada-font-footnotesize"> to get a</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">Ticket Granting Ticket</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> .</span></span></div></li>
+<li><div class="dada-li-text"><span style="color: black"><span class="dada-font-footnotesize">Uses that to talk to the</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">Ticket Granting Service</span></span></span><span class="dada-font-footnotesize"> and get a particular ticket for a particular service.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Uses that ticket</span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> to interact with the server.</span></span></div></li>
+</ol>
+<p><span style="color: black"><span class="dada-font-footnotesize">This way a user doesn&#x27;t have to reenter passwords every time they wish to connect.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">Note that if the Ticket Granting Ticket is </span></span><span style="color: blue"><span class="dada-font-footnotesize">compromised</span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> an attacker can only masquerade as a user until the </span></span><span style="color: blue"><span class="dada-font-footnotesize">ticket expires</span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">21/33</div>
+</section>
+</section>
+<section>
+<section id="other-infrastructural-building-blocks" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Authentication, logging in...</span><span class="dada-topbar-current">Other infrastructural building blocks</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Voting</span><span class="dada-topbar-subsection-other">Hardware... IoT, DVD, DNS...</span></div>
+</div>
+<h1>Other infrastructural building blocks</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Infrastructure</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">22/33</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Authentication, logging in...</span><span class="dada-topbar-current">Other infrastructural building blocks</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Voting</span><span class="dada-topbar-subsection-other">Hardware... IoT, DVD, DNS...</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Authentication, logging in...</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Banking systems, Public key infrastructure</span></li>
+<li><span style="color: lightgray">Authentication without passing passwords</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Other infrastructural building blocks</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Voting</li>
+<li><span style="color: lightgray">Hardware... IoT, DVD, DNS...</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Infrastructure</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">22/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Voting protocols</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://www.oreilly.com/openbook/samba/book/ch01_04.html">i3</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">A voting protocol is one in which...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">...independent systems vote in a kind of election..</span></span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">We may want to put conditions on this.</span></span><span style="color: black"><span class="dada-font-footnotesize"> For example,</span></span><span style="color: black"><span class="dada-font-footnotesize"> afterwards we might want to check that the vote was correct,</span></span><span style="color: black"><span class="dada-font-footnotesize"> or that each voter only got a single vote.</span></span><span style="color: black"><span class="dada-font-footnotesize"> Systems should be corruption-proof.</span></span></p>
+</div>
+</div>
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 90%; margin-left: auto; margin-right: 0;">
+<p><span><span class="dada-font-footnotesize">Voting systems are commonly found in computer systems.</span><span class="dada-font-footnotesize"> For example,</span><span class="dada-font-footnotesize"> if we had multiple servers being used for redundancy,</span><span class="dada-font-footnotesize"> then the servers might vote to see who is in charge.</span></span></p>
+</div>
+<div class="dada-bubble" style="background-color: rgb(255,128,128); width: 90%; margin-left: 0; margin-right: auto;">
+<p><span><span class="dada-font-footnotesize">Too-simple voting systems may be subject to attack.</span><span class="dada-font-footnotesize"> For example,</span><span class="dada-font-footnotesize"> a protocol like first-to-the-post may result in always choosing only one server,</span><span class="dada-font-footnotesize"> or even worse,</span><span class="dada-font-footnotesize"> be tricked by a fast-responder.</span><span class="dada-font-footnotesize"> (Consider the DHCP attack in the </span>“<span class="dada-font-footnotesize">Topic5/IPnetworks</span>”<span class="dada-font-footnotesize"> videos).</span></span></p>
+</div>
+</div>
+<div class="dada-slide-num">23/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Voting protocols</span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">Voting using public key encryption...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">If Alice votes </span><span class="dada-font-footnotesize"><span class="math inline">v_{A}</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> then she broadcasts:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 35%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><span class="dada-font-footnotesize"><span class="math inline">R_{A}(R_{B}(R_{C}(E_{A}(E_{B}(E_{C}(v_{A}))))))</span></span></p></div></div>
+</div>
+<p><span class="dada-font-footnotesize">where </span><span class="dada-font-footnotesize"><span class="math inline">R_{A}</span></span><span class="dada-font-footnotesize"> is a random encoding function which adds a random string to a message before encrypting it with </span><span class="dada-font-footnotesize"><span class="math inline">A</span></span><span class="dada-font-footnotesize">&#x27;s public key:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 30%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><span class="dada-font-footnotesize"><span class="math inline">R_{A}(m)\equiv E(A_{p},m+rand()))</span></span></p></div></div>
+</div>
+<p><span class="dada-font-footnotesize">and </span><span class="dada-font-footnotesize"><span class="math inline">E_{A}</span></span><span class="dada-font-footnotesize"> is public key encryption with </span><span class="dada-font-footnotesize"><span class="math inline">A</span></span><span class="dada-font-footnotesize">&#x27;s public key:</span><span class="dada-font-footnotesize"> </span><span class="dada-font-footnotesize"><span class="math inline">E_{A}(m)\equiv E(A_{p},m)</span></span><span class="dada-font-footnotesize">.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Each voter then engages in a process of signing and decrypting and rebroadcasting one level of every message/vote.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">At the end of the protocol,</span><span class="dada-font-footnotesize"> each voter has a complete signed audit trail and is ensured of the validity of the vote.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">24/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">First round...</span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">One round...</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 64%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="table-with-borders"><table><thead><tr><th style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny">Who</span></span></th><th style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny">Receives and removes one level...</span></span></th><th style="text-align: center;"></th><th style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny">and sends on (with sigs)...</span></span></th></tr></thead><tbody><tr class="spacer"><td></td></tr><tr><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny">Alice:</span></span></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{A}^{1}(R_{B}^{1}(R_{C}^{1}(E_{A}^{1}(E_{B}^{1}(E_{C}^{1}(v_{1}))))))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{B}^{1}(R_{C}^{1}(E_{A}^{1}(E_{B}^{1}(E_{C}^{1}(v_{1})))))}</span></span></span></td></tr><tr><td style="text-align: center;"></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{A}^{2}(R_{B}^{2}(R_{C}^{2}(E_{A}^{2}(E_{B}^{2}(E_{C}^{2}(v_{2}))))))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{B}^{2}(R_{C}^{2}(E_{A}^{2}(E_{B}^{2}(E_{C}^{2}(v_{2})))))}</span></span></span></td></tr><tr><td style="text-align: center;"></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{A}^{3}(R_{B}^{3}(R_{C}^{3}(E_{A}^{3}(E_{B}^{3}(E_{C}^{3}(v_{3}))))))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{B}^{3}(R_{C}^{3}(E_{A}^{3}(E_{B}^{3}(E_{C}^{3}(v_{3})))))}</span></span></span></td></tr><tr><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny">Bob:</span></span></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{B}^{1}(R_{C}^{1}(E_{A}^{1}(E_{B}^{1}(E_{C}^{1}(v_{1})))))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{C}^{1}(E_{A}^{1}(E_{B}^{1}(E_{C}^{1}(v_{1}))))}</span></span></span></td></tr><tr><td style="text-align: center;"></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{B}^{2}(R_{C}^{2}(E_{A}^{2}(E_{B}^{2}(E_{C}^{2}(v_{2})))))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{C}^{2}(E_{A}^{2}(E_{B}^{2}(E_{C}^{2}(v_{2}))))}</span></span></span></td></tr><tr><td style="text-align: center;"></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{B}^{3}(R_{C}^{3}(E_{A}^{3}(E_{B}^{3}(E_{C}^{3}(v_{3})))))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{C}^{3}(E_{A}^{3}(E_{B}^{3}(E_{C}^{3}(v_{3}))))}</span></span></span></td></tr><tr><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny">Charles:</span></span></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{C}^{1}(E_{A}^{1}(E_{B}^{1}(E_{C}^{1}(v_{1}))))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{A}^{1}(E_{B}^{1}(E_{C}^{1}(v_{1})))}</span></span></span></td></tr><tr><td style="text-align: center;"></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{C}^{2}(E_{A}^{2}(E_{B}^{2}(E_{C}^{2}(v_{2}))))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{A}^{2}(E_{B}^{2}(E_{C}^{2}(v_{2})))}</span></span></span></td></tr><tr><td style="text-align: center;"></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{R_{C}^{3}(E_{A}^{3}(E_{B}^{3}(E_{C}^{3}(v_{3}))))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{A}^{3}(E_{B}^{3}(E_{C}^{3}(v_{3})))}</span></span></span></td></tr></tbody></table></div></div>
+</div>
+</div>
+</div>
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 90%; margin-left: auto; margin-right: 0;">
+<p><span><span class="dada-font-footnotesize">Each voter checks in the first round that their vote has been counted.</span><span class="dada-font-footnotesize"> </span></span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+</div>
+<div class="dada-slide-num">25/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Second round...</span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">Then actually discover the votes...</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 64%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="table-with-borders"><table><thead><tr><th style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny">Who</span></span></th><th style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny">Receives and removes one level...</span></span></th><th style="text-align: center;"></th><th style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny">and sends on (with sigs)...</span></span></th></tr></thead><tbody><tr class="spacer"><td></td></tr><tr><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny">Alice:</span></span></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{A}^{1}(E_{B}^{1}(E_{C}^{1}(v_{1})))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{B}^{1}(E_{C}^{1}(v_{1}))}</span></span></span></td></tr><tr><td style="text-align: center;"></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{A}^{2}(E_{B}^{2}(E_{C}^{2}(v_{2})))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{B}^{2}(E_{C}^{2}(v_{2}))}</span></span></span></td></tr><tr><td style="text-align: center;"></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{A}^{3}(E_{B}^{3}(E_{C}^{3}(v_{3})))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{B}^{3}(E_{C}^{3}(v_{3}))}</span></span></span></td></tr><tr><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny">Bob:</span></span></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{B}^{1}(E_{C}^{1}(v_{1}))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{C}^{1}(v_{1})}</span></span></span></td></tr><tr><td style="text-align: center;"></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{B}^{2}(E_{C}^{2}(v_{2}))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{C}^{2}(v_{2})}</span></span></span></td></tr><tr><td style="text-align: center;"></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{B}^{3}(E_{C}^{3}(v_{3}))}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{C}^{3}(v_{3})}</span></span></span></td></tr><tr><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny">Charles:</span></span></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{C}^{1}(v_{1})}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{v_{1}}</span></span></span></td></tr><tr><td style="text-align: center;"></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{C}^{2}(v_{2})}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{v_{2}}</span></span></span></td></tr><tr><td style="text-align: center;"></td><td style="text-align: right;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{E_{C}^{3}(v_{3})}</span></span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{\rightarrow}</span></span></span></td><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-tiny"><span class="math inline">\boldsymbol{v_{3}}</span></span></span></td></tr></tbody></table></div></div>
+</div>
+</div>
+</div>
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 90%; margin-left: auto; margin-right: 0;">
+<p><span><span class="dada-font-footnotesize">Only Alice can remove her level of encryption,</span><span class="dada-font-footnotesize"> but everyone can check it.</span></span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">In the second round,</span><span class="dada-font-footnotesize"> someone can tamper with the vote,</span><span class="dada-font-footnotesize"> but it can be checked.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+<div class="dada-slide-num">26/33</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Authentication, logging in...</span><span class="dada-topbar-current">Other infrastructural building blocks</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Voting</span><span class="dada-topbar-subsection-current">Hardware... IoT, DVD, DNS...</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Authentication, logging in...</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Banking systems, Public key infrastructure</span></li>
+<li><span style="color: lightgray">Authentication without passing passwords</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Other infrastructural building blocks</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Voting</span></li>
+<li>Hardware... IoT, DVD, DNS...</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Infrastructure</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">27/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">IoT</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://docs.particle.io/photon-2/">i4</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="dada-inline-row">
+<div class="center">
+<div class="dada-fbox" style="width: 45%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/iot1.png" style="width: auto; height:132px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 45%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/iot2.png" style="width: auto; height:132px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">A well known IoT device...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Only a single token is needed to access remote units via a cloud API.</span><span class="dada-font-footnotesize"> This turns out to be a weakness.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">28/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Accessing the IoT device</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">The device access is via the “Particle cloud API”</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Whenever a user sends an instruction to the photon,</span><span class="dada-font-footnotesize"> the user has to supply a device ID,</span><span class="dada-font-footnotesize"> and the access token.</span><span class="dada-font-footnotesize"> The Particle cloud will authenticate the token and device ID before relaying instructions to the device.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The access token is all-powerful!</span><span class="dada-font-footnotesize"> With the token,</span><span class="dada-font-footnotesize"> you can list out all the device IDs.</span><span class="dada-font-footnotesize"> i.e.</span><span class="dada-font-footnotesize"> you do not need to know the device ID to send instructions.</span><span class="dada-font-footnotesize"> As a result,</span><span class="dada-font-footnotesize"> getting the access token ...</span><span class="dada-font-footnotesize"> gets you the photon!</span></p>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Acquiring the access token...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Students identified mechanisms to get access:</span></p>
+<ul>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Social Engineering</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Man-in-the-middle attacks</span></div></li>
+</ul>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">They were effective mechanisms,</span><span class="dada-font-footnotesize"> and could be used to get the access token for any number of photons,</span><span class="dada-font-footnotesize"> nearby or remote.</span><span class="dada-font-footnotesize"> The students even found access tokens through google!</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">29/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">IoT</span></h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">Single token needed for access...</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 65%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/iot3.png" style="width: auto; height:226px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">30/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">An attack on IoT and photons, with responsible disclosure</span></h2>
+<div class="dada-frame-body">
+<div class="dada-inline-row">
+<div class="center">
+<div class="dada-fbox" style="width: 25%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/Poster.jpg" style="width: auto; height:177px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 24%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/gp05Redacted.png" style="width: auto; height:177px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 24%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/gp05UnRedacted.png" style="width: auto; height:177px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">My students engineered this nasty attack</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">And they were talking to the manufacturers to come up with a resolution.</span><span class="dada-font-footnotesize"> They helped with mitigations to limit the access token capabilities,</span><span class="dada-font-footnotesize"> use two factor authentication,</span><span class="dada-font-footnotesize"> and more carefully authenticate the clients who initiate software updates...</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The firmware stole WiFi credentials for the remote network near the photon.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">31/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Media and DVD security</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://www.cs.cmu.edu/~dst/DeCSS/Gallery/">i5</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">What was the point of DVD regions?</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The DVD CSS was/is a </span><span style="color: blue"><span class="dada-font-footnotesize">Content Scrambling System</span></span><span class="dada-font-footnotesize"> - data encryption scheme,</span><span class="dada-font-footnotesize"> developed by commercial interests to </span><span style="color: blue"><span class="dada-font-footnotesize">stop copying</span></span><span class="dada-font-footnotesize">...</span><span class="dada-font-footnotesize"> but it is</span><span style="color: blue"><span class="dada-font-footnotesize"> easy to copy</span></span><span class="dada-font-footnotesize"> a DVD!</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The CSS algorithm details are a trade secret.</span><span class="dada-font-footnotesize"> There is a master set of 400 </span><span style="color: blue"><span class="dada-font-footnotesize">keys</span></span><span class="dada-font-footnotesize"> stored </span><span style="color: blue"><span class="dada-font-footnotesize">on</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">every</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">DVD</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and the DVD player uses these to generate a key needed to decrypt data from the disc.</span></p>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">LINUX and the CSS</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Linux users were excluded from access to CSS licenses because of the open-source nature of Linux.</span><span class="dada-font-footnotesize"> In October 1999,</span><span class="dada-font-footnotesize"> hobbyists/hackers in Europe cracked the CSS algorithm.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Since then,</span><span class="dada-font-footnotesize"> even though DVD have been largely replaced,</span><span class="dada-font-footnotesize"> industry players have been trying to prevent distribution of any software.</span><span class="dada-font-footnotesize"> The lesson to learn from this is that </span><span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">security-through-obscurity</span></span></span><span class="dada-font-footnotesize"> is a very poor strategy.</span><span class="dada-font-footnotesize"> The more modern replacement is HD Blue-ray,</span><span class="dada-font-footnotesize"> and it is generally region free.</span><span class="dada-font-footnotesize"> The source code and detailed descriptions for a CSS descrambler is available at [i5].</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">32/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Summary: Infrastructure</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Many opportunities for manipulation:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">We looked at four large infrastructural systems:</span></p>
+<ol>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">SWIFT,</span><span class="dada-font-footnotesize"> a worlwide banking mechanism.</span><span class="dada-font-footnotesize"> Happily there have only been isolated attacks.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">PKI,</span><span class="dada-font-footnotesize"> which has a history of worrysome attacks,</span><span class="dada-font-footnotesize"> with BAD certificates issued by </span>“<span class="dada-font-footnotesize">authorities</span>”<span class="dada-font-footnotesize">.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">How the (US) NSA has been messing with Diffie Hellman,</span><span class="dada-font-footnotesize"> to do large scale https monitoring.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">The DNS.</span></div></li>
+</ol>
+<p><span class="dada-font-footnotesize">We looked at the general idea of challenge-response,</span><span class="dada-font-footnotesize"> to perform authentication without having to reveal passwords,</span><span class="dada-font-footnotesize"> along with Kerberos,</span><span class="dada-font-footnotesize"> a strong challenge-response system.</span><span class="dada-font-footnotesize"> We then looked at voting systems,</span><span class="dada-font-footnotesize"> and how they might work.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Finally,</span><span class="dada-font-footnotesize"> we looked at some hardware - IoT devices,</span><span class="dada-font-footnotesize"> and DVDs,</span><span class="dada-font-footnotesize"> and the security in them.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">33/33</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>Reveal.initialize({hash: true, width: 1920, height: 1080, margin: 0});</script>
+</body>
+</html>

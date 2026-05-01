@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# create 'html_files.txt' like this:
+# find . -type f -name "*.html" > html_files.txt
+
+for file in `find . -name \*.html`
+do
+   sed -i.bak -e's/images\//..\/images\//' $file
+#   sed -i.bak -e's/COURSES\/DOTA2022\/images/COURSES\/DOTA\/images/' $file
+#   sed -i.bak -e's/..\/..\/images/..\/..\/..\/images/' $file
+#   sed -i.bak -e's/..\/..\/..\/cs3235/..\/..\/..\/..\/..\/cs3235/' $file
+#   sed -i.bak -e's/..\/..\/..\/cs3235/..\/..\/cs3235/' $file
+#    sed -i.bak -e's/DOTA2022\/xfig/DOTA\/xfig/' $file
+#    sed -i.bak  -e's/\\end_preamble/\\def\\htmladdnormallink#1#2{\href{#2}{#1}}\n\\end_preamble/' $file
+#    sed -i.bak -e's/notes=show/notes=show,aspectratio=169/' $file
+#    sed -i.bak -e's/notes=show,aspectratio=169,aspectratio=169/notes=show,aspectratio=169/' $file
+done

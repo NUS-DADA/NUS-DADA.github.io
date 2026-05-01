@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DADA2026:6 Defence against the Dark Arts Sixth topic - Comms [H7], and Other networks [H8]</title>
+<meta name="author" content="Hugh Anderson [Q]">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css">
+<link rel="stylesheet" href="beamer_Warsaw.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { const mathElements = document.getElementsByClassName("math"); const macros = {"\\qed": "\\tag*{$\\colorlet{colorsave}{.}\\color{black}\\blacksquare\\color{colorsave}$}", "\\concat": "\\mathbin{\\mathmakebox[\\widthof{${+}\\m@th$}]{+\\hskip-1emplus1fil+}}", "\\myeq": "\\mathrel{\\overset{{\\textsf{def}}}{=}}", "\\raggedright": "\\leftskip=0pt \\rightskip=0pt plus 0cm"}; for (let i = 0; i < mathElements.length; i++) {  const texText = mathElements[i].firstChild;  if (mathElements[i].tagName === "SPAN" && texText && texText.nodeType === 3) {   katex.render(texText.data, mathElements[i], {    displayMode: mathElements[i].classList.contains("display"),    throwOnError: false, macros: macros, fleqn: false   });  } }});</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="title-slide" class="dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Its not just the Internet</span><span class="dada-topbar-other">Fighting back</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<div class="dada-title-content">
+<h1 class="title">DADA2026:6 <br>Defence against the Dark Arts<br>Sixth topic - Comms [<a href="https://hugh.myddns.me/media/pdfs/HandoutCommTheory.pdf">H7</a>], and Other networks [<a href="https://hugh.myddns.me/media/pdfs/HandoutOtherNetworks.pdf">H8</a>]</h1>
+<div class="dada-title-authors">
+<p class="author">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</p>
+<p class="institute">National University of Singapore<br>School of Computing</p>
+<p class="date">July, 2026</p>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (Other) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">1/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">The joys of industrial systems...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 67%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/SoftScada.JPG" style="width: auto; height:264px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">2/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Where are we?</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">The topics: Attack surfaces so far...</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Introduction</span></span> <span style="color: gray"><span class="dada-font-footnotesize">(in</span></span> <span style="color: gray"><span class="dada-font-footnotesize">May):</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Warfare,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> with an indistinct enemy.</span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Social</span></span> <span style="color: gray"><span class="dada-font-footnotesize">Engineering</span></span> <span style="color: gray"><span class="dada-font-footnotesize">(in</span></span> <span style="color: gray"><span class="dada-font-footnotesize">May):</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Examples - phishing,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> vishing,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> tricking.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> Human weaknesses.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-emph"><span class="dada-font-footnotesize">System</span></span></span> <span style="color: gray"><span class="dada-font-footnotesize">Complexity:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Fight back with design principles,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> standards and formal methods.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Crypto</span></span> <span style="color: gray"><span class="dada-font-footnotesize">1:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Traditional systems - substitution and permutation.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> (Pre 1976).</span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Crypto</span></span> <span style="color: gray"><span class="dada-font-footnotesize">2:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> (Post 1976) Asymmetric systems:</span></span><span style="color: gray"><span class="dada-font-footnotesize"> OWF,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> computational complexity,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> hashes.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">IP</span></span> <span style="color: gray"><span class="dada-font-footnotesize">Networks:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Layered structure designed for resilience,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> not security.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> Hardening the Internet.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+</dl>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><dl><dt><span><span style="color: black"><span class="dada-font-footnotesize">Other</span></span> <span style="color: black"><span class="dada-font-footnotesize">Networks:</span></dt><dd><p></span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">Today we will look at other computer communication methods used. Hugh calls these the OtherNets. Like the core Internet protocols, these networks also were largely not designed with security in mind, and attempt to rely on security-by-obscurity. We will look at industrial and infrastructural systems, phone networks, car networks, GPS, the radio spectrum...</span></span></span></p></dd></dl></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">3/33</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Its not just the Internet</span><span class="dada-topbar-other">Fighting back</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Its not just the Internet</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Othernets</li>
+<li>The radio spectrum</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Fighting back</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Awareness, evaluation, consideration</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Padding oracle attack for Lab2</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Padding, release of partial information</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (Other) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/33</div>
+</section>
+<section>
+<section id="its-not-just-the-internet" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Its not just the Internet</span><span class="dada-topbar-other">Fighting back</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Othernets</span><span class="dada-topbar-subsection-other">The radio spectrum</span></div>
+</div>
+<h1>Its not just the Internet</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (Other) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/33</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Its not just the Internet</span><span class="dada-topbar-other">Fighting back</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Othernets</span><span class="dada-topbar-subsection-other">The radio spectrum</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Its not just the Internet</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Othernets</li>
+<li><span style="color: lightgray">The radio spectrum</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Fighting back</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Awareness, evaluation, consideration</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Padding oracle attack for Lab2</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Padding, release of partial information</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (Other) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Other networks</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://en.wikipedia.org/wiki/List_of_automation_protocols">i7</a><span class="dada-font-footnotesize">,</span><a href="https://en.wikipedia.org/wiki/Ladder_logic">i8</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Hackable things are everywhere, not just on the Internet...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">All around us,</span><span class="dada-font-footnotesize"> things we depend on are built on </span><span style="color: blue"><span class="dada-font-footnotesize">less well known networks</span></span><span class="dada-font-footnotesize">:</span><span style="color: blue"><span class="dada-font-footnotesize"> Water</span></span><span class="dada-font-footnotesize"> in the taps,</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">power</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">sewage</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> gas,</span><span class="dada-font-footnotesize"> oil,</span><span class="dada-font-footnotesize"> automated factories,</span><span class="dada-font-footnotesize"> security systems.</span><span class="dada-font-footnotesize"> They are characterized by:</span></p>
+<ol>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">archaic</span></span><span class="dada-font-footnotesize"> protocols (Allen Bradley...),</span><span class="dada-font-footnotesize"> security by </span><span style="color: blue"><span class="dada-font-footnotesize">obscurity</span></span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Developers who claim that </span>“<span class="dada-font-footnotesize">Our engineers/technicians would </span><span style="color: blue"><span class="dada-font-footnotesize">not tolerate passwords</span></span>”</div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Languages that should have died years ago (</span><span style="color: blue"><span class="dada-font-footnotesize">Ladder languages</span></span><span class="dada-font-footnotesize"> built from relays and switches),</span><span class="dada-font-footnotesize"> and the claim that </span>“<span class="dada-font-footnotesize">Our engineers/technicians would </span><span style="color: blue"><span class="dada-font-footnotesize">not tolerate HLLs</span></span>”</div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Radio</span></span><span class="dada-font-footnotesize"> links,</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">no encryption</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">dial up</span></span><span class="dada-font-footnotesize"> and leased phone lines.</span></div></li>
+</ol>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">For example,</span><span class="dada-font-footnotesize"> your </span><span style="color: blue"><span class="dada-font-footnotesize">Phone</span></span><span class="dada-font-footnotesize"> (Android,</span><span class="dada-font-footnotesize"> iOS),</span><span class="dada-font-footnotesize"> the old </span><span style="color: blue"><span class="dada-font-footnotesize">wired phone network</span></span><span class="dada-font-footnotesize"> (exchanges are computers these days),</span><span class="dada-font-footnotesize"> embedded systems and PLC networks (in your </span><span style="color: blue"><span class="dada-font-footnotesize">plane</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> your </span><span style="color: blue"><span class="dada-font-footnotesize">car</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> your </span><span style="color: blue"><span class="dada-font-footnotesize">factory</span></span><span class="dada-font-footnotesize">),</span><span class="dada-font-footnotesize"> the wireless </span><span style="color: blue"><span class="dada-font-footnotesize">phone network </span></span><span class="dada-font-footnotesize">(both wireless links and base stations).</span><span class="dada-font-footnotesize"> I can go on:</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">Public utilities </span></span><span class="dada-font-footnotesize">(dam control,</span><span class="dada-font-footnotesize"> power reticulation,</span><span class="dada-font-footnotesize"> sewage disposal using dial-up,</span><span class="dada-font-footnotesize"> radio links,</span><span class="dada-font-footnotesize"> SCADA,</span><span class="dada-font-footnotesize"> Allen Bradley...),</span><span style="color: blue"><span class="dada-font-footnotesize"> Commercial systems</span></span><span class="dada-font-footnotesize"> (petrol pumps,</span><span class="dada-font-footnotesize"> cash registers,</span><span class="dada-font-footnotesize"> shop stocklist systems using dial-up,</span><span class="dada-font-footnotesize"> leased lines or backboned over Internet) - even our </span><span style="color: blue"><span class="dada-font-footnotesize">home networks</span></span><span class="dada-font-footnotesize"> (security,</span><span class="dada-font-footnotesize"> environment control...).</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">5/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Othernet hacking scenario #1</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://en.wikipedia.org/wiki/SCADA">i9</a><span class="dada-font-footnotesize">,</span><a href="https://en.wikipedia.org/wiki/Programmable_logic_controller">i2</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/pdfs/Maroochy-Water-Services-Case-Study_report.pdf">ctrl-i3</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/scada-1.mp4">2</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/Diesel-1.mp4">8</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/stuxnet-1.mp4">1</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/SoftScada.JPG" style="width: auto; height:151px; max-width: none; max-height: none" alt="image"> <img class="dada-inline-img" data-src="images/stuxnet.jpg" style="width: auto; height:151px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">Welcome to the wonderful world of SCADA/PLCs...</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">SCADA</span></span><span class="dada-font-footnotesize"> (supervisory control and data acquisition) is </span><span style="color: blue"><span class="dada-font-footnotesize">everywhere</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> It controls Singapore&#x27;s water,</span><span class="dada-font-footnotesize"> gas pipelines,</span><span class="dada-font-footnotesize"> sewage,</span><span class="dada-font-footnotesize"> security systems and so on.</span><span style="color: red"><span class="dada-font-footnotesize"> Unfortunately security is seldom addressed</span></span>.</p>
+<ol>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">An </span><span style="color: blue"><span class="dada-font-footnotesize">angry man</span></span><span class="dada-font-footnotesize"> (now jailed) attacked the Maroochy Shire sewage control system (Queensland,</span><span class="dada-font-footnotesize"> Australia),</span><span class="dada-font-footnotesize"> and </span><span style="color: blue"><span class="dada-font-footnotesize">released a million litres of raw sewage</span></span><span class="dada-font-footnotesize"> into the environment.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">A sophisticated program may have damaged a fifth of Iran’s nuclear centrifuges.</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">Stuxnet</span></span><span class="dada-font-footnotesize"> specifically targeted </span><span style="color: blue"><span class="dada-font-footnotesize">SCADA</span></span><span class="dada-font-footnotesize"> and Siemens </span><span style="color: blue"><span class="dada-font-footnotesize">PLCs</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and was probably targetted at Iran.</span></div></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">6/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Othernet hacking scenario #2</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/keyboardsniff.mp4">3</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/ICanSee.mp4">4</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/pdfs/emr.pdf">ctrl-i5</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/pdfs/ih98-tempest.pdf">ctrl-i6</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 57%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/JinZhou.png" style="width: auto; height:189px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">Tempest</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">TEMPEST covers both methods to spy upon others and how to shield equipment against such spying.</span><span class="dada-font-footnotesize"> A student project a few years ago resurrected a screen image from the radiation from a cable.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">7/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Othernet hacking scenario #3</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 39%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/CIAblackmail.png" style="width: auto; height:113px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">Spooky CIA stuff...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The </span><span style="color: blue"><span class="dada-font-footnotesize">CIA</span></span><span class="dada-font-footnotesize"> claim that there have been multiple instances of successful </span><span style="color: blue"><span class="dada-font-footnotesize">blackmail</span></span><span class="dada-font-footnotesize"> of power utility </span><span style="color: blue"><span class="dada-font-footnotesize">companies</span></span><span class="dada-font-footnotesize"> around the world.</span><span class="dada-font-footnotesize"> (Note that this may be part of a general strategy of convincing people the world is </span>“<span class="dada-font-footnotesize">dangerous</span>”<span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> so perhaps we should take it with a grain of salt).</span><span class="dada-font-footnotesize"> The idea is that the blackmailer threatens to turn off the power grid,</span><span class="dada-font-footnotesize"> and (according to the CIA) have turned off power to cities to demonstrate.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Two </span><span style="color: blue"><span class="dada-font-footnotesize">documented</span></span><span class="dada-font-footnotesize"> instances of similar activities:</span></p>
+<ol>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Russia&#x27;s gas utility</span></span><span class="dada-font-footnotesize"> control system being taken over for a short period,</span><span class="dada-font-footnotesize"> and also </span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Disgruntled employees in the US hacked</span><span style="color: blue"><span class="dada-font-footnotesize"> traffic light </span></span><span class="dada-font-footnotesize">systems in LA to cause chaos</span></div></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">8/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Othernet hacking scenario #4</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 40.0%">
+<img data-src="../images/femtocellhack.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Welcome to the wonderful world of femtocells...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Vodafone&#x27;s </span><span style="color: blue"><span class="dada-font-footnotesize">SureSignal</span></span><span class="dada-font-footnotesize"> is a neat product which makes cell signals stronger in houses and buildings.</span><span class="dada-font-footnotesize"> It is a small cell base station,</span><span class="dada-font-footnotesize"> called a femtocell.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: red"><span class="dada-font-footnotesize">SureSignal was hacked in 2012.</span></span><span style="color: red"><span class="dada-font-footnotesize"> A hacked system can forge calls,</span></span><span style="color: red"><span class="dada-font-footnotesize"> record calls,</span></span><span style="color: red"><span class="dada-font-footnotesize"> and collect detailed data about the phone/SIM so it can be copied.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">9/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Othernet hacking scenario #5</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/mifare.mp4">5</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 44%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/mifare.jpg" style="width: auto; height:132px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">Welcome to the wonderful world of RFIDs...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">MIFARE Classic,</span><span class="dada-font-footnotesize"> a</span><span style="color: blue"><span class="dada-font-footnotesize"> contactless smartcard</span></span><span class="dada-font-footnotesize"> widely used in Europe.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">It uses a set of </span><span style="color: blue"><span class="dada-font-footnotesize">proprietary</span></span><span class="dada-font-footnotesize"> protocols/algorithms,</span><span class="dada-font-footnotesize"> that were reverse-engineered in 2007.</span><span class="dada-font-footnotesize"> It turns out that the encryption </span><span style="color: blue"><span class="dada-font-footnotesize">algorithms</span></span><span class="dada-font-footnotesize"> are already known to be </span><span style="color: blue"><span class="dada-font-footnotesize">weak</span></span><span class="dada-font-footnotesize"> (using only 48bits) and breakable.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">London underground Oyster card,</span><span class="dada-font-footnotesize"> Malaysia Touch&amp;Go,</span><span class="dada-font-footnotesize"> BMWs etc</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">10/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Othernet info leaks, projects recently...</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/CS3235-01.mp4">6</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 86%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/gp01-poster.JPG" style="width: auto; height:200px; max-width: none; max-height: none" alt="image">   <img class="dada-inline-img" data-src="images/gp08-poster.JPG" style="width: auto; height:200px; max-width: none; max-height: none" alt="image">   <img class="dada-inline-img" data-src="images/gp10-poster.JPG" style="width: auto; height:200px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">Student projects about hardware hacking...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Hardware hacking using $25 and $500 software defined radios,</span><span class="dada-font-footnotesize"> social engineering,</span><span class="dada-font-footnotesize"> inference...</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">11/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Summary</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 77%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/250px-T1.jpg" style="width: auto; height:75px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-footnotesize">It seems like we cannot trust the machines!</span></span><br><br><span class="dada-font-footnotesize">Who knew?</span></td><td style="text-align: center;"><img data-src="images/20061107SGR-A1.gif" style="width: auto; height:75px; max-width: none; max-height: none" alt="image"></td></tr></tbody></table></div>
+</div>
+<div class="block">
+<div class="block-title">It sounds bad.Many  systems  could affect us...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Not only routers,</span><span class="dada-font-footnotesize"> printers,</span><span class="dada-font-footnotesize"> servers,</span><span class="dada-font-footnotesize"> PCs,</span><span class="dada-font-footnotesize"> but also PLCs,</span><span class="dada-font-footnotesize"> control systems.</span><span class="dada-font-footnotesize"> In each of these complex systems,</span><span class="dada-font-footnotesize"> they are only </span><span style="color: blue"><span class="dada-font-footnotesize">as strong as their weakest link.</span></span></p>
+<p><span class="dada-font-footnotesize">Taking the cases of Internets and othernets - There is no adminstrative centre for the Internet,</span><span class="dada-font-footnotesize"> little security (and no administration) on Othernets.</span><span class="dada-font-footnotesize"> Just organizations trying to make money,</span><span class="dada-font-footnotesize"> cutting corners.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">12/33</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Its not just the Internet</span><span class="dada-topbar-other">Fighting back</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Othernets</span><span class="dada-topbar-subsection-current">The radio spectrum</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Its not just the Internet</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Othernets</span></li>
+<li>The radio spectrum</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Fighting back</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Awareness, evaluation, consideration</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Padding oracle attack for Lab2</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Padding, release of partial information</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (Other) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">13/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Tools to access the radio spectrum...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 65%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/spectra.png" style="width: auto; height:120px; max-width: none; max-height: none" alt="image"></p></div><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="images/rtl-sdr_1024x1024.png" style="width: auto; height:86px; max-width: none; max-height: none" alt="image"> <img class="dada-inline-img" data-src="images/slider_un210_partial.png" style="width: auto; height:86px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Spectrum snooping...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Hardware hacking using $25 and $500 software defined radios.</span><span class="dada-font-footnotesize"> A range from 1MHz to 5GHz.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">14/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Lets see what is at 1090MHz</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/dump1090.mp4">9</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 69%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/dump1090.png" style="width: auto; height:207px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Spectrum snooping...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Radio signals all around us are supplying us with interesting information.</span><span class="dada-font-footnotesize"> ADS-B.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">15/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Phone man-in-the-middle</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 53.5%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/gsm3.png" style="width: auto; height:189px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">Using software defined radios...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The SDR on the right is pretending to be a base station,</span><span class="dada-font-footnotesize"> the phones on the left can see it...</span><span class="dada-font-footnotesize"> With some care,</span><span class="dada-font-footnotesize"> you can make the phones associate to the SDR instead of Singtel/Starhub,</span><span class="dada-font-footnotesize"> and retrieve interesting information.</span><span class="dada-font-footnotesize"> This has been shown here using both GSM and LTE networks.</span></p>
+<p><span class="dada-font-footnotesize">Students developed a social engineering SMS sequence...</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">16/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">NFC: more things to worry about:</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/rfid-1.mp4">7</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 73.5%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/macys.jpg" style="width: auto; height:105px; max-width: none; max-height: none" alt="image"></p></div><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="images/DSCN0274.png" style="width: auto; height:86px; max-width: none; max-height: none" alt="image">   <img class="dada-inline-img" data-src="images/DSCN0275.png" style="width: auto; height:86px; max-width: none; max-height: none" alt="image"> <img class="dada-inline-img" data-src="images/cardsleeve.png" style="width: auto; height:86px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">Sniffing NFC cards...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">If we get time,</span><span class="dada-font-footnotesize"> Hugh will show you an example of this.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">17/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Not sure if this fixes the pokemon GO situation...</span></h2>
+<div class="dada-frame-body">
+<div class="dada-inline-row">
+<div class="center">
+<div class="dada-fbox" style="width: 33%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/gps2.jpg" style="width: auto; height:151px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="center">
+<p style="text-align: center;"><span class="dada-font-footnotesize"> </span> <span class="dada-font-footnotesize"> </span></p>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 35%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/gps_signals.png" style="width: auto; height:151px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Modifying/over-riding GPS signals...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The satellites are synchronized in time,</span><span class="dada-font-footnotesize"> transmitting on-the-nanosecond signals,</span><span class="dada-font-footnotesize"> which are received in your phone.</span></p>
+<p><span class="dada-font-footnotesize">The difference in time (signals travel at 300m/uS),</span><span class="dada-font-footnotesize"> can locate the phone to about 15m.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">18/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Othernet attack, simulate GPS...</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">A recipe...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Download the gps_sdr_sim from </span><span class="dada-bold"><span class="dada-font-tiny">https://github.com/osqzss/gps-sdr-sim</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Get the latest ephemeris ffrom </span><span class="dada-bold"><span class="dada-font-scriptsize">ftp://cddis.gsfc.nasa.gov/gnss/data/daily/</span></span><span class="dada-font-footnotesize">.</span></p>
+<p><span class="dada-font-footnotesize">(An ephemeris gives the positions of astronomical objects,</span><span class="dada-font-footnotesize"> in this case the satellites,</span><span class="dada-font-footnotesize"> which are decaying and moving about due to gravity variations).</span></p>
+<div class="dada-inline-row">
+<p><span class="dada-font-footnotesize">I got </span></p>
+<div class="dada-fbox" style="width: 65%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-bold"><span class="dada-font-tiny">ftp://cddis.gsfc.nasa.gov/gnss/data/daily/2016/brdc/brdc2160.16n.Z</span></span></p></div>
+<p><span class="dada-font-footnotesize">.</span></p>
+</div>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Generate a simulated set of signals from the ephemeris,</span><span class="dada-font-footnotesize"> and a latitude and longitude...</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 85%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre><span class="dada-bold">./gps-sdr-sim -v -e brdc2160.16n -b 16 -s 2500000 -l -39.332079,175.342537</span>
+<span class="dada-bold">Hughs-MacBook-Pro:gps-sdr-sim-master hugh$ ls -al gpssim.bin</span>
+<span class="dada-bold"> -rw-r--r--  1 hugh  staff  2999000000 Aug  4 09:11 gpssim.bin </span>
+<span class="dada-bold">Hughs-MacBook-Pro:gps-sdr-sim-master hugh$ </span></pre></div></div>
+</div>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">And then attach an SDR,</span><span class="dada-font-footnotesize"> and start sending it...</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 85%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre><span class="dada-bold">./tx_samples_from_file --args=&quot;master_clock_rate=50e6&quot; --file gpssim.bin </span>
+<span class="dada-bold">    --type short --rate 2500000 --freq 1575420000 --gain 0 --repeat</span></pre></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">19/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Attacks (and defences) are no different in Othernets</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 70%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/attack1.png" style="width: auto; height:94px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center;"><img data-src="images/attack2.png" style="width: auto; height:94px; max-width: none; max-height: none" alt="image"></td></tr><tr><td style="text-align: center;"><img data-src="images/attack3.png" style="width: auto; height:94px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center;"><img data-src="images/attack4.png" style="width: auto; height:94px; max-width: none; max-height: none" alt="image"></td></tr></tbody></table></div>
+</div>
+<div class="block">
+<div class="block-title">A reminder of the types of attacks</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The diagrams above,</span><span class="dada-font-footnotesize"> of Interception,</span><span class="dada-font-footnotesize"> Modification,</span><span class="dada-font-footnotesize"> Interruption,</span><span class="dada-font-footnotesize"> and Fabrication,</span><span class="dada-font-footnotesize"> remind us of the routes taken.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">20/33</div>
+</section>
+</section>
+<section>
+<section id="fighting-back" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Its not just the Internet</span><span class="dada-topbar-current">Fighting back</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Awareness, evaluation, consideration</span></div>
+</div>
+<h1>Fighting back</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (Other) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">21/33</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Its not just the Internet</span><span class="dada-topbar-current">Fighting back</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Awareness, evaluation, consideration</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Its not just the Internet</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Othernets</span></li>
+<li><span style="color: lightgray">The radio spectrum</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Fighting back</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Awareness, evaluation, consideration</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Padding oracle attack for Lab2</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Padding, release of partial information</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (Other) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">21/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Evaluation</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/pdfs/Maroochy-Water-Services-Case-Study_report.pdf">ctrl-i3</a><span class="dada-font-footnotesize">,</span><a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf">X</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">It is not magic:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">We should evaluate and manage this level of our systems in the same way as we assess and control our computer systems.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Assuming we had a system that made use of communication infrastructure,</span><span class="dada-font-footnotesize"> we should </span><span style="color: blue"><span class="dada-font-footnotesize">evaluate</span></span><span class="dada-font-footnotesize"> it&#x27;s security,</span><span class="dada-font-footnotesize"> do a </span><span style="color: blue"><span class="dada-font-footnotesize">risk assessment</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and ensure we have appropriate </span><span style="color: blue"><span class="dada-font-footnotesize">controls</span></span><span class="dada-font-footnotesize">.</span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">NIST Special Publication 800-53</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">For security controls for all U.S.</span><span class="dada-font-footnotesize"> federal information systems.</span><span class="dada-font-footnotesize"> It&#x27;s approach seems relevant to assessing any security issue,</span><span class="dada-font-footnotesize"> including ones like this.</span><span class="dada-font-footnotesize"> The framework includes:</span></p>
+<ul>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Technical issues </span></span><span class="dada-font-footnotesize">include access control,</span><span class="dada-font-footnotesize"> audit and accountability,</span><span class="dada-font-footnotesize"> identification and authentication,</span><span class="dada-font-footnotesize"> and system and communication protection.</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Operational issues </span></span><span class="dada-font-footnotesize">include awareness and training,</span><span class="dada-font-footnotesize"> contingency planning,</span><span class="dada-font-footnotesize"> incident response,</span><span class="dada-font-footnotesize"> maintenance and physical protection,</span><span class="dada-font-footnotesize"> and even personnel.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Management issues</span></span><span class="dada-font-footnotesize"> include certification,</span><span class="dada-font-footnotesize"> risk assessment and so on.</span></div></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">22/33</div>
+</section>
+<section class="slide level2 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Its not just the Internet</span><span class="dada-topbar-current">Fighting back</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Awareness, evaluation, consideration</span></div>
+</div>
+<h2><span class="dada-title-main">Summary: Other networks</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Today, we have seen...</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">A range</span></span><span class="dada-font-footnotesize"> - We were reminded that the </span>“<span class="dada-font-footnotesize">Internet</span>”<span class="dada-font-footnotesize"> and </span>“<span class="dada-font-footnotesize">IP protocols</span>”<span class="dada-font-footnotesize"> are not the only communication mechanisms that we,</span><span class="dada-font-footnotesize"> and our computers,</span><span class="dada-font-footnotesize"> rely on.</span><span class="dada-font-footnotesize"> Many of our essential services (electricity,</span><span class="dada-font-footnotesize"> water,</span><span class="dada-font-footnotesize"> sewage) are still using ancient protocols and techniques.</span><span class="dada-font-footnotesize"> In addition,</span><span class="dada-font-footnotesize"> our factories,</span><span class="dada-font-footnotesize"> the GPS system,</span><span class="dada-font-footnotesize"> our phones,</span><span class="dada-font-footnotesize"> dongles to drive cars and so on,</span><span class="dada-font-footnotesize"> are all using communication methods and hardware designed in many cases 50 years or so ago.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Particular Nets</span></span><span class="dada-font-footnotesize"> - Specifically,</span><span class="dada-font-footnotesize"> we looked at ADS-B - the flight location broadcast system,</span><span class="dada-font-footnotesize"> GSM and LTE MiM attacks,</span><span class="dada-font-footnotesize"> messing about with NFC,</span><span class="dada-font-footnotesize"> and GPS - the global positioning system.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Fightback</span></span><span class="dada-font-footnotesize"> - The view here is that none of these systems require us to invent new ways of dealing with them.</span><span class="dada-font-footnotesize"> We can just start with an awareness that they exist,</span><span class="dada-font-footnotesize"> and then use standard evaluation and management tools.</span><span class="dada-font-footnotesize"> We saw the use of NIST 800-53 as a framework for analysis.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (Other) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">23/33</div>
+</section>
+</section>
+<section>
+<section id="padding-oracle-attack-for-lab2" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Its not just the Internet</span><span class="dada-topbar-other">Fighting back</span><span class="dada-topbar-current">Padding oracle attack for Lab2</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Padding, release of partial information</span></div>
+</div>
+<h1>Padding oracle attack for Lab2</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (Other) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">24/33</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Its not just the Internet</span><span class="dada-topbar-other">Fighting back</span><span class="dada-topbar-current">Padding oracle attack for Lab2</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Padding, release of partial information</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Its not just the Internet</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Othernets</span></li>
+<li><span style="color: lightgray">The radio spectrum</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Fighting back</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Awareness, evaluation, consideration</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Padding oracle attack for Lab2</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Padding, release of partial information</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, (Other) networks</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">24/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Bit and byte padding for block ciphers...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 60.0%">
+<img data-src="../images/pkcs7-1.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">PKCS #7 - a byte-wise padding technique...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">One technique is to add a single 1 bit,</span><span class="dada-font-footnotesize"> followed by enough 0 bits to fill out the block.</span><span class="dada-font-footnotesize"> </span></p>
+<p><span class="dada-font-footnotesize">Another is the PKCS #7 paddings for the final block.</span><span class="dada-font-footnotesize"> Each byte is given as 2 hex digits.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">25/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">CBC: encoding and decoding...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 80.0%">
+<img data-src="../images/cbc2.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="center">
+<p style="text-align: center;"><span style="color: black"><span class="dada-font-footnotesize">(...decode is </span></span><span style="color: blue"><span class="dada-font-footnotesize">decrypt,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> then XOR</span></span><span style="color: black"><span class="dada-font-footnotesize">).</span></span></p>
+</div>
+<div class="block">
+<div class="block-title">... and encode is XOR, then encrypt...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Note that when you are decoding,</span></span><span style="color: black"><span class="dada-font-footnotesize"> the final plaintext</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">p_{2}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> is the decrypted ciphertext exclusive-ored with</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">If there was only one block,</span></span><span style="color: black"><span class="dada-font-footnotesize"> the final plaintext</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">p_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> is the decrypted ciphertext exclusive-ored with</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">IV</span></span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">26/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Padding oracle...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 40.0%">
+<img data-src="../images/pkcs7Attack.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">What is a padding oracle?</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Imagine that you have a bit of software,</span></span><span style="color: black"><span class="dada-font-footnotesize"> that,</span></span><span style="color: black"><span class="dada-font-footnotesize"> given</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> and</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{2}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> will tell you if the padding is correct in</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">p_{2}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span><span style="color: black"><span class="dada-font-footnotesize"> If the message was only one block long,</span></span><span style="color: black"><span class="dada-font-footnotesize"> given</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">IV</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> and</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> (as in the lab),</span></span><span style="color: black"><span class="dada-font-footnotesize"> it will tell you if the padding is correct in</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">p_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span><span style="color: black"><span class="dada-font-footnotesize"> In general,</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize">given </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{n-1}</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> and </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{n}</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> it will tell you if the padding is correct.</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">Is this </span></span><span style="color: blue"><span class="dada-font-footnotesize">realistic</span></span><span style="color: black"><span class="dada-font-footnotesize">?</span></span><span style="color: black"><span class="dada-font-footnotesize"> Well,</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize">yes</span></span><span style="color: black"><span class="dada-font-footnotesize"> it is.</span></span><span style="color: black"><span class="dada-font-footnotesize"> When you send a padded,</span></span><span style="color: black"><span class="dada-font-footnotesize"> encrypted message to another system,</span></span><span style="color: black"><span class="dada-font-footnotesize"> after decrypting,</span></span><span style="color: black"><span class="dada-font-footnotesize"> the other system will check the padding,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and if it is not valid,</span></span><span style="color: black"><span class="dada-font-footnotesize"> will fail immediately.</span></span><span style="color: black"><span class="dada-font-footnotesize"> Otherwise it will fail (or succeed) later.</span></span></p>
+<p><span style="color: black"><span class="dada-font-footnotesize">Normal receiving software may leak the correctness of the padding.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize">In the lab,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> we will give you a program that is a padding oracle.</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">Note also that an </span></span><span style="color: blue"><span class="dada-font-footnotesize">you can directly change each bit/byte of the final plaintext for </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">p_{n}</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> because the attacker has control over the input</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{n-1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> (or IV as in the lab).</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">27/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the oracle in an attack...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75.0%">
+<img data-src="../images/pkcs7-2.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">The attacker does not get to see the decrypted data...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">The oracle only learns if the last bytes are correct - they could be </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">01</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">0202</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">030303</span></span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and so on.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">The attacker starts by trying a series of values for the last byte of</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">:</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">28/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the oracle in an attack...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75.0%">
+<img data-src="../images/pkcs7-3.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Attacker discovers last byte...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">The attacker is trying values in the last byte of </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> until </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">01</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> is the last byte.</span></span><span style="color: black"><span class="dada-font-footnotesize"> Oracle returns OK.</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">Attacker now sets the last byte to</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">02</span></span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and tries for the second-last byte of</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">:</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">29/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the oracle in an attack...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75.0%">
+<img data-src="../images/pkcs7-4.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Attacker discovers second-to-last byte...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Since we know (now) the last byte (</span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">02</span></span></span><span style="color: black"><span class="dada-font-footnotesize">),</span></span><span style="color: black"><span class="dada-font-footnotesize"> and the original last byte of</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> we can set the last byte.</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">We try all the second-to-last values in</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and uncover a second byte.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">30/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the oracle in an attack...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75.0%">
+<img data-src="../images/pkcs7-5.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Attacker discovers third-to-last byte...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Since we know (now) the last two bytes (</span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">02 02</span></span></span><span style="color: black"><span class="dada-font-footnotesize">),</span></span><span style="color: black"><span class="dada-font-footnotesize"> we can set the last two bytes to</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">03 03</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">Now we try all the third-to-last values in</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> and uncover</span></span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize"> </span></span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">20</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">31/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the oracle in an attack...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75.0%">
+<img data-src="../images/pkcs7-6.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Attacker discovers fourth-to-last byte...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Since we know (now) the last three bytes (</span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">20 02 02</span></span></span><span style="color: black"><span class="dada-font-footnotesize">),</span></span><span style="color: black"><span class="dada-font-footnotesize"> we can set the last three bytes to</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">04 04 04</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">Now we try all the fourth-to-last values in</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> and uncover</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">6f</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">32/33</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the oracle in an attack...</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Attacker discovers all bytes...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">The attacker keeps moving through the block,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and has to try a maximum of </span></span><span style="color: blue"><span class="dada-font-footnotesize">255</span></span><span style="color: black"><span class="dada-font-footnotesize"> trials for each byte recovered,</span></span><span style="color: black"><span class="dada-font-footnotesize"> so this is an</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">{\cal O}(n)</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> attack</span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> where </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">n</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> is the number of bytes in the block.</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">This attack </span></span><span style="color: blue"><span class="dada-font-footnotesize">can be avoided</span></span><span style="color: black"><span class="dada-font-footnotesize"> if...</span></span></p>
+<ul>
+<li><div class="dada-li-text"><span style="color: black"><span class="dada-font-footnotesize">There is no oracle (i.e.</span></span><span style="color: black"><span class="dada-font-footnotesize"> the receiving code does not give any indication if the padding is correct or not)</span></span></div></li>
+<li><div class="dada-li-text"><span style="color: black"><span class="dada-font-footnotesize">CFB is used instead.</span></span></div></li>
+<li><div class="dada-li-text"><span style="color: black"><span class="dada-font-footnotesize">A different padding scheme is used...</span></span></div></li>
+</ul>
+<p><span style="color: black"><span class="dada-font-footnotesize">That is it - a little aside into cracking that makes use of much of what we have learned.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">33/33</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>Reveal.initialize({hash: true, width: 1920, height: 1080, margin: 0});</script>
+</body>
+</html>

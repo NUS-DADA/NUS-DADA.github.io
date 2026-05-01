@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DADA2026:7 Defence against the Dark Arts Seventh topic - Web applications [H9]</title>
+<meta name="author" content="Hugh Anderson [Q]">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css">
+<link rel="stylesheet" href="beamer_Warsaw.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { const mathElements = document.getElementsByClassName("math"); const macros = {"\\qed": "\\tag*{$\\colorlet{colorsave}{.}\\color{black}\\blacksquare\\color{colorsave}$}", "\\concat": "\\mathbin{\\mathmakebox[\\widthof{${+}\\m@th$}]{+\\hskip-1emplus1fil+}}", "\\myeq": "\\mathrel{\\overset{{\\textsf{def}}}{=}}", "\\raggedright": "\\leftskip=0pt \\rightskip=0pt plus 0cm"}; for (let i = 0; i < mathElements.length; i++) {  const texText = mathElements[i].firstChild;  if (mathElements[i].tagName === "SPAN" && texText && texText.nodeType === 3) {   katex.render(texText.data, mathElements[i], {    displayMode: mathElements[i].classList.contains("display"),    throwOnError: false, macros: macros, fleqn: false   });  } }});</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="title-slide" class="dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Attacking web apps: server trusts browser</span><span class="dada-topbar-other">Attacking web apps: browser trusts server</span><span class="dada-topbar-other">Pen-testing - for fun and profit!</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<div class="dada-title-content">
+<h1 class="title">DADA2026:7 <br>Defence against the Dark Arts<br>Seventh topic - Web applications [<a href="https://hugh.myddns.me/media/pdfs/HandoutWebApplications.pdf">H9</a>]</h1>
+<div class="dada-title-authors">
+<p class="author">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</p>
+<p class="institute">National University of Singapore<br>School of Computing</p>
+<p class="date">July, 2026</p>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Web applications</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">1/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Look what is above the pretty table...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 65%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/first.png" style="width: auto; height:245px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">2/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Where are we?</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">The topics: Attack surfaces so far...</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Introduction</span></span> <span style="color: gray"><span class="dada-font-footnotesize">(in</span></span> <span style="color: gray"><span class="dada-font-footnotesize">May):</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Warfare,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> with an indistinct enemy.</span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Social</span></span> <span style="color: gray"><span class="dada-font-footnotesize">Engineering</span></span> <span style="color: gray"><span class="dada-font-footnotesize">(in</span></span> <span style="color: gray"><span class="dada-font-footnotesize">May):</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Examples - phishing,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> vishing,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> tricking.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> Human weaknesses.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-emph"><span class="dada-font-footnotesize">System</span></span></span> <span style="color: gray"><span class="dada-font-footnotesize">Complexity:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Fight back with design principles,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> standards and formal methods.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Crypto</span></span> <span style="color: gray"><span class="dada-font-footnotesize">1:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Traditional systems - substitution and permutation.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> (Pre 1976).</span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Crypto</span></span> <span style="color: gray"><span class="dada-font-footnotesize">2:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> (Post 1976) Asymmetric systems:</span></span><span style="color: gray"><span class="dada-font-footnotesize"> OWF,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> computational complexity,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> hashes.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">IP</span></span> <span style="color: gray"><span class="dada-font-footnotesize">Networks:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Layered structure designed for resilience,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> not security.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> Hardening the Internet.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">OtherNets:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Other communication worlds that largely rely on security-by-obscurity.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+</dl>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><dl><dt><span><span style="color: black"><span class="dada-font-footnotesize">Web</span></span> <span style="color: black"><span class="dada-font-footnotesize">Applications:</span></dt><dd><p></span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">Today we will look at some weaknesses of applications that sit on the Internet - forms of attacks, and their defenses. We will look at injections (particularly SQLi), XSS, CSRF, and pen-testing.</span></span></span></p></dd></dl></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">3/44</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Attacking web apps: server trusts browser</span><span class="dada-topbar-other">Attacking web apps: browser trusts server</span><span class="dada-topbar-other">Pen-testing - for fun and profit!</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Attacking web apps: server trusts browser</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Command injections</li>
+<li>SQL injections</li>
+<li>Remediation methods for injections</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Attacking web apps: browser trusts server</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>XSS, CSRF - Cross site scripting and request forgery</li>
+<li>Remediation methods for XSS</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Pen-testing - for fun and profit!</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>What is it? And... what do they do?</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Web applications</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/44</div>
+</section>
+<section>
+<section id="attacking-web-apps:-server-trusts-browser" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Attacking web apps: server trusts browser</span><span class="dada-topbar-other">Attacking web apps: browser trusts server</span><span class="dada-topbar-other">Pen-testing - for fun and profit!</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Command injections</span><span class="dada-topbar-subsection-other">SQL injections</span><span class="dada-topbar-subsection-other">Remediation methods for injections</span></div>
+</div>
+<h1>Attacking web apps: server trusts browser</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Web applications</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/44</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Attacking web apps: server trusts browser</span><span class="dada-topbar-other">Attacking web apps: browser trusts server</span><span class="dada-topbar-other">Pen-testing - for fun and profit!</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Command injections</span><span class="dada-topbar-subsection-other">SQL injections</span><span class="dada-topbar-subsection-other">Remediation methods for injections</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Attacking web apps: server trusts browser</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Command injections</li>
+<li><span style="color: lightgray">SQL injections</span></li>
+<li><span style="color: lightgray">Remediation methods for injections</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Attacking web apps: browser trusts server</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">XSS, CSRF - Cross site scripting and request forgery</span></li>
+<li><span style="color: lightgray">Remediation methods for XSS</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Pen-testing - for fun and profit!</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">What is it? And... what do they do?</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Web applications</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Accessing an embedded system</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/semicoloninjection1.png" style="width: auto; height:151px; max-width: none; max-height: none" alt="image"> <img class="dada-inline-img" data-src="images/DCS_true.png" style="width: auto; height:151px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Internet cameras accessable via the web</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Normally you get only </span><span style="color: blue"><span class="dada-font-footnotesize">limited access</span></span><span class="dada-font-footnotesize"> to the system,</span><span class="dada-font-footnotesize"> but on one page you can </span><span style="color: blue"><span class="dada-font-footnotesize">enter usernames and passwords</span></span><span class="dada-font-footnotesize"> for remote mounting a file system:</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">5/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Accessing an embedded system</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 39%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/DCS_true.png" style="width: auto; height:151px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">Injection #1: The page allows a command injection into the system</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The actual command to mount the remote file system for the camera will be:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">smbmount //192.168.0.5/toto /mnt -o username=toto,password=PASS</span></span></span></p></div></div>
+</div>
+<p><span class="dada-font-footnotesize">The trick here is to replace the password </span><span class="dada-bold"><span class="dada-font-footnotesize">PASS</span></span><span class="dada-font-footnotesize"> with something like </span>“<span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">PASS;/bin/command</span></span></span>”<span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> After mounting the drive,</span><span class="dada-font-footnotesize"> your </span><span style="color: blue"><span class="dada-font-footnotesize">command</span></span><span class="dada-font-footnotesize"> will be executed (it can be anything,</span><span class="dada-font-footnotesize"> but should be something to get you extra access).</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">6/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Bash, the Bourne (again) shell is everywhere...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 78%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/where-there-is-a-shell-there-is-a-way-unix-img-2342342-538x300_c.jpg" style="width: auto; height:226px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,128,255); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span><span style="color: white"><span class="dada-font-footnotesize">And in 1989,</span></span><span style="color: white"><span class="dada-font-footnotesize"> an </span></span><span style="color: white">“</span><span style="color: white"><span class="dada-font-footnotesize">improvement</span></span><span style="color: white">”</span><span style="color: white"><span class="dada-font-footnotesize"> to bash was made,</span></span><span style="color: white"><span class="dada-font-footnotesize"> which in September 2014,</span></span><span style="color: white"><span class="dada-font-footnotesize"> was found to be an awesome mistake.</span></span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">7/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Bash variables</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">...are called &quot;environment&quot; variables...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">And we have lots of them ($PATH,</span><span class="dada-font-footnotesize"> $SHELL etc).</span><span class="dada-font-footnotesize"> Sometimes we use them as function definitions:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre><span class="dada-bold">hugh$ env foo=&#x27;() { echo &quot;Inside&quot; ;</span><span class="dada-bold"> };&#x27; bash -c &quot;echo Hello&quot;</span>
+<span class="dada-bold">Hello </span>
+<span class="dada-bold">hugh$ env foo=&#x27;() { echo &quot;Inside&quot; ;</span><span class="dada-bold"> };</span><span class="dada-bold"> echo &quot;###&quot;&#x27; bash -c &quot;echo Hello&quot;</span>
+<span class="dada-bold">###</span>
+<span class="dada-bold">Hello</span>
+<span class="dada-bold">hugh$ </span></pre></div></div>
+</div>
+<p><span class="dada-font-footnotesize">Note that the extra code after the end of the function definition got executed.</span><span class="dada-font-footnotesize"> It was done when bash started up,</span><span class="dada-font-footnotesize"> and processed the environment variable foo.</span></p>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Injection #2: Running code without calling it...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Unfortunately,</span><span class="dada-font-footnotesize"> lots of things on UNIX and MAC systems use bash.</span><span class="dada-font-footnotesize"> People have identified ways of attacking the openSSH login,</span><span class="dada-font-footnotesize"> CGI scripts on web servers,</span><span class="dada-font-footnotesize"> DHCP...</span><span class="dada-font-footnotesize"> </span></p>
+<div class="dada-inline-row">
+<p><span class="dada-font-footnotesize">I&#x27;m shellshocked!</span><span class="dada-font-footnotesize"> </span></p>
+<div class="dada-fbox" style="width: 8.5%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><img class="dada-inline-img" data-src="../images/ss_effectsof_shellshock.jpg" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image"></p></div>
+<p><span class="dada-font-footnotesize"> Better get bash fixed ASAP methinks.</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">8/44</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Attacking web apps: server trusts browser</span><span class="dada-topbar-other">Attacking web apps: browser trusts server</span><span class="dada-topbar-other">Pen-testing - for fun and profit!</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Command injections</span><span class="dada-topbar-subsection-current">SQL injections</span><span class="dada-topbar-subsection-other">Remediation methods for injections</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Attacking web apps: server trusts browser</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Command injections</span></li>
+<li>SQL injections</li>
+<li><span style="color: lightgray">Remediation methods for injections</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Attacking web apps: browser trusts server</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">XSS, CSRF - Cross site scripting and request forgery</span></li>
+<li><span style="color: lightgray">Remediation methods for XSS</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Pen-testing - for fun and profit!</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">What is it? And... what do they do?</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Web applications</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">9/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">A web application injection...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 85.0%">
+<img data-src="../images/sqlinjection1.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">It is common to link pages to database servers</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">In this scenario,</span><span class="dada-font-footnotesize"> the web server queries a local database server based on a client query.</span><span class="dada-font-footnotesize"> In the example,</span><span class="dada-font-footnotesize"> the client wants to look for records associated with the userName string </span>“<span class="dada-font-footnotesize">hugh</span>”<span class="dada-font-footnotesize">.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">10/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">The system architecture seems innocuous, but... (SQLi)</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://portswigger.net/web-security/sql-injection">i8</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,128,255); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span><span style="color: white"><span class="dada-font-footnotesize">You access a remote web site,</span></span><span style="color: white"><span class="dada-font-footnotesize"> and fill in a form asking for particular information from a database.</span></span><span style="color: white"><span class="dada-font-footnotesize"> For example - getting information on a particular user,</span></span><span style="color: white"><span class="dada-font-footnotesize"> or a particular product.</span></span></span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+</div>
+<div class="dada-fbox" style="width: 12%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/new-request-a-quote-form.jpg" style="height: auto; width:8.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+<div class="dada-fbox" style="width: 13%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/sql_injection.gif" style="height: auto; width:15.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,255,255); width: 80%; margin-left: auto; margin-right: 0;">
+<p><span><span class="dada-font-footnotesize">Unfortunately,</span><span class="dada-font-footnotesize"> sometimes it is possible to craft a substring containing SQL commands that can do different things from what the developer of the web site intended.</span><span class="dada-font-footnotesize"> As a result...</span></span></p>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(255,128,128); width: 80%; margin-left: auto; margin-right: auto;">
+<p><span><span class="dada-font-footnotesize">Technique of crafting special substrings with SQL commands is called the </span>“<span style="color: blue"><span class="dada-font-footnotesize">SQL injection attack</span></span>”<span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> </span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">11/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">The result is BAD...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 85.0%">
+<img data-src="../images/sqlinjection2.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">We end up with this:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The attacker makes up a userName string which has extra stuff in it.</span><span class="dada-font-footnotesize"> This extra stuff may do something malicious when it gets to the database server.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">12/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Detail on the injection...</span></h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">userName web form input is given to a SQL command</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>SELECT * FROM users WHERE name = &#x27;&quot; + userName + &quot;&#x27;;</pre></div></div>
+</div>
+<p><span class="dada-font-footnotesize">If the user types in (say) hugh,</span><span class="dada-font-footnotesize"> then you get</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>SELECT * FROM users WHERE name = &#x27;hugh&#x27;;</pre></div></div>
+</div>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">A malicious user could type in (say)</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>a&#x27;;DROP TABLE users;SELECT * FROM info WHERE &#x27;t&#x27; = &#x27;t</pre></div></div>
+</div>
+<p><span class="dada-font-footnotesize">And then you get:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>SELECT * FROM users WHERE name = &#x27;a&#x27;;
+DROP TABLE users;
+SELECT * FROM info WHERE &#x27;t&#x27; = &#x27;t&#x27;;</pre></div></div>
+</div>
+<p><span class="dada-font-footnotesize">Please dont do this!</span><span class="dada-font-footnotesize"> It is aggressive and nasty.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">13/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">NUS attacks</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/nussec-1.png" style="width: auto; height:151px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">News in 2012...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Firstly - it was </span><span style="color: blue"><span class="dada-font-footnotesize">not NUS</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> but a departmental web server at NUS that was hacked.</span><span class="dada-font-footnotesize"> The </span><span style="color: blue"><span class="dada-font-footnotesize">hackers</span></span><span class="dada-font-footnotesize"> got </span><span style="color: blue"><span class="dada-font-footnotesize">irritated</span></span><span class="dada-font-footnotesize"> by a message on the web site,</span><span class="dada-font-footnotesize"> and made it a mission to hack it.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The attack was a </span><span style="color: blue"><span class="dada-font-footnotesize">SQL injection</span></span><span class="dada-font-footnotesize"> attack,</span><span class="dada-font-footnotesize"> which allowed them to download </span><span style="color: blue"><span class="dada-font-footnotesize">usercode/password hash </span></span><span class="dada-font-footnotesize">entries stored in the SQL database attached to the web server.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">14/44</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Attacking web apps: server trusts browser</span><span class="dada-topbar-other">Attacking web apps: browser trusts server</span><span class="dada-topbar-other">Pen-testing - for fun and profit!</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Command injections</span><span class="dada-topbar-subsection-other">SQL injections</span><span class="dada-topbar-subsection-current">Remediation methods for injections</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Attacking web apps: server trusts browser</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Command injections</span></li>
+<li><span style="color: lightgray">SQL injections</span></li>
+<li>Remediation methods for injections</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Attacking web apps: browser trusts server</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">XSS, CSRF - Cross site scripting and request forgery</span></li>
+<li><span style="color: lightgray">Remediation methods for XSS</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Pen-testing - for fun and profit!</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">What is it? And... what do they do?</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Web applications</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">15/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">What can be done?</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/GolpedelDestino1a-1.srt.mp4">1</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span><span class="dada-font-footnotesize">Kristy Swanson explains about SQL injections.</span></span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 78%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/KirstySQLi.png" style="width: auto; height:226px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">16/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">PHP: control over inputs</span></h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">PHP: Injection from GET input</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">PHP/HTML Code for a web page,</span><span class="dada-font-footnotesize"> for accessing SQL database:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>&lt;html&gt;  &lt;body&gt;
+...
+&lt;?php
+$matric = $_GET[&quot;matric&quot;];
+$sql    = &quot;SELECT `marks` FROM `test`.`mrks`
+           WHERE userName=&#x27;<span style="color: red">$matric</span>&#x27;&quot;;
+$result = mysql_query(<span style="color: red">$sql</span>)
+          or die(&#x27;Error: &#x27; . mysql_error());
+?&gt;
+...
+&lt;form action=&quot;grades.php?method=1&quot; action=&quot;get&quot;&gt;
+   Student ID: &lt;input type=&quot;text&quot; name=&quot;matric&quot;/&gt;
+   &lt;input type=&quot;hidden&quot; value=1 name=&quot;method&quot;/&gt;
+   &lt;input type=&quot;submit&quot;/&gt;
+&lt;/form&gt;
+&lt;/body&gt; &lt;/html&gt;</pre></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">17/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">PHP: control over inputs</span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">Technique 1:mysql_{}real_{}escape_{}string()</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">...</span><span class="dada-font-footnotesize"> puts backslashes before critical characters:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>&lt;?php
+$matric = mysql_real_escape_string(<span style="color: red">$_GET[&quot;matric&quot;]</span><span style="color: blue">);</span>
+$sql    = &quot;SELECT `marks` FROM `test`.`mrks`
+           WHERE userName=&#x27;<span style="color: blue">$matric</span>&#x27;&quot;;
+$result = mysql_query(<span style="color: blue">$sql</span>)
+          or die(&#x27;Error: &#x27; . mysql_error());
+?&gt;</pre></div></div>
+</div>
+<p><span class="dada-font-footnotesize">...which turns..</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>     A&#x27; OR &#x27;1&#x27; = &#x27;1
+<span class="roman">into</span>
+     A&#x27; OR &#x27;1&#x27; = &#x27;1   <span class="roman"> (with the quotes escaped)</span></pre></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">18/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">PHP: control over inputs</span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">Technique 2: filters</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>&lt;?php
+<span style="color: blue;">filter_var($somevar, FILTER_SANITIZE_NUMBER_FLOAT,</span>
+<span style="color: blue;">                   FILTER_FLAG_ALLOW_FRACTION);</span>
+...
+?&gt;</pre></div></div>
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">Technique 3: Typing</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre><span style="color: blue;">settype($pid, &#x27;integer&#x27;);</span>
+$pid = $_GET[&quot;productid&quot;];
+$sql = &quot;SELECT * FROM prods WHERE id=&#x27;<span style="color: blue">$pid</span>&#x27;&quot;;</pre></div></div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Technique 4: hashing</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>$sql = &quot;SELECT * FROM prods WHERE MD5(id)=”.md5(<span style="color: red">$pid</span>);</pre></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">19/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Java: control over inputs</span></h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">Java: Injection from getParameter()</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Java Code in a web page for accessing SQL database:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre><span style="color: red;">String Matric = request.getParameter(&quot;matric&quot;);</span>
+...
+String <span style="color: red">sel</span> = &quot;SELECT  marks  FROM test.mrks
+              WHERE userName= &#x27;&quot; +<span style="color: red"> Matric</span> +  &quot;&#x27;&quot;;
+Statement stmnt = connection.createStatement ();
+ResultSet <span style="color: red">resultSet</span> = stmnt.executeQuery(<span style="color: red">sel</span>);
+...</pre></div></div>
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">We can use similar ideas from the PHP ones:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Use Java methods to </span><span style="color: blue"><span class="dada-font-footnotesize">sanitize input </span></span><span class="dada-font-footnotesize">(like mysql_real_escape_string()).</span><span class="dada-font-footnotesize"> Java also has a </span><span style="color: blue"><span class="dada-font-footnotesize">PreparedStatement</span></span><span class="dada-font-footnotesize"> class (instead of the Statement class above).</span><span class="dada-font-footnotesize"> Parameters passed in have </span><span style="color: blue"><span class="dada-font-footnotesize">TYPE</span></span><span class="dada-font-footnotesize"> (i.e.</span><span class="dada-font-footnotesize"> integer,</span><span class="dada-font-footnotesize"> float..).</span><span class="dada-font-footnotesize"> A PreparedStatement does not automatically stop SQL injections,</span><span class="dada-font-footnotesize"> but it </span><span style="color: blue"><span class="dada-font-footnotesize">allows</span></span><span class="dada-font-footnotesize"> you to </span><span style="color: blue"><span class="dada-font-footnotesize">control</span></span><span class="dada-font-footnotesize"> the constructed SQL strings more precisely.</span><span class="dada-font-footnotesize"> You may </span><span style="color: blue"><span class="dada-font-footnotesize">still need to filter</span></span><span class="dada-font-footnotesize"> the parameters (if for example the parameter was a string).</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">20/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">C# .NET: control over inputs</span></h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">C#: Injection from parameter</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">.NET code in a web page for accessing SQL database:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>private bool DoesUserExist(string <span style="color: red">name</span>) {
+   using (SqlConnection conn = new SqlConnection(@&quot;server=SrvrName; ...
+   {  string <span style="color: red">sql</span> = &quot;SELECT * FROM Users WHERE Name = &#x27;&quot; + <span style="color: red">name</span> + &quot;&#x27;&quot;;
+      SqlCommand cmd = conn.CreateCommand();
+    <span style="color: red">  cmd.CommandText = sql;</span>
+       ...
+      <span style="color: red">DataSet dsResult = new DataSet();</span><span style="color: red"> </span>
+      ...
+      return...
+   }
+}</pre></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">21/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">C# .NET: control over inputs</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Fixing using &quot;adding parameters&quot;</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Note that a string added in this way will still just be a string.</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>private bool DoesUserExist(string <span style="color: red">name</span>) {
+   using (SqlConnection conn = new SqlConnection(@&quot;server=SrvrName; ...
+   {  string <span style="color: blue">sql</span> = &quot;SELECT * FROM Users WHERE Name = @name&quot;;
+      SqlCommand cmd = conn.CreateCommand();
+      <span style="color: blue">cmd.CommandText = sql;</span><span style="color: blue"> </span>
+      cmd.CommandType = CommandType.Text;
+      SqlParameter usernameParameter = new SqlParameter();
+      usernameParameter.ParameterName = &quot;@name&quot;;
+      usernameParameter.DbType = DbType.String;
+     <span style="color: blue"> usernameParameter.Value =</span> <span style="color: red">name</span>;
+      cmd.Parameters.Add(usernameParameter);
+      cmd.Connection.Open();
+      ...
+    <span style="color: blue">  DataSet dsResult = new DataSet();</span><span style="color: blue">     </span>    /*
+      ...
+      return...
+   }
+}</pre></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">22/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Testing for (SQL) injections</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Various tools exist: sqlmap at sourceforge:</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre><span style="color: blue;"><span class="dada-bold">r-235-188-28-172:sqlmap hugh$ python sqlmap.py -u http://...</span></span>
+    <span style="color: blue"><span class="dada-bold">sqlmap/0.9 - automatic SQL injection and database takeover tool     </span></span>
+[*] starting at: 12:26:09
+[12:26:09] [INFO] testing connection to the target url
+<span style="color: red;"><span class="dada-bold">sqlmap identified the following injection points:</span></span>
+---
+<span style="color: blue;"><span class="dada-bold">Place:</span><span class="dada-bold"> GET </span></span>
+<span style="color: blue;"><span class="dada-bold">Parameter:</span><span class="dada-bold"> matric     </span></span>
+   <span style="color: blue"><span class="dada-bold">Type</span></span>: error-based
+   <span style="color: blue"><span class="dada-bold">Title</span></span>: MySQL &gt;= 5.0 AND error-based - WHERE or HAVING clause
+   <span style="color: blue"><span class="dada-bold">Payload</span></span>: matric=A12345678&#x27; AND (...
+
+   <span style="color: blue"><span class="dada-bold">Type</span></span>: UNION query
+   <span style="color: blue"><span class="dada-bold">Title</span></span>: MySQL UNION query (NULL) - 1 to 10 columns
+   <span style="color: blue"><span class="dada-bold">Payload</span></span>: matric=A12345678&#x27; UNION ...
+
+   <span style="color: blue"><span class="dada-bold">Type</span></span>: stacked queries
+   <span style="color: blue"><span class="dada-bold">Title</span></span>: MySQL &gt; 5.0.11 stacked queries
+   <span style="color: blue"><span class="dada-bold">Payload</span></span>: matric=A12345678&#x27;; SELECT SLEEP(5);--  AND ...
+
+   <span style="color: blue"><span class="dada-bold">Type</span></span>: AND/OR time-based blind
+   <span style="color: blue"><span class="dada-bold">Title</span></span>: MySQL &gt; 5.0.11 AND time-based blind
+   <span style="color: blue"><span class="dada-bold">Payload</span></span>: matric=A12345678&#x27; AND SLEEP(5) AND &#x27;WtrO&#x27;=&#x27;WtrO&amp;method=1 ---
+
+[12:26:10] [INFO] the back-end DBMS is MySQL
+<span style="color: blue;"><span class="dada-bold">web application technology:</span><span class="dada-bold"> Apache 2.2.12,</span><span class="dada-bold"> PHP 5.3.0 </span></span>
+back-end DBMS: MySQL 5.0
+<span style="color: blue;"><span class="dada-bold">r-235-188-28-172:sqlmap hugh$  </span></span></pre></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">23/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Too many privileges? Also a problem...</span></h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">Base scenario - as before - a web server with SQL access:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">PHP code in a web page for accessing SQL database:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>$con = mysql_connect(&#x27;...&#x27;,&#x27;<span style="color: red">root</span>&#x27;,&#x27;<span style="color: red">rootpasswd</span>&#x27;) ...</pre></div></div>
+</div>
+<p><span class="dada-font-footnotesize">Instead should be:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>$con = mysql_connect(&#x27;...&#x27;,&#x27;<span style="color: blue">nobody</span>&#x27;,&#x27;<span style="color: blue">nobodypasswd</span>&#x27;) ...</pre></div></div>
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">Why?</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Consider the </span><span style="color: blue"><span class="dada-font-footnotesize">situation where someone succeeds with an injection</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> or with XSS attack,</span><span class="dada-font-footnotesize"> or with some combination.</span><span class="dada-font-footnotesize"> In the two cases:</span></p>
+<ul>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">With root access,</span></span><span class="dada-font-footnotesize"> the attacker could cause </span><span style="color: blue"><span class="dada-font-footnotesize">significant damage</span></span><span class="dada-font-footnotesize"> to the database - perhaps removing the database entirely (using the SQL </span>“<span class="dada-font-footnotesize">DROP TABLE</span>”<span class="dada-font-footnotesize"> command).</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Without root access,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">i.e.</span><span class="dada-font-footnotesize"> only enough access to perform the required task,</span><span class="dada-font-footnotesize"> a successful attacker is </span><span style="color: blue"><span class="dada-font-footnotesize">limited</span></span><span class="dada-font-footnotesize"> in the damage that could be done.</span><span class="dada-font-footnotesize"> </span></div></li>
+</ul>
+<p><span class="dada-font-footnotesize">Note that the </span><span style="color: blue"><span class="dada-font-footnotesize">nobody</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">user</span></span><span class="dada-font-footnotesize"> might only be allowed to read and write entries,</span><span class="dada-font-footnotesize"> not create new ones,</span><span class="dada-font-footnotesize"> or delete ones,</span><span class="dada-font-footnotesize"> or delete tables,</span><span class="dada-font-footnotesize"> and so on.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">24/44</div>
+</section>
+</section>
+<section>
+<section id="attacking-web-apps:-browser-trusts-server" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Attacking web apps: server trusts browser</span><span class="dada-topbar-current">Attacking web apps: browser trusts server</span><span class="dada-topbar-other">Pen-testing - for fun and profit!</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">XSS, CSRF - Cross site scripting and request forgery</span><span class="dada-topbar-subsection-other">Remediation methods for XSS</span></div>
+</div>
+<h1>Attacking web apps: browser trusts server</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Web applications</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">25/44</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Attacking web apps: server trusts browser</span><span class="dada-topbar-current">Attacking web apps: browser trusts server</span><span class="dada-topbar-other">Pen-testing - for fun and profit!</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">XSS, CSRF - Cross site scripting and request forgery</span><span class="dada-topbar-subsection-other">Remediation methods for XSS</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Attacking web apps: server trusts browser</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Command injections</span></li>
+<li><span style="color: lightgray">SQL injections</span></li>
+<li><span style="color: lightgray">Remediation methods for injections</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Attacking web apps: browser trusts server</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>XSS, CSRF - Cross site scripting and request forgery</li>
+<li><span style="color: lightgray">Remediation methods for XSS</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Pen-testing - for fun and profit!</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">What is it? And... what do they do?</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Web applications</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">25/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Cross site scripting (XSS)</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://portswigger.net/web-security/cross-site-scripting">i7</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/XSSStored.srt.mp4">2</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/XSSReflected.srt.mp4">3</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 87%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/XSSStored.png" style="width: auto; height:170px; max-width: none; max-height: none" alt="image">   <img class="dada-inline-img" data-src="images/XSSReflected.png" style="width: auto; height:170px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Description:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Many web-based applications are open to XSS attacks.</span><span class="dada-font-footnotesize"> Attacks can </span><span style="color: blue"><span class="dada-font-footnotesize">steal cookies</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> or other information,</span><span class="dada-font-footnotesize"> and we have </span><span style="color: blue"><span class="dada-font-footnotesize">two attacks</span></span><span class="dada-font-footnotesize"> Non-persistent (reflected) or persistent (stored).</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Now a very common reported vulnerability (even more than buffer overflow).</span><span class="dada-font-footnotesize"> About </span><span style="color: blue"><span class="dada-font-footnotesize">70% of websites</span></span><span class="dada-font-footnotesize"> in a survey appear to be vulnerable.</span><span class="dada-font-footnotesize"> Examples of affected websites include Google,</span><span class="dada-font-footnotesize"> Yahoo!,</span><span class="dada-font-footnotesize"> MySpace,</span><span class="dada-font-footnotesize"> Twitter...</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">26/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">CSRF - Cross-site request forgery</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/csrf.srt.mp4">4</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span><span class="dada-font-footnotesize">Tom Scott (Computerphile) explains about CSRF.</span></span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 70%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/csrf.jpg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">27/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Clickjacking</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/ClickJack.srt.mp4">5</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span><span class="dada-font-footnotesize">Semantics explains ClickJacking.</span></span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 70%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/clickjack.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">28/44</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Attacking web apps: server trusts browser</span><span class="dada-topbar-current">Attacking web apps: browser trusts server</span><span class="dada-topbar-other">Pen-testing - for fun and profit!</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">XSS, CSRF - Cross site scripting and request forgery</span><span class="dada-topbar-subsection-current">Remediation methods for XSS</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Attacking web apps: server trusts browser</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Command injections</span></li>
+<li><span style="color: lightgray">SQL injections</span></li>
+<li><span style="color: lightgray">Remediation methods for injections</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Attacking web apps: browser trusts server</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">XSS, CSRF - Cross site scripting and request forgery</span></li>
+<li>Remediation methods for XSS</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Pen-testing - for fun and profit!</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">What is it? And... what do they do?</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Web applications</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">29/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">What can be done?</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/GolpedelDestino2a-1.srt.mp4">6</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="dada-font-footnotesize">
+<div class="dada-bubble" style="background-color: rgb(128,255,128); width: 80%; margin-left: 0; margin-right: auto;">
+<p><span><span class="dada-font-footnotesize">Kristy  explains more about SQL and XSS injections.</span></span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 78%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/KevinXSS.png" style="width: auto; height:226px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">30/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Control over outputs</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://htmlpurifier.org/">X</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Why is it needed? In short, persistent XSS</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Consider the situation where someone has </span><span style="color: blue"><span class="dada-font-footnotesize">uploaded</span></span><span class="dada-font-footnotesize"> some HTML.</span><span class="dada-font-footnotesize"> You may want to </span><span style="color: blue"><span class="dada-font-footnotesize">display</span></span><span class="dada-font-footnotesize"> this HTML with </span><span style="color: blue"><span class="dada-font-footnotesize">rich text</span></span><span class="dada-font-footnotesize"> (i.e.</span><span class="dada-font-footnotesize"> formatting).</span><span class="dada-font-footnotesize"> However,</span><span class="dada-font-footnotesize"> they may have included some </span><span style="color: blue"><span class="dada-font-footnotesize">malicious</span></span><span class="dada-font-footnotesize"> (javascript or other) </span><span style="color: blue"><span class="dada-font-footnotesize">code</span></span><span class="dada-font-footnotesize"> in their HTML.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Your task then is to take the HTML provided,</span><span class="dada-font-footnotesize"> and output HTML without extra stuff.</span><span class="dada-font-footnotesize"> You are to </span><span style="color: blue"><span class="dada-emph"><span class="dada-font-footnotesize">sanitize</span></span></span><span class="dada-font-footnotesize"> the HTML.</span><span class="dada-font-footnotesize"> To do this effectively,</span><span class="dada-font-footnotesize"> there are no real shortcuts:</span><span class="dada-font-footnotesize"> it is best to </span><span style="color: blue"><span class="dada-font-footnotesize">use a library</span></span><span class="dada-font-footnotesize"> intended for this purpose.</span><span class="dada-font-footnotesize"> For PHP for example at [X] above.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Turn badhtml into goodhtml!</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>&lt;?php
+   require_once &#x27;/path/to/library/HTMLPurifier.auto.php&#x27;;
+   require_once &#x27;/path/to/library/HTMLPurifier.func.php&#x27;;
+   <span style="color: blue">$goodhtml</span> = HTMLPurifier(<span style="color: red">$badhtml</span>);
+   ...
+<span style="color: blue;">   ... print out $goodhtml...</span>
+ ?&gt;</pre></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">31/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">CSRF - tokens/challenges for forms</span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">Generate one-use tokens...</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>&lt;?php
+   # ... generating a token with reasonable entropy...
+   session_start();
+   if (empty($_SESSION[&#x27;token&#x27;])) {
+       $_SESSION[&#x27;token&#x27;] = bin2hex(random_bytes(32));
+   }
+   $token = $_SESSION[&#x27;token&#x27;];
+?&gt;</pre></div></div>
+</div>
+<p><span class="dada-font-footnotesize">And in the form:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre>&lt;form&gt;
+   //...
+   &lt;input type=&quot;hidden&quot; name=&quot;token&quot; value=&quot;&lt;?php echo $token; ?&gt;&quot; /&gt;
+   //...
+&lt;/form&gt;</pre></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">32/44</div>
+</section>
+</section>
+<section>
+<section id="pen-testing---for-fun-and-profit!" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Attacking web apps: server trusts browser</span><span class="dada-topbar-other">Attacking web apps: browser trusts server</span><span class="dada-topbar-current">Pen-testing - for fun and profit!</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">What is it? And... what do they do?</span></div>
+</div>
+<h1>Pen-testing - for fun and profit!</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Web applications</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">33/44</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Attacking web apps: server trusts browser</span><span class="dada-topbar-other">Attacking web apps: browser trusts server</span><span class="dada-topbar-current">Pen-testing - for fun and profit!</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">What is it? And... what do they do?</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Attacking web apps: server trusts browser</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Command injections</span></li>
+<li><span style="color: lightgray">SQL injections</span></li>
+<li><span style="color: lightgray">Remediation methods for injections</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Attacking web apps: browser trusts server</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">XSS, CSRF - Cross site scripting and request forgery</span></li>
+<li><span style="color: lightgray">Remediation methods for XSS</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Pen-testing - for fun and profit!</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>What is it? And... what do they do?</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Web applications</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">33/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">What is pentesting?</span></h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">The complexity of modern (distributed) systems is a security weakness</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Defences should start while the system is being dreamed up - we use </span><span class="dada-font-footnotesize">secure</span><span class="dada-font-footnotesize"> technologies,</span><span class="dada-font-footnotesize"> </span><span class="dada-font-footnotesize">secure</span><span class="dada-font-footnotesize"> development techniques,</span><span class="dada-font-footnotesize"> </span><span class="dada-font-footnotesize">secure</span><span class="dada-font-footnotesize"> integration and deployment.</span><span class="dada-font-footnotesize"> But despite the best laid plans,</span><span class="dada-font-footnotesize"> the systems still must be continually tested,</span><span class="dada-font-footnotesize"> and risk-assessed/monitored.</span></p>
+</div>
+</div>
+<div class="block">
+<div class="block-title">Let us start with Wikipedia’s view:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">A penetration test,</span><span class="dada-font-footnotesize"> colloquially known as a pentest or ethical hacking,</span><span class="dada-font-footnotesize"> is an authorized simulated cyberattack on a computer system,</span><span class="dada-font-footnotesize"> performed to evaluate the security of the system...</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The test is performed to identify weaknesses (or vulnerabilities),</span><span class="dada-font-footnotesize"> including the potential for unauthorized parties to gain access to the system&#x27;s features and data,</span><span class="dada-font-footnotesize"> as well as strengths,</span><span class="dada-font-footnotesize"> enabling a full risk assessment to be completed.</span></p>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Red and blue teams</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Blue teams are visible,</span><span class="dada-font-footnotesize"> but it may be the case that </span><span style="color: red"><span class="dada-bold"><span class="dada-font-footnotesize">red</span></span></span><span class="dada-font-footnotesize"> pen-testing teams may be deployed - in these cases,</span><span class="dada-font-footnotesize"> no-one in the IT department knows about them!</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">34/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Pen-testing resources</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://owasp.org/">i1</a><span class="dada-font-footnotesize">,</span><a href="https://owasp.org/www-project-web-security-testing-guide/">i2</a><span class="dada-font-footnotesize">,</span><a href="https://owasp.org/www-project-application-security-verification-standard/">i3</a><span class="dada-font-footnotesize">,</span><a href="https://abs.org.sg/docs/library/abs-pen-test-guidelines.pdf">ctrl-i4</a><span class="dada-font-footnotesize">,</span><a href="https://www.sans.org/white-papers/67/">i5</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">OWASP: Open Worldwide Application Security Project</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">OWASP is an online community originally focused on Web Application Security.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The OWASP Web Security Testing Guide (WSTG),</span><span class="dada-font-footnotesize"> is a web app penetration testing guide.</span><span class="dada-font-footnotesize"> It has a lot of useful detail!</span><span class="dada-font-footnotesize"> See the i2 link above.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">For remediation,</span><span class="dada-font-footnotesize"> the OWASP Application Security Verification Standard (ASVS) provides web developers with a list of requirements for secure development.</span><span class="dada-font-footnotesize"> See the i3 link above.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+<div class="block">
+<div class="block-title">Other resources</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The ABS,</span><span class="dada-font-footnotesize"> “Penetration Testing Guidelines For the Financial Industry in Singapore” and a white paper on conducting pentests on organizations are also linked above.</span><span class="dada-font-footnotesize"> </span></p>
+<p><span class="dada-font-footnotesize">An interesting document from Rapid7 on lessons-to-be-learnt is </span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">35/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">It is needed, and is NOT hacking!</span></h2>
+<div class="dada-frame-body">
+<div class="dada-inline-row">
+<div class="center">
+<div class="dada-fbox" style="width: 85%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/OWASPTop10.png" style="width: auto; height:113px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="center">
+<p style="text-align: center;"><span class="dada-font-footnotesize">(OWASP)</span></p>
+</div>
+</div>
+<div class="block">
+<div class="block-title block-title-hfill"><span class="block-title-left">Pen-testing <span class="math inline">\neq</span> hacking</span><span class="block-title-right">(Pen-testers are your friends)</span></div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Security hackers are people skilled in IT who use non-standard means (bugs/errors) to break into computer systems and access data which would otherwise be inaccessible to them.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">By contrast pen-testing is a professional activity where authorized teams,</span><span class="dada-font-footnotesize"> paid for by the target companies,</span><span class="dada-font-footnotesize"> evaluate the security of a precisely scoped-out system.</span><span class="dada-font-footnotesize"> In order to do this,</span><span class="dada-font-footnotesize"> they may very well use hacking.</span><span class="dada-font-footnotesize"> In the end they help you remediate issues.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">36/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Who needs pen-testing?</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/Top4.png" style="width: auto; height:151px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Mostly accurate answer? Any business...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">From MAS,</span><span class="dada-font-footnotesize"> “Technology Risk Management Guidelines”,</span><span class="dada-font-footnotesize"> we have guidance for Financial Institutions:</span></p>
+<ul>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">9.4.1 Vulnerability assessment (VA) is the process of identifying,</span><span class="dada-font-footnotesize"> assessing and discovering security vulnerabilities in a system.</span><span class="dada-font-footnotesize"> The FI should conduct VAs regularly...</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">9.4.4 The FI should carry out penetration tests in order to conduct an in-depth evaluation of the security posture of the system through simulations of actual attacks on the system.</span><span class="dada-font-footnotesize"> The FI should conduct penetration tests on internet-facing systems at least annually.</span><span class="dada-font-footnotesize"> </span></div></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">37/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Pen-testers follow these steps</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/PenTestingSatges.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Extra steps than “hacking” and a different focus</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Pen-testers discuss the scope with the client first,</span><span class="dada-font-footnotesize"> and also report back on what they found,</span><span class="dada-font-footnotesize"> and best practices for remediation.</span><span class="dada-font-footnotesize"> In a recent pen-test project here at SoC,</span><span class="dada-font-footnotesize"> only about 25% of the time spent was direct hacking activities.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">38/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Pen-tester pre-engagement</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://www.pentest-standard.org/index.php/Pre-engagement">X</a><span class="dada-font-footnotesize">,</span><a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-115.pdf">ctrl-i6</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<table>
+<tbody>
+<tr>
+<td style="text-align: center;"><div class="dada-fbox" style="width: 60%; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="block"><div class="block-title">Scope and contracts...</div><div class="block-content"><p><span class="dada-font-footnotesize">Scoping for a test might include a scoping survey,</span><span class="dada-font-footnotesize"> and meetings:</span><span class="dada-font-footnotesize"> For example see [X] above.</span><span class="dada-font-footnotesize"> </span></p><hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;"><ol><li><div class="dada-li-text"><span class="dada-font-footnotesize">Nondisclosure Agreement (NDA):</span><span class="dada-font-footnotesize"> For your client to protect itself.</span></div></li><li><div class="dada-li-text"><span class="dada-font-footnotesize">Master Service Agreement (MSA):</span><span class="dada-font-footnotesize"> contains contractual matters between the parties,</span><span class="dada-font-footnotesize"> including a “get out of jail free” card,</span><span class="dada-font-footnotesize"> payment terms...</span></div></li><li><div class="dada-li-text"><span class="dada-font-footnotesize">Statement of Work (SoW):</span><span class="dada-font-footnotesize"> Outlines an organization’s project-specific work to be executed by a service provider.</span><span class="dada-font-footnotesize"> This can be part of the MSA.</span></div></li><li><div class="dada-li-text"><span class="dada-font-footnotesize">Rules of Engagement (RoE):</span><span class="dada-font-footnotesize"> This specifies guidelines and constraints of a pen-testing execution,</span><span class="dada-font-footnotesize"> and can be part of SoW or as a separate document.</span><span class="dada-font-footnotesize"> For example,</span><span class="dada-font-footnotesize"> see the link at [ctrl-i6] above.</span><span class="dada-font-footnotesize"> </span></div></li></ol></div></div></div></td>
+<td style="text-align: center;"><div class="dada-fbox" style="width: 35%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><img class="dada-inline-img" data-src="../images/ScopeDoc.png" style="width: auto; height:253px; max-width: none; max-height: none" alt="image"></p></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="dada-slide-num">39/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Pen-testers look at these items (and more)</span><span class="hfill-right">(from WSTG)</span></h2>
+<div class="dada-frame-body">
+<div class="dada-inline-row">
+<div class="center">
+<div class="dada-fbox" style="width: 85%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/wstg-1-6.png" style="width: auto; height:245px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="center">
+<p style="text-align: center;">...</p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">40/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Example: WSTG-INFO-01 (Search Engine Reconnaisance)</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://www.exploit-db.com/google-hacking-database">i9</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/GHDB.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Google hacking - (dorking)</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Google hacking (dorking?) uses selected queries that return information.</span><span class="dada-font-footnotesize"> GHDB (Google Hacking Database) has a library.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<div class="dada-inline-row">
+<p><span class="dada-font-footnotesize">Lets try</span><span class="dada-bold"><span class="dada-font-scriptsize"> </span></span></p>
+<div class="dada-fbox" style="width: 70%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-bold"><span class="dada-font-scriptsize">intitle:&quot;Network Camera&quot; inurl:main.cgi</span></span></p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">41/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Pen-testers investigate, and use tools</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/Burp1.png" style="width: auto; height:253px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">42/44</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Pen-testers write reports for remediation</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 92%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><div class="dada-fbox" style="width: 45%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><img class="dada-inline-img" data-src="../images/Ensign.png" style="width: auto; height:245px; max-width: none; max-height: none" alt="image"></p></div></td><td style="text-align: center;"><div class="dada-fbox" style="width: 45%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><img class="dada-inline-img" data-src="images/Offensive.png" style="width: auto; height:245px; max-width: none; max-height: none" alt="image"></p></div></td></tr></tbody></table></div>
+</div>
+</div>
+<div class="dada-slide-num">43/44</div>
+</section>
+<section class="slide level2 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Attacking web apps: server trusts browser</span><span class="dada-topbar-other">Attacking web apps: browser trusts server</span><span class="dada-topbar-current">Pen-testing - for fun and profit!</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">What is it? And... what do they do?</span></div>
+</div>
+<h2><span class="dada-title-main">Summary: Web Applications</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Today, we have seen...</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Servers trusting browsers</span></span><span class="dada-font-footnotesize"> - We saw a range of injections,</span><span class="dada-font-footnotesize"> where servers placed too much trust in the client (the browser),</span><span class="dada-font-footnotesize"> and as a result,</span><span class="dada-font-footnotesize"> malicious activities happened.</span><span class="dada-font-footnotesize"> We saw command and SQLi (SQL injections),</span><span class="dada-font-footnotesize"> and then how programmatically we can defend the servers,</span><span class="dada-font-footnotesize"> by ensuring that the input from the client/browser was sanitised.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Browsers trusting servers</span></span><span class="dada-font-footnotesize"> - We saw a range of XSS (Cross Site Scripting) attacks,</span><span class="dada-font-footnotesize"> where browsers/clients placed too much trust in the server,</span><span class="dada-font-footnotesize"> and as a result,</span><span class="dada-font-footnotesize"> malicious activities happened.</span><span class="dada-font-footnotesize"> We saw reflected and stored XSS,</span><span class="dada-font-footnotesize"> CSRF and clickjacking,</span><span class="dada-font-footnotesize"> and then how programmatically we can defend the servers,</span><span class="dada-font-footnotesize"> by ensuring that not only the input from the client/browser was sanitised,</span><span class="dada-font-footnotesize"> but also the output from the server.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Pen-testing</span></span><span class="dada-font-footnotesize"> - Organisations should consider hiring a pen-testing company.</span><span class="dada-font-footnotesize"> They use a range of techniques to help remediate security issues in applications.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Web applications</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">44/44</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>Reveal.initialize({hash: true, width: 1920, height: 1080, margin: 0});</script>
+</body>
+</html>

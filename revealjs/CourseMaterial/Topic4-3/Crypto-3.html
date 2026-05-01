@@ -1,0 +1,3427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Hugh Anderson [Q]">
+  <title>DADA2026:4-3 Defence against the Dark Arts Fourth topic - Crypto - extra math slides</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/beamer.css" id="theme">
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN" && texText && texText.nodeType === 3) {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css" />
+  <link rel="stylesheet" href="../../css/theme/beamer.css"/>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">DADA2026:4-3<br />
+Defence against the Dark Arts<br />
+Fourth topic - Crypto - extra math slides</h1>
+  <p class="author">Hugh Anderson <span>[</span><a
+href="https://hugh.myddns.me/Askbox/">Q</a><span>]</span></p>
+  <p class="date">July, 2026</p>
+</section>
+
+<section class="slide level2">
+<h2>Hard and easy...</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/FieldsRingsAndGroups.png"
+style="height: auto; width:100.0%" alt="image" />
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: blue"><span class="dada-bold">Details on
+ECC</span></span></li>
+<li><span style="color: blue"><span class="dada-bold">Building blocks
+for “hardness” operations in <span
+class="math inline">\mathbb{Z}_{p}</span> and <span
+class="math inline">\mathbb{Z}_{N}</span></span> </span>
+<ul>
+<li>Cyclic groups, math operations...</li>
+<li>Algorithms, with complexity</li>
+<li>Problems in <span class="math inline">\mathbb{Z}_{p}</span> and
+<span class="math inline">\mathbb{Z}_{N}</span></li>
+</ul></li>
+</ol>
+</div>
+</div>
+</section>
+<section>
+<section id="details-on-ecc" class="title-slide slide level1">
+<h1>Details on ECC</h1>
+
+</section>
+<section class="slide level2">
+<h2>ECC adding: real and in <span
+class="math inline">E_{p}(a,b)</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title block-title-hfill">
+<span class="block-title-left">Adding points in <span
+class="math inline">E(a,b)</span></span><span
+class="block-title-right">(Real curve)</span>
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>If we had<span style="color: blue"> <span
+class="math inline">P=(x_{P},y_{P})</span> </span> and<span
+style="color: blue"> <span
+class="math inline">Q=(x_{Q},y_{Q})</span></span>, and<span
+style="color: blue"> <span class="math inline">P\neq\pm Q</span></span>.
+We can find<span style="color: blue"> <span
+class="math inline">R=P+_{E(a,b)}Q</span></span> by finding <span
+style="color: blue">gradient</span> of line, and then <span
+style="color: blue">intersection</span> with curve:</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox dada-font-footnotesize"
+style="width: 50%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<table>
+<tbody>
+<tr>
+<td style="text-align: right;"><span
+class="dada-font-footnotesize">Gradient:</span></td>
+<td style="text-align: left;"><span class="dada-font-footnotesize"><span
+style="color: blue"><span
+class="math inline">\Delta=\frac{y_{Q}-y_{P}}{x_{Q}-x_{P}}</span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="dada-font-footnotesize"><span class="math inline">x</span>
+coordinate for <span class="math inline">R</span>:</span></td>
+<td style="text-align: left;"><span class="dada-font-footnotesize"><span
+style="color: blue"><span
+class="math inline">x_{R}=\Delta^{2}-x_{P}-x_{Q}</span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="dada-font-footnotesize"><span class="math inline">y</span>
+coordinate for <span class="math inline">R</span>:</span></td>
+<td style="text-align: left;"><span class="dada-font-footnotesize"><span
+style="color: blue"><span
+class="math inline">y_{R}=\Delta(x_{P}-x_{R})-y_{P}</span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="dada-font-footnotesize">Finally:</span></td>
+<td style="text-align: left;"><span class="dada-font-footnotesize"><span
+style="color: blue"><span
+class="math inline">R=(x_{R},y_{R})</span></span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span
+class="math inline">P+_{E(a,b)}P</span></span> uses a different
+method.</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title block-title-hfill">
+<span class="block-title-left">Adding points in <span
+class="math inline">E_{p}(a,b)</span>: (modulo p)</span><span
+class="block-title-right">(Finite field)</span>
+</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox dada-font-footnotesize"
+style="width: 55%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<table>
+<tbody>
+<tr>
+<td style="text-align: right;"><span
+class="dada-font-footnotesize">Gradient:</span></td>
+<td style="text-align: left;"><span class="dada-font-footnotesize"><span
+style="color: blue"><span
+class="math inline">\Delta=\frac{y_{Q}-y_{P}}{x_{Q}-x_{P}}\bmod
+p</span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="dada-font-footnotesize"><span class="math inline">x</span>
+coordinate for <span class="math inline">R</span>:</span></td>
+<td style="text-align: left;"><span class="dada-font-footnotesize"><span
+style="color: blue"><span
+class="math inline">x_{R}=\Delta^{2}-x_{P}-x_{Q}\bmod
+p</span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="dada-font-footnotesize"><span class="math inline">y</span>
+coordinate for <span class="math inline">R</span>:</span></td>
+<td style="text-align: left;"><span class="dada-font-footnotesize"><span
+style="color: blue"><span
+class="math inline">y_{R}=\Delta(x_{P}-x_{R})-y_{P}\bmod
+p</span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="dada-font-footnotesize">Finally:</span></td>
+<td style="text-align: left;"><span class="dada-font-footnotesize"><span
+style="color: blue"><span
+class="math inline">R=(x_{R},y_{R})</span></span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span
+class="math inline">P+_{E_{p}(a,b)}P</span></span> again uses the
+different method.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Curve <span class="math inline">y^{2}=x^{3}+x+1\bmod23</span> does
+not “look” nice</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="image-grid">
+<img data-src="../../images/ECC1.png" style="max-width: none; width: auto; height:4.5cm"
+alt="image" />
+<img data-src="../../images/ECC2.png" style="max-width: none; width: auto; height:4.5cm"
+alt="image" />
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+Example <span class="math inline">P+_{E_{23}(1,1)}Q</span> operations
+</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox"
+style="width: 72%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="table-with-borders">
+<table>
+<thead>
+<tr style="background-color: rgb(0,255,255);">
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+style="color: blue">P+Q</span></span></span></th>
+<th style="border-right: none; text-align: left;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue">Gradient <span
+class="math inline">\Delta</span></span></span></span></th>
+<th style="border-left: none; border-right: none; text-align: left;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue">x coordinate <span
+class="math inline">x_{R}</span></span></span></span></th>
+<th style="border-left: none; text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue">y coordinate <span
+class="math inline">y_{R}</span></span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue">R</span></span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">(3,10)+(9,7)</span></span></span></td>
+<td style="border-right: none; text-align: left;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">=\frac{-3}{6}=11</span></span></span></td>
+<td style="border-left: none; border-right: none; text-align: left;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">=11^{2}-3-9=17</span></span></span></td>
+<td style="border-left: none; text-align: left;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">=11(3-17)-10=20</span></span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">(17,20)</span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">(4,0)+(7,11)</span></span></span></td>
+<td style="border-right: none; text-align: left;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">=\frac{11}{3}=19</span></span></span></td>
+<td style="border-left: none; border-right: none; text-align: left;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">=19^{2}-4-7=5</span></span></span></td>
+<td style="border-left: none; text-align: left;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">=19(4-5)-0=4</span></span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">(5,4)</span></span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Calculating <span class="math inline">2P=P+_{E_{P}(a,b)}P</span> for
+ECC</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Doubling a point in <span class="math inline">\left\langle
++_{E_{p}(a,b)},E_{p}(a,b)\right\rangle</span>
+</div>
+<div class="block-content">
+<ul>
+<li><span class="dada-font-footnotesize">If <span
+style="color: blue"><span class="math inline">y_{P}=0</span></span>,
+return <span style="color: blue"><span
+class="math inline">O</span></span>, the zero point.</span></li>
+<li><span class="dada-font-footnotesize"><span style="color: blue"><span
+class="math inline">P=(x_{P},y_{P})</span></span>, and<span
+style="color: blue"> <span
+class="math inline">y_{P}\neq0</span></span>.</span></li>
+<li><span class="dada-font-footnotesize">Find<span style="color: blue">
+<span class="math inline">R=P+_{E_{p}(a,b)}P</span></span> by finding
+<span style="color: blue">gradient</span> of the <span
+style="color: blue">tangent</span>, and then <span
+style="color: blue">intersection</span> with curve:</span></li>
+</ul>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox dada-font-footnotesize"
+style="width: 55%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<table>
+<tbody>
+<tr>
+<td style="text-align: right;"><span
+class="dada-font-footnotesize">Gradient:</span></td>
+<td style="text-align: left;"><span class="dada-font-footnotesize"><span
+style="color: blue"><span
+class="math inline">\Delta=\frac{3x_{P}^{2}+a}{2y_{P}}\bmod
+p</span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="dada-font-footnotesize"><span class="math inline">x</span>
+coordinate for <span class="math inline">R</span>:</span></td>
+<td style="text-align: left;"><span class="dada-font-footnotesize"><span
+style="color: blue"><span
+class="math inline">x_{R}=\Delta^{2}-2x_{P}\bmod
+p</span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="dada-font-footnotesize"><span class="math inline">y</span>
+coordinate for <span class="math inline">R</span>:</span></td>
+<td style="text-align: left;"><span class="dada-font-footnotesize"><span
+style="color: blue"><span
+class="math inline">y_{R}=\Delta(x_{P}-x_{R})-y_{P}\bmod
+p</span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span
+class="dada-font-footnotesize">Finally:</span></td>
+<td style="text-align: left;"><span class="dada-font-footnotesize"><span
+style="color: blue"><span
+class="math inline">R=(x_{R},y_{R})</span></span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+All operations modulo 23...
+</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox"
+style="width: 71%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="table-with-borders">
+<table>
+<thead>
+<tr style="background-color: rgb(0,255,255);">
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+style="color: blue">P+P</span></span></span></th>
+<th style="border-right: none; text-align: left;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue">Gradient <span
+class="math inline">\Delta</span></span></span></span></th>
+<th style="border-left: none; border-right: none; text-align: left;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue">x coordinate <span
+class="math inline">x_{R}</span></span></span></span></th>
+<th style="border-left: none; text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue">y coordinate <span
+class="math inline">y_{R}</span></span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue">R</span></span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">(7,11)+(7,11)</span></span></span></td>
+<td style="border-right: none; text-align: left;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">=\frac{10}{22}=13</span></span></span></td>
+<td style="border-left: none; border-right: none; text-align: left;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">=13^{2}-14=17</span></span></span></td>
+<td style="border-left: none; text-align: left;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">=13(7-17)-11=20</span></span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">(17,20)</span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">(9,7)+(9,7)</span></span></span></td>
+<td style="border-right: none; text-align: left;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">=\frac{14}{14}=1</span></span></span></td>
+<td style="border-left: none; border-right: none; text-align: left;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">=1^{2}-18=6</span></span></span></td>
+<td style="border-left: none; text-align: left;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">=1(9-6)-7=19</span></span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+style="color: blue"><span
+class="math inline">(6,19)</span></span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>On <span class="math inline">\frac{a}{b}\bmod p</span> calculation
+for ECC</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Dividing by <span class="math inline">b</span> is the same as
+multiplication by <span class="math inline">b^{-1}</span>:
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>To calculate<span style="color: blue"> <span
+class="math inline">\frac{a}{b}\bmod p</span></span>,</p>
+</div>
+<ol>
+<li><span class="dada-font-footnotesize">Use extended euclidean
+algorithm to calculate <span style="color: blue"><span
+class="math inline">b^{-1}\bmod p</span></span>.</span></li>
+<li><span class="dada-font-footnotesize">Then multiply<span
+style="color: blue"> <span class="math inline">a\times b^{-1}\bmod
+p</span></span>.</span></li>
+</ol>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+All operations modulo 23...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>To calculate<span style="color: blue"> <span
+class="math inline">\frac{7}{11}\bmod23</span></span></p>
+</div>
+<ol>
+<li><span class="dada-font-footnotesize">Calculate<span
+style="color: blue"> <span
+class="math inline">11^{-1}\bmod23=21</span></span>.</span></li>
+<li><span class="dada-font-footnotesize"><span style="color: blue"><span
+class="math inline">7\times21\bmod23=9</span></span></span></li>
+</ol>
+<div class="dada-font-tiny">
+<p><a
+href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf"
+class="uri">https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf</a></p>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section
+id="building-blocks-for-hardness-operations-in-mathbbz_p-and-mathbbz_n"
+class="title-slide slide level1">
+<h1>Building blocks for “hardness” operations in <span
+class="math inline">\mathbb{Z}_{p}</span> and <span
+class="math inline">\mathbb{Z}_{N}</span> </h1>
+
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: lightgray">Details on ECC</span></li>
+<li><span style="color: blue"><span class="dada-bold">Building blocks
+for “hardness” operations in <span
+class="math inline">\mathbb{Z}_{p}</span> and <span
+class="math inline">\mathbb{Z}_{N}</span></span> </span>
+<ul>
+<li><span class="dada-bold">Cyclic groups, math
+operations...</span></li>
+<li><span style="color: lightgray">Algorithms, with
+complexity</span></li>
+<li><span style="color: lightgray">Problems in <span
+class="math inline">\mathbb{Z}_{p}</span> and <span
+class="math inline">\mathbb{Z}_{N}</span> </span></li>
+</ul></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Abstract algebra concepts...</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 70%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/FieldsRingsAndGroups.png"
+style="height: auto; width:100.0%" alt="image" />
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Fields, rings and groups
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: black">In crypto, we often work with finite,
+cyclic mathematical structures. These have been studied for centuries,
+and it is appropriate for us to know about the mathematical domain in
+which we must work.</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">I say <span class="dada-emph"><span
+style="color: black">must</span></span>, because without knowing the
+hard facts/limits of the mathematical structures we must deal with, we
+have <span class="dada-emph"><span
+style="color: black">nothing</span></span> (!)</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2><span class="math inline">17^{\mathrm{th}}</span> century Frenchman
+Pierre de Fermat<img data-src="../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm"
+alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title block-title-hfill">
+<span class="block-title-left">Fermat’s (little) theorem for <span
+class="math inline">\mathbb{Z}_{p}</span>:</span><span
+class="block-title-right">(primes)</span>
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize dada-hfill-layout">
+When<span style="color: blue"> <span class="math inline">p</span></span>
+is a prime<span style="color: black">, if</span><span
+style="color: blue"> <span class="math inline">a</span> </span><span
+style="color: black">is any non-zero number less than </span><span
+style="color: blue"><span class="math inline">p</span></span><span
+style="color: black">, then </span>
+<div class="dada-fbox"
+style="width: 17%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span class="math inline">{a^{p-1}\bmod
+p=1}</span></span></p>
+</div>
+</div>
+<span style="color: black">.</span>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>A table showing powers-of-<span style="color: blue"><span
+class="math inline">a</span></span> for<span style="color: blue"> <span
+class="math inline">p=11</span></span>:</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-fbox"
+style="width: 64%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="table-with-borders">
+<table>
+<thead>
+<tr style="background-color: rgb(0,255,255);">
+<th style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">a</span></span></span></th>
+<th style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">a^{2}</span></span></span></th>
+<th style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">a^{3}</span></span></span></th>
+<th style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">a^{4}</span></span></span></th>
+<th style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">a^{5}</span></span></span></th>
+<th style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">a^{6}</span></span></span></th>
+<th style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">a^{7}</span></span></span></th>
+<th style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">a^{8}</span></span></span></th>
+<th style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">a^{9}</span></span></span></th>
+<th style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">a^{10}</span></span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+style="color: blue"><code>2</code></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">4</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">8</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">5</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">10</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">9</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">7</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">3</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">6</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><code>3</code></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">9</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">5</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">4</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">3</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">9</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">5</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">4</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><code>4</code></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">5</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">9</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">3</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">4</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">5</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">9</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">3</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><code>5</code></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">3</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">4</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">9</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">5</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">3</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">4</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">9</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+style="color: blue"><code>6</code></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">3</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">7</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">9</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">10</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">5</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">8</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">4</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">2</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+style="color: blue"><code>7</code></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">5</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">2</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">3</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">10</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">4</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">6</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">9</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">8</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+style="color: blue"><code>8</code></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">9</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">6</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">4</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">10</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">3</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">2</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">5</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: red"><span
+class="math inline">7</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><code>9</code></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">4</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">3</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">5</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">9</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">4</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">3</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">5</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><code>10</code></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">10</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">10</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">10</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+style="color: black"><span
+class="math inline">10</span></span></span></td>
+<td style="text-align: right;"><span class="dada-font-tiny"><span
+class="dada-bold"><span style="color: blue"><span
+class="math inline">1</span></span></span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Fermat’s little theorem<img data-src="../../images/Zp.png"
+style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Observations
+</div>
+<div class="block-content">
+<ul>
+<li><span class="dada-font-footnotesize">For<span style="color: blue">
+<span class="math inline">p=11</span></span> the value is always <span
+style="color: blue"><span class="math inline">1</span> </span> when the
+power gets to<span style="color: blue"> <span
+class="math inline">10</span></span></span></li>
+<li><span class="dada-font-footnotesize">Somtimes the value gets to<span
+style="color: blue"> <span class="math inline">1</span> </span>
+earlier</span></li>
+<li><span class="dada-font-footnotesize">Lengths of runs are always
+numbers that divide evenly into <span style="color: blue"><span
+class="math inline">10</span></span></span></li>
+<li><span class="dada-font-footnotesize">A value of <span
+style="color: blue"><span class="math inline">a</span></span> for which
+the whole row is needed is called a <span style="color: blue"><span
+class="dada-emph">generator</span></span><span
+style="color: black">.</span> <span style="color: blue"><span
+class="math inline">2</span></span><span style="color: black">,</span>
+<span style="color: blue"><span class="math inline">6</span></span><span
+style="color: black">,</span> <span style="color: blue"><span
+class="math inline">7</span></span><span style="color: black">,
+and</span> <span style="color: blue"><span
+class="math inline">8</span></span> <span
+style="color: black">are</span> <span
+style="color: blue">generators</span><span
+style="color: black">.</span></span></li>
+</ul>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+Simplifying expressions
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Because<span style="color: blue"> <span
+class="math inline">a</span></span> to a power<span style="color: blue">
+mod <span class="math inline">p</span></span> always starts <span
+style="color: blue">repeating</span> <span style="color: black">after
+the power reaches</span><span style="color: blue"> <span
+class="math inline">p-1</span></span><span style="color: black">,</span>
+you can do this:</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 35%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span class="math inline">{a^{x}\bmod
+p=a^{x\bmod(p-1)}\bmod p}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Thus modulo </span><span
+style="color: blue"><span class="math inline">p</span></span><span
+style="color: black"> in the expression requires modulo </span><span
+style="color: blue"><span class="math inline">p-1</span></span><span
+style="color: black"> in the exponent. For</span><span
+style="color: blue"> <span class="math inline">p=13</span></span><span
+style="color: black">, then</span></p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 50%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{a^{29}\bmod13=a^{29\bmod12}\bmod13=a^{5}\bmod13}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Another example <span
+class="math inline">\text{result}=7^{1215}\bmod13</span><img
+data-src="../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+BIG NUMBER MATHS without calculating big numbers...
+</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox"
+style="width: 75%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-tiny">
+<p>6224702750673227370465564559079792689062398648329219130902078771092486991072740587</p>
+</div>
+<div class="dada-font-tiny">
+<p>0651989078101738389949782679348130096777089278266013135577736536148404478380085122</p>
+</div>
+<div class="dada-font-tiny">
+<p>2817392261341421370762400507026834564501614788818580162335818155077291900607338638</p>
+</div>
+<div class="dada-font-tiny">
+<p>1098582099841775377667037286814739670120315712396914000184822340352355906455155667</p>
+</div>
+<div class="dada-font-tiny">
+<p>5341024739645354137741258367626070635933104840329377905370464877106976413186542262</p>
+</div>
+<div class="dada-font-tiny">
+<p>2995052805575842805741858026942132998022801793254945606289489407393444822846491511</p>
+</div>
+<div class="dada-font-tiny">
+<p>9714116869895958794732026285742690180232449402567101050831149673563342958092194557</p>
+</div>
+<div class="dada-font-tiny">
+<p>1119113124697462717311124279255445332116504914530077241996189357298508605206780120</p>
+</div>
+<div class="dada-font-tiny">
+<p>8988083552522234194051458556732086842042388893209157040799864871901064991230860288</p>
+</div>
+<div class="dada-font-tiny">
+<p>6575458785483803190210993511026450389154414587258074783062229406697804705969808888</p>
+</div>
+<div class="dada-font-tiny">
+<p>2249767794049127920176330954113185559387768008167786246958079094970578719259627712</p>
+</div>
+<div class="dada-font-tiny">
+<p>77963034877818141061473753709046271959955890872768469943 mod 13 =
+<span style="color: blue">5</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+<span class="math inline">\mathrm{result}=7^{1215}\bmod13</span>
+</div>
+<div class="block-content">
+<p>          <span class="math inline">=7^{1215}\bmod13</span></p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Leonhard Euler (1707-1783)</h2>
+<div class="dada-frame-body">
+<div class="center">
+<table>
+<tbody>
+<tr>
+<td style="text-align: center;"><img
+data-src="../../images/Euler1707-1783.png" style="height: auto; width:100.0%"
+alt="image" />  </td>
+<td style="text-align: center;">  <img
+data-src="../../images/MeAndMyMateEuler.png" style="height: auto; width:100.0%"
+alt="image" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Euler’s theorem - a generalization of Fermat’s<img
+data-src="../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title block-title-hfill">
+<span class="block-title-left">Euler’s theorem:</span><span
+class="block-title-right">(composites)</span>
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: black">If</span> <span style="color: blue"><span
+class="math inline">N</span></span> <span style="color: black">is any
+positive integer and</span> <span style="color: blue"><span
+class="math inline">a</span></span> <span style="color: black">is any
+positive integer less than</span> <span style="color: blue"><span
+class="math inline">N</span></span> <span style="color: black">with no
+divisors in common with</span> <span style="color: blue"><span
+class="math inline">N</span></span><span style="color: black">,
+then</span></p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 20%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span class="math inline">{a^{\phi(N)}\bmod
+N=1}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">where</span> <span
+style="color: blue"><span class="math inline">\phi(N)</span></span>
+<span style="color: black">is the</span> <span
+style="color: black"><span class="dada-emph">Euler phi (totient)
+function</span></span><span style="color: black">:</span></p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 40%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{\phi(N)=N(1-1/p_{1})\ldots(1-1/p_{m})}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">and</span> <span style="color: blue"><span
+class="math inline">p_{1}</span>, <span
+class="math inline">\ldots</span> , <span
+class="math inline">p_{m}</span></span> <span style="color: black">are
+all the prime numbers that divide evenly into</span> <span
+style="color: blue"><span class="math inline">N</span></span><span
+style="color: black">. </span></p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>If <span style="color: blue"><span
+class="math inline">N</span></span> <span style="color: black">is a
+prime, then using the formula, we have</span></p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 45%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{\phi(N)=N(1-\frac{1}{N})=N(\frac{N-1}{N})=N-1}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">We see that Fermat’s result is a</span>
+<span style="color: blue">special case</span> <span
+style="color: black">of Euler’s:</span></p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 40%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span class="math inline">{a^{\phi(N)}\bmod
+N=a^{N-1}\bmod N=1}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Special cases<img data-src="../../images/ZN.png"
+style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title block-title-hfill">
+<span class="block-title-left">Special case #2</span><span
+class="block-title-right">(RSA-style composites)</span>
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Another <span style="color: blue">special case</span> <span
+style="color: black">needed for RSA comes when the modulus is a product
+of two (different) primes:</span> <span style="color: blue"><span
+class="math inline">N=pq</span></span><span style="color: black">.
+Then</span></p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 45%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{\phi(N)=N(1-\frac{1}{p})(1-\frac{1}{q})=(p-1)(q-1)}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">and so we have</span></p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 25%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{a^{(p-1)(q-1)}\bmod pq=1}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">(if</span><span style="color: blue"> <span
+class="math inline">a</span></span><span style="color: black"> has no
+divisors in common with </span><span style="color: blue"><span
+class="math inline">pq</span></span><span style="color: black"> and
+</span><span style="color: blue"><span
+class="math inline">p,q</span></span><span style="color: black">
+prime)</span></p>
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+On the next slide we illustrate Euler with <span
+class="math inline">N=15</span>
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The table illustrates Euler’s theorem for <span
+style="color: blue"><span
+class="math inline">N=15=3\times5</span></span><span
+style="color: black">, with</span></p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 50%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{\phi(15)=15(1-\frac{1}{3})(1-\frac{1}{5})=(3-1)(5-1)=8}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>Notice here that a <span style="color: blue"><span
+class="math inline">1</span></span> is reached when the power is<span
+style="color: blue"> <span class="math inline">8</span></span>, but only
+for numbers with no divisors in common with <span
+style="color: blue"><span class="math inline">15</span></span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Euler table for <span class="math inline">N=15</span>, <span
+class="math inline">\phi(N)=8</span><img data-src="../../images/ZN.png"
+style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 57%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="table-with-borders">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span class="math inline">a</span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+class="math inline">a^{2}</span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+class="math inline">a^{3}</span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+class="math inline">a^{4}</span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+class="math inline">a^{5}</span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+class="math inline">a^{6}</span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+class="math inline">a^{7}</span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+class="math inline">a^{8}</span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+class="math inline">a^{9}</span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+class="math inline">a^{10}</span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+class="math inline">a^{11}</span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+class="math inline">a^{12}</span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+class="math inline">a^{13}</span></span></span></th>
+<th style="text-align: center;"><span class="dada-font-tiny"><span
+class="dada-bold"><span
+class="math inline">a^{14}</span></span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">2</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">8</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">2</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">8</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">2</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">8</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">2</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">3</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">12</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">3</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">12</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">3</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">12</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">3</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">5</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">5</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">5</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">5</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">5</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">5</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">5</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">7</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">13</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">7</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">13</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">7</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">13</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">7</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">8</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">2</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">8</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">2</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">8</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">2</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">8</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">10</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">11</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">11</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">11</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">11</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">11</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">11</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">11</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">12</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">3</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">12</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">3</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">12</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">3</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">6</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">12</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">9</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">13</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">7</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">13</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">7</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">13</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">7</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">13</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">4</span></span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">14</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">14</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">14</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">14</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">14</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">14</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">14</span></span></td>
+<td style="text-align: center;"><span class="dada-font-tiny"><span
+class="math inline">1</span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Arithmetic in the exponent is taken mod <span
+class="math inline">\phi(N)</span>
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize dada-hfill-layout">
+<span style="color: black">If</span> <span style="color: blue"><span
+class="math inline">a</span></span> <span style="color: black">has no
+divisors in common with</span> <span style="color: blue"><span
+class="math inline">N</span></span><span style="color: black">, then
+</span>
+<div class="dada-fbox"
+style="width: 30%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span class="math inline">{a^{x}\bmod
+N=a^{x\bmod\phi(N)}\bmod N}</span></span></p>
+</div>
+</div>
+<span style="color: black">, so for example</span>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize dada-hfill-layout">
+<div class="dada-fbox"
+style="width: 50%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span
+class="math inline">a^{28}\bmod15=a^{28\bmod8}\bmod15=a^{4}\bmod15</span></span></p>
+</div>
+</div>
+</div>
+<span style="color: black">.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Quadratic residues<img data-src="../../images/Zp.png"
+style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title block-title-hfill">
+<span class="block-title-left">The square root of <span
+class="math inline">x\in\mathbb{Z}_{p}</span> is...</span><span
+class="block-title-right">(primes)</span>
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: black">...a number </span><span
+style="color: blue"><span
+class="math inline">y\in\mathbb{Z}_{p}</span></span><span
+style="color: black"> such that </span><span style="color: blue"><span
+class="math inline">y^{2}\equiv x\bmod p</span></span><span
+style="color: black">. Note that </span><span style="color: blue"><span
+class="math inline">\sqrt{2}\mod{\,}7=3</span></span><span
+style="color: black">, but </span><span style="color: blue"><span
+class="math inline">\sqrt{3}\mod{\,}7</span></span><span
+style="color: black"> doesn’t exist.</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<div style="color: black">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span
+class="math inline">\mathbb{Z}_{p}^{*}</span></span><span
+style="color: black"> is the multiplicative (sub) group and an element
+</span><span style="color: blue"><span
+class="math inline">x\in\mathbb{Z}_{p}^{*}</span></span><span
+style="color: black"> is called a </span><span style="color: blue">QR
+(Quadratic Residue)</span><span style="color: black"> if its square root
+exists in </span><span style="color: blue"><span
+class="math inline">\mathbb{Z}_{p}</span></span><span
+style="color: black">. Each </span><span style="color: blue"><span
+class="math inline">x\in\mathbb{Z}_{p}^{*}</span> </span><span
+style="color: black">has either </span><span style="color: blue"><span
+class="math inline">0</span></span><span style="color: black"> or
+</span><span style="color: blue"><span
+class="math inline">2</span></span><span style="color: black"> square
+roots.</span></p>
+</div>
+<ul>
+<li><span class="dada-font-footnotesize"><span style="color: black">If
+</span><span style="color: blue"><span
+class="math inline">a</span></span><span style="color: black"> is a
+square root of</span><span style="color: blue"> <span
+class="math inline">x\mod p</span></span><span style="color: black">,
+then so is </span><span style="color: blue"><span
+class="math inline">-a\mod p</span></span><span
+style="color: black">.</span></span></li>
+<li><span class="dada-font-footnotesize"><span
+style="color: black">Exactly half of the elements in</span><span
+style="color: blue"> <span
+class="math inline">\mathbb{Z}_{p}^{*}</span></span><span
+style="color: black"> are QR.</span></span></li>
+<li><span class="dada-font-footnotesize"><span style="color: blue"><span
+class="math inline">a</span></span><span style="color: black"> is a QR
+(<span class="math inline">{\color{blue}\bmod p}</span>) iff</span><span
+style="color: blue"> <span class="math inline">a^{\frac{p-1}{2}}\bmod
+p=1</span></span><span style="color: black"> (Euler’s
+criterion).</span></span></li>
+</ul>
+<div class="dada-font-footnotesize">
+<div style="color: black">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Computing square roots in</span><span
+style="color: blue"> <span
+class="math inline">\mathbb{Z}_{p}^{*}</span></span><span
+style="color: black"> is computationally possible. An </span><span
+style="color: blue"><span class="math inline">{\cal
+O}(n^{4})</span></span><span style="color: black"> randomized algorithm
+exists. Easier in some special cases of </span><span
+style="color: blue"><span class="math inline">p</span></span><span
+style="color: black">, e.g. when</span><span style="color: blue"> <span
+class="math inline">p=3\mod 4</span></span>, then</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 35%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span class="math inline">{\sqrt{x}\mod
+p=x^{\frac{p+1}{4}}\mod 4}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Given an</span><span style="color: blue">
+<span class="math inline">x\in\mathbb{Z}_{p}^{*}</span></span><span
+style="color: black">, deciding whether </span><span
+style="color: blue"><span class="math inline">x</span> </span><span
+style="color: black">is a </span><span
+style="color: blue">QR</span><span style="color: black"> is
+computationally easy.</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Identifying quadratic residues<img data-src="../../images/Zp.png"
+style="max-width: none; width: auto; height:0.3cm" alt="image" /> <img data-src="../../images/ZN.png"
+style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="image-grid">
+<img data-src="../../images/Legendre.jpeg" style="max-width: none; width: auto; height:1.5cm"
+alt="image" />
+<img data-src="../../images/QRvsNQR.png" style="max-width: none; width: auto; height:1.5cm"
+alt="image" />
+<img data-src="../../images/Carl_Jacobi.jpeg" style="max-width: none; width: auto; height:1.5cm"
+alt="image" />
+</div>
+</div>
+<div class="center">
+<p> </p>
+</div>
+<div class="block">
+<div class="block-title">
+The Legendre and Jacobi “symbol” notation
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Legendre:</span><span style="color: black">
+<span class="dada-emph"><span
+style="color: black">identifies</span></span> the QR in</span><span
+style="color: blue"> <span
+class="math inline">\mathbb{Z}_{p}</span></span><span
+style="color: black">; a function of </span><span
+style="color: blue"><span class="math inline">a</span></span><span
+style="color: black"> and </span><span style="color: blue"><span
+class="math inline">p</span></span><span style="color: black">:
+</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"> <span
+class="math inline">(\mathbb{Z}_{p})</span></span></p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 65%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{\begin{array}{lllll}
+\left(\frac{a}{p}\right) &amp; = &amp; a^{\frac{p-1}{2}}\mod p &amp; =
+&amp; \left\{ \begin{array}{lll}
+1 &amp;  &amp; {\color{black}\mathrm{if}\,a\,\mathrm{is\,a\,QR}}\\
+-1 &amp;  &amp; {\color{black}\mathrm{if}\,a\,\mathrm{is\,not\,a\,QR}}\\
+0 &amp;  &amp; {\color{blue}{\color{black}\mathrm{if}\,a=0\mod p}}
+\end{array}\right.\end{array}}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Jacobi:</span> is a generalization of
+Legendre, extending it to<span style="color: blue"> <span
+class="math inline">\mathbb{Z}_{N}</span></span> (composites).</p>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"> <span
+class="math inline">(\mathbb{Z}_{N})</span></span><span
+style="color: black"> </span></p>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>Easy to compute given it’s prime factorization. For example,
+given<span style="color: blue"> <span class="math inline">N=p\times
+q</span></span> with<span style="color: blue"> <span
+class="math inline">p\neq q</span></span>, then</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 35%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{\left(\frac{a}{N}\right)=\left(\frac{a}{p}\right)\left(\frac{a}{q}\right)}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>Given <span style="color: blue"><span
+class="math inline">a</span></span> and <span style="color: blue"><span
+class="math inline">N</span></span>, we can find the Jacobi symbol
+without knowing the factorization of<span style="color: blue"> <span
+class="math inline">N</span></span>. From the Jacobi symbol, we can’t
+tell whether<span style="color: blue"> <span
+class="math inline">a</span> </span> is a QR, but no entry with <span
+style="color: blue"><span class="math inline">-1</span></span> is a
+quadratic residue.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: lightgray">Details on ECC</span></li>
+<li><span style="color: blue"><span class="dada-bold">Building blocks
+for “hardness” operations in <span
+class="math inline">\mathbb{Z}_{p}</span> and <span
+class="math inline">\mathbb{Z}_{N}</span></span> </span>
+<ul>
+<li><span style="color: lightgray">Cyclic groups, math
+operations...</span></li>
+<li><span class="dada-bold">Algorithms, with complexity</span></li>
+<li><span style="color: lightgray">Problems in <span
+class="math inline">\mathbb{Z}_{p}</span> and <span
+class="math inline">\mathbb{Z}_{N}</span> </span></li>
+</ul></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Complexity of basic arithmetic<img data-src="../../images/Zp.png"
+style="max-width: none; width: auto; height:0.3cm" alt="image" /> <img data-src="../../images/ZN.png"
+style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Basic ideas...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: black">We often work with (cyclic) groups in
+</span><span style="color: blue"><span
+class="math inline">\mathbb{Z}_{p}</span> </span><span
+style="color: black">and</span><span style="color: blue"> <span
+class="math inline">\mathbb{Z}_{N}</span></span><span
+style="color: black"> with very large </span><span
+style="color: blue"><span class="math inline">p</span></span><span
+style="color: black"> and </span><span style="color: blue"><span
+class="math inline">N</span></span><span style="color: black">.
+</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<div style="color: black">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Computational complexity: </span><span
+style="color: black">the following basic arithmetic operations can be
+efficiently computed in </span><span style="color: blue"><span
+class="math inline">\mathbb{Z}_{p}</span> </span><span
+style="color: black">and </span><span style="color: blue"><span
+class="math inline">\mathbb{Z}_{N}</span></span><span
+style="color: black">: </span></p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox dada-font-footnotesize"
+style="width: 34%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="table-with-borders">
+<table>
+<thead>
+<tr style="background-color: rgb(0,255,255);">
+<th style="text-align: left;"><span class="dada-font-footnotesize"><span
+class="dada-bold">Operations</span></span></th>
+<th style="text-align: center;"><span
+class="dada-font-footnotesize"><span
+class="dada-bold">Complexity</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="spacer"><td></td></tr>
+<tr>
+<td style="text-align: left;"><span
+class="dada-font-footnotesize">Addition</span></td>
+<td style="text-align: center;"><span
+class="dada-font-footnotesize"><span style="color: blue"><span
+class="math inline">{\cal O}(m)</span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="dada-font-footnotesize">Multiplication</span></td>
+<td style="text-align: center;"><span
+class="dada-font-footnotesize"><span style="color: blue"><span
+class="math inline">{\cal O}(m^{2})</span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="dada-font-footnotesize">Inverse</span></td>
+<td style="text-align: center;"><span
+class="dada-font-footnotesize"><span style="color: blue"><span
+class="math inline">{\cal O}(m^{2})</span></span></span></td>
+</tr>
+<tr>
+<td style="text-align: left;"><span
+class="dada-font-footnotesize">Exponentiation</span></td>
+<td style="text-align: center;"><span
+class="dada-font-footnotesize"><span style="color: blue"><span
+class="math inline">{\cal O}(m^{3})</span></span></span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Programming issues:</span><span
+style="color: black"> Since our machines work with 32 or 64-bit
+integers, we have libraries such as the GMP (GNU Multiple Precision)
+library, and Java “BigInteger” classes. </span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>On finding generators:<img data-src="../../images/Zp.png"
+style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 70%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-tiny">
+<p><span
+class="dada-bold"><code>gens=</code><span><code>[</code></span><span><code>]</code></span></span></p>
+</div>
+<div class="dada-font-tiny">
+<p><span class="dada-bold"><code>for s in facs:</code></span></p>
+</div>
+<div class="dada-font-tiny">
+<p><span class="dada-bold"><code>g=2</code></span></p>
+</div>
+<div class="dada-font-tiny">
+<p><span
+class="dada-bold"><code>generators=</code><span><code>[</code></span><span><code>]</code></span></span></p>
+</div>
+<div class="dada-font-tiny">
+<p><span
+class="dada-bold"><code>while g&lt;s</code><span><code>[</code></span><code>0</code><span><code>]</code></span><code>:</code></span></p>
+</div>
+<div class="dada-font-tiny">
+<p><span class="dada-bold"><code>gen=1</code></span></p>
+</div>
+<div class="dada-font-tiny">
+<p><span
+class="dada-bold"><code>for j in s</code><span><code>[</code></span><code>1</code><span><code>]</code></span><code>:</code></span></p>
+</div>
+<div class="dada-font-tiny">
+<p><span
+class="dada-bold"><code>if (g</code><span><code>*</code></span><span><code>*</code></span><code>((s</code><span><code>[</code></span><code>0</code><span><code>]</code></span><code>-1)/j))%s</code><span><code>[</code></span><code>0</code><span><code>]</code></span><code>==1:</code></span></p>
+</div>
+<div class="dada-font-tiny">
+<p><span class="dada-bold"><code>gen=0</code></span></p>
+</div>
+<div class="dada-font-tiny">
+<p><span class="dada-bold"><code>break</code></span></p>
+</div>
+<div class="dada-font-tiny">
+<p><span class="dada-bold"><code>if gen:</code></span></p>
+</div>
+<div class="dada-font-tiny">
+<p><span class="dada-bold"><code>generators.append(g)</code></span></p>
+</div>
+<div class="dada-font-tiny">
+<p><span class="dada-bold"><code>g=g+1</code></span></p>
+</div>
+<div class="dada-font-tiny">
+<p><span
+class="dada-bold"><code>gens.append(</code><span><code>[</code></span><code>s</code><span><code>[</code></span><code>0</code><span><code>]</code></span><code>,generators</code><span><code>]</code></span><code>)</code></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+Algorithm to find a generator modulo <span class="math inline">p</span>:
+</div>
+<div class="block-content">
+<ol>
+<li><span class="dada-font-footnotesize">Find prime factors<span
+style="color: blue"> <span
+class="math inline">q_{1},q_{2},\ldots</span></span> of<span
+style="color: blue"> <span
+class="math inline">\phi(p)</span></span>.</span></li>
+<li><span class="dada-font-footnotesize">Select a random candidate<span
+style="color: blue"> <span
+class="math inline">a</span></span>.</span></li>
+<li><span class="dada-font-footnotesize">For each factor <span
+style="color: blue"><span class="math inline">q_{i}</span></span>,
+calculate<span style="color: blue"> <span
+class="math inline">a^{\frac{p-1}{q_{i}}}\bmod p</span></span>. If any
+one is <span style="color: blue"><span
+class="math inline">1</span></span>, then back to step 2.</span></li>
+<li><span class="dada-font-footnotesize">Otherwise<span
+style="color: blue"> <span class="math inline">a</span></span> is a
+generator.</span></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>CRT - the Chinese Remainder Theorem<img
+data-src="../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/ChineseEx.png" style="height: auto; width:100.0%"
+alt="image" />
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>CRT - the Chinese Remainder Theorem<img
+data-src="../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">
+Worked example
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize dada-hfill-layout">
+The original problem:
+<div class="dada-fbox"
+style="width: 30%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{\begin{array}{ccl}
+x &amp; = &amp; 2\,\mathrm{mod}\,3\,\,\,\,\,\,\,\,\,\,\,\,\,(1)\\
+x &amp; = &amp; 3\,\mathrm{mod}\,5\,\,\,\,\,\,\,\,\,\,\,\,\,(2)\\
+x &amp; = &amp; 2\,\mathrm{mod}\,7\,\,\,\,\,\,\,\,\,\,\,\,\,(3)
+\end{array}}</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>From (1), we know that<span style="color: blue"> <span
+class="math inline">x=3n+2</span></span> for some <span
+style="color: blue"><span class="math inline">n</span></span>.
+Substituting this in (2) gives<span style="color: blue"> <span
+class="math inline">3n=1\,\mathrm{mod}\,5</span></span> . This reduces
+to a simpler equation<span style="color: blue"> <span
+class="math inline">n=2\,\mathrm{mod}\,5</span></span> which is
+equivalent to<span style="color: blue"> <span
+class="math inline">n=5m+2</span> fo</span> r some<span
+style="color: blue"> <span class="math inline">m</span></span>.
+Substituting this back into<span style="color: blue"> <span
+class="math inline">x=3n+2</span></span> gives us<span
+style="color: blue"> <span class="math inline">x=15m+8</span></span>.
+Substituting this in (3) gives <span style="color: blue"><span
+class="math inline">15m+8=2\,\mathrm{mod}\,7</span></span>, or<span
+style="color: blue"> <span
+class="math inline">m=1\,\mathrm{mod}\,7</span></span>, i.e.<span
+style="color: blue"> <span class="math inline">m=7o+1</span></span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>From this we can see that<span style="color: blue"> <span
+class="math inline">x=105o+23</span></span>. Note that<span
+style="color: blue"> <span
+class="math inline">105=\mathrm{lcm}(3,5,7)</span></span> and the
+solutions are<span style="color: blue"> <span
+class="math inline">23,128</span></span> (and so on).</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Euclidean algorithm<img data-src="../../images/ZN.png"
+style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">
+Some theory to compute the multiplicative inverses.
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>To find the <span class="dada-bold"><code>gcd</code></span> of two
+numbers (say<span style="color: blue"> <span
+class="math inline">2394</span></span> and <span
+style="color: blue"><span class="math inline">154</span></span> ), use
+the prime factorization:</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-scriptsize">
+<div class="dada-fbox"
+style="width: 40%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{\begin{array}{rll}
+2394 &amp; = &amp; 2*3*3*7*19\\
+154 &amp; = &amp; 2*7*11\\
+\therefore\mathrm{gcd}(2394,154) &amp; = &amp; 2*7=14
+\end{array}}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+Euclidean algorithm
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>Unfortunately, it is not easy to find the prime factors of integers.
+The <span class="dada-bold"><code>gcd</code></span> of two integers can
+however be found by repeated application of division, using the
+Euclidean algorithm. You repeatedly divide the divisor by the remainder
+until the remainder is 0. The <span
+class="dada-bold"><code>gcd</code></span> is the last non-zero
+remainder.</p>
+</div>
+</div>
+</div>
+<div class="dada-bubble"
+style="background-color: rgb(128,255,255); width: 90%; margin-left: auto; margin-right: 0;">
+<p>Example:</p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Extended Euclidean algorithm<img data-src="../../images/ZN.png"
+style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+An interesting property for inverses
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p><span style="color: black">If the </span><span
+style="color: blue"><span
+class="math inline">\mathrm{gcd}(a,b)=r</span></span><span
+style="color: black"> then there exist integers  </span><span
+style="color: blue"> <span class="math inline">m</span></span><span
+style="color: black">  and </span><span style="color: blue"> <span
+class="math inline">n</span></span><span style="color: black">  so
+that</span><span style="color: blue">  <span
+class="math inline">ma+nb=r</span></span><span style="color: black">.
+</span></p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+The extended Euclidean algorithm
+</div>
+<div class="block-content">
+<ol>
+<li><span class="dada-font-footnotesize"><span style="color: black">We
+begin by dividing </span><span style="color: blue"> <span
+class="math inline">n</span> </span><span
+style="color: black"> by </span><span style="color: blue"> <span
+class="math inline">x</span></span><span style="color: black">, and as
+we carry out each step </span><span style="color: blue"> <span
+class="math inline">i</span> </span><span style="color: black"> of the
+Euclidean algorithm discovering the quotient  </span><span
+style="color: blue"><span class="math inline">q_{i}</span></span><span
+style="color: black">, we also calculate an extra number  </span><span
+style="color: blue"><span class="math inline">x_{i}</span>.</span><span
+style="color: black"> For the first two steps </span><span
+style="color: blue"> <span
+class="math inline">x_{0}=0</span></span><span style="color: black">
+ and </span><span style="color: blue"> <span
+class="math inline">x_{1}=1</span></span><span style="color: black">.
+For the following steps, calculate </span><span style="color: blue">
+<span
+class="math inline">x_{i}=x_{i-2}-x_{i-1}q_{i-2}\,\mathrm{mod}\,n</span></span><span
+style="color: black">. </span></span></li>
+<li><span class="dada-font-footnotesize"><span style="color: black">If
+the last non-zero remainder occurs at step </span><span
+style="color: blue"> <span class="math inline">k</span></span><span
+style="color: black">, then if it is </span><span style="color: blue">
+<span class="math inline">1</span></span><span style="color: black">, 
+</span><span style="color: blue"><span
+class="math inline">x</span></span><span style="color: black">  has an
+inverse: </span><span style="color: blue"> <span
+class="math inline">x_{k+2}</span></span><span
+style="color: black">.</span></span></li>
+</ol>
+</div>
+</div>
+<div class="dada-bubble"
+style="background-color: rgb(128,255,255); width: 90%; margin-left: auto; margin-right: 0;">
+<div class="dada-font-footnotesize">
+<p>The inverse of <span class="math inline">15</span> modulo <span
+class="math inline">26</span>, showing the method</p>
+</div>
+<div class="dada-font-tiny">
+<p><span style="color: blue">:</span></p>
+</div>
+<p><br />
+</p>
+<div class="dada-font-tiny">
+<p><span style="color: blue"></span></p>
+</div>
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{\begin{array}{llllllll}
+0:\,\,\, &amp; 26 &amp; = &amp; 1*15+11 &amp; \,\,\,\,\, &amp; x_{0}=0\\
+1:\,\,\, &amp; 15 &amp; = &amp; 1*11+4 &amp;  &amp; x_{1}=1\\
+2:\,\,\, &amp; 11 &amp; = &amp; 2*4+3 &amp;  &amp;
+x_{2}=0-1*1\,\mathrm{mod}\,26 &amp; = &amp; 25\\
+3:\,\,\, &amp; 4 &amp; = &amp; 1*3+1 &amp;  &amp;
+x_{3}=1-25*1\,\mathrm{mod}\,26 &amp; = &amp; 2\\
+4:\,\,\, &amp; 3 &amp; = &amp; 3*1+0 &amp;  &amp;
+x_{4}=25-2*2\,\mathrm{mod}\,26 &amp; = &amp; 21\\
+&amp;  &amp;  &amp;  &amp;  &amp; x_{5}=2-21*1\,\mathrm{mod}\,26 &amp; =
+&amp; 7
+\end{array}}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Outline</h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<ol>
+<li><span style="color: lightgray">Details on ECC</span></li>
+<li><span style="color: blue"><span class="dada-bold">Building blocks
+for “hardness” operations in <span
+class="math inline">\mathbb{Z}_{p}</span> and <span
+class="math inline">\mathbb{Z}_{N}</span></span> </span>
+<ul>
+<li><span style="color: lightgray">Cyclic groups, math
+operations...</span></li>
+<li><span style="color: lightgray">Algorithms, with
+complexity</span></li>
+<li><span class="dada-bold">Problems in <span
+class="math inline">\mathbb{Z}_{p}</span> and <span
+class="math inline">\mathbb{Z}_{N}</span></span></li>
+</ul></li>
+</ol>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Easy problems in <span class="math inline">\mathbb{Z}_{p}</span><img
+data-src="../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+(...assuming <span class="math inline">p</span> is very large)
+</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: blue">Basic math:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Generating</span><span
+style="color: black"> a </span><span
+style="color: blue">random</span><span style="color: black"> element,
+</span><span style="color: blue">adding</span><span
+style="color: black"> and </span><span
+style="color: blue">multiplying</span><span style="color: black">
+elements, finding </span><span style="color: blue">inverse</span><span
+style="color: black">, </span><span
+style="color: blue">exponentiation</span><span style="color: black">.
+</span></p>
+</div>
+</dd>
+<dt><span><span style="color: blue">QR:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Testing</span><span style="color: black">
+if an element is a </span><span style="color: blue">QR</span><span
+style="color: black"> and computing its </span><span
+style="color: blue">square root mod p</span><span style="color: black">
+if it is QR. </span></p>
+</div>
+</dd>
+<dt><span><span style="color: blue">DDH:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Decisional Diffie-Hellman
+problem</span><span style="color: black">: Let</span><span
+style="color: blue"> <span class="math inline">g</span></span><span
+style="color: black"> be a generator of a cyclic group </span><span
+style="color: blue"><span class="math inline">{\cal
+G}</span></span><span style="color: black">. Given a positive integer
+3-tuple </span><span style="color: blue"><span
+class="math inline">(a,b,z)</span></span><span style="color: black">,
+distinguish with probability greater than </span><span
+style="color: blue"><span class="math inline">0.5</span></span><span
+style="color: black"> whether the three outputs are from process A or
+B:</span></p>
+</div>
+</dd>
+</dl>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 45%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<dl>
+<dt><span><span style="color: blue">A:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Output <span
+class="math inline">(g^{a},g^{b},g^{z})</span></span></p>
+</div>
+</dd>
+<dt><span><span style="color: blue">B:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Output <span
+class="math inline">(g^{a},g^{b},g^{ab})</span></span></p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">For the group</span><span
+style="color: blue"> <span
+class="math inline">\mathbb{Z}_{p}^{*}</span></span><span
+style="color: black">, DDH is not hard (...use the Jacobi
+symbol).</span></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Believed to be hard problems in <span
+class="math inline">\mathbb{Z}_{p}</span><img
+data-src="../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+But anything can change...
+</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: blue">DL:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Discrete log problem: </span><span
+style="color: black">Let</span><span style="color: blue"> <span
+class="math inline">g</span></span><span style="color: black"> be a
+generator of a cyclic group. Given</span><span style="color: blue">
+<span class="math inline">x</span></span><span style="color: black">,
+find</span><span style="color: blue"> <span
+class="math inline">r</span></span><span style="color: black"> such
+that</span><span style="color: blue"> <span
+class="math inline">x=g^{r}</span></span><span
+style="color: black">.</span></p>
+</div>
+</dd>
+<dt><span><span style="color: blue">CDH:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Computational Diffie-Hellman problem:
+</span><span style="color: black">Let</span><span style="color: blue">
+<span class="math inline">g</span></span><span style="color: black"> be
+a generator of a cyclic group. Given</span><span style="color: blue">
+<span class="math inline">g^{a}</span></span><span
+style="color: black">, </span><span style="color: blue"><span
+class="math inline">g^{b}</span></span><span style="color: black">, find
+</span><span style="color: blue"><span
+class="math inline">g^{ab}</span></span><span style="color: black">.
+</span></p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">
+Cryptosystems based on the hardness of these problems:
+</div>
+<div class="block-content">
+<ol>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">Diffie-Hellman</span><span style="color: black"> key
+exchange</span></span></li>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">Elgamal</span><span style="color: black"> public key
+encryption</span></span></li>
+<li><span class="dada-font-footnotesize"><span
+style="color: black">DL-based digital signatures like </span><span
+style="color: blue">Elgamal</span><span style="color: black">,
+</span><span style="color: blue">DSA</span><span style="color: black">,
+</span><span style="color: blue">DSS</span><span
+style="color: black">...</span></span></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Easy problems in <span class="math inline">\mathbb{Z}_{N}</span><img
+data-src="../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+(...assuming <span class="math inline">N=p\times q</span>, and <span
+class="math inline">p,q</span> are large primes)
+</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: blue">Basic math:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Generating</span><span
+style="color: black"> a </span><span
+style="color: blue">random</span><span style="color: black"> element,
+</span><span style="color: blue">adding</span><span
+style="color: black"> and </span><span
+style="color: blue">multiplying</span><span style="color: black">
+elements, finding </span><span style="color: blue">inverse</span><span
+style="color: black">, </span><span
+style="color: blue">exponentiation</span><span
+style="color: black">.</span></p>
+</div>
+</dd>
+<dt><span><span style="color: blue">Jacobi:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Finding</span><span style="color: black">
+the </span><span style="color: blue">Jacobi</span><span
+style="color: black"> symbol.</span></p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Hard problems in <span class="math inline">\mathbb{Z}_{N}</span>
+<img data-src="../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm"
+alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+These get easier if factorization is known...
+</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: blue">QR:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Testing</span><span style="color: black">
+if an element is a </span><span style="color: blue">QR</span><span
+style="color: black"> in</span><span style="color: blue"> <span
+class="math inline">\mathbb{Z}_{N}</span></span><span
+style="color: black">. </span></p>
+</div>
+<p><br />
+</p>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">(Computing the Jacobi symbol cannot solve
+the problem).</span></p>
+</div>
+</dd>
+<dt><span><span style="color: blue">SQRT:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Computing</span><span style="color: black">
+the </span><span style="color: blue">square root</span><span
+style="color: black"> of a QR in</span><span style="color: blue"> <span
+class="math inline">\mathbb{Z}_{N}</span></span><span
+style="color: black">. </span></p>
+</div>
+<p><br />
+</p>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Provably as hard as factoring </span><span
+style="color: blue"><span class="math inline">N</span></span><span
+style="color: black">. </span></p>
+</div>
+<p><br />
+</p>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Rabin cryptosystems based on this
+hardness.</span></p>
+</div>
+</dd>
+<dt><span><span style="color: blue"><span
+class="math inline">\phi(N)</span>:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Computing <span
+class="math inline">\phi(N)</span></span><span style="color: black"> -
+Provably as hard as factoring</span><span style="color: blue"> <span
+class="math inline">N</span></span><span style="color: black">. If you
+can efficiently compute </span><span style="color: blue"><span
+class="math inline">\phi(N)</span></span><span style="color: black">,
+then you can also factor</span><span style="color: blue"> <span
+class="math inline">N</span></span><span style="color: black">.
+</span></p>
+</div>
+</dd>
+<dt><span><span style="color: blue">Roots:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Computing the e-th roots mod <span
+class="math inline">N</span> </span><span style="color: black">when
+</span><span style="color: blue"><span
+class="math inline">gcd(e,N)=1</span></span><span style="color: black">.
+</span></p>
+</div>
+<p><br />
+</p>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">RSA cryptosystems based on this hardness.
+</span></p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">
+These do not get easier if factorization is known...
+</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: blue">DL:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Discrete log problem</span><span
+style="color: black"> With </span><span style="color: blue"><span
+class="math inline">g</span> </span><span style="color: black">being a
+generator of</span><span style="color: blue"> <span
+class="math inline">\mathbb{Z}_{N}^{*}</span></span><span
+style="color: black">, then </span></p>
+</div>
+<p><br />
+</p>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">given</span><span style="color: blue">
+<span class="math inline">x\in\mathbb{Z}_{N}^{*}</span></span><span
+style="color: black">, find an </span><span style="color: blue"><span
+class="math inline">r</span> </span><span style="color: black">such
+that</span><span style="color: blue"> <span
+class="math inline">x=g^{r}\bmod N</span></span><span
+style="color: black">.</span></p>
+</div>
+</dd>
+<dt><span><span style="color: blue">CDH:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Computational Diffie-Hellman
+problem</span><span style="color: black"> With </span><span
+style="color: blue"><span class="math inline">g</span> </span><span
+style="color: black">being a generator of</span><span
+style="color: blue"> <span
+class="math inline">\mathbb{Z}_{N}^{*}</span></span><span
+style="color: black">, then given</span><span style="color: blue"> <span
+class="math inline">g^{a},g^{b}\in\mathbb{Z}_{N}^{*}</span></span><span
+style="color: black">, find</span><span style="color: blue"> <span
+class="math inline">g^{ab}\bmod N</span></span><span
+style="color: black">.</span></p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Bilinear maps/pairings</h2>
+<div class="dada-frame-body">
+<div class="center">
+<p><img data-src="../../images/BilinearMap.png" style="max-width: none; width: auto; height:3.5cm"
+alt="image" /></p>
+</div>
+<div class="block">
+<div class="block-title">
+Pairings...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>A (symmetric style) bilinear map is a pairing between two elements of
+a group to a second (same order) group:<span style="color: blue"> <span
+class="math inline">G\times G\rightarrow G_{T}</span></span>. There are
+also (asymmetric) pairings like<span style="color: blue"> <span
+class="math inline">G_{1}\times G_{2}\rightarrow
+G_{T}</span></span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>Such a symmetric mapping (if it can be efficiently computed) can be
+used to solve DDH:<span style="color: blue"> <span
+class="math inline">z=ab</span></span> iff<span style="color: blue">
+<span class="math inline">e(g,g^{z})=e(g^{a},g^{b})</span></span>.
+Originally this was the focus of bilinear maps in crypto, and this is
+why CDH is considered <span class="dada-emph">harder</span> than
+DDH.</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>The other thing is that it can allow you to reduce the discrete log
+problem in <span style="color: blue"><span
+class="math inline">G</span></span> to a (perhaps simpler) discrete log
+problem in<span style="color: blue"> <span
+class="math inline">G_{T}</span></span>: <span style="color: blue"><span
+class="math inline">e(g,g^{a})=e(g,g)^{a}</span></span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>A little more on bilinear maps/pairings</h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+Can we have “simple” pairings?
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>This is easy, but unfortunately such "simple" maps are not useful for
+crypto. A simple map based on (say) integers might be the additive
+integer group <span style="color: blue"><span
+class="math inline">G=\left\langle
+\mathbb{Z},+\right\rangle</span></span>, and <span
+style="color: blue"><span class="math inline">G_{T}=\left\langle
+\mathbb{Z},*\right\rangle</span></span>, with</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 25%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{e(u,v)=2^{uv}}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>For the additive group,<span style="color: blue"> <span
+class="math inline">u^{2}</span></span> means <span
+style="color: blue"><span class="math inline">u+u</span></span>, and it
+is sufficient to show that<span style="color: blue"> <span
+class="math inline">e(u+u,v)=e(u,v)^{2}</span></span> and<span
+style="color: blue"> <span
+class="math inline">e(u,v+v)=e(u,v)^{2}</span></span>. Lets try an
+example:</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize dada-hfill-layout">
+<div class="dada-fbox"
+style="width: 25%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{e(3,4)=2^{12}}</span></span></p>
+</div>
+</div>
+and<span style="color: blue"> </span>
+<div class="dada-fbox"
+style="width: 35%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{\begin{array}{lll}
+e(3+3,4) &amp; = &amp; e(3,4)^{2}\\
+&amp; = &amp; e(3,4)\times e(3,4)\\
+&amp; = &amp; 2^{12}\times2^{12}\\
+&amp; = &amp; 2^{24}\\
+&amp; = &amp; e(3,4+4)
+\end{array}}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>A little more on bilinear maps/pairings</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 65%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<table>
+<tbody>
+<tr>
+<td style="text-align: center;"><span style="color: blue"><span
+class="math inline">G\rightarrow</span></span></td>
+<td style="text-align: center;"><img data-src="../../images/Z_5.png"
+style="max-width: none; width: auto; height:1.9cm" alt="image" /></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><span style="color: blue"><span
+class="math inline">G_{T}\rightarrow</span></span></td>
+<td style="text-align: center;"><img
+data-src="../../images/PartZ_11.png" style="max-width: none; width: auto; height:1.9cm"
+alt="image" /></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+“Simple” pairings with finite groups?
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>The groups<span style="color: blue"> <span
+class="math inline">G=\mathbb{Z}_{5}^{+}</span></span> and <span
+style="color: blue"><span class="math inline">G_{T}=\left\langle
+3\right\rangle _{11}</span></span>, with <span style="color: blue"><span
+class="math inline">e(u,v)=3^{uv}(\bmod11)</span></span>:</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize dada-hfill-layout">
+<div class="dada-fbox"
+style="width: 35%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{\begin{array}{lll}
+e(4,3) &amp; = &amp; 3^{12}\bmod11\\
+&amp; = &amp; 9
+\end{array}}</span></span></p>
+</div>
+</div>
+and<span style="color: blue"> </span>
+<div class="dada-fbox"
+style="width: 35%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{\begin{array}{lll}
+e(4+4,3) &amp; = &amp; e(4,3)^{2}\\
+&amp; = &amp; e(4,3)\times e(4,3)\\
+&amp; = &amp; 3^{24}\bmod11\\
+&amp; = &amp; 4\\
+&amp; = &amp; e(4,3+3)
+\end{array}}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>This is not too useful because groups like this tend to be
+invertible.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>The big picture..</h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox"
+style="width: 40%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/OWFtoiO.png" style="height: auto; width:100.0%"
+alt="image" />
+</div>
+</div>
+<div class="block">
+<div class="block-title">
+In practice? <span class="math inline">G</span> is an elliptic curve,
+<span class="math inline">G_{T}</span> is a finite field...
+</div>
+<div class="block-content">
+<div class="dada-font-footnotesize">
+<p>There are getting to be more uses of pairing based crypto, including
+IBE, simple encryption, signatures, and so on. Note that</p>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<p><span class="roman"> </span></p>
+</div>
+</div>
+<div class="center">
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 35%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="center">
+<p><span style="color: blue"><span
+class="math inline">{e(u^{a},v^{b})=e(u^{b},v^{a})}</span></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-font-footnotesize">
+<p>(one for encryption, one for decryption).</p>
+</div>
+<div class="dada-font-footnotesize">
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+</div>
+<div class="dada-font-footnotesize">
+<p>In a talk by Boneh, the above diagram showed crypto history, from
+one-way functions, discrete logs, pairings, LWE (Learning with Errors),
+through to multilinear maps for indistinguishability obfuscation.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Presented as <span class="dada-emph">one-way</span> functions<img
+data-src="../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /> <img
+data-src="../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm" alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">
+Three examples. Assume <span class="math inline">N=p\times q</span> (two
+large primes)
+</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: blue">DL:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue">Discrete Logarithm: </span><span
+style="color: black">With prime</span><span style="color: blue"> <span
+class="math inline">p</span></span><span style="color: black"> and an
+element </span><span style="color: blue"><span
+class="math inline">g\in\mathbb{Z}_{p}^{*}</span></span><span
+style="color: black"> of large order,</span><span style="color: blue">
+<span class="math inline">f(x)=g^{x}\bmod p</span></span><span
+style="color: black">. It is linear: Given</span><span
+style="color: blue"> <span
+class="math inline">a\in\mathbb{Z}</span></span><span
+style="color: black">, </span><span style="color: blue"><span
+class="math inline">f(x)</span></span><span style="color: black">
+and</span><span style="color: blue"> <span
+class="math inline">f(y)</span></span><span style="color: black">, it is
+easy to compute </span><span style="color: blue"><span
+class="math inline">f(ax)</span></span><span style="color: black">
+and</span><span style="color: blue"> <span
+class="math inline">f(x+y)</span></span><span style="color: black">. Its
+one-wayness is essential for the </span><span
+style="color: blue">Diffie-Hellman key exchange</span><span
+style="color: black"> protocol and</span><span style="color: blue">
+Elgamal public key</span><span style="color: black"> systems.
+</span></p>
+</div>
+</dd>
+<dt><span><span style="color: blue">RSA:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Let</span><span style="color: blue"> <span
+class="math inline">e</span> </span><span style="color: black">be an
+integer such that </span><span style="color: blue"><span
+class="math inline">gcd(e,N)=1</span></span><span
+style="color: black">,</span><span style="color: blue"> <span
+class="math inline">f(x)=x^{e}\bmod N</span></span><span
+style="color: black">. Note that given the factorization of</span><span
+style="color: blue"> <span class="math inline">N</span></span><span
+style="color: black">, the function</span><span style="color: blue">
+<span class="math inline">f</span> </span><span style="color: black">can
+be inverted efficiently. The one-wayness property is essential for the
+</span><span style="color: blue">RSA</span><span style="color: black">
+public key system.</span></p>
+</div>
+</dd>
+<dt><span><span style="color: blue">Rabin:</span></span></dt>
+<dd>
+<div class="dada-font-footnotesize">
+<p><span style="color: blue"><span class="math inline">f(x)=x^{2}\bmod
+N</span></span><span style="color: black"> This function is one-way if
+there is no efficient algorithm to factor</span><span
+style="color: blue"> <span class="math inline">N</span></span><span
+style="color: black">. The function can be inverted efficiently if the
+factorization of</span><span style="color: blue"> <span
+class="math inline">N</span> </span><span style="color: black">is known.
+The one-wayness property is essential for</span><span
+style="color: blue"> Rabin’s scheme</span><span style="color: black">.
+</span></p>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Summary<img data-src="../../images/Zp.png" style="max-width: none; width: auto; height:0.3cm"
+alt="image" /> <img data-src="../../images/ZN.png" style="max-width: none; width: auto; height:0.3cm"
+alt="image" /></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">
+The framework for “simple” asymmetric systems...
+</div>
+<div class="block-content">
+<ul>
+<li><span class="dada-font-footnotesize"><span
+style="color: black">Multiplicative inverses may not exist in modulo
+arithmetic. For a modulus </span><span style="color: blue"><span
+class="math inline">N</span></span><span style="color: black"> and a
+number </span><span style="color: blue"><span
+class="math inline">x</span></span><span
+style="color: black">,</span><span style="color: blue"> <span
+class="math inline">x^{-1}</span></span><span style="color: black">
+exists iff </span><span style="color: blue"><span
+class="math inline">gcd(x,N)=1</span></span><span
+style="color: black">.</span></span></li>
+<li><span class="dada-font-footnotesize"><span style="color: black">CRT
+gives a mapping from</span><span style="color: blue"> <span
+class="math inline">\mathbb{Z}_{N}</span></span><span
+style="color: black"> to</span><span style="color: blue"> <span
+class="math inline">\mathbb{Z}_{p}\times\mathbb{Z}_{q}</span></span><span
+style="color: black">. </span></span></li>
+<li><span class="dada-font-footnotesize"><span style="color: black">Some
+problems are easy in</span><span style="color: blue"> <span
+class="math inline">\mathbb{Z}_{p}</span> </span><span
+style="color: black">but the same problems become difficult
+in</span><span style="color: blue"> <span
+class="math inline">\mathbb{Z}_{N}</span></span><span
+style="color: black"> if the factorization of</span><span
+style="color: blue"> <span class="math inline">N</span></span><span
+style="color: black"> is unknown.</span></span></li>
+<li><span class="dada-font-footnotesize"><span style="color: black">Some
+problems, in particular </span><span style="color: blue">Discrete
+Log</span><span style="color: black">, are hard in
+both.</span></span></li>
+<li><span class="dada-font-footnotesize"><span
+style="color: blue">Factorization</span><span style="color: black"> and
+</span><span style="color: blue">Discrete Log</span><span
+style="color: black"> are the two main types of problems. Many
+cryptosystems depend on their “hardness”. </span></span></li>
+</ul>
+</div>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/search/search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+
+        height: 1080,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

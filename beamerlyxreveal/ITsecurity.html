@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DADA2026:1 Defence against the Dark Arts First topic - Introduction to IT security [H1]</title>
+<meta name="author" content="Hugh Anderson [Q]">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css">
+<link rel="stylesheet" href="beamer_Warsaw.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { const mathElements = document.getElementsByClassName("math"); const macros = {"\\raggedright": "\\leftskip=0pt \\rightskip=0pt plus 0cm"}; for (let i = 0; i < mathElements.length; i++) {  const texText = mathElements[i].firstChild;  if (mathElements[i].tagName === "SPAN" && texText && texText.nodeType === 3) {   katex.render(texText.data, mathElements[i], {    displayMode: mathElements[i].classList.contains("display"),    throwOnError: false, macros: macros, fleqn: false   });  } }});</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="title-slide" class="dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Administrivia</span><span class="dada-topbar-other">Setting the stage...</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<div class="dada-title-content">
+<h1 class="title">DADA2026:1 <br>Defence against the Dark Arts<br>First topic - Introduction to IT security [<a href="https://hugh.myddns.me/media/pdfs/HandoutITsecurity.pdf">H1</a>]</h1>
+<div class="dada-title-authors">
+<p class="author">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</p>
+<p class="institute">National University of Singapore<br>School of Computing</p>
+<p class="date">May 9, 2026</p>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Introduction</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">1/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Family ... ... and development ...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 100%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/Family1a.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">2/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Isolation...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/150201.jpg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">3/37</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Administrivia</span><span class="dada-topbar-other">Setting the stage...</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Administrivia</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Coordinates, officialdom, assessment</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Setting the stage...</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Information warfare in the news...</li>
+<li>Context for security studies</li>
+<li>Terms for security studies</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Introduction</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/37</div>
+</section>
+<section>
+<section id="administrivia" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Administrivia</span><span class="dada-topbar-other">Setting the stage...</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Coordinates, officialdom, assessment</span></div>
+</div>
+<h1>Administrivia</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Introduction</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/37</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Administrivia</span><span class="dada-topbar-other">Setting the stage...</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Coordinates, officialdom, assessment</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Administrivia</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Coordinates, officialdom, assessment</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Setting the stage...</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Information warfare in the news...</span></li>
+<li><span style="color: lightgray">Context for security studies</span></li>
+<li><span style="color: lightgray">Terms for security studies</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Introduction</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Your teaching staff</span></h2>
+<div class="dada-frame-body">
+<div class="dada-hfill-layout"><div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/defence_against.jpg" style="width: auto; height:307px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="images/hughhead2.png" style="width: auto; height:307px; max-width: none; max-height: none" alt="image"></td><td style="text-align: left;"><span style="color: blue"> </span> <span style="color: blue"> </span> <span style="color: blue"> </span><br><span style="color: blue">Lecturer</span><br><span style="color: blue">Hugh Anderson</span><br><span style="color: blue">COM2:</span> <span style="color: blue">#02-34</span></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="images/ChuaYaoXuanPhoto.jpg" style="width: auto; height:307px; max-width: none; max-height: none" alt="image"></td><td style="text-align: left;"><span style="color: blue"> </span> <span style="color: blue"> </span><br><span style="color: blue">Teaching Assistant</span><br><span style="color: blue">Chua Yao Xuan</span></td></tr></tbody></table></div></div>
+<div class="exampleblock">
+<div class="block-title">Information and contact details</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Please call me Hugh.</span><span class="dada-font-footnotesize"> My current email is hugh@nus.edu.sg.</span><span class="dada-font-footnotesize"> Other contact details will be given in July.</span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Yao Xuan just finished her BComp in Computer Science at NUS and will be starting her MSc in Computing (Security and Reliability) at Imperial College London later this year.</span><span class="dada-font-footnotesize"> While her schedule may vary,</span><span class="dada-font-footnotesize"> she is typically more active in the afternoons and evenings.</span><span class="dada-font-footnotesize"> Feel free to call her Yao Xuan!</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">5/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Assessment</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 74%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="table-with-borders"><table><thead><tr style="background-color: rgb(230,255,255);"><th style="text-align: left;"><span class="dada-bold"><span class="dada-font-footnotesize">Assessment</span></span></th><th style="text-align: center;"><span class="dada-bold"><span class="dada-font-footnotesize">Grade</span></span></th></tr></thead><tbody><tr class="spacer"><td></td></tr><tr><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-footnotesize">MCQ questions test on Thursday 17th (?)</span></span></td><td style="text-align: center;"><span class="dada-font-footnotesize">12%</span></td></tr><tr><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-footnotesize">Laboratories</span></span></td><td style="text-align: center;"><span class="dada-font-footnotesize">20%</span></td></tr><tr><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-footnotesize">Incentive marks</span></span></td><td style="text-align: center;"><span class="dada-font-footnotesize">8%</span></td></tr><tr><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-footnotesize">Group project</span></span></td><td style="text-align: center;"><span class="dada-font-footnotesize">60%</span></td></tr><tr class="spacer"><td></td></tr><tr style="background-color: rgb(255,230,230);"><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-footnotesize">Total marks</span></span></td><td style="text-align: center;"><span class="dada-bold"><span class="dada-font-footnotesize">100%</span></span></td></tr></tbody></table></div></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Laboratories/Project ...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">If you become one of the DADA project people,</span><span class="dada-font-footnotesize"> an introductory session will be held in the first week to introduce you to the labs,</span><span class="dada-font-footnotesize"> and the projects.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Some parts of the laboratories are done individually,</span><span class="dada-font-footnotesize"> with some parts done in pairs - two of you team up to do a part of a laboratory.</span><span class="dada-font-footnotesize"> In some labs you will assess yourself,</span><span class="dada-font-footnotesize"> and can give yourself whatever mark you want - if you think you deserve 100 points,</span><span class="dada-font-footnotesize"> give yourself 100 points.</span><span class="dada-font-footnotesize"> If you think </span>“<span class="dada-font-footnotesize">Over 9000!</span>”<span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> then it is </span>“<span class="dada-font-footnotesize">Over 9000!</span>”<span class="dada-font-footnotesize">.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">6/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">The course outline in July (approximately)...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/2025-2.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">7/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">The Project...<span class="dada-font-footnotesize"> </span></span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/websites/Proceedings">ctrl-i2</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/pdfs/gp04.pdf">i3</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/gp8-arp.mp4">1</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/gp3.mp4">2</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/gp03Poster.png" style="width: auto; height:486px; max-width: none; max-height: none" alt="image">   <img class="dada-inline-img" data-src="images/gp05Poster.png" style="width: auto; height:486px; max-width: none; max-height: none" alt="image">  <img class="dada-inline-img" data-src="images/gp06Poster.png" style="width: auto; height:486px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">The project starts in July!</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">You will find the project specifications in Canvas well before 1 July,</span><span class="dada-font-footnotesize"> and examples of similar projects at [ctrl-i2] above.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The projects will each take the form of a video,</span><span class="dada-font-footnotesize"> a supporting poster,</span><span class="dada-font-footnotesize"> and a paper.</span><span class="dada-font-footnotesize"> The projects are underspecified,</span><span class="dada-font-footnotesize"> and you should talk to Jiamin and me.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">8/37</div>
+</section>
+</section>
+<section>
+<section id="setting-the-stage..." class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Administrivia</span><span class="dada-topbar-current">Setting the stage...</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Information warfare in the news...</span><span class="dada-topbar-subsection-other">Context for security studies</span><span class="dada-topbar-subsection-other">Terms for security studies</span></div>
+</div>
+<h1>Setting the stage...</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Introduction</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">9/37</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Administrivia</span><span class="dada-topbar-current">Setting the stage...</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Information warfare in the news...</span><span class="dada-topbar-subsection-other">Context for security studies</span><span class="dada-topbar-subsection-other">Terms for security studies</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Administrivia</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Coordinates, officialdom, assessment</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Setting the stage...</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Information warfare in the news...</li>
+<li><span style="color: lightgray">Context for security studies</span></li>
+<li><span style="color: lightgray">Terms for security studies</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Introduction</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">9/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Aspects of IT security</span></h2>
+<div class="dada-frame-body">
+<div class="alertblock">
+<div class="block-title">What are the issues?</div>
+<div class="block-content">
+<p><span class="dada-emph"><span class="dada-font-footnotesize">The term </span></span><span class="dada-emph">“</span><span class="dada-emph"><span class="dada-font-footnotesize">IT security</span></span><span class="dada-emph">”</span><span class="dada-emph"><span class="dada-font-footnotesize"> hides a worrying reality.</span></span><span class="dada-emph"><span class="dada-font-footnotesize"> The issues are wide ranging:</span></span></p>
+<ul>
+<li><div class="dada-li-text"><span class="dada-emph"><span class="dada-font-footnotesize">It is </span></span><span class="dada-bold"><span class="dada-emph"><span class="dada-font-footnotesize">warfare</span></span></span><span class="dada-emph"><span class="dada-font-footnotesize">!</span></span><span class="dada-emph"><span class="dada-font-footnotesize"> Large scale,</span></span><span class="dada-emph"><span class="dada-font-footnotesize"> small scale,</span></span><span class="dada-emph"><span class="dada-font-footnotesize"> </span></span><span class="dada-bold"><span class="dada-emph"><span class="dada-font-footnotesize">all</span></span></span><span class="dada-emph"><span class="dada-font-footnotesize"> scale.</span></span><span class="dada-emph"><span class="dada-font-footnotesize"> Risks can be to your bank account,</span></span><span class="dada-emph"><span class="dada-font-footnotesize"> your peace of mind,</span></span><span class="dada-emph"><span class="dada-font-footnotesize"> your life,</span></span><span class="dada-emph"><span class="dada-font-footnotesize"> your friends,</span></span><span class="dada-emph"><span class="dada-font-footnotesize"> your country.</span></span><span class="dada-emph"><span class="dada-font-footnotesize"> There are </span></span><span class="dada-bold"><span class="dada-emph"><span class="dada-font-footnotesize">consequences</span></span></span><span class="dada-emph"><span class="dada-font-footnotesize">!</span></span></div></li>
+<li><div class="dada-li-text"><span class="dada-emph"><span class="dada-font-footnotesize">There are no </span></span><span class="dada-bold"><span class="dada-emph"><span class="dada-font-footnotesize">truces</span></span></span><span class="dada-emph"><span class="dada-font-footnotesize">.</span></span><span class="dada-emph"><span class="dada-font-footnotesize"> There is no white flag to wave.</span></span><span class="dada-emph"><span class="dada-font-footnotesize"> It is </span></span><span class="dada-bold"><span class="dada-emph"><span class="dada-font-footnotesize">relentless</span></span></span><span class="dada-emph"><span class="dada-font-footnotesize">.</span></span></div></li>
+<li><div class="dada-li-text"><span class="dada-emph"><span class="dada-font-footnotesize">It is not just a matter of an IT system having an exploitable error.</span></span><span class="dada-emph"><span class="dada-font-footnotesize"> </span></span><span class="dada-bold"><span class="dada-emph"><span class="dada-font-footnotesize">All</span></span></span><span class="dada-emph"><span class="dada-font-footnotesize"> the systems which we use have </span></span><span class="dada-bold"><span class="dada-emph"><span class="dada-font-footnotesize">structural</span></span></span><span class="dada-emph"><span class="dada-font-footnotesize"> issues.</span></span></div></li>
+</ul>
+</div>
+</div>
+<div class="block">
+<div class="block-title">Not just “software”; Many distinct subject areas...</div>
+<div class="block-content">
+<ul>
+<li><div class="dada-li-text"><span class="dada-bold"><span class="dada-font-footnotesize">Secrecy.</span></span><span class="dada-font-footnotesize"> Encryption of documents and communication.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-bold"><span class="dada-font-footnotesize">Insecurity.</span></span><span class="dada-font-footnotesize"> Not just secrecy,</span><span class="dada-font-footnotesize"> sometimes things like integrity and non-repudiation.</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span class="dada-bold"><span class="dada-font-footnotesize">Safety/control systems.</span></span><span class="dada-font-footnotesize"> Complexity is an issue.</span><span class="dada-font-footnotesize"> Complex (SW/HW) systems are suspect.</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span class="dada-bold"><span class="dada-font-footnotesize">Assurance.</span></span><span class="dada-font-footnotesize"> Confirm,</span><span class="dada-font-footnotesize"> specify and verify the behaviour of systems.</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span class="dada-bold"><span class="dada-font-footnotesize">Networks and protocols.</span></span><span class="dada-font-footnotesize"> The way in which we communicate.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-bold"><span class="dada-font-footnotesize">Mathematical,</span></span><span class="dada-bold"><span class="dada-font-footnotesize"> physical and legal.</span></span><span class="dada-font-footnotesize"> The desired and hard limits to systems.</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span class="dada-bold"><span class="dada-font-footnotesize">Security models.</span></span><span class="dada-font-footnotesize"> Formal ways of specifying/developing systems.</span></div></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">10/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Information warfare</span><span class="hfill-right"><span class="dada-font-footnotesize"> [</span><a href="https://threatmap.fortiguard.com/">X</a><span class="dada-font-footnotesize">,</span><a href="https://threatmap.bitdefender.com/">i5</a><span class="dada-font-footnotesize">,</span><a href="https://attackmap.sonicwall.com/live-attack-map/">i6</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 53%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/norse.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">It is relentless...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">24 hours a day,</span><span class="dada-font-footnotesize"> 365 days a year,</span><span class="dada-font-footnotesize"> the attacks go on.</span><span class="dada-font-footnotesize"> Defences are ongoing at all levels;</span><span class="dada-font-footnotesize"> governments,</span><span class="dada-font-footnotesize"> companies,</span><span class="dada-font-footnotesize"> vendors - all provide some level of protection.</span><span class="dada-font-footnotesize"> But still the attacks continue.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">11/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Attacks per day on a newly created web server/site</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 50%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/php_by_day-1.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">It is fast...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">A new website was put up using a previously unused IP address and name.</span><span class="dada-font-footnotesize"> After about 10 days,</span><span class="dada-font-footnotesize"> the site got discovered,</span><span class="dada-font-footnotesize"> and the attacks started,</span><span class="dada-font-footnotesize"> growing quickly until stabilizing at about 1000 attackers per day.</span><span class="dada-font-footnotesize"> Nowadays it takes about 5 hours.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">12/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">DBS/POSB attacks in Singapore 12 years ago</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/DBSATMFraud.png" style="width: auto; height:518px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="images/skimarrest.png" style="width: auto; height:518px; max-width: none; max-height: none" alt="image"></td></tr></tbody></table></div>
+</div>
+<div class="alertblock">
+<div class="block-title">Big news (well - in Singapore :) at the time...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">People discovered that they were having money withdrawn from their bank accounts.</span><span class="dada-font-footnotesize"> In Singapore,</span><span class="dada-font-footnotesize"> there are a LARGE number of cameras,</span><span class="dada-font-footnotesize"> and the culprits were soon tracked down.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">The criminals added hardware to ATM machines to read the cards,</span><span class="dada-font-footnotesize"> and watch for the pin-key.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">13/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Small scale warfare: ATM attacks</span><span class="hfill-right"><span class="dada-font-footnotesize"> [</span><a href="https://hugh.myddns.me/media/movies/atmpanel2.mp4">3</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/ATM2X.mp4">4</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/Skimmer4-1.mp4">5</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/364158172_255149633983971_6015463303646513513_n.mp4">6</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/skim1-2.jpg" style="width: auto; height:287px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="images/ATMcardreader.jpg" style="width: auto; height:287px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="images/ATMcardskimmer.jpg" style="width: auto; height:287px; max-width: none; max-height: none" alt="image"></td></tr><tr><td style="text-align: center; padding-top: 0; padding-bottom: 0; height: 1px; line-height: 0; border-top: 1px solid black;"></td><td style="text-align: center; padding-top: 0; padding-bottom: 0; height: 1px; line-height: 0; border-top: 1px solid black; border-left: 1px solid black;"></td><td style="text-align: center; padding-top: 0; padding-bottom: 0; height: 1px; line-height: 0; border-top: 1px solid black; border-left: 1px solid black;"></td></tr><tr><td style="text-align: center;"><img data-src="images/smallcam.jpg" style="width: auto; height:266px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="images/atm10.png" style="width: auto; height:266px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="images/Skimmer5.png" style="width: auto; height:266px; max-width: none; max-height: none" alt="image"></td></tr></tbody></table></div>
+</div>
+<div class="alertblock">
+<div class="block-title">Card skimmers for the magnetic strip, and pinpad snooping</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The card skimmers would read the magnetic strip on the card,</span><span class="dada-font-footnotesize"> and a small camera was used to watch the keypad.</span><span class="dada-font-footnotesize"> On other ATM skimmers,</span><span class="dada-font-footnotesize"> a keypad overlay is used to copy the keypresses.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">14/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Large scale warfare: theft</span><span class="hfill-right"><span class="dada-font-footnotesize"> [</span><a href="https://hugh.myddns.me/media/pdfs/National-Security-Archive-2018-09-06-PARK.pdf">ctrl-i9</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 50%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/swift1.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">$1B dollar attempt - big news a few years ago...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The well-coordinated multi-country attack did succeed in stealing over US$80M.</span><span class="dada-font-footnotesize"> The suspected attackers have never been bought to justice,</span><span class="dada-font-footnotesize"> and the money was lost.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">15/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Consequences: Waikato District Health Board: #1 (2015)</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 35%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/waikato-dhb-photo.jpg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Car Park gate-controller machines...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">In a small DHB building in NZ,</span><span class="dada-font-footnotesize"> the machines that controlled the gates in the car park were connected to the (internal) DHB network.</span><span class="dada-font-footnotesize"> These machines were running an old version of an operating system,</span><span class="dada-font-footnotesize"> and had not been updated in years.</span><span class="dada-font-footnotesize"> They were infected with the Conficker worm from a USB stick plugged in by a car-park technician.</span><span class="dada-font-footnotesize"> The worm propagated throughout the NZ DHB network.</span></p>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Consequences...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Though the DHB network was only down for two days,</span><span class="dada-font-footnotesize"> the consequences were very personal,</span><span class="dada-font-footnotesize"> involving delays throughout NZ on medical records,</span><span class="dada-font-footnotesize"> operations and so on.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">16/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Consequences: Waikato District Health Board: #2 (2021)</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 40%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/dhb.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">In May 2021 - ransomware via an email!</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Someone on staff at the DHB clicked on an email link,</span><span class="dada-font-footnotesize"> and answered a few questions.</span><span class="dada-font-footnotesize"> A few days later,</span><span class="dada-font-footnotesize"> many patient records and schedules were encrypted.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Consequences...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">DHB network down for months,</span><span class="dada-font-footnotesize"> records lost,</span><span class="dada-font-footnotesize"> patient operations cancelled etc.</span><span class="dada-font-footnotesize"> At one time the chief officer claimed that no machines were damaged,</span><span class="dada-font-footnotesize"> choosing to ignore the social and health damage!</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">17/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Consequences: Work and Income NZ (WINZ)</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">A flat corporate network, with a Trojan Horse</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Work and Income NZ provide public access terminals in all of their offices in towns/cities around NZ.</span><span class="dada-font-footnotesize"> The public can use these terminals for various uses,</span><span class="dada-font-footnotesize"> including to look for,</span><span class="dada-font-footnotesize"> and apply for jobs.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Keith Ng blogged that you could go into any WINZ office and use them to access the WINZ,</span><span class="dada-font-footnotesize"> and Ministry for Social Development corporate networks.</span></p>
+<ul>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Keith was a citizen reporter,</span><span class="dada-font-footnotesize"> not a hacker,</span><span class="dada-font-footnotesize"> but said that they had some basic features disabled - you couldn’t just open up File Manager...</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">However,</span><span class="dada-font-footnotesize"> by using </span>“<span class="dada-font-footnotesize">Open File</span>”<span class="dada-font-footnotesize"> in Microsoft Office,</span><span class="dada-font-footnotesize"> you could map any unsecured computer at WINZ,</span><span class="dada-font-footnotesize"> and then open up accessible files.</span></div></li>
+</ul>
+<p><span class="dada-font-footnotesize">He carried on to expose a wide range of information that appeared to be easily accessable.</span></p>
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Consequences...</div>
+<div class="block-content">
+<div class="dada-inline-row">
+<div class="dada-fbox" style="width: 12.7%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/KeithNg.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+<p><span class="dada-font-footnotesize"> Keith became a real journalist!</span><span class="dada-font-footnotesize"> WINZ officers were promoted!</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">18/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Consequences: 1MW Diesel generator blown up</span><span class="hfill-right"><span class="dada-font-footnotesize"> [</span><a href="https://hugh.myddns.me/media/movies/Diesel-1.mp4">7</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 55%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/diesel.jpg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">Suva, Fiji: A coup, and chaos (Attacks on infrastructure are no fun)</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">In 2000 I worked at the University of the South Pacific in Suva,</span><span class="dada-font-footnotesize"> Fiji during a coup,</span><span class="dada-font-footnotesize"> and some villagers sabotaged the Monasavu dam,</span><span class="dada-font-footnotesize"> cutting power to the entire country.</span><span class="dada-font-footnotesize"> For over three months we lived without power,</span><span class="dada-font-footnotesize"> although the electricity department did manage to get some small generators going to provide 20 minutes of electricity to Suva every day.</span><span class="dada-font-footnotesize"> No phones,</span><span class="dada-font-footnotesize"> no shops open,</span><span class="dada-font-footnotesize"> no lights,</span><span class="dada-font-footnotesize"> eventually no water,</span><span class="dada-font-footnotesize"> no news,</span><span class="dada-font-footnotesize"> no Internet.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">19/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Structure: attack on open source software</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><colgroup><col><col style="width: 60%"></colgroup><tbody><tr><td style="text-align: center;"><img data-src="../images/dependency_2x.png" style="width: auto; height:540px; max-width: none; max-height: none" alt="image"></td><td style="text-align: left; border-left: 1px solid black;"><span class="dada-emph"><span class="dada-font-footnotesize">Relied on in Linux and the open source community (updates,</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">the kernel,</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">browsers etc).</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">In February 2024,</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">malicious code which allowed for remote</span></span> <span class="dada-font-footnotesize">execution</span> <span class="dada-emph"><span class="dada-font-footnotesize">of code was injected into at least two official distributions.</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">Luckily,</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">this was discovered accidentally in March 2024,</span></span> <span class="dada-emph"><span class="dada-font-footnotesize">and we will revisit this story when we look at Social Engineering.</span></span> <hr style="border: none; border-top: 3px solid black; width: 50%; margin: 0.4em 0;"> <span class="dada-emph"><span class="dada-font-footnotesize">Note that this was a successful injection of malicious code in an</span></span> <span class="dada-emph">“</span> <span class="dada-emph"><span class="dada-font-footnotesize">open source</span></span> <span class="dada-emph">”</span> <span class="dada-emph"><span class="dada-font-footnotesize">project.</span></span></td></tr></tbody></table></div>
+</div>
+<div class="alertblock">
+<div class="block-title">Open source compression library: xz-utils!</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">xz-utils is an effective compression library used by much of the world - in browsers,</span><span class="dada-font-footnotesize"> operating systems and so on.</span><span class="dada-font-footnotesize"> It has been in use since 2009,</span><span class="dada-font-footnotesize"> with the source maintained by the open-source community since then.</span><span class="dada-font-footnotesize"> The successful attack last year is the first known attack directly on open-source software sources.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">20/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Summary...</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Case studies show us...</div>
+<div class="block-content">
+<p><span class="dada-bold"><span class="dada-font-footnotesize">Warfare</span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> All the stories remind us that there are unannounced </span>“<span class="dada-font-footnotesize">IT</span>”<span class="dada-font-footnotesize"> wars going on.</span><span class="dada-font-footnotesize"> Not missiles and bombs,</span><span class="dada-font-footnotesize"> but the effect can be equally challenging.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-bold"><span class="dada-font-footnotesize">Relentless</span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> The Waikato DHB stories show that even when there has been considerable effort to protect systems,</span><span class="dada-font-footnotesize"> attacks continually re-occur,</span><span class="dada-font-footnotesize"> and the arbitrary infections can have serious </span><span class="dada-bold"><span class="dada-font-footnotesize">consequences</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-bold"><span class="dada-font-footnotesize">Structural</span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> The WINZ corporate network was so flat,</span><span class="dada-font-footnotesize"> that anybody anywhere on the network could access anything.</span><span class="dada-font-footnotesize"> In building a large system we should design in multiple authority checks.</span><span class="dada-font-footnotesize"> The xz story reminds us how interconnected our systems are.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">These stories remind us of the interconnected nature of the systems we rely on.</span><span class="dada-font-footnotesize"> It is not just PCs.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">21/37</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Administrivia</span><span class="dada-topbar-current">Setting the stage...</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Information warfare in the news...</span><span class="dada-topbar-subsection-current">Context for security studies</span><span class="dada-topbar-subsection-other">Terms for security studies</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Administrivia</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Coordinates, officialdom, assessment</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Setting the stage...</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Information warfare in the news...</span></li>
+<li>Context for security studies</li>
+<li><span style="color: lightgray">Terms for security studies</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Introduction</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">22/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Hard to find the boundaries of “Security”</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">It is not &quot;one thing&quot;...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Security is </span><span style="color: blue"><span class="dada-font-footnotesize">complex</span></span><span class="dada-font-footnotesize">:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">Security can involve </span><span style="color: blue"><span class="dada-font-footnotesize">elements</span></span><span class="dada-font-footnotesize"> such as computers,</span><span class="dada-font-footnotesize"> people,</span><span class="dada-font-footnotesize"> locks,</span><span class="dada-font-footnotesize"> communication links and so on.</span></p><p><span class="dada-font-footnotesize">The </span><span style="color: blue"><span class="dada-font-footnotesize">goals</span></span><span class="dada-font-footnotesize"> of security might involve authentication,</span><span class="dada-font-footnotesize"> integrity,</span><span class="dada-font-footnotesize"> accountability,</span><span class="dada-font-footnotesize"> and so on.</span></p><p><span class="dada-font-footnotesize">A security system may involve an </span><span style="color: blue"><span class="dada-font-footnotesize">arbitrary combination </span></span><span class="dada-font-footnotesize">of these elements and goals.</span></p></div>
+</div>
+<hr style="border: none; border-top: 4px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Security is everyone&#x27;s poor relation...</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">It is </span><span style="color: blue"><span class="dada-font-footnotesize">not</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">perceived as a benefit</span></span><span class="dada-font-footnotesize"> until something goes wrong,</span><span class="dada-font-footnotesize"> and requires regular </span><span style="color: blue"><span class="dada-font-footnotesize">monitoring.</span></span></p><p><span class="dada-font-footnotesize">Too often,</span><span class="dada-font-footnotesize"> security is an </span><span style="color: blue"><span class="dada-font-footnotesize">after-thought</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and regarded as an </span><span style="color: blue"><span class="dada-font-footnotesize">impediment</span></span><span class="dada-font-footnotesize"> to using the system.</span><span class="dada-font-footnotesize"> </span></p></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">23/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Complexity of issues: Military security</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 27%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/lpi.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">In all sorts of areas...Four examples...</div>
+<div class="block-content">
+<ol>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Electronic </span><span style="color: blue"><span class="dada-font-footnotesize">warfare and defence</span></span><span class="dada-font-footnotesize"> - </span><span style="color: blue"><span class="dada-font-footnotesize">jamming</span></span><span class="dada-font-footnotesize"> of radar,</span><span class="dada-font-footnotesize"> so opponent cannot see your planes;</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">jamming</span></span><span class="dada-font-footnotesize"> trigger systems for IEDs.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Military </span><span style="color: blue"><span class="dada-font-footnotesize">communications</span></span><span class="dada-font-footnotesize"> - not just </span><span style="color: blue"><span class="dada-font-footnotesize">encryption</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> but also </span><span style="color: blue"><span class="dada-font-footnotesize">hiding the source</span></span><span class="dada-font-footnotesize"> (the location of a transmitter can be attacked,</span><span class="dada-font-footnotesize"> so the military use LPI - low probability of intercept - radio links).</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Military </span><span style="color: blue"><span class="dada-font-footnotesize">logistics</span></span><span class="dada-font-footnotesize"> - who can mobilize 10,000 people and 30,000 meals in a day?</span><span class="dada-font-footnotesize"> Management systems for the military have </span><span style="color: blue"><span class="dada-font-footnotesize">different requirements</span></span><span class="dada-font-footnotesize"> from commercial systems - basic rule is that restricted information cannot flow to an unrestricted area.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">Weapons</span></span><span class="dada-font-footnotesize"> control (eg nuclear weapons) need much </span><span style="color: blue"><span class="dada-font-footnotesize">higher levels of assurance</span></span><span class="dada-font-footnotesize"> than (say) commercial areas.</span></div></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">24/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Complexity of issues: Exposing data...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 25%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/masks.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">During disease outbreak:</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">During an outbreak of disease in Singapore years ago,</span></span><span style="color: black"><span class="dada-font-footnotesize"> my colleagues and I had to provide our temperature every day before we could come into work.</span></span><span style="color: black"><span class="dada-font-footnotesize"> We were assured it was private,</span></span><span style="color: black"><span class="dada-font-footnotesize"> but the data was published in a database,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and by looking at two tables,</span></span><span style="color: black"><span class="dada-font-footnotesize"> unfortunately...</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="table-with-borders"><table><thead><tr style="background-color: rgb(230,255,255);"><th style="text-align: left;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-scriptsize">Nationality:</span></span></span></th><th style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-scriptsize">Singaporean</span></span></span></th><th style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-scriptsize">PRC</span></span></span></th><th style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-scriptsize">Poland</span></span></span></th><th style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-scriptsize">German</span></span></span></th><th style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-scriptsize">Australian</span></span></span></th><th style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-scriptsize">NZ</span></span></span></th><th style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-scriptsize">....</span></span></span></th></tr></thead><tbody><tr class="spacer"><td></td></tr><tr><td style="text-align: left;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-scriptsize">Today&#x27;s temperature:</span></span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-scriptsize">36.8</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-scriptsize">36.9</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-scriptsize">37.1</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-scriptsize">36.5</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-scriptsize">38.2</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-scriptsize">39.1</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-scriptsize">....</span></span></td></tr><tr><td style="text-align: left;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-scriptsize">Number of staff:</span></span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-scriptsize">23</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-scriptsize">14</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-scriptsize">3</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-scriptsize">5</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-scriptsize">3</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-scriptsize">1</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-scriptsize">....</span></span></td></tr></tbody></table></div></div>
+</div>
+<p><span style="color: black"><span class="dada-font-footnotesize">By inference from the two database tables,</span></span><span style="color: black"><span class="dada-font-footnotesize"> you can deduce that Hugh&#x27;s temperature was too high!</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">25/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Anderson&#x27;s book suggests a “framework”</span><span class="hfill-right"><span class="dada-font-footnotesize"> [</span><a href="https://hugh.myddns.me/media/pdfs/sev2.pdf">ctrl-i7</a><span class="dada-font-footnotesize">,</span><a href="https://www.cl.cam.ac.uk/~rja14/book.html">ctrl-i8</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 35%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/polincmechass.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Analyse security in terms of P,M,A and I:</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">policy</span></span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> what is allowed/disallowed.</span><span class="dada-font-footnotesize"> What you are supposed to do.</span></p>
+<p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">mechanism</span></span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> ways of enforcing a policy.</span><span class="dada-font-footnotesize"> Ciphers,</span><span class="dada-font-footnotesize"> controls...</span></p>
+<p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">assurance</span></span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> how much reliance you place on each mechanism.</span><span class="dada-font-footnotesize"> </span></p>
+<p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">incentives</span></span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> motives of the people guarding and maintaining the system,</span><span class="dada-font-footnotesize"> and the attackers.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">26/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the framework: Airport security</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 25%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/911.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Consider the 9/11 attacks in the US in 2001...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">There was actually </span><span style="color: blue"><span class="dada-font-footnotesize">not any failure</span></span><span class="dada-font-footnotesize"> of the security mechanisms in place at the time:</span><span class="dada-font-footnotesize"> knives with blades less than 3 inches were OK in 2001.</span><span class="dada-font-footnotesize"> It was a</span><span style="color: blue"><span class="dada-font-footnotesize"> failure of policy,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> not mechanism</span></span><span class="dada-font-footnotesize">.</span></p>
+<hr style="border: none; border-top: 4px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Since 9/11?</span><span class="dada-font-footnotesize"> There are still poor </span><span style="color: blue"><span class="dada-font-footnotesize">policy choices</span></span><span class="dada-font-footnotesize">:</span></p>
+<ol>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">passenger screening</span></span><span class="dada-font-footnotesize"> is aggressive and costly,</span><span class="dada-font-footnotesize"> (approx $15 billion),</span><span class="dada-font-footnotesize"> whereas</span><span style="color: blue"><span class="dada-font-footnotesize"> strongly reinforced</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">cockpit doors</span></span><span class="dada-font-footnotesize"> could remove most risk (est $100 million).</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Ground staff are seldom screened,</span><span class="dada-font-footnotesize"> planes do not have locks.</span><span class="dada-font-footnotesize"> </span></div></li>
+</ol>
+<hr style="border: none; border-top: 4px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Why are such poor policy choices made?</span><span class="dada-font-footnotesize"> Because the </span><span style="color: blue"><span class="dada-font-footnotesize">incentives</span></span><span class="dada-font-footnotesize"> for policy makers favour</span><span style="color: blue"><span class="dada-font-footnotesize"> visible controls</span></span><span class="dada-font-footnotesize"> over </span><span style="color: blue"><span class="dada-font-footnotesize">effective ones</span></span><span class="dada-font-footnotesize">.</span></p>
+<hr style="border: none; border-top: 4px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Assurance</span></span><span class="dada-font-footnotesize">?</span><span class="dada-font-footnotesize"> System screening picks up less than half the weapons.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">27/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the framework: Bank security</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Policy in banks: &quot;The bank never loses!&quot;</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Mechanism</span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> </span></p>
+<p><span class="dada-font-footnotesize">Banks maintain a kind of distributed bookkeeping system,</span><span class="dada-font-footnotesize"> with customer accounts,</span><span class="dada-font-footnotesize"> and (daily) transactions.</span></p>
+<hr style="border: none; border-top: 4px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Internal:</span></span></p>
+<p><span class="dada-font-footnotesize">The main threats to banks are internal - their own staff!</span><span class="dada-font-footnotesize"> The main defences are double-entry bookkeeping (First described in the 15th century),</span><span class="dada-font-footnotesize"> controls on large transactions,</span><span class="dada-font-footnotesize"> and staff required to take vacations.</span></p>
+<hr style="border: none; border-top: 4px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">External:</span></span></p>
+<p><span class="dada-font-footnotesize">Buildings are built to look imposing,</span><span class="dada-font-footnotesize"> but this is just a facade - </span><span style="color: blue">“</span><span style="color: blue"><span class="dada-font-footnotesize">security theatre</span></span><span style="color: blue">”</span><span class="dada-font-footnotesize"> - (a thief with a gun wins).</span><span class="dada-font-footnotesize"> ATMs (as we have seen) are susceptible to attacks.</span></p>
+<p><span class="dada-font-footnotesize">Bank websites use a </span><span style="color: blue"><span class="dada-font-footnotesize">mix</span></span><span class="dada-font-footnotesize"> of techniques - </span><span style="color: blue"><span class="dada-font-footnotesize">2-factor authentication,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> HTTPS</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">Phishing</span></span><span class="dada-font-footnotesize"> attempts to bypass this by attacking clients.</span><span class="dada-font-footnotesize"> Note that banks have been leaders in the use of </span><span style="color: blue"><span class="dada-font-footnotesize">cryptography</span></span><span class="dada-font-footnotesize"> for communication.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">28/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the framework: Hospital security</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 40%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/hospital.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Policies mostly  to ensure patient safety and privacy</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Consider patient record systems:</span><span class="dada-font-footnotesize"> </span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 90%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">A </span><span style="color: blue"><span class="dada-font-footnotesize">mechanism</span></span><span class="dada-font-footnotesize"> might be that </span><span style="color: blue">“</span><span style="color: blue"><span class="dada-font-footnotesize">Nurses can see the patient record for patients cared in their own department over the last 90 days</span></span><span style="color: blue">”</span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> However,</span><span class="dada-font-footnotesize"> this might be </span><span style="color: blue"><span class="dada-font-footnotesize">tricky</span></span><span class="dada-font-footnotesize"> to implement given that Nurses can move departments - the patient record system would become </span><span style="color: blue"><span class="dada-font-footnotesize">dependent</span></span><span class="dada-font-footnotesize"> on the hospital personnel system.</span></p><p><span class="dada-font-footnotesize">Record anonymizing for research can be tricky (remember the slide on database attacks).</span></p></div>
+</div>
+<p><span class="dada-font-footnotesize">There is an extreme requirement for </span><span style="color: blue"><span class="dada-font-footnotesize">accuracy</span></span><span class="dada-font-footnotesize"> of web based data (reference texts,</span><span class="dada-font-footnotesize"> drug side effects).</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">29/37</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Administrivia</span><span class="dada-topbar-current">Setting the stage...</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Information warfare in the news...</span><span class="dada-topbar-subsection-other">Context for security studies</span><span class="dada-topbar-subsection-current">Terms for security studies</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Administrivia</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Coordinates, officialdom, assessment</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Setting the stage...</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Information warfare in the news...</span></li>
+<li><span style="color: lightgray">Context for security studies</span></li>
+<li>Terms for security studies</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Introduction</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">30/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Systems/Services/Goals, Attacks and Threats</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">What is a system? It can vary...</div>
+<div class="block-content">
+<ol>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Product or component</span></span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> such as a smartcard,</span><span class="dada-font-footnotesize"> a PC,</span><span class="dada-font-footnotesize"> a protocol...</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Collection</span></span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> some products/components,</span><span class="dada-font-footnotesize"> and an OS,</span><span class="dada-font-footnotesize"> network,</span><span class="dada-font-footnotesize"> making up an organization&#x27;s infrastructure.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Application</span></span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> the above and some set of applications.</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Composite</span></span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> the above and IT staff,</span><span class="dada-font-footnotesize"> and perhaps users,</span><span class="dada-font-footnotesize"> management,</span><span class="dada-font-footnotesize"> clients,</span><span class="dada-font-footnotesize"> customers...</span></div></li>
+</ol>
+<p><span class="dada-font-footnotesize">A system can thus refer to small things or big things.</span><span class="dada-font-footnotesize"> This </span><span style="color: blue"><span class="dada-font-footnotesize">indeterminacy</span></span><span class="dada-font-footnotesize"> about even basic words leads to </span><span style="color: blue"><span class="dada-font-footnotesize">confusion</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and </span><span style="color: blue"><span class="dada-font-footnotesize">errors</span></span><span class="dada-font-footnotesize">.</span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Basic terms</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Vulnerability/Threats</span></span></span><span class="dada-font-footnotesize">:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> If there is a weakness (vulnerability),</span><span class="dada-font-footnotesize"> then a potentially harmful situation (threat) may occur.</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Services/Goals</span></span></span><span class="dada-font-footnotesize">:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> ensuring adequate service in a computer system</span><span style="color: blue"><span class="dada-font-footnotesize">.</span></span><span style="color: blue"><span class="dada-font-footnotesize"> CIA!</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">Good guys need &#x27;em.</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Attacks/Controls</span></span></span><span class="dada-font-footnotesize">:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> An attack=threat+vulnerability.</span><span class="dada-font-footnotesize"> A control is a way of reducing the effect of a vulnerability.</span><span class="dada-font-footnotesize"> </span></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">31/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">The CIA triad...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 35%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/triangle2.jpg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">FIPS specify three objectives/goals:</div>
+<div class="block-content">
+<ol>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">confidentiality</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">:</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-font-footnotesize">concealing information - resources may only be accessed by authorized parties;</span></span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">integrity</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">:</span></span><span style="color: black"><span class="dada-font-footnotesize"> trustworthiness of data - resources may only be modified by authorized parties in authorized ways;</span></span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">availability</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">:</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-font-footnotesize">preventing DOS/denial-of-service - resources are accessible in a timely manner.</span></span></div></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">32/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Attacks and threats</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Three aspects of attacks: MOM</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Method</span></span></span><span class="dada-font-footnotesize">:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> tools,</span><span class="dada-font-footnotesize"> knowledge;</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Opportunity</span></span></span><span class="dada-font-footnotesize">:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> time,</span><span class="dada-font-footnotesize"> access;</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Motive</span></span></span><span class="dada-font-footnotesize">:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> what advantage is there?</span></p>
+</dd>
+</dl>
+</div>
+</div>
+<p><span class="dada-font-footnotesize">An important basic principle for attacks:</span></p>
+<dl>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">The</span></span></span> <span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">weakest</span></span></span> <span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">link</span></span></span><span class="dada-font-footnotesize">:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> An attacker only needs one small flaw in a system</span></p>
+</dd>
+</dl>
+<div class="block">
+<div class="block-title">Threats</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">disclosure</span></span></span><span class="dada-font-footnotesize">:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> unauthorized access (snooping/interception</span><span class="dada-font-footnotesize">);</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">deception</span></span></span><span class="dada-font-footnotesize">:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> accept false data (man-in-the-middle/modification</span><span class="dada-font-footnotesize">);</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">disruption</span></span></span><span class="dada-font-footnotesize">:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> prevent correct operation (denial-of-service/interruption</span><span class="dada-font-footnotesize">);</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">usurpation</span></span></span><span class="dada-font-footnotesize">:</span></dt>
+<dd>
+<p></span><span class="dada-font-footnotesize"> unauthorized control (spoofing/fabrication</span><span class="dada-font-footnotesize">).</span></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">33/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Types of attacks</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 69.7%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/attack1.png" style="width: auto; height:277px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center;"><img data-src="images/attack2.png" style="width: auto; height:277px; max-width: none; max-height: none" alt="image"></td></tr><tr><td style="text-align: center;"><img data-src="images/attack3.png" style="width: auto; height:277px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center;"><img data-src="images/attack4.png" style="width: auto; height:277px; max-width: none; max-height: none" alt="image"></td></tr></tbody></table></div>
+</div>
+<div class="block">
+<div class="block-title">A reminder of the types of attacks</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The diagrams above,</span><span class="dada-font-footnotesize"> of Interception,</span><span class="dada-font-footnotesize"> Modification,</span><span class="dada-font-footnotesize"> Interruption,</span><span class="dada-font-footnotesize"> and Fabrication,</span><span class="dada-font-footnotesize"> remind us of the routes taken.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">34/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Types of attacks</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 60%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/security.jpg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">And persuasion...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Let us not forget</span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize"> human factors</span></span></span><span class="dada-font-footnotesize"> and </span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">social engineering</span></span></span>.</p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">35/37</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Attack “surfaces” for DADA2026</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">We will look at these...</div>
+<div class="block-content">
+<ol>
+<li><div class="dada-li-text"><span class="dada-bold"><span class="dada-font-footnotesize">people</span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> the ways in which people are manipulated.</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span class="dada-bold"><span class="dada-font-footnotesize">complexity</span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> complex systems - large number of attack vectors.</span><span class="dada-font-footnotesize"> </span></div></li>
+<li><div class="dada-li-text"><span class="dada-bold"><span class="dada-font-footnotesize">cryptography</span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> underpinning much of the IT world.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-bold"><span class="dada-font-footnotesize">communication systems</span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> communication between them may be attacked.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-bold"><span class="dada-font-footnotesize">high level IP</span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> the Internet was not designed with security in mind.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-bold"><span class="dada-font-footnotesize">web applications</span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> a range of attack vectors,</span></div></li>
+<li><div class="dada-li-text"><span class="dada-bold"><span class="dada-font-footnotesize">machine architecture</span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> machine hardware,</span><span class="dada-font-footnotesize"> operating systems.</span></div></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">36/37</div>
+</section>
+<section class="slide level2 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Administrivia</span><span class="dada-topbar-current">Setting the stage...</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Information warfare in the news...</span><span class="dada-topbar-subsection-other">Context for security studies</span><span class="dada-topbar-subsection-current">Terms for security studies</span></div>
+</div>
+<h2><span class="dada-title-main"><span class="dada-bold">Summary:</span><span class="dada-bold"> the IT security landscape</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 70%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/polincmechass.png" style="width: auto; height:307px; max-width: none; max-height: none" alt="image"></td><td style="text-align: left; border-left: 1px solid black;"><img data-src="images/Carr.png" style="width: auto; height:307px; max-width: none; max-height: none" alt="image"></td></tr></tbody></table><div class="center"><p style="text-align: center;"><span class="dada-font-footnotesize">(Frameworks to help)</span></p></div></div>
+</div>
+<div class="alertblock">
+<div class="block-title">It is information warfare...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Unfortunately,</span><span class="dada-font-footnotesize"> the landscape is that of &quot;Information warfare&quot;,</span><span class="dada-font-footnotesize"> but the good news is that there are a wide range of activities (and hence jobs):</span><span class="dada-font-footnotesize"> Information Security Engineer,</span><span class="dada-font-footnotesize"> IT Security Architect,</span><span class="dada-font-footnotesize"> IT Security Specialist,</span><span class="dada-font-footnotesize"> IT Security Analyst,</span><span class="dada-font-footnotesize"> Business Security Manager,</span><span class="dada-font-footnotesize"> Security Research (Technical)...</span></p>
+<hr style="border: none; border-top: 4px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">This session emphasized the scale of the issue,</span><span class="dada-font-footnotesize"> with hints as to how we can begin to address it.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Introduction</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">37/37</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>Reveal.initialize({hash: true, width: 1920, height: 1080, margin: 0});</script>
+</body>
+</html>

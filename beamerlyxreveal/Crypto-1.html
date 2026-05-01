@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DADA2026:4-1 Defence against the Dark Arts Fourth topic - Cryptography 1 [H4]</title>
+<meta name="author" content="Hugh Anderson [Q]">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css">
+<link rel="stylesheet" href="beamer_Warsaw.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js"></script>
+<script>document.addEventListener("DOMContentLoaded", function () { const mathElements = document.getElementsByClassName("math"); const macros = {"\\qed": "\\tag*{$\\colorlet{colorsave}{.}\\color{black}\\blacksquare\\color{colorsave}$}", "\\concat": "\\mathbin{\\mathmakebox[\\widthof{${+}\\m@th$}]{+\\hskip-1emplus1fil+}}", "\\myeq": "\\mathrel{\\overset{{\\textsf{def}}}{=}}", "\\raggedright": "\\leftskip=0pt \\rightskip=0pt plus 0cm"}; for (let i = 0; i < mathElements.length; i++) {  const texText = mathElements[i].firstChild;  if (mathElements[i].tagName === "SPAN" && texText && texText.nodeType === 3) {   katex.render(texText.data, mathElements[i], {    displayMode: mathElements[i].classList.contains("display"),    throwOnError: false, macros: macros, fleqn: false   });  } }});</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="title-slide" class="dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<div class="dada-title-content">
+<h1 class="title">DADA2026:4-1 <br>Defence against the Dark Arts<br>Fourth topic - Cryptography 1 [<a href="https://hugh.myddns.me/media/pdfs/HandoutCrypto.pdf">H4</a>]</h1>
+<div class="dada-title-authors">
+<p class="author">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</p>
+<p class="institute">National University of Singapore<br>School of Computing</p>
+<p class="date">July, 2026</p>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">1/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Keys and confusion...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 65%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/Lorenz-SZ42-2.jpeg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">2/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Where are we?</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">The topics: Attack surfaces so far...</div>
+<div class="block-content">
+<dl>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Introduction</span></span> <span style="color: gray"><span class="dada-font-footnotesize">(in</span></span> <span style="color: gray"><span class="dada-font-footnotesize">May):</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Warfare,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> with an indistinct enemy.</span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-font-footnotesize">Social</span></span> <span style="color: gray"><span class="dada-font-footnotesize">Engineering</span></span> <span style="color: gray"><span class="dada-font-footnotesize">(in</span></span> <span style="color: gray"><span class="dada-font-footnotesize">May):</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Examples - phishing,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> vishing,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> tricking.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> Human weaknesses.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+<dt><span><span style="color: gray"><span class="dada-emph"><span class="dada-font-footnotesize">System</span></span></span> <span style="color: gray"><span class="dada-font-footnotesize">Complexity:</span></dt>
+<dd>
+<p></span></span><span style="color: gray"><span class="dada-font-footnotesize"> Fight back with design principles,</span></span><span style="color: gray"><span class="dada-font-footnotesize"> standards and formal methods.</span></span><span style="color: gray"><span class="dada-font-footnotesize"> </span></span></p>
+</dd>
+</dl>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><dl><dt><span><span style="color: black"><span class="dada-font-footnotesize">Crypto</span></span> <span style="color: black"><span class="dada-font-footnotesize">1:</span></dt><dd><p></span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize">Today we will look at the history of cryptography, and learn some of general techniques and terminologies used in (symmetric) cryptography. We will then look at the methods used for (symmetric) computer cryptography, and their advantages and limitations.</span></span></span></p></dd></dl></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">3/36</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-right"></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Encryption...</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Prehistory of crypto</li>
+<li>Terms, definitions, goals</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Modern symmetric ciphers</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Symmetric cipher building blocks</li>
+<li>DES and AES</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/36</div>
+</section>
+<section>
+<section id="encryption..." class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Prehistory of crypto</span><span class="dada-topbar-subsection-other">Terms, definitions, goals</span></div>
+</div>
+<h1>Encryption...</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/36</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Prehistory of crypto</span><span class="dada-topbar-subsection-other">Terms, definitions, goals</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Encryption...</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Prehistory of crypto</li>
+<li><span style="color: lightgray">Terms, definitions, goals</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Modern symmetric ciphers</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Symmetric cipher building blocks</span></li>
+<li><span style="color: lightgray">DES and AES</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">4/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Julius Cæsar cipher...</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/JuliusCaesar1a.srt.mp4">1</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 34%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/Brutus.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">We can define the transformation mathematically</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 60%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td colspan="26" style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">I</span></span> <span style="color: blue"> </span> <span style="color: blue"> </span> <span style="color: blue"> </span> <span style="color: blue"><span class="dada-font-footnotesize">C L A V D I V S</span></span></td></tr><tr><td colspan="26" style="text-align: center; border-top: 1px solid black; border-bottom: 1px solid black; border-left: 1px solid black;"><span style="color: blue"><span class="dada-font-footnotesize">A</span></span> <span style="color: blue"><span class="dada-font-footnotesize">B</span></span> <span style="color: blue"><span class="dada-font-footnotesize">C</span></span> <span style="color: blue"><span class="dada-font-footnotesize">D</span></span> <span style="color: blue"><span class="dada-font-footnotesize">E</span></span> <span style="color: blue"><span class="dada-font-footnotesize">F</span></span> <span style="color: blue"><span class="dada-font-footnotesize">G</span></span> <span style="color: blue"><span class="dada-font-footnotesize">H</span></span> <span style="color: blue"><span class="dada-font-footnotesize">I</span></span> <span style="color: blue"><span class="dada-font-footnotesize">K</span></span> <span style="color: blue"><span class="dada-font-footnotesize">L</span></span> <span style="color: blue"><span class="dada-font-footnotesize">M</span></span> <span style="color: blue"><span class="dada-font-footnotesize">N</span></span> <span style="color: blue"><span class="dada-font-footnotesize">O</span></span> <span style="color: blue"><span class="dada-font-footnotesize">P</span></span> <span style="color: blue"><span class="dada-font-footnotesize">Q</span></span> <span style="color: blue"><span class="dada-font-footnotesize">R</span></span> <span style="color: blue"><span class="dada-font-footnotesize">S</span></span> <span style="color: blue"><span class="dada-font-footnotesize">T</span></span> <span style="color: blue"><span class="dada-font-footnotesize">V</span></span> <span style="color: blue"><span class="dada-font-footnotesize">X</span></span> <span style="color: blue"><span class="dada-font-footnotesize">Y</span></span> <span style="color: blue"><span class="dada-font-footnotesize">Z</span></span></td></tr><tr><td colspan="26" style="text-align: center; border-left: 1px solid black;"><span style="color: red"><span class="dada-font-footnotesize">X</span></span> <span style="color: red"><span class="dada-font-footnotesize">Y</span></span> <span style="color: red"><span class="dada-font-footnotesize">Z</span></span> <span style="color: red"><span class="dada-font-footnotesize">A</span></span> <span style="color: red"><span class="dada-font-footnotesize">B</span></span> <span style="color: red"><span class="dada-font-footnotesize">C</span></span> <span style="color: red"><span class="dada-font-footnotesize">D</span></span> <span style="color: red"><span class="dada-font-footnotesize">E</span></span> <span style="color: red"><span class="dada-font-footnotesize">F</span></span> <span style="color: red"><span class="dada-font-footnotesize">G</span></span> <span style="color: red"><span class="dada-font-footnotesize">H</span></span> <span style="color: red"><span class="dada-font-footnotesize">I</span></span> <span style="color: red"><span class="dada-font-footnotesize">K</span></span> <span style="color: red"><span class="dada-font-footnotesize">L</span></span> <span style="color: red"><span class="dada-font-footnotesize">M</span></span> <span style="color: red"><span class="dada-font-footnotesize">N</span></span> <span style="color: red"><span class="dada-font-footnotesize">O</span></span> <span style="color: red"><span class="dada-font-footnotesize">P</span></span> <span style="color: red"><span class="dada-font-footnotesize">Q</span></span> <span style="color: red"><span class="dada-font-footnotesize">R</span></span> <span style="color: red"><span class="dada-font-footnotesize">S</span></span> <span style="color: red"><span class="dada-font-footnotesize">T</span></span> <span style="color: red"><span class="dada-font-footnotesize">V</span></span></td></tr><tr><td colspan="26" style="text-align: center; border-top: 1px solid black;"><span style="color: red"><span class="dada-font-footnotesize">F</span></span> <span style="color: red"> </span> <span style="color: red"> </span> <span style="color: red"> </span> <span style="color: red"><span class="dada-font-footnotesize">Z H X R A F R P</span></span></td></tr></tbody></table></div>
+</div>
+<div class="center">
+<div class="dada-fbox" style="width: 45%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><span style="color: blue"><span class="math inline">{\begin{array}{ccccc} c &amp; = &amp; \mathrm{Enc}_{k}(p) &amp; = &amp; (p+k)\mod 23\\ p &amp; = &amp; \mathrm{Dec}_{k}(c) &amp; = &amp; (c-k)\mod 23 \end{array}}</span></span></p></div></div>
+</div>
+<p><span class="dada-font-footnotesize">Cryptanalysis:</span><span class="dada-font-footnotesize"> we only have 22 useful ciphers.</span><span class="dada-font-footnotesize"> We can brute force it!</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">5/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Examples of rotation ciphers</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/cipher-disk-m.jpg" style="width: auto; height:594px; max-width: none; max-height: none" alt="image"> <img class="dada-inline-img" data-src="images/cipher2disk.jpg" style="width: auto; height:594px; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Union (North) and Confederate (South) ciphers</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Used in the American Civil war,</span><span class="dada-font-footnotesize"> they can be used as simple rotation cipher.</span><span class="dada-font-footnotesize"> The Confederate one has a keyspace of 26,</span><span class="dada-font-footnotesize"> and a useful keyspace of only 25.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">6/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Substitution</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 25%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="table-with-borders"><table><thead><tr style="background-color: rgb(230,255,255);"><th style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Code</span></span></span></th><th style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">Encoding</span></span></span></th></tr></thead><tbody><tr class="spacer"><td></td></tr><tr><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">A</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">Q</span></span></td></tr><tr><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">B</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">V</span></span></td></tr><tr><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">C</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">X</span></span></td></tr><tr><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">D</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">W</span></span></td></tr><tr><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">...</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">...</span></span></td></tr></tbody></table></div></div>
+</div>
+<div class="block">
+<div class="block-title">A (random) monoalphabetic substitution cipher</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Substitution cipher systems encode the input stream using a substitution rule.</span><span class="dada-font-footnotesize"> The Cæsar cipher is an example of a simple substitution cipher system.</span></p>
+<hr style="border: none; border-top: 4px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">If the mapping was more randomly chosen it is called a monoalphabetic substitution cipher,</span><span class="dada-font-footnotesize"> and the keyspace for encoding </span><span class="dada-font-footnotesize"><span class="math inline">26</span></span><span class="dada-font-footnotesize"> letters would be </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">26!-1=403,291,461,126,605,635,583,999,999</span></span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">7/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Substitution cipher...</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/ETAOINSHRDLUShort.mp4">2</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 44%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/DancingMen.jpg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">General substitutions</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">For a general substitution,</span><span class="dada-font-footnotesize"> trying </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">1,000,000</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> messages in a second</span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> then the average time to find a solution by trying decryptions would be about</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">6,394,144,170,576</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> years!</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span></p>
+<hr style="border: none; border-top: 4px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">We might be lulled into a sense of security by these big numbers,</span><span class="dada-font-footnotesize"> but of course this sort of cipher can be subject to </span><span style="color: blue"><span class="dada-font-footnotesize">frequency analysis</span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span><span class="dada-font-footnotesize"> The problems are that:</span></p>
+<ol>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">letters are not equally common:</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">ETAOINSHRDLU</span></span><span class="dada-font-footnotesize">!</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">human languages have high redundancy:</span><span class="dada-font-footnotesize"> </span><span style="color: red"><span class="dada-font-footnotesize">(fr xmpl,</span></span><span style="color: red"><span class="dada-font-footnotesize"> hgh ndrsn s tchng DD ths smstr)</span></span><span class="dada-font-footnotesize">.</span></div></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">8/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Cryptanalysis of mono-alphabetic ciphers</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 50%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/LetterFrequencies.jpg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Frequency analysis: ciphers do not change relative letter frequencies</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The central concept of this was discovered and described by Arabian scientists in the 9th century.</span><span class="dada-font-footnotesize"> An attacker can calculate the frequencies for ciphertext.</span><span class="dada-font-footnotesize"> The most common might be an E.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">9/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Cryptanalysis of mono-alphabetic ciphers</span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">First step: calculate frequencies</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode" style="color: red;"><pre>EV YQS CVV MIWK FRPC FRQF FRV IQFV WM
+FIQSCKPCCPWS ACPSN IVJVFPFPWS RQC FW
+QJJIWQYR ZVIW FW QYRPVDV KWIV QSB KWIV
+IVTPQXTV FIQSCKPCCPWS. RWEVDVI EV LSWE
+FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
+</div>
+<p><span style="color: red"><span class="dada-font-footnotesize">V</span></span><span style="color: black"><span class="dada-font-footnotesize"> occurs most often,</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: red"><span class="dada-font-footnotesize">F</span></span><span style="color: black"><span class="dada-font-footnotesize"> next and so on,</span></span><span style="color: black"><span class="dada-font-footnotesize"> so replace </span></span><span style="color: red"><span class="dada-font-footnotesize">V</span></span><span style="color: black"><span class="dada-font-footnotesize"> with </span></span><span style="color: blue"><span class="dada-font-footnotesize">E</span></span><span style="color: black"><span class="dada-font-footnotesize">...</span></span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Second step: try solutions</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre><span style="color: red;">EV YQS CVV MIWK FRPC FRQF FRV IQFV WM</span>
+<span style="color: blue;">-E -A- -EE F-O- THI- THAT THE -ATE OF</span>
+
+<span style="color: red;">FIQSCKPCCPWS ACPSN IVJVFPFPWS RQC FW</span>
+<span style="color: blue;">T-A---I--IO- --I-- -E-ETITIO- HA- TO</span>
+
+<span style="color: red;">QJJIWQYR ZVIW FW QYRPVDV KWIV QSB KWIV</span>
+<span style="color: blue;">A---OA-H -E-O TO A-HIE-E -O-E A-- -O-E</span></pre></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">10/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Polyalphabetic ciphers</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 45%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="table-with-borders"><table><thead><tr style="background-color: rgb(230,255,255);"><th style="text-align: center;"></th><th style="text-align: center;"><span style="color: black"><span class="dada-bold"><span class="dada-font-tiny">A</span></span></span></th><th style="text-align: center;"><span style="color: black"><span class="dada-bold"><span class="dada-font-tiny">B</span></span></span></th><th style="text-align: center;"><span style="color: black"><span class="dada-bold"><span class="dada-font-tiny">C</span></span></span></th><th style="text-align: center;"><span style="color: black"><span class="dada-bold"><span class="dada-font-tiny">D</span></span></span></th><th style="text-align: center;"><span style="color: black"><span class="dada-bold"><span class="dada-font-tiny">E</span></span></span></th><th style="text-align: center;"><span style="color: black"><span class="dada-bold"><span class="dada-font-tiny">F</span></span></span></th><th style="text-align: center;"><span style="color: black"><span class="dada-bold"><span class="dada-font-tiny">G</span></span></span></th><th style="text-align: center;"><span style="color: black"><span class="dada-bold"><span class="dada-font-tiny">H</span></span></span></th><th style="text-align: center;"><span style="color: black"><span class="dada-bold"><span class="dada-font-tiny">...</span></span></span></th></tr></thead><tbody><tr class="spacer"><td></td></tr><tr><td style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-tiny">A</span></span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">A</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">B</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">C</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">D</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">E</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">F</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">G</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">H</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td></tr><tr><td style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-tiny">B</span></span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">B</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">C</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">D</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">E</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">F</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">G</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">H</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">I</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td></tr><tr><td style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-tiny">C</span></span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">C</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">D</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">E</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">F</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">G</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">H</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">I</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">J</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td></tr><tr><td style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-tiny">D</span></span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">D</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">E</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">F</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">G</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">H</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">I</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">J</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">K</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td></tr><tr><td style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-tiny">E</span></span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">E</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">F</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">G</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">H</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">I</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">J</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">K</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">L</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td></tr><tr><td style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-tiny">F</span></span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">F</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">G</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">H</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">I</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">J</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">K</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">L</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">M</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td></tr><tr><td style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-tiny">G</span></span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">G</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">H</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">I</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">J</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">K</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">L</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">M</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">N</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td></tr><tr><td style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-tiny">H</span></span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">H</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">I</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">J</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">K</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">L</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">M</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">N</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">O</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td></tr><tr><td style="text-align: center;"><span style="color: blue"><span class="dada-bold"><span class="dada-font-tiny">...</span></span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-tiny">...</span></span></td></tr></tbody></table></div></div>
+</div>
+<div class="block">
+<div class="block-title">Vigenère (1520) uses a tableau, and a key</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Polyalphabetic substituion ciphers improve security.</span><span class="dada-font-footnotesize"> There are more alphabets to guess and hence a flatter frequency distribution.</span></p>
+<p><span class="dada-font-footnotesize">We use a key to select which cipher is used for each letter of message.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">11/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Vigenère</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 53%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-footnotesize">Key</span></span></td><td style="text-align: center;"><span class="dada-font-footnotesize">B</span></td><td style="text-align: center;"><span class="dada-font-footnotesize">A</span></td><td style="text-align: center;"><span class="dada-font-footnotesize">D</span></td><td style="text-align: center;"></td><td style="text-align: center;"><span class="dada-font-footnotesize">B</span></td><td style="text-align: center;"></td><td style="text-align: center;"><span class="dada-font-footnotesize">A</span></td><td style="text-align: center;"><span class="dada-font-footnotesize">D</span></td><td style="text-align: center;"><span class="dada-font-footnotesize">B</span></td><td style="text-align: center;"><span class="dada-font-footnotesize">A</span></td></tr><tr><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-footnotesize">Text</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">H</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">A</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">D</span></span></td><td style="text-align: center;"></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">A</span></span></td><td style="text-align: center;"></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">F</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">E</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">E</span></span></td><td style="text-align: center;"><span style="color: blue"><span class="dada-font-footnotesize">D</span></span></td></tr><tr><td style="text-align: left;"><span class="dada-bold"><span class="dada-font-footnotesize">Cipher</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-footnotesize">I</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-footnotesize">A</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-footnotesize">G</span></span></td><td style="text-align: center;"></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-footnotesize">B</span></span></td><td style="text-align: center;"></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-footnotesize">F</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-footnotesize">H</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-footnotesize">F</span></span></td><td style="text-align: center;"><span style="color: red"><span class="dada-font-footnotesize">D</span></span></td></tr></tbody></table></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Keyword is BAD, so encoding HAD A FEED  results in:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">If we can discover the length of the repeated key (in this case </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">3</span></span></span><span class="dada-font-footnotesize">),</span><span class="dada-font-footnotesize"> and the text is long enough,</span><span class="dada-font-footnotesize"> we can just consider the cipher to be a group of interleaved substitution ciphers and solve accordingly.</span></p>
+</div>
+</div>
+<div class="block">
+<div class="block-title">Cryptanalysis: Babbage (1854)/Kasiski (1863)</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Repetitions in ciphertext give clues to the period;</span><span class="dada-font-footnotesize"> so find some plaintexts an exact period apart (of course,</span><span class="dada-font-footnotesize"> could also be a random fluke).Then attack each monoalphabetic cipher individually using the same techniques as before.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">12/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Example of a polyalphabetic substitution cipher</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 53%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/m94-left-discs-off-1000px.jpg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">The M-94 cipher</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Used by the US army from 1922 to 1942.</span><span class="dada-font-footnotesize"> It had 25 disks,</span><span class="dada-font-footnotesize"> each containing a random sequence of the letters A-Z around the outside.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">13/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Enigma: polyalphabetic substitution cipher machine</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/mickJagger.mp4">3</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/Enigma1.srt.mp4">4</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/Enigma2.srt.mp4">5</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/MickInEnigma.mp4">8</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/grimeEnigma-1.mp4">6</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 85%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../images/Jagger.png" style="width: auto; height:410px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="images/whatsitdo.png" style="width: auto; height:410px; max-width: none; max-height: none" alt="image"></td></tr><tr><td style="text-align: center; padding-top: 0; padding-bottom: 0; height: 1px; line-height: 0; border-top: 1px solid black;"></td><td style="text-align: center; padding-top: 0; padding-bottom: 0; height: 1px; line-height: 0; border-top: 1px solid black; border-left: 1px solid black;"></td></tr><tr><td style="text-align: center;"><img data-src="images/enigmalights.png" style="width: auto; height:410px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="images/drjamesgrime.png" style="width: auto; height:410px; max-width: none; max-height: none" alt="image"></td></tr></tbody></table></div>
+</div>
+</div>
+<div class="dada-slide-num">14/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">US M209 Rotor machine</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://www.ciphermachinesandcryptology.com/en/m209sim.htm">X</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 50%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/IMG_1313.jpg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">WWII Mechanical encryption machine</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">This is Hugh&#x27;s working,</span><span class="dada-font-footnotesize"> smelly,</span><span class="dada-font-footnotesize"> M209 machine.</span><span class="dada-font-footnotesize"> More material at [X] above.</span><span class="dada-font-footnotesize"> .</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">15/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Transposition/Permutation ciphers</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Permutation ciphers</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">These ciphers hide the message by rearranging the letter order.</span><span class="dada-font-footnotesize"> The rail fence cipher:</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre><span class="dada-bold">Plaintext:</span><span class="dada-bold"> </span> <span style="color: blue">m   e   m   a   t   r   h   t   g   p   r   y</span>
+<span style="color: blue;">              e   t   e   f   e   t   e   o   a   a   t</span>
+<span class="dada-bold">Ciphertext:</span><span class="dada-bold"> </span><span class="roman"><span style="color: red">M E M A T R H T G P R Y E T E F E T E O A A T</span></span></pre></div></div>
+</div>
+<p><span class="dada-font-footnotesize">Or,</span><span class="dada-font-footnotesize"> the row permutation cipher (which has a </span>“<span class="dada-font-footnotesize">key</span>”<span class="dada-font-footnotesize">):</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre><span class="dada-bold">Key:</span><span class="dada-bold">    </span>    4 3 1 2 5 6 7
+<span class="dada-bold">Plaintext:</span><span class="dada-bold"> </span> <span style="color: blue">a t t a c k p </span>
+<span style="color: blue;">            o s t p o n e</span>
+<span style="color: blue;">            d u n t i l t</span>
+<span style="color: blue;">            w o a m x y z</span>
+<span class="dada-bold">Ciphertext:</span><span class="dada-bold"> </span><span class="roman"><span style="color: red">TTNAAPTMTSUOAODWCOIXKNLYPETZ</span></span></pre></div></div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Cryptanalysis of permutation cipher:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">It is easily recognized because it has the same letter frequencies as the original plaintext.</span><span class="dada-font-footnotesize"> Digram and trigram frequency tables can be useful.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">16/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Product ciphers</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox">
+<img data-src="../images/SPN-1a.png" style="width: auto; height:324px; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Substitution plus permutation:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Is double encryption a thing?</span><span class="dada-font-footnotesize"> i.e.</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c=\mathrm{Enc}_{k_{1}}(\mathrm{Enc}_{k_{2}}^{&#x27;}(x))</span></span></span><span class="dada-font-footnotesize"> where</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">k_{1}</span></span></span><span class="dada-font-footnotesize"> is the key for the first encryption</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">\mathrm{Enc}</span></span></span><span class="dada-font-footnotesize"> and</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">k_{2}</span></span></span><span class="dada-font-footnotesize"> is the key for the second encryption</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">\mathrm{Enc}^{&#x27;}</span></span></span><span class="dada-font-footnotesize">.</span></p>
+<ul>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">If both</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">\mathrm{Enc}</span></span></span><span class="dada-font-footnotesize"> and</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">\mathrm{Enc}^{&#x27;}</span></span></span><span class="dada-font-footnotesize"> are permutation ciphers,</span><span class="dada-font-footnotesize"> then there is no advantage of doing so.</span><span class="dada-font-footnotesize"> The combined cipher is still a permutation.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">If</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">\mathrm{Enc}</span></span></span><span class="dada-font-footnotesize"> and</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">\mathrm{Enc}^{&#x27;}</span></span></span><span class="dada-font-footnotesize"> are both substitution ciphers,</span><span class="dada-font-footnotesize"> then the final encryption is simply another substitution cipher.</span></div></li>
+</ul>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">But doing permutation and sustitution form an important class of ciphers:</span><span class="dada-font-footnotesize"> the Substitution-Permutation Networks (SPN).</span><span class="dada-font-footnotesize"> A bridge from classical to modern ciphers.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">17/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Lest we forget: The one-time-pad (Vernam&#x27;s cipher)</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://priyom.org/number-stations">i3</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">An &quot;unconditionally secure&quot; scheme:</div>
+<div class="block-content">
+<table>
+<tbody>
+<tr>
+<td style="text-align: center;"><div class="dada-fbox" style="width: 326.4px; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/otp.jpg" style="height: auto; width:288px; max-width: none; max-height: none" alt="image"></p></div></div></td>
+<td style="text-align: center;"><div class="dada-fbox" style="width: 1152.0px; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">The one time pad provides </span>“<span class="dada-font-footnotesize">perfect</span>”<span class="dada-font-footnotesize"> secrecy,</span><span class="dada-font-footnotesize"> meaning you learn nothing by having the ciphertext.</span><span class="dada-font-footnotesize"> The key is a sequence of random key letters,</span><span class="dada-font-footnotesize"> each letter used once only,</span><span class="dada-font-footnotesize"> and available at only the sender and receiver.</span><span class="dada-font-footnotesize"> </span></p><hr style="border: none; border-top: 4px solid black; width: 85%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">Even in modern times,</span><span class="dada-font-footnotesize"> there are mysterious number stations [i3],</span><span class="dada-font-footnotesize"> broadcasting sequences of letters or numbers.</span><span class="dada-font-footnotesize"> Many of the stations have been located,</span><span class="dada-font-footnotesize"> typically behind barbed wire and military signs.</span><span class="dada-font-footnotesize"> As far as I am aware,</span><span class="dada-font-footnotesize"> no government has ever admitted to their purpose.</span><span class="dada-font-footnotesize"> </span></p><hr style="border: none; border-top: 4px solid black; width: 85%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">However,</span><span class="dada-font-footnotesize"> it is pretty clear that they are using Vernam&#x27;s cipher to broadcast messages to spies in other countries.</span><span class="dada-font-footnotesize"> Only the spy and the spy-handler have copies of the </span>“<span class="dada-font-footnotesize">book</span>”<span class="dada-font-footnotesize">.</span></p></div></td>
+</tr>
+</tbody>
+</table>
+<p><span style="color: red">Q:</span><span style="color: red"> Why dont we use Vernam&#x27;s cipher for everything if it is perfect?</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">18/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Key points/jargon</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Summary:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">We looked at a range of historical </span><span style="color: blue"><span class="dada-font-footnotesize">substitution</span></span><span class="dada-font-footnotesize"> ciphers,</span><span class="dada-font-footnotesize"> including the Cæsar/</span><span style="color: blue"><span class="dada-font-footnotesize">rotation</span></span><span class="dada-font-footnotesize"> cipher (from 2000 years ago),</span><span class="dada-font-footnotesize"> and also random ciphers (</span><span style="color: blue"><span class="dada-font-footnotesize">mono-alphabetic substitution</span></span><span class="dada-font-footnotesize">).</span><span class="dada-font-footnotesize"> These ciphers are susceptible to frequency analysis.</span></p>
+<p><span class="dada-font-footnotesize">We also saw the Vigenère,</span><span class="dada-font-footnotesize"> Beaufort ciphers (</span><span style="color: blue"><span class="dada-font-footnotesize">poly-alphabetic substitution</span></span><span class="dada-font-footnotesize">),</span><span class="dada-font-footnotesize"> where the cipher attempts to avoid frequency analysis by changing the cipher for each character or block.</span></p>
+<p><span class="dada-font-footnotesize">We also looked at </span><span style="color: blue"><span class="dada-font-footnotesize">transposition</span></span><span class="dada-font-footnotesize"> or </span><span style="color: blue"><span class="dada-font-footnotesize">permutation</span></span><span class="dada-font-footnotesize"> ciphers.</span><span class="dada-font-footnotesize"> These ciphers exhibit the same letter frequencies as the original ciphertext.</span></p>
+<hr style="border: none; border-top: 4px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Modern cryptographic schemes use both schemes,</span><span class="dada-font-footnotesize"> although on bits,</span><span class="dada-font-footnotesize"> not characters.</span><span class="dada-font-footnotesize"> They are called SPNs (</span><span style="color: blue"><span class="dada-font-footnotesize">Substitution Permutation Networks</span></span><span class="dada-font-footnotesize">).</span></p>
+<hr style="border: none; border-top: 4px solid black; width: 100%; margin: 0.4em 0;">
+<p><span class="dada-font-footnotesize">Throughout we looked at the schemes for cryptanalysis:</span><span class="dada-font-footnotesize"> frequency analysis,</span><span class="dada-font-footnotesize"> pattern analysis etc.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">19/36</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-current">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Prehistory of crypto</span><span class="dada-topbar-subsection-current">Terms, definitions, goals</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Encryption...</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Prehistory of crypto</span></li>
+<li>Terms, definitions, goals</li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Modern symmetric ciphers</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Symmetric cipher building blocks</span></li>
+<li><span style="color: lightgray">DES and AES</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">20/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Primary encryption goals: confidentiality and Integrity</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">For example,in electronic commerce</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Commerce relies on </span><span style="color: blue"><span class="dada-font-footnotesize">secure transfer</span></span><span class="dada-font-footnotesize"> of information,</span><span class="dada-font-footnotesize"> and the distance between you and an </span><span style="color: blue"><span class="dada-font-footnotesize">attacker</span></span><span class="dada-font-footnotesize"> is shrinking.</span><span class="dada-font-footnotesize"> Criminals have an </span><span style="color: blue"><span class="dada-font-footnotesize">access</span></span><span class="dada-font-footnotesize"> point into your living room.</span><span class="dada-font-footnotesize"> We often want things to be </span><span style="color: blue"><span class="dada-font-footnotesize">secret</span></span><span class="dada-font-footnotesize"> (C),</span><span class="dada-font-footnotesize"> and also want to be sure it is authentic,</span><span class="dada-font-footnotesize"> i.e.</span><span class="dada-font-footnotesize"> it has </span><span style="color: blue"><span class="dada-font-footnotesize">integrity</span></span><span class="dada-font-footnotesize"> (I).</span><span class="dada-font-footnotesize"> The goals of cryptography are to ensure both </span><span style="color: blue"><span class="dada-font-footnotesize">C</span></span><span class="dada-font-footnotesize"> and </span><span style="color: blue"><span class="dada-font-footnotesize">I</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">The terminology commonly used:</div>
+<div class="block-content">
+<ul>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">plaintext and ciphertext:</span></span><span class="dada-font-footnotesize"> the original and coded message </span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">cipher:</span></span><span class="dada-font-footnotesize"> the algorithm for transforming plaintext to ciphertext</span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">key:</span></span><span class="dada-font-footnotesize"> info used in cipher known only to sender/receiver </span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">encipher/encrypt and decipher/decrypt:</span></span><span class="dada-font-footnotesize"> plaintext to and from ciphertext </span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">cryptography:</span></span><span class="dada-font-footnotesize"> study of encryption principles/methods </span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">cryptanalysis/codebreaking:</span></span><span class="dada-font-footnotesize"> study of principles/ methods of deciphering ciphertext without knowing key </span></div></li>
+<li><div class="dada-li-text"><span style="color: blue"><span class="dada-font-footnotesize">cryptology:</span></span><span class="dada-font-footnotesize"> field of both cryptography and cryptanalysis </span></div></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">21/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Cryptographics and adversary&#x27;s goals</span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">Cryptographic systems are characterized by:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">...</span><span class="dada-font-footnotesize"> the type of encryption </span><span style="color: blue"><span class="dada-font-footnotesize">operations</span></span><span class="dada-font-footnotesize"> used,</span><span class="dada-font-footnotesize"> the number of </span><span style="color: blue"><span class="dada-font-footnotesize">keys</span></span><span class="dada-font-footnotesize"> used,</span><span class="dada-font-footnotesize"> and the way in which plaintext is </span><span style="color: blue"><span class="dada-font-footnotesize">processed</span></span><span class="dada-font-footnotesize">:</span><span class="dada-font-footnotesize"> block or stream.</span></p>
+</div>
+</div>
+<div class="block">
+<div class="block-title">Four goals for an attacker:</div>
+<div class="block-content">
+<ol>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">If an attacker is able to find the key,</span><span class="dada-font-footnotesize"> we call this a </span><span style="color: blue"><span class="dada-font-footnotesize">total break</span></span><span class="dada-font-footnotesize">.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">The attacker may be satisfied with a</span><span style="color: blue"><span class="dada-font-footnotesize"> partial break</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> For instance,</span><span class="dada-font-footnotesize"> the adversary can determine some specific information about the plaintext (for example,</span><span class="dada-font-footnotesize"> the first bit).</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">The attacker may be satisfied with </span><span style="color: blue"><span class="dada-font-footnotesize">distinguishability</span></span><span class="dada-font-footnotesize"> of ciphertext:</span><span class="dada-font-footnotesize"> the attacker is able to distinguish between encryption of two given plaintext,</span><span class="dada-font-footnotesize"> or between an encryption of a given plaintext and a random string.</span></div></li>
+<li><div class="dada-li-text"><span class="dada-font-footnotesize">Total break is the “</span><span style="color: blue"><span class="dada-font-footnotesize">strongest</span></span><span class="dada-font-footnotesize">” goal in the sense that,</span><span class="dada-font-footnotesize"> if an adversary is able to achieve total break,</span><span class="dada-font-footnotesize"> he is also able to achieve partial break and distinguishablility of ciphertext.</span></div></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">22/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Cryptanalysis</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox">
+<img data-src="../images/adversary9.png" style="width: auto; height:324px; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Attack types, based on information known to attacker:</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">An attacker may know nothing about the system,</span><span class="dada-font-footnotesize"> or may have some information,</span><span class="dada-font-footnotesize"> or abilities to encrypt or decrypt sample texts.</span><span class="dada-font-footnotesize"> Each ability leads to different techniques for attack:</span></p>
+<dl>
+<dt><span><span style="color: blue"><span class="dada-font-footnotesize">Ciphertext</span></span> <span style="color: blue"><span class="dada-font-footnotesize">only:</span></dt>
+<dd>
+<p></span></span><span class="dada-font-footnotesize"> The adversary has a collection of ciphertext</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c</span></span></span><span class="dada-font-footnotesize">.</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-font-footnotesize">Known</span></span> <span style="color: blue"><span class="dada-font-footnotesize">plaintext:</span></dt>
+<dd>
+<p></span></span><span class="dada-font-footnotesize"> The adversary has a collection of plaintext</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">m</span></span></span><span class="dada-font-footnotesize"> and corresponding ciphertext</span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c</span></span></span><span class="dada-font-footnotesize">.</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-font-footnotesize">Chosen</span></span> <span style="color: blue"><span class="dada-font-footnotesize">plaintext:</span></dt>
+<dd>
+<p></span></span><span class="dada-font-footnotesize"> The adversary has temporary access to an encryption black box.</span><span class="dada-font-footnotesize"> They can choose a plaintext </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">m</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">and obtain the corresponding ciphertext </span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c</span></span></span><span class="dada-font-footnotesize"> from the black box.</span><span class="dada-font-footnotesize"> </span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-font-footnotesize">Chosen</span></span> <span style="color: blue"><span class="dada-font-footnotesize">ciphertext:</span></dt>
+<dd>
+<p></span></span><span class="dada-font-footnotesize"> reverse of chosen plaintext attack.</span></p>
+</dd>
+<dt><span><span style="color: blue"><span class="dada-font-footnotesize">Chosen</span></span> <span style="color: blue"><span class="dada-font-footnotesize">text:</span></dt>
+<dd>
+<p></span></span><span class="dada-font-footnotesize"> select plaintext or ciphertext to en/decrypt</span></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">23/36</div>
+</section>
+</section>
+<section>
+<section id="modern-symmetric-ciphers" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-current">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Symmetric cipher building blocks</span><span class="dada-topbar-subsection-other">DES and AES</span></div>
+</div>
+<h1>Modern symmetric ciphers</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">24/36</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-current">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Symmetric cipher building blocks</span><span class="dada-topbar-subsection-other">DES and AES</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Encryption...</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Prehistory of crypto</span></li>
+<li><span style="color: lightgray">Terms, definitions, goals</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Modern symmetric ciphers</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Symmetric cipher building blocks</li>
+<li><span style="color: lightgray">DES and AES</span></li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">24/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Block/stream cipher</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 95.0%">
+<img data-src="../images/blockstreamcipher.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">What are block and stream ciphers?</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">A </span><span style="color: blue"><span class="dada-font-footnotesize">stream</span></span><span class="dada-font-footnotesize"> cipher decrypts or encrypts the data stream </span><span style="color: blue"><span class="dada-font-footnotesize">one bit at a time</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> </span></p>
+<p><span class="dada-font-footnotesize">A </span><span style="color: blue"><span class="dada-font-footnotesize">block</span></span><span class="dada-font-footnotesize"> cipher decrypts or encrypts the data stream </span><span style="color: blue"><span class="dada-font-footnotesize">a block (of bits) at a time</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> In DES it is 64 bits,</span><span class="dada-font-footnotesize"> in AES 128 bits.</span><span class="dada-font-footnotesize"> The keysize is also some fixed size.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">25/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Confusion and diffusion (Shannon)</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/pdfs/shannon1949.pdf">ctrl-i2</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<table>
+<tbody>
+<tr>
+<td style="text-align: center;"><img data-src="../images/confusion.png" style="width: auto; height:302px; max-width: none; max-height: none" alt="image"> <img data-src="images/diffusion.png" style="width: auto; height:302px; max-width: none; max-height: none" alt="image"></td>
+<td style="text-align: center;"><div class="dada-fbox" style="width: 768.0px; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">Shannon&#x27;s important paper in 1949 gave a formal treatment of secrecy,</span><span class="dada-font-footnotesize"> introducing multiple concepts related to cryptography.</span></p><hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">Confusion and diffusion are two terms that have a specific meaning in the paper,</span><span class="dada-font-footnotesize"> identifying properties that must be preserved to frustrate statistically based cryptanalysis.</span></p><hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;"><p><span class="dada-bold"><span class="dada-font-footnotesize">Confusion:</span></span><span class="dada-font-footnotesize"> key and ciphertext.</span></p><p><span class="dada-bold"><span class="dada-font-footnotesize">Diffusion:</span></span><span class="dada-font-footnotesize"> plaintext and ciphertext.</span></p></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="dada-slide-num">26/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Block cipher concepts</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">If data is not some multiple of the blocksize we use padding</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">One technique is to add a single 1 bit,</span><span class="dada-font-footnotesize"> followed by enough 0 bits to fill out the block (if it ends on a block boundary,</span><span class="dada-font-footnotesize"> a whole padding block will be added).</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/padding.png" style="height: auto; width:95.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Initalization vectors (IV) to randomize encryption...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The IV does not need to be secret,</span><span class="dada-font-footnotesize"> but should be unpredictable,</span><span class="dada-font-footnotesize"> and not reused with the same key.</span><span class="dada-font-footnotesize"> A (previously) common practice of re-using the last ciphertext block of a message as the IV for the next message is insecure.</span></p>
+<div class="center">
+<div class="dada-fbox" style="width: 60%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/initializationvector.png" style="height: auto; width:60.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">27/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">“Modes” of operation (for AES/DES/...)</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox">
+<img data-src="../images/Penguin.png" style="width: auto; height:324px; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">Modes are not equal...</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 45.0%">
+<img data-src="../images/cbccfb.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<p><span class="dada-font-footnotesize">Here are three modes,</span><span class="dada-font-footnotesize"> ECB,</span><span class="dada-font-footnotesize"> which encrypts a block at a time,</span><span class="dada-font-footnotesize"> and CFB and CBC,</span><span class="dada-font-footnotesize"> which chain in an initial vector,</span><span class="dada-font-footnotesize"> so even if each plaintext block is the same,</span><span class="dada-font-footnotesize"> the ciphertext will be different.</span><span class="dada-font-footnotesize"> The US government recommends not using the Electronic Codebook </span><span style="color: black"><span class="dada-font-footnotesize">mode.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">28/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Avalanche - A “goodness” measure for crypto</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 30%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/sampavalanche.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+<div class="block">
+<div class="block-title">Number of bits changed on each round</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">Assume we had a crypto system,</span><span class="dada-font-footnotesize"> and two plaintext messages </span><span class="dada-font-footnotesize"><span class="math inline">p</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and </span><span class="dada-font-footnotesize"><span class="math inline">p&#x27;</span></span><span class="dada-font-footnotesize"> with only one bit different.</span><span class="dada-font-footnotesize"> As the encryption process does each round,</span><span class="dada-font-footnotesize"> we want it to quickly have </span><span class="dada-emph"><span class="dada-font-footnotesize">many</span></span><span class="dada-font-footnotesize"> bits different.</span><span class="dada-font-footnotesize"> </span></p>
+<hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
+<div class="dada-font-footnotesize">
+<div class="dada-hfill-layout"><span><span style="color: red"><span class="dada-font-footnotesize">Q:</span></span><span style="color: red"><span class="dada-font-footnotesize"> How many bits are different?</span></span></span><div class="dada-hfill-boxes"><div class="dada-fbox" style="width: 192.0px; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/boys.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div><div class="dada-fbox" style="width: 192.0px; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="images/boys-FLIP-ONE-QUARTER.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div><div class="dada-fbox" style="width: 192.0px; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="images/randboy50.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div><div class="dada-fbox" style="width: 192.0px; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="images/boys-FLIP-EVERY-BIT.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div><div class="dada-fbox" style="width: 192.0px; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="images/boys-FLIP-EVERY-SECOND.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">29/36</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-current">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Symmetric cipher building blocks</span><span class="dada-topbar-subsection-current">DES and AES</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Encryption...</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Prehistory of crypto</span></li>
+<li><span style="color: lightgray">Terms, definitions, goals</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Modern symmetric ciphers</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Symmetric cipher building blocks</span></li>
+<li>DES and AES</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">30/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">DES - Data Encryption Standard</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">DES - a (hardware oriented) BLOCK cipher</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">DES was first proposed by IBM (1974) using 128 bit keys.</span><span style="color: black"><span class="dada-font-footnotesize"> The</span></span><span style="color: blue"><span class="dada-font-footnotesize"> Security</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">was reduced</span></span><span class="dada-font-footnotesize"> </span><span style="color: black"><span class="dada-font-footnotesize">by</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">NSA</span></span><span style="color: black"><span class="dada-font-footnotesize"> to a 56 bit key.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span class="dada-font-footnotesize">The 56 bit key generates 16 48-bit </span><span style="color: blue"><span class="dada-font-footnotesize">subkeys</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> which each control a </span><span class="dada-emph"><span class="dada-font-footnotesize">round</span></span><span class="dada-font-footnotesize">.</span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">At the core of DES is the Feistel network</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 25.0%">
+<img data-src="../images/des.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<p><span class="dada-font-footnotesize">Each of the 16 stages (rounds) of DES uses a </span><span style="color: blue"><span class="dada-font-footnotesize">Feistel</span></span><span class="dada-font-footnotesize"> structure which encrypts a 64 bit value into another 64 bit value using the 48 bit subkey.</span><span class="dada-font-footnotesize"> There is a</span><span style="color: blue"><span class="dada-font-footnotesize"> substitution</span></span><span class="dada-font-footnotesize"> on the left data half,</span><span class="dada-font-footnotesize"> and then a </span><span style="color: blue"><span class="dada-font-footnotesize">permutation</span></span><span class="dada-font-footnotesize"> - swapping halves.</span><span class="dada-font-footnotesize"> Avalanche analysis shows good divergence after 5 rounds.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">31/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">DES considered harmful</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://en.wikipedia.org/wiki/EFF_DES_cracker">i4</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 30.0%">
+<img data-src="../images/2des.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">Or at least...weak ...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">56-bit keys have </span><span class="dada-font-footnotesize"><span class="math inline">2^{56}=7.2\times10^{16}</span></span><span class="dada-font-footnotesize"> values.</span><span class="dada-font-footnotesize"> A brute force search looks like it might be hard,</span><span class="dada-font-footnotesize"> but consider the speedup in computers from the 1970s onwards.</span><span class="dada-font-footnotesize"> In 1997 using a network of computers on the Internet,</span><span class="dada-font-footnotesize"> it took a few months.</span><span class="dada-font-footnotesize"> In 1998,</span><span class="dada-font-footnotesize"> on dedicated h/w (EFF),</span><span class="dada-font-footnotesize"> it took a few days.</span><span class="dada-font-footnotesize"> In 1999,</span><span class="dada-font-footnotesize"> 22hrs (and so on).</span><span class="dada-font-footnotesize"> How long does it take now?</span><span class="dada-font-footnotesize"> We must consider alternatives to DES</span>: 2DES?</p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">32/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">The problem with 2DES</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 50.0%">
+<img data-src="../images/2desMiM.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="alertblock">
+<div class="block-title">2DES meet-in-the-middle attack</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Starts with the attacker having a plaintext,</span></span><span style="color: black"><span class="dada-font-footnotesize"> ciphertext pair </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">\left\langle p,c\right\rangle </span></span></span><span style="color: blue"><span class="dada-font-footnotesize">.</span></span><span style="color: black"><span class="dada-font-footnotesize"> The attacker computes two tables:</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">E(k,p)</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: black"><span class="dada-font-footnotesize">for each of the</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">2^{56}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> keys</span></span><span style="color: blue"><span class="dada-font-footnotesize">,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> and </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">D(k,c)</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> for each of the</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">2^{56}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> keys.</span></span><span style="color: black"><span class="dada-font-footnotesize"> For each match in the two tables,</span></span><span style="color: black"><span class="dada-font-footnotesize"> you have found a </span></span><span style="color: blue"><span class="dada-font-footnotesize">possible key</span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> with only</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">2^{57}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> DES operations (ie - not </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">2^{112}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">).</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">What we use: 3DES. Attack needs <span class="math inline">2^{112}</span> operations.</div>
+<div class="block-content">
+<div class="center">
+<div class="dada-fbox" style="width: 28.0%">
+<img data-src="../images/3des.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">33/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">AES intro</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/Joker2.srt.mp4">7</a><span class="dada-font-footnotesize">]</span></span></h2>
+<div class="dada-frame-body">
+<div class="exampleblock">
+<div class="block-title">Due to rising worries about DES</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">In 1997 NIST called for </span><span style="color: blue"><span class="dada-font-footnotesize">proposals</span></span><span class="dada-font-footnotesize"> for a royalty-free and public symmetric block cipher.</span><span class="dada-font-footnotesize"> In 1998 and 1999 the </span><span style="color: blue"><span class="dada-font-footnotesize">finalists</span></span><span class="dada-font-footnotesize"> were evaluated in public (and of course by NSA).</span><span class="dada-font-footnotesize"> The </span><span style="color: blue"><span class="dada-font-footnotesize">winner</span></span><span class="dada-font-footnotesize"> (</span><span style="color: blue"><span class="dada-font-footnotesize">Rijndael</span></span><span class="dada-font-footnotesize">) became the FIPS 197 (Federal Information Processing Standard 197),</span><span class="dada-font-footnotesize"> commonly known as AES.</span><span class="dada-font-footnotesize"> The standard comprises </span><span style="color: blue"><span class="dada-font-footnotesize">three ciphers </span></span><span class="dada-font-footnotesize">selected from Rijndael.</span><span class="dada-font-footnotesize"> </span></p>
+<p><span class="dada-font-footnotesize">The </span><span style="color: blue"><span class="dada-font-footnotesize">authors</span></span><span class="dada-font-footnotesize"> were two Belgians,</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">Dr Joan Daemen</span></span><span class="dada-font-footnotesize"> and</span><span style="color: blue"><span class="dada-font-footnotesize"> Dr Vincent Rijmen</span></span><span class="dada-font-footnotesize"> (Rijndael is a play on their names).</span></p>
+</div>
+</div>
+<div class="block">
+<div class="block-title">The US Advanced Encryption Standard</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">The standard comprises </span><span style="color: blue"><span class="dada-font-footnotesize">three ciphers </span></span><span class="dada-font-footnotesize">selected from Rijndael (AES-128,</span><span class="dada-font-footnotesize"> AES-192 and AES-256 with key sizes of </span><span style="color: blue"><span class="dada-font-footnotesize">128</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">192</span></span><span class="dada-font-footnotesize"> and </span><span style="color: blue"><span class="dada-font-footnotesize">256</span></span><span class="dada-font-footnotesize"> bits).</span><span class="dada-font-footnotesize"> It is a </span><span style="color: blue"><span class="dada-font-footnotesize">symmetric</span></span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">block</span></span><span class="dada-font-footnotesize">-based data encryption standard with a </span><span style="color: blue"><span class="dada-font-footnotesize">128-bit</span></span><span class="dada-font-footnotesize"> block size.</span></p>
+<p><span class="dada-font-footnotesize">Designed to be </span><span style="color: blue"><span class="dada-font-footnotesize">resistant</span></span><span class="dada-font-footnotesize"> against known attacks,</span><span class="dada-font-footnotesize"> have </span><span style="color: blue"><span class="dada-font-footnotesize">speed</span></span><span class="dada-font-footnotesize"> and code compactness on many CPUs,</span><span class="dada-font-footnotesize"> along with design </span><span style="color: blue"><span class="dada-font-footnotesize">simplicity</span></span><span class="dada-font-footnotesize"> (so it can weather criticism).</span></p>
+<p><span style="color: blue"><span class="dada-font-footnotesize">It is not a feistel structure,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> instead it is state-based</span></span><span class="dada-font-footnotesize">.</span><span class="dada-font-footnotesize"> The algorithm is normally specified in code form.</span><span class="dada-font-footnotesize"> Uses </span><span style="color: blue"><span class="dada-font-footnotesize">state</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">rounds</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">substitution</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">shifts</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> </span><span style="color: blue"><span class="dada-font-footnotesize">mixing</span></span><span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> and </span><span style="color: blue"><span class="dada-font-footnotesize">roundkeys</span></span><span class="dada-font-footnotesize">...</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">34/36</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">AES operations: 10/12/14 rounds</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><div class="dada-fbox" style="width: 345.6px; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../images/aes-1.jpg" style="width: auto; height:432px; max-width: none; max-height: none" alt="image"></p></div></div></td><td style="text-align: center; border-left: 1px solid black;"><div class="dada-fbox" style="width: 921.6px; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><pre><code class="language-text" data-trim data-noescape>Cipher(byte in[4*4],byte out[4*4],word w[4*(Nr+1)]) 
+begin 
+   byte state[4,4] 
+   state = in 
+   AddRoundKey(state,w[0,3]) 
+   for round = 1 step 1 to Nr-1 
+      SubBytes(state) 
+      ShiftRows(state) 
+      MixColumns(state)
+      AddRoundKey(state,w[round*4,(round+1)*4-1]) 
+   end for
+   SubBytes(state) 
+   ShiftRows(state) 
+   AddRoundKey(state,w[Nr*4,(Nr+1)*4-1]) 
+   out = state 
+end 
+
+
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+<div class="exampleblock">
+<div class="block-title">The four transformations...</div>
+<div class="block-content">
+<blockquote class="dada-quote">
+<p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">byte</span></span></span> <span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">substitution:</span></span></span><span class="dada-font-footnotesize"> one S-box used on every byte </span></p>
+<p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">shift</span></span></span> <span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">rows:</span></span></span><span class="dada-font-footnotesize"> permute bytes between groups/columns</span></p>
+<p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">mix</span></span></span> <span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">columns:</span></span></span><span class="dada-font-footnotesize"> substitutions using matrix multiply of groups</span></p>
+<p><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">add</span></span></span> <span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">round</span></span></span> <span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">key:</span></span></span><span class="dada-font-footnotesize"> XOR state with key material</span></p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">35/36</div>
+</section>
+<section class="slide level2 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-current">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Symmetric cipher building blocks</span><span class="dada-topbar-subsection-current">DES and AES</span></div>
+</div>
+<h2><span class="dada-title-main">Summary: Crypto-1</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Today, we have seen...</div>
+<div class="block-content">
+<p><span style="color: blue"><span class="dada-font-footnotesize">History</span></span><span class="dada-font-footnotesize"> - We looked at symmetric cryptography through a historical lens,</span><span class="dada-font-footnotesize"> seeing the weaknesses of early ciphers.</span><span class="dada-font-footnotesize"> These ciphers used either substitutions,</span><span class="dada-font-footnotesize"> or permutations,</span><span class="dada-font-footnotesize"> and had a range of weaknesses depending on the type of cipher.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Frequency Analysis</span></span><span class="dada-font-footnotesize"> - We saw how frequency analysis could be used to attack mono-alphabetic ciphers.</span><span class="dada-font-footnotesize"> This led to the development of poly-alphabetic ciphers,</span><span class="dada-font-footnotesize"> where we saw the first machines for encrypting messages in this way.</span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: blue"><span class="dada-font-footnotesize">Computer Cryptography</span></span><span class="dada-font-footnotesize"> - In the last part we looked at how modern symmetric ciphers use a combination of substitutions and permutations to avoid cryptanalysis.</span><span class="dada-font-footnotesize"> We looked at DES and AES.</span><span class="dada-font-footnotesize"> </span></p>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
+</div>
+<img class="dada-logo" src="../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">36/36</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script>Reveal.initialize({hash: true, width: 1920, height: 1080, margin: 0, plugins: [RevealHighlight]});</script>
+</body>
+</html>
