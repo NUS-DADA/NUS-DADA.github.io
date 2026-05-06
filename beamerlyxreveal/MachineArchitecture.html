@@ -373,8 +373,7 @@ Argument is test
 <div class="dada-bubble" style="background-color: rgb(128,255,128); width: 80%; margin-left: auto; margin-right: 0;">
 <p><span><span class="dada-font-footnotesize">Note that the binary code program has </span>“<span class="dada-font-footnotesize">zeroes</span>”<span class="dada-font-footnotesize"> in it,</span><span class="dada-font-footnotesize"> and these will have to be removed if strcpy is to copy the program onto the stack.</span><span class="dada-font-footnotesize"> We can use translations like:</span></span></p>
 <div class="dada-fbox" style="width: 80%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="dada-lyxcode"><pre><span class="dada-bold">movb   $0x0,null_byte       xorl   %eax,%eax </span>
-<span class="dada-bold">                            movb   eax,</span><span class="dada-bold"> null_byte</span>
-</pre></div></div>
+<span class="dada-bold">                            movb   eax,</span><span class="dada-bold"> null_byte</span></pre></div></div>
 </div>
 </div>
 <div class="dada-slide-num">14/48</div>
