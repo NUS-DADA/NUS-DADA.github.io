@@ -836,6 +836,7 @@ left: 0%;
    line of text to the width available to the left of the box. */
 .reveal .dada-hfill-layout {
     display: flow-root;
+    text-align: left; /* override parent text-align:center (e.g. in a centred <td>) */
 }
 /* float:right pushes the box to the right edge of the containing block.
    Placed after the text span in the DOM, the float is encountered at the end
