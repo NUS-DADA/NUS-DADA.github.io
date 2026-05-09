@@ -74,5 +74,12 @@
   </ol>
   <p>Note that the PDFs and the web pages are full of active links to further reference material.</p>
   </div>
+  <script>
+    const logoVideo = document.querySelector('.header-logo');
+    if (logoVideo && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      logoVideo.removeAttribute('autoplay');
+      logoVideo.pause();
+    }
+  </script>
 </body>
 </html>
