@@ -76,8 +76,15 @@
   </div>
   <script>
     const logoVideo = document.querySelector('.header-logo');
+    const siteHeader = document.querySelector('.site-header');
     if (logoVideo && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       logoVideo.play().catch((error) => console.debug('Header logo video playback prevented (likely autoplay policy or media decoding):', error));
+    }
+    if (logoVideo && siteHeader) {
+      siteHeader.addEventListener('click', () => {
+        logoVideo.muted = false;
+        logoVideo.play().catch((error) => console.debug('Header logo audio playback prevented:', error));
+      });
     }
   </script>
 </body>
