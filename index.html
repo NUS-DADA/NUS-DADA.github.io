@@ -53,7 +53,7 @@
   </style>
 </head>
 <body>
-  <header class="site-header" role="button" tabindex="0" aria-label="Unmute header logo audio">
+  <header class="site-header" tabindex="0" aria-label="Unmute header logo audio">
     <div class="header-content">
       <video class="header-logo" muted loop playsinline preload="auto" poster="images/logo.png" aria-label="NUS Defence Against the Dark Arts logo animation">
         <source src="images/static_shock_quiet.mp4" type="video/mp4">
@@ -85,8 +85,8 @@
         if (logoVideo.muted) {
           logoVideo.muted = false;
           siteHeader.setAttribute('aria-label', 'Header logo audio unmuted');
-          siteHeader.removeAttribute('role');
           siteHeader.removeAttribute('tabindex');
+          siteHeader.removeAttribute('aria-label');
           siteHeader.removeEventListener('click', unmuteLogoAudio);
           siteHeader.removeEventListener('keydown', keydownHandler);
           if (logoVideo.paused) {
@@ -95,7 +95,7 @@
         }
       };
       const keydownHandler = (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
+        if (event.key === 'Enter' || event.code === 'Space') {
           event.preventDefault();
           unmuteLogoAudio();
         }
