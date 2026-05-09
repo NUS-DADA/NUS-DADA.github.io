@@ -82,8 +82,10 @@
     }
     if (logoVideo && siteHeader) {
       siteHeader.addEventListener('click', () => {
-        logoVideo.muted = false;
-        logoVideo.play().catch((error) => console.debug('Header logo audio playback prevented:', error));
+        if (logoVideo.muted) {
+          logoVideo.muted = false;
+          logoVideo.play().catch((error) => console.debug('Header logo audio playback prevented:', error));
+        }
       });
     }
   </script>
