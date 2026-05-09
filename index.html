@@ -84,7 +84,6 @@
       const unmuteLogoAudio = () => {
         if (logoVideo.muted) {
           logoVideo.muted = false;
-          siteHeader.setAttribute('aria-label', 'Header logo audio unmuted');
           siteHeader.removeAttribute('tabindex');
           siteHeader.removeAttribute('aria-label');
           siteHeader.removeEventListener('click', unmuteLogoAudio);
@@ -95,7 +94,7 @@
         }
       };
       const keydownHandler = (event) => {
-        if (event.key === 'Enter' || event.code === 'Space') {
+        if (event.key === 'Enter' || event.key === ' ' || event.code === 'Space') {
           event.preventDefault();
           unmuteLogoAudio();
         }
