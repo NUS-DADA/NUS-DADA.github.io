@@ -55,7 +55,7 @@
 <body>
   <header class="site-header">
     <div class="header-content">
-      <video class="header-logo" autoplay muted loop playsinline preload="auto" poster="images/logo.png" role="img" aria-label="NUS Defence Against the Dark Arts logo">
+      <video class="header-logo" muted loop playsinline preload="auto" poster="images/logo.png" aria-label="NUS Defence Against the Dark Arts logo">
         <source src="images/static_shock_quiet.mp4" type="video/mp4">
         <img src="images/logo.png" alt="NUS Defence Against the Dark Arts logo">
       </video>
@@ -76,9 +76,8 @@
   </div>
   <script>
     const logoVideo = document.querySelector('.header-logo');
-    if (logoVideo && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      logoVideo.removeAttribute('autoplay');
-      logoVideo.pause();
+    if (logoVideo && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      logoVideo.play().catch(() => {});
     }
   </script>
 </body>
