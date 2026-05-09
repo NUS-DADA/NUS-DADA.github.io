@@ -6,7 +6,38 @@
   <title>Defence Against the Dark Arts</title>
   <style>
     body {
+      margin: 0;
       background-image: url('https://github.com/user-attachments/assets/91760237-9460-43f0-b0c6-e6585437c0c0');
+    }
+
+    .site-header {
+      background-color: #000000;
+      border-bottom: 3px solid #ff8c00;
+      padding: 10px 20px;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .header-logo {
+      height: 80px;
+      flex-shrink: 0;
+    }
+
+    .header-text {
+      color: #ffffff;
+    }
+
+    .header-text h2 {
+      margin: 0;
+      font-size: 1.6em;
+    }
+
+    .main-content {
+      padding: 16px 20px;
     }
 
     a {
@@ -23,7 +54,15 @@
   </style>
 </head>
 <body>
-  <h2>Defence Against the Dark Arts</h2>
+  <header class="site-header">
+    <div class="header-content">
+      <img class="header-logo" src="https://github.com/user-attachments/assets/015ccb66-242b-4152-b646-0e7c3909f46c" alt="NUS Defence Against the Dark Arts logo">
+      <div class="header-text">
+        <h2>Defence Against the Dark Arts</h2>
+      </div>
+    </div>
+  </header>
+  <div class="main-content">
   <p>Here are some useful places to find the DADA 2026 material.</p>
   <ol>
     <li>Here are the handouts for the different topics: <a href="https://nus-dada.github.io/2526-s4/">DADA 2026 handouts</a></li>
@@ -32,5 +71,6 @@
     <li>And this is where the labs will be (also still experimental): <a href="https://hugh.myddns.me/NU5/">Lab materials (experimental)</a></li>
   </ol>
   <p>Note that the PDFs and the web pages are full of active links to further reference material.</p>
+  </div>
 </body>
 </html>
