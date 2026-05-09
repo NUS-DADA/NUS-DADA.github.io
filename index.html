@@ -55,7 +55,10 @@
 <body>
   <header class="site-header">
     <div class="header-content">
-      <img class="header-logo" src="images/logo.png" alt="NUS Defence Against the Dark Arts logo">
+      <video class="header-logo" muted loop playsinline preload="auto" poster="images/logo.png" aria-label="NUS Defence Against the Dark Arts logo animation">
+        <source src="images/static_shock_quiet.mp4" type="video/mp4">
+        <img src="images/logo.png" alt="NUS Defence Against the Dark Arts logo">
+      </video>
       <div class="header-text">
         <h2>Defence Against the Dark Arts</h2>
       </div>
@@ -71,5 +74,11 @@
   </ol>
   <p>Note that the PDFs and the web pages are full of active links to further reference material.</p>
   </div>
+  <script>
+    const logoVideo = document.querySelector('.header-logo');
+    if (logoVideo && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      logoVideo.play().catch((error) => console.debug('Header logo video playback prevented (likely autoplay policy or media decoding):', error));
+    }
+  </script>
 </body>
 </html>
