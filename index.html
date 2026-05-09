@@ -85,18 +85,23 @@
         if (logoVideo.muted) {
           logoVideo.muted = false;
           siteHeader.setAttribute('aria-label', 'Header logo audio unmuted');
+          siteHeader.removeAttribute('role');
+          siteHeader.removeAttribute('tabindex');
+          siteHeader.removeEventListener('click', unmuteLogoAudio);
+          siteHeader.removeEventListener('keydown', keydownHandler);
           if (logoVideo.paused) {
             logoVideo.play().catch((error) => console.debug('Header logo audio playback prevented:', error));
           }
         }
       };
-      siteHeader.addEventListener('click', unmuteLogoAudio);
-      siteHeader.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.code === 'Space') {
+      const keydownHandler = (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
           unmuteLogoAudio();
         }
-      });
+      };
+      siteHeader.addEventListener('click', unmuteLogoAudio);
+      siteHeader.addEventListener('keydown', keydownHandler);
     }
   </script>
 </body>
