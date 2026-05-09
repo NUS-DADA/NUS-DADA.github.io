@@ -18,7 +18,7 @@
         
       
       
-      <link rel="icon" href="../../../assets/../images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -244,6 +244,33 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic2/HandoutSocialEngineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic2 - Social Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -323,22 +350,22 @@ most cases these transmissions are just using standard, well defined
 frequencies and signals. We can use radio receivers to listen in on many
 of these signals:</p>
 <div align="center">
-<p><img src="../../../../images/spectra.png" alt="image"  style="width: 100%;"/></p>
+<p><img src="../../../images/spectra.png" alt="image"  style="width: 100%;"/></p>
 </div>
 <p>We can use an SDR (software defined radio) to listen to a wide range of
 signals. The receive-only SDR on the left, below, can be bought for as
 little as $10. The SDR on the right costs a lot more, but can both
 receive and transmit.</p>
 <div align="center">
-<p><img src="../../../../images/rtl-sdr_1024x1024.png" alt="image"  style="width: 30%;"/> or
-<img src="../../../../images/slider_un210_partial.png" alt="image"  style="width: 60%;"/></p>
+<p><img src="../../../images/rtl-sdr_1024x1024.png" alt="image"  style="width: 30%;"/> or
+<img src="../../../images/slider_un210_partial.png" alt="image"  style="width: 60%;"/></p>
 </div>
 <p>Lets start with ADS-B, which is a radio transmission at 1090 MHz
 (<span class="arithmatex">\(1.09\ast{}10^{9}\)</span> Hz). Our experimental setup consists of an SDR, and
 software (in this case dump1090) to control the SDR, and display the
 correctly decoded signals:</p>
 <div align="center">
-<p><img src="../../../../images/dump1090.png" alt="image"  style="width: 100%;"/></p>
+<p><img src="../../../images/dump1090.png" alt="image"  style="width: 100%;"/></p>
 </div>
 <p>It is clear that this is not magic. Radio signals all around us are
 supplying us with interesting information.</p>
@@ -346,8 +373,8 @@ supplying us with interesting information.</p>
 device to discover information about a nearby, and not so nearby,
 NFC-enabled card. We do this exercise in class:</p>
 <div align="center">
-<p><img src="../../../../images/DSCN0274.png" style="height:3.2cm" alt="image" />  
-<img src="../../../../images/DSCN0275.png" style="height:3.2cm" alt="image" /></p>
+<p><img src="../../../images/DSCN0274.png" style="height:3.2cm" alt="image" />  
+<img src="../../../images/DSCN0275.png" style="height:3.2cm" alt="image" /></p>
 </div>
 <p>Again it is clear that this is not magic. A pair of wire loops can be
 used to transfer the wireless (radio) information from one location to
@@ -358,7 +385,7 @@ There are plenty of examples where this has happened.</p>
 <p>For example - NFC sniffing can be done at a distance of about 10cm, and
 so we should all be careful with our cards:</p>
 <div align="center">
-<p><img src="../../../../images/ripoff.png" alt="image"  style="width: 70%;"/></p>
+<p><img src="../../../images/ripoff.png" alt="image"  style="width: 70%;"/></p>
 </div>
 <p>HF (High Frequency) radios, attached to simple systems called SCADA
 systems, are often found managing public utilities, water, sewage and so
@@ -379,10 +406,10 @@ thinks it is?</p>
 attacks. The diagrams below categorize a range of attacks on comms
 systems, and are no different from other attacks:</p>
 <div align="center">
-<p><img src="../../../../images/attack1.png" alt="image"  style="width: 45%;"/>
-<img src="../../../../images/attack2.png" alt="image"  style="width: 45%;"/>
-<img src="../../../../images/attack3.png" alt="image"  style="width: 45%;"/>
-<img src="../../../../images/attack4.png" alt="image"  style="width: 45%;"/></p>
+<p><img src="../../../images/attack1.png" alt="image"  style="width: 45%;"/>
+<img src="../../../images/attack2.png" alt="image"  style="width: 45%;"/>
+<img src="../../../images/attack3.png" alt="image"  style="width: 45%;"/>
+<img src="../../../images/attack4.png" alt="image"  style="width: 45%;"/></p>
 </div>
 <p>In clockwise order, they are snooping or sniffing, man-in-the-middle,
 spoofing, and denial-of-service. Often the possibility of these attacks
@@ -426,7 +453,7 @@ radio frequency signals - it forms what is called a Faraday cage, and
 completely stops card sniffing. Of course you need to take your card out
 of it’s sleeve to use it:</p>
 <div align="center">
-<p><img src="../../../../images/cardsleeve.png" alt="image"  style="width: 50%;"/></p>
+<p><img src="../../../images/cardsleeve.png" alt="image"  style="width: 50%;"/></p>
 </div>
 <p>We can see that defences against communication attacks can encompass a
 wide range of techniques. Unfortunately, there is no magic bullet for

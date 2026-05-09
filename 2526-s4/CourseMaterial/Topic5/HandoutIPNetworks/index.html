@@ -18,7 +18,7 @@
         
       
       
-      <link rel="icon" href="../../../assets/../images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -244,6 +244,33 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Topic2/HandoutSocialEngineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topic2 - Social Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -285,7 +312,7 @@ interconnectivity ...</p>
 different. There are logical networks, physical networks, networks built
 on networks, heirarchies, zones and so on.</p>
 <div align="center">
-<p><img src="../../../../images/networks.png" alt="image"  style="width: 90%;"/></p>
+<p><img src="../../../images/networks.png" alt="image"  style="width: 90%;"/></p>
 </div>
 <p>Consider the two models above, the one on the left representing a very
 simple and abstract view - computers are all connected via the Internet;
@@ -314,7 +341,7 @@ ensure that the router rules prevent unauthorized access to machines
 from hosts on the Internet, while still allowing connections from the
 local network(s).</p>
 <div align="center">
-<p><img src="../../../../images/DMZLevel1.jpg" alt="image"  style="width: 80%;"/></p>
+<p><img src="../../../images/DMZLevel1.jpg" alt="image"  style="width: 80%;"/></p>
 </div>
 <p>A modern computer (inter)network consists of networks with locally
 attached host computers, interconnected by routers in an almost chaotic
@@ -328,7 +355,7 @@ transfer messages to other computers, we add addressing and other
 information to each message to help route messages through the wider
 network.</p>
 <div align="center">
-<p><img src="../../../../images/packets.png" alt="image"  style="width: 60%;"/></p>
+<p><img src="../../../images/packets.png" alt="image"  style="width: 60%;"/></p>
 </div>
 <p>We call the little messages with routing information <em>packets</em>,
 visualized above. A big message (say an email) may be sent in lots of
@@ -413,7 +440,7 @@ host part all 0s, and the one with the host part all 1s. You cannot
 allocate these addresses to machines. They are used for broadcasting to
 all machines on the same network.</p>
 <div align="center">
-<p><img src="../../../../images/ip.png" alt="image"  style="width: 60%;"/></p>
+<p><img src="../../../images/ip.png" alt="image"  style="width: 60%;"/></p>
 </div>
 <p>The figure above shows the structure of an IP packet. The <strong><em>’ihl’</em></strong>
 field gives the header length in 32 bit chunks. Notice that our IP
@@ -499,7 +526,7 @@ the IP addresses have been allocated!</p>
 </ol>
 <h2 id="layers">Layers</h2>
 <div align="center">
-<p><img src="../../../../images/osi-ip.png" alt="image"  style="width: 70%;"/></p>
+<p><img src="../../../images/osi-ip.png" alt="image"  style="width: 70%;"/></p>
 </div>
 <p>This model provides a framework to hang your understanding of computer
 networking on.</p>
@@ -560,7 +587,7 @@ Gateway Routing Protocol.</p>
 <p>We might use a technique such as the shortest path - here a path could
 be <em>how long</em> or <em>how many hops</em> or some other metric.</p>
 <div align="center">
-<p><img src="../../../../images/hops.png" alt="image"  style="width: 80%;"/></p>
+<p><img src="../../../images/hops.png" alt="image"  style="width: 80%;"/></p>
 </div>
 <p>If <strong>hops</strong> were used for our metric, <strong><u>ABC</u></strong> is the shortest
 path from machine #1 to machine #2. However, if <strong>delay</strong> was used,
@@ -582,7 +609,7 @@ The figures represent the metrics attached to each route, and note that
 the route BD is about to change from a metric of 3 (meaning not so good)
 to 1 (meaning good).</p>
 <div align="center">
-<p><img src="../../../../images/router.png" alt="image"  style="width: 70%;"/></p>
+<p><img src="../../../images/router.png" alt="image"  style="width: 70%;"/></p>
 </div>
 <p>Before the change, router D has the following table, giving it’s view of
 the best routes:</p>
@@ -813,7 +840,7 @@ wifi scanner (discovery) tools. On my mac I have one called WiFi
 Scanner.</p>
 <figure data-latex-placement="H">
 <div class="centering">
-<img src="../../../../images/wifiscanner.jpg"  style="width: 80%;"/>
+<img src="../../../images/wifiscanner.jpg"  style="width: 80%;"/>
 </div>
 <figcaption>WiFi Scanner: Four networks on two channels</figcaption>
 </figure>
@@ -829,7 +856,7 @@ networking connections could be made to a computer, and can also attempt
 to discover the type of computer and OS.</p>
 <figure data-latex-placement="H">
 <div class="centering">
-<img src="../../../../images/NMAP.jpg"  style="width: 80%;"/>
+<img src="../../../images/NMAP.jpg"  style="width: 80%;"/>
 </div>
 <figcaption>NMAP scanning a machine on a local (wifi) network at
 NUS</figcaption>
@@ -845,7 +872,7 @@ to and from our machine, but perhaps from some neighbouring wifi machine
 to and from some other machine. A tool to do this is Wireshark.</p>
 <figure data-latex-placement="H">
 <div class="centering">
-<img src="../../../../images/wireshark.png"  style="width: 80%;"/>
+<img src="../../../images/wireshark.png"  style="width: 80%;"/>
 </div>
 <figcaption>Wireshark recording data between the local machine and a web
 server</figcaption>
@@ -862,7 +889,7 @@ on software which continuously records all the traffic on a network
 segment, and then looks for patterns that indicate an intrusion.</p>
 <figure data-latex-placement="H">
 <div class="centering">
-<img src="../../../../images/Snort_ids_console.gif"  style="width: 80%;"/>
+<img src="../../../images/Snort_ids_console.gif"  style="width: 80%;"/>
 </div>
 <figcaption>IDS showing a summary of intrusion alerts</figcaption>
 </figure>

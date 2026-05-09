@@ -22,7 +22,7 @@
         
       
       
-      <link rel="icon" href="../../../assets/../images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -682,7 +682,7 @@ underlying physical laws, representations and constraints to consider.
 Beginning with representations of data and interference/noise, we can
 derive physical limits on the rate of data transmission.</p>
 <div align="center">
-<p><img src="../../../../images/alogdig.png" alt="image"  style="width: 45%;"/></p>
+<p><img src="../../../images/alogdig.png" alt="image"  style="width: 45%;"/></p>
 </div>
 <p>An analog signal is a continuous valued signal. A digital signal is
 considered to only exist at discrete levels. The (time domain) diagrams
@@ -703,8 +703,8 @@ resultant waveform would be a square wave</p>
 plot the amplitude against <em>frequency</em>. These alternative
 representations are shown below:</p>
 <div align="center">
-<p><img src="../../../../images/harm1.png" style="height:3.4cm" alt="image" />
-<img src="../../../../images/harm2.png" style="height:3.4cm" alt="image" /></p>
+<p><img src="../../../images/harm1.png" style="height:3.4cm" alt="image" />
+<img src="../../../images/harm2.png" style="height:3.4cm" alt="image" /></p>
 </div>
 <h2 id="fourier-analysis">Fourier analysis</h2>
 <p>When we represent periodic functions as a sum of simple sine (and
@@ -768,7 +768,7 @@ summing the terms:</p>
 \frac{4}{\pi}(sin(2\pi ft)+\frac{1}{3}sin(6\pi ft)+\frac{1}{5}sin(10\pi ft)+\frac{1}{7}sin(14\pi ft)+...)
 \]</div>
 <div align="center">
-<p><img src="../../../../images/fourier.png" alt="image"  style="width: 50%;"/></p>
+<p><img src="../../../images/fourier.png" alt="image"  style="width: 50%;"/></p>
 </div>
 <p>In the figure above, we see four plots, showing the resultant waveforms
 if we sum the first few terms in the series. As we add more terms, the
@@ -788,12 +788,12 @@ F(\omega)=\int_{-\infty}^{\infty}f(t)e^{-j\omega t}dt
 <p>The inverse transform is
 <span class="arithmatex">\(f(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty}F(\omega)e^{j\omega t}d\omega\)</span>.</p>
 <div align="center">
-<p><img src="../../../../images/ftsin.png" alt="image"  style="width: 30%;"/>
-<img src="../../../../images/ftsin3x.png" alt="image"  style="width: 30%;"/>
-<img src="../../../../images/ftsq.png" alt="image"  style="width: 30%;"/>\
-<img src="../../../../images/ftpulse.png" alt="image"  style="width: 30%;"/>
-<img src="../../../../images/ftthinpulse.png" alt="image"  style="width: 30%;"/>
-<img src="../../../../images/ftexp.png" alt="image"  style="width: 30%;"/></p>
+<p><img src="../../../images/ftsin.png" alt="image"  style="width: 30%;"/>
+<img src="../../../images/ftsin3x.png" alt="image"  style="width: 30%;"/>
+<img src="../../../images/ftsq.png" alt="image"  style="width: 30%;"/>\
+<img src="../../../images/ftpulse.png" alt="image"  style="width: 30%;"/>
+<img src="../../../images/ftthinpulse.png" alt="image"  style="width: 30%;"/>
+<img src="../../../images/ftexp.png" alt="image"  style="width: 30%;"/></p>
 </div>
 <p>In the figures above we see various simple transforms. Note that if a
 function in one domain is <em>widened</em>, its transform <em>narrows</em>.</p>
@@ -815,7 +815,7 @@ interpretation. We can use the graphical interpretation to easily
 predict the functions that result from complex signal filtering or
 sampling.</p>
 <div align="center">
-<p><img src="../../../../images/ftsample.png" alt="image"  style="width: 70%;"/></p>
+<p><img src="../../../images/ftsample.png" alt="image"  style="width: 70%;"/></p>
 </div>
 <p>In the above figure, we see a sine wave and a sampling window, each with
 their own Fourier transform. By multiplying the two waveforms, we end up
@@ -895,7 +895,7 @@ rates.</p>
 <p>We may send our data <em>synchronised</em> (meaning clocked) or
 <em>asynchronously</em> (without a clock):</p>
 <div align="center">
-<p><img src="../../../../images/asnyc.png" alt="image"  style="width: 80%;"/></p>
+<p><img src="../../../images/asnyc.png" alt="image"  style="width: 80%;"/></p>
 </div>
 <p>Here we have asynchronous transmission. The reception algorithm is:</p>
 <ul>
@@ -915,8 +915,8 @@ rates.</p>
 <p>The implication of this is that both ends must agree on a rate of
 transmission.</p>
 <div align="center">
-<p><img src="../../../../images/bipolar.png" alt="image"  style="width: 45%;"/>  
-<img src="../../../../images/manch.png" alt="image"  style="width: 45%;"/></p>
+<p><img src="../../../images/bipolar.png" alt="image"  style="width: 45%;"/>  
+<img src="../../../images/manch.png" alt="image"  style="width: 45%;"/></p>
 </div>
 <p>In Bipolar encoding, a ’1’ is transmitted with a positive pulse, a ’0’
 with a negative pulse. Since each bit contains an initial transition
@@ -927,7 +927,7 @@ each bit cell. A binary ’0’ causes a high to low transition, a binary
 ’1’ is a low to high transition. The clock retrieval circuitry is
 slightly more complex than before.</p>
 <div align="center">
-<p><img src="../../../../images/screenshot.png" alt="image"  style="width: 100%;"/></p>
+<p><img src="../../../images/screenshot.png" alt="image"  style="width: 100%;"/></p>
 </div>
 <p>Sometimes decoding these signals is difficult, the signals are buried in
 other signals. Here is some processed data retrieved from an NFC card by
@@ -957,13 +957,13 @@ modulation methods focus on sending multiple bits per change to increase
 data rates (up to the maximum determined by noise - Shannon). The most
 common method is phase modulation, shown below:</p>
 <div align="center">
-<p><img src="../../../../images/pm.png" alt="image"  style="width: 80%;"/></p>
+<p><img src="../../../images/pm.png" alt="image"  style="width: 80%;"/></p>
 </div>
 <p>We can also send different amplitudes at the different phases. The
 following phase plots indicate useful phase/amplitude values:</p>
 <div align="center">
-<p><img src="../../../../images/qam1.png" alt="image" />  
-<img src="../../../../images/qam2.png" alt="image" /></p>
+<p><img src="../../../images/qam1.png" alt="image" />  
+<img src="../../../images/qam2.png" alt="image" /></p>
 </div>
 <p>These schemes use multiple amplitudes and phases. They are called
 QAM<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>. The one on the left has 2 amplitudes and 4 phases giving a

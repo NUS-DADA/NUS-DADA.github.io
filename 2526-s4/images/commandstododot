@@ -1,0 +1,16 @@
+Use PAT to generate graph
+export (to say t1.txt)
+
+cat ~/Desktop/t1.txt |grep Source|sed 's/Source State: \[/state/g'|sed 's/\] -----/ /g'|sed 's/-----> Target State: \[/ state/g'|sed 's/\]//g' > dot1
+cat dot1 |awk '{print $1" -> "$3" [label = \""$2"\"];"}'>dot1.dot
+
+add this at beginning of dot1.dot: digraph DiningPhilosophers {
+                                   node [color=lightblue,style=filled];
+
+add this at end of dot1.dot:       }
+
+dot -Gsize="7.5,5" -Gratio=0.6 -Tps dot1.dot -o dot1.ps
+
+ps2eps -B dot1.ps
+
+

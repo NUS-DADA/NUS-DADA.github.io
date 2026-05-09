@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/beamer.css" id="theme">
   <script defer=""
@@ -71,7 +136,7 @@ href="https://hugh.myddns.me/Askbox/">Q</a><span>]</span></p>
 href="https://hugh.myddns.me/media/movies/ariane.mp4">1</a><span>]</span></span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/ariane.png" style="height: auto; width:75.0%"
+<p><img data-src="../../images/ariane.png" style="height: auto; width:75.0%"
 alt="image" /></p>
 </div>
 </div>
@@ -115,14 +180,15 @@ style="width: 95%; border: 2px solid black; background-color: white; box-sizing:
 <dt><span><span
 style="color: black">System Complexity:</span></span></dt>
 <dd>
-<p><span class="dada-font-footnotesize"><span style="color: black"><span
-class="dada-bold">Today we will look at how the complex nature of the
-computer systems and applications we build lead to errors, purely
-because of this system complexity. We fight back against this unexpected
-source of errors by adopting standards, and methods that history has
-shown to be effective. We will also look at some mathematically-based
-tools that can support the development and testing of
-systems.</span></span></span></p>
+<div class="dada-font-footnotesize">
+<p><span style="color: black"><span class="dada-bold">Today we will look
+at how the complex nature of the computer systems and applications we
+build lead to errors, purely because of this system complexity. We fight
+back against this unexpected source of errors by adopting standards, and
+methods that history has shown to be effective. We will also look at
+some mathematically-based tools that can support the development and
+testing of systems.</span></span></p>
+</div>
 </dd>
 </dl>
 </div>
@@ -232,7 +298,7 @@ computer software crashed, killing giraffes.</span></li>
 <div class="center">
 <div class="dada-fbox"
 style="width: 20%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/engineering.png" style="height: auto; width:100.0%"
+<img data-src="../../images/engineering.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -279,7 +345,7 @@ be said for software systems.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 70%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/ClaytonTunnel.png" style="height: auto; width:100.0%"
+<img data-src="../../images/ClaytonTunnel.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -322,19 +388,24 @@ class="table-with-borders table-col-no-left-border table-col-no-right-border tab
 <table>
 <tbody>
 <tr>
-<td style="border-right: none; text-align: left;"><img src="../../../images/pathfinder.png"
+<td style="border-right: none; text-align: left;"><img src="../../images/pathfinder.png"
 style="max-width: none; width: auto; max-height: none; height:432px" alt="image" /></td>
 <td style="border-left: none; text-align: center;"></td>
 <td style="border-right: none; text-align: center;"></td>
 <td style="border-left: none; text-align: left;"><img
-src="../../../images/priorityinversion.png" style="max-width: none; width: auto; max-height: none; height:432px"
+src="../../images/priorityinversion.png" style="max-width: none; width: auto; max-height: none; height:432px"
 alt="image" /></td>
 </tr>
 <tr>
-<td style="border-right: none; text-align: left;"><span class="dada-font-footnotesize">
-<span class="dada-font-footnotesize">The spacecraft began experiencing
-total system resets with loss of data each time due to priority
-inversion.</span> </span></td>
+<td style="border-right: none; text-align: left;"><span> <span> The spacecraft experienced
+total system resets with loss of data each time due to a priority
+inversion.</span><span><span class="dada-bold"><span
+style="color: blue"><span>[</span><a
+href="https://hugh.myddns.me/media/movies/MarsShort.mp4"></a></span></span></span><span><span
+style="color: blue">,</span></span><span><span class="dada-bold"><span
+style="color: blue"><a
+href="https://hugh.myddns.me/media/movies/ChinaMars.mp4"></a><span>]</span></span></span></span>
+</span></td>
 <td style="border-left: none; text-align: center;"></td>
 <td style="border-right: none; text-align: center;"></td>
 <td style="border-left: none; text-align: left;"><span class="dada-font-footnotesize">
@@ -345,7 +416,7 @@ class="math inline">\tau_{3}</span> has acquired this resource and then
 been preempted by the medium priority task <span
 class="math inline">\tau_{2}</span>. In summary, <span
 class="math inline">\tau_{2}</span> is blocking <span
-class="math inline">\tau_{1}</span>.</span> </span></td>
+class="math inline">\tau_{1}</span>.</span></span></td>
 </tr>
 </tbody>
 </table>
@@ -368,9 +439,9 @@ class="table-with-borders table-col-no-left-border table-col-no-right-border tab
 <tbody>
 <tr>
 <td style="text-align: center;"><img
-data-src="../../../images/data_warehouse_architecture.jpg"
+data-src="../../images/data_warehouse_architecture.jpg"
 style="max-width: none; width: auto; max-height: none; height:400px" alt="image" /></td>
-<td style="text-align: center;"><img data-src="../../../images/webapp.jpg"
+<td style="text-align: center;"><img data-src="../../images/webapp.jpg"
 style="max-width: none; width: auto; max-height: none; height:400px" alt="image" /></td>
 </tr>
 </tbody>
@@ -402,10 +473,10 @@ class="table-with-borders table-col-no-left-border table-col-no-right-border tab
 <tbody>
 <tr>
 <td style="text-align: center;"><img
-data-src="../../../images/largeswdesign1.png" style="max-width: none; width: auto; max-height: none; height:486px"
+data-src="../../images/largeswdesign1.png" style="max-width: none; width: auto; max-height: none; height:486px"
 alt="image" /></td>
 <td style="text-align: center;"><img
-data-src="../../../images/largeswdesign2.png" style="max-width: none; width: auto; max-height: none; height:486px"
+data-src="../../images/largeswdesign2.png" style="max-width: none; width: auto; max-height: none; height:486px"
 alt="image" /></td>
 </tr>
 </tbody>
@@ -461,13 +532,21 @@ href="https://www.emergentchaos.com/the-security-principles-of-saltzer-and-schro
 <div class="dada-frame-body">
 <div class="block">
 <div class="block-title">
-8 key points from paper summarized below:
+
 </div>
 <div class="block-content">
+<p>8 key points from paper summarized below:</p>
+<div class="dada-font-footnotesize">
+<p>.</p>
+</div>
+<p><span><span class="dada-bold"><span style="color: white"><span
+class="dada-hfill"></span><span>[</span><a
+href="https://hugh.myddns.me/media/pdfs/protection_information.pdf"></a>,<a
+href="https://www.emergentchaos.com/the-security-principles-of-saltzer-and-schroeder"></a><span>]</span></span></span></span></p>
 <ul>
 <li><span class="dada-font-footnotesize"><span class="dada-bold"><span
-style="color: blue">Economy of mechanism:</span></span> Keep design as
-simple and small as possible.</span></li>
+style="color: blue">Economy of mechanism:</span></span> Keep the design
+as simple and small as possible.</span></li>
 <li><span class="dada-font-footnotesize"><span class="dada-bold"><span
 style="color: blue">Fail-safe defaults:</span></span> Base access
 decisions on permission rather than exclusion. The default is no
@@ -657,14 +736,15 @@ For evaluating security of machines
 <table>
 <tbody>
 <tr>
-<td style="text-align: center;"><span class="dada-font-footnotesize">
-<img data-src="../../../images/Rainbow-Books.jpg" style="height: auto; width:100.0%"
-alt="image" /></span></td>
-<td style="text-align: center;"><span class="dada-font-footnotesize">The
-NSA created various documents describing the criteria for evaluating the
-security behaviour of machines. These criteria were published in a
-series of documents with brightly coloured covers, and hence the name
-Rainbow Documents.</span>  </td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><p> </p>
+<div class="dada-fbox"
+style="width: 60%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<span class="dada-font-footnotesize">The NSA created various documents
+describing the criteria for evaluating the security behaviour of
+machines. These criteria were published in a series of documents with
+brightly coloured covers, and hence the name Rainbow Documents.</span>  
+</div></td>
 </tr>
 </tbody>
 </table>
@@ -687,14 +767,18 @@ for <span style="color: blue">specifying</span> <span
 style="color: blue">security</span> requirements in acquisition
 specifications.</p>
 </div>
+<p><span><span class="dada-bold"><span
+style="color: blue"><span>[</span><a
+href="https://irp.fas.org/nsa/rainbow/std001.htm"></a><span>]</span></span></span></span></p>
 <div class="dada-font-footnotesize">
 <hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
 </div>
 <div class="dada-font-footnotesize">
 <p>Some of the Rainbow series have been superceded by the Common
 Criteria Evaluation and Validation Scheme (CCEVS). For background and
-further information, see the CCEVS web site at
-<span>[</span>X<span>]</span> above.</p>
+further information, see the CCEVS web site: <span
+class="dada-bold"><span style="color: blue"><span>[</span><a
+href="https://www.niap-ccevs.org/publications/"></a><span>]</span></span></span></p>
 </div>
 </div>
 </div>
@@ -796,7 +880,9 @@ The Common Criteria and its predecessor ITSEC derive from...
 <p><span class="dada-bold"><span
 style="color: blue">National</span></span> security evaluation <span
 class="dada-bold"><span style="color: blue">criteria</span></span> from
-multiple countries, see <span>[</span>X<span>]</span> above.</p>
+multiple countries:<span class="dada-bold"><span class="hfill-right"
+style="color: blue"> <span>[</span><a
+href="https://www.commoncriteriaportal.org/"></a><span>]</span></span></span></p>
 </div>
 <div class="dada-font-footnotesize">
 <p>A “sponsor” determines operational requirements, threats and security
@@ -1010,8 +1096,10 @@ href="https://hugh.myddns.me/media/pdfs/belllapadula1.pdf">ctrl-i9</a><span>]</s
 <div class="dada-frame-body">
 <div class="block">
 <div class="block-title">
-BLP from the names of the two authors of
-<span>[</span>ctrl-i9<span>]</span>
+BLP from the names of the two authors of <span><span
+class="dada-bold"><span style="color: white"><span
+class="dada-hfill"></span><span>[</span><a
+href="https://hugh.myddns.me/media/pdfs/belllapadula1.pdf"></a><span>]</span></span></span></span>
 </div>
 <div class="block-content">
 <div class="dada-font-footnotesize">
@@ -1073,11 +1161,11 @@ style="color: blue">}</span></span><span style="color: black">.
 <div class="dada-fbox"
 style="width: 85%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div class="image-grid">
-<img data-src="../../../images/mnarc.png" style="max-width: none; width: auto; max-height: none; height:270px"
+<img data-src="../../images/mnarc.png" style="max-width: none; width: auto; max-height: none; height:270px"
 alt="image" />
-<img data-src="../../../images/noreadup.png" style="max-width: none; width: auto; max-height: none; height:270px"
+<img data-src="../../images/noreadup.png" style="max-width: none; width: auto; max-height: none; height:270px"
 alt="image" />
-<img data-src="../../../images/nowritedown.png" style="max-width: none; width: auto; max-height: none; height:270px"
+<img data-src="../../images/nowritedown.png" style="max-width: none; width: auto; max-height: none; height:270px"
 alt="image" />
 </div>
 </div>
@@ -1095,26 +1183,28 @@ to be leaked (downwards). The rules are:</p>
 <div class="dada-font-footnotesize">
 <div class="dada-fbox"
 style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<p><span class="dada-font-footnotesize"><span class="dada-bold"><span
-style="color: blue">No read-up-1</span><span
-style="color: black">:</span></span> <span style="color: blue"><span
-class="math inline">s</span></span> <span
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold"><span style="color: blue">No
+read-up-1</span><span style="color: black">:</span></span> <span
+style="color: blue"><span class="math inline">s</span></span> <span
 style="color: black">can</span> <span class="dada-bold"><span
 style="color: black"><code>read</code></span></span> <span
 style="color: blue"><span class="math inline">o</span></span> <span
 style="color: black">if and only if</span> <span
 style="color: blue"><span class="math inline">l_{o}\leq
-l_{s}</span></span><span style="color: black">.</span></span></p>
-<p><span class="dada-font-footnotesize"><span class="dada-bold"><span
-style="color: blue">No write-down-1</span><span
-style="color: black">:</span></span> <span style="color: blue"><span
-class="math inline">s</span></span> <span
+l_{s}</span></span><span style="color: black">.</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold"><span style="color: blue">No
+write-down-1</span><span style="color: black">:</span></span> <span
+style="color: blue"><span class="math inline">s</span></span> <span
 style="color: black">can</span> <span class="dada-bold"><span
 style="color: black"><code>write</code></span></span> <span
 style="color: blue"><span class="math inline">o</span></span> <span
 style="color: black">if and only if</span> <span
 style="color: blue"><span class="math inline">l_{s}\leq
-l_{o}</span></span>.</span></p>
+l_{o}</span></span>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1139,24 +1229,38 @@ Like sales, marketing, invasion plans...
 <table>
 <tbody>
 <tr>
-<td style="text-align: center;"><img data-src="../../../images/lattice.png"
-style="max-width: none; width: auto; max-height: none; height:324px" alt="image" /></td>
-<td style="text-align: left;">  <span class="dada-font-footnotesize">A
-security category <span style="color: blue"><span
+<td style="text-align: center;"><div class="varwidth">
+<p> </p>
+<p><img data-src="../../images/lattice.png" style="max-width: none; width: auto; max-height: none; height:216px"
+alt="image" /></p>
+</div></td>
+<td style="text-align: left;"><p>plus 0cm  </p>
+<div class="dada-font-footnotesize">
+<div class="dada-fbox"
+style="width: 75%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div class="dada-font-footnotesize">
+<p>A security category <span style="color: blue"><span
 class="math inline">c\in{\cal C}</span></span> <span
 style="color: black">is used to classify objects in the model, with any
 object belonging to a set of categories.</span> <span
 style="color: blue"><span class="math inline">l</span></span> is a
 level, as in the simple BLP on the previous slide. <span
 style="color: blue"><span class="math inline">c</span></span> is a
-category.</span> <span class="dada-font-footnotesize"><span
-style="color: black">Each pair</span> <span style="color: blue"><span
-class="math inline">(l\times c)</span></span> <span
-style="color: black">is termed a</span> <span style="color: blue"><span
-class="dada-emph">security level</span></span><span
-style="color: black">, and forms a</span> <span
+category.</p>
+</div>
+<div class="dada-font-footnotesize">
+<p><span style="color: black">Each pair</span> <span
+style="color: blue"><span class="math inline">(l\times c)</span></span>
+<span style="color: black">is termed a</span> <span
+style="color: blue"><span class="dada-emph">security
+level</span></span><span style="color: black">, and forms a</span> <span
 style="color: blue">lattice</span><span
-style="color: black">.</span></span>  </td>
+style="color: black">.</span></p>
+</div>
+</div>
+</div>
+<p> </p>
+<p> </p></td>
 </tr>
 </tbody>
 </table>
@@ -1191,29 +1295,34 @@ Properties for the new extended model
 <div class="dada-font-footnotesize">
 <div class="dada-fbox"
 style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<p><span class="dada-font-footnotesize"><span class="dada-bold"><span
-style="color: blue">No read-up:</span></span> <span
-style="color: blue"><span class="math inline">s</span> </span> can <span
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold"><span style="color: blue">No
+read-up:</span></span> <span style="color: blue"><span
+class="math inline">s</span> </span> can <span
 class="dada-bold"><code>read</code></span> <span
 style="color: blue"><span class="math inline">o</span> </span> if and
 only if <span class="dada-bold"><span style="color: blue"><span
-class="math inline">s\text{ dom }o</span></span></span>.</span></p>
-<p><span class="dada-font-footnotesize"><span class="dada-bold"><span
-style="color: blue">No write-down:</span></span><span
-style="color: blue"> <span class="math inline">s</span> </span> can
-<span class="dada-bold"><code>write</code></span> <span
+class="math inline">s\text{ dom }o</span></span></span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold"><span style="color: blue">No
+write-down:</span></span><span style="color: blue"> <span
+class="math inline">s</span> </span> can <span
+class="dada-bold"><code>write</code></span> <span
 style="color: blue"><span class="math inline">o</span> </span> if and
 only if <span class="dada-bold"><span style="color: blue"><span
-class="math inline">o\text{ dom }s</span></span></span>.</span></p>
-<p><span class="dada-font-footnotesize"><span class="dada-bold"><span
+class="math inline">o\text{ dom }s</span></span></span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold"><span
 style="color: blue">Discretionary:</span></span><span
 style="color: blue"> <span class="math inline">s</span> </span> can
 <span class="dada-bold"><code>read/write</code></span> <span
 style="color: blue"><span class="math inline">o</span> </span> if and
 only if <span style="color: blue">no-read-up</span>, <span
 style="color: blue">no-write-down</span>, and <span
-style="color: blue">access permitted</span> by discretionary
-policy.</span></p>
+style="color: blue">access permitted</span> by discretionary policy.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1283,7 +1392,7 @@ and how to build security systems that are provably secure.</p>
 href="https://www.commoncriteriaportal.org/files/epfiles/st_vid9513-st.pdf">i1</a><span>]</span></span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/datadiode.png" style="height: auto; width:40.0%"
+<p><img data-src="../../images/datadiode.png" style="height: auto; width:40.0%"
 alt="image" /></p>
 </div>
 <div class="exampleblock">
@@ -1309,7 +1418,7 @@ href="https://en.wikipedia.org/wiki/Biba_Model">i5</a><span>]</span></span></h2>
 <div class="center">
 <div class="dada-fbox"
 style="width: 35%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/Biba1.png" style="height: auto; width:100.0%"
+<img data-src="../../images/Biba1.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1378,25 +1487,31 @@ Strict integrity policy rules
 <div class="dada-font-footnotesize">
 <div class="dada-fbox"
 style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<p><span class="dada-font-footnotesize"><span class="dada-bold"><span
-style="color: blue">No read-down:</span></span> <span
-style="color: blue"><span class="math inline">s</span> </span> can <span
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold"><span style="color: blue">No
+read-down:</span></span> <span style="color: blue"><span
+class="math inline">s</span> </span> can <span
 class="dada-bold"><code>read</code></span><span style="color: blue">
 <span class="math inline">o</span> </span> iff<span style="color: blue">
-<span class="math inline">i(s)\leq i(o)</span></span>.</span></p>
-<p><span class="dada-font-footnotesize"><span class="dada-bold"><span
-style="color: blue">No write-up:</span></span> <span
-style="color: blue"><span class="math inline">s</span> </span> can <span
+<span class="math inline">i(s)\leq i(o)</span></span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold"><span style="color: blue">No
+write-up:</span></span> <span style="color: blue"><span
+class="math inline">s</span> </span> can <span
 class="dada-bold"><code>write</code></span><span style="color: blue">
 <span class="math inline">o</span></span> iff<span style="color: blue">
-<span class="math inline">i(o)\leq i(s)</span></span>.</span></p>
-<p><span class="dada-font-footnotesize"><span class="dada-bold"><span
-style="color: blue">No invoke-up:</span></span><span
-style="color: blue"> <span class="math inline">s_{1}</span> </span> can
-<span class="dada-bold"><code>execute</code></span><span
-style="color: blue"> <span class="math inline">s_{2}</span> </span>
-iff<span style="color: blue"> <span class="math inline">i(s_{2})\leq
-i(s_{1})</span></span>.</span></p>
+<span class="math inline">i(o)\leq i(s)</span></span>.</p>
+</div>
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold"><span style="color: blue">No
+invoke-up:</span></span><span style="color: blue"> <span
+class="math inline">s_{1}</span> </span> can <span
+class="dada-bold"><code>execute</code></span><span style="color: blue">
+<span class="math inline">s_{2}</span> </span> iff<span
+style="color: blue"> <span class="math inline">i(s_{2})\leq
+i(s_{1})</span></span>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1418,24 +1533,26 @@ style="color: black">). </span></p>
 <div class="dada-font-footnotesize">
 <div class="dada-fbox"
 style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<p><span class="dada-font-footnotesize"><span class="dada-bold"><span
-style="color: blue">No write-up</span></span> <span
-class="dada-bold"><span
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold"><span style="color: blue">No
+write-up</span></span> <span class="dada-bold"><span
 style="color: black"><code>and </code></span><span
 style="color: blue">No invoke-up:</span></span><span
 style="color: blue"> </span><span class="dada-bold"><span
 style="color: black"><code>(as before)</code></span></span><span
-style="color: black">.</span></span></p>
-<p><span class="dada-font-footnotesize"><span class="dada-bold"><span
-style="color: blue">Subject lowers</span><span
-style="color: black">:</span></span> <span
+style="color: black">.</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold"><span style="color: blue">Subject
+lowers</span><span style="color: black">:</span></span> <span
 style="color: black">if</span> <span style="color: blue"><span
 class="math inline">s</span></span> <span class="dada-bold"><span
 style="color: black"><code>reads</code></span></span> <span
 style="color: blue"><span class="math inline">o</span></span> <span
 style="color: black">then</span> <span style="color: blue"><span
 class="math inline">i&#39;(s)=\text{min}(i(s),i(o))</span></span><span
-style="color: black">.</span></span></p>
+style="color: black">.</span></p>
+</div>
 </div>
 </div>
 </div>
@@ -1450,20 +1567,23 @@ Direct modification only (ring) policy rules
 <div class="dada-font-footnotesize">
 <div class="dada-fbox"
 style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<p><span class="dada-font-footnotesize"><span class="dada-bold"><span
-style="color: blue">No write-up</span></span> <span
-class="dada-bold"><span
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold"><span style="color: blue">No
+write-up</span></span> <span class="dada-bold"><span
 style="color: black"><code>and </code></span><span
 style="color: blue">No invoke-up:</span></span><span
 style="color: blue"> </span><span class="dada-bold"><span
 style="color: black"><code>(as before)</code></span></span><span
-style="color: black">.</span></span></p>
-<p><span class="dada-font-footnotesize"><span class="dada-bold"><span
-style="color: blue">All read:</span></span><span style="color: blue">
-<span class="math inline">s</span></span> can <span
+style="color: black">.</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold"><span style="color: blue">All
+read:</span></span><span style="color: blue"> <span
+class="math inline">s</span></span> can <span
 class="dada-bold"><code>read</code></span> <span
 style="color: blue"><span class="math inline">o</span> </span>
-regardless.</span></p>
+regardless.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1478,7 +1598,7 @@ href="https://en.wikipedia.org/wiki/Brewer_and_Nash_model">i6</a><span>]</span><
 <div class="center">
 <div class="dada-fbox"
 style="width: 50%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/GreatWall_small.jpg" style="height: auto; width:100.0%"
+<img data-src="../../images/GreatWall_small.jpg" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1500,7 +1620,8 @@ style="color: blue">competitiors</span>.</p>
 <div class="dada-font-footnotesize">
 <div class="dada-fbox"
 style="width: 90%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<p><span class="dada-font-footnotesize"><span class="dada-bold"><span
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold"><span
 style="color: blue">SimpleProperty:</span></span><span
 style="color: blue"> <span class="math inline">s</span></span> <span
 style="color: black">can</span> <span class="dada-bold"><span
@@ -1514,8 +1635,10 @@ read, either</span><span style="color: blue"> <span
 class="math inline">y(c)\not\in x(c&#39;)</span></span><span
 style="color: black"> or</span><span style="color: blue"> <span
 class="math inline">y(c)=y(c&#39;)</span></span><span
-style="color: black">.</span></span></p>
-<p><span class="dada-font-footnotesize"><span class="dada-bold"><span
+style="color: black">.</span></p>
+</div>
+<div class="dada-font-footnotesize">
+<p><span class="dada-bold"><span
 style="color: blue"><span>*</span>-Property:</span></span> <span
 style="color: blue"><span class="math inline">s</span></span> <span
 style="color: black">can</span> <span class="dada-bold"><span
@@ -1529,7 +1652,8 @@ style="color: black">with</span><span style="color: blue"> <span
 class="math inline">x(c&#39;)\not=\emptyset</span></span><span
 style="color: black"> and </span><span style="color: blue"><span
 class="math inline">y(c)\not=y(c&#39;)</span></span><span
-style="color: black">.</span></span></p>
+style="color: black">.</span></p>
+</div>
 </div>
 </div>
 </div>
@@ -1566,7 +1690,7 @@ BIBA, Chinese wall</span></li>
 <div class="center">
 <div class="dada-fbox"
 style="width: 15%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/Wikipedia-logo-nowords-bgwhite-200px.jpg"
+<img data-src="../../images/Wikipedia-logo-nowords-bgwhite-200px.jpg"
 style="height: auto; width:100.0%" alt="image" />
 </div>
 </div>
@@ -1617,7 +1741,7 @@ Modelling a system
 </div>
 <div class="block-content">
 <div class="center">
-<p><img data-src="../../../images/closedsystem.png" style="height: auto; width:50.0%"
+<p><img data-src="../../images/closedsystem.png" style="height: auto; width:50.0%"
 alt="image" /></p>
 </div>
 </div>
@@ -1628,7 +1752,7 @@ Synthesizing a system
 </div>
 <div class="block-content">
 <div class="center">
-<p><img data-src="../../../images/opensystem.png" style="height: auto; width:50.0%"
+<p><img data-src="../../images/opensystem.png" style="height: auto; width:50.0%"
 alt="image" /></p>
 </div>
 </div>
@@ -1641,7 +1765,7 @@ alt="image" /></p>
 href="https://en.wikipedia.org/wiki/Model_checking">i7</a><span>]</span></span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/verificationsetting.png"
+<p><img data-src="../../images/verificationsetting.png"
 style="height: auto; width:60.0%" alt="image" /></p>
 </div>
 <div class="block">
@@ -1684,7 +1808,7 @@ trace leading to the error.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 65%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/ispin.png" style="height: auto; width:100.0%"
+<img data-src="../../images/ispin.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1758,58 +1882,52 @@ assertions</span></li>
 <section class="slide level2">
 <h2>Promela example</h2>
 <div class="dada-frame-body">
+<div class="lrbox">
+<div class="sourceCode" id="cb1" data-language="bash"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mtype</span> = <span class="dt">{ack</span><span class="op">,</span><span class="dt">nak</span><span class="op">,</span><span class="dt">err</span><span class="op">,</span><span class="dt">next</span><span class="op">,</span><span class="dt">accept}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">init</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>   <span class="ex">chan</span> AtoB = <span class="pp">[</span><span class="ss">1</span><span class="pp">]</span> of { mtype,byte }<span class="kw">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>   <span class="ex">chan</span> BtoA = <span class="pp">[</span><span class="ss">1</span><span class="pp">]</span> of { mtype,byte }<span class="kw">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   <span class="ex">chan</span> Ain  = <span class="pp">[</span><span class="ss">2</span><span class="pp">]</span> of { mtype,byte }<span class="kw">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>   <span class="ex">chan</span> Bin  = <span class="pp">[</span><span class="ss">2</span><span class="pp">]</span> of { mtype,byte }<span class="kw">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>   <span class="ex">chan</span> Aout = <span class="pp">[</span><span class="ss">2</span><span class="pp">]</span> of { mtype,byte }<span class="kw">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>   <span class="ex">chan</span> Bout = <span class="pp">[</span><span class="ss">2</span><span class="pp">]</span> of { mtype,byte }<span class="kw">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>   <span class="ex">atomic</span> {</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="ex">run</span> application<span class="er">(</span> <span class="ex">Ain,Aout</span> <span class="kw">);</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="ex">run</span> xfer<span class="er">(</span> <span class="ex">Aout,Ain,BtoA,AtoB</span> <span class="kw">);</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="ex">run</span> xfer<span class="er">(</span> <span class="ex">Bout,Bin,AtoB,BtoA</span> <span class="kw">);</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      <span class="ex">run</span> application<span class="er">(</span> <span class="ex">Bin,Bout</span> <span class="kw">)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>   <span class="kw">};</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>   <span class="ex">AtoB!err</span><span class="er">(</span><span class="ex">0</span><span class="kw">)</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div>
+</div>
 <div class="center">
 <div class="dada-fbox"
-style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div
 class="table-with-borders table-col-no-left-border table-col-no-right-border table-row-no-top-border table-row-no-bottom-border">
 <table>
 <thead>
 <tr>
-<th style="border-right: none; text-align: center;"><span
-class="dada-font-footnotesize"><span class="dada-bold">4 processes, 6
-channels...</span></span></th>
+<th style="border-right: none; text-align: center;"><span class="dada-bold">4 processes, 6
+channels...</span></th>
 <th style="border-left: none; text-align: center;"></th>
 <th style="border-right: none; text-align: center;"></th>
-<th style="border-left: none; text-align: center;"><span
-class="dada-font-footnotesize"><span class="dada-bold">The
-“mainline”</span></span></th>
+<th style="border-left: none; text-align: left;"><span class="dada-bold">The
+“mainline”</span></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="border-right: none; text-align: center;"><div style="background-color: white">
-<div class="center">
-<p><img src="../../../images/promela.png" style="max-width: none; width: auto; max-height: none; height:454px"
-alt="image" /></p>
-</div>
-</div></td>
+<td style="border-right: none; text-align: center;"> <img src="../../images/promela.png"
+style="max-width: none; width: auto; max-height: none; height:378px" alt="image" /></td>
 <td style="border-left: none; text-align: center;"></td>
 <td style="border-right: none; text-align: center;"></td>
-<td style="border-left: none; text-align: center;"><div
-style="color: dada-font-scriptsize">
+<td style="border-left: none; text-align: left;"><p> </p>
 <div class="dada-fbox"
 style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<div class="dada-lyxcode" style="color: rgb(0,0,255);">
-<pre><code>mtype = {ack,nak,err,next,accept}
-init
-{
-   chan AtoB = [1] of { mtype,byte };
-   chan BtoA = [1] of { mtype,byte };
-   chan Ain  = [2] of { mtype,byte };
-   chan Bin  = [2] of { mtype,byte };
-   chan Aout = [2] of { mtype,byte };
-   chan Bout = [2] of { mtype,byte };
-   atomic {
-      run application( Ain,Aout );
-      run xfer( Aout,Ain,BtoA,AtoB );
-      run xfer( Bout,Bin,AtoB,BtoA );
-      run application( Bin,Bout )
-   };
-   AtoB!err(0)
-}</code></pre>
-</div>
-</div>
+
 </div></td>
 </tr>
 </tbody>
@@ -1831,75 +1949,68 @@ would no longer send data one way.</p>
 <section class="slide level2">
 <h2>Promela example</h2>
 <div class="dada-frame-body">
+<div class="lrbox">
+<div class="sourceCode" id="cb2" data-language="bash"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">proctype</span> xfer<span class="er">(</span><span class="ex">chan</span> in,out,chin,chout<span class="kw">)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>   <span class="ex">byte</span> o,i<span class="kw">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>   <span class="er">in</span><span class="ex">?next</span><span class="er">(</span><span class="ex">o</span><span class="kw">);</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>   <span class="cf">do</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="ex">::chin?nak</span><span class="er">(</span><span class="ex">i</span><span class="kw">)</span> <span class="ex">-</span><span class="op">&gt;</span> out!accept<span class="er">(</span><span class="ex">i</span><span class="kw">);</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                       <span class="ex">chout!ack</span><span class="er">(</span><span class="ex">o</span><span class="kw">)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="ex">::chin?ack</span><span class="er">(</span><span class="ex">i</span><span class="kw">)</span> <span class="ex">-</span><span class="op">&gt;</span> out!accept<span class="er">(</span><span class="ex">i</span><span class="kw">);</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                       <span class="er">in</span><span class="ex">?next</span><span class="er">(</span><span class="ex">o</span><span class="kw">);</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                       <span class="ex">chout!ack</span><span class="er">(</span><span class="ex">o</span><span class="kw">)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="ex">::chin?err</span><span class="er">(</span><span class="ex">i</span><span class="kw">)</span> <span class="ex">-</span><span class="op">&gt;</span> chout!nak<span class="er">(</span><span class="ex">o</span><span class="kw">)</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">od</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+</div>
+<div class="lrbox">
+<div class="sourceCode" id="cb3" data-language="bash"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#define MAX 10</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">proctype</span> application<span class="er">(</span><span class="ex">chan</span> in,out<span class="kw">)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>   <span class="ex">int</span> i=0,j=0,lasti=0<span class="kw">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>   <span class="cf">do</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="ex">::in?accept</span><span class="er">(</span><span class="ex">i</span><span class="kw">)</span> <span class="ex">-</span><span class="op">&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="ex">assert</span><span class="er">(</span> <span class="va">i</span><span class="op">=</span>=lasti <span class="kw">);</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>           <span class="ex">::</span><span class="er">(</span><span class="ex">lasti!=MAX</span><span class="kw">)</span> <span class="ex">-</span><span class="op">&gt;</span> lasti=lasti+1</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>           <span class="ex">::</span><span class="er">(</span><span class="va">lasti</span><span class="op">=</span>=MAX<span class="kw">)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">fi</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>      <span class="ex">::out!next</span><span class="er">(</span><span class="ex">j</span><span class="kw">)</span> <span class="ex">-</span><span class="op">&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>           <span class="ex">::</span><span class="er">(</span><span class="ex">j!=MAX</span><span class="kw">)</span> <span class="ex">-</span><span class="op">&gt;</span> j=j+1</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>           <span class="ex">::</span><span class="er">(</span><span class="va">j</span><span class="op">=</span>=MAX<span class="kw">)</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">fi</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">od</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div>
+</div>
 <div class="center">
 <div class="dada-fbox"
-style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div
 class="table-with-borders table-col-no-left-border table-col-no-right-border table-row-no-top-border table-row-no-bottom-border">
 <table>
 <thead>
 <tr>
-<th style="border-right: none; text-align: center;"><span
-class="dada-font-footnotesize"><span class="dada-bold">Transfer/protocol
-rules</span></span></th>
-<th style="border-left: none; text-align: center;"></th>
-<th style="border-right: none; text-align: center;"></th>
-<th style="border-left: none; text-align: center;"><span
-class="dada-font-footnotesize"><span class="dada-bold">An application
-for testing</span></span></th>
+<th style="text-align: left;"><span class="dada-bold">Transfer/protocol
+rules</span></th>
+<th style="text-align: left;"><span class="dada-bold">An application for
+testing</span></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="border-right: none; text-align: center;"><div
-style="color: dada-font-scriptsize">
+<td style="text-align: left;"><p> </p>
 <div class="dada-fbox"
 style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<div class="dada-lyxcode" style="color: dada-font-tiny;">
-<pre><code>proctype xfer(chan in,out,chin,chout)
-{
-   byte o,i;
-   in?next(o);
-   do
-      ::chin?nak(i) -&gt; out!accept(i);
-                       chout!ack(o)
-      ::chin?ack(i) -&gt; out!accept(i);
-                       in?next(o);
-                       chout!ack(o)
-      ::chin?err(i) -&gt; chout!nak(o)
-   od
-}</code></pre>
-</div>
-</div>
-<p><span class="dada-bold"><span style="color: blue"> </span></span></p>
+
 </div></td>
-<td style="border-left: none; text-align: center;"></td>
-<td style="border-right: none; text-align: center;"></td>
-<td style="border-left: none; text-align: center;"><div
-style="color: dada-font-scriptsize">
+<td style="text-align: left;"><p> </p>
 <div class="dada-fbox"
 style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<div class="dada-lyxcode" style="color: dada-font-tiny;">
-<pre><code>#define MAX 10
-proctype application( chan in, out )
-{
-   int i=0, j=0, lasti=0;
-   do
-      ::in?accept(i) -&gt;
-        assert( i==lasti );
-        if
-           ::(lasti!=MAX) -&gt; lasti=lasti+1
-           ::(lasti==MAX)
-        fi
-      ::out!next(j) -&gt;
-        if
-           ::(j!=MAX) -&gt; j=j+1
-           ::(j==MAX)
-        fi
-   od
-}</code></pre>
-</div>
-</div>
+
 </div></td>
 </tr>
 </tbody>
@@ -1920,49 +2031,55 @@ methods catch these hard-to-find errors.</p>
 <section class="slide level2">
 <h2>A (CSP) model for the pathfinder software </h2>
 <div class="dada-frame-body">
-<div class="exampleblock">
-<div class="block-title">
-Three tasks, High, Med and low - initially idle:
+<div class="lrbox">
+<div class="sourceCode" id="cb4" data-language="bash"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#define idle 0;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#define wait 1;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#define run 2;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">var</span> L=idle<span class="kw">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">var</span> H=idle<span class="kw">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">var</span> M=idle<span class="kw">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">var</span> mutex=true<span class="kw">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">GetMutex()</span> <span class="ex">=</span> <span class="pp">[</span><span class="ss">mutex</span><span class="pp">]</span>aquire{mutex=false<span class="kw">;</span><span class="er">}</span> <span class="ex">-</span><span class="op">&gt;</span> Skip<span class="er">(</span><span class="kw">);</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">FreeMutex()</span> <span class="ex">=</span> <span class="pp">[</span><span class="ss">!mutex</span><span class="pp">]</span>release{mutex=true<span class="kw">;</span><span class="er">}</span> <span class="ex">-</span><span class="op">&gt;</span> Skip<span class="er">(</span><span class="kw">);</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">HiPri()</span> <span class="ex">=</span> getHP{H=wait<span class="kw">;</span><span class="va">M</span><span class="op">=</span>idle<span class="kw">;</span><span class="er">}</span> <span class="ex">-</span><span class="op">&gt;</span> GetMutex<span class="er">(</span><span class="kw">);</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ex">runHP</span> <span class="at">-</span><span class="op">&gt;</span> DoHigh<span class="er">(</span><span class="kw">);</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">DoHigh()</span> <span class="ex">=</span> endHP{H=run<span class="kw">;</span><span class="er">}</span> <span class="ex">-</span><span class="op">&gt;</span> FreeMutex<span class="er">(</span><span class="kw">);</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ex">idleHP{H=idle</span><span class="kw">;</span><span class="er">}</span> <span class="ex">-</span><span class="op">&gt;</span> HiPri<span class="er">(</span><span class="kw">);</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">MedPri()</span> <span class="ex">=</span> <span class="pp">[</span><span class="ss">H!=run</span><span class="pp">]</span>runMP{M=run<span class="kw">;</span><span class="er">}</span> <span class="ex">-</span><span class="op">&gt;</span> MedPri<span class="er">(</span><span class="kw">);</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="fu">LowPri()</span> <span class="ex">=</span> [H==idle<span class="kw">&amp;&amp;</span><span class="va">M</span><span class="op">=</span>=idle]getLP{L=wait<span class="kw">;</span><span class="er">}</span> <span class="ex">-</span><span class="op">&gt;</span> GetMutex<span class="er">(</span><span class="kw">);</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="ex">[H==idle</span><span class="kw">&amp;&amp;</span><span class="va">M</span><span class="op">=</span>=idle]runLP <span class="ex">-</span><span class="op">&gt;</span> DoLow<span class="er">(</span><span class="kw">);</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">DoLow()</span> <span class="ex">=</span> [H==idle<span class="kw">&amp;&amp;</span><span class="va">M</span><span class="op">=</span>=idle]endLP{L=run<span class="kw">;</span><span class="er">}</span> <span class="ex">-</span><span class="op">&gt;</span> FreeMutex<span class="er">(</span><span class="kw">);</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="ex">[H==idle</span><span class="kw">&amp;&amp;</span><span class="va">M</span><span class="op">=</span>=idle]idleLP{L=idle<span class="kw">;</span><span class="er">}</span> <span class="ex">-</span><span class="op">&gt;</span> LowPri<span class="er">(</span><span class="kw">);</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="fu">AllTasks()</span> <span class="ex">=</span> HiPri<span class="er">(</span><span class="kw">)</span> <span class="kw">|||</span> <span class="fu">MedPri()</span> <span class="kw">|||</span> <span class="fu">LowPri()</span><span class="kw">;</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#assert AllTasks() deadlockfree; </span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">#assert AllTasks() |= [](getHP -&gt; &lt;&gt;endHP); </span></span></code></pre></div>
 </div>
-<div class="block-content">
 <div class="center">
 <div class="dada-fbox"
-style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<div
+class="table-with-borders table-col-no-left-border table-col-no-right-border table-row-no-top-border table-row-no-bottom-border">
 <table>
 <tbody>
 <tr>
-<td style="text-align: left;"><img data-src="../../../images/mars2.jpg"
+<td style="text-align: center;"> <img data-src="../../images/mars2.jpg"
 style="max-width: none; width: auto; max-height: none; height:745px" alt="image" /></td>
-<td style="text-align: left;"><p><span
-class="dada-font-tiny"><code> </code><span
-class="dada-bold"></span><code> </code></span></p>
-<div class="dada-lyxcode" style="color: dada-font-tiny;">
-<pre><code>#define idle 0;
-#define wait 1;
-#define run 2;
-var L=idle;
-var H=idle;
-var M=idle;
-var mutex=true;
-GetMutex()  = [mutex]aquire{mutex=false;} -&gt; Skip();
-FreeMutex() = [!mutex]release{mutex=true;} -&gt; Skip();
-HiPri()  = getHP{H=wait;M=idle;} -&gt; GetMutex();
-runHP -&gt; DoHigh();
-DoHigh() = endHP{H=run;} -&gt; FreeMutex();
-idleHP{H=idle;} -&gt; HiPri();
-MedPri() = [H!=run]runMP{M=run;} -&gt; MedPri();
-LowPri() = [H==idle&amp;&amp;M==idle]getLP{L=wait;} -&gt; GetMutex();
-[H==idle&amp;&amp;M==idle]runLP -&gt; DoLow();
-DoLow()  = [H==idle&amp;&amp;M==idle]endLP{L=run;} -&gt; FreeMutex();
-[H==idle&amp;&amp;M==idle]idleLP{L=idle;} -&gt; LowPri();
-AllTasks() = HiPri() ||| MedPri() ||| LowPri();
-#assert AllTasks() deadlockfree;
-#assert AllTasks() |= [](getHP -&gt; &lt;&gt;endHP);</code></pre>
-</div></td>
+<td style="text-align: left;"><p> </p>
+<div class="dada-fbox"
+style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+
+</div>
+<p> </p></td>
 </tr>
 </tbody>
 </table>
-</div>
 </div>
 </div>
 </div>
@@ -1972,7 +2089,7 @@ AllTasks() = HiPri() ||| MedPri() ||| LowPri();
 <h2>Another example system...</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/crossing.png" style="height: auto; width:70.0%"
+<p><img data-src="../../images/crossing.png" style="height: auto; width:70.0%"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -1993,7 +2110,7 @@ activities, and the gate’s status.</p>
 <h2>Modelling the system...</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/parallel.png" style="height: auto; width:55.0%"
+<p><img data-src="../../images/parallel.png" style="height: auto; width:55.0%"
 alt="image" /></p>
 </div>
 <div class="block">

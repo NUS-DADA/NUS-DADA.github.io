@@ -1,0 +1,4 @@
+set terminal postscript eps color
+set output "ammod.eps"
+set samples 10000
+plot [-10:10] [-3:12] sin(x*50)+8,sin(abs(x)+x)+4,(1+0.8*sin(abs(x)+x))*sin(x*50)

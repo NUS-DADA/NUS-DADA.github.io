@@ -1,0 +1,4041 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+%\setbeamertemplate{background canvas}[vertical shading][bottom=red!10,top=blue!10]
+%\usefonttheme{structurebold}
+%\usetheme{Warsaw}
+
+\usefonttheme{structurebold}
+\usetheme{Haustadt}
+\definecolor{shadecolor}{rgb}{1,1,1}
+
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage[3D]{movie15}
+\usepackage{amsmath,amssymb}
+\usepackage[latin1]{inputenc}
+\usepackage{colortbl}
+\usepackage[english]{babel}
+\usepackage{times}
+\setbeamercovered{dynamic}
+\definecolor{none}{rgb}{0.0,0.0,0.0}
+
+\pgfdeclareimage[width=1cm]{nus-logo}{/Users/hugh/COURSES/cs3235/2012-13-I/lyx/beamer-nus-logo}
+\logo{\pgfuseimage{nus-logo}}
+
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,fit,backgrounds,calc}
+
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+
+\newcommand{\bubble}[6]% name, content, color, align, inner sep, width
+{   \ifthenelse{\equal{r}{#4}\OR\equal{c}{#4}}{\hfill}{}
+    \begin{tikzpicture}
+        \node[text width=\the\textwidth*#6, above right](#1){#2};
+        \begin{pgfonlayer}{background}
+            \node[fit=(#1),inner sep=#5,rectangle callout,rounded corners=3pt,draw,fill=#3,overlay] {};
+        \end{pgfonlayer}
+    \end{tikzpicture}
+    \ifthenelse{\equal{l}{#4}\OR\equal{c}{#4}}{\hfill\phantom{}}{}
+}
+
+\newcommand{\rawbubble}[6]% name, content, color, align, inner sep, width
+{   \ifthenelse{\equal{r}{#4}\OR\equal{c}{#4}}{\hfill}{}
+    \begin{tikzpicture}
+        \node[text width=\the\textwidth*#6, above right](#1){#2};
+        \begin{pgfonlayer}{background}
+            \node[fit=(#1),inner sep=#5,rectangle callout,callout relative pointer={(0.2cm,0cm)},rounded corners=3pt,draw,fill=#3,overlay] {};
+        \end{pgfonlayer}
+    \end{tikzpicture}
+    \ifthenelse{\equal{l}{#4}\OR\equal{c}{#4}}{\hfill\phantom{}}{}
+}
+
+
+\newcommand{\bubblebelow}[6]% name, content, color, align, inner sep, width
+{   \ifthenelse{\equal{r}{#4}\OR\equal{c}{#4}}{\hfill}{}
+    \begin{tikzpicture}
+        \node[text width=\the\textwidth*#6, above right](#1){#2};
+        \begin{pgfonlayer}{background}
+            \node[fit=(#1),inner sep=#5,rectangle callout,callout relative pointer={(0.2cm,0.3cm)},rounded corners=3pt,draw,fill=#3,overlay] {};
+        \end{pgfonlayer}
+    \end{tikzpicture}
+    \ifthenelse{\equal{l}{#4}\OR\equal{c}{#4}}{\hfill\phantom{}}{}
+}
+
+
+\newcommand{\pointthis}[2]{
+        \tikz[remember picture,baseline]{\node[anchor=base,inner sep=0,outer sep=0]%
+        (#1) {\underline{#1}};\node[overlay,rectangle callout,%
+        callout relative pointer={(0.2cm,0.7cm)},fill=green!100] at ($(#1.north)+(-.5cm,-1.4cm)$) {#2};}%
+        }%
+\end_preamble
+\options notes=show,handout
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding default
+\fontencoding global
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\boxbgcolor #ffffff
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+CS3235
+\begin_inset Newline newline
+\end_inset
+
+Eighth set of lecture slides
+\end_layout
+
+\begin_layout Author
+Hugh Anderson
+\end_layout
+
+\begin_layout Institute
+National University of Singapore
+\begin_inset Newline newline
+\end_inset
+
+School of Computing
+\end_layout
+
+\begin_layout Date
+October 2013
+\end_layout
+
+\begin_layout BeginFrame
+
+\color blue
+More insecurity
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{Hmmmm....}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+...Who are you and how did you get in here?
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+...I'm a locksmith.
+ And, I'm a locksmith.
+\emph default
+
+\begin_inset space \hfill{}
+\end_inset
+
+[Leslie
+\begin_inset space ~
+\end_inset
+
+Nielsen]
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% ========================================================================
+\end_layout
+
+\begin_layout Plain Layout
+
+% To do B&W printouts, do the following steps:
+\end_layout
+
+\begin_layout Plain Layout
+
+%   1.
+ add the option ,handout to Documents/Settings/Document Class/Options
+\end_layout
+
+\begin_layout Plain Layout
+
+%   2.
+ Comment out the first two lines in Documents/Settings/Latex Preamble
+\end_layout
+
+\begin_layout Plain Layout
+
+%   3.
+ Uncomment the third line 
+\backslash
+usetheme{Haustadt}
+\end_layout
+
+\begin_layout Plain Layout
+
+%   4.
+ Comment out the 
+\backslash
+addtocounter line in the ERT above Section 1
+\end_layout
+
+\begin_layout Plain Layout
+
+%   5.
+ Output PDF
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+% The reverse steps will get back to the normal foils
+\end_layout
+
+\begin_layout Plain Layout
+
+% ========================================================================
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{page}{1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Outline
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+[pausesections]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{page}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Show the table of contents at the beginning
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% of every subsection.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginSubsection[]{
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+frame<handout:0>{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+frametitle{Outline} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    %
+\backslash
+addtocounter{page}{-1}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\backslash
+tableofcontents[current,currentsubsection] 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Crafting attacks
+\end_layout
+
+\begin_layout Subsection
+Metasploit
+\end_layout
+
+\begin_layout BeginFrame
+The landscape...
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Network interconnectivity has changed the landscape...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+\color blue
+Services/protocols
+\color inherit
+ are how we use remote computers...
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\color blue
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\color blue
+HTML
+\color inherit
+ - originally pretty safe and simple, but consider possible buffer overflow
+ attacks on the server...
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\color blue
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\color blue
+Active HTML
+\color inherit
+ - needed because we want more active content; and generate (personalized)
+ web pages on-the-fly.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+This leads to threats to both the server and client - the use of cookies,
+ and Java and Javascript on the client.
+ We also have server-side scripting/coding.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+Metasploit - penetration testing
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename metasploit.tiff
+	lyxscale 50
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Buffer overflow attacks
+\end_layout
+
+\begin_layout BeginPlainFrame
+Windows (32-bit) memory allocation
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{Several space options}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename twooptions.eps
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Kernel
+\begin_inset Quotes erd
+\end_inset
+
+ area of memory has the HAL, drivers, page tables...
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+User
+\begin_inset Quotes erd
+\end_inset
+
+ area contains your exe code, dlls, stacks...
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+Linux (32-bit) memory allocation
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{3G before kernel v2.6, 4G afterwards}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename twooptionslinux.eps
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+Kernel
+\begin_inset Quotes erd
+\end_inset
+
+ area of memory has drivers, system stacks, page tables...
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+The 
+\begin_inset Quotes eld
+\end_inset
+
+User
+\begin_inset Quotes erd
+\end_inset
+
+ area contains executable code, libraries, stacks...
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+Windows process memory allocation
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{...for 2G model...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename windowsusermemory.eps
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+TEB and PEB are thread and process environment blocks.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+The 64K guard blocks are sacrificial...
+ against bad pointer references.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+Linux ELF format user segments
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{Program, shared libraries, stack...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename linuxelfusermemory.eps
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+The malloc'ed memory is 
+\begin_inset Quotes eld
+\end_inset
+
+above
+\begin_inset Quotes erd
+\end_inset
+
+ the program.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+As always, the stack grows downwards.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+Memory attack 1: simple program
+\begin_inset space \hfill{}
+\end_inset
+
+(CS2107)
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Normal operation}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../../../cs2107/2012-13-IV/lyx/images/mem.eps
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout AlertBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Overwrite the end of an array, with an "EGG"}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../../../cs2107/2012-13-IV/lyx/images/mem1.eps
+	width 85col%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+Smashing the stack - the payload!
+\begin_inset space \hfill{}
+\end_inset
+
+(CS2107)
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Contents of the payload}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /Users/hugh/COURSES/cs3235/2012-13-I/lyx/images/mem2.eps
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+Payload code for an exploit
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{A C program which calls a shell...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\size footnotesize
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "95col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\size footnotesize
+\begin_inset VSpace -0.1in
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "50col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+void main() {    
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+   char *nm[2];
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+   nm[0] = "/bin/sh";    
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+   nm[1] = NULL;    
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+   execve(nm[0], nm, NULL); 
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\family roman
+\series bold
+\size tiny
+\begin_inset VSpace -0.3in
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+movl   string,string_addr
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+movb   $0x0,null_byte 
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+movl   $0x0,null_addr 
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+movl   $0xb,%eax 
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+movl   string,%ebx 
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+leal   string,%ecx 
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+leal   null_string,%edx  
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+int    $0x80          // OS call
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+\begin_inset Quotes eld
+\end_inset
+
+/bin/sh
+\begin_inset Quotes erd
+\end_inset
+
+ string goes here.
+\end_layout
+
+\begin_layout LyX-Code
+
+\family roman
+\series bold
+\size tiny
+\begin_inset VSpace -0.3in
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+At the left we see some C source code for running the program /bin/sh.
+ On the right we see assembler code with extra OS nonsense removed.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bubblebelow{first}{{{
+\end_layout
+
+\end_inset
+
+
+\size footnotesize
+Note that the binary code program has 
+\begin_inset Quotes eld
+\end_inset
+
+zeroes
+\begin_inset Quotes erd
+\end_inset
+
+ in it, and these will have to be removed if strcpy is to copy the program
+ onto the stack.
+ We can use translations like:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset VSpace -0.1in
+\end_inset
+
+
+\begin_inset space \hspace{}
+\length 0.4in
+\end_inset
+
+
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "80col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+\begin_inset VSpace -0.1in
+\end_inset
+
+movb   $0x0,null_byte       xorl   %eax,%eax 
+\end_layout
+
+\begin_layout LyX-Code
+
+\series bold
+\size tiny
+                            movb   eax, null_byte
+\end_layout
+
+\begin_layout LyX-Code
+
+\family roman
+\series bold
+\size tiny
+\begin_inset VSpace -0.3in
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\size default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}}}{green!50}{r}{1mm}{0.8}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+Using the buffer overflow attack
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{3 examples of situations in which we can use it}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\size footnotesize
+A 
+\color blue
+server
+\color inherit
+ (say a web server) that expects a query, and returns a response.
+ The demo buffer overflow attack done in CS2107 was one of these.
+\end_layout
+
+\begin_layout Enumerate
+
+\size footnotesize
+A CGI/ASP or perl 
+\color blue
+script
+\color inherit
+ inside a web server
+\end_layout
+
+\begin_layout Enumerate
+
+\size footnotesize
+A 
+\color blue
+SUID
+\color inherit
+ 
+\color blue
+root
+\color inherit
+ program on a UNIX system 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bubblebelow{first}{{
+\end_layout
+
+\end_inset
+
+
+\size footnotesize
+Find a program that has a
+\color none
+ 
+\color blue
+buffer
+\color none
+,
+\color inherit
+ ...
+ and that does not check its
+\color none
+ 
+\color blue
+bounds
+\color inherit
+.
+ Then deliver an
+\color none
+ 
+\color blue
+EGG
+\color none
+ to it to overflow the buffer.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Overwrite
+\color none
+ 
+\color blue
+stack
+\color none
+ return address with address of 
+\color blue
+OUR
+\color none
+ code
+\color inherit
+.
+ The program then runs
+\color none
+ 
+\color blue
+OUR
+\color none
+ code
+\color inherit
+.
+\size default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}}{green!50}{r}{1mm}{0.8}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{Example attack}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+\color black
+Many attacks on Microsoft systems are based on various buffer overflow problems.
+ 
+\color blue
+CA-2003-20 W32/Blaster
+\color black
+ worm:
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\emph on
+\color black
+The W32/Blaster worm exploits a vulnerability in Microsoft's DCOM RPC interface
+ as described in VU#568148 and CA-2003-16.
+ Upon successful execution....
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Memory attack 2: heap overflow
+\begin_inset space \hfill{}
+\end_inset
+
+(CS2107)
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{The normal free() and merge...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../../../cs2107/2012-13-IV/lyx/images/heapmgmt2.eps
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace -0.2in
+\end_inset
+
+The OS heap management 
+\color blue
+software automatically rewrites
+\color inherit
+ the values of the forward and backward links, using the values in the 
+\emph on
+next
+\emph default
+ links.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Memory attack 2: heap overflow
+\begin_inset space \hfill{}
+\end_inset
+
+(CS2107)
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Consider the scenario where attacker changes pointers...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename ../../../../cs2107/2012-13-IV/lyx/images/heapmgmt3.eps
+	lyxscale 50
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace -0.2in
+\end_inset
+
+The attacker uses the OS GC to 
+\color blue
+write the address of malicious code into a 
+\emph on
+return-address
+\emph default
+\color inherit
+ location, as for the buffer overflow.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+Stack, heap protection
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Three  methods to make buffer overflow attacks harder:}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\size footnotesize
+\color blue
+Not allow execution of code
+\color inherit
+ in the stack segment (as in MacOSX/openBSD).
+\end_layout
+
+\begin_layout Enumerate
+
+\size footnotesize
+Randomly 
+\color blue
+move
+\color inherit
+ the starting stack for processes.
+\end_layout
+
+\begin_layout Enumerate
+
+\size footnotesize
+Put a value just below the return address (a 
+\color blue
+canary
+\color inherit
+), and check it before doing a return from subroutine.
+ It is hard to overwrite the return address without overwriting the canary.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+The Memory/Mitigations paper from CS2107 is relevant here - I will bring
+ a copy of it to class.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bubblebelow{first}{{
+\end_layout
+
+\end_inset
+
+
+\size footnotesize
+Windows 7 includes a wide range of protection against stack/heap overflows:
+ They include the removal of commonly targeted data structures, heap entry
+ metadata randomization, the heap header is more complex, there are randomized
+ heap base addresses, function pointer are encoded, as well as the normal
+ DEP and ASLR.
+\size default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}}{green!50}{r}{1mm}{0.8}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Section
+Password case studies
+\end_layout
+
+\begin_layout Subsection
+Unix password systems
+\end_layout
+
+\begin_layout BeginPlainFrame
+UNIX password security
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bubble{first}{{
+\end_layout
+
+\end_inset
+
+
+\size footnotesize
+UNIX systems are traditionally open systems, given their background in universit
+y environments.
+ The security on UNIX accounts is often minimal.
+ 
+\size default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}}{green!50}{r}{1mm}{0.8}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Historical information:}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+Morris and Thompson article:
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size footnotesize
+\color blue
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+htmladdnormallink{http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.12.432}{http:/
+/citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.12.432}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+UNIX systems were, and are 
+\color blue
+vulnerable
+\color inherit
+ to a wide range of attacks, particularly internal attacks.
+ All Unix systems have a 
+\series bold
+\emph on
+\color blue
+root
+\series default
+\emph default
+\color inherit
+ account.
+ This account has a UID and GID of zero, and once 
+\color blue
+root access
+\color inherit
+ is obtained on a UNIX system, there is very little that 
+\emph on
+cannot
+\emph default
+ be done.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Account passwords are constructed to meet the following requirements: Each
+ password has 
+\color blue
+at least six
+\color inherit
+ characters.
+ Only the 
+\color blue
+first eight
+\color inherit
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+It is eight (7-bit) characters if the 
+\emph on
+crypt
+\emph default
+ function is using DES...
+\end_layout
+
+\end_inset
+
+ characters may be 
+\color blue
+significant
+\color inherit
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+UNIX accounts
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{Other accounts...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+There are many accounts found on Unix systems, not just clients, e.g.
+\end_layout
+
+\begin_layout Description
+
+\size footnotesize
+\color blue
+sysadm
+\color inherit
+ - A System V administration account, and 
+\end_layout
+
+\begin_layout Description
+
+\size footnotesize
+\color blue
+daemon
+\color inherit
+ - A daemon process account, and 
+\end_layout
+
+\begin_layout Description
+
+\size footnotesize
+\color blue
+lp
+\color inherit
+ - The print spooler owner.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+When protecting a UNIX system, we must protect these accounts as well.
+\end_layout
+
+\end_deeper
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{The password file, /etc/passwd}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+Seven colon-delimited 
+\color blue
+fields
+\color inherit
+, and may look like the following: 
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{hugo:aAbBcJJJx2:501:100:Hugh:/home/hugo:/bin/csh}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+\size footnotesize
+\color black
+hugo:
+\series default
+\color none
+ 
+\color black
+The account or user name.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size footnotesize
+\color black
+aAbBcJJJx2:
+\series default
+\color none
+ 
+\color black
+A one-way encrypted (hashed) password
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size footnotesize
+\color black
+501:
+\series default
+\color none
+ 
+\color black
+The UID - unique user number 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size footnotesize
+\color black
+100:
+\series default
+\color none
+ 
+\color black
+The GID - group number for user.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size footnotesize
+\color black
+Hugh:
+\series default
+\color none
+ 
+\color black
+Account information.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size footnotesize
+\color black
+/home/hugo:
+\series default
+\color none
+ 
+\color black
+The account's home directory 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size footnotesize
+\color black
+/bin/csh:
+\series default
+\color none
+ 
+\color black
+A program to run when you log in 
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+UNIX passwords
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{When you log in with your account name and password}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+The 
+\color blue
+password is hashed
+\color inherit
+ and the resulting 
+\color blue
+hash is compared
+\color inherit
+ to the hash stored in the password file.
+ If they are equal, the system accepts that you've typed in the correct
+ password and grants you access.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+UNIX originally used a 
+\color blue
+DES
+\color inherit
+-like algorithm to calculate the hashed password.
+ (Now use MD5...).
+ The 
+\color blue
+password
+\color inherit
+ 
+\color blue
+is
+\color inherit
+ used as the 
+\color blue
+DES
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+DES
+\end_layout
+
+\end_inset
+
+ key
+\color inherit
+ (eight 7-bit characters make a 56 bit DES key) 
+\color blue
+to encrypt
+\color inherit
+ a block of binary 
+\color blue
+zeroes
+\color inherit
+.
+ The result of this encryption is the hash value.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Note: 
+\color blue
+the password is not encrypted, it is the key used to perform the encryption!
+\color inherit
+ 
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+UNIX salt
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{UNIX  introduces two random characters...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+This means that two 
+\color blue
+equal passwords
+\color inherit
+ result in 
+\color blue
+different hashes
+\color inherit
+.
+ From viewing the UNIX password file you can not tell if two persons have
+ the same password.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+To prevent crackers from simply encrypting an entire 
+\color blue
+dictionary
+\color inherit
+ and then looking up the hash, the salt was added to the algorithm to create
+ a possible 
+\color blue
+4096 different hashes
+\color inherit
+ for a particular password.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+This 
+\color blue
+lengthens
+\color inherit
+ the 
+\color blue
+cracking
+\color inherit
+ 
+\color blue
+time
+\color inherit
+ because it becomes a little harder to store an encrypted dictionary online
+ as the encrypted dictionary now would have to take up 4096 times the disk
+ space.
+ Password cracking not harder, just more time consuming.
+ .
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Crypt code
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{Sample crypt code from LINUX uClibc}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+The code has the following structure:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "90col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout LyX-Code
+
+\size tiny
+\color blue
+extern char * crypt(const char *key, const char *salt) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+\size tiny
+\color none
+ 
+\color blue
+     /* Are we using the MD5 replacement         
+\end_layout
+
+\begin_layout LyX-Code
+
+\size tiny
+\color none
+ 
+\color blue
+     /* instead of DES...
+  */  
+\end_layout
+
+\begin_layout LyX-Code
+
+\size tiny
+\color none
+ 
+\color blue
+  if (salt[0]=='$' && salt[1]=='1' && salt[2]=='$')         
+\end_layout
+
+\begin_layout LyX-Code
+
+\size tiny
+\color none
+ 
+\color blue
+      return __md5_crypt(key, salt);    
+\end_layout
+
+\begin_layout LyX-Code
+
+\size tiny
+\color none
+ 
+\color blue
+  else               
+\end_layout
+
+\begin_layout LyX-Code
+
+\size tiny
+\color none
+ 
+\color blue
+      return __des_crypt(key, salt);
+\end_layout
+
+\begin_layout LyX-Code
+
+\size tiny
+\color blue
+} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Note that the salt information is passed along with the hashed password.
+ It is also visible in the password file.
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+Cracking
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{Brute force cracking...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+It is very time consuming, but given enough time,
+\color none
+ 
+\color blue
+brute force cracking
+\color none
+ 
+\series bold
+\emph on
+will
+\series default
+\emph default
+ get the password.
+ 
+\color inherit
+The hashed passwords are compared with the 
+\emph on
+\color blue
+/etc/passwd
+\emph default
+\color none
+ file.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+BTW - You cannot try to log in using all the possible passwords, as UNIX
+ systems enforce 10 second timeouts after three consecutive login failures.
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{Dictionary password cracking is the most popular method for cracking Unix
+ passwords}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+The cracking program will take a word list, and one at a time try to crack
+ one or all of the passwords listed in the password file.
+ Some password crackers will
+\color none
+ 
+\color blue
+filter
+\color none
+ and/or 
+\color blue
+mutate
+\color none
+:
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+\color blue
+substitute
+\color none
+ numbers for certain letters, 
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+add
+\color none
+ 
+\color blue
+prefixes
+\color none
+ or suffixes, 
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+or switch
+\color none
+ 
+\color blue
+case
+\color none
+ or 
+\color blue
+order
+\color none
+ of letters.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+Dictionary cracking
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{Crack software}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+A popular cracking utility is called 
+\series bold
+\emph on
+\color blue
+Crack
+\color none
+.
+
+\series default
+\emph default
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Crack can use
+\color none
+ 
+\color blue
+user-definable rules
+\color none
+ for word manipulation or mutation to maximize dictionary effectiveness.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Crack merges
+\color none
+ 
+\color blue
+dictionaries
+\color none
+, turns the 
+\color blue
+password files
+\color none
+ into a 
+\color blue
+sorted
+\color none
+ list, and generates lists of possible passwords from the merged dictionary
+ or from information gleaned about users from the password file.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Block
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Solution is to not reveal the hashed passwords}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+Once the password hashes are moved to the shadow file, its permissions are
+ changed as follows:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace -0.2in
+\end_inset
+
+
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "95col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout LyX-Code
+
+\size scriptsize
+\color blue
+opo 35# ls -l /etc/shadow 
+\end_layout
+
+\begin_layout LyX-Code
+
+\size scriptsize
+\color blue
+-r--------  1 root sys   3429 Aug 20 14:46 /etc/shadow 
+\end_layout
+
+\begin_layout LyX-Code
+
+\size scriptsize
+\color blue
+opo 36#
+\size footnotesize
+ 
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset VSpace -0.2in
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+These permissions ensure that ordinary users are unable to look at the password
+ hashes, and hence are unable to try dictionary attacks.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout Subsection
+Microsoft password security
+\end_layout
+
+\begin_layout BeginPlainFrame
+Microsoft password security
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{Windows carries history as well}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+Two one-way password hashes are stored on NT systems: a 
+\color blue
+LanManager
+\color inherit
+ hash, and a 
+\color blue
+Windows NT
+\color inherit
+ hash.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+The LanManager hash supports the older LanManager protocol originally used
+ in Windows and OS/2.
+ The NT method uses a 
+\color blue
+stronger
+\color inherit
+ 
+\color blue
+algorithm
+\color inherit
+ and allows mixed-cased passwords.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{Database for hashes...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+...is called the 
+\color blue
+SAM
+\color inherit
+ (Security Access Manager)
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+If you have administrative access
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Originally, 
+\emph on
+anyone
+\emph default
+ could extract the hashed passwords from the SAM, as Microsoft believed
+ that 
+\begin_inset Quotes eld
+\end_inset
+
+if they didn't tell anyone the algorithms they used, no-one could discover
+ what they had done
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+, 
+\series bold
+\emph on
+\color blue
+pwdump
+\series default
+\emph default
+\color inherit
+ can extract the hashes.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Microsoft does not 
+\emph on
+\color blue
+salt
+\emph default
+\color inherit
+ during hash generation, so once a potential password has generated a hash
+ it can be checked against 
+\series bold
+\emph on
+\color blue
+all
+\series default
+\emph default
+\color inherit
+ accounts.
+ The cracking software takes advantage of this.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+LanManager/Windows NT hashing
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{The hashed passwords}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+LanManager hashing is done by taking the user's plaintext password, capitalising
+ it, and truncating/padding to 14 bytes with null bytes.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+This 14 byte value is used as 
+\color blue
+two 56-bit DES keys
+\color inherit
+ to encrypt an eight byte value, forming a 16 byte value which is stored
+ by the server and client.
+ This value is known as the 
+\series bold
+\emph on
+\color blue
+hashed password
+\series default
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\color blue
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\color blue
+Windows NT
+\color inherit
+ encryption is a higher quality mechanism, consisting of doing an 
+\color blue
+MD4
+\color inherit
+ hash on a Unicode version of the user's password.
+ This also produces a 
+\color blue
+16 byte hash value
+\color inherit
+ that is non-reversible.
+\end_layout
+
+\end_deeper
+\begin_layout AlertBlock
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{Is it safe?}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+Note that the 
+\color blue
+LANManager
+\color inherit
+ hash is 
+\color blue
+similar to UNIX
+\color inherit
+ level of cyptography.
+ The 
+\color blue
+NT
+\color inherit
+ hash is 
+\color blue
+better.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+But...
+ 
+\color blue
+neither use strong encryption/hashing
+\color inherit
+, and the 
+\color blue
+network login
+\color inherit
+ mechanism also has some 
+\color blue
+problems
+\color inherit
+.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Challenge response
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{Challenge response protocol  for password checking...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /Users/hugh/COURSES/cs3235/2012-13-I/lyx/images/snoop.eps
+	lyxscale 50
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Challenge-response protocol
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{When a client wishes to use a resource...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+...
+ it requests a connection and 
+\color blue
+negotiates
+\color inherit
+ the 
+\color blue
+protocol
+\color inherit
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+In the reply to this request the server generates and appends an 8 byte,
+ 
+\color blue
+random
+\color inherit
+ value - this is stored in the server after the reply is sent and is known
+ as the 
+\series bold
+\emph on
+\color blue
+challenge
+\series default
+\emph default
+\color inherit
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Challenge-response protocol
+\end_layout
+
+\end_inset
+
+ - 
+\color blue
+different
+\color inherit
+ for every client connection.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+The 
+\color blue
+client
+\color inherit
+ then uses the hashed password (16 byte values described above), appended
+ with 5 null bytes, as three 56 bit DES keys, to encrypt the challenge 8
+ byte value, forming a 24 byte value known as the 
+\series bold
+\emph on
+\color blue
+response
+\series default
+\emph default
+\color inherit
+.
+ This calculation is done on 
+\emph on
+both
+\emph default
+ hashes of the user's password, and 
+\emph on
+both
+\emph default
+ responses are returned to the server, giving two 24 byte values.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+Challenge-response protocol
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{The server then...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+...
+ reproduces the above calculation, using its own value of the 16 byte hashed
+ password and the challenge value that it kept during the initial protocol
+ negotiation.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+It then 
+\color blue
+checks
+\color inherit
+ to see if the 24 byte value it calculates matches the 24 byte value returned
+ to it from the client.
+ If these 
+\color blue
+values
+\color inherit
+ 
+\color blue
+match
+\color inherit
+ exactly, then the client knew the correct password and is allowed access.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{There are good points about this:}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+The 
+\color blue
+server never knows
+\color inherit
+ or stores the 
+\emph on
+cleartext
+\emph default
+ of the 
+\color blue
+users password
+\color inherit
+ - just the 16 byte hashed values derived from it.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+The 
+\color blue
+cleartext password
+\color inherit
+ or 16 byte hashed values are 
+\color blue
+never transmitted
+\color inherit
+ over the network - thus increasing security.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+Challenge-response protocol
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{However, there is also a bad side:}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+The 16 byte
+\color none
+ 
+\color blue
+hashed values
+\color none
+ are a "
+\color blue
+password equivalent
+\color none
+".
+ You cannot derive the users password from them, but they can be used in
+ a modified client to gain access to a server.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+The initial
+\color none
+ 
+\color blue
+protocol negotiation
+\color none
+ is generally 
+\color blue
+insecure
+\color none
+, and can be hijacked in a range of ways.
+ One common hijack involves convincing the server to allow clear-text passwords.
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Despite functionality added to NT to protect unauthorized
+\color none
+ 
+\color blue
+access to the SAM
+\color none
+, the mechanism is trivially 
+\color blue
+insecure
+\end_layout
+
+\end_deeper
+\begin_layout ExampleBlock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{Attacks on Windows (NT) systems...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+Even 
+\emph on
+without
+\emph default
+ network access, it is possible by various means to access the SAM password
+ hashes, and 
+\emph on
+with
+\emph default
+ network access it is easy.
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "100col%"
+height "1pt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+The attack considered here is the use of either a dictionary, or brute force
+ attack directly on the password hashes (which must be first collected somehow).
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginPlainFrame
+Attack
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{A tool}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+\color blue
+L0phtCrack
+\color none
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+L0phtCrack
+\end_layout
+
+\end_inset
+
+ is a tool for turning Microsoft Lan Manager and NT password hashes back
+ into the original clear text passwords.
+ It can do:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size footnotesize
+\color blue
+Dictionary
+\begin_inset space ~
+\end_inset
+
+cracking:
+\series default
+\color none
+ L0phtCrack running on an old Pentium Pro checked a file with 100 passwords
+ against a 1,000,000 word dictionary in under one minute.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size footnotesize
+\color blue
+Brute
+\begin_inset space ~
+\end_inset
+
+force:
+\series default
+\color none
+ L0phtCrack on the same machine checked a file with 10 passwords using the
+ alpha character set (A-Z) in 26 hours.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Block
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{Comparison of attack times...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Box-Image
+\align center
+
+\color blue
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "90col%"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\size tiny
+\color blue
+\begin_inset VSpace -0.1in
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\size tiny
+\color blue
+Character set size 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\size tiny
+\color blue
+Size of computation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\size tiny
+\color blue
+Relative time taken
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+\color blue
+26
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+\color blue
+\begin_inset Formula $8.353*10^{9}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+\color blue
+1.00
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+\color blue
+36
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+\color blue
+\begin_inset Formula $8.060*10^{10}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+\color blue
+9.65 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+\color blue
+46
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+\color blue
+\begin_inset Formula $4.455*10^{11}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+\color blue
+53.33 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+\color blue
+68
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+\color blue
+\begin_inset Formula $6.823*10^{12}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size tiny
+\color blue
+816.86
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+
+\size tiny
+\color blue
+\begin_inset VSpace -0.2in
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+A password such as 
+\series bold
+\emph on
+\color blue
+take2asp1r1n
+\series default
+\emph default
+\color inherit
+ would be computed in about 7 days.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\begin_layout BeginFrame
+Microsoft base security fix
+\end_layout
+
+\begin_layout Block
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{How to minimize risk...}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\size footnotesize
+\color blue
+Disable
+\color inherit
+ the use of 
+\color blue
+LanManager
+\color inherit
+ passwords.
+ (Default now in modern Windows systems).
+\end_layout
+
+\begin_layout Enumerate
+
+\size footnotesize
+Don't log in over network as administrator
+\end_layout
+
+\begin_layout Enumerate
+
+\size footnotesize
+\color blue
+Encrypt
+\color inherit
+ all network traffic 
+\end_layout
+
+\begin_layout Enumerate
+
+\size footnotesize
+Use 
+\color blue
+long
+\color inherit
+ passwords, and all allowable characters
+\end_layout
+
+\begin_layout Enumerate
+
+\size footnotesize
+Use an 
+\color blue
+alternative
+\color inherit
+ login system
+\end_layout
+
+\begin_layout Enumerate
+
+\size footnotesize
+Use an 
+\color blue
+unsniffable network
+\color inherit
+ cabling system.
+\end_layout
+
+\end_deeper
+\begin_layout EndFrame
+
+\end_layout
+
+\end_body
+\end_document

@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/beamer.css" id="theme">
   <script defer=""
@@ -72,7 +137,7 @@ href="https://hugh.myddns.me/Askbox/">Q</a><span>]</span></p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 65%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/Lorenz-SZ42-2.jpeg" style="height: auto; width:100.0%"
+<img data-src="../../images/Lorenz-SZ42-2.jpeg" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -195,7 +260,7 @@ href="https://hugh.myddns.me/media/movies/JuliusCaesar1a.srt.mp4">1</a><span>]</
 <div class="center">
 <div class="dada-fbox"
 style="width: 34%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/Brutus.png" style="height: auto; width:100.0%"
+<img data-src="../../images/Brutus.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -322,9 +387,9 @@ it!</p>
 <div class="dada-fbox"
 style="width: 75%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div class="image-grid">
-<img data-src="../../../images/cipher-disk-m.jpg" style="max-width: none; width: auto; height:4.5cm"
+<img data-src="../../images/cipher-disk-m.jpg" style="max-width: none; width: auto; max-height: none; height:594px"
 alt="image" />
-<img data-src="../../../images/cipher2disk.jpg" style="max-width: none; width: auto; height:4.5cm"
+<img data-src="../../images/cipher2disk.jpg" style="max-width: none; width: auto; max-height: none; height:594px"
 alt="image" />
 </div>
 </div>
@@ -353,7 +418,7 @@ style="width: 25%; border: 2px solid black; background-color: white; box-sizing:
 <div class="table-with-borders">
 <table>
 <thead>
-<tr>
+<tr style="background-color: rgb(230,255,255);">
 <th style="text-align: center;"><span
 class="dada-font-footnotesize"><span class="dada-bold"><span
 style="color: blue">Code</span></span></span></th>
@@ -441,7 +506,7 @@ href="https://hugh.myddns.me/media/movies/ETAOINSHRDLUShort.mp4">2</a><span>]</s
 <div class="center">
 <div class="dada-fbox"
 style="width: 44%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/DancingMen.png" style="height: auto; width:100.0%"
+<img data-src="../../images/DancingMen.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -482,8 +547,8 @@ smstr)</span>.</span></li>
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox"
-style="width: 55%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/LetterFrequencies.jpg" style="max-width: none; width: auto; height:5cm"
+style="width: 50%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/LetterFrequencies.jpg" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -572,7 +637,7 @@ style="width: 45%; border: 2px solid black; background-color: white; box-sizing:
 <div class="table-with-borders">
 <table>
 <thead>
-<tr>
+<tr style="background-color: rgb(230,255,255);">
 <th style="text-align: center;"></th>
 <th style="text-align: center;"><span class="dada-font-tiny"><span
 class="dada-bold"><span style="color: black">A</span></span></span></th>
@@ -946,7 +1011,7 @@ same techniques as before.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 53%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/m94-left-discs-off-1000px.jpg"
+<img data-src="../../images/m94-left-discs-off-1000px.jpg"
 style="height: auto; width:100.0%" alt="image" />
 </div>
 </div>
@@ -974,26 +1039,26 @@ href="https://hugh.myddns.me/media/movies/grimeEnigma-1.mp4">6</a><span>]</span>
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox"
-style="width: 75%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+style="width: 85%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div
 class="table-with-borders table-col-no-left-border table-col-no-right-border table-row-no-top-border table-row-no-bottom-border">
 <table>
 <thead>
 <tr>
-<th style="text-align: center;"><img data-src="../../../images/Jagger.png"
+<th style="text-align: center;"><img data-src="../../images/Jagger.png"
 style="width:5cm;max-height: none; height:432px" alt="image" /></th>
 <th style="text-align: center;"><img
-data-src="../../../images/whatsitdo.png" style="width:4.5cm;max-height: none; height:432px"
+data-src="../../images/whatsitdo.png" style="width:4.5cm;max-height: none; height:432px"
 alt="image" /></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: center;"><img
-data-src="../../../images/enigmalights.png" style="width:5cm;max-height: none; height:432px"
+data-src="../../images/enigmalights.png" style="width:5cm;max-height: none; height:432px"
 alt="image" /></td>
 <td style="text-align: center;"><img
-data-src="../../../images/drjamesgrime.png"
+data-src="../../images/drjamesgrime.png"
 style="width:4.5cm;max-height: none; height:432px" alt="image" /></td>
 </tr>
 </tbody>
@@ -1010,7 +1075,7 @@ href="https://www.ciphermachinesandcryptology.com/en/m209sim.htm">X</a><span>]</
 <div class="center">
 <div class="dada-fbox"
 style="width: 50%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/IMG_1313.jpg" style="height: auto; width:100.0%"
+<img data-src="../../images/IMG_1313.jpg" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1081,7 +1146,7 @@ useful.</p>
 <h2>Product ciphers</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/SPN-1a.png" style="max-width: none; width: auto; height:3cm"
+<p><img data-src="../../images/SPN-1a.png" style="max-width: none; width: auto; max-height: none; height:324px"
 alt="image" /></p>
 </div>
 <div class="block">
@@ -1141,10 +1206,10 @@ An "unconditionally secure" scheme:
 <table>
 <tbody>
 <tr>
-<td style="text-align: center;"><img data-src="../../../images/otp.jpg"
-style="height: auto; width:20.0%" alt="image" />  </td>
+<td style="text-align: center;"> <img data-src="../../images/otp.jpg"
+alt="image" /></td>
 <td style="text-align: center;"><div class="dada-fbox"
-style="width: 65%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <span class="dada-font-footnotesize">The one time pad provides “perfect”
 secrecy, meaning you learn nothing by having the ciphertext. The key is
 a sequence of random key letters, each letter used once only, and
@@ -1186,8 +1251,8 @@ Summary:
 <div class="dada-font-footnotesize">
 <p>We looked at a range of historical <span
 style="color: blue">substitution</span> ciphers, including the
-Cæsar/<span style="color: blue">rotation</span> cipher (from 2000 years
-ago), and also random ciphers (<span style="color: blue">mono-alphabetic
+Cæsar/<span style="color: blue">rotation</span> cipher from 2000 years
+ago, and also random ciphers (<span style="color: blue">mono-alphabetic
 substitution</span> ). These ciphers are susceptible to frequency
 analysis.</p>
 </div>
@@ -1344,7 +1409,7 @@ partial break and distinguishablility of ciphertext.</span></li>
 <h2>Cryptanalysis</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/adversary9.png" style="max-width: none; width: auto; height:3cm"
+<p><img data-src="../../images/adversary9.png" style="max-width: none; width: auto; max-height: none; height:324px"
 alt="image" /></p>
 </div>
 <div class="exampleblock">
@@ -1432,7 +1497,7 @@ ciphers</span></span>
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-font-footnotesize">
-<p><img data-src="../../../images/blockstreamcipher.png"
+<p><img data-src="../../images/blockstreamcipher.png"
 style="height: auto; width:95.0%" alt="image" /></p>
 </div>
 </div>
@@ -1465,15 +1530,15 @@ href="https://hugh.myddns.me/media/pdfs/shannon1949.pdf">ctrl-i2</a><span>]</spa
 <table>
 <tbody>
 <tr>
-<td style="text-align: center;"><span
+<td style="text-align: center;"> <span
 class="dada-font-footnotesize"><img
-data-src="../../../images/confusion.png" style="max-width: none; width: auto; height:2.8cm"
+data-src="../../images/confusion.png" style="max-width: none; width: auto; max-height: none; height:302px"
 alt="image" /></span>  <span class="dada-font-footnotesize"><img
-data-src="../../../images/diffusion.png" style="max-width: none; width: auto; height:2.8cm"
-alt="image" /></span></td>
+data-src="../../images/diffusion.png" style="max-width: none; width: auto; max-height: none; height:302px"
+alt="image" /></span>  </td>
 <td style="text-align: center;"><p> </p>
 <div class="dada-fbox"
-style="width: 36%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <span class="dada-font-footnotesize">Shannon’s important paper in 1949
 gave a formal treatment of secrecy, introducing multiple concepts
 related to cryptography.</span>
@@ -1516,7 +1581,7 @@ block will be added).</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 80%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/padding.png" style="height: auto; width:95.0%"
+<img data-src="../../images/padding.png" style="height: auto; width:95.0%"
 alt="image" />
 </div>
 </div>
@@ -1536,7 +1601,7 @@ insecure.</p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 60%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/initializationvector.png"
+<img data-src="../../images/initializationvector.png"
 style="height: auto; width:60.0%" alt="image" />
 </div>
 </div>
@@ -1548,7 +1613,7 @@ style="height: auto; width:60.0%" alt="image" />
 <h2>“Modes” of operation (for AES/DES/...)</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><img data-src="../../../images/Penguin.png" style="max-width: none; width: auto; height:3cm"
+<p><img data-src="../../images/Penguin.png" style="max-width: none; width: auto; max-height: none; height:324px"
 alt="image" /></p>
 </div>
 <div class="exampleblock">
@@ -1557,7 +1622,7 @@ Modes are not equal...
 </div>
 <div class="block-content">
 <div class="center">
-<p><img data-src="../../../images/cbccfb.png" style="height: auto; width:45.0%"
+<p><img data-src="../../images/cbccfb.png" style="height: auto; width:45.0%"
 alt="image" /></p>
 </div>
 <div class="dada-font-footnotesize">
@@ -1577,7 +1642,7 @@ style="color: black">mode.</span></p>
 <div class="center">
 <div class="dada-fbox"
 style="width: 30%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/sampavalanche.png" style="height: auto; width:100.0%"
+<img data-src="../../images/sampavalanche.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 </div>
@@ -1594,31 +1659,34 @@ encryption process does each round, we want it to quickly have <span
 class="dada-emph">many</span> bits different.</p>
 </div>
 <hr style="border: none; border-top: 2px solid black; width: 100%; margin: 0.4em 0;">
-<div class="dada-font-footnotesize dada-hfill-layout">
-<span style="color: red">Q: How many bits should be different?</span>
+<div class="dada-font-footnotesize">
+<p><span style="color: red">Q: How many bits are different?</span></p>
+</div>
+<p><span> </span></p>
+<div class="dada-font-footnotesize">
 <div class="dada-fbox"
-style="width: 9%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/boys.png" style="height: auto; width:100.0%"
+style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/boys.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 <div class="dada-fbox"
-style="width: 9%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/boys-FLIP-ONE-QUARTER.png"
+style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/boys-FLIP-ONE-QUARTER.png"
 style="height: auto; width:100.0%" alt="image" />
 </div>
 <div class="dada-fbox"
-style="width: 9%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/randboy50.png" style="height: auto; width:100.0%"
+style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/randboy50.png" style="height: auto; width:100.0%"
 alt="image" />
 </div>
 <div class="dada-fbox"
-style="width: 9%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/boys-FLIP-EVERY-BIT.png"
+style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/boys-FLIP-EVERY-BIT.png"
 style="height: auto; width:100.0%" alt="image" />
 </div>
 <div class="dada-fbox"
-style="width: 9%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<img data-src="../../../images/boys-FLIP-EVERY-SECOND.png"
+style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+<img data-src="../../images/boys-FLIP-EVERY-SECOND.png"
 style="height: auto; width:100.0%" alt="image" />
 </div>
 </div>
@@ -1672,7 +1740,7 @@ At the core of DES is the Feistel network
 </div>
 <div class="block-content">
 <div class="center">
-<p><img data-src="../../../images/des.png" style="height: auto; width:25.0%"
+<p><img data-src="../../images/des.png" style="height: auto; width:25.0%"
 alt="image" /></p>
 </div>
 <div class="dada-font-footnotesize">
@@ -1692,7 +1760,7 @@ Avalanche analysis shows good divergence after 5 rounds.</p>
 href="https://en.wikipedia.org/wiki/EFF_DES_cracker">i4</a><span>]</span></span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><span style="color: black"><img data-src="../../../images/2des.png"
+<p><span style="color: black"><img data-src="../../images/2des.png"
 style="height: auto; width:30.0%" alt="image" /></span></p>
 </div>
 <div class="alertblock">
@@ -1717,7 +1785,7 @@ now? We must consider alternatives to DES: 2DES?</p>
 <h2>The problem with 2DES</h2>
 <div class="dada-frame-body">
 <div class="center">
-<p><span style="color: black"><img data-src="../../../images/2desMiM.png"
+<p><span style="color: black"><img data-src="../../images/2desMiM.png"
 style="height: auto; width:50.0%" alt="image" /></span></p>
 </div>
 <div class="alertblock">
@@ -1754,7 +1822,7 @@ operations.
 </div>
 <div class="block-content">
 <div class="center">
-<p><span style="color: black"><img data-src="../../../images/3des.png"
+<p><span style="color: black"><img data-src="../../images/3des.png"
 style="height: auto; width:28.0%" alt="image" /></span></p>
 </div>
 </div>
@@ -1824,37 +1892,40 @@ style="color: blue">roundkeys</span>...</p>
 <section class="slide level2">
 <h2>AES operations: 10/12/14 rounds</h2>
 <div class="dada-frame-body">
+<div class="lrbox">
+<div class="sourceCode" id="cb8" data-language="Pascal"
+data-basicstyle="\ttfamily"><pre class="sourceCode pascal"><code class="sourceCode pascal"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>Cipher(<span class="dt">byte</span> <span class="kw">in</span>[<span class="dv">4</span>*<span class="dv">4</span>],<span class="dt">byte</span> out[<span class="dv">4</span>*<span class="dv">4</span>],<span class="dt">word</span> w[<span class="dv">4</span>*(Nr+<span class="dv">1</span>)]) </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">begin</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>   <span class="dt">byte</span> state[<span class="dv">4</span>,<span class="dv">4</span>] </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>   state = <span class="kw">in</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>   AddRoundKey(state,w[<span class="dv">0</span>,<span class="dv">3</span>]) </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>   <span class="kw">for</span> round = <span class="dv">1</span> step <span class="dv">1</span> <span class="kw">to</span> Nr<span class="dv">-1</span> </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      SubBytes(state) </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      ShiftRows(state) </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>      MixColumns(state)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>      AddRoundKey(state,w[round*<span class="dv">4</span>,(round+<span class="dv">1</span>)*<span class="dv">4-1</span>]) </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>   <span class="kw">end</span> <span class="kw">for</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>   SubBytes(state) </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>   ShiftRows(state) </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>   AddRoundKey(state,w[Nr*<span class="dv">4</span>,(Nr+<span class="dv">1</span>)*<span class="dv">4-1</span>]) </span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>   out = state </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span> </span></code></pre></div>
+</div>
 <div class="center">
 <div class="dada-fbox"
-style="width: 85%; border: 2px solid black; background-color: white; box-sizing: border-box;">
+style="width: 95%; border: 2px solid black; background-color: white; box-sizing: border-box;">
 <div
 class="table-with-borders table-col-no-left-border table-col-no-right-border table-row-no-top-border table-row-no-bottom-border">
 <table>
 <tbody>
 <tr>
-<td style="text-align: center;"><img data-src="../../../images/aes-1.jpg"
-style="max-width: none; width: auto; height:3.77cm" alt="image" /></td>
-<td style="text-align: center;"><div style="color: dada-font-tiny">
+<td style="text-align: center;"> <img data-src="../../images/aes-1.jpg"
+style="max-width: none; width: auto; max-height: none; height:432px" alt="image" /></td>
+<td style="text-align: center;"><p> </p>
+<div style="color: dada-font-tiny">
 <div class="dada-fbox"
 style="width: 100%; border: 2px solid black; background-color: white; box-sizing: border-box;">
-<div class="dada-lyxcode" style="color: dada-font-tiny;">
-<pre><code>Cipher(byte in[4{*}4],byte out[4{*}4],word w[4{*}(Nr+1)])
-begin
-   byte state[4,4]
-   state = in
-   AddRoundKey(state, w[0, 3])
-   for round = 1 step 1 to Nr-1
-      SubBytes(state)
-      ShiftRows(state)
-      MixColumns(state)
-      AddRoundKey(state, w[round{*}4, (round+1){*}4-1])
-   end for
-   SubBytes(state)
-   ShiftRows(state)
-   AddRoundKey(state, w[Nr{*}4, (Nr+1){*}4-1])
-   out = state
-end</code></pre>
-</div>
+<span class="dada-font-tiny"></span>
 </div>
 </div></td>
 </tr>
