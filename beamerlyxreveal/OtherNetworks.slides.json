@@ -12,7 +12,7 @@
    "kind": "title",
    "title": "DADA2026:6 Defence against the Dark Arts Sixth topic - Comms [ H7 ], and Other networks [ H8 ]",
    "section": "",
-   "text": "Its not just the InternetFighting backPadding oracle attack for Lab2 DADA2026:6 Defence against the Dark Arts Sixth topic - Comms [ H7 ], and Other networks [ H8 ] Hugh Anderson [Q] National University of Singapore School of Computing July, 2026 Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
+   "text": "Its not just the InternetFighting back DADA2026:6 Defence against the Dark Arts Sixth topic - Comms [ H7 ], and Other networks [ H8 ] Hugh Anderson [Q] National University of Singapore School of Computing July, 2026 Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
   },
   {
    "n": 1,
@@ -45,7 +45,7 @@
    "kind": "outline",
    "title": "Outline",
    "section": "",
-   "text": "Its not just the InternetFighting backPadding oracle attack for Lab2 Outline Its not just the Internet Othernets The radio spectrum Fighting back Awareness, evaluation, consideration Padding oracle attack for Lab2 Padding, release of partial information Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
+   "text": "Its not just the InternetFighting back Outline Its not just the Internet Othernets The radio spectrum Fighting back Awareness, evaluation, consideration Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
   },
   {
    "n": 4,
@@ -56,7 +56,7 @@
    "kind": "section",
    "title": "Its not just the Internet",
    "section": "Its not just the Internet",
-   "text": "Its not just the InternetFighting backPadding oracle attack for Lab2 OthernetsThe radio spectrum Its not just the Internet Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
+   "text": "Its not just the InternetFighting back OthernetsThe radio spectrum Its not just the Internet Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
   },
   {
    "n": 5,
@@ -67,7 +67,7 @@
    "kind": "outline",
    "title": "Outline",
    "section": "Its not just the Internet",
-   "text": "Its not just the InternetFighting backPadding oracle attack for Lab2 OthernetsThe radio spectrum Outline Its not just the Internet Othernets The radio spectrum Fighting back Awareness, evaluation, consideration Padding oracle attack for Lab2 Padding, release of partial information Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
+   "text": "Its not just the InternetFighting back OthernetsThe radio spectrum Outline Its not just the Internet Othernets The radio spectrum Fighting back Awareness, evaluation, consideration Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
   },
   {
    "n": 6,
@@ -166,7 +166,7 @@
    "kind": "outline",
    "title": "Outline",
    "section": "Its not just the Internet",
-   "text": "Its not just the InternetFighting backPadding oracle attack for Lab2 OthernetsThe radio spectrum Outline Its not just the Internet Othernets The radio spectrum Fighting back Awareness, evaluation, consideration Padding oracle attack for Lab2 Padding, release of partial information Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
+   "text": "Its not just the InternetFighting back OthernetsThe radio spectrum Outline Its not just the Internet Othernets The radio spectrum Fighting back Awareness, evaluation, consideration Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
   },
   {
    "n": 15,
@@ -254,7 +254,7 @@
    "kind": "section",
    "title": "Fighting back",
    "section": "Fighting back",
-   "text": "Its not just the InternetFighting backPadding oracle attack for Lab2 Awareness, evaluation, consideration Fighting back Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
+   "text": "Its not just the InternetFighting back Awareness, evaluation, consideration Fighting back Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
   },
   {
    "n": 23,
@@ -265,7 +265,7 @@
    "kind": "outline",
    "title": "Outline",
    "section": "Fighting back",
-   "text": "Its not just the InternetFighting backPadding oracle attack for Lab2 Awareness, evaluation, consideration Outline Its not just the Internet Othernets The radio spectrum Fighting back Awareness, evaluation, consideration Padding oracle attack for Lab2 Padding, release of partial information Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
+   "text": "Its not just the InternetFighting back Awareness, evaluation, consideration Outline Its not just the Internet Othernets The radio spectrum Fighting back Awareness, evaluation, consideration Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
   },
   {
    "n": 24,
@@ -287,128 +287,7 @@
    "kind": "slide",
    "title": "Summary: Other networks",
    "section": "Fighting back",
-   "text": "Its not just the InternetFighting backPadding oracle attack for Lab2 Awareness, evaluation, consideration Summary: Other networks Today, we have seen... A range - We were reminded that the “Internet” and “IP protocols” are not the only communication mechanisms that we, and our computers, rely on. Many of our essential services (electricity, water, sewage) are still using ancient protocols and techniques. In addition, our factories, the GPS system, our phones, dongles to drive cars and so on, are all using communication methods and hardware designed in many cases 50 years or so ago. Particular Nets - Specifically, we looked at ADS-B - the flight location broadcast system, GSM and LTE MiM attacks, messing about with NFC, and GPS - the global positioning system. Fightback - The view here is that none of these systems require us to invent new ways of dealing with them. We can just start with an awareness that they exist, and then use standard evaluation and management tools. We saw the use of NIST 800-53 as a framework for analysis. Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
-  },
-  {
-   "n": 26,
-   "h": 6,
-   "v": 0,
-   "anchor": "#/6/0",
-   "id": "padding-oracle-attack-for-lab2",
-   "kind": "section",
-   "title": "Padding oracle attack for Lab2",
-   "section": "Padding oracle attack for Lab2",
-   "text": "Its not just the InternetFighting backPadding oracle attack for Lab2 Padding, release of partial information Padding oracle attack for Lab2 Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
-  },
-  {
-   "n": 27,
-   "h": 6,
-   "v": 1,
-   "anchor": "#/6/1",
-   "id": null,
-   "kind": "outline",
-   "title": "Outline",
-   "section": "Padding oracle attack for Lab2",
-   "text": "Its not just the InternetFighting backPadding oracle attack for Lab2 Padding, release of partial information Outline Its not just the Internet Othernets The radio spectrum Fighting back Awareness, evaluation, consideration Padding oracle attack for Lab2 Padding, release of partial information Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
-  },
-  {
-   "n": 28,
-   "h": 6,
-   "v": 2,
-   "anchor": "#/6/2",
-   "id": null,
-   "kind": "slide",
-   "title": "Bit and byte padding for block ciphers...",
-   "section": "Padding oracle attack for Lab2",
-   "text": "Bit and byte padding for block ciphers... pkcs PKCS #7 - a byte-wise padding technique... One technique is to add a single 1 bit, followed by enough 0 bits to fill out the block. Another is the PKCS #7 paddings for the final block. Each byte is given as 2 hex digits."
-  },
-  {
-   "n": 29,
-   "h": 6,
-   "v": 3,
-   "anchor": "#/6/3",
-   "id": null,
-   "kind": "slide",
-   "title": "CBC: encoding and decoding...",
-   "section": "Padding oracle attack for Lab2",
-   "text": "CBC: encoding and decoding... cbc (...decode is decrypt, then XOR). ... and encode is XOR, then encrypt... Note that when you are decoding, the final plaintext p_{2} is the decrypted ciphertext exclusive-ored with c_{1}. If there was only one block, the final plaintext p_{1} is the decrypted ciphertext exclusive-ored with IV"
-  },
-  {
-   "n": 30,
-   "h": 6,
-   "v": 4,
-   "anchor": "#/6/4",
-   "id": null,
-   "kind": "slide",
-   "title": "Padding oracle...",
-   "section": "Padding oracle attack for Lab2",
-   "text": "Padding oracle... pkcs Attack What is a padding oracle? Imagine that you have a bit of software, that, given c_{1} and c_{2}, will tell you if the padding is correct in p_{2}. If the message was only one block long, given IV and c_{1} (as in the lab), it will tell you if the padding is correct in p_{1}. In general, given c_{n-1} and c_{n}, it will tell you if the padding is correct. Is this realistic? Well, yes it is. When you send a padded, encrypted message to another system, after decrypting, the other system will check the padding, and if it is not valid, will fail immediately. Otherwise it will fail (or succeed) later. Normal receiving software may leak the correctness of the padding. In the lab, we will give you a program that is a padding oracle. Note also that an you can directly change each bit/byte of the final plaintext for p_{n}, because the attacker has control over the input c_{n-1} (or IV as in the lab)."
-  },
-  {
-   "n": 31,
-   "h": 6,
-   "v": 5,
-   "anchor": "#/6/5",
-   "id": null,
-   "kind": "slide",
-   "title": "Using the oracle in an attack...",
-   "section": "Padding oracle attack for Lab2",
-   "text": "Using the oracle in an attack... pkcs The attacker does not get to see the decrypted data... The oracle only learns if the last bytes are correct - they could be 01, 0202, 030303, and so on. The attacker starts by trying a series of values for the last byte of c_{1}:"
-  },
-  {
-   "n": 32,
-   "h": 6,
-   "v": 6,
-   "anchor": "#/6/6",
-   "id": null,
-   "kind": "slide",
-   "title": "Using the oracle in an attack...",
-   "section": "Padding oracle attack for Lab2",
-   "text": "Using the oracle in an attack... pkcs Attacker discovers last byte... The attacker is trying values in the last byte of c_{1} until 01 is the last byte. Oracle returns OK. Attacker now sets the last byte to 02, and tries for the second-last byte of c_{1}:"
-  },
-  {
-   "n": 33,
-   "h": 6,
-   "v": 7,
-   "anchor": "#/6/7",
-   "id": null,
-   "kind": "slide",
-   "title": "Using the oracle in an attack...",
-   "section": "Padding oracle attack for Lab2",
-   "text": "Using the oracle in an attack... pkcs Attacker discovers second-to-last byte... Since we know (now) the last byte (02), and the original last byte of c_{1}, we can set the last byte. We try all the second-to-last values in c_{1}, and uncover a second byte."
-  },
-  {
-   "n": 34,
-   "h": 6,
-   "v": 8,
-   "anchor": "#/6/8",
-   "id": null,
-   "kind": "slide",
-   "title": "Using the oracle in an attack...",
-   "section": "Padding oracle attack for Lab2",
-   "text": "Using the oracle in an attack... pkcs Attacker discovers third-to-last byte... Since we know (now) the last two bytes (02 02), we can set the last two bytes to 03 03. Now we try all the third-to-last values in c_{1} and uncover 20."
-  },
-  {
-   "n": 35,
-   "h": 6,
-   "v": 9,
-   "anchor": "#/6/9",
-   "id": null,
-   "kind": "slide",
-   "title": "Using the oracle in an attack...",
-   "section": "Padding oracle attack for Lab2",
-   "text": "Using the oracle in an attack... pkcs Attacker discovers fourth-to-last byte... Since we know (now) the last three bytes (20 02 02), we can set the last three bytes to 04 04 04. Now we try all the fourth-to-last values in c_{1} and uncover 6f."
-  },
-  {
-   "n": 36,
-   "h": 6,
-   "v": 10,
-   "anchor": "#/6/10",
-   "id": null,
-   "kind": "slide",
-   "title": "Using the oracle in an attack...",
-   "section": "Padding oracle attack for Lab2",
-   "text": "Using the oracle in an attack... Attacker discovers all bytes... The attacker keeps moving through the block, and has to try a maximum of 255 trials for each byte recovered, so this is an {\\cal O}(n) attack, where n is the number of bytes in the block. This attack can be avoided if... There is no oracle (i.e. the receiving code does not give any indication if the padding is correct or not) CFB is used instead. A different padding scheme is used... That is it - a little aside into cracking that makes use of much of what we have learned."
+   "text": "Its not just the InternetFighting back Awareness, evaluation, consideration Summary: Other networks Today, we have seen... A range - We were reminded that the “Internet” and “IP protocols” are not the only communication mechanisms that we, and our computers, rely on. Many of our essential services (electricity, water, sewage) are still using ancient protocols and techniques. In addition, our factories, the GPS system, our phones, dongles to drive cars and so on, are all using communication methods and hardware designed in many cases 50 years or so ago. Particular Nets - Specifically, we looked at ADS-B - the flight location broadcast system, GSM and LTE MiM attacks, messing about with NFC, and GPS - the global positioning system. Fightback - The view here is that none of these systems require us to invent new ways of dealing with them. We can just start with an awareness that they exist, and then use standard evaluation and management tools. We saw the use of NIST 800-53 as a framework for analysis. Hugh Anderson [Q] DADA2026, (Other) networks beamer nus logo"
   }
  ]
 }

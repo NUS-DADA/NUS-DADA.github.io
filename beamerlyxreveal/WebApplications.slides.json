@@ -390,6 +390,17 @@
   },
   {
    "n": 35,
+   "h": 5,
+   "v": 9,
+   "anchor": "#/5/9",
+   "id": null,
+   "kind": "slide",
+   "title": "Lets take a break...",
+   "section": "Attacking web apps: browser trusts server",
+   "text": "Lets take a break... Web Apps"
+  },
+  {
+   "n": 36,
    "h": 6,
    "v": 0,
    "anchor": "#/6/0",
@@ -400,7 +411,7 @@
    "text": "Attacking web apps: server trusts browserAttacking web apps: browser trusts serverPen-testing - for fun and profit! What is it? And... what do they do? Pen-testing - for fun and profit! Hugh Anderson [Q] DADA2026, Web applications beamer nus logo"
   },
   {
-   "n": 36,
+   "n": 37,
    "h": 6,
    "v": 1,
    "anchor": "#/6/1",
@@ -411,7 +422,7 @@
    "text": "Attacking web apps: server trusts browserAttacking web apps: browser trusts serverPen-testing - for fun and profit! What is it? And... what do they do? Outline Attacking web apps: server trusts browser Command injections SQL injections Remediation methods for injections Attacking web apps: browser trusts server XSS, CSRF - Cross site scripting and request forgery Remediation methods for XSS Pen-testing - for fun and profit! What is it? And... what do they do? Hugh Anderson [Q] DADA2026, Web applications beamer nus logo"
   },
   {
-   "n": 37,
+   "n": 38,
    "h": 6,
    "v": 2,
    "anchor": "#/6/2",
@@ -422,7 +433,7 @@
    "text": "What is pentesting? The complexity of modern (distributed) systems is a security weakness Defences should start while the system is being dreamed up - we use secure technologies, secure development techniques, secure integration and deployment. But despite the best laid plans, the systems still must be continually tested, and risk-assessed/monitored. Let us start with Wikipedia’s view: A penetration test, colloquially known as a pentest or ethical hacking, is an authorized simulated cyberattack on a computer system, performed to evaluate the security of the system... The test is performed to identify weaknesses (or vulnerabilities), including the potential for unauthorized parties to gain access to the system's features and data, as well as strengths, enabling a full risk assessment to be completed. Red and blue teams Blue teams are visible, but it may be the case that red pen-testing teams may be deployed - in these cases, no-one in the IT department knows about them!"
   },
   {
-   "n": 38,
+   "n": 39,
    "h": 6,
    "v": 3,
    "anchor": "#/6/3",
@@ -433,7 +444,7 @@
    "text": "Pen-testing resources [ i1 , i2 , i3 , ctrl-i4 , i5 ] OWASP: Open Worldwide Application Security Project OWASP is an online community originally focused on Web Application Security. The OWASP Web Security Testing Guide (WSTG), is a web app penetration testing guide. It has a lot of useful detail! See the i2 link above. For remediation, the OWASP Application Security Verification Standard (ASVS) provides web developers with a list of requirements for secure development. See the i3 link above. Other resources The ABS, “Penetration Testing Guidelines For the Financial Industry in Singapore” and a white paper on conducting pentests on organizations are also linked above. An interesting document from Rapid7 on lessons-to-be-learnt is ."
   },
   {
-   "n": 39,
+   "n": 40,
    "h": 6,
    "v": 4,
    "anchor": "#/6/4",
@@ -444,7 +455,7 @@
    "text": "It is needed, and is NOT hacking! OWASPTop (OWASP) Pen-testing \\neq hacking(Pen-testers are your friends) Security hackers are people skilled in IT who use non-standard means (bugs/errors) to break into computer systems and access data which would otherwise be inaccessible to them. By contrast pen-testing is a professional activity where authorized teams, paid for by the target companies, evaluate the security of a precisely scoped-out system. In order to do this, they may very well use hacking. In the end they help you remediate issues."
   },
   {
-   "n": 40,
+   "n": 41,
    "h": 6,
    "v": 5,
    "anchor": "#/6/5",
@@ -455,7 +466,7 @@
    "text": "Who needs pen-testing? Top Mostly accurate answer? Any business... From MAS, “Technology Risk Management Guidelines”, we have guidance for Financial Institutions: 9.4.1 Vulnerability assessment (VA) is the process of identifying, assessing and discovering security vulnerabilities in a system. The FI should conduct VAs regularly... 9.4.4 The FI should carry out penetration tests in order to conduct an in-depth evaluation of the security posture of the system through simulations of actual attacks on the system. The FI should conduct penetration tests on internet-facing systems at least annually."
   },
   {
-   "n": 41,
+   "n": 42,
    "h": 6,
    "v": 6,
    "anchor": "#/6/6",
@@ -466,7 +477,7 @@
    "text": "Pen-testers follow these steps Pen Testing Satges Extra steps than “hacking” and a different focus Pen-testers discuss the scope with the client first, and also report back on what they found, and best practices for remediation. In a recent pen-test project here at SoC, only about 25% of the time spent was direct hacking activities."
   },
   {
-   "n": 42,
+   "n": 43,
    "h": 6,
    "v": 7,
    "anchor": "#/6/7",
@@ -477,7 +488,7 @@
    "text": "Pen-tester pre-engagement [ X , ctrl-i6 ] Scope and contracts... Scoping for a test might include a scoping survey, and meetings: For example see [X] above. Nondisclosure Agreement (NDA): For your client to protect itself. Master Service Agreement (MSA): contains contractual matters between the parties, including a “get out of jail free” card, payment terms... Statement of Work (SoW): Outlines an organization’s project-specific work to be executed by a service provider. This can be part of the MSA. Rules of Engagement (RoE): This specifies guidelines and constraints of a pen-testing execution, and can be part of SoW or as a separate document. For example, see the link at [ctrl-i6] above. Scope Doc"
   },
   {
-   "n": 43,
+   "n": 44,
    "h": 6,
    "v": 8,
    "anchor": "#/6/8",
@@ -488,7 +499,7 @@
    "text": "Pen-testers look at these items (and more) (from WSTG) wstg ..."
   },
   {
-   "n": 44,
+   "n": 45,
    "h": 6,
    "v": 9,
    "anchor": "#/6/9",
@@ -499,7 +510,7 @@
    "text": "Example: WSTG-INFO-01 (Search Engine Reconnaisance) [ i9 ] GHDB Google hacking - (dorking) Google hacking (dorking?) uses selected queries that return information. GHDB (Google Hacking Database) has a library. Lets try intitle:\"Network Camera\" inurl:main.cgi"
   },
   {
-   "n": 45,
+   "n": 46,
    "h": 6,
    "v": 10,
    "anchor": "#/6/10",
@@ -510,7 +521,7 @@
    "text": "Pen-testers investigate, and use tools Burp"
   },
   {
-   "n": 46,
+   "n": 47,
    "h": 6,
    "v": 11,
    "anchor": "#/6/11",
@@ -521,7 +532,7 @@
    "text": "Pen-testers write reports for remediation Ensign Offensive"
   },
   {
-   "n": 47,
+   "n": 48,
    "h": 6,
    "v": 12,
    "anchor": "#/6/12",

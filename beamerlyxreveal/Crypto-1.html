@@ -17,7 +17,7 @@
 <div class="slides">
 <section id="title-slide" class="dada-beamer-slide">
 <div class="dada-topbar">
-<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
 <div class="dada-topbar-right"></div>
 </div>
 <div class="dada-title-content">
@@ -33,7 +33,7 @@
 <div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
 </div>
 <img class="dada-logo" src="../../../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
-<div class="dada-slide-num">1/36</div>
+<div class="dada-slide-num">1/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Keys and confusion...</span></h2>
@@ -42,7 +42,7 @@
 <div class="dada-fbox" style="width: 65%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/Lorenz-SZ42-2.jpeg" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
 </div>
 </div>
-<div class="dada-slide-num">2/36</div>
+<div class="dada-slide-num">2/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Where are we?</span></h2>
@@ -71,11 +71,11 @@
 </div>
 </div>
 </div>
-<div class="dada-slide-num">3/36</div>
+<div class="dada-slide-num">3/47</div>
 </section>
 <section class="slide level2 dada-beamer-slide dada-outline-slide">
 <div class="dada-topbar">
-<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
 <div class="dada-topbar-right"></div>
 </div>
 <h2><span class="dada-title-main">Outline</span></h2>
@@ -92,6 +92,10 @@
 <li>Symmetric cipher building blocks</li>
 <li>DES and AES</li>
 </ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Padding oracle attack for Lab2</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Padding, release of partial information</li>
+</ul></div>
 </div>
 </div>
 </div>
@@ -100,12 +104,12 @@
 <div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
 </div>
 <img class="dada-logo" src="../../../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
-<div class="dada-slide-num">4/36</div>
+<div class="dada-slide-num">4/47</div>
 </section>
 <section>
 <section id="encryption..." class="title-slide slide level1 dada-beamer-slide">
 <div class="dada-topbar">
-<div class="dada-topbar-left"><span class="dada-topbar-current">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-left"><span class="dada-topbar-current">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
 <div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Prehistory of crypto</span><span class="dada-topbar-subsection-other">Terms, definitions, goals</span></div>
 </div>
 <h1>Encryption...</h1>
@@ -114,11 +118,11 @@
 <div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
 </div>
 <img class="dada-logo" src="../../../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
-<div class="dada-slide-num">4/36</div>
+<div class="dada-slide-num">4/47</div>
 </section>
 <section class="slide level2 dada-beamer-slide dada-outline-slide">
 <div class="dada-topbar">
-<div class="dada-topbar-left"><span class="dada-topbar-current">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-left"><span class="dada-topbar-current">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
 <div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Prehistory of crypto</span><span class="dada-topbar-subsection-other">Terms, definitions, goals</span></div>
 </div>
 <h2><span class="dada-title-main">Outline</span></h2>
@@ -135,6 +139,10 @@
 <li><span style="color: lightgray">Symmetric cipher building blocks</span></li>
 <li><span style="color: lightgray">DES and AES</span></li>
 </ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Padding oracle attack for Lab2</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Padding, release of partial information</span></li>
+</ul></div>
 </div>
 </div>
 </div>
@@ -143,7 +151,7 @@
 <div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
 </div>
 <img class="dada-logo" src="../../../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
-<div class="dada-slide-num">4/36</div>
+<div class="dada-slide-num">4/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Julius Cæsar cipher...</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/JuliusCaesar1a.srt.mp4">1</a><span class="dada-font-footnotesize">]</span></span></h2>
@@ -164,7 +172,7 @@
 </div>
 </div>
 </div>
-<div class="dada-slide-num">5/36</div>
+<div class="dada-slide-num">5/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Examples of rotation ciphers</span></h2>
@@ -179,7 +187,7 @@
 </div>
 </div>
 </div>
-<div class="dada-slide-num">6/36</div>
+<div class="dada-slide-num">6/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Substitution</span></h2>
@@ -196,7 +204,7 @@
 </div>
 </div>
 </div>
-<div class="dada-slide-num">7/36</div>
+<div class="dada-slide-num">7/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Substitution cipher...</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/ETAOINSHRDLUShort.mp4">2</a><span class="dada-font-footnotesize">]</span></span></h2>
@@ -217,7 +225,7 @@
 </div>
 </div>
 </div>
-<div class="dada-slide-num">8/36</div>
+<div class="dada-slide-num">8/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Cryptanalysis of mono-alphabetic ciphers</span></h2>
@@ -232,7 +240,7 @@
 </div>
 </div>
 </div>
-<div class="dada-slide-num">9/36</div>
+<div class="dada-slide-num">9/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Cryptanalysis of mono-alphabetic ciphers</span></h2>
@@ -264,7 +272,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">10/36</div>
+<div class="dada-slide-num">10/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Polyalphabetic ciphers</span></h2>
@@ -280,7 +288,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">11/36</div>
+<div class="dada-slide-num">11/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Vigenère</span></h2>
@@ -301,7 +309,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">12/36</div>
+<div class="dada-slide-num">12/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Example of a polyalphabetic substitution cipher</span></h2>
@@ -316,7 +324,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">13/36</div>
+<div class="dada-slide-num">13/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Enigma: polyalphabetic substitution cipher machine</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/mickJagger.mp4">3</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/Enigma1.srt.mp4">4</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/Enigma2.srt.mp4">5</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/MickInEnigma.mp4">8</a><span class="dada-font-footnotesize">,</span><a href="https://hugh.myddns.me/media/movies/grimeEnigma-1.mp4">6</a><span class="dada-font-footnotesize">]</span></span></h2>
@@ -325,7 +333,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 <div class="dada-fbox" style="width: 85%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><img data-src="../../../images/Jagger.png" style="width: auto; height:410px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="../../../images/whatsitdo.png" style="width: auto; height:410px; max-width: none; max-height: none" alt="image"></td></tr><tr><td style="text-align: center; padding-top: 0; padding-bottom: 0; height: 1px; line-height: 0; border-top: 1px solid black;"></td><td style="text-align: center; padding-top: 0; padding-bottom: 0; height: 1px; line-height: 0; border-top: 1px solid black; border-left: 1px solid black;"></td></tr><tr><td style="text-align: center;"><img data-src="../../../images/enigmalights.png" style="width: auto; height:410px; max-width: none; max-height: none" alt="image"></td><td style="text-align: center; border-left: 1px solid black;"><img data-src="../../../images/drjamesgrime.png" style="width: auto; height:410px; max-width: none; max-height: none" alt="image"></td></tr></tbody></table></div>
 </div>
 </div>
-<div class="dada-slide-num">14/36</div>
+<div class="dada-slide-num">14/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">US M209 Rotor machine</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://www.ciphermachinesandcryptology.com/en/m209sim.htm">X</a><span class="dada-font-footnotesize">]</span></span></h2>
@@ -340,7 +348,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">15/36</div>
+<div class="dada-slide-num">15/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Transposition/Permutation ciphers</span></h2>
@@ -372,7 +380,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">16/36</div>
+<div class="dada-slide-num">16/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Product ciphers</span></h2>
@@ -395,7 +403,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">17/36</div>
+<div class="dada-slide-num">17/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Lest we forget: The one-time-pad (Vernam&#x27;s cipher)</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://priyom.org/number-stations">i3</a><span class="dada-font-footnotesize">]</span></span></h2>
@@ -415,7 +423,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">18/36</div>
+<div class="dada-slide-num">18/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Key points/jargon</span></h2>
@@ -433,11 +441,11 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">19/36</div>
+<div class="dada-slide-num">19/47</div>
 </section>
 <section class="slide level2 dada-beamer-slide dada-outline-slide">
 <div class="dada-topbar">
-<div class="dada-topbar-left"><span class="dada-topbar-current">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-left"><span class="dada-topbar-current">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
 <div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Prehistory of crypto</span><span class="dada-topbar-subsection-current">Terms, definitions, goals</span></div>
 </div>
 <h2><span class="dada-title-main">Outline</span></h2>
@@ -454,6 +462,10 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 <li><span style="color: lightgray">Symmetric cipher building blocks</span></li>
 <li><span style="color: lightgray">DES and AES</span></li>
 </ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Padding oracle attack for Lab2</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Padding, release of partial information</span></li>
+</ul></div>
 </div>
 </div>
 </div>
@@ -462,7 +474,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 <div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
 </div>
 <img class="dada-logo" src="../../../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
-<div class="dada-slide-num">20/36</div>
+<div class="dada-slide-num">20/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Primary encryption goals: confidentiality and Integrity</span></h2>
@@ -488,7 +500,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">21/36</div>
+<div class="dada-slide-num">21/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Cryptographics and adversary&#x27;s goals</span></h2>
@@ -511,7 +523,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">22/36</div>
+<div class="dada-slide-num">22/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Cryptanalysis</span></h2>
@@ -550,13 +562,22 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">23/36</div>
+<div class="dada-slide-num">23/47</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Lets take a break...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 85%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/ClassicalCrypto.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+</div>
+</div>
+<div class="dada-slide-num">24/47</div>
 </section>
 </section>
 <section>
 <section id="modern-symmetric-ciphers" class="title-slide slide level1 dada-beamer-slide">
 <div class="dada-topbar">
-<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-current">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-current">Modern symmetric ciphers</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
 <div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Symmetric cipher building blocks</span><span class="dada-topbar-subsection-other">DES and AES</span></div>
 </div>
 <h1>Modern symmetric ciphers</h1>
@@ -565,11 +586,11 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 <div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
 </div>
 <img class="dada-logo" src="../../../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
-<div class="dada-slide-num">24/36</div>
+<div class="dada-slide-num">25/47</div>
 </section>
 <section class="slide level2 dada-beamer-slide dada-outline-slide">
 <div class="dada-topbar">
-<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-current">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-current">Modern symmetric ciphers</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
 <div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Symmetric cipher building blocks</span><span class="dada-topbar-subsection-other">DES and AES</span></div>
 </div>
 <h2><span class="dada-title-main">Outline</span></h2>
@@ -586,6 +607,10 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 <li>Symmetric cipher building blocks</li>
 <li><span style="color: lightgray">DES and AES</span></li>
 </ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Padding oracle attack for Lab2</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Padding, release of partial information</span></li>
+</ul></div>
 </div>
 </div>
 </div>
@@ -594,7 +619,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 <div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
 </div>
 <img class="dada-logo" src="../../../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
-<div class="dada-slide-num">24/36</div>
+<div class="dada-slide-num">25/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Block/stream cipher</span></h2>
@@ -612,7 +637,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">25/36</div>
+<div class="dada-slide-num">26/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Confusion and diffusion (Shannon)</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/pdfs/shannon1949.pdf">ctrl-i2</a><span class="dada-font-footnotesize">]</span></span></h2>
@@ -626,7 +651,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </tbody>
 </table>
 </div>
-<div class="dada-slide-num">26/36</div>
+<div class="dada-slide-num">27/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Block cipher concepts</span></h2>
@@ -650,7 +675,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">27/36</div>
+<div class="dada-slide-num">28/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">“Modes” of operation (for AES/DES/...)</span></h2>
@@ -672,7 +697,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">28/36</div>
+<div class="dada-slide-num">29/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">Avalanche - A “goodness” measure for crypto</span></h2>
@@ -691,11 +716,11 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">29/36</div>
+<div class="dada-slide-num">30/47</div>
 </section>
 <section class="slide level2 dada-beamer-slide dada-outline-slide">
 <div class="dada-topbar">
-<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-current">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-current">Modern symmetric ciphers</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
 <div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Symmetric cipher building blocks</span><span class="dada-topbar-subsection-current">DES and AES</span></div>
 </div>
 <h2><span class="dada-title-main">Outline</span></h2>
@@ -712,6 +737,10 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 <li><span style="color: lightgray">Symmetric cipher building blocks</span></li>
 <li>DES and AES</li>
 </ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Padding oracle attack for Lab2</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Padding, release of partial information</span></li>
+</ul></div>
 </div>
 </div>
 </div>
@@ -720,7 +749,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 <div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
 </div>
 <img class="dada-logo" src="../../../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
-<div class="dada-slide-num">30/36</div>
+<div class="dada-slide-num">31/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">DES - Data Encryption Standard</span></h2>
@@ -743,7 +772,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">31/36</div>
+<div class="dada-slide-num">32/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">DES considered harmful</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://en.wikipedia.org/wiki/EFF_DES_cracker">i4</a><span class="dada-font-footnotesize">]</span></span></h2>
@@ -760,7 +789,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">32/36</div>
+<div class="dada-slide-num">33/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">The problem with 2DES</span></h2>
@@ -787,7 +816,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">33/36</div>
+<div class="dada-slide-num">34/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">AES intro</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/Joker2.srt.mp4">7</a><span class="dada-font-footnotesize">]</span></span></h2>
@@ -808,7 +837,7 @@ FRQF FRV FRVWIVFPYQT IQFV CRWATB ...</pre></div></div>
 </div>
 </div>
 </div>
-<div class="dada-slide-num">34/36</div>
+<div class="dada-slide-num">35/47</div>
 </section>
 <section class="slide level2">
 <h2><span class="dada-title-main">AES operations: 10/12/14 rounds</span></h2>
@@ -846,11 +875,11 @@ end
 </div>
 </div>
 </div>
-<div class="dada-slide-num">35/36</div>
+<div class="dada-slide-num">36/47</div>
 </section>
 <section class="slide level2 dada-beamer-slide">
 <div class="dada-topbar">
-<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-current">Modern symmetric ciphers</span></div>
+<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-current">Modern symmetric ciphers</span><span class="dada-topbar-other">Padding oracle attack for Lab2</span></div>
 <div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Symmetric cipher building blocks</span><span class="dada-topbar-subsection-current">DES and AES</span></div>
 </div>
 <h2><span class="dada-title-main">Summary: Crypto-1</span></h2>
@@ -871,7 +900,232 @@ end
 <div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
 </div>
 <img class="dada-logo" src="../../../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
-<div class="dada-slide-num">36/36</div>
+<div class="dada-slide-num">37/47</div>
+</section>
+</section>
+<section>
+<section id="padding-oracle-attack-for-lab2" class="title-slide slide level1 dada-beamer-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span><span class="dada-topbar-current">Padding oracle attack for Lab2</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-other">Padding, release of partial information</span></div>
+</div>
+<h1>Padding oracle attack for Lab2</h1>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
+</div>
+<img class="dada-logo" src="../../../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">38/47</div>
+</section>
+<section class="slide level2 dada-beamer-slide dada-outline-slide">
+<div class="dada-topbar">
+<div class="dada-topbar-left"><span class="dada-topbar-other">Encryption...</span><span class="dada-topbar-other">Modern symmetric ciphers</span><span class="dada-topbar-current">Padding oracle attack for Lab2</span></div>
+<div class="dada-topbar-right"><span class="dada-topbar-subsection-current">Padding, release of partial information</span></div>
+</div>
+<h2><span class="dada-title-main">Outline</span></h2>
+<div class="dada-frame-body">
+<div class="dada-toc">
+<div class="dada-toc-grid">
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Encryption...</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Prehistory of crypto</span></li>
+<li><span style="color: lightgray">Terms, definitions, goals</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: lightgray">Modern symmetric ciphers</span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li><span style="color: lightgray">Symmetric cipher building blocks</span></li>
+<li><span style="color: lightgray">DES and AES</span></li>
+</ul></div>
+<div class="dada-toc-sec-cell"><span style="color: blue"><span class="dada-bold">Padding oracle attack for Lab2</span></span></div>
+<div class="dada-toc-sub-cell"><ul>
+<li>Padding, release of partial information</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="dada-bottombar">
+<div class="dada-bottombar-left"><span class="dada-bottombar-text">Hugh Anderson [<a href="https://hugh.myddns.me/Askbox/">Q</a>]</span></div>
+<div class="dada-bottombar-right"><span class="dada-bottombar-text">DADA2026, Cryptography-1</span></div>
+</div>
+<img class="dada-logo" src="../../../images/beamer-nus-logo.png" style="width: 1cm" alt="logo">
+<div class="dada-slide-num">38/47</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Bit and byte padding for block ciphers...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 60.0%">
+<img data-src="../../../images/pkcs7-1.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="exampleblock">
+<div class="block-title">PKCS #7 - a byte-wise padding technique...</div>
+<div class="block-content">
+<p><span class="dada-font-footnotesize">One technique is to add a single 1 bit,</span><span class="dada-font-footnotesize"> followed by enough 0 bits to fill out the block.</span><span class="dada-font-footnotesize"> </span></p>
+<p><span class="dada-font-footnotesize">Another is the PKCS #7 paddings for the final block.</span><span class="dada-font-footnotesize"> Each byte is given as 2 hex digits.</span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">39/47</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">CBC: encoding and decoding...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 80.0%">
+<img data-src="../../../images/cbc2.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="center">
+<p style="text-align: center;"><span style="color: black"><span class="dada-font-footnotesize">(...decode is </span></span><span style="color: blue"><span class="dada-font-footnotesize">decrypt,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> then XOR</span></span><span style="color: black"><span class="dada-font-footnotesize">).</span></span></p>
+</div>
+<div class="block">
+<div class="block-title">... and encode is XOR, then encrypt...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Note that when you are decoding,</span></span><span style="color: black"><span class="dada-font-footnotesize"> the final plaintext</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">p_{2}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> is the decrypted ciphertext exclusive-ored with</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">If there was only one block,</span></span><span style="color: black"><span class="dada-font-footnotesize"> the final plaintext</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">p_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> is the decrypted ciphertext exclusive-ored with</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">IV</span></span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">40/47</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Padding oracle...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 40.0%">
+<img data-src="../../../images/pkcs7Attack.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">What is a padding oracle?</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Imagine that you have a bit of software,</span></span><span style="color: black"><span class="dada-font-footnotesize"> that,</span></span><span style="color: black"><span class="dada-font-footnotesize"> given</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> and</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{2}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> will tell you if the padding is correct in</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">p_{2}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span><span style="color: black"><span class="dada-font-footnotesize"> If the message was only one block long,</span></span><span style="color: black"><span class="dada-font-footnotesize"> given</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">IV</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> and</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> (as in the lab),</span></span><span style="color: black"><span class="dada-font-footnotesize"> it will tell you if the padding is correct in</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">p_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span><span style="color: black"><span class="dada-font-footnotesize"> In general,</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize">given </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{n-1}</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> and </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{n}</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> it will tell you if the padding is correct.</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">Is this </span></span><span style="color: blue"><span class="dada-font-footnotesize">realistic</span></span><span style="color: black"><span class="dada-font-footnotesize">?</span></span><span style="color: black"><span class="dada-font-footnotesize"> Well,</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize">yes</span></span><span style="color: black"><span class="dada-font-footnotesize"> it is.</span></span><span style="color: black"><span class="dada-font-footnotesize"> When you send a padded,</span></span><span style="color: black"><span class="dada-font-footnotesize"> encrypted message to another system,</span></span><span style="color: black"><span class="dada-font-footnotesize"> after decrypting,</span></span><span style="color: black"><span class="dada-font-footnotesize"> the other system will check the padding,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and if it is not valid,</span></span><span style="color: black"><span class="dada-font-footnotesize"> will fail immediately.</span></span><span style="color: black"><span class="dada-font-footnotesize"> Otherwise it will fail (or succeed) later.</span></span></p>
+<p><span style="color: black"><span class="dada-font-footnotesize">Normal receiving software may leak the correctness of the padding.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize">In the lab,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> we will give you a program that is a padding oracle.</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">Note also that an </span></span><span style="color: blue"><span class="dada-font-footnotesize">you can directly change each bit/byte of the final plaintext for </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">p_{n}</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> because the attacker has control over the input</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{n-1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> (or IV as in the lab).</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">41/47</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the oracle in an attack...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75.0%">
+<img data-src="../../../images/pkcs7-2.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">The attacker does not get to see the decrypted data...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">The oracle only learns if the last bytes are correct - they could be </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">01</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">0202</span></span></span><span style="color: blue"><span class="dada-font-footnotesize">,</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">030303</span></span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and so on.</span></span><span style="color: black"><span class="dada-font-footnotesize"> </span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">The attacker starts by trying a series of values for the last byte of</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">:</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">42/47</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the oracle in an attack...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75.0%">
+<img data-src="../../../images/pkcs7-3.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Attacker discovers last byte...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">The attacker is trying values in the last byte of </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> until </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">01</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> is the last byte.</span></span><span style="color: black"><span class="dada-font-footnotesize"> Oracle returns OK.</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">Attacker now sets the last byte to</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">02</span></span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and tries for the second-last byte of</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">:</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">43/47</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the oracle in an attack...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75.0%">
+<img data-src="../../../images/pkcs7-4.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Attacker discovers second-to-last byte...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Since we know (now) the last byte (</span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">02</span></span></span><span style="color: black"><span class="dada-font-footnotesize">),</span></span><span style="color: black"><span class="dada-font-footnotesize"> and the original last byte of</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> we can set the last byte.</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">We try all the second-to-last values in</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and uncover a second byte.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">44/47</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the oracle in an attack...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75.0%">
+<img data-src="../../../images/pkcs7-5.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Attacker discovers third-to-last byte...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Since we know (now) the last two bytes (</span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">02 02</span></span></span><span style="color: black"><span class="dada-font-footnotesize">),</span></span><span style="color: black"><span class="dada-font-footnotesize"> we can set the last two bytes to</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">03 03</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">Now we try all the third-to-last values in</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> and uncover</span></span><span style="color: black"><span class="dada-bold"><span class="dada-font-footnotesize"> </span></span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">20</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">45/47</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the oracle in an attack...</span></h2>
+<div class="dada-frame-body">
+<div class="center">
+<div class="dada-fbox" style="width: 75.0%">
+<img data-src="../../../images/pkcs7-6.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+</div>
+</div>
+<div class="block">
+<div class="block-title">Attacker discovers fourth-to-last byte...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">Since we know (now) the last three bytes (</span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">20 02 02</span></span></span><span style="color: black"><span class="dada-font-footnotesize">),</span></span><span style="color: black"><span class="dada-font-footnotesize"> we can set the last three bytes to</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">04 04 04</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">Now we try all the fourth-to-last values in</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">c_{1}</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> and uncover</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-bold"><span class="dada-font-footnotesize">6f</span></span></span><span style="color: black"><span class="dada-font-footnotesize">.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">46/47</div>
+</section>
+<section class="slide level2">
+<h2><span class="dada-title-main">Using the oracle in an attack...</span></h2>
+<div class="dada-frame-body">
+<div class="block">
+<div class="block-title">Attacker discovers all bytes...</div>
+<div class="block-content">
+<p><span style="color: black"><span class="dada-font-footnotesize">The attacker keeps moving through the block,</span></span><span style="color: black"><span class="dada-font-footnotesize"> and has to try a maximum of </span></span><span style="color: blue"><span class="dada-font-footnotesize">255</span></span><span style="color: black"><span class="dada-font-footnotesize"> trials for each byte recovered,</span></span><span style="color: black"><span class="dada-font-footnotesize"> so this is an</span></span><span style="color: blue"><span class="dada-font-footnotesize"> </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">{\cal O}(n)</span></span></span><span style="color: blue"><span class="dada-font-footnotesize"> attack</span></span><span style="color: black"><span class="dada-font-footnotesize">,</span></span><span style="color: black"><span class="dada-font-footnotesize"> where </span></span><span style="color: blue"><span class="dada-font-footnotesize"><span class="math inline">n</span></span></span><span style="color: black"><span class="dada-font-footnotesize"> is the number of bytes in the block.</span></span></p>
+<hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;">
+<p><span style="color: black"><span class="dada-font-footnotesize">This attack </span></span><span style="color: blue"><span class="dada-font-footnotesize">can be avoided</span></span><span style="color: black"><span class="dada-font-footnotesize"> if...</span></span></p>
+<ul>
+<li><div class="dada-li-text"><span style="color: black"><span class="dada-font-footnotesize">There is no oracle (i.e.</span></span><span style="color: black"><span class="dada-font-footnotesize"> the receiving code does not give any indication if the padding is correct or not)</span></span></div></li>
+<li><div class="dada-li-text"><span style="color: black"><span class="dada-font-footnotesize">CFB is used instead.</span></span></div></li>
+<li><div class="dada-li-text"><span style="color: black"><span class="dada-font-footnotesize">A different padding scheme is used...</span></span></div></li>
+</ul>
+<p><span style="color: black"><span class="dada-font-footnotesize">That is it - a little aside into cracking that makes use of much of what we have learned.</span></span></p>
+</div>
+</div>
+</div>
+<div class="dada-slide-num">47/47</div>
 </section>
 </section>
 </div>
