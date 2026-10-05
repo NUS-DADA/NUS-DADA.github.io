@@ -23,7 +23,7 @@
    "kind": "slide",
    "title": "The joys of industrial systems...",
    "section": "",
-   "text": "The joys of industrial systems... [image file: Soft Scada]"
+   "text": "The joys of industrial systems... [image: A SCADA control screen for a brewery mash lauter tun, showing tanks, pipes, valves, temperatures and manual control settings.]"
   },
   {
    "n": 2,
@@ -89,7 +89,7 @@
    "kind": "slide",
    "title": "Othernet hacking scenario #1 [ i9 , i2 , ctrl-i3 , 2 , 8 , 1 ]",
    "section": "Its not just the Internet",
-   "text": "Othernet hacking scenario #1 [ i9 , i2 , ctrl-i3 , 2 , 8 , 1 ] [image file: Soft Scada] [image file: stuxnet] Welcome to the wonderful world of SCADA/PLCs... SCADA (supervisory control and data acquisition) is everywhere. It controls Singapore's water, gas pipelines, sewage, security systems and so on. Unfortunately security is seldom addressed. An angry man (now jailed) attacked the Maroochy Shire sewage control system (Queensland, Australia), and released a million litres of raw sewage into the environment. A sophisticated program may have damaged a fifth of Iran’s nuclear centrifuges. Stuxnet specifically targeted SCADA and Siemens PLCs, and was probably targetted at Iran."
+   "text": "Othernet hacking scenario #1 [ i9 , i2 , ctrl-i3 , 2 , 8 , 1 ] [image: A SCADA control screen for a brewery mash lauter tun, showing tanks, pipes, valves, temperatures and manual control settings.] [image: A Stuxnet demonstration: a hand beside a small air pump controlled by a PLC that has been made to over-inflate a balloon.] Welcome to the wonderful world of SCADA/PLCs... SCADA (supervisory control and data acquisition) is everywhere. It controls Singapore's water, gas pipelines, sewage, security systems and so on. Unfortunately security is seldom addressed. An angry man (now jailed) attacked the Maroochy Shire sewage control system (Queensland, Australia), and released a million litres of raw sewage into the environment. A sophisticated program may have damaged a fifth of Iran’s nuclear centrifuges. Stuxnet specifically targeted SCADA and Siemens PLCs, and was probably targetted at Iran."
   },
   {
    "n": 8,
@@ -100,7 +100,7 @@
    "kind": "slide",
    "title": "Othernet hacking scenario #2 [ 3 , 4 , ctrl-i5 , ctrl-i6 ]",
    "section": "Its not just the Internet",
-   "text": "Othernet hacking scenario #2 [ 3 , 4 , ctrl-i5 , ctrl-i6 ] [image file: Jin Zhou] Tempest TEMPEST covers both methods to spy upon others and how to shield equipment against such spying. A student project a few years ago resurrected a screen image from the radiation from a cable."
+   "text": "Othernet hacking scenario #2 [ 3 , 4 , ctrl-i5 , ctrl-i6 ] [image: An NUS lab bench demonstration with laptops, a PLC and coils of wire on a breadboard, used to show an attack on an industrial control system.] Tempest TEMPEST covers both methods to spy upon others and how to shield equipment against such spying. A student project a few years ago resurrected a screen image from the radiation from a cable."
   },
   {
    "n": 9,
@@ -111,7 +111,7 @@
    "kind": "slide",
    "title": "Othernet hacking scenario #3",
    "section": "Its not just the Internet",
-   "text": "Othernet hacking scenario #3 [image file: CIAblackmail] Spooky CIA stuff... The CIA claim that there have been multiple instances of successful blackmail of power utility companies around the world. (Note that this may be part of a general strategy of convincing people the world is “dangerous”, so perhaps we should take it with a grain of salt). The idea is that the blackmailer threatens to turn off the power grid, and (according to the CIA) have turned off power to cities to demonstrate. Two documented instances of similar activities: Russia's gas utility control system being taken over for a short period, and also Disgruntled employees in the US hacked traffic light systems in LA to cause chaos"
+   "text": "Othernet hacking scenario #3 [image: A worker in a hard hat and high-visibility jacket walking past large yellow gas pipeline equipment.] Spooky CIA stuff... The CIA claim that there have been multiple instances of successful blackmail of power utility companies around the world. (Note that this may be part of a general strategy of convincing people the world is “dangerous”, so perhaps we should take it with a grain of salt). The idea is that the blackmailer threatens to turn off the power grid, and (according to the CIA) have turned off power to cities to demonstrate. Two documented instances of similar activities: Russia's gas utility control system being taken over for a short period, and also Disgruntled employees in the US hacked traffic light systems in LA to cause chaos"
   },
   {
    "n": 10,
@@ -122,7 +122,7 @@
    "kind": "slide",
    "title": "Othernet hacking scenario #4",
    "section": "Its not just the Internet",
-   "text": "Othernet hacking scenario #4 [image file: femtocellhack] Welcome to the wonderful world of femtocells... Vodafone's SureSignal is a neat product which makes cell signals stronger in houses and buildings. It is a small cell base station, called a femtocell. SureSignal was hacked in 2012. A hacked system can forge calls, record calls, and collect detailed data about the phone/SIM so it can be copied."
+   "text": "Othernet hacking scenario #4 [image: A hacked femtocell scenario: a phone talking to a cell tower is semi secure, but a phone within the 100 m capture zone of a hacked femtocell is totally insecure.] Welcome to the wonderful world of femtocells... Vodafone's SureSignal is a neat product which makes cell signals stronger in houses and buildings. It is a small cell base station, called a femtocell. SureSignal was hacked in 2012. A hacked system can forge calls, record calls, and collect detailed data about the phone/SIM so it can be copied."
   },
   {
    "n": 11,
@@ -133,7 +133,7 @@
    "kind": "slide",
    "title": "Othernet hacking scenario #5 [ 5 ]",
    "section": "Its not just the Internet",
-   "text": "Othernet hacking scenario #5 [ 5 ] [image file: mifare] Welcome to the wonderful world of RFIDs... MIFARE Classic, a contactless smartcard widely used in Europe. It uses a set of proprietary protocols/algorithms, that were reverse-engineered in 2007. It turns out that the encryption algorithms are already known to be weak (using only 48bits) and breakable. London underground Oyster card, Malaysia Touch&Go, BMWs etc"
+   "text": "Othernet hacking scenario #5 [ 5 ] [image: Hands typing on a laptop next to a card reader, captioned The cryptographic key is retrieved, from a video on cracking MIFARE smart cards.] Welcome to the wonderful world of RFIDs... MIFARE Classic, a contactless smartcard widely used in Europe. It uses a set of proprietary protocols/algorithms, that were reverse-engineered in 2007. It turns out that the encryption algorithms are already known to be weak (using only 48bits) and breakable. London underground Oyster card, Malaysia Touch&Go, BMWs etc"
   },
   {
    "n": 12,
@@ -144,7 +144,7 @@
    "kind": "slide",
    "title": "Othernet info leaks, projects recently... [ 6 ]",
    "section": "Its not just the Internet",
-   "text": "Othernet info leaks, projects recently... [ 6 ] [image file: gp poster] [image file: gp poster] [image file: gp poster] Student projects about hardware hacking... Hardware hacking using $25 and $500 software defined radios, social engineering, inference..."
+   "text": "Othernet info leaks, projects recently... [ 6 ] [image: A student project poster, Measure Population with GSM, using captured GSM broadcasts to estimate how many phones are near each base station in Singapore.] [image: A student project poster, GSM-based Intruder Detection and Identification System, detecting phones that associate with a fake base station.] [image: A student project poster, NFC Sniffing via SDR, capturing and decoding the radio waveform of a contactless card such as a student or EZ-Link card.] Student projects about hardware hacking... Hardware hacking using $25 and $500 software defined radios, social engineering, inference..."
   },
   {
    "n": 13,
@@ -155,7 +155,7 @@
    "kind": "slide",
    "title": "Summary",
    "section": "Its not just the Internet",
-   "text": "Summary [image file: px T] It seems like we cannot trust the machines! Who knew? [image file: SGR A] It sounds bad.Many systems could affect us... Not only routers, printers, servers, PCs, but also PLCs, control systems. In each of these complex systems, they are only as strong as their weakest link. Taking the cases of Internets and othernets - There is no adminstrative centre for the Internet, little security (and no administration) on Othernets. Just organizations trying to make money, cutting corners."
+   "text": "Summary [image: A still of the T1-8 robot from the Terminator films, a silver humanoid machine with glowing eyes.] It seems like we cannot trust the machines! Who knew? [image: A rendering of the Samsung SGR-A1 sentry robot, an armed turret on a pedestal used on the Korean border.] It sounds bad.Many systems could affect us... Not only routers, printers, servers, PCs, but also PLCs, control systems. In each of these complex systems, they are only as strong as their weakest link. Taking the cases of Internets and othernets - There is no adminstrative centre for the Internet, little security (and no administration) on Othernets. Just organizations trying to make money, cutting corners."
   },
   {
    "n": 14,
@@ -177,7 +177,7 @@
    "kind": "slide",
    "title": "Tools to access the radio spectrum...",
    "section": "Its not just the Internet",
-   "text": "Tools to access the radio spectrum... [image file: spectra] [image file: rtl sdr x] [image file: slider un partial] Spectrum snooping... Hardware hacking using $25 and $500 software defined radios. A range from 1MHz to 5GHz."
+   "text": "Tools to access the radio spectrum... [image: A chart of the radio spectrum by frequency from 100 Hz to 10 to the 16 Hz, showing the ranges used by telephone, twisted pair, coaxial cable, AM and FM radio, TV, satellite, microwave and optical fibre.] [image: A cheap RTL-SDR USB dongle, sold as a DVB-T, DAB and FM receiver, with its small magnetic antenna, used as a software-defined radio.] [image: The front panel of an Ettus Research USRP N210 software-defined radio, with antenna connectors, MIMO expansion and gigabit Ethernet ports.] Spectrum snooping... Hardware hacking using $25 and $500 software defined radios. A range from 1MHz to 5GHz."
   },
   {
    "n": 16,
@@ -188,7 +188,7 @@
    "kind": "slide",
    "title": "Lets see what is at 1090MHz [ 9 ]",
    "section": "Its not just the Internet",
-   "text": "Lets see what is at 1090MHz [ 9 ] [image file: dump] Spectrum snooping... Radio signals all around us are supplying us with interesting information. ADS-B."
+   "text": "Lets see what is at 1090MHz [ 9 ] [image: The dump1090 web map showing aircraft positions over Singapore, decoded from ADS-B signals at 1090 MHz, with a table of flights, altitudes and speeds.] Spectrum snooping... Radio signals all around us are supplying us with interesting information. ADS-B."
   },
   {
    "n": 17,
@@ -199,7 +199,7 @@
    "kind": "slide",
    "title": "Phone man-in-the-middle",
    "section": "Its not just the Internet",
-   "text": "Phone man-in-the-middle [image file: gsm] Using software defined radios... The SDR on the right is pretending to be a base station, the phones on the left can see it... With some care, you can make the phones associate to the SDR instead of Singtel/Starhub, and retrieve interesting information. This has been shown here using both GSM and LTE networks. Students developed a social engineering SMS sequence..."
+   "text": "Phone man-in-the-middle [image: Two mobile phones beside a software-defined radio circuit board with an antenna, set up as a fake GSM base station for a phone man-in-the-middle attack.] Using software defined radios... The SDR on the right is pretending to be a base station, the phones on the left can see it... With some care, you can make the phones associate to the SDR instead of Singtel/Starhub, and retrieve interesting information. This has been shown here using both GSM and LTE networks. Students developed a social engineering SMS sequence..."
   },
   {
    "n": 18,
@@ -210,7 +210,7 @@
    "kind": "slide",
    "title": "NFC: more things to worry about: [ 7 ]",
    "section": "Its not just the Internet",
-   "text": "NFC: more things to worry about: [ 7 ] [image file: macys] [image file: DSCN] [image file: DSCN] [image file: cardsleeve] Sniffing NFC cards... If we get time, Hugh will show you an example of this."
+   "text": "NFC: more things to worry about: [ 7 ] [image: A TV news still of a man on a shopping mall escalator holding his bag close to a woman's handbag, to read her contactless cards.] [image: A USB NFC reader in a clear plastic box beside Hugh's DBS Visa payWave card, set up to read the card without contact.] [image: A USB NFC reader lying on Hugh's DBS Visa payWave card, its green light showing that it can read the contactless card.] [image: A credit card sliding into a metallised RFID-blocking sleeve that stops it from being read wirelessly.] Sniffing NFC cards... If we get time, Hugh will show you an example of this."
   },
   {
    "n": 19,
@@ -221,7 +221,7 @@
    "kind": "slide",
    "title": "Not sure if this fixes the pokemon GO situation...",
    "section": "Its not just the Internet",
-   "text": "Not sure if this fixes the pokemon GO situation... [image file: gps] [image file: gps signals] Modifying/over-riding GPS signals... The satellites are synchronized in time, transmitting on-the-nanosecond signals, which are received in your phone. The difference in time (signals travel at 300m/uS), can locate the phone to about 15m."
+   "text": "Not sure if this fixes the pokemon GO situation... [image: GPS satellites orbiting the Earth, each sending a red signal line to a receiver on the ground.] [image: GPS trilateration: a receiver lies where three circles meet, each centred on a satellite with radius R1, R2 or R3, its measured distance.] Modifying/over-riding GPS signals... The satellites are synchronized in time, transmitting on-the-nanosecond signals, which are received in your phone. The difference in time (signals travel at 300m/uS), can locate the phone to about 15m."
   },
   {
    "n": 20,
@@ -243,7 +243,7 @@
    "kind": "slide",
    "title": "Attacks (and defences) are no different in Othernets",
    "section": "Its not just the Internet",
-   "text": "Attacks (and defences) are no different in Othernets [image file: attack] [image file: attack] [image file: attack] [image file: attack] A reminder of the types of attacks The diagrams above, of Interception, Modification, Interruption, and Fabrication, remind us of the routes taken."
+   "text": "Attacks (and defences) are no different in Othernets [image: An eavesdropping attack: Alice sends to Bob, and Ted also receives a copy of the message.] [image: A man-in-the-middle attack: Alice's message to Bob passes through Ted, who can read or change it.] [image: A denial of service attack: Ted blocks the message from Alice to Bob, crossing out the link, and interferes with both.] [image: A spoofing attack: Ted sends a message to Bob pretending to be Alice, while Alice sends nothing.] A reminder of the types of attacks The diagrams above, of Interception, Modification, Interruption, and Fabrication, remind us of the routes taken."
   },
   {
    "n": 22,

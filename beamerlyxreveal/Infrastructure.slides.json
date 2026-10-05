@@ -23,7 +23,7 @@
    "kind": "slide",
    "title": "Building better support systems",
    "section": "",
-   "text": "Building better support systems [image file: DNSSECillustration]"
+   "text": "Building better support systems [image: A DNSSEC diagram: a user's web address request goes to a DNS server whose records are signed with keys protected in an HSM, so the user gets a validated correct IP address for the legitimate server.]"
   },
   {
    "n": 2,
@@ -89,7 +89,7 @@
    "kind": "slide",
    "title": "Case study 1: SWIFT [ i2 , i6 ]",
    "section": "Authentication, logging in...",
-   "text": "Case study 1: SWIFT [ i2 , i6 ] [image file: swift] We saw this before... What has gone wrong? For 20 years it ran well without any external fraud. Since 1996 SWIFT has used PK cryptography. Most frauds have an insider bypassing a dual control. Stanley Rifkin, a computer consultant, got hold of an authorization code, and used this to authorize a transfer of $10M worth of diamonds. In February 2016, attackers tried to steal US$951 Million from Bangladesh Bank, the central bank of Bangladesh, using the SWIFT network. They succeeded in getting $81M. The attack involved long term study and infiltration of the bank head office, multiple “runners” in multiple countries, and a significant effort."
+   "text": "Case study 1: SWIFT [ i2 , i6 ] [image: The Wikipedia article on the 2016 Bangladesh Bank heist, in which hackers used the SWIFT network to try to steal 951 million US dollars from the Federal Reserve Bank of New York.] We saw this before... What has gone wrong? For 20 years it ran well without any external fraud. Since 1996 SWIFT has used PK cryptography. Most frauds have an insider bypassing a dual control. Stanley Rifkin, a computer consultant, got hold of an authorization code, and used this to authorize a transfer of $10M worth of diamonds. In February 2016, attackers tried to steal US$951 Million from Bangladesh Bank, the central bank of Bangladesh, using the SWIFT network. They succeeded in getting $81M. The attack involved long term study and infiltration of the bank head office, multiple “runners” in multiple countries, and a significant effort."
   },
   {
    "n": 8,
@@ -100,7 +100,7 @@
    "kind": "slide",
    "title": "Case study 2: Man-in-the-middle for Public Keys",
    "section": "Authentication, logging in...",
-   "text": "Case study 2: Man-in-the-middle for Public Keys [image file: mimpk] Motivation for PKI (repeat from Crypto-2) We see that a man-in-the-middle can return a bad (public) key to Alice, who incorrectly assumes it is from Bob. From then on she encrypts using a key that Harry made, and who also has the matching secret key."
+   "text": "Case study 2: Man-in-the-middle for Public Keys [image: A man-in-the-middle attack on public keys: Alice asks Bob for his public key, Harry intercepts it and returns his own, so Harry can read and re-encode all of Alice's messages.] Motivation for PKI (repeat from Crypto-2) We see that a man-in-the-middle can return a bad (public) key to Alice, who incorrectly assumes it is from Bob. From then on she encrypts using a key that Harry made, and who also has the matching secret key."
   },
   {
    "n": 9,
@@ -122,7 +122,7 @@
    "kind": "slide",
    "title": "Case study 2: The certification mechanism",
    "section": "Authentication, logging in...",
-   "text": "Case study 2: The certification mechanism [image file: pk] [image file: pkbnz] The RA and CA and you Your organisation communicates with the RA (Registration Authority), passes them a public key, and convinces them that they are the rightful owners of the domain or web site. Once the RA is convinced, it gets the CA (Certifying authority) to digitally sign the public key with the name/ID, binding them together in a “certificate”. This is passed back to the organisation."
+   "text": "Case study 2: The certification mechanism [image: The certification mechanism: Bob registers through a registration authority, which verifies him and asks the certification authority to issue a certificate binding his identity to his public key, which anyone can check with the CA's public key.] [image: A certificate viewer for www.bnz.co.nz, showing the chain from a VeriSign root authority through an extended validation CA, and the site's 2048-bit public key modulus.] The RA and CA and you Your organisation communicates with the RA (Registration Authority), passes them a public key, and convinces them that they are the rightful owners of the domain or web site. Once the RA is convinced, it gets the CA (Certifying authority) to digitally sign the public key with the name/ID, binding them together in a “certificate”. This is passed back to the organisation."
   },
   {
    "n": 11,
@@ -133,7 +133,7 @@
    "kind": "slide",
    "title": "Case study 2: A padding attack on RSA [ ctrl-i7 ]",
    "section": "Authentication, logging in...",
-   "text": "Case study 2: A padding attack on RSA [ ctrl-i7 ] [image file: PKCS Padding Format] PKCS#1 padding attack from 1998 In 1998, Daniel Bleichenbacher from Bell labs published a padding oracle attack on PKCS#1 (and hence SSL V3.0). The attack is based on the fact that RSA is homomorphic with respect to multiplication. In addition, some (web) servers can act as padding oracles. In SSL/TLS, during the initial negotiation, critical keys are sent, encrypted using RSA. A padding oracle attack can retrieve this \"pre\"master secret key, in what has been called the “million message” attack. The details of this attack are found in the paper, but it is not dissimilar to the padding oracle attack in Lab2; multiple messages are sent to the server, which responds differently if the format of the padding is correct or incorrect. “Fixing” PKCS#1 The approach taken to fix this was to ask vendors to add extra countermeasures: primarily returning uninformative server responses."
+   "text": "Case study 2: A padding attack on RSA [ ctrl-i7 ] [image: The PKCS #1 v1.5 padding format: bytes 00 and 02, a random padding string, a 00 byte, then the data block.] PKCS#1 padding attack from 1998 In 1998, Daniel Bleichenbacher from Bell labs published a padding oracle attack on PKCS#1 (and hence SSL V3.0). The attack is based on the fact that RSA is homomorphic with respect to multiplication. In addition, some (web) servers can act as padding oracles. In SSL/TLS, during the initial negotiation, critical keys are sent, encrypted using RSA. A padding oracle attack can retrieve this \"pre\"master secret key, in what has been called the “million message” attack. The details of this attack are found in the paper, but it is not dissimilar to the padding oracle attack in Lab2; multiple messages are sent to the server, which responds differently if the format of the padding is correct or incorrect. “Fixing” PKCS#1 The approach taken to fix this was to ask vendors to add extra countermeasures: primarily returning uninformative server responses."
   },
   {
    "n": 12,
@@ -155,7 +155,7 @@
    "kind": "slide",
    "title": "Case study 3: Weak DH [ X ]",
    "section": "Authentication, logging in...",
-   "text": "Case study 3: Weak DH [ X ] [image file: logjam] June 2013: Snowden releases NSA documents... ... and in them we discover that NSA has been routinely listening in on skype calls, and intercepting IPsec and https:// conversations. My colleague Martin suggests that, in this day and age, most people couldn't care less. Maybe he is right. But in any case, how can it be done? In October 2015, a plausible explanation was revealed (see [X] above)."
+   "text": "Case study 3: Weak DH [ X ] [image: An SSL server test warning that a server supports export-grade Diffie-Hellman and is vulnerable to the Logjam attack, using 1024-bit DH.] June 2013: Snowden releases NSA documents... ... and in them we discover that NSA has been routinely listening in on skype calls, and intercepting IPsec and https:// conversations. My colleague Martin suggests that, in this day and age, most people couldn't care less. Maybe he is right. But in any case, how can it be done? In October 2015, a plausible explanation was revealed (see [X] above)."
   },
   {
    "n": 14,
@@ -166,7 +166,7 @@
    "kind": "slide",
    "title": "Case study 3: large scale monitoring of IPSec",
    "section": "Authentication, logging in...",
-   "text": "Case study 3: large scale monitoring of IPSec [image file: NSAVPNTURMOIL] Architecture of an NSA system from leaked document Notice the diagram is clearly indicating the IKE (Internet Key Exchange), and the use of IPsec - the AH and ESP packets. There is so much supporting material, that it is clear that this is not FUD, but is a real mechanism, in use since at least 2009. It relies on the use of the fixed large primes used in Diffie-Hellman key exchange software."
+   "text": "Case study 3: large scale monitoring of IPSec [image: A leaked top secret NSA diagram of the TURMOIL system intercepting IKE and IPsec VPN traffic and passing it to XKEYSCORE and HPC resources for decryption.] Architecture of an NSA system from leaked document Notice the diagram is clearly indicating the IKE (Internet Key Exchange), and the use of IPsec - the AH and ESP packets. There is so much supporting material, that it is clear that this is not FUD, but is a real mechanism, in use since at least 2009. It relies on the use of the fixed large primes used in Diffie-Hellman key exchange software."
   },
   {
    "n": 15,
@@ -177,7 +177,7 @@
    "kind": "slide",
    "title": "Case study 3: large scale monitoring of IPSec",
    "section": "Authentication, logging in...",
-   "text": "Case study 3: large scale monitoring of IPSec How does it all work? Initially, the Diffie-Hellman key exchange is downgraded to one using smaller (EXPORT-GRADE) bitsize primes. The IKE (Internet Key Exchange) values are sent to a supercomputer, which returns actual keys within 15 minutes. On a modern computer/PC? About 30 seconds. Solved y=g^{x}\\bmod p discrete log problem? ... No. Common (NFS) algorithm can use pre-computation, for a specific prime, of 3 out of the 4 steps: [image file: precomp] What do we do about it? (From the paper) On the Browser, you must check you have the updates which stop *you* being vulnerable. On the Server you must Disable Export Cipher Suites, use (Ephemeral) Elliptic-Curve Diffie-Hellman (ECDHE) and use a Strong, Diffie Hellman Group (2048-bit or stronger)."
+   "text": "Case study 3: large scale monitoring of IPSec How does it all work? Initially, the Diffie-Hellman key exchange is downgraded to one using smaller (EXPORT-GRADE) bitsize primes. The IKE (Internet Key Exchange) values are sent to a supercomputer, which returns actual keys within 15 minutes. On a modern computer/PC? About 30 seconds. Solved y=g^{x}\\bmod p discrete log problem? ... No. Common (NFS) algorithm can use pre-computation, for a specific prime, of 3 out of the 4 steps: [image: The number field sieve for discrete logs: polynomial selection, sieving and linear algebra are a one-off precomputation for a prime p, after which each individual log is quick to find by descent.] What do we do about it? (From the paper) On the Browser, you must check you have the updates which stop *you* being vulnerable. On the Server you must Disable Export Cipher Suites, use (Ephemeral) Elliptic-Curve Diffie-Hellman (ECDHE) and use a Strong, Diffie Hellman Group (2048-bit or stronger)."
   },
   {
    "n": 16,
@@ -188,7 +188,7 @@
    "kind": "slide",
    "title": "Case study 4: The DNS",
    "section": "Authentication, logging in...",
-   "text": "Case study 4: The DNS [image file: C] A heirarchy, root servers, domains, local... Forms a tree, and a new request at a leaf has to traverse the tree. A distributed database, with distributed caching of recent name requests. The distributed nature of the DNS provides plenty of opportunity to inject in false entries. There are various approaches to harden the DNS."
+   "text": "Case study 4: The DNS [image: The DNS hierarchy: 13 Internet root servers at the top, top-level domain servers such as .com, .biz, .info and .uk below, and second-level servers such as microsoft.com and usc.edu run by organisations.] A heirarchy, root servers, domains, local... Forms a tree, and a new request at a leaf has to traverse the tree. A distributed database, with distributed caching of recent name requests. The distributed nature of the DNS provides plenty of opportunity to inject in false entries. There are various approaches to harden the DNS."
   },
   {
    "n": 17,
@@ -210,7 +210,7 @@
    "kind": "slide",
    "title": "Challenge response [ 1 ]",
    "section": "Authentication, logging in...",
-   "text": "Challenge response [ 1 ] Challenge response protocol for password checking... [image file: snoop]"
+   "text": "Challenge response [ 1 ] Challenge response protocol for password checking... [image: A bad guy snooping on login network traffic between a client and the domain controller (PDC).]"
   },
   {
    "n": 19,
@@ -243,7 +243,7 @@
    "kind": "slide",
    "title": "Kerberos/Cerberus",
    "section": "Authentication, logging in...",
-   "text": "Kerberos/Cerberus [image file: krb] What is it? Kerberos is a network authentication protocol. It provides strong authentication for client/server applications using symmetric or public key cryptography. Kerberos is freely available in source form, and also is in commercial products (Windows uses Kerberos for login). status collapsedAuthentication... and encryption. Client and server prove their identity, and encrypt all of their communications. There is a Key Distribution Center (KDC). Kerberos uses a Needham-Schroeder symmetric key protocol."
+   "text": "Kerberos/Cerberus [image: A grey drawing of Cerberus, the three-headed dog guarding a keyhole, the namesake of Kerberos.] What is it? Kerberos is a network authentication protocol. It provides strong authentication for client/server applications using symmetric or public key cryptography. Kerberos is freely available in source form, and also is in commercial products (Windows uses Kerberos for login). status collapsedAuthentication... and encryption. Client and server prove their identity, and encrypt all of their communications. There is a Key Distribution Center (KDC). Kerberos uses a Needham-Schroeder symmetric key protocol."
   },
   {
    "n": 22,
@@ -254,7 +254,7 @@
    "kind": "slide",
    "title": "Kerberos",
    "section": "Authentication, logging in...",
-   "text": "Kerberos [image file: kerb] Sequence of messages for granting tickets When a client first authenticates to Kerberos, she: Talks to KDC, to get a Ticket Granting Ticket . Uses that to talk to the Ticket Granting Service and get a particular ticket for a particular service. Uses that ticket, to interact with the server. This way a user doesn't have to reenter passwords every time they wish to connect. Note that if the Ticket Granting Ticket is compromised, an attacker can only masquerade as a user until the ticket expires."
+   "text": "Kerberos [image: Kerberos: the client gets a ticket from the KDC's authentication service in steps 1 and 2, then a service ticket from ticket granting in steps 3 and 4, and presents it to the server in steps 5 and 6.] Sequence of messages for granting tickets When a client first authenticates to Kerberos, she: Talks to KDC, to get a Ticket Granting Ticket . Uses that to talk to the Ticket Granting Service and get a particular ticket for a particular service. Uses that ticket, to interact with the server. This way a user doesn't have to reenter passwords every time they wish to connect. Note that if the Ticket Granting Ticket is compromised, an attacker can only masquerade as a user until the ticket expires."
   },
   {
    "n": 23,
@@ -342,7 +342,7 @@
    "kind": "slide",
    "title": "IoT [ i4 ]",
    "section": "Other infrastructural building blocks",
-   "text": "IoT [ i4 ] [image file: iot] [image file: iot] A well known IoT device... Only a single token is needed to access remote units via a cloud API. This turns out to be a weakness."
+   "text": "IoT [ i4 ] [image: The Particle Photon IoT development kit, a US $19 board with an ARM Cortex M3 microcontroller, a Broadcom WiFi chip, 1 MB flash and 128 KB RAM.] [image: A Particle account, identified by a secret 40 hex character access token, can own several Photon devices, each with a 24 hex character device ID.] A well known IoT device... Only a single token is needed to access remote units via a cloud API. This turns out to be a weakness."
   },
   {
    "n": 31,
@@ -364,7 +364,7 @@
    "kind": "slide",
    "title": "IoT",
    "section": "Other infrastructural building blocks",
-   "text": "IoT Single token needed for access... [image file: iot]"
+   "text": "IoT Single token needed for access... [image: An IoT attack: an attacker builds modified firmware that publishes stored WiFi credentials, flashes it to the victim's Photon through the Particle Cloud, and reads the credentials on the events page.]"
   },
   {
    "n": 33,
@@ -375,7 +375,7 @@
    "kind": "slide",
    "title": "An attack on IoT and photons, with responsible disclosure",
    "section": "Other infrastructural building blocks",
-   "text": "An attack on IoT and photons, with responsible disclosure [image file: Poster] [image file: gp Redacted] [image file: gp Un Redacted] My students engineered this nasty attack And they were talking to the manufacturers to come up with a resolution. They helped with mitigations to limit the access token capabilities, use two factor authentication, and more carefully authenticate the clients who initiate software updates... The firmware stole WiFi credentials for the remote network near the photon."
+   "text": "An attack on IoT and photons, with responsible disclosure [image: A student project poster from NUS, IoT Hacking: Attacking the Photon, explaining the attack on the Particle Photon device step by step.] [image: The students' IoT Hacking paper with the vendor and device names blacked out, as published during responsible disclosure.] [image: The same paper, IoT Hacking: Attacking the Photon, with the names restored after responsible disclosure was complete.] My students engineered this nasty attack And they were talking to the manufacturers to come up with a resolution. They helped with mitigations to limit the access token capabilities, use two factor authentication, and more carefully authenticate the clients who initiate software updates... The firmware stole WiFi credentials for the remote network near the photon."
   },
   {
    "n": 34,

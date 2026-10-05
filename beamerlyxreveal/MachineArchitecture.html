@@ -64,7 +64,7 @@
 <h2><span class="dada-title-main">Memory...</span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<div class="dada-fbox" style="width: 70%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/memories.jpg" style="width: auto; height:245px; max-width: none; max-height: none" alt="image"></p></div></div>
+<div class="dada-fbox" style="width: 70%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/memories.jpg" style="width: auto; height:245px; max-width: none; max-height: none" alt="The computer memory hierarchy as a pyramid: small, fast, expensive registers and cache at the top, then RAM, flash, hard drives, and large, slow, cheap tape and DVD backup at the bottom."></p></div></div>
 </div>
 </div>
 <div class="dada-slide-num">3/48</div>
@@ -219,7 +219,7 @@
 <h2><span class="dada-title-main">Machine architecture: visualizing memory</span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<div class="dada-fbox" style="width: 64%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/memabstract.png" style="width: auto; height:189px; max-width: none; max-height: none" alt="image"></p></div></div>
+<div class="dada-fbox" style="width: 64%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/memabstract.png" style="width: auto; height:189px; max-width: none; max-height: none" alt="Visualising memory: the variables, code and malloc&#x27;d buffer of a C program are each mapped somewhere in the computer&#x27;s memory, behind the CPU&#x27;s data and instruction caches."></p></div></div>
 </div>
 <div class="block">
 <div class="block-title">Location of “variables”?</div>
@@ -234,7 +234,7 @@
 <h2><span class="dada-title-main">Process use of memory</span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<div class="dada-fbox" style="width: 97%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/processmemory.png" style="width: auto; height:132px; max-width: none; max-height: none" alt="image"><img class="dada-inline-img" data-src="../../../images/vm.png" style="width: auto; height:132px; max-width: none; max-height: none" alt="image"></p></div></div>
+<div class="dada-fbox" style="width: 97%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/processmemory.png" style="width: auto; height:132px; max-width: none; max-height: none" alt="Processes and memory: programs 1 and 2 and the OS kernel each use virtual memory, which is translated into physical memory."><img class="dada-inline-img" data-src="../../../images/vm.png" style="width: auto; height:132px; max-width: none; max-height: none" alt="Virtual memory hardware: the CPU puts out a virtual address, the MMU&#x27;s table translates it into a physical address for RAM, ROM or I/O, and the lower-order address lines pass straight through."></p></div></div>
 </div>
 <div class="block">
 <div class="block-title">Virtual memory, physical memory, and translations...</div>
@@ -252,7 +252,7 @@
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox" style="width: 80.0%">
-<img data-src="../../../images/mapping.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+<img data-src="../../../images/mapping.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="x86 address translation: a logical cs:offset address is looked up in the GDT to give a linear address, which paging tables turn into a physical address.">
 </div>
 </div>
 <div class="exampleblock">
@@ -279,7 +279,7 @@
 <div class="block-title">Program, shared libraries, stack...</div>
 <div class="block-content">
 <div class="center">
-<div class="dada-fbox" style="width: 97%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><div class="dada-fbox" style="width: 20%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/linuxelfusermemory.2.png" style="width: auto; height:170px; max-width: none; max-height: none" alt="image"></p></div></div></td><td style="text-align: center;"><div class="dada-fbox" style="width: 70%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">This is just one possible arrangement of virtual memory (the view that the process has of its memory in a Linux system).</span><span class="dada-font-footnotesize"> In this arrangement,</span><span class="dada-font-footnotesize"> the stack is at the top of the memory,</span><span class="dada-font-footnotesize"> and grows downwards.</span></p><hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">Hooray for computer scientists,</span><span class="dada-font-footnotesize"> who famously believe that both stacks and trees grow downwards.</span></p><hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">The code and its fixed storage is at the bottom end of memory,</span><span class="dada-font-footnotesize"> and the malloc&#x27;ed memory is </span>“<span class="dada-font-footnotesize">above</span>”<span class="dada-font-footnotesize"> the program.</span><span class="dada-font-footnotesize"> Libraries are found at 0x40000000.</span></p><hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">The odd names are historical.</span><span class="dada-font-footnotesize"> BSS stood for </span>“<span class="dada-font-footnotesize">Block Starting Symbol</span>”<span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> the segment of memory where variables would be stored.</span><span class="dada-font-footnotesize"> The data area was for values that were pre-loaded.</span></p></div></td></tr></tbody></table></div>
+<div class="dada-fbox" style="width: 97%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><div class="dada-fbox" style="width: 20%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/linuxelfusermemory.2.png" style="width: auto; height:170px; max-width: none; max-height: none" alt="The Linux ELF user memory layout: program code, data, bss and malloc heap near the bottom, C libraries in the middle, and the stack growing down from the top, with guard regions at each end."></p></div></div></td><td style="text-align: center;"><div class="dada-fbox" style="width: 70%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">This is just one possible arrangement of virtual memory (the view that the process has of its memory in a Linux system).</span><span class="dada-font-footnotesize"> In this arrangement,</span><span class="dada-font-footnotesize"> the stack is at the top of the memory,</span><span class="dada-font-footnotesize"> and grows downwards.</span></p><hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">Hooray for computer scientists,</span><span class="dada-font-footnotesize"> who famously believe that both stacks and trees grow downwards.</span></p><hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">The code and its fixed storage is at the bottom end of memory,</span><span class="dada-font-footnotesize"> and the malloc&#x27;ed memory is </span>“<span class="dada-font-footnotesize">above</span>”<span class="dada-font-footnotesize"> the program.</span><span class="dada-font-footnotesize"> Libraries are found at 0x40000000.</span></p><hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">The odd names are historical.</span><span class="dada-font-footnotesize"> BSS stood for </span>“<span class="dada-font-footnotesize">Block Starting Symbol</span>”<span class="dada-font-footnotesize">,</span><span class="dada-font-footnotesize"> the segment of memory where variables would be stored.</span><span class="dada-font-footnotesize"> The data area was for values that were pre-loaded.</span></p></div></td></tr></tbody></table></div>
 </div>
 </div>
 </div>
@@ -291,7 +291,7 @@
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox" style="width: 80.0%">
-<img data-src="../../../images/stackretaddress.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+<img data-src="../../../images/stackretaddress.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="A program calling functions next to the stack: each call saves its return address on the stack, and each return pops the most recent saved address.">
 </div>
 </div>
 <div class="exampleblock">
@@ -310,7 +310,7 @@
 <div class="block-title">A pretty simple program...</div>
 <div class="block-content">
 <div class="center">
-<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><img class="dada-inline-img" data-src="../../../images/vulnerable.c.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="image"></p></div>
+<div class="dada-fbox" style="width: 95%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><img class="dada-inline-img" data-src="../../../images/vulnerable.c.png" style="height: auto; width:100.0%; max-width: none; max-height: none" alt="The code listing vulnerable.c: main declares a 512-byte buffer, prints its argument and copies it into the buffer with strcpy, without checking its length."></p></div>
 </div>
 </div>
 </div>
@@ -337,7 +337,7 @@ Argument is test
 <div class="block-title">Normal operation, and when the buffer “overflows”</div>
 <div class="block-content">
 <div class="center">
-<div class="dada-fbox" style="width: 100%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><div class="dada-fbox" style="width: 13%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/mem.V.png" style="width: auto; height:189px; max-width: none; max-height: none" alt="image"></p></div></div></td><td style="text-align: center;"><div class="dada-fbox" style="width: 30%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">On the left we see detail of the stack usage for a buffer,</span><span class="dada-font-footnotesize"> variables,</span><span class="dada-font-footnotesize"> and the </span>“<span class="dada-font-footnotesize">return</span>”<span class="dada-font-footnotesize"> address.</span></p><hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">To the right we see the buffer overwriting the local variables in the frame,</span><span class="dada-font-footnotesize"> and then changing the return address.</span></p><hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">The payload in the </span>“<span class="dada-font-footnotesize">EGG</span>”<span class="dada-font-footnotesize"> is structured to provide some exploit.</span><span class="dada-font-footnotesize"> It has multiple return addresses,</span><span class="dada-font-footnotesize"> and since the stack may be moving,</span><span class="dada-font-footnotesize"> multiple no-ops.</span></p></div></td><td style="text-align: center;"><div class="dada-fbox" style="width: 13%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/mem1.2.V.png" style="width: auto; height:189px; max-width: none; max-height: none" alt="image"></p></div></div></td><td style="text-align: center;"><div class="dada-fbox" style="width: 22%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/mem2.V.png" style="width: auto; height:189px; max-width: none; max-height: none" alt="image"></p></div></div></td></tr></tbody></table></div>
+<div class="dada-fbox" style="width: 100%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><table><tbody><tr><td style="text-align: center;"><div class="dada-fbox" style="width: 13%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/mem.V.png" style="width: auto; height:189px; max-width: none; max-height: none" alt="The stack in memory for vulnerable.c: it grows down, holding the return address, then arguments and variables, then the 512-byte buffer."></p></div></div></td><td style="text-align: center;"><div class="dada-fbox" style="width: 30%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><p><span class="dada-font-footnotesize">On the left we see detail of the stack usage for a buffer,</span><span class="dada-font-footnotesize"> variables,</span><span class="dada-font-footnotesize"> and the </span>“<span class="dada-font-footnotesize">return</span>”<span class="dada-font-footnotesize"> address.</span></p><hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">To the right we see the buffer overwriting the local variables in the frame,</span><span class="dada-font-footnotesize"> and then changing the return address.</span></p><hr style="border: none; border-top: 3px solid black; width: 100%; margin: 0.4em 0;"><p><span class="dada-font-footnotesize">The payload in the </span>“<span class="dada-font-footnotesize">EGG</span>”<span class="dada-font-footnotesize"> is structured to provide some exploit.</span><span class="dada-font-footnotesize"> It has multiple return addresses,</span><span class="dada-font-footnotesize"> and since the stack may be moving,</span><span class="dada-font-footnotesize"> multiple no-ops.</span></p></div></td><td style="text-align: center;"><div class="dada-fbox" style="width: 13%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/mem1.2.V.png" style="width: auto; height:189px; max-width: none; max-height: none" alt="A stack buffer overflow: an over-long argument fills the buffer and overwrites the arguments, variables and the return address."></p></div></div></td><td style="text-align: center;"><div class="dada-fbox" style="width: 22%; border: 2px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/mem2.V.png" style="width: auto; height:189px; max-width: none; max-height: none" alt="The overflow payload: multiple no-ops, then machine code for the exploit, then multiple copies of a malicious return address pointing back into the no-ops."></p></div></div></td></tr></tbody></table></div>
 </div>
 </div>
 </div>
@@ -383,7 +383,7 @@ Argument is test
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox">
-<img data-src="../../../images/hackwebserver3.png" style="width: auto; height:124px; max-width: none; max-height: none" alt="image">
+<img data-src="../../../images/hackwebserver3.png" style="width: auto; height:124px; max-width: none; max-height: none" alt="A demonstration setup: a honeypot virtual machine on Hugh&#x27;s Mac runs GNU+Linux and an old, cut-down Apache web server, which is hacked from the Mac.">
 </div>
 </div>
 <div class="block">
@@ -434,7 +434,7 @@ Argument is test
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox">
-<img data-src="../../../images/libc.png" style="width: auto; height:226px; max-width: none; max-height: none" alt="image">
+<img data-src="../../../images/libc.png" style="width: auto; height:226px; max-width: none; max-height: none" alt="A return-to-libc attack: the overflow replaces the return address with the address of the libc function system(), with an argument so that it runs system(&quot;/bin/sh&quot;).">
 </div>
 </div>
 <div class="alertblock">
@@ -451,7 +451,7 @@ Argument is test
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox">
-<img data-src="../../../images/rop.png" style="width: auto; height:226px; max-width: none; max-height: none" alt="image">
+<img data-src="../../../images/rop.png" style="width: auto; height:226px; max-width: none; max-height: none" alt="Return-oriented programming: the overflow fills the stack with addresses of code snippets ending in ret, such as pop eax, pop ebx and add eax,ebx, which chain together to compute eax = 42 + 212.">
 </div>
 </div>
 <div class="alertblock">
@@ -489,7 +489,7 @@ Argument is test
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox" style="width: 80.0%">
-<img data-src="../../../images/heapmgmt2.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+<img data-src="../../../images/heapmgmt2.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="Heap management in three steps: free and in-use chunks on the heap are linked by forward and backward pointers, and freeing a chunk merges the links of neighbouring free chunks.">
 </div>
 </div>
 <div class="exampleblock">
@@ -506,7 +506,7 @@ Argument is test
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox" style="width: 80.0%">
-<img data-src="../../../images/heapmgmt3.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+<img data-src="../../../images/heapmgmt3.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="A heap overflow attack: an overflowing buffer overwrites the next chunk&#x27;s links with the address of the return vector and of bad code, so when it is freed the merge writes the bad code&#x27;s address into the return vector.">
 </div>
 </div>
 <div class="alertblock">
@@ -569,7 +569,7 @@ Argument is test
 <h2><span class="dada-title-main">Memory attack 5: OpenSSL Heartbleed</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://en.wikipedia.org/wiki/Heartbleed">i6</a><span class="dada-font-footnotesize">]</span></span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<div class="dada-fbox" style="width: 58%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/heartbleed.png" style="width: auto; height:226px; max-width: none; max-height: none" alt="image"></p></div></div>
+<div class="dada-fbox" style="width: 58%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/heartbleed.png" style="width: auto; height:226px; max-width: none; max-height: none" alt="A Heartbleed test page reporting that a server is VULNERABLE, and showing data leaked from the server&#x27;s memory."></p></div></div>
 </div>
 <div class="alertblock">
 <div class="block-title">Request and response different...</div>
@@ -745,7 +745,7 @@ while (idx&gt;0) {
 <h2><span class="dada-title-main">Conservative code: modularity</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://en.wikipedia.org/wiki/Modular_programming">i7</a><span class="dada-font-footnotesize">]</span></span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<div class="dada-fbox" style="width: 42%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/Capture.png" style="width: auto; height:132px; max-width: none; max-height: none" alt="image"></p></div></div>
+<div class="dada-fbox" style="width: 42%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/Capture.png" style="width: auto; height:132px; max-width: none; max-height: none" alt="A graph of software cost against number of modules: cost per module falls and cost to integrate rises, so total cost is lowest in a middle region M."></p></div></div>
 </div>
 <div class="block">
 <div class="block-title">Software design, modular programming...</div>
@@ -847,7 +847,7 @@ end -- class interface ACCOUNT</pre></div></div>
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox" style="width: 80.0%">
-<img data-src="../../../images/blackandwhite.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="image">
+<img data-src="../../../images/blackandwhite.png" style="width: 100%; height: auto; max-width: none; max-height: none" alt="Gandalf the White wearing a white hat beside Darth Vader wearing a black hat, illustrating white hat and black hat hackers.">
 </div>
 </div>
 <div class="block">
@@ -957,7 +957,7 @@ end -- class interface ACCOUNT</pre></div></div>
 <h2><span class="dada-title-main">Secrets come in lots of flavours</span><span class="hfill-right"><span class="dada-font-footnotesize">[</span><a href="https://hugh.myddns.me/media/movies/MariaSharapovaOnSecrets2.srt.mp4">6</a><span class="dada-font-footnotesize">]</span></span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<div class="dada-fbox" style="width: 36%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/topsecret.png" style="width: auto; height:117px; max-width: none; max-height: none" alt="image"></p></div></div>
+<div class="dada-fbox" style="width: 36%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/topsecret.png" style="width: auto; height:117px; max-width: none; max-height: none" alt="A manila folder stamped TOP SECRET in red, held with a paper clip."></p></div></div>
 </div>
 <div class="block">
 <div class="block-title">Not just secret keys...</div>
@@ -982,7 +982,7 @@ end -- class interface ACCOUNT</pre></div></div>
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox">
-<img data-src="../../../images/compilation.png" style="width: auto; height:113px; max-width: none; max-height: none" alt="image">
+<img data-src="../../../images/compilation.png" style="width: auto; height:113px; max-width: none; max-height: none" alt="Compilation: source code files pass through a compiler to become executable code.">
 </div>
 </div>
 <div class="block">
@@ -1005,7 +1005,7 @@ end -- class interface ACCOUNT</pre></div></div>
 <h2><span class="dada-title-main">Applications are an open book...</span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<div class="dada-fbox" style="width: 85%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/boomerang.png" style="width: auto; height:143px; max-width: none; max-height: none" alt="image"> <img class="dada-inline-img" data-src="../../../images/jad.png" style="width: auto; height:143px; max-width: none; max-height: none" alt="image"></p></div></div>
+<div class="dada-fbox" style="width: 85%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/boomerang.png" style="width: auto; height:143px; max-width: none; max-height: none" alt="The Boomerang decompiler loading an executable and working through decode, decompile and generate code to recover C source."> <img class="dada-inline-img" data-src="../../../images/jad.png" style="width: auto; height:143px; max-width: none; max-height: none" alt="A Java decompiler window showing readable Java source recovered from the compiled class file Tiny3D.class."></p></div></div>
 </div>
 <div class="block">
 <div class="block-title">Decompilation and Compilation...</div>
@@ -1022,7 +1022,7 @@ end -- class interface ACCOUNT</pre></div></div>
 <h2><span class="dada-title-main">Possible locations for secrets</span></h2>
 <div class="dada-frame-body">
 <div class="center">
-<div class="dada-fbox" style="width: 52%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/morehidingsecrets.png" style="height: auto; width:35.0%; max-width: none; max-height: none" alt="image"><br><img class="dada-inline-img" data-src="../../../images/extrasecrets.png" style="height: auto; width:37.0%; max-width: none; max-height: none" alt="image"></p></div></div>
+<div class="dada-fbox" style="width: 52%; border: 5px solid black; background-color: white; box-sizing: border-box; padding: 3.0pt;"><div class="center"><p style="text-align: center;"><img class="dada-inline-img" data-src="../../../images/morehidingsecrets.png" style="height: auto; width:35.0%; max-width: none; max-height: none" alt="Where secrets can be kept: in a program on the computer, or outside it in a USB token, a smart card in a contact or contactless reader, or a key fob."><br><img class="dada-inline-img" data-src="../../../images/extrasecrets.png" style="height: auto; width:37.0%; max-width: none; max-height: none" alt="More places for secrets: a set-top box, the front and back panels of a decoder, and the contacts of a SIM card."></p></div></div>
 </div>
 <div class="block">
 <div class="block-title">File, program, OS, brain, and also Dongles, smart cards...</div>
@@ -1116,7 +1116,7 @@ end -- class interface ACCOUNT</pre></div></div>
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox">
-<img data-src="../../../images/simplesmart.png" style="width: auto; height:151px; max-width: none; max-height: none" alt="image">
+<img data-src="../../../images/simplesmart.png" style="width: auto; height:151px; max-width: none; max-height: none" alt="Typical smart card hardware: power, clock, data in, data out and ground contacts connect to a chip with a CPU, ROM, RAM and IO on internal buses.">
 </div>
 </div>
 <div class="block">
@@ -1138,7 +1138,7 @@ end -- class interface ACCOUNT</pre></div></div>
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox">
-<img data-src="../../../images/blownfuse.png" style="width: auto; height:151px; max-width: none; max-height: none" alt="image">
+<img data-src="../../../images/blownfuse.png" style="width: auto; height:151px; max-width: none; max-height: none" alt="An electron microscope image of a blown fuse inside a chip, used to lock out test or debug features after manufacture.">
 </div>
 </div>
 <div class="block">
@@ -1161,7 +1161,7 @@ end -- class interface ACCOUNT</pre></div></div>
 <div class="dada-frame-body">
 <div class="center">
 <div class="dada-fbox">
-<img data-src="../../../images/highhack1.png" style="width: auto; height:170px; max-width: none; max-height: none" alt="image">
+<img data-src="../../../images/highhack1.png" style="width: auto; height:170px; max-width: none; max-height: none" alt="A class 3 attacker rewiring a chip: decapsulating it with nitric acid, finding the blown fuse, possibly with a focused ion beam, and depositing new material over it.">
 </div>
 </div>
 <div class="alertblock">

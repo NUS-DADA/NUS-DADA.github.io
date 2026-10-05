@@ -34,7 +34,7 @@
    "kind": "slide",
    "title": "Memory...",
    "section": "",
-   "text": "Memory... [image file: memories]"
+   "text": "Memory... [image: The computer memory hierarchy as a pyramid: small, fast, expensive registers and cache at the top, then RAM, flash, hard drives, and large, slow, cheap tape and DVD backup at the bottom.]"
   },
   {
    "n": 3,
@@ -100,7 +100,7 @@
    "kind": "slide",
    "title": "Machine architecture: visualizing memory",
    "section": "Attacks on memory...",
-   "text": "Machine architecture: visualizing memory [image file: memabstract] Location of “variables”? When programs execute/run, they use memory locations/variables. These variables, at any given time, may reside in various locations in the computer."
+   "text": "Machine architecture: visualizing memory [image: Visualising memory: the variables, code and malloc'd buffer of a C program are each mapped somewhere in the computer's memory, behind the CPU's data and instruction caches.] Location of “variables”? When programs execute/run, they use memory locations/variables. These variables, at any given time, may reside in various locations in the computer."
   },
   {
    "n": 9,
@@ -111,7 +111,7 @@
    "kind": "slide",
    "title": "Process use of memory",
    "section": "Attacks on memory...",
-   "text": "Process use of memory [image file: processmemory] [image file: vm] Virtual memory, physical memory, and translations... The processes, and the OS kernel, each have their own view of memory, somehow mapped/translated to the real (physical) memory. Modern operating systems and hardware give each process an individual address space - starting at 0x0. A translation unit maps this virtual address to a real physical address, in fixed size pages."
+   "text": "Process use of memory [image: Processes and memory: programs 1 and 2 and the OS kernel each use virtual memory, which is translated into physical memory.] [image: Virtual memory hardware: the CPU puts out a virtual address, the MMU's table translates it into a physical address for RAM, ROM or I/O, and the lower-order address lines pass straight through.] Virtual memory, physical memory, and translations... The processes, and the OS kernel, each have their own view of memory, somehow mapped/translated to the real (physical) memory. Modern operating systems and hardware give each process an individual address space - starting at 0x0. A translation unit maps this virtual address to a real physical address, in fixed size pages."
   },
   {
    "n": 10,
@@ -122,7 +122,7 @@
    "kind": "slide",
    "title": "VM=paging+segments (+disk)... [ 4 ]",
    "section": "Attacks on memory...",
-   "text": "VM=paging+segments (+disk)... [ 4 ] [image file: mapping] Disk can be used to store contents of memory The part of the disk used in this way is called the 'swap' - it may be either a file used for the purpose, or a partition of disk. Page fault When a VM system attempts to find a page, and does not find one, it is known as a page fault. When a page fault occurs, the OS must replace a page in memory, efficiently, with the new one."
+   "text": "VM=paging+segments (+disk)... [ 4 ] [image: x86 address translation: a logical cs:offset address is looked up in the GDT to give a linear address, which paging tables turn into a physical address.] Disk can be used to store contents of memory The part of the disk used in this way is called the 'swap' - it may be either a file used for the purpose, or a partition of disk. Page fault When a VM system attempts to find a page, and does not find one, it is known as a page fault. When a page fault occurs, the OS must replace a page in memory, efficiently, with the new one."
   },
   {
    "n": 11,
@@ -133,7 +133,7 @@
    "kind": "slide",
    "title": "Sample memory arrangement: Linux ELF format",
    "section": "Attacks on memory...",
-   "text": "Sample memory arrangement: Linux ELF format Program, shared libraries, stack... [image file: linuxelfusermemory] This is just one possible arrangement of virtual memory (the view that the process has of its memory in a Linux system). In this arrangement, the stack is at the top of the memory, and grows downwards. Hooray for computer scientists, who famously believe that both stacks and trees grow downwards. The code and its fixed storage is at the bottom end of memory, and the malloc'ed memory is “above” the program. Libraries are found at 0x40000000. The odd names are historical. BSS stood for “Block Starting Symbol”, the segment of memory where variables would be stored. The data area was for values that were pre-loaded."
+   "text": "Sample memory arrangement: Linux ELF format Program, shared libraries, stack... [image: The Linux ELF user memory layout: program code, data, bss and malloc heap near the bottom, C libraries in the middle, and the stack growing down from the top, with guard regions at each end.] This is just one possible arrangement of virtual memory (the view that the process has of its memory in a Linux system). In this arrangement, the stack is at the top of the memory, and grows downwards. Hooray for computer scientists, who famously believe that both stacks and trees grow downwards. The code and its fixed storage is at the bottom end of memory, and the malloc'ed memory is “above” the program. Libraries are found at 0x40000000. The odd names are historical. BSS stood for “Block Starting Symbol”, the segment of memory where variables would be stored. The data area was for values that were pre-loaded."
   },
   {
    "n": 12,
@@ -144,7 +144,7 @@
    "kind": "slide",
    "title": "How programs use memory for return addresses",
    "section": "Attacks on memory...",
-   "text": "How programs use memory for return addresses [image file: stackretaddress] A little warning... Return addresses are nested on the stack. If you follow the program, starting at main(), you will see that during the program run, the stack grows and shrinks."
+   "text": "How programs use memory for return addresses [image: A program calling functions next to the stack: each call saves its return address on the stack, and each return pops the most recent saved address.] A little warning... Return addresses are nested on the stack. If you follow the program, starting at main(), you will see that during the program run, the stack grows and shrinks."
   },
   {
    "n": 13,
@@ -155,7 +155,7 @@
    "kind": "slide",
    "title": "Memory attack 1: simple Program",
    "section": "Attacks on memory...",
-   "text": "Memory attack 1: simple Program A pretty simple program... [image file: vulnerable c] When we run it: [hugh@pnp176-44 programs]$ ./vulnerable test Argument is test [hugh@pnp176-44 programs]$ but..."
+   "text": "Memory attack 1: simple Program A pretty simple program... [image: The code listing vulnerable.c: main declares a 512-byte buffer, prints its argument and copies it into the buffer with strcpy, without checking its length.] When we run it: [hugh@pnp176-44 programs]$ ./vulnerable test Argument is test [hugh@pnp176-44 programs]$ but..."
   },
   {
    "n": 14,
@@ -166,7 +166,7 @@
    "kind": "slide",
    "title": "Memory attack 1: stack buffer overflow [ 5 , ctrl-i1 ]",
    "section": "Attacks on memory...",
-   "text": "Memory attack 1: stack buffer overflow [ 5 , ctrl-i1 ] Normal operation, and when the buffer “overflows” [image file: mem V] On the left we see detail of the stack usage for a buffer, variables, and the “return” address. To the right we see the buffer overwriting the local variables in the frame, and then changing the return address. The payload in the “EGG” is structured to provide some exploit. It has multiple return addresses, and since the stack may be moving, multiple no-ops. [image file: mem V] [image file: mem V]"
+   "text": "Memory attack 1: stack buffer overflow [ 5 , ctrl-i1 ] Normal operation, and when the buffer “overflows” [image: The stack in memory for vulnerable.c: it grows down, holding the return address, then arguments and variables, then the 512-byte buffer.] On the left we see detail of the stack usage for a buffer, variables, and the “return” address. To the right we see the buffer overwriting the local variables in the frame, and then changing the return address. The payload in the “EGG” is structured to provide some exploit. It has multiple return addresses, and since the stack may be moving, multiple no-ops. [image: A stack buffer overflow: an over-long argument fills the buffer and overwrites the arguments, variables and the return address.] [image: The overflow payload: multiple no-ops, then machine code for the exploit, then multiple copies of a malicious return address pointing back into the no-ops.]"
   },
   {
    "n": 15,
@@ -188,7 +188,7 @@
    "kind": "slide",
    "title": "Using the buffer overflow attack",
    "section": "Attacks on memory...",
-   "text": "Using the buffer overflow attack [image file: hackwebserver] 3 examples of situations in which we can use it A server (say a web server) that expects a query, and returns a response. A CGI/ASP or perl script inside a web server. A SUID root program on a UNIX system. Find a program that has a buffer, ... and that does not check its bounds. Then deliver an EGG to it to overflow the buffer."
+   "text": "Using the buffer overflow attack [image: A demonstration setup: a honeypot virtual machine on Hugh's Mac runs GNU+Linux and an old, cut-down Apache web server, which is hacked from the Mac.] 3 examples of situations in which we can use it A server (say a web server) that expects a query, and returns a response. A CGI/ASP or perl script inside a web server. A SUID root program on a UNIX system. Find a program that has a buffer, ... and that does not check its bounds. Then deliver an EGG to it to overflow the buffer."
   },
   {
    "n": 17,
@@ -210,7 +210,7 @@
    "kind": "slide",
    "title": "Memory attack 2: return to libc! [ i2 ]",
    "section": "Attacks on memory...",
-   "text": "Memory attack 2: return to libc! [ i2 ] [image file: libc] Run code already in libc... If, for example, we cannot execute/run code on the stack, then we can still use a buffer overflow, to “point to” some library function, like execv(), which will run a named program we provide."
+   "text": "Memory attack 2: return to libc! [ i2 ] [image: A return-to-libc attack: the overflow replaces the return address with the address of the libc function system(), with an argument so that it runs system(\"/bin/sh\").] Run code already in libc... If, for example, we cannot execute/run code on the stack, then we can still use a buffer overflow, to “point to” some library function, like execv(), which will run a named program we provide."
   },
   {
    "n": 19,
@@ -221,7 +221,7 @@
    "kind": "slide",
    "title": "Memory attack 3: return oriented programming [ i3 ]",
    "section": "Attacks on memory...",
-   "text": "Memory attack 3: return oriented programming [ i3 ] [image file: rop] Even with DEP: find code snippets, and overwrite stack... Again, with DEP, we may be able to find snippets of executable code elsewhere, and then use a series of stack addresses to jump to those code snippets."
+   "text": "Memory attack 3: return oriented programming [ i3 ] [image: Return-oriented programming: the overflow fills the stack with addresses of code snippets ending in ret, such as pop eax, pop ebx and add eax,ebx, which chain together to compute eax = 42 + 212.] Even with DEP: find code snippets, and overwrite stack... Again, with DEP, we may be able to find snippets of executable code elsewhere, and then use a series of stack addresses to jump to those code snippets."
   },
   {
    "n": 20,
@@ -243,7 +243,7 @@
    "kind": "slide",
    "title": "Memory attack 4: heap overflow",
    "section": "Attacks on memory...",
-   "text": "Memory attack 4: heap overflow [image file: heapmgmt] The normal free() and merge... The OS heap management software automatically rewrites the values of the forward and backward links, using the values in the next links."
+   "text": "Memory attack 4: heap overflow [image: Heap management in three steps: free and in-use chunks on the heap are linked by forward and backward pointers, and freeing a chunk merges the links of neighbouring free chunks.] The normal free() and merge... The OS heap management software automatically rewrites the values of the forward and backward links, using the values in the next links."
   },
   {
    "n": 22,
@@ -254,7 +254,7 @@
    "kind": "slide",
    "title": "Memory attack 4: heap overflow",
    "section": "Attacks on memory...",
-   "text": "Memory attack 4: heap overflow [image file: heapmgmt] Consider the scenario where attacker changes pointers... The attacker uses the OS GC to write the address of malicious code into a return-address location, as for the buffer overflow."
+   "text": "Memory attack 4: heap overflow [image: A heap overflow attack: an overflowing buffer overwrites the next chunk's links with the address of the return vector and of bad code, so when it is freed the merge writes the bad code's address into the return vector.] Consider the scenario where attacker changes pointers... The attacker uses the OS GC to write the address of malicious code into a return-address location, as for the buffer overflow."
   },
   {
    "n": 23,
@@ -287,7 +287,7 @@
    "kind": "slide",
    "title": "Memory attack 5: OpenSSL Heartbleed [ i6 ]",
    "section": "Attacks on memory...",
-   "text": "Memory attack 5: OpenSSL Heartbleed [ i6 ] [image file: heartbleed] Request and response different... Though heartbleed has an easy fix, there still are systems vulnerable to it."
+   "text": "Memory attack 5: OpenSSL Heartbleed [ i6 ] [image: A Heartbleed test page reporting that a server is VULNERABLE, and showing data leaked from the server's memory.] Request and response different... Though heartbleed has an easy fix, there still are systems vulnerable to it."
   },
   {
    "n": 26,
@@ -353,7 +353,7 @@
    "kind": "slide",
    "title": "Conservative code: modularity [ i7 ]",
    "section": "Attacks on memory...",
-   "text": "Conservative code: modularity [ i7 ] [image file: Capture] Software design, modular programming... Modular design (see [i7] above) is an effective way of building software. In a good modular design concerns are separated such that modules are more or less stand alone, and that when they do depend upon other modules of the system the interfaces are explicit. The system designer/coder should reduce or minimize the dependencies."
+   "text": "Conservative code: modularity [ i7 ] [image: A graph of software cost against number of modules: cost per module falls and cost to integrate rises, so total cost is lowest in a middle region M.] Software design, modular programming... Modular design (see [i7] above) is an effective way of building software. In a good modular design concerns are separated such that modules are more or less stand alone, and that when they do depend upon other modules of the system the interfaces are explicit. The system designer/coder should reduce or minimize the dependencies."
   },
   {
    "n": 32,
@@ -397,7 +397,7 @@
    "kind": "slide",
    "title": "Wear a black hat...",
    "section": "Attacks on memory...",
-   "text": "Wear a black hat... [image file: blackandwhite] ...from time to time ... Cautious, conservative programming is the main defense, but occasionally you need to put on your black hat, and find out what the attackers have discovered recently..."
+   "text": "Wear a black hat... [image: Gandalf the White wearing a white hat beside Darth Vader wearing a black hat, illustrating white hat and black hat hackers.] ...from time to time ... Cautious, conservative programming is the main defense, but occasionally you need to put on your black hat, and find out what the attackers have discovered recently..."
   },
   {
    "n": 36,
@@ -452,7 +452,7 @@
    "kind": "slide",
    "title": "Secrets come in lots of flavours [ 6 ]",
    "section": "Hiding secrets: data and algorithms",
-   "text": "Secrets come in lots of flavours [ 6 ] [image file: topsecret] Not just secret keys... We have seen how secrets can be useful, particularly for keeping keys for cryptography. Secrets may also be algorithmic... An encryption algorithm A particular protocol (sequence of communications). A hashing algorithm. These secrets are programs, not data. How do we keep all these sorts of secrets?"
+   "text": "Secrets come in lots of flavours [ 6 ] [image: A manila folder stamped TOP SECRET in red, held with a paper clip.] Not just secret keys... We have seen how secrets can be useful, particularly for keeping keys for cryptography. Secrets may also be algorithmic... An encryption algorithm A particular protocol (sequence of communications). A hashing algorithm. These secrets are programs, not data. How do we keep all these sorts of secrets?"
   },
   {
    "n": 41,
@@ -463,7 +463,7 @@
    "kind": "slide",
    "title": "Applications running on PCs, phones, ...",
    "section": "Hiding secrets: data and algorithms",
-   "text": "Applications running on PCs, phones, ... [image file: compilation] Consider the compilation process... Often, the executable is distributed, not the source. RMS points out many reasons why this is most likely a bad idea. But, in a security scenario, you may think that by only distributing your executable code, you can hide your source code secrets. This is a silly idea. You should keep no secrets in source code. You should not have source code secrets (remember the notion of open design), and you cannot hide things by using compilation."
+   "text": "Applications running on PCs, phones, ... [image: Compilation: source code files pass through a compiler to become executable code.] Consider the compilation process... Often, the executable is distributed, not the source. RMS points out many reasons why this is most likely a bad idea. But, in a security scenario, you may think that by only distributing your executable code, you can hide your source code secrets. This is a silly idea. You should keep no secrets in source code. You should not have source code secrets (remember the notion of open design), and you cannot hide things by using compilation."
   },
   {
    "n": 42,
@@ -474,7 +474,7 @@
    "kind": "slide",
    "title": "Applications are an open book...",
    "section": "Hiding secrets: data and algorithms",
-   "text": "Applications are an open book... [image file: boomerang] [image file: jad] Decompilation and Compilation... If the platform is sufficiently complex (e.g, Windows, GNU+Linux, Android, Symbian), then it is likely that sources for any application could be generated easily, so if you intend to distribute your application to other users, and it relied on some secret in the code, that secret is unsafe. Of course - you can still have secrets. They must be kept separately. (Do I detect an example of Least common mechanism: Minimize the amount of mechanism common to more than one user and depended on by all users?)"
+   "text": "Applications are an open book... [image: The Boomerang decompiler loading an executable and working through decode, decompile and generate code to recover C source.] [image: A Java decompiler window showing readable Java source recovered from the compiled class file Tiny3D.class.] Decompilation and Compilation... If the platform is sufficiently complex (e.g, Windows, GNU+Linux, Android, Symbian), then it is likely that sources for any application could be generated easily, so if you intend to distribute your application to other users, and it relied on some secret in the code, that secret is unsafe. Of course - you can still have secrets. They must be kept separately. (Do I detect an example of Least common mechanism: Minimize the amount of mechanism common to more than one user and depended on by all users?)"
   },
   {
    "n": 43,
@@ -485,7 +485,7 @@
    "kind": "slide",
    "title": "Possible locations for secrets",
    "section": "Hiding secrets: data and algorithms",
-   "text": "Possible locations for secrets [image file: morehidingsecrets] [image file: extrasecrets] File, program, OS, brain, and also Dongles, smart cards... Consider all the possible locations for secrets. Relying on external agents is not a bad idea, particularly if they are built with security in mind."
+   "text": "Possible locations for secrets [image: Where secrets can be kept: in a program on the computer, or outside it in a USB token, a smart card in a contact or contactless reader, or a key fob.] [image: More places for secrets: a set-top box, the front and back panels of a decoder, and the contacts of a SIM card.] File, program, OS, brain, and also Dongles, smart cards... Consider all the possible locations for secrets. Relying on external agents is not a bad idea, particularly if they are built with security in mind."
   },
   {
    "n": 44,
@@ -529,7 +529,7 @@
    "kind": "slide",
    "title": "Typical hardware on a Smart/SIM card",
    "section": "Hiding secrets: data and algorithms",
-   "text": "Typical hardware on a Smart/SIM card [image file: simplesmart] A high-security Smart/SIM card controller CPU, memory and IO are under the (gold) connector. They are all in one chip, and the components are connected by (internal) busses. Reader must supply power and a clock to operate the CPU. Only external signaling is a single line IN and a single line OUT. Data bits are serialized. 1010011 above might correspond to the byte (hex) 0x53, perhaps corresponding to the ASCII letter S."
+   "text": "Typical hardware on a Smart/SIM card [image: Typical smart card hardware: power, clock, data in, data out and ground contacts connect to a chip with a CPU, ROM, RAM and IO on internal buses.] A high-security Smart/SIM card controller CPU, memory and IO are under the (gold) connector. They are all in one chip, and the components are connected by (internal) busses. Reader must supply power and a clock to operate the CPU. Only external signaling is a single line IN and a single line OUT. Data bits are serialized. 1010011 above might correspond to the byte (hex) 0x53, perhaps corresponding to the ASCII letter S."
   },
   {
    "n": 48,
@@ -540,7 +540,7 @@
    "kind": "slide",
    "title": "Fuses: sample security-specific feature",
    "section": "Hiding secrets: data and algorithms",
-   "text": "Fuses: sample security-specific feature [image file: blownfuse] For devices like these... The chips come from the factory all the same, and need to be programmed. When the devices are manufactured, the memory (PROM) can be read and written from outside using the serial port. Once the device has been uniquely programmed, a fuse is blown. This fuse is just a track in the IC, and is blown by providing too much current. A blown fuse means no more ( external) reading and writing."
+   "text": "Fuses: sample security-specific feature [image: An electron microscope image of a blown fuse inside a chip, used to lock out test or debug features after manufacture.] For devices like these... The chips come from the factory all the same, and need to be programmed. When the devices are manufactured, the memory (PROM) can be read and written from outside using the serial port. Once the device has been uniquely programmed, a fuse is blown. This fuse is just a track in the IC, and is blown by providing too much current. A blown fuse means no more ( external) reading and writing."
   },
   {
    "n": 49,
@@ -551,7 +551,7 @@
    "kind": "slide",
    "title": "Fuses: Class 3 attacker hack: rewiring",
    "section": "Hiding secrets: data and algorithms",
-   "text": "Fuses: Class 3 attacker hack: rewiring [image file: highhack] Assuming you happen to have some fancy equipment Recipe: Take a common household electron microscope, a focused ion beam tool, and various other items. And then... Expose chip using chemical and/or laser cutting (decapsulation). Re-connect the fuse using deposition or tiny probes. Read the memory using the serial port."
+   "text": "Fuses: Class 3 attacker hack: rewiring [image: A class 3 attacker rewiring a chip: decapsulating it with nitric acid, finding the blown fuse, possibly with a focused ion beam, and depositing new material over it.] Assuming you happen to have some fancy equipment Recipe: Take a common household electron microscope, a focused ion beam tool, and various other items. And then... Expose chip using chemical and/or laser cutting (decapsulation). Re-connect the fuse using deposition or tiny probes. Read the memory using the serial port."
   },
   {
    "n": 50,

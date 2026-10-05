@@ -23,7 +23,7 @@
    "kind": "slide",
    "title": "The Tortoise and the Hare (Pollard rho? Floyd?)",
    "section": "",
-   "text": "The Tortoise and the Hare (Pollard rho? Floyd?) [image file: Robert W Floyd] [image file: Cycle Trail] A wonderful (memory-less) algorithm for finding loops in graphs."
+   "text": "The Tortoise and the Hare (Pollard rho? Floyd?) [image: A black and white photo of computer scientist Robert W. Floyd, after whom Floyd's tortoise-and-hare cycle-finding algorithm is named.] [image: A rho-shaped trail of values: repeatedly applying a function f takes x0 through x1, x2 and x3 into a cycle x3 to x7 and back to x3, among other unused values.] A wonderful (memory-less) algorithm for finding loops in graphs."
   },
   {
    "n": 2,
@@ -78,7 +78,7 @@
    "kind": "slide",
    "title": "Symmetric key systems",
    "section": "From Symmetric to Asymmetric...",
-   "text": "Symmetric key systems [image file: sharedkey] Alice uses a key to send to Bob, who uses the same key... In this scenario, the key must be distributed to everyone who needs to use it."
+   "text": "Symmetric key systems [image: Symmetric key encryption: Alice encrypts plaintext P with shared key Ki, Bob decrypts it with the same key, and Harry-the-hacker sees only the ciphertext Ki of P.] Alice uses a key to send to Bob, who uses the same key... In this scenario, the key must be distributed to everyone who needs to use it."
   },
   {
    "n": 7,
@@ -89,7 +89,7 @@
    "kind": "slide",
    "title": "Asymmetric key systems",
    "section": "From Symmetric to Asymmetric...",
-   "text": "Asymmetric key systems [image file: rsa] What if the keys are not the same, and we use public/secret keys? p_{k} is the public key for Bob, s_{k} is his private key. Only Bob can decrypt a message sent to him, but anyone can encrypt it. Participants each have private and public keys, and the keys cannot be derived from each other."
+   "text": "Asymmetric key systems [image: Asymmetric encryption: Alice encrypts P with Bob's public key pk, Bob decrypts with his secret key sk, which he keeps secret while freely giving away pk, so Harry-the-hacker learns nothing.] What if the keys are not the same, and we use public/secret keys? p_{k} is the public key for Bob, s_{k} is his private key. Only Bob can decrypt a message sent to him, but anyone can encrypt it. Participants each have private and public keys, and the keys cannot be derived from each other."
   },
   {
    "n": 8,
@@ -100,7 +100,7 @@
    "kind": "slide",
    "title": "Asymmetric encryption and authentication",
    "section": "From Symmetric to Asymmetric...",
-   "text": "Asymmetric encryption and authentication [image file: encrypt PK] [image file: authenticate PK] A model for public/private keys, key rings, many keys... To the left we see Bob encrypting a message to Alice, using Alice's public key. which he keeps on a key ring. Only Alice can decrypt it. To the right we see Bob sending a message that only he could have sent. He uses his own secret key. Anyone can decrypt it, but only Bob could have sent it."
+   "text": "Asymmetric encryption and authentication [image: Asymmetric encryption: Bob encrypts plaintext with Alice's public key Ap taken from his key ring, and only Alice can decrypt with her secret key As.] [image: Asymmetric authentication: Bob encrypts plaintext with his own secret key Bs, and Alice decrypts it with Bob's public key Bp from her key ring, proving it came from Bob.] A model for public/private keys, key rings, many keys... To the left we see Bob encrypting a message to Alice, using Alice's public key. which he keeps on a key ring. Only Alice can decrypt it. To the right we see Bob sending a message that only he could have sent. He uses his own secret key. Anyone can decrypt it, but only Bob could have sent it."
   },
   {
    "n": 9,
@@ -111,7 +111,7 @@
    "kind": "slide",
    "title": "Doing both encryption and authentication...",
    "section": "From Symmetric to Asymmetric...",
-   "text": "Doing both encryption and authentication... [image file: badauth] [image file: goodauth] Possible and actual techniques... The technique at the left involves two asymmetric encryptions, and is considered too slow. Instead we hash the encrypted message and encrypt that (much smaller, so faster) hash, to append as a signature for the message. This is what a digital signature is, an encrypted hash, of a file or something. The originator uses their secret key, and anyone who knows the matching public key can check it against the hash of the file."
+   "text": "Doing both encryption and authentication... [image: A poor way to do both encryption and authentication: Bob encrypts with his secret key Bs and then Alice's public key Ap, and Alice decrypts with As then Bp.] [image: A better way to combine encryption and authentication: Bob encrypts the message with Alice's public key and signs a hash of it with his secret key, and Alice decrypts and compares the hashes.] Possible and actual techniques... The technique at the left involves two asymmetric encryptions, and is considered too slow. Instead we hash the encrypted message and encrypt that (much smaller, so faster) hash, to append as a signature for the message. This is what a digital signature is, an encrypted hash, of a file or something. The originator uses their secret key, and anyone who knows the matching public key can check it against the hash of the file."
   },
   {
    "n": 10,
@@ -122,7 +122,7 @@
    "kind": "slide",
    "title": "Man-in-the-middle for Public Keys",
    "section": "From Symmetric to Asymmetric...",
-   "text": "Man-in-the-middle for Public Keys [image file: mimpk] Motivation for PKI (the Public Key Infrastructure - to see later): We see that a man-in-the-middle can return a bad (public) key to Alice, who incorrectly assumes it is from Bob. From then on she encrypts using a key that Harry made, and who also has the matching secret key."
+   "text": "Man-in-the-middle for Public Keys [image: A man-in-the-middle attack on public keys: Alice asks Bob for his public key, Harry intercepts it and returns his own, so Harry can read and re-encode all of Alice's messages.] Motivation for PKI (the Public Key Infrastructure - to see later): We see that a man-in-the-middle can return a bad (public) key to Alice, who incorrectly assumes it is from Bob. From then on she encrypts using a key that Harry made, and who also has the matching secret key."
   },
   {
    "n": 11,
@@ -144,7 +144,7 @@
    "kind": "slide",
    "title": "#1: Key Agreement (Diffie (Whitfield) / (Martin) Hellman) [ 1 , ctrl-i2 , ctrl-i6 ]",
    "section": "From Symmetric to Asymmetric...",
-   "text": "#1: Key Agreement (Diffie (Whitfield) / (Martin) Hellman) [ 1 , ctrl-i2 , ctrl-i6 ] [image file: Diffie Whitfield] [image file: diffie x] [image file: px Martin Hellman] After exchange, knowledge is different... [image file: knowledge] As explained by Prof Kenochi, the participants exchange the results of calculations. At the end, Alice and Bob can both calculate a new key. Someone listening in however, is unable to calculate the key, unless they are able to solve a computationally complex problem. Each of the participants has a different set of things they know, but only Alice and Bob can compute g^{ab}\\bmod p ."
+   "text": "#1: Key Agreement (Diffie (Whitfield) / (Martin) Hellman) [ 1 , ctrl-i2 , ctrl-i6 ] [image: A portrait of Whitfield Diffie, co-inventor of Diffie-Hellman key agreement, with long white hair and a white beard.] [image: Diffie-Hellman key agreement: Alice with p, g and secret a sends g to the a mod p, Bob with secret b sends g to the b mod p, and eavesdropper Ted sees only p, g and the two public values.] [image: A portrait of Martin Hellman, co-inventor of Diffie-Hellman key agreement, in a suit and tie.] After exchange, knowledge is different... [image: What each party knows in Diffie-Hellman: Alice knows g, p, both public values and a, Bob knows them and b, while Ted knows only g, p and the public values.] As explained by Prof Kenochi, the participants exchange the results of calculations. At the end, Alice and Bob can both calculate a new key. Someone listening in however, is unable to calculate the key, unless they are able to solve a computationally complex problem. Each of the participants has a different set of things they know, but only Alice and Bob can compute g^{ab}\\bmod p ."
   },
   {
    "n": 13,
@@ -177,7 +177,7 @@
    "kind": "slide",
    "title": "#2: RSA Encryption",
    "section": "From Symmetric to Asymmetric...",
-   "text": "#2: RSA Encryption [image file: Rivest Shamir Adelman] [image file: rsa] RSA is a well known public key encryption technique: RSA (Ron Rivest, Adi Shamir and Leonard Adleman) is a public key system which exploits the difficult problem of trying to find the complete factorization of a large composite integer whose prime factors are not known. RSA can be used for encryption, digital signatures, and even key exchange."
+   "text": "#2: RSA Encryption [image: Portraits of Ron Rivest, Adi Shamir and Leonard Adleman, the inventors of RSA.] [image: Asymmetric encryption: Alice encrypts P with Bob's public key pk, Bob decrypts with his secret key sk, which he keeps secret while freely giving away pk, so Harry-the-hacker learns nothing.] RSA is a well known public key encryption technique: RSA (Ron Rivest, Adi Shamir and Leonard Adleman) is a public key system which exploits the difficult problem of trying to find the complete factorization of a large composite integer whose prime factors are not known. RSA can be used for encryption, digital signatures, and even key exchange."
   },
   {
    "n": 16,
@@ -210,7 +210,7 @@
    "kind": "slide",
    "title": "#3: ECC Encryption",
    "section": "From Symmetric to Asymmetric...",
-   "text": "#3: ECC Encryption [image file: ecc] [image file: ecc] [image file: ECC] Consider addition over cubic elliptic curves, such as y^{2}=x^{3}+ax+b, with zero O, and the points E(a,b)=\\{(x_{0},y_{0}),(x_{1},y_{1}),\\ldots\\} on the curve. The elements are points on a plane not on a number line. An addition operation +_{E(a,b)} for points on this curve: the sum of P+_{E(a,b)}Q is reflection of the intersection R. The group is \\left\\langle +_{E(a,b)},E(a,b)\\right\\rangle . ECC uses curves whose elements are finite: prime curves E_{p}(a,b) defined over \\mathbb{Z}_{p}, and binary curves E_{2^{m}}(a,b) defined over GF(2^{m}). See the image to the right."
+   "text": "#3: ECC Encryption [image: Elliptic curve point addition on y squared = x cubed minus x: the line through P and Q meets the curve at minus (P+Q), which is reflected to give P+Q.] [image: Elliptic curve point addition on y squared = x cubed + x + 1: the line through P and Q meets the curve at minus (P+Q), which is reflected in the x axis to give P+Q.] [image: Elliptic curve point addition on y squared = x cubed minus x: the line through P and Q meets the curve at minus (P+Q), which is reflected to give P+Q.] Consider addition over cubic elliptic curves, such as y^{2}=x^{3}+ax+b, with zero O, and the points E(a,b)=\\{(x_{0},y_{0}),(x_{1},y_{1}),\\ldots\\} on the curve. The elements are points on a plane not on a number line. An addition operation +_{E(a,b)} for points on this curve: the sum of P+_{E(a,b)}Q is reflection of the intersection R. The group is \\left\\langle +_{E(a,b)},E(a,b)\\right\\rangle . ECC uses curves whose elements are finite: prime curves E_{p}(a,b) defined over \\mathbb{Z}_{p}, and binary curves E_{2^{m}}(a,b) defined over GF(2^{m}). See the image to the right."
   },
   {
    "n": 19,
@@ -243,7 +243,7 @@
    "kind": "slide",
    "title": "Best attack on ECC so far is Pollard-rho/Floyd!",
    "section": "From Symmetric to Asymmetric...",
-   "text": "Best attack on ECC so far is Pollard-rho/Floyd! [image file: Cycle Trail] Want to find k:kP=Q? Cast it as a collision! The world is a chain of elements of the group, partitioned into three (S_{1},S_{2},S_{3}) types (coloured). We either double the element, or add P or Q: {\\begin{array}{lll} P_{i+1}=f(P_{i}) & = & \\left\\{ \\begin{array}{lll} P_{i}+P & \\mathrm{if} & P_{i}\\in S_{1}\\\\ 2P_{i} & \\mathrm{if} & P_{i}\\in S_{2}\\\\ P_{i}+Q & \\mathrm{if} & P_{i}\\in S_{3} \\end{array}\\right.\\end{array}} Each P_{i} is some sum aP+bQ. On collision, a_{1}P+b_{1}Q=a_{2}P+b_{2}Q, and {\\begin{array}{lll} \\frac{a_{1}-a_{2}}{b_{2}-b_{1}}P & = & Q\\end{array}}"
+   "text": "Best attack on ECC so far is Pollard-rho/Floyd! [image: Pollard rho on an elliptic curve group G: points are split into sets S1, S2 and S3, and the walk adds P, adds Q or doubles depending on the set, until it falls into a rho-shaped cycle.] Want to find k:kP=Q? Cast it as a collision! The world is a chain of elements of the group, partitioned into three (S_{1},S_{2},S_{3}) types (coloured). We either double the element, or add P or Q: {\\begin{array}{lll} P_{i+1}=f(P_{i}) & = & \\left\\{ \\begin{array}{lll} P_{i}+P & \\mathrm{if} & P_{i}\\in S_{1}\\\\ 2P_{i} & \\mathrm{if} & P_{i}\\in S_{2}\\\\ P_{i}+Q & \\mathrm{if} & P_{i}\\in S_{3} \\end{array}\\right.\\end{array}} Each P_{i} is some sum aP+bQ. On collision, a_{1}P+b_{1}Q=a_{2}P+b_{2}Q, and {\\begin{array}{lll} \\frac{a_{1}-a_{2}}{b_{2}-b_{1}}P & = & Q\\end{array}}"
   },
   {
    "n": 22,
@@ -254,7 +254,7 @@
    "kind": "slide",
    "title": "Summary...",
    "section": "From Symmetric to Asymmetric...",
-   "text": "Summary... [image file: One way functions an illustration] What we just saw were examples based on OWF We saw three systems where we used operations that are easy to do one way, say of {\\cal O}(k), and difficult to reverse and do the other way: perhaps {\\cal O}(e^{k}), the one-way functions. The Diffie-Hellman key agreement scheme relied on the difficulty of calculating discrete logs. RSA encryption relied on the difficulty of factorization, and ECC relies on the elliptic curve log problem. In each case, we want our mathematical systems to be of fixed size (i.e. modulo), and to operate over all values. A suitable mathematical structure is to use finite cyclic groups, or fields and if you have an interest in cryptography, there is a lot to learn in this area."
+   "text": "Summary... [image: A one-way function: an easy solid arrow from x to f(x), and a dashed arrow back from f(x) to x that is hard to compute.] What we just saw were examples based on OWF We saw three systems where we used operations that are easy to do one way, say of {\\cal O}(k), and difficult to reverse and do the other way: perhaps {\\cal O}(e^{k}), the one-way functions. The Diffie-Hellman key agreement scheme relied on the difficulty of calculating discrete logs. RSA encryption relied on the difficulty of factorization, and ECC relies on the elliptic curve log problem. In each case, we want our mathematical systems to be of fixed size (i.e. modulo), and to operate over all values. A suitable mathematical structure is to use finite cyclic groups, or fields and if you have an interest in cryptography, there is a lot to learn in this area."
   },
   {
    "n": 23,
@@ -287,7 +287,7 @@
    "kind": "slide",
    "title": "Cryptographic hashes... \\mathrm{hash}\\neq\\mathrm{encrypt}",
    "section": "Hash functions",
-   "text": "Cryptographic hashes... \\mathrm{hash}\\neq\\mathrm{encrypt} [image file: USCYBERCOM Logo Cropped x] This is definitely a bit of fun. The US Cyber Command proudly display an MD5 hash on their official seal. Very uber-geeky. And - they did not advertise what it was the MD5 hash of! Challenge accepted. Maps data to a value, the reverse may be difficult... hugh@comp:~[508]$ md5sum ss.c 550114bc3cc3359e55ba33abe8983a85 ss.c hugh@comp:~[511]$ md5sum TXT/cybercom.txt 9ec4c12949a4f31474f299058ce2b22a TXT/cybercom.txt"
+   "text": "Cryptographic hashes... \\mathrm{hash}\\neq\\mathrm{encrypt} [image: The United States Cyber Command seal, an eagle over a globe and a shield, whose gold ring hides a hash of the agency's mission statement.] This is definitely a bit of fun. The US Cyber Command proudly display an MD5 hash on their official seal. Very uber-geeky. And - they did not advertise what it was the MD5 hash of! Challenge accepted. Maps data to a value, the reverse may be difficult... hugh@comp:~[508]$ md5sum ss.c 550114bc3cc3359e55ba33abe8983a85 ss.c hugh@comp:~[511]$ md5sum TXT/cybercom.txt 9ec4c12949a4f31474f299058ce2b22a TXT/cybercom.txt"
   },
   {
    "n": 26,
@@ -309,7 +309,7 @@
    "kind": "slide",
    "title": "Cryptographic hashes",
    "section": "Hash functions",
-   "text": "Cryptographic hashes [image file: hash] A hash is not just a checksum A cryptographic hash meets extra security requirements. In particular, we want them to be collision resistant (defined on next slide). A cryptographic hash is an important crypto primitive. It is used in digital signatures : hash-and-sign, protecting password files (with salted hashes), Commitment schemes, Proof-of-Work in Bitcoin, IPV6 cryptographic addresses, and so on."
+   "text": "Cryptographic hashes [image: A hash function turns a big, medium or small file into fixed-size digests A, B and C, and A, B and C should all differ, meaning no collisions.] A hash is not just a checksum A cryptographic hash meets extra security requirements. In particular, we want them to be collision resistant (defined on next slide). A cryptographic hash is an important crypto primitive. It is used in digital signatures : hash-and-sign, protecting password files (with salted hashes), Commitment schemes, Proof-of-Work in Bitcoin, IPV6 cryptographic addresses, and so on."
   },
   {
    "n": 28,
@@ -342,7 +342,7 @@
    "kind": "slide",
    "title": "Reversing a hashed password by brute force or dictionary?",
    "section": "Hash functions",
-   "text": "Reversing a hashed password by brute force or dictionary? To try checking the hashes for all the 9 character passwords, you might have to try (say) 78^{9}=106,868,920,913,284,608 hashes. That would take a long time. A precomputed table for 9 character passwords, might have (say) 78^{9}=106,868,920,913,284,608 entries, each containing a 16 byte value. Thats a big disk (about 1,500,000 TB)! My 2TB disk cost me about $100/TB, so I would need $150,000,000 to buy this disk. Who has this sort of money? [image file: Reisz Ilona the old man Az oreg] Hugh will look like this when he reverses it. Password (MD5) Hash aaaaaaaaa 3dbe00a1676.. aaaaaaaab 2125ea8b81b.. aaaaaaaac ea67f32d4e6.. aaaaaaaad 746a8ab05d6.. aaaaaaaae c554d695eb0.. aaaaaaaaf 09eb61fd25b.. aaaaaaaag 68b5af18408.. ... ..."
+   "text": "Reversing a hashed password by brute force or dictionary? To try checking the hashes for all the 9 character passwords, you might have to try (say) 78^{9}=106,868,920,913,284,608 hashes. That would take a long time. A precomputed table for 9 character passwords, might have (say) 78^{9}=106,868,920,913,284,608 entries, each containing a 16 byte value. Thats a big disk (about 1,500,000 TB)! My 2TB disk cost me about $100/TB, so I would need $150,000,000 to buy this disk. Who has this sort of money? [image: A painting of an old man with a white beard and knitted cap, The Old Man by Ilona Reisz, introducing reversing a hashed password by brute force.] Hugh will look like this when he reverses it. Password (MD5) Hash aaaaaaaaa 3dbe00a1676.. aaaaaaaab 2125ea8b81b.. aaaaaaaac ea67f32d4e6.. aaaaaaaad 746a8ab05d6.. aaaaaaaae c554d695eb0.. aaaaaaaaf 09eb61fd25b.. aaaaaaaag 68b5af18408.. ... ..."
   },
   {
    "n": 31,
@@ -353,7 +353,7 @@
    "kind": "slide",
    "title": "Time-memory tradeoff ( \\sqrt{T},\\sqrt{M} ) tables...",
    "section": "Hash functions",
-   "text": "Time-memory tradeoff ( \\sqrt{T},\\sqrt{M} ) tables... Idea #1: Precompute chains of values starting from a password guess, and using alternately, a hash function {\\cal H}(p), and a reducing function R(h), which generates a predictable plausible guess from the hash. Only store the first and last entries from the chain. It is space efficient, and you can re-compute the intermediate values (a space-time tradeoff). ' [image file: rainbowtbl]"
+   "text": "Time-memory tradeoff ( \\sqrt{T},\\sqrt{M} ) tables... Idea #1: Precompute chains of values starting from a password guess, and using alternately, a hash function {\\cal H}(p), and a reducing function R(h), which generates a predictable plausible guess from the hash. Only store the first and last entries from the chain. It is space efficient, and you can re-compute the intermediate values (a space-time tradeoff). ' [image: Building rainbow table chains: starting passwords such as aaaaaaaaa are alternately hashed with h and reduced with r, and only each chain's start and end are stored.]"
   },
   {
    "n": 32,
@@ -364,7 +364,7 @@
    "kind": "slide",
    "title": "Reversing the hash",
    "section": "Hash functions",
-   "text": "Reversing the hash [image file: rainbowtbl] Compute, compare with \"last\" values, recompute... There is a problem in that collisions may happen frequently... Solution to the problem: the “Rainbow” table Suppose there are k reduce operations and k hash operations in the chain, instead of using the same function R() in all the reduce operations, the Rainbow table uses k different functions. The first reduce is R_{1}(), followed by R_{2}() and so on."
+   "text": "Reversing the hash [image: Reversing a hash with a rainbow table: compute a chain from the hash, compare candidates with stored chain ends, then recompute the matching chain from its start to find the password.] Compute, compare with \"last\" values, recompute... There is a problem in that collisions may happen frequently... Solution to the problem: the “Rainbow” table Suppose there are k reduce operations and k hash operations in the chain, instead of using the same function R() in all the reduce operations, the Rainbow table uses k different functions. The first reduce is R_{1}(), followed by R_{2}() and so on."
   },
   {
    "n": 33,
@@ -375,7 +375,7 @@
    "kind": "slide",
    "title": "Reversing an old Windows password hash",
    "section": "Hash functions",
-   "text": "Reversing an old Windows password hash [image file: ohpcrack] Not only hashes! This technique can be applied to a known plaintext attack on an encryption scheme where the keyspace is small. (how?)"
+   "text": "Reversing an old Windows password hash [image: A screenshot of Ophcrack cracking old Windows LM password hashes with rainbow tables, having found one of two passwords.] Not only hashes! This technique can be applied to a known plaintext attack on an encryption scheme where the keyspace is small. (how?)"
   },
   {
    "n": 34,
@@ -397,7 +397,7 @@
    "kind": "slide",
    "title": "The Birthday “Paradox” is not a paradox",
    "section": "Hash functions",
-   "text": "The Birthday “Paradox” is not a paradox [image file: birthdayparadox] It is NOT the likelihood that someone shares a specific person's birthday. It is the likelihood that amongst every pair of candidates there will be (at least) one matching pair. This turns out to be quite likely - even here: for N=23 , this likelihood is about 0.5 . We can attack some digital signatures using an attack based on the birthday paradox. Likelihood versus number of random choices In general, in a birthday attack over n items, to achieve a probability of p, we should choose about \\sqrt{2n\\ln\\frac{1}{1-p}} items. In the above, for n=365,p=0.5 we have about 1.177\\sqrt{365}\\thickapprox22.5. This value (1.177) gives rise to the common approximation we use: take the square root2. 2 For n\\mhyphen\\mathrm{bit} attack, only need 2^{\\frac{n}{2}} values to get 50% chance of success."
+   "text": "The Birthday “Paradox” is not a paradox [image: A graph of the probability that two people share a birthday against the number of people, passing 0.5 at 23 people and nearing 1 by about 60.] It is NOT the likelihood that someone shares a specific person's birthday. It is the likelihood that amongst every pair of candidates there will be (at least) one matching pair. This turns out to be quite likely - even here: for N=23 , this likelihood is about 0.5 . We can attack some digital signatures using an attack based on the birthday paradox. Likelihood versus number of random choices In general, in a birthday attack over n items, to achieve a probability of p, we should choose about \\sqrt{2n\\ln\\frac{1}{1-p}} items. In the above, for n=365,p=0.5 we have about 1.177\\sqrt{365}\\thickapprox22.5. This value (1.177) gives rise to the common approximation we use: take the square root2. 2 For n\\mhyphen\\mathrm{bit} attack, only need 2^{\\frac{n}{2}} values to get 50% chance of success."
   },
   {
    "n": 36,
@@ -419,7 +419,7 @@
    "kind": "slide",
    "title": "Floyd - for chains like x_{0}\\rightarrow f(x_{0})\\rightarrow f(f(x_{0}))\\rightarrow\\ldots",
    "section": "Hash functions",
-   "text": "Floyd - for chains like x_{0}\\rightarrow f(x_{0})\\rightarrow f(f(x_{0}))\\rightarrow\\ldots [image file: Robert W Floyd] [image file: Cycle Trail] Find loop with f(x)\\myeq{\\cal H}(x); time {\\cal O}(2^{n}), and memory {\\cal O}(1) (Robert W.) Floyd's cycle-detection algorithm: the Tortoise t and the Hare h. Variables hop through a graph at different rates, stopping when they collide. Algorithm: part 1 finds the loop in a (digest/hash) chain def H(x): return md5(x.encode('utf-8')).hexdigest() def f(x): return H(x)[:10] def floyd(x0): t = f(x0) h = f(f(x0)) print('Find the loop') while (t != h): t = f(t) h = f(f(h))"
+   "text": "Floyd - for chains like x_{0}\\rightarrow f(x_{0})\\rightarrow f(f(x_{0}))\\rightarrow\\ldots [image: A black and white photo of computer scientist Robert W. Floyd, after whom Floyd's tortoise-and-hare cycle-finding algorithm is named.] [image: A rho-shaped trail of values: repeatedly applying a function f takes x0 through x1, x2 and x3 into a cycle x3 to x7 and back to x3, among other unused values.] Find loop with f(x)\\myeq{\\cal H}(x); time {\\cal O}(2^{n}), and memory {\\cal O}(1) (Robert W.) Floyd's cycle-detection algorithm: the Tortoise t and the Hare h. Variables hop through a graph at different rates, stopping when they collide. Algorithm: part 1 finds the loop in a (digest/hash) chain def H(x): return md5(x.encode('utf-8')).hexdigest() def f(x): return H(x)[:10] def floyd(x0): t = f(x0) h = f(f(x0)) print('Find the loop') while (t != h): t = f(t) h = f(f(h))"
   },
   {
    "n": 38,
@@ -430,7 +430,7 @@
    "kind": "slide",
    "title": "Floyd - for chains like x_{0}\\rightarrow f(x_{0})\\rightarrow f(f(x_{0}))\\rightarrow\\ldots",
    "section": "Hash functions",
-   "text": "Floyd - for chains like x_{0}\\rightarrow f(x_{0})\\rightarrow f(f(x_{0}))\\rightarrow\\ldots [image file: Cycle Trail] Algorithm: part 2 finds the collision t = x0 print('Find the collision' while (t != h): if (f(t) == f(h)): break t = f(t) h = f(h) if (t != h): temp_t = t temp_h = h pass return temp_t,temp_h This reruns, but just one step at a time. The tortoise restarts at the beginning, and the hare at the result of part 1. They meet at the beginning of the loop (where the collision is)."
+   "text": "Floyd - for chains like x_{0}\\rightarrow f(x_{0})\\rightarrow f(f(x_{0}))\\rightarrow\\ldots [image: A rho-shaped trail of values: repeatedly applying a function f takes x0 through x1, x2 and x3 into a cycle x3 to x7 and back to x3, among other unused values.] Algorithm: part 2 finds the collision t = x0 print('Find the collision' while (t != h): if (f(t) == f(h)): break t = f(t) h = f(h) if (t != h): temp_t = t temp_h = h pass return temp_t,temp_h This reruns, but just one step at a time. The tortoise restarts at the beginning, and the hare at the result of part 1. They meet at the beginning of the loop (where the collision is)."
   },
   {
    "n": 39,
@@ -441,7 +441,7 @@
    "kind": "slide",
    "title": "Finding a collision with floyd.py",
    "section": "Hash functions",
-   "text": "Finding a collision with floyd.py [image file: Cycle Trail] Run it with a starting point... hugh@comp % python3 floyd.py 42 Find the loop Find the collision Tortoise f375526901 > cfd1d92d5b1d0fcae405b61165d261ed Hare 0eecccc477 > cfd1d92d5bf0b71d1655bc12981bd608 hugh@comp % md5 -s f375526901 MD5 (\"f375526901\") = cfd1d92d5b1d0fcae405b61165d261ed hugh@comp % md5 -s 0eecccc477 MD5 (\"0eecccc477\") = cfd1d92d5bf0b71d1655bc12981bd608 hugh@comp % Note that we are only matching the first 10 hex digits of the digest."
+   "text": "Finding a collision with floyd.py [image: A rho-shaped trail of hash values from x0 into a cycle x3 to x7, used with Floyd's algorithm to find a hash collision.] Run it with a starting point... hugh@comp % python3 floyd.py 42 Find the loop Find the collision Tortoise f375526901 > cfd1d92d5b1d0fcae405b61165d261ed Hare 0eecccc477 > cfd1d92d5bf0b71d1655bc12981bd608 hugh@comp % md5 -s f375526901 MD5 (\"f375526901\") = cfd1d92d5b1d0fcae405b61165d261ed hugh@comp % md5 -s 0eecccc477 MD5 (\"0eecccc477\") = cfd1d92d5bf0b71d1655bc12981bd608 hugh@comp % Note that we are only matching the first 10 hex digits of the digest."
   },
   {
    "n": 40,
@@ -452,7 +452,7 @@
    "kind": "slide",
    "title": "Practical use in a message/digest collision attack",
    "section": "Hash functions",
-   "text": "Practical use in a message/digest collision attack [image file: Cycle Trail] Apply Floyd by using f(x)\\myeq{\\cal H}(g(x)) Consider messages m\\in M, digests h\\in H, the functions g:H\\rightarrow M, and f:H\\rightarrow H defined as f(x)\\myeq{\\cal H}(g(x)). The elements in the chain/trail of digests are mapped to the messages. Here is an example with good, and bad messages about Bob: \\begin{array}{lll} g(0000) & = & \\mathrm{Bob~is~a~good~and~honest~worker.}\\\\ g(0001) & = & \\mathrm{Bob~is~a~difficult~and....} \\end{array}"
+   "text": "Practical use in a message/digest collision attack [image: A message/digest collision attack: a function g maps hash values to variant messages, and H hashes them back, so a cycle in the hash trail gives two messages with the same digest.] Apply Floyd by using f(x)\\myeq{\\cal H}(g(x)) Consider messages m\\in M, digests h\\in H, the functions g:H\\rightarrow M, and f:H\\rightarrow H defined as f(x)\\myeq{\\cal H}(g(x)). The elements in the chain/trail of digests are mapped to the messages. Here is an example with good, and bad messages about Bob: \\begin{array}{lll} g(0000) & = & \\mathrm{Bob~is~a~good~and~honest~worker.}\\\\ g(0001) & = & \\mathrm{Bob~is~a~difficult~and....} \\end{array}"
   },
   {
    "n": 41,
@@ -463,7 +463,7 @@
    "kind": "slide",
    "title": "Code changes for the collision attack",
    "section": "Hash functions",
-   "text": "Code changes for the collision attack [image file: Cycle Trail] Algorithm 5.9 for 2^{16} messages in G. Few code changes... G = [m1,m2,m3...] def g(x): return G[int(x[:4],base=16)] def f(x): return H(g(x))[:4] This code only matches the first 4 hex digits of the digest: hugh@comp % python3 floydfile4.py 423485 Tortoise Lord Baltinglas... > e09c3f2d63f7841d33fdbe0bfb4fd444 Hare Tell me more ab... > e09c59046d3b1201931ff649d8b287e8"
+   "text": "Code changes for the collision attack [image: A message/digest collision attack: a function g maps hash values to variant messages, and H hashes them back, so a cycle in the hash trail gives two messages with the same digest.] Algorithm 5.9 for 2^{16} messages in G. Few code changes... G = [m1,m2,m3...] def g(x): return G[int(x[:4],base=16)] def f(x): return H(g(x))[:4] This code only matches the first 4 hex digits of the digest: hugh@comp % python3 floydfile4.py 423485 Tortoise Lord Baltinglas... > e09c3f2d63f7841d33fdbe0bfb4fd444 Hare Tell me more ab... > e09c59046d3b1201931ff649d8b287e8"
   },
   {
    "n": 42,
@@ -474,7 +474,7 @@
    "kind": "slide",
    "title": "Birthdays and hashes? All are f(x)\\myeq{\\cal H}(g(x))",
    "section": "Hash functions",
-   "text": "Birthdays and hashes? All are f(x)\\myeq{\\cal H}(g(x)) People sharing birthdays Message digests colliding [image file: Cycle Trail] [image file: Cycle Trail] B is the set of birthdays, P the set of people. and we have: g:B\\rightarrow P (random map) H:P\\rightarrow B (birthday) f:B\\rightarrow B H is the set of digests/hashes, M the set of message, and we have: g:H\\rightarrow M (random map) H:M\\rightarrow H (here MD5) f:H\\rightarrow H"
+   "text": "Birthdays and hashes? All are f(x)\\myeq{\\cal H}(g(x)) People sharing birthdays Message digests colliding [image: The birthday problem as the same structure: g maps birthdays to people and H maps people back to birthdays, so a cycle reveals two people who share a birthday.] [image: A message/digest collision attack: a function g maps hash values to variant messages, and H hashes them back, so a cycle in the hash trail gives two messages with the same digest.] B is the set of birthdays, P the set of people. and we have: g:B\\rightarrow P (random map) H:P\\rightarrow B (birthday) f:B\\rightarrow B H is the set of digests/hashes, M the set of message, and we have: g:H\\rightarrow M (random map) H:M\\rightarrow H (here MD5) f:H\\rightarrow H"
   },
   {
    "n": 43,

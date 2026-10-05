@@ -23,7 +23,7 @@
    "kind": "slide",
    "title": "Remember this in school? (I promise to use it later)",
    "section": "",
-   "text": "Remember this in school? (I promise to use it later) [image file: annotatedshamirgraph]"
+   "text": "Remember this in school? (I promise to use it later) [image: A graph of three quadratic curves y = ax squared + bx + c that all pass through the same two points, showing that 2 points do not define the curve.]"
   },
   {
    "n": 2,
@@ -100,7 +100,7 @@
    "kind": "slide",
    "title": "The attack",
    "section": "Side Channels",
-   "text": "The attack [image file: timecorrelation] Midway through the attack The attacker knows b_{0},\\ldots b_{4}, and is trying to discover b_{5} by repeatedly querying the oracle with a new c, and getting the time t. The adversary then Determines t_{0\\ldots4}, with knowledge of the algorithm, and b_{0},\\ldots b_{4}. Determines t_{5}^{0}, the time if the bit in the key was 0. Determines t_{5}^{1}, the time if the bit in the key was 1. Now either t=t_{0...4}+t_{5}^{0}+x or t=t_{0...4}+t_{5}^{1}+x (along with noise). The attacker builds two distributions T_{0} and T_{1}. If the oracle's actual-time distribution T correlates better with T_{0}, then b_{5}=0, otherwise b_{5}=1. The algorithm continues until all bits of the key are retrieved."
+   "text": "The attack [image: A timing attack: the real times measured from the oracle are correlated with times computed assuming a key bit is 0 or 1, and the sharper peak shows the right guess.] Midway through the attack The attacker knows b_{0},\\ldots b_{4}, and is trying to discover b_{5} by repeatedly querying the oracle with a new c, and getting the time t. The adversary then Determines t_{0\\ldots4}, with knowledge of the algorithm, and b_{0},\\ldots b_{4}. Determines t_{5}^{0}, the time if the bit in the key was 0. Determines t_{5}^{1}, the time if the bit in the key was 1. Now either t=t_{0...4}+t_{5}^{0}+x or t=t_{0...4}+t_{5}^{1}+x (along with noise). The attacker builds two distributions T_{0} and T_{1}. If the oracle's actual-time distribution T correlates better with T_{0}, then b_{5}=0, otherwise b_{5}=1. The algorithm continues until all bits of the key are retrieved."
   },
   {
    "n": 9,
@@ -144,7 +144,7 @@
    "kind": "slide",
    "title": "Attack is directed at the instruction cache...",
    "section": "Side Channels",
-   "text": "Attack is directed at the instruction cache... [image file: opensslattack] As openssl program runs, it caches the code... Each time we fetch a new instruction, the cache is filled. The next time we access that instruction, it happens quickly, UNLESS someone clears the cache."
+   "text": "Attack is directed at the instruction cache... [image: A cache attack on OpenSSL: the OpenSSL and attacker processes share the CPU's instruction cache, which holds lines of code from program memory, 1 ns away instead of 70 ns.] As openssl program runs, it caches the code... Each time we fetch a new instruction, the cache is filled. The next time we access that instruction, it happens quickly, UNLESS someone clears the cache."
   },
   {
    "n": 13,
@@ -155,7 +155,7 @@
    "kind": "slide",
    "title": "If bit is a “1”, THIS is cached...",
    "section": "Side Channels",
-   "text": "If bit is a “1”, THIS is cached... [image file: opensslattack] As openssl program runs, it caches the code... The attacker can determine this by seeing how fast the four cachelines A,B,C,D are loaded, by trying to load one of them, and timing the attempt."
+   "text": "If bit is a “1”, THIS is cached... [image: If the key bit is 1, the OpenSSL code for the if branch, gf2m Madd and gf2m Mdouble, is loaded into the cache lines.] As openssl program runs, it caches the code... The attacker can determine this by seeing how fast the four cachelines A,B,C,D are loaded, by trying to load one of them, and timing the attempt."
   },
   {
    "n": 14,
@@ -166,7 +166,7 @@
    "kind": "slide",
    "title": "If bit is a “0”, THIS is cached...",
    "section": "Side Channels",
-   "text": "If bit is a “0”, THIS is cached... [image file: opensslattack] As openssl program runs, it caches the code... If the bit is a 0, then the attacker determine this once again by seeing how fast the cachelines load. Afterwards, the attacker clears the cache."
+   "text": "If bit is a “0”, THIS is cached... [image: If the key bit is 0, the code for the else branch is cached instead, so the attacker can tell the bits apart by timing their own cache access.] As openssl program runs, it caches the code... If the bit is a 0, then the attacker determine this once again by seeing how fast the cachelines load. Afterwards, the attacker clears the cache."
   },
   {
    "n": 15,
@@ -243,7 +243,7 @@
    "kind": "slide",
    "title": "Smartcard constant time loop",
    "section": "Side Channels",
-   "text": "Smartcard constant time loop [image file: lowhack] Timing diagram for the printit() while loop... The instructions executed are predictable. After transmitting the character for buf[1]: The i variable is incremented (inc i) The CPU branches to the beginning of the while loop (bra loop) The value in buf[i] is loaded (ld buf[i]) If it is equal to 0, then branch to the end of the loop (beq end) Otherwise transmit the next character... There is a constant delay between the character and these instructions."
+   "text": "Smartcard constant time loop [image: A smart card's serial output loop: each byte is sent after a constant delay, regardless of the data, so its timing leaks nothing.] Timing diagram for the printit() while loop... The instructions executed are predictable. After transmitting the character for buf[1]: The i variable is incremented (inc i) The CPU branches to the beginning of the while loop (bra loop) The value in buf[i] is loaded (ld buf[i]) If it is equal to 0, then branch to the end of the loop (beq end) Otherwise transmit the next character... There is a constant delay between the character and these instructions."
   },
   {
    "n": 22,
@@ -254,7 +254,7 @@
    "kind": "slide",
    "title": "Class 1 attacker hack 1: glitch it!",
    "section": "Side Channels",
-   "text": "Class 1 attacker hack 1: glitch it! [image file: emfsmart] A \"glitch\" attack... By timing a pulse/glitch to occur exactly when the software checks the test at the beginning of the while loop, (it is always a fixed time after the previous character), attacker can make the test always succeed. i.e. buf[i]!=0 will always be TRUE. A glitch may be a spark, a variation of the power supply, or some other activity. Hardware to do this is cheaply available (e.g. in most EE labs)."
+   "text": "Class 1 attacker hack 1: glitch it! [image: A glitch attack on a smart card: an impulse or glitch generator is attached to its power, clock and data lines to make the chip misbehave.] A \"glitch\" attack... By timing a pulse/glitch to occur exactly when the software checks the test at the beginning of the while loop, (it is always a fixed time after the previous character), attacker can make the test always succeed. i.e. buf[i]!=0 will always be TRUE. A glitch may be a spark, a variation of the power supply, or some other activity. Hardware to do this is cheaply available (e.g. in most EE labs)."
   },
   {
    "n": 23,
@@ -276,7 +276,7 @@
    "kind": "slide",
    "title": "Class 1 attacker hack 2: timing attack on smartcard",
    "section": "Side Channels",
-   "text": "Class 1 attacker hack 2: timing attack on smartcard [image file: timehack] Observe behaviour externally by measuring current... The current trace gives evidence about the computation - type and timing. What is the attack? An accurate measure of the time of computation leads to an attack. Thfollowing slide has an example of a timing attack."
+   "text": "Class 1 attacker hack 2: timing attack on smartcard [image: An oscilloscope trace of the current consumed by a smart card, marking the beginning and end of a computation, used for a timing attack.] Observe behaviour externally by measuring current... The current trace gives evidence about the computation - type and timing. What is the attack? An accurate measure of the time of computation leads to an attack. Thfollowing slide has an example of a timing attack."
   },
   {
    "n": 25,
@@ -331,7 +331,7 @@
    "kind": "slide",
    "title": "Musings on information security goals and crypto...",
    "section": "Non-obvious applications and attacks",
-   "text": "Musings on information security goals and crypto... [image file: Future World] Security issues abound in our brave new digital world... ... constructed from distributed, chaotically networked, randomly configured, randomly updated, software and machines. This is all a bit of a worry.1 Crypto and CIA (Confidentiality, Integrity and Availability)... We have Crypto! AES, RSA, Diffie Hellman, ECC, keeping things C, I, and maybe A, whenever we use apps. Hopefully it all works. Hopefully... For C, we rely on easy and hard functions which we assume to exist.(Caution [1]) For I, we trust in authorities. How many authorities? Well... consider https.(Caution [2]) 1 “In the beginning the Internet was created. This has made a lot of people very angry and been widely regarded as a bad move”. (\\approx Douglas Adams)"
+   "text": "Musings on information security goals and crypto... [image: A futuristic city of domed towers, monorails and flying vehicles.] Security issues abound in our brave new digital world... ... constructed from distributed, chaotically networked, randomly configured, randomly updated, software and machines. This is all a bit of a worry.1 Crypto and CIA (Confidentiality, Integrity and Availability)... We have Crypto! AES, RSA, Diffie Hellman, ECC, keeping things C, I, and maybe A, whenever we use apps. Hopefully it all works. Hopefully... For C, we rely on easy and hard functions which we assume to exist.(Caution [1]) For I, we trust in authorities. How many authorities? Well... consider https.(Caution [2]) 1 “In the beginning the Internet was created. This has made a lot of people very angry and been widely regarded as a bad move”. (\\approx Douglas Adams)"
   },
   {
    "n": 30,
@@ -353,7 +353,7 @@
    "kind": "slide",
    "title": "Motivating (bad) example for sharing a secret",
    "section": "Non-obvious applications and attacks",
-   "text": "Motivating (bad) example for sharing a secret [image file: px Winona Savings Bank Vault] [image file: Combo] [image file: Managers Shares] Are bank managers trustworthy?[Separation of Duty] A bank has a safe that can be opened using a secret pin k. The secret k is to be kept by 3 managers. When three of them get together the safe can be opened. How can secret k be shared? Here is a simple method. Suppose k is a 6 decimal digits sequence. The dealer splits it into 3 equal parts, i.e k=s_{1}\\concat s_{2}\\concat s_{3}. \\mathrm{Manager}_{i} will get the “share” s_{i}. Hence, each manager will keep 2 digits. Question: Suppose \\mathrm{Manager}_{1} and \\mathrm{Manager}_{2} are malicious. They combine their shares and try to open the safe. How many combinations do they have to try in the worst case?"
+   "text": "Motivating (bad) example for sharing a secret [image: The massive round steel door of the Winona Savings Bank vault, standing open.] [image: A six-wheel combination lock showing digits on each wheel.] [image: A bad way to share a combination: three manager silhouettes each know two of its digits, 51, 64 and the rest.] Are bank managers trustworthy?[Separation of Duty] A bank has a safe that can be opened using a secret pin k. The secret k is to be kept by 3 managers. When three of them get together the safe can be opened. How can secret k be shared? Here is a simple method. Suppose k is a 6 decimal digits sequence. The dealer splits it into 3 equal parts, i.e k=s_{1}\\concat s_{2}\\concat s_{3}. \\mathrm{Manager}_{i} will get the “share” s_{i}. Hence, each manager will keep 2 digits. Question: Suppose \\mathrm{Manager}_{1} and \\mathrm{Manager}_{2} are malicious. They combine their shares and try to open the safe. How many combinations do they have to try in the worst case?"
   },
   {
    "n": 32,
@@ -375,7 +375,7 @@
    "kind": "slide",
    "title": "A better way to split/share the secret...",
    "section": "Non-obvious applications and attacks",
-   "text": "A better way to split/share the secret... [image file: Combo] [image file: Managers Shares] Use a hidden sum policy... We will use the definition of the SS scheme to show this construction. \\mathrm{Init}(10^{6},3): We specify 10^{6} keys, and 3 participants in total. \\mathrm{Share}(k,3,{\\cal P}): Randomly pick keys s_{1},s_{2}, from \\mathbb{Z}_{10^{6}}, and compute s_{3}=(k-s_{1}-s_{2})\\bmod10^{6}. Send shares s_{i} to the managers: {P_{1},P_{2},P_{3}\\leftarrow s_{1},s_{2},s_{3}} \\mathrm{Reconstruct}(S): Returns the key k: {k=(s_{1}+s_{2}+s_{3})\\bmod10^{6}} Question: If P_{1} and P_{2} colluded using s_{1},s_{2}, what are the number of possible k values? This construction is (provably) unconditionally collusion resistant."
+   "text": "A better way to split/share the secret... [image: A six-wheel combination lock showing digits on each wheel.] [image: A better way to share the secret: each of three managers holds a different six-digit share, such as 147652 and 985563, and all are needed to open the vault.] Use a hidden sum policy... We will use the definition of the SS scheme to show this construction. \\mathrm{Init}(10^{6},3): We specify 10^{6} keys, and 3 participants in total. \\mathrm{Share}(k,3,{\\cal P}): Randomly pick keys s_{1},s_{2}, from \\mathbb{Z}_{10^{6}}, and compute s_{3}=(k-s_{1}-s_{2})\\bmod10^{6}. Send shares s_{i} to the managers: {P_{1},P_{2},P_{3}\\leftarrow s_{1},s_{2},s_{3}} \\mathrm{Reconstruct}(S): Returns the key k: {k=(s_{1}+s_{2}+s_{3})\\bmod10^{6}} Question: If P_{1} and P_{2} colluded using s_{1},s_{2}, what are the number of possible k values? This construction is (provably) unconditionally collusion resistant."
   },
   {
    "n": 34,
@@ -386,7 +386,7 @@
    "kind": "slide",
    "title": "Threshold secret sharing [for resilience]",
    "section": "Non-obvious applications and attacks",
-   "text": "Threshold secret sharing [for resilience] [image file: Combo] [image file: Managers Shares] Threshold schemes have t<w Consider this requirement: any 3 of 5 managers can open a safe, but a single manager cannot. Schemes with such a requirement are threshold schemes (if t=w it is just a sharing scheme). Here is an example of such a situation in the real-world: perhaps some number of board members of a company can keep shares of the key to the company's secret IP. Of the board members, any 4 (say) can divulge the secret, but it takes 4 (not 3, not 2)... Definition of a (t,w)-threshold scheme A (t,w)\\mhyphen\\mathrm{threshold} scheme is an SS scheme with t<w. With this scheme, t participants can compute k, but no group of t-1 participants can do so."
+   "text": "Threshold secret sharing [for resilience] [image: A six-wheel combination lock showing digits on each wheel.] [image: Threshold secret sharing: five managers each hold a six-digit share, and any enough of them together can open the vault, giving resilience.] Threshold schemes have t<w Consider this requirement: any 3 of 5 managers can open a safe, but a single manager cannot. Schemes with such a requirement are threshold schemes (if t=w it is just a sharing scheme). Here is an example of such a situation in the real-world: perhaps some number of board members of a company can keep shares of the key to the company's secret IP. Of the board members, any 4 (say) can divulge the secret, but it takes 4 (not 3, not 2)... Definition of a (t,w)-threshold scheme A (t,w)\\mhyphen\\mathrm{threshold} scheme is an SS scheme with t<w. With this scheme, t participants can compute k, but no group of t-1 participants can do so."
   },
   {
    "n": 35,
@@ -397,7 +397,7 @@
    "kind": "slide",
    "title": "Shamir's (t,w) -threshold scheme (I told you...)",
    "section": "Non-obvious applications and attacks",
-   "text": "Shamir's (t,w) -threshold scheme (I told you...) [image file: annotatedshamirgraph] Intuition behind Shamir's (t,w)-threshold scheme (for (3,w)) The main idea is based on having sufficient points to fully define a polynomial curve. Once we have defined the curve we can find where it crosses the Y axis (that is our secret key f(0)=k). In our case we use a polynomial of degree 2 (a quadratic), and need 3 points on the curve to fully define it. As a result, any 3 of the participants can find out the key."
+   "text": "Shamir's (t,w) -threshold scheme (I told you...) [image: A graph of three quadratic curves y = ax squared + bx + c that all pass through the same two points, showing that 2 points do not define the curve.] Intuition behind Shamir's (t,w)-threshold scheme (for (3,w)) The main idea is based on having sufficient points to fully define a polynomial curve. Once we have defined the curve we can find where it crosses the Y axis (that is our secret key f(0)=k). In our case we use a polynomial of degree 2 (a quadratic), and need 3 points on the curve to fully define it. As a result, any 3 of the participants can find out the key."
   },
   {
    "n": 36,
@@ -430,7 +430,7 @@
    "kind": "slide",
    "title": "Motivating example for MPC [ 1 ]",
    "section": "Non-obvious applications and attacks",
-   "text": "Motivating example for MPC [ 1 ] [image file: MPCKevin] [image file: MPC google] MPC is useful for (say) “Federated Learning” Imagine that Ebay, Amazon, AliExpress... all wanted to build a (ML) model, to recommend next purchases, based on buying patterns gleaned from all of their internal data. This would be useful to all of them, but none of them would want to reveal their internal data. All of them want the model, as it will be more accurate if it is learnt from all their data. The solution? MPC."
+   "text": "Motivating example for MPC [ 1 ] [image: A man on a station platform under a Green Line sign, titled Official Educational Video, Secure Multi-Party Computations and Federated Learning, National University of Singapore.] [image: Three parties, each with private data and shares, run secure multi-party computation together to train a shared model without revealing their data.] MPC is useful for (say) “Federated Learning” Imagine that Ebay, Amazon, AliExpress... all wanted to build a (ML) model, to recommend next purchases, based on buying patterns gleaned from all of their internal data. This would be useful to all of them, but none of them would want to reveal their internal data. All of them want the model, as it will be more accurate if it is learnt from all their data. The solution? MPC."
   },
   {
    "n": 39,
@@ -452,7 +452,7 @@
    "kind": "slide",
    "title": "Can we compute a single bit without revealing?",
    "section": "Non-obvious applications and attacks",
-   "text": "Can we compute a single bit without revealing? [image file: dining cryptographers pg left] The Dining Cryptographers... A group of three cryptographers are dining at a restaurant. When they ask for the bill, the waiter tells them that the meal has been paid for, by someone who wants to remain anonymous. The only other table has someone from the NSA, so the cryptographers want to find out if the NSA guy paid, or one of their own group (without revealing if they themselves paid). Question: Can they find out if one of their own group paid for the meal?"
+   "text": "Can we compute a single bit without revealing? [image: A cartoon of the dining cryptographers at a restaurant table, one thinking [1] = 1 xor k, another [2] = k, and together [1] xor [2] = 1.] The Dining Cryptographers... A group of three cryptographers are dining at a restaurant. When they ask for the bill, the waiter tells them that the meal has been paid for, by someone who wants to remain anonymous. The only other table has someone from the NSA, so the cryptographers want to find out if the NSA guy paid, or one of their own group (without revealing if they themselves paid). Question: Can they find out if one of their own group paid for the meal?"
   },
   {
    "n": 41,
@@ -463,7 +463,7 @@
    "kind": "slide",
    "title": "A no-reveal protocol for computing one bit",
    "section": "Non-obvious applications and attacks",
-   "text": "A no-reveal protocol for computing one bit [image file: dining cryptographers pg left] The Dining Cryptographers protocol...(XOR?) Each pair of adjacent cryptographers privately decide on a randomly chosen bit (0/1). Maybe behind the menu? Each cryptographer knows their own “I paid” status (just 1 bit). If they did not pay for the meal, they announce the XOR of their two neighbours. Otherwise they announce the reverse. [image file: Dining Cryptographers] The parity of the values is 1 if (any) one of them paid for the meal."
+   "text": "A no-reveal protocol for computing one bit [image: A cartoon of the dining cryptographers at a restaurant table, one thinking [1] = 1 xor k, another [2] = k, and together [1] xor [2] = 1.] The Dining Cryptographers protocol...(XOR?) Each pair of adjacent cryptographers privately decide on a randomly chosen bit (0/1). Maybe behind the menu? Each cryptographer knows their own “I paid” status (just 1 bit). If they did not pay for the meal, they announce the XOR of their two neighbours. Otherwise they announce the reverse. [image: The dining cryptographers protocol: A, B and C share random bits on each edge and announce the XOR of their bits; the total XOR is 0 if none paid and 1 if one of them paid.] The parity of the values is 1 if (any) one of them paid for the meal."
   },
   {
    "n": 42,
@@ -485,7 +485,7 @@
    "kind": "slide",
    "title": "Brilliant idea: Computers are made from “circuits” [ ctrl-i7 ]",
    "section": "Non-obvious applications and attacks",
-   "text": "Brilliant idea: Computers are made from “circuits” [ ctrl-i7 ] [image file: Andrew Yao] [image file: ANDGATE] [image file: Full Adder] Yao invented “garbled” circuits to do MPC efficiently Andrew Yao (MIT, Stanford, Berkeley, Tsinghua University, Turing award) came up with a wonderful idea. He pointed out that computable functions can be worked out on computers (duh!), and that computers can be constructed out of (just) two types of gates. So for any function it is possible to construct a circuit using these two gates to calculate that function. The second part of his wonderful idea was to invent a way of encrypting these simple computations using a labelling of the wires that interconnect the gates of the circuit. Participants can evaluate the output without knowing values of inputs, by decrypting the garbled circuit. Yao's garbled circuits are commonly used now for MPCs."
+   "text": "Brilliant idea: Computers are made from “circuits” [ ctrl-i7 ] [image: A photo of computer scientist Andrew Yao, inventor of garbled circuits, standing outside a building.] [image: A garbled AND gate: input wires wi and wj and output wire wk each have two keys, k0 and k1, standing for 0 and 1.] [image: A full adder circuit built from nine NAND gates, with inputs A, B and carry in, and outputs sum S and carry out.] Yao invented “garbled” circuits to do MPC efficiently Andrew Yao (MIT, Stanford, Berkeley, Tsinghua University, Turing award) came up with a wonderful idea. He pointed out that computable functions can be worked out on computers (duh!), and that computers can be constructed out of (just) two types of gates. So for any function it is possible to construct a circuit using these two gates to calculate that function. The second part of his wonderful idea was to invent a way of encrypting these simple computations using a labelling of the wires that interconnect the gates of the circuit. Participants can evaluate the output without knowing values of inputs, by decrypting the garbled circuit. Yao's garbled circuits are commonly used now for MPCs."
   },
   {
    "n": 44,
@@ -518,7 +518,7 @@
    "kind": "slide",
    "title": "Motivating OT examples (online gambling, contract signing)",
    "section": "Non-obvious applications and attacks",
-   "text": "Motivating OT examples (online gambling, contract signing) [image file: top online gambling companies selling excitement through online betting services] [image file: Simpsons Lawyer] Are lawyers trustworthy? In large transactions, we often rely on lawyers, or documents, and we sign along with the other parties. In these scenarios, we are trusting an authority. Can we have contracts that do not rely on trusted authorities? Yes - with oblivious transfer (OT). The lawyer-less technique of signing the contract, and then sending it off to the other party is not advantageous to you. You have agreed, they have not. There may even be an advantage to the other party; the seller knows you have agreed to buy the house - maybe they can get a better price? Contract signing systems often turn this indeterminate period on its head, with no advantage to either party to delay anything."
+   "text": "Motivating OT examples (online gambling, contract signing) [image: A roulette wheel surrounded by playing card aces, red dice and casino chips, standing for online gambling.] [image: A Simpsons still of Homer at the door with Lionel Hutz the lawyer, saying being a highly skilled attorney my fee.] Are lawyers trustworthy? In large transactions, we often rely on lawyers, or documents, and we sign along with the other parties. In these scenarios, we are trusting an authority. Can we have contracts that do not rely on trusted authorities? Yes - with oblivious transfer (OT). The lawyer-less technique of signing the contract, and then sending it off to the other party is not advantageous to you. You have agreed, they have not. There may even be an advantage to the other party; the seller knows you have agreed to buy the house - maybe they can get a better price? Contract signing systems often turn this indeterminate period on its head, with no advantage to either party to delay anything."
   },
   {
    "n": 47,
@@ -529,7 +529,7 @@
    "kind": "slide",
    "title": "A mechanism for oblivious transfer",
    "section": "Non-obvious applications and attacks",
-   "text": "A mechanism for oblivious transfer Alice does not know if she has sent X or Y? In an oblivious transfer, randomness and choice are core mechanisms, used to convince all participants of the fairness of the scheme. In the mechanism we will look at, participants end up with a choice, and the likelihood of being correct is EXACTLY 50% ... not approximately, exactly. Imagine that Alice is obliviously sending a “key to solve a particular problem” to Bob. Alice sends Bob a (hard) problem. Bob sends Alice back a number, and she computes two possible values from that number, and chooses one of the values to send back to Bob. Bob gets one of the two values, but one is a “key to solve the particular problem”, and the other is nothing. Alice does not know if she sent the “key to solve a particular problem” or “nothing”. She is oblivious! [image file: Alice par John Tenniel]"
+   "text": "A mechanism for oblivious transfer Alice does not know if she has sent X or Y? In an oblivious transfer, randomness and choice are core mechanisms, used to convince all participants of the fairness of the scheme. In the mechanism we will look at, participants end up with a choice, and the likelihood of being correct is EXACTLY 50% ... not approximately, exactly. Imagine that Alice is obliviously sending a “key to solve a particular problem” to Bob. Alice sends Bob a (hard) problem. Bob sends Alice back a number, and she computes two possible values from that number, and chooses one of the values to send back to Bob. Bob gets one of the two values, but one is a “key to solve the particular problem”, and the other is nothing. Alice does not know if she sent the “key to solve a particular problem” or “nothing”. She is oblivious! [image: John Tenniel's illustration of Alice holding a flamingo beside the Duchess, from Alice in Wonderland.]"
   },
   {
    "n": 48,
@@ -540,7 +540,7 @@
    "kind": "slide",
    "title": "A mechanism for oblivious transfer",
    "section": "Non-obvious applications and attacks",
-   "text": "A mechanism for oblivious transfer [image file: hourclock] So what are these mysterious problems and numbers? Let us agree that factorizing a large number N=p\\times q can be made as hard as we like (p and q are large primes): see https://en.wikipedia.org/wiki/RSA_Factoring_Challenge.[1]. Let us also agree if Alice computes N=p\\times q using two large, random primes, she knows that if she sends N to Bob, he will be unable to factor it. Finally - lets remember that square integers have two square roots. For example \\sqrt{16}=\\pm4. Also - in the modulo/clock arithmetic world... modulo a prime, numbers also have two square roots! For example (modulo 13): 4\\times4=3~(\\bmod13), and 9\\times9=3~(\\bmod13). It may not surprise you to learn that, again in modulo/clock arithmetic world but now modulo N, that square numbers have four square roots - two pairs! For example (modulo 35). The square roots of 16 are 4,11,24 and 31."
+   "text": "A mechanism for oblivious transfer [image: A clock face with 13 hours instead of 12, illustrating modular arithmetic.] So what are these mysterious problems and numbers? Let us agree that factorizing a large number N=p\\times q can be made as hard as we like (p and q are large primes): see https://en.wikipedia.org/wiki/RSA_Factoring_Challenge.[1]. Let us also agree if Alice computes N=p\\times q using two large, random primes, she knows that if she sends N to Bob, he will be unable to factor it. Finally - lets remember that square integers have two square roots. For example \\sqrt{16}=\\pm4. Also - in the modulo/clock arithmetic world... modulo a prime, numbers also have two square roots! For example (modulo 13): 4\\times4=3~(\\bmod13), and 9\\times9=3~(\\bmod13). It may not surprise you to learn that, again in modulo/clock arithmetic world but now modulo N, that square numbers have four square roots - two pairs! For example (modulo 35). The square roots of 16 are 4,11,24 and 31."
   },
   {
    "n": 49,
@@ -606,7 +606,7 @@
    "kind": "slide",
    "title": "Shor's Algorithm [ ctrl-i4 ]",
    "section": "Non-obvious applications and attacks",
-   "text": "Shor's Algorithm [ ctrl-i4 ] [image file: clocks] Find repetition values for all powers simultaneously: A Quantum register holds all possible values at the same time, and we perform an amplifying operation, that only leaves stable repetition values. Mark the same times every day. Only the clock with a rate that we are interested in remains."
+   "text": "Shor's Algorithm [ ctrl-i4 ] [image: A grid of clock dials, each with one red hand, showing repeated modular steps whose period Shor's algorithm finds.] Find repetition values for all powers simultaneously: A Quantum register holds all possible values at the same time, and we perform an amplifying operation, that only leaves stable repetition values. Mark the same times every day. Only the clock with a rate that we are interested in remains."
   },
   {
    "n": 55,
@@ -617,7 +617,7 @@
    "kind": "slide",
    "title": "Quantum “communication” [ ctrl-i5 ]",
    "section": "Non-obvious applications and attacks",
-   "text": "Quantum “communication” [ ctrl-i5 ] [image file: quantum] Second interest: Quantum “communication” (BB84) 2. Quantum “cryptography” uses laws of quantum mechanics - Heisenberg Uncertainty applies to some pairs (of properties) of (atomic) particles. Measuring one property affects another. A snooper is easily detected, and there are various protocols for using quantum effects to share keys. BB84: Key sharing protocol Alice randomly chooses one of four polarizations: rectlinear: (0,90), or diagonal (45,135) (degrees)."
+   "text": "Quantum “communication” [ ctrl-i5 ] [image: Quantum key distribution: Alice sends photons through polarising filters, and Bob measures them with his own filters, getting a reliable result only when the filters match.] Second interest: Quantum “communication” (BB84) 2. Quantum “cryptography” uses laws of quantum mechanics - Heisenberg Uncertainty applies to some pairs (of properties) of (atomic) particles. Measuring one property affects another. A snooper is easily detected, and there are various protocols for using quantum effects to share keys. BB84: Key sharing protocol Alice randomly chooses one of four polarizations: rectlinear: (0,90), or diagonal (45,135) (degrees)."
   },
   {
    "n": 56,
@@ -683,7 +683,7 @@
    "kind": "slide",
    "title": "End statement...",
    "section": "The end...",
-   "text": "End statement... It has been a privilege to have presented to you, and I hope I have shown you a few things that are interesting to you, and help you in the future... [image file: Qand A]"
+   "text": "End statement... It has been a privilege to have presented to you, and I hope I have shown you a few things that are interesting to you, and help you in the future... [image: A Thank you! title above a grey figure leaning on large green letters Q and A.]"
   }
  ]
 }

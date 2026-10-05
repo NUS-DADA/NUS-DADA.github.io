@@ -23,7 +23,7 @@
    "kind": "slide",
    "title": "Look what is above the pretty table...",
    "section": "",
-   "text": "Look what is above the pretty table... [image file: first]"
+   "text": "Look what is above the pretty table... [image: A collage above a striped table: an administrator login form, a syringe labelled SQL injecting into it, the Heartbleed logo and an old photo of a shell-shocked man, previewing the attacks in this topic.]"
   },
   {
    "n": 2,
@@ -78,7 +78,7 @@
    "kind": "slide",
    "title": "Accessing an embedded system",
    "section": "Attacking web apps: server trusts browser",
-   "text": "Accessing an embedded system [image file: semicoloninjection] [image file: DCS true] Internet cameras accessable via the web Normally you get only limited access to the system, but on one page you can enter usernames and passwords for remote mounting a file system:"
+   "text": "Accessing an embedded system [image: An embedded system attack: a client sends a query across the Internet to an IP camera, which is only accessible through a web interface but is really a Linux computer.] [image: The web setup page of a D-Link DCS-2121 IP camera, configuring recording to a Samba network drive with a server address, user name and password.] Internet cameras accessable via the web Normally you get only limited access to the system, but on one page you can enter usernames and passwords for remote mounting a file system:"
   },
   {
    "n": 7,
@@ -89,7 +89,7 @@
    "kind": "slide",
    "title": "Accessing an embedded system",
    "section": "Attacking web apps: server trusts browser",
-   "text": "Accessing an embedded system [image file: DCS true] Injection #1: The page allows a command injection into the system The actual command to mount the remote file system for the camera will be: smbmount //192.168.0.5/toto /mnt -o username=toto,password=PASS The trick here is to replace the password PASS with something like “PASS;/bin/command”. After mounting the drive, your command will be executed (it can be anything, but should be something to get you extra access)."
+   "text": "Accessing an embedded system [image: The web setup page of a D-Link DCS-2121 IP camera, configuring recording to a Samba network drive with a server address, user name and password.] Injection #1: The page allows a command injection into the system The actual command to mount the remote file system for the camera will be: smbmount //192.168.0.5/toto /mnt -o username=toto,password=PASS The trick here is to replace the password PASS with something like “PASS;/bin/command”. After mounting the drive, your command will be executed (it can be anything, but should be something to get you extra access)."
   },
   {
    "n": 8,
@@ -100,7 +100,7 @@
    "kind": "slide",
    "title": "Bash, the Bourne (again) shell is everywhere...",
    "section": "Attacking web apps: server trusts browser",
-   "text": "Bash, the Bourne (again) shell is everywhere... [image file: where there is a shell there is a way unix img x c] And in 1989, an “improvement” to bash was made, which in September 2014, was found to be an awesome mistake."
+   "text": "Bash, the Bourne (again) shell is everywhere... [image: Glowing green text on black reading UNIX, Where there is a shell, there is a way.] And in 1989, an “improvement” to bash was made, which in September 2014, was found to be an awesome mistake."
   },
   {
    "n": 9,
@@ -111,7 +111,7 @@
    "kind": "slide",
    "title": "Bash variables",
    "section": "Attacking web apps: server trusts browser",
-   "text": "Bash variables ...are called \"environment\" variables... And we have lots of them ($PATH, $SHELL etc). Sometimes we use them as function definitions: hugh$ env foo='() { echo \"Inside\" ; };' bash -c \"echo Hello\" Hello hugh$ env foo='() { echo \"Inside\" ; }; echo \"###\"' bash -c \"echo Hello\" ### Hello hugh$ Note that the extra code after the end of the function definition got executed. It was done when bash started up, and processed the environment variable foo. Injection #2: Running code without calling it... Unfortunately, lots of things on UNIX and MAC systems use bash. People have identified ways of attacking the openSSH login, CGI scripts on web servers, DHCP... I'm shellshocked! [image file: ss effectsof shellshock] Better get bash fixed ASAP methinks."
+   "text": "Bash variables ...are called \"environment\" variables... And we have lots of them ($PATH, $SHELL etc). Sometimes we use them as function definitions: hugh$ env foo='() { echo \"Inside\" ; };' bash -c \"echo Hello\" Hello hugh$ env foo='() { echo \"Inside\" ; }; echo \"###\"' bash -c \"echo Hello\" ### Hello hugh$ Note that the extra code after the end of the function definition got executed. It was done when bash started up, and processed the environment variable foo. Injection #2: Running code without calling it... Unfortunately, lots of things on UNIX and MAC systems use bash. People have identified ways of attacking the openSSH login, CGI scripts on web servers, DHCP... I'm shellshocked! [image: An old black and white photo of a wide-eyed, shell-shocked soldier, a pun on the Shellshock bash vulnerability.] Better get bash fixed ASAP methinks."
   },
   {
    "n": 10,
@@ -133,7 +133,7 @@
    "kind": "slide",
    "title": "A web application injection...",
    "section": "Attacking web apps: server trusts browser",
-   "text": "A web application injection... [image file: sqlinjection] It is common to link pages to database servers In this scenario, the web server queries a local database server based on a client query. In the example, the client wants to look for records associated with the userName string “hugh”."
+   "text": "A web application injection... [image: A normal web database query: the client sends query.php?UserName=hugh, the web server builds an SQL SELECT command, the SQL server runs it, and the result returns as an HTML page.] It is common to link pages to database servers In this scenario, the web server queries a local database server based on a client query. In the example, the client wants to look for records associated with the userName string “hugh”."
   },
   {
    "n": 12,
@@ -144,7 +144,7 @@
    "kind": "slide",
    "title": "The system architecture seems innocuous, but... (SQLi) [ i8 ]",
    "section": "Attacking web apps: server trusts browser",
-   "text": "The system architecture seems innocuous, but... (SQLi) [ i8 ] You access a remote web site, and fill in a form asking for particular information from a database. For example - getting information on a particular user, or a particular product. [image file: new request a quote form] [image file: sql injection] Unfortunately, sometimes it is possible to craft a substring containing SQL commands that can do different things from what the developer of the web site intended. As a result... Technique of crafting special substrings with SQL commands is called the “SQL injection attack”."
+   "text": "The system architecture seems innocuous, but... (SQLi) [ i8 ] You access a remote web site, and fill in a form asking for particular information from a database. For example - getting information on a particular user, or a particular product. [image: An ordinary-looking web form, Request a quote in seconds, asking for name, email, phone number, company and a project description.] [image: An administrator login form with the username hi' or 1=1-- and a syringe labelled SQL injecting into the password field.] Unfortunately, sometimes it is possible to craft a substring containing SQL commands that can do different things from what the developer of the web site intended. As a result... Technique of crafting special substrings with SQL commands is called the “SQL injection attack”."
   },
   {
    "n": 13,
@@ -155,7 +155,7 @@
    "kind": "slide",
    "title": "The result is BAD...",
    "section": "Attacking web apps: server trusts browser",
-   "text": "The result is BAD... [image file: sqlinjection] We end up with this: The attacker makes up a userName string which has extra stuff in it. This extra stuff may do something malicious when it gets to the database server."
+   "text": "The result is BAD... [image: An SQL injection: the client sends a query containing bad code, the web server builds a bad SQL command from it, and the SQL server runs it and returns the result.] We end up with this: The attacker makes up a userName string which has extra stuff in it. This extra stuff may do something malicious when it gets to the database server."
   },
   {
    "n": 14,
@@ -177,7 +177,7 @@
    "kind": "slide",
    "title": "NUS attacks",
    "section": "Attacking web apps: server trusts browser",
-   "text": "NUS attacks [image file: nussec] News in 2012... Firstly - it was not NUS, but a departmental web server at NUS that was hacked. The hackers got irritated by a message on the web site, and made it a mission to hack it. The attack was a SQL injection attack, which allowed them to download usercode/password hash entries stored in the SQL database attached to the web server."
+   "text": "NUS attacks [image: A ZDNet news article, Singapore's NUS confirms security breach, reporting that hackers took staff usernames, domain information and hashed passwords from NUS systems.] News in 2012... Firstly - it was not NUS, but a departmental web server at NUS that was hacked. The hackers got irritated by a message on the web site, and made it a mission to hack it. The attack was a SQL injection attack, which allowed them to download usercode/password hash entries stored in the SQL database attached to the web server."
   },
   {
    "n": 16,
@@ -199,7 +199,7 @@
    "kind": "slide",
    "title": "What can be done? [ 1 ]",
    "section": "Attacking web apps: server trusts browser",
-   "text": "What can be done? [ 1 ] Kristy Swanson explains about SQL injections. [image file: Kirsty SQLi]"
+   "text": "What can be done? [ 1 ] Kristy Swanson explains about SQL injections. [image: A still from a security training video in which Maria smiles and says Wayne! Awesome! I guess you wanted to ask me about SQL injection attacks?]"
   },
   {
    "n": 18,
@@ -320,7 +320,7 @@
    "kind": "slide",
    "title": "Cross site scripting (XSS) [ i7 , 2 , 3 ]",
    "section": "Attacking web apps: browser trusts server",
-   "text": "Cross site scripting (XSS) [ i7 , 2 , 3 ] [image file: XSSStored] [image file: XSSReflected] Description: Many web-based applications are open to XSS attacks. Attacks can steal cookies, or other information, and we have two attacks Non-persistent (reflected) or persistent (stored). Now a very common reported vulnerability (even more than buffer overflow). About 70% of websites in a survey appear to be vulnerable. Examples of affected websites include Google, Yahoo!, MySpace, Twitter..."
+   "text": "Cross site scripting (XSS) [ i7 , 2 , 3 ] [image: A whiteboard sketch of stored cross-site scripting: the attacker posts a script to a forum or blog, which stores it and serves it to the victim.] [image: A whiteboard sketch of reflected cross-site scripting: the attacker gets a script reflected back from the server to the victim, for example in an invalid login message.] Description: Many web-based applications are open to XSS attacks. Attacks can steal cookies, or other information, and we have two attacks Non-persistent (reflected) or persistent (stored). Now a very common reported vulnerability (even more than buffer overflow). About 70% of websites in a survey appear to be vulnerable. Examples of affected websites include Google, Yahoo!, MySpace, Twitter..."
   },
   {
    "n": 29,
@@ -331,7 +331,7 @@
    "kind": "slide",
    "title": "CSRF - Cross-site request forgery [ 4 ]",
    "section": "Attacking web apps: browser trusts server",
-   "text": "CSRF - Cross-site request forgery [ 4 ] Tom Scott (Computerphile) explains about CSRF. [image file: csrf]"
+   "text": "CSRF - Cross-site request forgery [ 4 ] Tom Scott (Computerphile) explains about CSRF. [image: A still from the Computerphile video on cross-site request forgery, showing a hidden form that posts a payment of 100 pounds.]"
   },
   {
    "n": 30,
@@ -342,7 +342,7 @@
    "kind": "slide",
    "title": "Clickjacking [ 5 ]",
    "section": "Attacking web apps: browser trusts server",
-   "text": "Clickjacking [ 5 ] Semantics explains ClickJacking. [image file: clickjack]"
+   "text": "Clickjacking [ 5 ] Semantics explains ClickJacking. [image: A clickjacking example: a fake Facebook page asks Are You Human? and to click the red box and then the blue box, hiding real buttons under them.]"
   },
   {
    "n": 31,
@@ -364,7 +364,7 @@
    "kind": "slide",
    "title": "What can be done? [ 6 ]",
    "section": "Attacking web apps: browser trusts server",
-   "text": "What can be done? [ 6 ] Kristy explains more about SQL and XSS injections. [image file: Kevin XSS]"
+   "text": "What can be done? [ 6 ] Kristy explains more about SQL and XSS injections. [image: A still from a security training video in which Wayne says We need help. A complete website audit.]"
   },
   {
    "n": 33,
@@ -397,7 +397,7 @@
    "kind": "slide",
    "title": "Lets take a break...",
    "section": "Attacking web apps: browser trusts server",
-   "text": "Lets take a break... [image file: Web Apps]"
+   "text": "Lets take a break... [image: A screenshot of the portal's pQBL training questions on web security, asking why client-side input validation is not enough to secure an application.]"
   },
   {
    "n": 36,
@@ -452,7 +452,7 @@
    "kind": "slide",
    "title": "It is needed, and is NOT hacking!",
    "section": "Pen-testing - for fun and profit!",
-   "text": "It is needed, and is NOT hacking! [image file: OWASPTop] (OWASP) Pen-testing \\neq hacking(Pen-testers are your friends) Security hackers are people skilled in IT who use non-standard means (bugs/errors) to break into computer systems and access data which would otherwise be inaccessible to them. By contrast pen-testing is a professional activity where authorized teams, paid for by the target companies, evaluate the security of a precisely scoped-out system. In order to do this, they may very well use hacking. In the end they help you remediate issues."
+   "text": "It is needed, and is NOT hacking! [image: The OWASP Top 10 for 2017 mapped to 2021, with arrows showing categories such as injection, broken access control and cryptographic failures moving, merging, and new ones such as insecure design and SSRF.] (OWASP) Pen-testing \\neq hacking(Pen-testers are your friends) Security hackers are people skilled in IT who use non-standard means (bugs/errors) to break into computer systems and access data which would otherwise be inaccessible to them. By contrast pen-testing is a professional activity where authorized teams, paid for by the target companies, evaluate the security of a precisely scoped-out system. In order to do this, they may very well use hacking. In the end they help you remediate issues."
   },
   {
    "n": 41,
@@ -463,7 +463,7 @@
    "kind": "slide",
    "title": "Who needs pen-testing?",
    "section": "Pen-testing - for fun and profit!",
-   "text": "Who needs pen-testing? [image file: Top] Mostly accurate answer? Any business... From MAS, “Technology Risk Management Guidelines”, we have guidance for Financial Institutions: 9.4.1 Vulnerability assessment (VA) is the process of identifying, assessing and discovering security vulnerabilities in a system. The FI should conduct VAs regularly... 9.4.4 The FI should carry out penetration tests in order to conduct an in-depth evaluation of the security posture of the system through simulations of actual attacks on the system. The FI should conduct penetration tests on internet-facing systems at least annually."
+   "text": "Who needs pen-testing? [image: A table of the most common platform vulnerabilities by industry, with cross-site scripting at 20 percent on average, then information disclosure, improper access control and misconfiguration.] Mostly accurate answer? Any business... From MAS, “Technology Risk Management Guidelines”, we have guidance for Financial Institutions: 9.4.1 Vulnerability assessment (VA) is the process of identifying, assessing and discovering security vulnerabilities in a system. The FI should conduct VAs regularly... 9.4.4 The FI should carry out penetration tests in order to conduct an in-depth evaluation of the security posture of the system through simulations of actual attacks on the system. The FI should conduct penetration tests on internet-facing systems at least annually."
   },
   {
    "n": 42,
@@ -474,7 +474,7 @@
    "kind": "slide",
    "title": "Pen-testers follow these steps",
    "section": "Pen-testing - for fun and profit!",
-   "text": "Pen-testers follow these steps [image file: Pen Testing Satges] Extra steps than “hacking” and a different focus Pen-testers discuss the scope with the client first, and also report back on what they found, and best practices for remediation. In a recent pen-test project here at SoC, only about 25% of the time spent was direct hacking activities."
+   "text": "Pen-testers follow these steps [image: The stages of a penetration test in a cycle: pre-engagement, reconnaissance, scanning, break-in, clean-up and reporting.] Extra steps than “hacking” and a different focus Pen-testers discuss the scope with the client first, and also report back on what they found, and best practices for remediation. In a recent pen-test project here at SoC, only about 25% of the time spent was direct hacking activities."
   },
   {
    "n": 43,
@@ -485,7 +485,7 @@
    "kind": "slide",
    "title": "Pen-tester pre-engagement [ X , ctrl-i6 ]",
    "section": "Pen-testing - for fun and profit!",
-   "text": "Pen-tester pre-engagement [ X , ctrl-i6 ] Scope and contracts... Scoping for a test might include a scoping survey, and meetings: For example see [X] above. Nondisclosure Agreement (NDA): For your client to protect itself. Master Service Agreement (MSA): contains contractual matters between the parties, including a “get out of jail free” card, payment terms... Statement of Work (SoW): Outlines an organization’s project-specific work to be executed by a service provider. This can be part of the MSA. Rules of Engagement (RoE): This specifies guidelines and constraints of a pen-testing execution, and can be part of SoW or as a separate document. For example, see the link at [ctrl-i6] above. [image file: Scope Doc]"
+   "text": "Pen-tester pre-engagement [ X , ctrl-i6 ] Scope and contracts... Scoping for a test might include a scoping survey, and meetings: For example see [X] above. Nondisclosure Agreement (NDA): For your client to protect itself. Master Service Agreement (MSA): contains contractual matters between the parties, including a “get out of jail free” card, payment terms... Statement of Work (SoW): Outlines an organization’s project-specific work to be executed by a service provider. This can be part of the MSA. Rules of Engagement (RoE): This specifies guidelines and constraints of a pen-testing execution, and can be part of SoW or as a separate document. For example, see the link at [ctrl-i6] above. [image: A partly redacted pen-testing scope and arrangement document, with kick-off meeting details and questions about the target system's domain, modules, data and backups.]"
   },
   {
    "n": 44,
@@ -496,7 +496,7 @@
    "kind": "slide",
    "title": "Pen-testers look at these items (and more) (from WSTG)",
    "section": "Pen-testing - for fun and profit!",
-   "text": "Pen-testers look at these items (and more) (from WSTG) [image file: wstg] ..."
+   "text": "Pen-testers look at these items (and more) (from WSTG) [image: A list of OWASP WSTG test items in groups such as information gathering, configuration testing, identity management, authentication, authorisation and session management.] ..."
   },
   {
    "n": 45,
@@ -507,7 +507,7 @@
    "kind": "slide",
    "title": "Example: WSTG-INFO-01 (Search Engine Reconnaisance) [ i9 ]",
    "section": "Pen-testing - for fun and profit!",
-   "text": "Example: WSTG-INFO-01 (Search Engine Reconnaisance) [ i9 ] [image file: GHDB] Google hacking - (dorking) Google hacking (dorking?) uses selected queries that return information. GHDB (Google Hacking Database) has a library. Lets try intitle:\"Network Camera\" inurl:main.cgi"
+   "text": "Example: WSTG-INFO-01 (Search Engine Reconnaisance) [ i9 ] [image: The Exploit Database's Google Hacking Database, listing search queries, dorks, that find exposed files, private keys and vulnerable servers.] Google hacking - (dorking) Google hacking (dorking?) uses selected queries that return information. GHDB (Google Hacking Database) has a library. Lets try intitle:\"Network Camera\" inurl:main.cgi"
   },
   {
    "n": 46,
@@ -518,7 +518,7 @@
    "kind": "slide",
    "title": "Pen-testers investigate, and use tools",
    "section": "Pen-testing - for fun and profit!",
-   "text": "Pen-testers investigate, and use tools [image file: Burp]"
+   "text": "Pen-testers investigate, and use tools [image: A Burp Suite Professional window running a crawl and audit of a web site, listing issues found such as HTTP request smuggling and TLS problems.]"
   },
   {
    "n": 47,
@@ -529,7 +529,7 @@
    "kind": "slide",
    "title": "Pen-testers write reports for remediation",
    "section": "Pen-testing - for fun and profit!",
-   "text": "Pen-testers write reports for remediation [image file: Ensign] [image file: Offensive]"
+   "text": "Pen-testers write reports for remediation [image: The executive summary of a sample pen-testing report, with testing details, a severity rating table, scope and a list of findings such as SQL injection and hard-coded credentials.] [image: The summary of results page from an Offensive Security sample penetration test report on MegaCorp One, describing how the testers gained access step by step.]"
   },
   {
    "n": 48,

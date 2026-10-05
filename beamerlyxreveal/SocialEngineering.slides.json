@@ -23,7 +23,7 @@
    "kind": "slide",
    "title": "Cash cash cash... [ i1 ]",
    "section": "",
-   "text": "Cash cash cash... [ i1 ] [image file: cashcashcash]"
+   "text": "Cash cash cash... [ i1 ] [image: A room piled high with stacks of banknotes in several currencies.]"
   },
   {
    "n": 2,
@@ -78,7 +78,7 @@
    "kind": "slide",
    "title": "Landscape: reconnaissance",
    "section": "Social Engineering",
-   "text": "Landscape: reconnaissance [image file: reconnaissance] One slice of the Social Engineering landscape The goals of Social Engineering range over multiple axes of activities. We may be trying reconnaissance, or to manipulate people to do things, or other things. For the reconnaissance goal, we show above a range of tools, identified by level of interaction, mechanism, and age."
+   "text": "Landscape: reconnaissance [image: A chart of reconnaissance techniques in four groups, services, direct network tools, side-channel tools and social engineering, arranged from older to newer and from low to high interaction, such as Whois, scanners, power use, phishing and shoulder surfing.] One slice of the Social Engineering landscape The goals of Social Engineering range over multiple axes of activities. We may be trying reconnaissance, or to manipulate people to do things, or other things. For the reconnaissance goal, we show above a range of tools, identified by level of interaction, mechanism, and age."
   },
   {
    "n": 7,
@@ -111,7 +111,7 @@
    "kind": "slide",
    "title": "Wei Tang shows how its done [ 1 ]",
    "section": "Social Engineering",
-   "text": "Wei Tang shows how its done [ 1 ] Wei Tang runs software on the corporate network.[ [image file: internetlogo] ] [image file: Wei Tang]"
+   "text": "Wei Tang shows how its done [ 1 ] Wei Tang runs software on the corporate network.[ [image file: internetlogo] ] [image: A still from a video of a hand holding a printed document out of the window of a yellow taxi.]"
   },
   {
    "n": 10,
@@ -122,7 +122,7 @@
    "kind": "slide",
    "title": "Kevin Roose getting vished at Defcon [ 2 ]",
    "section": "Social Engineering",
-   "text": "Kevin Roose getting vished at Defcon [ 2 ] Kevin loses control of his phone account.[ [image file: internetlogo] ] [image file: Defcon Subs]"
+   "text": "Kevin Roose getting vished at Defcon [ 2 ] Kevin loses control of his phone account.[ [image file: internetlogo] ] [image: A still of journalist Kevin Roose, captioned with his name, standing in a conference venue.]"
   },
   {
    "n": 11,
@@ -133,7 +133,7 @@
    "kind": "slide",
    "title": "A social engineering attack on “open source”",
    "section": "Social Engineering",
-   "text": "A social engineering attack on “open source” Open source compression library: xz-utils! [image file: dep] The source code for “ open source ” projects is of course open and readable by anyone. It would appear that it should be very difficult to inject malicious code into a critical component used by open source (and other) software. Surely the millions of people in this community would find new malicious code? When code is compiled, it is run through a series of tests to ensure it is OK. The general technique the attackers used was to insert the malicious code into the test software (suitably obfuscated), which would insert the malicious binary code at test time."
+   "text": "A social engineering attack on “open source” Open source compression library: xz-utils! [image: The xkcd Dependency cartoon of all modern digital infrastructure resting on one small project, with an arrow from that tiny block to a lone developer labelled the xz maintainer.] The source code for “ open source ” projects is of course open and readable by anyone. It would appear that it should be very difficult to inject malicious code into a critical component used by open source (and other) software. Surely the millions of people in this community would find new malicious code? When code is compiled, it is run through a series of tests to ensure it is OK. The general technique the attackers used was to insert the malicious code into the test software (suitably obfuscated), which would insert the malicious binary code at test time."
   },
   {
    "n": 12,
@@ -144,7 +144,7 @@
    "kind": "slide",
    "title": "A social engineering attack on xz maintainer",
    "section": "Social Engineering",
-   "text": "A social engineering attack on xz maintainer Stressed maintainer for xz-utils! [image file: dep] Over nearly two years he was engineered to pass on partial control of the distribution to an attacker. The attackers took their time. Over 18 months they provided a friendly supporter with excellent programming skills introduced others who complained campaigned to have the maintainer replaced. Eventually the friendly supporter was given partial control, and uploaded an injection. The attackers are unknown, but probably are a state organization."
+   "text": "A social engineering attack on xz maintainer Stressed maintainer for xz-utils! [image: The same diagram with a devil-horned fake friend befriending the xz maintainer and getting changes into the critical project, while shadowy ninja figures pressure the maintainer.] Over nearly two years he was engineered to pass on partial control of the distribution to an attacker. The attackers took their time. Over 18 months they provided a friendly supporter with excellent programming skills introduced others who complained campaigned to have the maintainer replaced. Eventually the friendly supporter was given partial control, and uploaded an injection. The attackers are unknown, but probably are a state organization."
   },
   {
    "n": 13,
@@ -155,7 +155,7 @@
    "kind": "slide",
    "title": "Human strengths and weaknesses",
    "section": "Social Engineering",
-   "text": "Human strengths and weaknesses Behavioural psychology... [image file: psychcouch] For social engineering, it is interesting to study the strengths and weaknesses of humans. What can an attacker/defender exploit? As examples of weaknesses , note that we have poor recall, short term memory limited to about 5 choices, and the heart takes over when the head runs out. In addition, we have poor evaluation of risk: we dislike losing $100 more than we like winning $100. We also bow to “ authority ” - even with contrary evidence from our own eyes. As examples of strengths , note that we can recognize humans easily, we can detect subtle patterns, and understand nuances of speech."
+   "text": "Human strengths and weaknesses Behavioural psychology... [image: A Bizarro cartoon of a psychiatrist beside an empty couch saying No, you are the one who is delusional.] For social engineering, it is interesting to study the strengths and weaknesses of humans. What can an attacker/defender exploit? As examples of weaknesses , note that we have poor recall, short term memory limited to about 5 choices, and the heart takes over when the head runs out. In addition, we have poor evaluation of risk: we dislike losing $100 more than we like winning $100. We also bow to “ authority ” - even with contrary evidence from our own eyes. As examples of strengths , note that we can recognize humans easily, we can detect subtle patterns, and understand nuances of speech."
   },
   {
    "n": 14,
@@ -188,7 +188,7 @@
    "kind": "slide",
    "title": "Jimmy Kimmel on passwords! [ 3 ]",
    "section": "Social Engineering",
-   "text": "Jimmy Kimmel on passwords! [ 3 ] Californians reveal their passwords.[ [image file: internetlogo] ] [image file: Password]"
+   "text": "Jimmy Kimmel on passwords! [ 3 ] Californians reveal their passwords.[ [image file: internetlogo] ] [image: A man being interviewed in the street with a microphone, from Jimmy Kimmel's segment where passers-by reveal their passwords.]"
   },
   {
    "n": 17,
@@ -221,7 +221,7 @@
    "kind": "slide",
    "title": "My Brothe, Jazz Emu... [ 4 ]",
    "section": "Social Engineering",
-   "text": "My Brothe, Jazz Emu... [ 4 ] Henderson becomes rich?[ [image file: internetlogo] ] [image file: My Brothe]"
+   "text": "My Brothe, Jazz Emu... [ 4 ] Henderson becomes rich?[ [image file: internetlogo] ] [image: A scam email titled URGENT finances enquiry claiming a relative died in a motor accident and left $1.3 million, beside a performer from the Jazz Emu comedy video.]"
   },
   {
    "n": 20,
@@ -232,7 +232,7 @@
    "kind": "slide",
    "title": "Normal mail",
    "section": "Social Engineering",
-   "text": "Normal mail [image file: Bill Scam] Undisclosed recipients is a clue... In this email (Yes - I know it is from 10 years ago) from my friend Bill Ashworth. The undisclosed-recipients is a bit of a clue that it should be looked at carefully."
+   "text": "Normal mail [image: A webmail screenshot of a scam email claiming the sender was robbed on holiday in Manila and urgently needs money to fly home.] Undisclosed recipients is a clue... In this email (Yes - I know it is from 10 years ago) from my friend Bill Ashworth. The undisclosed-recipients is a bit of a clue that it should be looked at carefully."
   },
   {
    "n": 21,
@@ -243,7 +243,7 @@
    "kind": "slide",
    "title": "Google the content",
    "section": "Social Engineering",
-   "text": "Google the content [image file: Bill Scam] First hit is about scams... I searched for the text, and the very first hit is about email scams (and from a NZ government site)."
+   "text": "Google the content [image: A Google search for a sentence from the scam email, whose first results identify it as a known email scam.] First hit is about scams... I searched for the text, and the very first hit is about email scams (and from a NZ government site)."
   },
   {
    "n": 22,
@@ -254,7 +254,7 @@
    "kind": "slide",
    "title": "Detail in the mail",
    "section": "Social Engineering",
-   "text": "Detail in the mail [image file: Bill Scam] Where did it come from? Most mail viewers allow you to expand out the header information and see how this email arrived at your inbox. This one came via a hacked account at acm.org, but your mileage may vary."
+   "text": "Detail in the mail [image: The full headers of the scam email, showing where it really came from and its spam scores.] Where did it come from? Most mail viewers allow you to expand out the header information and see how this email arrived at your inbox. This one came via a hacked account at acm.org, but your mileage may vary."
   },
   {
    "n": 23,
@@ -265,7 +265,7 @@
    "kind": "slide",
    "title": "Another normal looking mail",
    "section": "Social Engineering",
-   "text": "Another normal looking mail [image file: Phishing Mail] Click on the link.... This email also looks vaguely plausible, even with a www.nus.edu.sg link to follow, but when you click on it, bad things start to happen."
+   "text": "Another normal looking mail [image: A webmail screenshot of a phishing email pretending to be from the National University of Singapore, warning that the mailbox will be suspended for exceeding its quota and giving a www.nus.edu.sg link.] Click on the link.... This email also looks vaguely plausible, even with a www.nus.edu.sg link to follow, but when you click on it, bad things start to happen."
   },
   {
    "n": 24,
@@ -276,7 +276,7 @@
    "kind": "slide",
    "title": "Normal looking login",
    "section": "Social Engineering",
-   "text": "Normal looking login [image file: Phishing Site] I clicked on the link! (Just for you :) I clicked on a link (in a sacrificial VM) just for you, and the web site still looks plausible until you look at the URL in the browser."
+   "text": "Normal looking login [image: A fake NUS WebMail login page imitating Microsoft Office Outlook Web Access, asking for a user ID and password.] I clicked on the link! (Just for you :) I clicked on a link (in a sacrificial VM) just for you, and the web site still looks plausible until you look at the URL in the browser."
   },
   {
    "n": 25,
@@ -287,7 +287,7 @@
    "kind": "slide",
    "title": "Once again: detail in the mail",
    "section": "Social Engineering",
-   "text": "Once again: detail in the mail [image file: Phishing Mail] Where did it come from? Once again, not from where I expected."
+   "text": "Once again: detail in the mail [image: The full headers of the phishing email, showing it was sent from an unrelated server in Sweden rather than from NUS.] Where did it come from? Once again, not from where I expected."
   },
   {
    "n": 26,
@@ -298,7 +298,7 @@
    "kind": "slide",
    "title": "Detail in the mail",
    "section": "Social Engineering",
-   "text": "Detail in the mail [image file: Phishing Mail] Why does the link not match the URL? What you see on the screen may not be what is behind the scenes. Looking at the raw HTML shows that the link text does not match the link."
+   "text": "Detail in the mail [image: The phishing email viewed with the browser's inspector open, showing that the www.nus.edu.sg link text actually points to a different web site.] Why does the link not match the URL? What you see on the screen may not be what is behind the scenes. Looking at the raw HTML shows that the link text does not match the link."
   },
   {
    "n": 27,
@@ -309,7 +309,7 @@
    "kind": "slide",
    "title": "My brother-in-law messaged me recently",
    "section": "Social Engineering",
-   "text": "My brother-in-law messaged me recently [image file: Ron Scam] Here is a screenshot from my computer, when my brother-in-law chatted to me one day “ out of the blue ” . I kind of knew pretty quickly that it was not him. There were clues... If I had been feeling a bit more aggressive I would have kept him talking to waste his time."
+   "text": "My brother-in-law messaged me recently [image: A Facebook Messenger chat in which a friend's hijacked account tells Hugh Anderson about a government grant that need not be paid back and offers to connect him with the agent.] Here is a screenshot from my computer, when my brother-in-law chatted to me one day “ out of the blue ” . I kind of knew pretty quickly that it was not him. There were clues... If I had been feeling a bit more aggressive I would have kept him talking to waste his time."
   },
   {
    "n": 28,
@@ -320,7 +320,7 @@
    "kind": "slide",
    "title": "Scamming the scammers, James Veitch... [ 5 , i2 ]",
    "section": "Social Engineering",
-   "text": "Scamming the scammers, James Veitch... [ 5 , i2 ] Solomon Odonkoh does not become rich.[ [image file: internetlogo] ] [image file: James Veitch]"
+   "text": "Scamming the scammers, James Veitch... [ 5 , i2 ] Solomon Odonkoh does not become rich.[ [image file: internetlogo] ] [image: Comedian James Veitch on a TED stage beside a projected scam email promising to ship him gold.]"
   },
   {
    "n": 29,
@@ -331,7 +331,7 @@
    "kind": "slide",
    "title": "Platform/tool for evaluating penetration-testing: Metasploit [ 6 ]",
    "section": "Social Engineering",
-   "text": "Platform/tool for evaluating penetration-testing: Metasploit [ 6 ] [image file: metasploit] Metasploit Metasploit enables a collection of exploits - that is, it can generate exploits for you to try out against your systems and applications.[ [image file: internetlogo] ]"
+   "text": "Platform/tool for evaluating penetration-testing: Metasploit [ 6 ] [image: A terminal showing the Metasploit Framework console start-up banner with its counts of exploits, payloads and encoders.] Metasploit Metasploit enables a collection of exploits - that is, it can generate exploits for you to try out against your systems and applications.[ [image file: internetlogo] ]"
   },
   {
    "n": 30,
@@ -353,7 +353,7 @@
    "kind": "slide",
    "title": "Surface 1 attack - persuade them to click...",
    "section": "Social Engineering",
-   "text": "Surface 1 attack - persuade them to click... [image file: win] [image file: win] Firefox attack On the left we see Firefox on the victim computer navigating to the malicious URL, and putting up a prompt for the addon. After allowing the installation of the addon, the victim computer returns to normal, but on the attacker machine, we now have a CMD command shell, to inspect and manipulate the remote victim's Windows machine."
+   "text": "Surface 1 attack - persuade them to click... [image: A Windows 7 desktop where a web page prompts the user to run a download, beside a Kali Linux terminal running a Metasploit exploit that waits for the victim to click.] [image: The same attack after the victim clicked: the Metasploit session on Kali Linux now lists the files on the Windows 7 user's desktop.] Firefox attack On the left we see Firefox on the victim computer navigating to the malicious URL, and putting up a prompt for the addon. After allowing the installation of the addon, the victim computer returns to normal, but on the attacker machine, we now have a CMD command shell, to inspect and manipulate the remote victim's Windows machine."
   },
   {
    "n": 32,
@@ -375,7 +375,7 @@
    "kind": "slide",
    "title": "This NEVER happens [ 7 ]",
    "section": "Social Engineering",
-   "text": "This NEVER happens [ 7 ] Murray helps Bret and Jemaine with finances.[ [image file: internetlogo] ] [image file: Bret And Germaine]"
+   "text": "This NEVER happens [ 7 ] Murray helps Bret and Jemaine with finances.[ [image file: internetlogo] ] [image: A title card reading Bret and Germaine are New Zealand's 4th most popular acapella-rap-funk-comedy folk duo, who had only $2.90 left in the band kitty.]"
   },
   {
    "n": 34,

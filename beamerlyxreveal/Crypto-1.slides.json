@@ -23,7 +23,7 @@
    "kind": "slide",
    "title": "Keys and confusion...",
    "section": "",
-   "text": "Keys and confusion... [image file: Lorenz SZ]"
+   "text": "Keys and confusion... [image: The German Lorenz SZ42 cipher machine from World War II, with its motor, dials and a row of twelve pinwheels exposed at the front.]"
   },
   {
    "n": 2,
@@ -78,7 +78,7 @@
    "kind": "slide",
    "title": "Julius Cæsar cipher... [ 1 ]",
    "section": "Encryption...",
-   "text": "Julius Cæsar cipher... [ 1 ] [image file: Brutus] We can define the transformation mathematically I C L A V D I V S A B C D E F G H I K L M N O P Q R S T V X Y Z X Y Z A B C D E F G H I K L M N O P Q R S T V F Z H X R A F R P {\\begin{array}{ccccc} c & = & \\mathrm{Enc}_{k}(p) & = & (p+k)\\mod 23\\\\ p & = & \\mathrm{Dec}_{k}(c) & = & (c-k)\\mod 23 \\end{array}} Cryptanalysis: we only have 22 useful ciphers. We can brute force it!"
+   "text": "Julius Cæsar cipher... [ 1 ] [image: A still of Brutus in a toga addressing Roman senators, captioned We must stop using Caesar's antiquated cryptographic schemes. The Caesar cipher must end!] We can define the transformation mathematically I C L A V D I V S A B C D E F G H I K L M N O P Q R S T V X Y Z X Y Z A B C D E F G H I K L M N O P Q R S T V F Z H X R A F R P {\\begin{array}{ccccc} c & = & \\mathrm{Enc}_{k}(p) & = & (p+k)\\mod 23\\\\ p & = & \\mathrm{Dec}_{k}(c) & = & (c-k)\\mod 23 \\end{array}} Cryptanalysis: we only have 22 useful ciphers. We can brute force it!"
   },
   {
    "n": 7,
@@ -89,7 +89,7 @@
    "kind": "slide",
    "title": "Examples of rotation ciphers",
    "section": "Encryption...",
-   "text": "Examples of rotation ciphers [image file: cipher disk m] [image file: cipher disk] Union (North) and Confederate (South) ciphers Used in the American Civil war, they can be used as simple rotation cipher. The Confederate one has a keyspace of 26, and a useful keyspace of only 25."
+   "text": "Examples of rotation ciphers [image: A brass cipher disk with an inner alphabet ring and an outer ring of numbered code groups, used for rotation ciphers.] [image: A Confederate States cipher disk marked CSA, with two concentric alphabet rings that rotate against each other to give a shift cipher.] Union (North) and Confederate (South) ciphers Used in the American Civil war, they can be used as simple rotation cipher. The Confederate one has a keyspace of 26, and a useful keyspace of only 25."
   },
   {
    "n": 8,
@@ -111,7 +111,7 @@
    "kind": "slide",
    "title": "Substitution cipher... [ 2 ]",
    "section": "Encryption...",
-   "text": "Substitution cipher... [ 2 ] [image file: Dancing Men] General substitutions For a general substitution, trying 1,000,000 messages in a second, then the average time to find a solution by trying decryptions would be about 6,394,144,170,576 years! We might be lulled into a sense of security by these big numbers, but of course this sort of cipher can be subject to frequency analysis. The problems are that: letters are not equally common: ETAOINSHRDLU! human languages have high redundancy: (fr xmpl, hgh ndrsn s tchng DD ths smstr)."
+   "text": "Substitution cipher... [ 2 ] [image: A black and white film still of a sheet of Sherlock Holmes Dancing Men stick-figure symbols, a substitution cipher, held up to the light.] General substitutions For a general substitution, trying 1,000,000 messages in a second, then the average time to find a solution by trying decryptions would be about 6,394,144,170,576 years! We might be lulled into a sense of security by these big numbers, but of course this sort of cipher can be subject to frequency analysis. The problems are that: letters are not equally common: ETAOINSHRDLU! human languages have high redundancy: (fr xmpl, hgh ndrsn s tchng DD ths smstr)."
   },
   {
    "n": 10,
@@ -122,7 +122,7 @@
    "kind": "slide",
    "title": "Cryptanalysis of mono-alphabetic ciphers",
    "section": "Encryption...",
-   "text": "Cryptanalysis of mono-alphabetic ciphers [image file: Letter Frequencies] Frequency analysis: ciphers do not change relative letter frequencies The central concept of this was discovered and described by Arabian scientists in the 9th century. An attacker can calculate the frequencies for ciphertext. The most common might be an E."
+   "text": "Cryptanalysis of mono-alphabetic ciphers [image: A bar chart of relative letter frequencies in English text, with E highest at about 12.7 percent, then T, A, O and I, and Z, Q and X rarest.] Frequency analysis: ciphers do not change relative letter frequencies The central concept of this was discovered and described by Arabian scientists in the 9th century. An attacker can calculate the frequencies for ciphertext. The most common might be an E."
   },
   {
    "n": 11,
@@ -166,7 +166,7 @@
    "kind": "slide",
    "title": "Example of a polyalphabetic substitution cipher",
    "section": "Encryption...",
-   "text": "Example of a polyalphabetic substitution cipher [image file: m left discs off px] The M-94 cipher Used by the US army from 1922 to 1942. It had 25 disks, each containing a random sequence of the letters A-Z around the outside."
+   "text": "Example of a polyalphabetic substitution cipher [image: The US Army M-94 cylinder cipher device, an aluminium rod of lettered discs with several discs removed, a polyalphabetic cipher.] The M-94 cipher Used by the US army from 1922 to 1942. It had 25 disks, each containing a random sequence of the letters A-Z around the outside."
   },
   {
    "n": 15,
@@ -177,7 +177,7 @@
    "kind": "slide",
    "title": "Enigma: polyalphabetic substitution cipher machine [ 3 , 4 , 5 , 8 , 6 ]",
    "section": "Encryption...",
-   "text": "Enigma: polyalphabetic substitution cipher machine [ 3 , 4 , 5 , 8 , 6 ] [image file: Jagger] [image file: whatsitdo] [image file: enigmalights] [image file: drjamesgrime]"
+   "text": "Enigma: polyalphabetic substitution cipher machine [ 3 , 4 , 5 , 8 , 6 ] [image: A still of Mick Jagger and the Rolling Stones performing on a smoky stage, used to introduce the film Enigma.] [image: A film still of naval officers gathered around a captured Enigma machine on a table, captioned What's it do?] [image: A close-up of the Enigma machine's lampboard and keys, where a lit lamp shows the encrypted letter for each key press.] [image: Dr James Grime, from the Numberphile video, enthusiastically presenting an Enigma machine on a desk.]"
   },
   {
    "n": 16,
@@ -188,7 +188,7 @@
    "kind": "slide",
    "title": "US M209 Rotor machine [ X ]",
    "section": "Encryption...",
-   "text": "US M209 Rotor machine [ X ] WWII Mechanical encryption machine This is Hugh's working, smelly, M209 machine. More material at [X] above. ."
+   "text": "US M209 Rotor machine [ X ] [image: A US M-209 rotor cipher machine in its open green case, showing its six pinwheels, letter wheels and counter.] WWII Mechanical encryption machine This is Hugh's working, smelly, M209 machine. More material at [X] above. ."
   },
   {
    "n": 17,
@@ -210,7 +210,7 @@
    "kind": "slide",
    "title": "Product ciphers",
    "section": "Encryption...",
-   "text": "Product ciphers [image file: SPN a] Substitution plus permutation: Is double encryption a thing? i.e. c=\\mathrm{Enc}_{k_{1}}(\\mathrm{Enc}_{k_{2}}^{'}(x)) where k_{1} is the key for the first encryption \\mathrm{Enc} and k_{2} is the key for the second encryption \\mathrm{Enc}^{'}. If both \\mathrm{Enc} and \\mathrm{Enc}^{'} are permutation ciphers, then there is no advantage of doing so. The combined cipher is still a permutation. If \\mathrm{Enc} and \\mathrm{Enc}^{'} are both substitution ciphers, then the final encryption is simply another substitution cipher. But doing permutation and sustitution form an important class of ciphers: the Substitution-Permutation Networks (SPN). A bridge from classical to modern ciphers."
+   "text": "Product ciphers [image: A substitution-permutation network diagram: input bits pass through repeated rounds of XOR with a round key, a row of S-boxes and a bit permutation to the output.] Substitution plus permutation: Is double encryption a thing? i.e. c=\\mathrm{Enc}_{k_{1}}(\\mathrm{Enc}_{k_{2}}^{'}(x)) where k_{1} is the key for the first encryption \\mathrm{Enc} and k_{2} is the key for the second encryption \\mathrm{Enc}^{'}. If both \\mathrm{Enc} and \\mathrm{Enc}^{'} are permutation ciphers, then there is no advantage of doing so. The combined cipher is still a permutation. If \\mathrm{Enc} and \\mathrm{Enc}^{'} are both substitution ciphers, then the final encryption is simply another substitution cipher. But doing permutation and sustitution form an important class of ciphers: the Substitution-Permutation Networks (SPN). A bridge from classical to modern ciphers."
   },
   {
    "n": 19,
@@ -221,7 +221,7 @@
    "kind": "slide",
    "title": "Lest we forget: The one-time-pad (Vernam's cipher) [ i3 ]",
    "section": "Encryption...",
-   "text": "Lest we forget: The one-time-pad (Vernam's cipher) [ i3 ] An \"unconditionally secure\" scheme: [image file: otp] The one time pad provides “perfect” secrecy, meaning you learn nothing by having the ciphertext. The key is a sequence of random key letters, each letter used once only, and available at only the sender and receiver. Even in modern times, there are mysterious number stations [i3], broadcasting sequences of letters or numbers. Many of the stations have been located, typically behind barbed wire and military signs. As far as I am aware, no government has ever admitted to their purpose. However, it is pretty clear that they are using Vernam's cipher to broadcast messages to spies in other countries. Only the spy and the spy-handler have copies of the “book”. Q: Why dont we use Vernam's cipher for everything if it is perfect?"
+   "text": "Lest we forget: The one-time-pad (Vernam's cipher) [ i3 ] An \"unconditionally secure\" scheme: [image: A hand holding a tiny printed one-time pad booklet of random key digits.] The one time pad provides “perfect” secrecy, meaning you learn nothing by having the ciphertext. The key is a sequence of random key letters, each letter used once only, and available at only the sender and receiver. Even in modern times, there are mysterious number stations [i3], broadcasting sequences of letters or numbers. Many of the stations have been located, typically behind barbed wire and military signs. As far as I am aware, no government has ever admitted to their purpose. However, it is pretty clear that they are using Vernam's cipher to broadcast messages to spies in other countries. Only the spy and the spy-handler have copies of the “book”. Q: Why dont we use Vernam's cipher for everything if it is perfect?"
   },
   {
    "n": 20,
@@ -276,7 +276,7 @@
    "kind": "slide",
    "title": "Cryptanalysis",
    "section": "Encryption...",
-   "text": "Cryptanalysis [image file: adversary] Attack types, based on information known to attacker: An attacker may know nothing about the system, or may have some information, or abilities to encrypt or decrypt sample texts. Each ability leads to different techniques for attack: Ciphertext only: The adversary has a collection of ciphertext c. Known plaintext: The adversary has a collection of plaintext m and corresponding ciphertext c. Chosen plaintext: The adversary has temporary access to an encryption black box. They can choose a plaintext m and obtain the corresponding ciphertext c from the black box. Chosen ciphertext: reverse of chosen plaintext attack. Chosen text: select plaintext or ciphertext to en/decrypt"
+   "text": "Cryptanalysis [image: A CCA security game diagram: the adversary A sends message pairs to a left-right encryption oracle that encrypts one chosen by a random bit b, may query a decryption oracle except on the challenge, and must guess b.] Attack types, based on information known to attacker: An attacker may know nothing about the system, or may have some information, or abilities to encrypt or decrypt sample texts. Each ability leads to different techniques for attack: Ciphertext only: The adversary has a collection of ciphertext c. Known plaintext: The adversary has a collection of plaintext m and corresponding ciphertext c. Chosen plaintext: The adversary has temporary access to an encryption black box. They can choose a plaintext m and obtain the corresponding ciphertext c from the black box. Chosen ciphertext: reverse of chosen plaintext attack. Chosen text: select plaintext or ciphertext to en/decrypt"
   },
   {
    "n": 25,
@@ -287,7 +287,7 @@
    "kind": "slide",
    "title": "Lets take a break...",
    "section": "Encryption...",
-   "text": "Lets take a break... [image file: Classical Crypto]"
+   "text": "Lets take a break... [image: A screenshot of the portal's pQBL training questions on the classical crypto crisis, asking what weakness in monoalphabetic substitution ciphers drove the invention of polyalphabetic systems.]"
   },
   {
    "n": 26,
@@ -320,7 +320,7 @@
    "kind": "slide",
    "title": "Block/stream cipher",
    "section": "Modern symmetric ciphers",
-   "text": "Block/stream cipher [image file: blockstreamcipher] What are block and stream ciphers? A stream cipher decrypts or encrypts the data stream one bit at a time. A block cipher decrypts or encrypts the data stream a block (of bits) at a time. In DES it is 64 bits, in AES 128 bits. The keysize is also some fixed size."
+   "text": "Block/stream cipher [image: A comparison of a stream cipher, which combines plaintext bits one at a time with key bits, and a block cipher, which encrypts a whole fixed-size block with the key.] What are block and stream ciphers? A stream cipher decrypts or encrypts the data stream one bit at a time. A block cipher decrypts or encrypts the data stream a block (of bits) at a time. In DES it is 64 bits, in AES 128 bits. The keysize is also some fixed size."
   },
   {
    "n": 29,
@@ -331,7 +331,7 @@
    "kind": "slide",
    "title": "Confusion and diffusion (Shannon) [ ctrl-i2 ]",
    "section": "Modern symmetric ciphers",
-   "text": "Confusion and diffusion (Shannon) [ ctrl-i2 ] [image file: confusion] [image file: diffusion] Shannon's important paper in 1949 gave a formal treatment of secrecy, introducing multiple concepts related to cryptography. Confusion and diffusion are two terms that have a specific meaning in the paper, identifying properties that must be preserved to frustrate statistically based cryptanalysis. Confusion: key and ciphertext. Diffusion: plaintext and ciphertext."
+   "text": "Confusion and diffusion (Shannon) [ ctrl-i2 ] [image: A Shannon confusion diagram: each ciphertext bit depends on many bits of the key, shown by lines from scattered key bits to the ciphertext.] [image: A Shannon diffusion diagram: changing one plaintext bit affects many ciphertext bits, and each ciphertext bit depends on many plaintext bits.] Shannon's important paper in 1949 gave a formal treatment of secrecy, introducing multiple concepts related to cryptography. Confusion and diffusion are two terms that have a specific meaning in the paper, identifying properties that must be preserved to frustrate statistically based cryptanalysis. Confusion: key and ciphertext. Diffusion: plaintext and ciphertext."
   },
   {
    "n": 30,
@@ -342,7 +342,7 @@
    "kind": "slide",
    "title": "Block cipher concepts",
    "section": "Modern symmetric ciphers",
-   "text": "Block cipher concepts If data is not some multiple of the blocksize we use padding One technique is to add a single 1 bit, followed by enough 0 bits to fill out the block (if it ends on a block boundary, a whole padding block will be added). [image file: padding] Initalization vectors (IV) to randomize encryption... The IV does not need to be secret, but should be unpredictable, and not reused with the same key. A (previously) common practice of re-using the last ciphertext block of a message as the IV for the next message is insecure. [image file: initializationvector]"
+   "text": "Block cipher concepts If data is not some multiple of the blocksize we use padding One technique is to add a single 1 bit, followed by enough 0 bits to fill out the block (if it ends on a block boundary, a whole padding block will be added). [image: A bit string split into fixed-size blocks, with the last short block padded out to the full block length.] Initalization vectors (IV) to randomize encryption... The IV does not need to be secret, but should be unpredictable, and not reused with the same key. A (previously) common practice of re-using the last ciphertext block of a message as the IV for the next message is insecure. [image: Two ways to use an initialisation vector: either encrypt the IV and XOR it with the first plaintext block, or XOR the IV with the first plaintext block before encrypting.]"
   },
   {
    "n": 31,
@@ -353,7 +353,7 @@
    "kind": "slide",
    "title": "“Modes” of operation (for AES/DES/...)",
    "section": "Modern symmetric ciphers",
-   "text": "“Modes” of operation (for AES/DES/...) [image file: Penguin] Modes are not equal... [image file: cbccfb] Here are three modes, ECB, which encrypts a block at a time, and CFB and CBC, which chain in an initial vector, so even if each plaintext block is the same, the ciphertext will be different. The US government recommends not using the Electronic Codebook mode."
+   "text": "“Modes” of operation (for AES/DES/...) [image: The ECB penguin: the Linux Tux image encrypted with AES in ECB mode still shows the penguin outline, while AES in CBC mode gives random-looking noise.] Modes are not equal... [image: Block cipher mode diagrams for Electronic Code Book, Cipher Feedback and Cipher Block Chaining, showing how each DES block is chained with an initial vector and earlier ciphertext.] Here are three modes, ECB, which encrypts a block at a time, and CFB and CBC, which chain in an initial vector, so even if each plaintext block is the same, the ciphertext will be different. The US government recommends not using the Electronic Codebook mode."
   },
   {
    "n": 32,
@@ -364,7 +364,7 @@
    "kind": "slide",
    "title": "Avalanche - A “goodness” measure for crypto",
    "section": "Modern symmetric ciphers",
-   "text": "Avalanche - A “goodness” measure for crypto [image file: sampavalanche] Number of bits changed on each round Assume we had a crypto system, and two plaintext messages p, and p' with only one bit different. As the encryption process does each round, we want it to quickly have many bits different. Q: How many bits are different? [image file: boys] [image file: boys FLIP ONE QUARTER] [image file: randboy] [image file: boys FLIP EVERY BIT] [image file: boys FLIP EVERY SECOND]"
+   "text": "Avalanche - A “goodness” measure for crypto [image: A table of DES rounds for two inputs that differ in one bit, showing the number of differing bits growing from 1 to 18 within three rounds, the avalanche effect.] Number of bits changed on each round Assume we had a crypto system, and two plaintext messages p, and p' with only one bit different. As the encryption process does each round, we want it to quickly have many bits different. Q: How many bits are different? [image: A photo of three children in ski clothes on a snowy slope, used as a test image for the avalanche effect.] [image: The ski photo with a quarter of its bits flipped at random, the children still visible through heavy coloured noise.] [image: The ski photo with half of its bits flipped at random, now pure coloured noise with no visible picture.] [image: The ski photo with every bit flipped, a colour-negative image in which the children are still clearly visible.] [image: The ski photo with every second bit flipped, garish false colours but the children still clearly recognisable.]"
   },
   {
    "n": 33,
@@ -386,7 +386,7 @@
    "kind": "slide",
    "title": "DES - Data Encryption Standard",
    "section": "Modern symmetric ciphers",
-   "text": "DES - Data Encryption Standard DES - a (hardware oriented) BLOCK cipher DES was first proposed by IBM (1974) using 128 bit keys. The Security was reduced by NSA to a 56 bit key. The 56 bit key generates 16 48-bit subkeys, which each control a round. At the core of DES is the Feistel network [image file: des] Each of the 16 stages (rounds) of DES uses a Feistel structure which encrypts a 64 bit value into another 64 bit value using the 48 bit subkey. There is a substitution on the left data half, and then a permutation - swapping halves. Avalanche analysis shows good divergence after 5 rounds."
+   "text": "DES - Data Encryption Standard DES - a (hardware oriented) BLOCK cipher DES was first proposed by IBM (1974) using 128 bit keys. The Security was reduced by NSA to a 56 bit key. The 56 bit key generates 16 48-bit subkeys, which each control a round. At the core of DES is the Feistel network [image: A Feistel network diagram for DES: each round splits the block into left and right halves, applies the function f with a round key to one half and XORs it into the other, and decryption runs the keys in reverse order.] Each of the 16 stages (rounds) of DES uses a Feistel structure which encrypts a 64 bit value into another 64 bit value using the 48 bit subkey. There is a substitution on the left data half, and then a permutation - swapping halves. Avalanche analysis shows good divergence after 5 rounds."
   },
   {
    "n": 35,
@@ -397,7 +397,7 @@
    "kind": "slide",
    "title": "DES considered harmful [ i4 ]",
    "section": "Modern symmetric ciphers",
-   "text": "DES considered harmful [ i4 ] [image file: des] Or at least...weak ... 56-bit keys have 2^{56}=7.2\\times10^{16} values. A brute force search looks like it might be hard, but consider the speedup in computers from the 1970s onwards. In 1997 using a network of computers on the Internet, it took a few months. In 1998, on dedicated h/w (EFF), it took a few days. In 1999, 22hrs (and so on). How long does it take now? We must consider alternatives to DES: 2DES?"
+   "text": "DES considered harmful [ i4 ] [image: The mythical 2DES: a message encrypted with DES under key k1 and the result encrypted again with DES under key k2.] Or at least...weak ... 56-bit keys have 2^{56}=7.2\\times10^{16} values. A brute force search looks like it might be hard, but consider the speedup in computers from the 1970s onwards. In 1997 using a network of computers on the Internet, it took a few months. In 1998, on dedicated h/w (EFF), it took a few days. In 1999, 22hrs (and so on). How long does it take now? We must consider alternatives to DES: 2DES?"
   },
   {
    "n": 36,
@@ -408,7 +408,7 @@
    "kind": "slide",
    "title": "The problem with 2DES",
    "section": "Modern symmetric ciphers",
-   "text": "The problem with 2DES [image file: des Mi M] 2DES meet-in-the-middle attack Starts with the attacker having a plaintext, ciphertext pair \\left\\langle p,c\\right\\rangle . The attacker computes two tables: E(k,p) for each of the 2^{56} keys, and D(k,c) for each of the 2^{56} keys. For each match in the two tables, you have found a possible key, with only 2^{57} DES operations (ie - not 2^{112}). What we use: 3DES. Attack needs 2^{112} operations. [image file: des]"
+   "text": "The problem with 2DES [image: A meet-in-the-middle attack on 2DES: encrypt the plaintext P under every key and decrypt the ciphertext C under every key, then find matches in the two large tables.] 2DES meet-in-the-middle attack Starts with the attacker having a plaintext, ciphertext pair \\left\\langle p,c\\right\\rangle . The attacker computes two tables: E(k,p) for each of the 2^{56} keys, and D(k,c) for each of the 2^{56} keys. For each match in the two tables, you have found a possible key, with only 2^{57} DES operations (ie - not 2^{112}). What we use: 3DES. Attack needs 2^{112} operations. [image: Triple DES: a message encrypted with DES under k1, decrypted with DES under k2, then encrypted with DES under k3.]"
   },
   {
    "n": 37,
@@ -430,7 +430,7 @@
    "kind": "slide",
    "title": "AES operations: 10/12/14 rounds",
    "section": "Modern symmetric ciphers",
-   "text": "AES operations: 10/12/14 rounds [image file: aes] Cipher(byte in[4*4],byte out[4*4],word w[4*(Nr+1)]) begin byte state[4,4] state = in AddRoundKey(state,w[0,3]) for round = 1 step 1 to Nr-1 SubBytes(state) ShiftRows(state) MixColumns(state) AddRoundKey(state,w[round*4,(round+1)*4-1]) end for SubBytes(state) ShiftRows(state) AddRoundKey(state,w[Nr*4,(Nr+1)*4-1]) out = state end The four transformations... byte substitution: one S-box used on every byte shift rows: permute bytes between groups/columns mix columns: substitutions using matrix multiply of groups add round key: XOR state with key material"
+   "text": "AES operations: 10/12/14 rounds [image: The AES encryption structure: a 16-byte plaintext state passes through an initial transformation and then N rounds of transformations, each with a 16-byte round key from the key expansion, giving a 16-byte ciphertext.] Cipher(byte in[4*4],byte out[4*4],word w[4*(Nr+1)]) begin byte state[4,4] state = in AddRoundKey(state,w[0,3]) for round = 1 step 1 to Nr-1 SubBytes(state) ShiftRows(state) MixColumns(state) AddRoundKey(state,w[round*4,(round+1)*4-1]) end for SubBytes(state) ShiftRows(state) AddRoundKey(state,w[Nr*4,(Nr+1)*4-1]) out = state end The four transformations... byte substitution: one S-box used on every byte shift rows: permute bytes between groups/columns mix columns: substitutions using matrix multiply of groups add round key: XOR state with key material"
   },
   {
    "n": 39,
@@ -474,7 +474,7 @@
    "kind": "slide",
    "title": "Bit and byte padding for block ciphers...",
    "section": "Padding oracle attack for Lab2",
-   "text": "Bit and byte padding for block ciphers... [image file: pkcs] PKCS #7 - a byte-wise padding technique... One technique is to add a single 1 bit, followed by enough 0 bits to fill out the block. Another is the PKCS #7 paddings for the final block. Each byte is given as 2 hex digits."
+   "text": "Bit and byte padding for block ciphers... [image: Valid PKCS #7 padding of a last block: one byte 01, two bytes 02 02, three bytes 03 03 03 and so on, up to a whole extra block of 08 bytes.] PKCS #7 - a byte-wise padding technique... One technique is to add a single 1 bit, followed by enough 0 bits to fill out the block. Another is the PKCS #7 paddings for the final block. Each byte is given as 2 hex digits."
   },
   {
    "n": 43,
@@ -485,7 +485,7 @@
    "kind": "slide",
    "title": "CBC: encoding and decoding...",
    "section": "Padding oracle attack for Lab2",
-   "text": "CBC: encoding and decoding... [image file: cbc] (...decode is decrypt, then XOR). ... and encode is XOR, then encrypt... Note that when you are decoding, the final plaintext p_{2} is the decrypted ciphertext exclusive-ored with c_{1}. If there was only one block, the final plaintext p_{1} is the decrypted ciphertext exclusive-ored with IV"
+   "text": "CBC: encoding and decoding... [image: CBC encode and decode diagrams: each plaintext block is XORed with the IV or previous ciphertext block before encryption with key k, and decryption reverses this.] (...decode is decrypt, then XOR). ... and encode is XOR, then encrypt... Note that when you are decoding, the final plaintext p_{2} is the decrypted ciphertext exclusive-ored with c_{1}. If there was only one block, the final plaintext p_{1} is the decrypted ciphertext exclusive-ored with IV"
   },
   {
    "n": 44,
@@ -496,7 +496,7 @@
    "kind": "slide",
    "title": "Padding oracle...",
    "section": "Padding oracle attack for Lab2",
-   "text": "Padding oracle... [image file: pkcs Attack] What is a padding oracle? Imagine that you have a bit of software, that, given c_{1} and c_{2}, will tell you if the padding is correct in p_{2}. If the message was only one block long, given IV and c_{1} (as in the lab), it will tell you if the padding is correct in p_{1}. In general, given c_{n-1} and c_{n}, it will tell you if the padding is correct. Is this realistic? Well, yes it is. When you send a padded, encrypted message to another system, after decrypting, the other system will check the padding, and if it is not valid, will fail immediately. Otherwise it will fail (or succeed) later. Normal receiving software may leak the correctness of the padding. In the lab, we will give you a program that is a padding oracle. Note also that an you can directly change each bit/byte of the final plaintext for p_{n}, because the attacker has control over the input c_{n-1} (or IV as in the lab)."
+   "text": "Padding oracle... [image: A padding oracle diagram: the attacker A sends a modified IV equal to c1 and block c2 to an oracle O that holds key k and only reports whether the padding is OK, and from this recovers p2.] What is a padding oracle? Imagine that you have a bit of software, that, given c_{1} and c_{2}, will tell you if the padding is correct in p_{2}. If the message was only one block long, given IV and c_{1} (as in the lab), it will tell you if the padding is correct in p_{1}. In general, given c_{n-1} and c_{n}, it will tell you if the padding is correct. Is this realistic? Well, yes it is. When you send a padded, encrypted message to another system, after decrypting, the other system will check the padding, and if it is not valid, will fail immediately. Otherwise it will fail (or succeed) later. Normal receiving software may leak the correctness of the padding. In the lab, we will give you a program that is a padding oracle. Note also that an you can directly change each bit/byte of the final plaintext for p_{n}, because the attacker has control over the input c_{n-1} (or IV as in the lab)."
   },
   {
    "n": 45,
@@ -507,7 +507,7 @@
    "kind": "slide",
    "title": "Using the oracle in an attack...",
    "section": "Padding oracle attack for Lab2",
-   "text": "Using the oracle in an attack... [image file: pkcs] The attacker does not get to see the decrypted data... The oracle only learns if the last bytes are correct - they could be 01, 0202, 030303, and so on. The attacker starts by trying a series of values for the last byte of c_{1}:"
+   "text": "Using the oracle in an attack... [image: A padding oracle attack step: the attacker can modify ciphertext block c1, the oracle decrypts c2 with key k, XORs it with c1 and only reports whether the padding is OK.] The attacker does not get to see the decrypted data... The oracle only learns if the last bytes are correct - they could be 01, 0202, 030303, and so on. The attacker starts by trying a series of values for the last byte of c_{1}:"
   },
   {
    "n": 46,
@@ -518,7 +518,7 @@
    "kind": "slide",
    "title": "Using the oracle in an attack...",
    "section": "Padding oracle attack for Lab2",
-   "text": "Using the oracle in an attack... [image file: pkcs] Attacker discovers last byte... The attacker is trying values in the last byte of c_{1} until 01 is the last byte. Oracle returns OK. Attacker now sets the last byte to 02, and tries for the second-last byte of c_{1}:"
+   "text": "Using the oracle in an attack... [image: Padding attack step one: the attacker tries values for the last byte of c1 until the oracle says the padding 01 is OK, then computes that byte of the intermediate state.] Attacker discovers last byte... The attacker is trying values in the last byte of c_{1} until 01 is the last byte. Oracle returns OK. Attacker now sets the last byte to 02, and tries for the second-last byte of c_{1}:"
   },
   {
    "n": 47,
@@ -529,7 +529,7 @@
    "kind": "slide",
    "title": "Using the oracle in an attack...",
    "section": "Padding oracle attack for Lab2",
-   "text": "Using the oracle in an attack... [image file: pkcs] Attacker discovers second-to-last byte... Since we know (now) the last byte (02), and the original last byte of c_{1}, we can set the last byte. We try all the second-to-last values in c_{1}, and uncover a second byte."
+   "text": "Using the oracle in an attack... [image: Padding attack step two: with the last byte fixed to give 02, the attacker tries values for the second-last byte of c1 until the padding 02 02 is OK.] Attacker discovers second-to-last byte... Since we know (now) the last byte (02), and the original last byte of c_{1}, we can set the last byte. We try all the second-to-last values in c_{1}, and uncover a second byte."
   },
   {
    "n": 48,
@@ -540,7 +540,7 @@
    "kind": "slide",
    "title": "Using the oracle in an attack...",
    "section": "Padding oracle attack for Lab2",
-   "text": "Using the oracle in an attack... [image file: pkcs] Attacker discovers third-to-last byte... Since we know (now) the last two bytes (02 02), we can set the last two bytes to 03 03. Now we try all the third-to-last values in c_{1} and uncover 20."
+   "text": "Using the oracle in an attack... [image: Padding attack step three: the attacker tries values for the third-last byte of c1 until the padding 03 03 03 is OK, revealing another plaintext byte.] Attacker discovers third-to-last byte... Since we know (now) the last two bytes (02 02), we can set the last two bytes to 03 03. Now we try all the third-to-last values in c_{1} and uncover 20."
   },
   {
    "n": 49,
@@ -551,7 +551,7 @@
    "kind": "slide",
    "title": "Using the oracle in an attack...",
    "section": "Padding oracle attack for Lab2",
-   "text": "Using the oracle in an attack... [image file: pkcs] Attacker discovers fourth-to-last byte... Since we know (now) the last three bytes (20 02 02), we can set the last three bytes to 04 04 04. Now we try all the fourth-to-last values in c_{1} and uncover 6f."
+   "text": "Using the oracle in an attack... [image: Padding attack step four: the attacker tries values for the fourth-last byte of c1 until the padding 04 04 04 04 is OK, continuing byte by byte.] Attacker discovers fourth-to-last byte... Since we know (now) the last three bytes (20 02 02), we can set the last three bytes to 04 04 04. Now we try all the fourth-to-last values in c_{1} and uncover 6f."
   },
   {
    "n": 50,

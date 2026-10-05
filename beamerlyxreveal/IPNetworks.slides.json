@@ -23,7 +23,7 @@
    "kind": "slide",
    "title": "IP networks... [ i9 ]",
    "section": "",
-   "text": "IP networks... [ i9 ] [image file: Starlink]"
+   "text": "IP networks... [ i9 ] [image: A visualisation of the Earth from space surrounded by a dense shell of thousands of Starlink satellites.]"
   },
   {
    "n": 2,
@@ -78,7 +78,7 @@
    "kind": "slide",
    "title": "Internet history",
    "section": "Networks (Warning - no mathematics inside)",
-   "text": "Internet history Moments in time... [image file: top Internet History]"
+   "text": "Internet history Moments in time... [image: A timeline chart of top significant moments in Internet history from the 1970s to the 2000s, such as TCP/IP proposed, the first spam, the WWW proposed, SSL, Google, Wikipedia and YouTube.]"
   },
   {
    "n": 7,
@@ -89,7 +89,7 @@
    "kind": "slide",
    "title": "What is the Internet?... [ 1 , 2 ]",
    "section": "Networks (Warning - no mathematics inside)",
-   "text": "What is the Internet?... [ 1 , 2 ] [image file: node map] [image file: arpanet] [image file: imp log] The first network, the first router, the first message... The original network diagramming tool was a pencil, and the first network had four routers (originally called IMPs), and four nodes (At UCSB, UCLA, SRI and University of Utah). The first successful transmission was from UCLA to SRI in October 1969, and was recorded in the UCLA logbook."
+   "text": "What is the Internet?... [ 1 , 2 ] [image: A hand-drawn map of the first four-node ARPANET in 1969, linking SRI, UCSB, UCLA and Utah with their host computers.] [image: Leonard Kleinrock standing beside the first ARPANET Interface Message Processor, a grey cabinet with rows of switches.] [image: The handwritten IMP log from 29 October 1969 recording the first host-to-host message, talked to SRI host to host.] The first network, the first router, the first message... The original network diagramming tool was a pencil, and the first network had four routers (originally called IMPs), and four nodes (At UCSB, UCLA, SRI and University of Utah). The first successful transmission was from UCLA to SRI in October 1969, and was recorded in the UCLA logbook."
   },
   {
    "n": 8,
@@ -100,7 +100,7 @@
    "kind": "slide",
    "title": "Structure of networks now... [ 9 ]",
    "section": "Networks (Warning - no mathematics inside)",
-   "text": "Structure of networks now... [ 9 ] [image file: networks] [image file: Int Net] Trees and lattices... The topology of the Internet, particularly nearer the 'edge' of the Internet, appears more like a tree than a lattice, and we use the routers to control access to and from the smaller local networks. In 2026 there are about 17 billion computers on the Internet."
+   "text": "Structure of networks now... [ 9 ] [image: Two views of networks: a laptop and a web server simply connected to the Internet cloud, and a more realistic structure of routers, a DMZ and an intranet.] [image: A colourful map of the Internet as glowing clusters of connected networks, labelled with providers such as China Unicom, BellSouth and PATH Corporation.] Trees and lattices... The topology of the Internet, particularly nearer the 'edge' of the Internet, appears more like a tree than a lattice, and we use the routers to control access to and from the smaller local networks. In 2026 there are about 17 billion computers on the Internet."
   },
   {
    "n": 9,
@@ -111,7 +111,7 @@
    "kind": "slide",
    "title": "Firewalls",
    "section": "Networks (Warning - no mathematics inside)",
-   "text": "Firewalls [image file: DMZLevel] When a router is protecting you... Firewalls are brick walls often found in wooden buildings and are supposed to prevent the spread of fire. In networking we use the same idea - the firewall is a router, which limits access to and from the Internet. We normally imagine that the fire is on the Internet side :)"
+   "text": "Firewalls [image: A firewall diagram: the Internet connects through a firewall to a DMZ holding the web and mail servers, and separately to the corporate network.] When a router is protecting you... Firewalls are brick walls often found in wooden buildings and are supposed to prevent the spread of fire. In networking we use the same idea - the firewall is a router, which limits access to and from the Internet. We normally imagine that the fire is on the Internet side :)"
   },
   {
    "n": 10,
@@ -122,7 +122,7 @@
    "kind": "slide",
    "title": "Systems, networks...",
    "section": "Networks (Warning - no mathematics inside)",
-   "text": "Systems, networks... [image file: Internet] Consider the Internet - lots of room for damage No real management except the Internet standards, and seriously complex."
+   "text": "Systems, networks... [image: A network diagram: routers inside the Internet cloud, border routers acting as gateways and firewalls, a DMZ with servers, and an intranet with a layer three switch, WiFi and computers.] Consider the Internet - lots of room for damage No real management except the Internet standards, and seriously complex."
   },
   {
    "n": 11,
@@ -144,7 +144,7 @@
    "kind": "slide",
    "title": "Internet hacking scenario #1: Malicious DNS",
    "section": "Networks (Warning - no mathematics inside)",
-   "text": "Internet hacking scenario #1: Malicious DNS [image file: dnshack] A server you trust lies to you... You connect to dbs.com.sg to do some banking. But... A local DNS (Domain name system) server lies to your computer, and connects you to hackers.r.us who have put up a spoof version of the bank's web site. The spoof version collects your password and login information and proceeds to empty your account."
+   "text": "Internet hacking scenario #1: Malicious DNS [image: A malicious DNS scenario: a laptop asks a poisoned DNS server for the IP address of dbs.com.sg, is told the hacker's address 91.207.5.138, and connects to the hacker instead of DBS.] A server you trust lies to you... You connect to dbs.com.sg to do some banking. But... A local DNS (Domain name system) server lies to your computer, and connects you to hackers.r.us who have put up a spoof version of the bank's web site. The spoof version collects your password and login information and proceeds to empty your account."
   },
   {
    "n": 13,
@@ -155,7 +155,7 @@
    "kind": "slide",
    "title": "Internet hacking scenario #2: Malicious website",
    "section": "Networks (Warning - no mathematics inside)",
-   "text": "Internet hacking scenario #2: Malicious website [image file: keylog] A server you trust lies to you... A web site fastdownloads.org.uk says it will improve your Internet experience by 225%! You say yes, and it installs a useful bit of software. Actually - it installs something which sends every key you type to hackers.r.us, and/or allows someone in Guatemala to control your machine..."
+   "text": "Internet hacking scenario #2: Malicious website [image: A malicious website scenario: a laptop visiting a hostile server gets malware that says I will control your PC and You are my slave, and sends every keystroke to a keylogger.] A server you trust lies to you... A web site fastdownloads.org.uk says it will improve your Internet experience by 225%! You say yes, and it installs a useful bit of software. Actually - it installs something which sends every key you type to hackers.r.us, and/or allows someone in Guatemala to control your machine..."
   },
   {
    "n": 14,
@@ -166,7 +166,7 @@
    "kind": "slide",
    "title": "Internet hacking scenario #3: Home Wifi insecurity",
    "section": "Networks (Warning - no mathematics inside)",
-   "text": "Internet hacking scenario #3: Home Wifi insecurity [image file: wifihack] You overestimate how safe your home is... Your next door neighbour observes your wifi network. Your neighbour hacks your network authentication password, and from then on, uses your Internet link, and monitors your traffic to and from the Internet, retrieving your passwords etc..."
+   "text": "Internet hacking scenario #3: Home Wifi insecurity [image: A home WiFi insecurity scenario: your laptop on home WiFi can be reached by your neighbour in the next building, your new best friend.] You overestimate how safe your home is... Your next door neighbour observes your wifi network. Your neighbour hacks your network authentication password, and from then on, uses your Internet link, and monitors your traffic to and from the Internet, retrieving your passwords etc..."
   },
   {
    "n": 15,
@@ -177,7 +177,7 @@
    "kind": "slide",
    "title": "Internet hacking scenario #4: Public Wifi insecurity [ X ]",
    "section": "Networks (Warning - no mathematics inside)",
-   "text": "Internet hacking scenario #4: Public Wifi insecurity [ X ] [image file: starbucks] You overestimate how safe Starbucks is. You look at facebook... A cluster of 12 yr-olds there are using Firesheep, and steal a cookie and take over your facebook session, posting all sorts of “funny” stuff1. 1 This led to facebook changing to https-by-default."
+   "text": "Internet hacking scenario #4: Public Wifi insecurity [ X ] [image: A public WiFi scenario: you and some 12-year-olds round the corner share the Starbucks WiFi, and they hijack your session to deface your Facebook page.] You overestimate how safe Starbucks is. You look at facebook... A cluster of 12 yr-olds there are using Firesheep, and steal a cookie and take over your facebook session, posting all sorts of “funny” stuff1. 1 This led to facebook changing to https-by-default."
   },
   {
    "n": 16,
@@ -199,7 +199,7 @@
    "kind": "slide",
    "title": "Internet basics: routing and packets... [ ctrl-i1 ]",
    "section": "Networks (Warning - no mathematics inside)",
-   "text": "Internet basics: routing and packets... [ ctrl-i1 ] [image file: packets] Internet traffic sent in packets... The original design, specified in the wonderfully passively named RFCs (Requests For Comments) was for a network resilient against nuclear attacks, to allow the US military to respond to attack from Russia in the 1960s. No thought was given to security, only resilience, and there is lots of opportunity to modify and corrupt messages; routing information, spoofing etc."
+   "text": "Internet basics: routing and packets... [ ctrl-i1 ] [image: How packets work: a little message is placed in an envelope with routing information such as to and from addresses, size, type and sequence number, passed along, then unwrapped.] Internet traffic sent in packets... The original design, specified in the wonderfully passively named RFCs (Requests For Comments) was for a network resilient against nuclear attacks, to allow the US military to respond to attack from Russia in the 1960s. No thought was given to security, only resilience, and there is lots of opportunity to modify and corrupt messages; routing information, spoofing etc."
   },
   {
    "n": 18,
@@ -221,7 +221,7 @@
    "kind": "slide",
    "title": "Looking at computer communication",
    "section": "Networks (Warning - no mathematics inside)",
-   "text": "Looking at computer communication [image file: osi ip] The ISO OSI reference model and the IP reference model... The Internet does not use the 7 layered model. It only has four layers: IP application layer: for comms between applications on different platforms. IP transport layer: for sessions, and network independance. IP network layer: for managing routing and addressing. IP network-access or link layer: medium, connectors cables independance."
+   "text": "Looking at computer communication [image: The seven-layer OSI model beside the four-layer IP model of application, transport, network and network link, with example protocols such as HTTP, TCP, UDP, IP and ARP.] The ISO OSI reference model and the IP reference model... The Internet does not use the 7 layered model. It only has four layers: IP application layer: for comms between applications on different platforms. IP transport layer: for sessions, and network independance. IP network layer: for managing routing and addressing. IP network-access or link layer: medium, connectors cables independance."
   },
   {
    "n": 20,
@@ -232,7 +232,7 @@
    "kind": "slide",
    "title": "Packet (detail) on the Internet",
    "section": "Networks (Warning - no mathematics inside)",
-   "text": "Packet (detail) on the Internet [image file: ipencap] Each layer encapsulates the previous one... Note that in this way, even if you are just sending a single character/byte, by the time it is on it's way, it may be hundreds of bytes long."
+   "text": "Packet (detail) on the Internet [image: Encapsulation in TCP/IP: upper layer data gets a TCP or UDP header, then an IP header, then a layer 2 frame header and footer, and is sent as bits at layer 1.] Each layer encapsulates the previous one... Note that in this way, even if you are just sending a single character/byte, by the time it is on it's way, it may be hundreds of bytes long."
   },
   {
    "n": 21,
@@ -243,7 +243,7 @@
    "kind": "slide",
    "title": "Summary [ ctrl-i1 , ctrl-i8 ]",
    "section": "Networks (Warning - no mathematics inside)",
-   "text": "Summary [ ctrl-i1 , ctrl-i8 ] [image file: Skynet layout] It seems like we cannot trust the protocols or the machines! It just got so much worse... Communication between computers comes in many flavours of protocol, and at different levels. Not only multiple machines that could cause problems, but also multiple protocols at multiple levels. No administrative centre, just general agreement to use the RFCs, not much in the way of police!"
+   "text": "Summary [ ctrl-i1 , ctrl-i8 ] [image: A grey screen labelled Skynet Systems Network showing a vast, dense network graph, the fictional network from the Terminator films.] It seems like we cannot trust the protocols or the machines! [image: Operators in a large NTT network operations centre with a wall of monitoring screens.] It just got so much worse... Communication between computers comes in many flavours of protocol, and at different levels. Not only multiple machines that could cause problems, but also multiple protocols at multiple levels. No administrative centre, just general agreement to use the RFCs, not much in the way of police!"
   },
   {
    "n": 22,
@@ -276,7 +276,7 @@
    "kind": "slide",
    "title": "Looking at a packet",
    "section": "Attacks and defences",
-   "text": "Looking at a packet [image file: wireshark] Wireshark displaying an ethernet frame... Wireshark captures and displays network traffic, not only IP protocols, but also many of the other communication protocols. You can inspect the contents of the traffic, broken down by layer."
+   "text": "Looking at a packet [image: A Wireshark window capturing packets, listing DNS, TCP and TLS packets with source and destination addresses, and showing the hex bytes of the selected packet.] Wireshark displaying an ethernet frame... Wireshark captures and displays network traffic, not only IP protocols, but also many of the other communication protocols. You can inspect the contents of the traffic, broken down by layer."
   },
   {
    "n": 25,
@@ -287,7 +287,7 @@
    "kind": "slide",
    "title": "“Trust” when using our computer?",
    "section": "Attacks and defences",
-   "text": "“Trust” when using our computer? [image file: doomscrolling] Not an exhaustive list by any stretch... Open the laptop: Use remote services to configure (DHCP, DNS, ARP, NTP) via routers. Start a browser with a particular URL: Use remote services (DNS, ARP) via routers. Request a web page: Use remote services (HTTP, ARP) via routers. Automatic updates: Use remote services (DNS, ARP, HTTPS) via routers. PKI certificates: If they are signed they must be good right? In general we trust each one of these remote services and routers to do what we want."
+   "text": "“Trust” when using our computer? [image: A finger scrolling a glowing smartphone screen in the dark, illustrating how much we trust our devices.] Not an exhaustive list by any stretch... Open the laptop: Use remote services to configure (DHCP, DNS, ARP, NTP) via routers. Start a browser with a particular URL: Use remote services (DNS, ARP) via routers. Request a web page: Use remote services (HTTP, ARP) via routers. Automatic updates: Use remote services (DNS, ARP, HTTPS) via routers. PKI certificates: If they are signed they must be good right? In general we trust each one of these remote services and routers to do what we want."
   },
   {
    "n": 26,
@@ -298,7 +298,7 @@
    "kind": "slide",
    "title": "Trust issue #1: ARP",
    "section": "Attacks and defences",
-   "text": "Trust issue #1: ARP [image file: arppoison] MAC address for point-to-point communication... On Ethernet, when we wish to send a transmission to another host, we can broadcast it, but normally we use ARP (Address Resolution Protocol), to find out the specific MAC address for the required IP address. We then send it to that MAC address, and other hosts will ignore the transmission."
+   "text": "Trust issue #1: ARP [image: Normal ARP: a laptop sending a packet to the router at 192.168.100.1 addresses it to the router's MAC address 0e:be:33:41:19:2a because its ARP cache is good.] MAC address for point-to-point communication... On Ethernet, when we wish to send a transmission to another host, we can broadcast it, but normally we use ARP (Address Resolution Protocol), to find out the specific MAC address for the required IP address. We then send it to that MAC address, and other hosts will ignore the transmission."
   },
   {
    "n": 27,
@@ -309,7 +309,7 @@
    "kind": "slide",
    "title": "Trust issue #1: ARP poisoning [ 4 , i3 ]",
    "section": "Attacks and defences",
-   "text": "Trust issue #1: ARP poisoning [ 4 , i3 ] [image file: arppoison] Mechanism can be used to subvert any traffic... Example: your ARP cache has been poisoned convincing you that your local router 192.168.100.1 is at MAC address 00:11:22:33:44:55. This happens to be a hacking machine on your network. You send your packets addressed to that machine (which responds to convince you it is 192.168.100.1). Example: your router's ARP cache has been poisoned to convince it to reply to the hacking machine instead of your PC. If your host's ARP cache has an incorrect value, you will instead send the frame to the incorrect host."
+   "text": "Trust issue #1: ARP poisoning [ 4 , i3 ] [image: ARP poisoning: the laptop's ARP cache has been poisoned, so it sends packets meant for the router to the attacker's MAC address 00.11.22.33.44.55.] Mechanism can be used to subvert any traffic... Example: your ARP cache has been poisoned convincing you that your local router 192.168.100.1 is at MAC address 00:11:22:33:44:55. This happens to be a hacking machine on your network. You send your packets addressed to that machine (which responds to convince you it is 192.168.100.1). Example: your router's ARP cache has been poisoned to convince it to reply to the hacking machine instead of your PC. If your host's ARP cache has an incorrect value, you will instead send the frame to the incorrect host."
   },
   {
    "n": 28,
@@ -320,7 +320,7 @@
    "kind": "slide",
    "title": "Trust issue #2: DHCP (Dynamic Host Configuration Protocol)",
    "section": "Attacks and defences",
-   "text": "Trust issue #2: DHCP (Dynamic Host Configuration Protocol) [image file: dhcp] Before you do anything... When a host's interface starts or restarts, it sends out a DHCPDISCOVER broadcast, asking for a nearby authoritative DHCP server to offer it a useable IP and DNS address, with the DHCPOFFER response."
+   "text": "Trust issue #2: DHCP (Dynamic Host Configuration Protocol) [image: Normal DHCP: a laptop broadcasts DHCPDISCOVER and the DHCP server replies with a DHCPOFFER giving its IP address, router address and DNS server address.] Before you do anything... When a host's interface starts or restarts, it sends out a DHCPDISCOVER broadcast, asking for a nearby authoritative DHCP server to offer it a useable IP and DNS address, with the DHCPOFFER response."
   },
   {
    "n": 29,
@@ -331,7 +331,7 @@
    "kind": "slide",
    "title": "Trust issue #2: DHCP spoofing",
    "section": "Attacks and defences",
-   "text": "Trust issue #2: DHCP spoofing [image file: dhcp] Configure host? Sounds easy! What can go wrong? There is no security at all in the process, so maybe something can go wrong. A malicious DHCP server tells you a bad router or a bad DNS server. From then on you send all your DNS requests to this server, and our cached mapping for dbs.com.sg is incorrect."
+   "text": "Trust issue #2: DHCP spoofing [image: DHCP spoofing: a rogue machine answers the laptop's DHCPDISCOVER first with a DHCPOFFER containing bad IP, router and DNS server addresses.] Configure host? Sounds easy! What can go wrong? There is no security at all in the process, so maybe something can go wrong. A malicious DHCP server tells you a bad router or a bad DNS server. From then on you send all your DNS requests to this server, and our cached mapping for dbs.com.sg is incorrect."
   },
   {
    "n": 30,
@@ -342,7 +342,7 @@
    "kind": "slide",
    "title": "Messin' with addressin' [ 3 ]",
    "section": "Attacks and defences",
-   "text": "Messin' with addressin' [ 3 ] [image file: ipaddr] Application layer: Various (higher level) protocols, and names (dbs.com.sg) rather than IP addresses Transport layer: your PC will use specific ports, with specific (transport-layer) protocols such as TCP or UDP. (TCP,IP,PORT). Network layer: your PC will aquire an IP address(es) (203.127.2.6) to identify your machine to others. Link layer: network hardware in your PC comes with a factory built-in world-wide media access control (MAC) address. For ethernet f8:1e:df:e2:b4:63. It is easy to forge MAC addresses. Each layer has its own mode of addressing, with automatic translations from MAC to network addresses (ARP), and from names to IP addresses (DNS)."
+   "text": "Messin' with addressin' [ 3 ] [image: Addresses at each IP layer: application HTTP dbs.com.sg, transport TCP 203.127.2.6 port 80, network 203.127.2.6, and link MAC address f8:1e:df:e2:b4:63.] Application layer: Various (higher level) protocols, and names (dbs.com.sg) rather than IP addresses Transport layer: your PC will use specific ports, with specific (transport-layer) protocols such as TCP or UDP. (TCP,IP,PORT). Network layer: your PC will aquire an IP address(es) (203.127.2.6) to identify your machine to others. Link layer: network hardware in your PC comes with a factory built-in world-wide media access control (MAC) address. For ethernet f8:1e:df:e2:b4:63. It is easy to forge MAC addresses. Each layer has its own mode of addressing, with automatic translations from MAC to network addresses (ARP), and from names to IP addresses (DNS)."
   },
   {
    "n": 31,
@@ -353,7 +353,7 @@
    "kind": "slide",
    "title": "Which ports? What services? [ 6 , i4 ]",
    "section": "Attacks and defences",
-   "text": "Which ports? What services? [ 6 , i4 ] [image file: nmap matrix log cropped] It is just a movie, but you should be paranoid... Systems are dangerously easy to subvert. And look! nmap!"
+   "text": "Which ports? What services? [ 6 , i4 ] [image: A green terminal from The Matrix Reloaded where Trinity runs nmap, finds port 22 ssh open, and uses an SSH exploit to reset the root password.] It is just a movie, but you should be paranoid... Systems are dangerously easy to subvert. And look! nmap!"
   },
   {
    "n": 32,
@@ -364,7 +364,7 @@
    "kind": "slide",
    "title": "Consider browsing to a URL",
    "section": "Attacks and defences",
-   "text": "Consider browsing to a URL [image file: dnshack] We saw this before... When your browser wishes to look at a web-site (dbs.com.sg say), your machine queries a nearby DNS (name) server. It belongs to a world-wide system of caching DNS servers, and knows what to do if it does not have the mapping from name to IP address."
+   "text": "Consider browsing to a URL [image: A malicious DNS scenario: a laptop asks a poisoned DNS server for the IP address of dbs.com.sg, is told the hacker's address 91.207.5.138, and connects to the hacker instead of DBS.] We saw this before... When your browser wishes to look at a web-site (dbs.com.sg say), your machine queries a nearby DNS (name) server. It belongs to a world-wide system of caching DNS servers, and knows what to do if it does not have the mapping from name to IP address."
   },
   {
    "n": 33,
@@ -386,7 +386,7 @@
    "kind": "slide",
    "title": "Platform for IP attacks: Ettercap [ 5 ]",
    "section": "Attacks and defences",
-   "text": "Platform for IP attacks: Ettercap [ 5 ] [image file: ettercap] Spoofing, logging, DNS, ARP, DHCP Ettercap is a platform for a wide range of network specific attacks - for example it can easily do any of the attacks we have just seen."
+   "text": "Platform for IP attacks: Ettercap [ 5 ] [image: The Ettercap tool with its spider logo, setting up a man-in-the-middle ARP poisoning attack and logging DHCP traffic.] Spoofing, logging, DNS, ARP, DHCP Ettercap is a platform for a wide range of network specific attacks - for example it can easily do any of the attacks we have just seen."
   },
   {
    "n": 35,
@@ -397,7 +397,7 @@
    "kind": "slide",
    "title": "Layer 4 and 7 DoS/DDoS attacks (Sam Bowne/DEFCON) [ 7 , 8 ]",
    "section": "Attacks and defences",
-   "text": "Layer 4 and 7 DoS/DDoS attacks (Sam Bowne/DEFCON) [ 7 , 8 ] Sam Bowne explains about (ISO OSI) Layer 4 and 7 attacks. [image file: Sam Browne Layer] [image file: Sam Browne Layer]"
+   "text": "Layer 4 and 7 DoS/DDoS attacks (Sam Bowne/DEFCON) [ 7 , 8 ] Sam Bowne explains about (ISO OSI) Layer 4 and 7 attacks. [image: A slide from Sam Bowne's DEFCON talk on a Mastercard outage, a monitoring graph of downtime caused by Anonymous with 3,000 to 30,000 attackers working together.] [image: A slide from Sam Bowne's DEFCON talk on the SlowLoris attack, which sends incomplete GET requests and freezes Apache with one packet per second.]"
   },
   {
    "n": 36,
@@ -441,7 +441,7 @@
    "kind": "slide",
    "title": "TLS [ i5 , X ]",
    "section": "Attacks and defences",
-   "text": "TLS [ i5 , X ] [image file: SSL] [image file: px Taher Elgamal it sa] [image file: ssl handshake] Transport Layer Security service (originally SSL) SSL was developed by Taher Elgamal at Netscape for it's browser in 1995. TLS is an IETF standard see [X] above. Public key cryptography is used to authenticate, and negotiate encryption, for ordinary symmetric key communication (3-DES, AES...), with new session keys for each connection."
+   "text": "TLS [ i5 , X ] [image: The Internet protocol stack with SSL: HTTPS, SSMTP and SPOP3 run over a Secure Sockets Layer above transport, network and link, beside plain HTTP, SMTP and POP3.] [image: A portrait of Taher Elgamal, cryptographer and the father of SSL, in a suit and tie.] [image: The SSL handshake: the browser says hello, the server sends its certificate with its public key, the browser verifies it and sends a session key encrypted with that key, and a secure connection is established.] Transport Layer Security service (originally SSL) SSL was developed by Taher Elgamal at Netscape for it's browser in 1995. TLS is an IETF standard see [X] above. Public key cryptography is used to authenticate, and negotiate encryption, for ordinary symmetric key communication (3-DES, AES...), with new session keys for each connection."
   },
   {
    "n": 40,
@@ -463,7 +463,7 @@
    "kind": "slide",
    "title": "IPsec [ i7 , X ]",
    "section": "Attacks and defences",
-   "text": "IPsec [ i7 , X ] [image file: IPv And IPv] IPsec is a set of standards: Intended to support communication security between networked computers, particularly in the newer IPv6 (IP Next-Generation) network. IPsec software is available in Windows, Linux, and on routers on the Internet (see [XX] above). IPsec may be used in a range of ways, including to provide VPNs (Virtual Private Networks) flexibly. Why do we need IPsec VPNs when we already have TLS (and SSH) With TLS/ we set up individual encrypted links for each application. In a professional environment we may want end-to-end encryption, where all traffic is encrypted (not just the https traffic). IPsec can flexibly set up and tunnel as needed. IPsec takes care to use (high end) cryptography for all purposes - IPv6 and IPsec are all designed with security in mind."
+   "text": "IPsec [ i7 , X ] [image: Side-by-side colourful graphs of the IPv4 and IPv6 Internet topology in 2021, the IPv6 graph sparser than the IPv4 one.] IPsec is a set of standards: Intended to support communication security between networked computers, particularly in the newer IPv6 (IP Next-Generation) network. IPsec software is available in Windows, Linux, and on routers on the Internet (see [XX] above). IPsec may be used in a range of ways, including to provide VPNs (Virtual Private Networks) flexibly. Why do we need IPsec VPNs when we already have TLS (and SSH) With TLS/ we set up individual encrypted links for each application. In a professional environment we may want end-to-end encryption, where all traffic is encrypted (not just the https traffic). IPsec can flexibly set up and tunnel as needed. IPsec takes care to use (high end) cryptography for all purposes - IPv6 and IPsec are all designed with security in mind."
   },
   {
    "n": 42,
