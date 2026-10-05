@@ -23,7 +23,7 @@
    "kind": "slide",
    "title": "Family ... ... and development ...",
    "section": "",
-   "text": "Family ... ... and development ... Family a"
+   "text": "Family ... ... and development ... Three photos from 1997, 2016 and 2024 of the same family group posing with a vintage VW Kombi van as the children grow up."
   },
   {
    "n": 2,
@@ -34,7 +34,7 @@
    "kind": "slide",
    "title": "Isolation...",
    "section": "",
-   "text": "Isolation..."
+   "text": "Isolation... A view from beside a farm shed across a grassy paddock to a snow-capped volcano under a clear sky."
   },
   {
    "n": 3,
@@ -78,7 +78,7 @@
    "kind": "slide",
    "title": "Your teaching staff",
    "section": "Administrivia",
-   "text": "Your teaching staff defence against hughhead Lecturer Hugh Anderson COM2: #02-34 Chua Yao Xuan Photo Teaching Assistant Chua Yao Xuan Information and contact details Please call me Hugh. My current email is hugh@nus.edu.sg. Other contact details will be given in July. Yao Xuan just finished her BComp in Computer Science at NUS and will be starting her MSc in Computing (Security and Reliability) at Imperial College London later this year. While her schedule may vary, she is typically more active in the afternoons and evenings. Feel free to call her Yao Xuan!"
+   "text": "Your teaching staff A weathered Hogwarts-style sign reading Defence Against the Dark Arts. A head-and-shoulders photo of lecturer Hugh Anderson, smiling outdoors. Lecturer Hugh Anderson COM2: #02-34 A head-and-shoulders photo of teaching assistant Chua Yao Xuan, smiling and wearing glasses. Teaching Assistant Chua Yao Xuan Information and contact details Please call me Hugh. My current email is hugh@nus.edu.sg. Other contact details will be given in July. Yao Xuan just finished her BComp in Computer Science at NUS and will be starting her MSc in Computing (Security and Reliability) at Imperial College London later this year. While her schedule may vary, she is typically more active in the afternoons and evenings. Feel free to call her Yao Xuan!"
   },
   {
    "n": 7,
@@ -100,7 +100,7 @@
    "kind": "slide",
    "title": "The course outline in July (approximately)...",
    "section": "Administrivia",
-   "text": "The course outline in July (approximately)..."
+   "text": "The course outline in July (approximately)... A July course calendar showing the lecture topics, labs and consultation sessions on each weekday, ending with the pizza challenge, MCQ test, posters and showcase."
   },
   {
    "n": 9,
@@ -111,7 +111,7 @@
    "kind": "slide",
    "title": "The Project... [ ctrl-i2 , i3 , 1 , 2 ]",
    "section": "Administrivia",
-   "text": "The Project... [ ctrl-i2 , i3 , 1 , 2 ] gp Poster gp Poster gp Poster The project starts in July! You will find the project specifications in Canvas well before 1 July, and examples of similar projects here: [ internetlogo ]. The projects will each take the form of a video, a supporting poster, and a paper. The projects are underspecified, and you should talk to Jiamin and me."
+   "text": "The Project... [ ctrl-i2 , i3 , 1 , 2 ] An example student project poster, root#: Attacking and Defending Android, covering Android's security architecture and vulnerabilities. An example student project poster, Indirect Attack: Side Channel, Power, Timing, explaining side-channel attacks. An example student project poster on image and media authentication techniques for copyright protection. The project starts in July! You will find the project specifications in Canvas well before 1 July, and examples of similar projects here: [ internetlogo ]. The projects will each take the form of a video, a supporting poster, and a paper. The projects are underspecified, and you should talk to Jiamin and me."
   },
   {
    "n": 10,
@@ -155,7 +155,7 @@
    "kind": "slide",
    "title": "Information warfare [ X , i5 , i6 ]",
    "section": "Setting the stage...",
-   "text": "Information warfare [ X , i5 , i6 ] norse It is relentless... 24 hours a day, 365 days a year, the attacks go on. Defences are ongoing at all levels; governments, companies, vendors, but still the attacks continue. See here [ internetlogo ] and here [ internetlogo ] and here [ internetlogo ]."
+   "text": "Information warfare [ X , i5 , i6 ] A screenshot of the Norse live attack map, showing cyber-attacks as lines arcing between countries on a dark world map, with tables of attack origins, types and targets. It is relentless... 24 hours a day, 365 days a year, the attacks go on. Defences are ongoing at all levels; governments, companies, vendors, but still the attacks continue. See here [ internetlogo ] and here [ internetlogo ] and here [ internetlogo ]."
   },
   {
    "n": 14,
@@ -166,7 +166,7 @@
    "kind": "slide",
    "title": "Attacks per day on a newly created web server/site",
    "section": "Setting the stage...",
-   "text": "Attacks per day on a newly created web server/site php by day It is fast... A new website was put up using a previously unused IP address and name. After about 10 days, the site got discovered, and the attacks started, growing quickly until stabilizing at about 1000 attackers per day. Nowadays it takes about 5 hours."
+   "text": "Attacks per day on a newly created web server/site A line graph over 70 days showing unique PHP attacks, script names, IP addresses and injected scripts rising sharply as a new web site gets indexed by search engines, from 109 to 12,000 indexed pages. It is fast... A new website was put up using a previously unused IP address and name. After about 10 days, the site got discovered, and the attacks started, growing quickly until stabilizing at about 1000 attackers per day. Nowadays it takes about 5 hours."
   },
   {
    "n": 15,
@@ -177,7 +177,7 @@
    "kind": "slide",
    "title": "DBS/POSB attacks in Singapore 12 years ago",
    "section": "Setting the stage...",
-   "text": "DBS/POSB attacks in Singapore 12 years ago DBSATMFraud skimarrest Big news (well - in Singapore :) at the time... People discovered that they were having money withdrawn from their bank accounts. In Singapore, there are a LARGE number of cameras, and the culprits were soon tracked down. The criminals added hardware to ATM machines to read the cards, and watch for the pin-key."
+   "text": "DBS/POSB attacks in Singapore 12 years ago An AsiaOne news article from January 2012 reporting hundreds of unauthorised ATM withdrawals from DBS/POSB accounts, made from Malaysia. A TODAY news article from June 2012 reporting the arrest of two Malaysian men believed to belong to an ATM-skimming syndicate, with a pin-hole camera and a card-skimming device seized. Big news (well - in Singapore :) at the time... People discovered that they were having money withdrawn from their bank accounts. In Singapore, there are a LARGE number of cameras, and the culprits were soon tracked down. The criminals added hardware to ATM machines to read the cards, and watch for the pin-key."
   },
   {
    "n": 16,
@@ -188,7 +188,7 @@
    "kind": "slide",
    "title": "Small scale warfare: ATM attacks [ 3 , 4 , 5 , 6 ]",
    "section": "Setting the stage...",
-   "text": "Small scale warfare: ATM attacks [ 3 , 4 , 5 , 6 ] skim ATMcardreader ATMcardskimmer smallcam atm Skimmer Card skimmers for the magnetic strip, and pinpad snooping The card skimmers would read the magnetic strip on the card, and a small camera was used to watch the keypad. On other ATM skimmers, a keypad overlay is used to copy the keypresses. Some fun to see here [ internetlogo ], [ internetlogo ], [ internetlogo ], [ internetlogo ]."
+   "text": "Small scale warfare: ATM attacks [ 3 , 4 , 5 , 6 ] A real ATM card slot beside a fake capture device made to fit over it, with arrows showing the hidden cut-out that is not visible once fitted. A hand inserting a card into an ATM fitted with a fake card-reader overlay. A skimmer being pulled off a yellow ATM's card slot, exposing the hidden electronics inside. A leaflet holder on an ATM being lifted to reveal a hidden pinhole camera aimed at the keypad. A fake PIN-pad overlay being peeled off a real ATM keypad. An overhead security-camera still of a hooded person at a payment terminal, apparently fitting or using a skimmer. Card skimmers for the magnetic strip, and pinpad snooping The card skimmers would read the magnetic strip on the card, and a small camera was used to watch the keypad. On other ATM skimmers, a keypad overlay is used to copy the keypresses. Some fun to see here [ internetlogo ], [ internetlogo ], [ internetlogo ], [ internetlogo ]."
   },
   {
    "n": 17,
@@ -199,7 +199,7 @@
    "kind": "slide",
    "title": "Large scale warfare: theft [ ctrl-i9 ]",
    "section": "Setting the stage...",
-   "text": "Large scale warfare: theft [ ctrl-i9 ] swift $1B dollar attempt - big news a few years ago... The well-coordinated multi-country attack did succeed in stealing over US$80M. The suspected attackers have never been bought to justice, and the money was lost [ document icon ]."
+   "text": "Large scale warfare: theft [ ctrl-i9 ] The Wikipedia article on the 2016 Bangladesh Bank heist, in which attackers used the SWIFT network to try to steal US$951 million from the central bank's account at the Federal Reserve Bank of New York. $1B dollar attempt - big news a few years ago... The well-coordinated multi-country attack did succeed in stealing over US$80M. The suspected attackers have never been bought to justice, and the money was lost [ document icon ]."
   },
   {
    "n": 18,
@@ -210,7 +210,7 @@
    "kind": "slide",
    "title": "Consequences: Waikato District Health Board: #1 (2015)",
    "section": "Setting the stage...",
-   "text": "Consequences: Waikato District Health Board: #1 (2015) waikato dhb photo Car Park gate-controller machines... In a small DHB building in NZ, the machines that controlled the gates in the car park were connected to the (internal) DHB network. These machines were running an old version of an operating system, and had not been updated in years. They were infected with the Conficker worm from a USB stick plugged in by a car-park technician. The worm propagated throughout the NZ DHB network. Consequences... Though the DHB network was only down for two days, the consequences were very personal, involving delays throughout NZ on medical records, operations and so on."
+   "text": "Consequences: Waikato District Health Board: #1 (2015) The emergency department entrance of Waikato Hospital in New Zealand. Car Park gate-controller machines... In a small DHB building in NZ, the machines that controlled the gates in the car park were connected to the (internal) DHB network. These machines were running an old version of an operating system, and had not been updated in years. They were infected with the Conficker worm from a USB stick plugged in by a car-park technician. The worm propagated throughout the NZ DHB network. Consequences... Though the DHB network was only down for two days, the consequences were very personal, involving delays throughout NZ on medical records, operations and so on."
   },
   {
    "n": 19,
@@ -221,7 +221,7 @@
    "kind": "slide",
    "title": "Consequences: Waikato District Health Board: #2 (2021)",
    "section": "Setting the stage...",
-   "text": "Consequences: Waikato District Health Board: #2 (2021) dhb In May 2021 - ransomware via an email! Someone on staff at the DHB clicked on an email link, and answered a few questions. A few days later, many patient records and schedules were encrypted. Consequences... DHB network down for months, records lost, patient operations cancelled etc. At one time the chief officer claimed that no machines were damaged, choosing to ignore the social and health damage!"
+   "text": "Consequences: Waikato District Health Board: #2 (2021) A hospital sign reading ATTENTION: Computer outage disruption, Emergency Department capacity is limited, posted during the 2021 ransomware attack. In May 2021 - ransomware via an email! Someone on staff at the DHB clicked on an email link, and answered a few questions. A few days later, many patient records and schedules were encrypted. Consequences... DHB network down for months, records lost, patient operations cancelled etc. At one time the chief officer claimed that no machines were damaged, choosing to ignore the social and health damage!"
   },
   {
    "n": 20,
@@ -232,7 +232,7 @@
    "kind": "slide",
    "title": "Consequences: Work and Income NZ (WINZ)",
    "section": "Setting the stage...",
-   "text": "Consequences: Work and Income NZ (WINZ) A flat corporate network, with a Trojan Horse Work and Income NZ provide public access terminals in all of their offices in towns/cities around NZ. The public can use these terminals for various uses, including to look for, and apply for jobs. Keith Ng blogged that you could go into any WINZ office and use them to access the WINZ, and Ministry for Social Development corporate networks. Keith was a citizen reporter, not a hacker, but said that they had some basic features disabled - you couldn’t just open up File Manager... However, by using “Open File” in Microsoft Office, you could map any unsecured computer at WINZ, and then open up accessible files. He carried on to expose a wide range of information that appeared to be easily accessable. Consequences... Keith Ng Keith became a real journalist! WINZ officers were promoted!"
+   "text": "Consequences: Work and Income NZ (WINZ) A flat corporate network, with a Trojan Horse Work and Income NZ provide public access terminals in all of their offices in towns/cities around NZ. The public can use these terminals for various uses, including to look for, and apply for jobs. Keith Ng blogged that you could go into any WINZ office and use them to access the WINZ, and Ministry for Social Development corporate networks. Keith was a citizen reporter, not a hacker, but said that they had some basic features disabled - you couldn’t just open up File Manager... However, by using “Open File” in Microsoft Office, you could map any unsecured computer at WINZ, and then open up accessible files. He carried on to expose a wide range of information that appeared to be easily accessable. Consequences... A portrait of Keith Ng, the New Zealand journalist who exposed that public Work and Income kiosks gave access to confidential client files. Keith became a real journalist! WINZ officers were promoted!"
   },
   {
    "n": 21,
@@ -243,7 +243,7 @@
    "kind": "slide",
    "title": "Consequences: 1MW Diesel generator blown up [ 7 ]",
    "section": "Setting the stage...",
-   "text": "Consequences: 1MW Diesel generator blown up [ 7 ] diesel Suva, Fiji: A coup, and chaos (Attacks on infrastructure are no fun) In 2000 I worked at the University of the South Pacific in Suva, Fiji during a coup, and some villagers sabotaged the Monasavu dam, cutting power to the entire country. For over three months we lived without power, although they did manage to get some small generators going to provide 20 minutes of electricity to Suva every day. No phones, no shops open, no lights, eventually no water, no news, no Internet. And as we see here, our utility control systems are similarly vulnerable: [ internetlogo ]."
+   "text": "Consequences: 1MW Diesel generator blown up [ 7 ] A still from video of a large green industrial diesel generator billowing smoke as it destroys itself, in a test where it was attacked remotely by cyber means. Suva, Fiji: A coup, and chaos (Attacks on infrastructure are no fun) In 2000 I worked at the University of the South Pacific in Suva, Fiji during a coup, and some villagers sabotaged the Monasavu dam, cutting power to the entire country. For over three months we lived without power, although they did manage to get some small generators going to provide 20 minutes of electricity to Suva every day. No phones, no shops open, no lights, eventually no water, no news, no Internet. And as we see here, our utility control systems are similarly vulnerable: [ internetlogo ]."
   },
   {
    "n": 22,
@@ -254,7 +254,7 @@
    "kind": "slide",
    "title": "Structure: attack on open source software",
    "section": "Setting the stage...",
-   "text": "Structure: attack on open source software dependency x Relied on in Linux and the open source community (updates, the kernel, browsers etc). In February 2024, malicious code which allowed for remote execution of code was injected into at least two official distributions. Luckily, this was discovered accidentally in March 2024, and we will revisit this story when we look at Social Engineering. Note that this was a successful injection of malicious code in an “ open source ” project. Open source compression library: xz-utils! xz-utils is an effective compression library used by much of the world - in browsers, operating systems and so on. It has been in use since 2009, with the source maintained by the open-source community since then. The successful attack last year is the first known attack directly on open-source software sources."
+   "text": "Structure: attack on open source software The xkcd Dependency cartoon: a towering stack of blocks labelled all modern digital infrastructure, balanced on one tiny block, a project some random person in Nebraska has been thanklessly maintaining since 2003. Relied on in Linux and the open source community (updates, the kernel, browsers etc). In February 2024, malicious code which allowed for remote execution of code was injected into at least two official distributions. Luckily, this was discovered accidentally in March 2024, and we will revisit this story when we look at Social Engineering. Note that this was a successful injection of malicious code in an “ open source ” project. Open source compression library: xz-utils! xz-utils is an effective compression library used by much of the world - in browsers, operating systems and so on. It has been in use since 2009, with the source maintained by the open-source community since then. The successful attack last year is the first known attack directly on open-source software sources."
   },
   {
    "n": 23,
@@ -298,7 +298,7 @@
    "kind": "slide",
    "title": "Complexity of issues: Military security",
    "section": "Setting the stage...",
-   "text": "Complexity of issues: Military security lpi In all sorts of areas...Four examples... Electronic warfare and defence - jamming of radar, so opponent cannot see your planes; jamming trigger systems for IEDs. Military communications - not just encryption, but also hiding the source. The location of a transmitter can be attacked, so the military use low probability of intercept (LPI) radio links. Military logistics - who can mobilize 10,000 people and 30,000 meals in a day? Management systems for the military have different requirements from commercial systems. The underlying rule is that restricted information cannot flow to an unrestricted area. Weapons control (eg nuclear weapons) need much higher levels of assurance than (say) commercial areas."
+   "text": "Complexity of issues: Military security A diagram of four networked radars, linked by data links, tracking a target aircraft with low-probability-of-intercept signals. In all sorts of areas...Four examples... Electronic warfare and defence - jamming of radar, so opponent cannot see your planes; jamming trigger systems for IEDs. Military communications - not just encryption, but also hiding the source. The location of a transmitter can be attacked, so the military use low probability of intercept (LPI) radio links. Military logistics - who can mobilize 10,000 people and 30,000 meals in a day? Management systems for the military have different requirements from commercial systems. The underlying rule is that restricted information cannot flow to an unrestricted area. Weapons control (eg nuclear weapons) need much higher levels of assurance than (say) commercial areas."
   },
   {
    "n": 27,
@@ -309,7 +309,7 @@
    "kind": "slide",
    "title": "Complexity of issues: Exposing data...",
    "section": "Setting the stage...",
-   "text": "Complexity of issues: Exposing data... masks During disease outbreak: During an outbreak of disease in Singapore years ago, my colleagues and I had to provide our temperature every day before we could come into work. We were assured it was private, but the data was published in a database, and by looking at two tables, unfortunately... Nationality: Singaporean PRC Poland German Australian NZ .... Today's temperature: 36.8 36.9 37.1 36.5 38.2 39.1 .... Number of staff: 23 14 3 5 3 1 .... By inference from the two database tables, you can deduce that Hugh's temperature was too high!"
+   "text": "Complexity of issues: Exposing data... A crowd of people in a street, most wearing surgical face masks. During disease outbreak: During an outbreak of disease in Singapore years ago, my colleagues and I had to provide our temperature every day before we could come into work. We were assured it was private, but the data was published in a database, and by looking at two tables, unfortunately... Nationality: Singaporean PRC Poland German Australian NZ .... Today's temperature: 36.8 36.9 37.1 36.5 38.2 39.1 .... Number of staff: 23 14 3 5 3 1 .... By inference from the two database tables, you can deduce that Hugh's temperature was too high!"
   },
   {
    "n": 28,
@@ -320,7 +320,7 @@
    "kind": "slide",
    "title": "Anderson's book suggests a “framework” [ ctrl-i7 , ctrl-i8 ]",
    "section": "Setting the stage...",
-   "text": "Anderson's book suggests a “framework” [ ctrl-i7 , ctrl-i8 ] polincmechass Analyse security in terms of P,M,A and I: Anderson [ document icon ] proposes a fraemwork with these four components: policy: what is allowed/disallowed. What you are supposed to do. mechanism: ways of enforcing a policy. Ciphers, controls... assurance: how much reliance you place on each mechanism. incentives: motives of the people guarding and maintaining the system, and the attackers."
+   "text": "Anderson's book suggests a “framework” [ ctrl-i7 , ctrl-i8 ] Ross Anderson's security framework: four boxes, Policy, Incentives, Mechanism and Assurance, each connected to the others by double-headed arrows. Analyse security in terms of P,M,A and I: Anderson [ document icon ] proposes a fraemwork with these four components: policy: what is allowed/disallowed. What you are supposed to do. mechanism: ways of enforcing a policy. Ciphers, controls... assurance: how much reliance you place on each mechanism. incentives: motives of the people guarding and maintaining the system, and the attackers."
   },
   {
    "n": 29,
@@ -331,7 +331,7 @@
    "kind": "slide",
    "title": "Using the framework: Airport security",
    "section": "Setting the stage...",
-   "text": "Using the framework: Airport security Consider the 9/11 attacks in the US in 2001... There was actually not any failure of the security mechanisms in place at the time: knives with blades less than 3 inches were OK in 2001. It was a failure of policy, not mechanism. Since 9/11? There are still poor policy choices: passenger screening is aggressive and costly, (approx $15 billion), whereas strongly reinforced cockpit doors could remove most risk (est $100 million). Ground staff are seldom screened, planes do not have locks. Why are such poor policy choices made? Because the incentives for policy makers favour visible controls over effective ones. Assurance? System screening picks up less than half the weapons."
+   "text": "Using the framework: Airport security One of the World Trade Center towers burning after being struck on 11 September 2001. Consider the 9/11 attacks in the US in 2001... There was actually not any failure of the security mechanisms in place at the time: knives with blades less than 3 inches were OK in 2001. It was a failure of policy, not mechanism. Since 9/11? There are still poor policy choices: passenger screening is aggressive and costly, (approx $15 billion), whereas strongly reinforced cockpit doors could remove most risk (est $100 million). Ground staff are seldom screened, planes do not have locks. Why are such poor policy choices made? Because the incentives for policy makers favour visible controls over effective ones. Assurance? System screening picks up less than half the weapons."
   },
   {
    "n": 30,
@@ -353,7 +353,7 @@
    "kind": "slide",
    "title": "Using the framework: Hospital security",
    "section": "Setting the stage...",
-   "text": "Using the framework: Hospital security hospital Policies mostly to ensure patient safety and privacy Consider patient record systems: A mechanism might be that “Nurses can see the patient record for patients cared in their own department over the last 90 days”. However, this might be tricky to implement given that Nurses can move departments - the patient record system would become dependent on the hospital personnel system. Record anonymizing for research can be tricky (remember the slide on database attacks). There is an extreme requirement for accuracy of web based data (reference texts, drug side effects)."
+   "text": "Using the framework: Hospital security A group of hospital doctors and nurses in masks and scrubs standing with arms folded. Policies mostly to ensure patient safety and privacy Consider patient record systems: A mechanism might be that “Nurses can see the patient record for patients cared in their own department over the last 90 days”. However, this might be tricky to implement given that Nurses can move departments - the patient record system would become dependent on the hospital personnel system. Record anonymizing for research can be tricky (remember the slide on database attacks). There is an extreme requirement for accuracy of web based data (reference texts, drug side effects)."
   },
   {
    "n": 32,
@@ -386,7 +386,7 @@
    "kind": "slide",
    "title": "The CIA triad...",
    "section": "Setting the stage...",
-   "text": "The CIA triad... triangle FIPS specify three objectives/goals: confidentiality: concealing information - resources may only be accessed by authorized parties; integrity: trustworthiness of data - resources may only be modified by authorized parties in authorized ways; availability: preventing DOS/denial-of-service - resources are accessible in a timely manner."
+   "text": "The CIA triad... An impossible-triangle diagram whose sides are labelled Confidentiality, Integrity and Availability, surrounding Data and services. FIPS specify three objectives/goals: confidentiality: concealing information - resources may only be accessed by authorized parties; integrity: trustworthiness of data - resources may only be modified by authorized parties in authorized ways; availability: preventing DOS/denial-of-service - resources are accessible in a timely manner."
   },
   {
    "n": 35,
@@ -408,7 +408,7 @@
    "kind": "slide",
    "title": "Types of attacks",
    "section": "Setting the stage...",
-   "text": "Types of attacks attack attack attack attack A reminder of the types of attacks The diagrams above, of Interception, Modification, Interruption, and Fabrication, remind us of the routes taken."
+   "text": "Types of attacks Interception: Alice sends a message to Bob while Ted also receives a copy. Modification: Alice's message to Bob passes through Ted, who can alter it on the way. Interruption: the link from Alice to Bob is cut, marked with a cross, by Ted, who acts on both ends. Fabrication: Ted sends Bob a message that appears to come from Alice, who sent nothing. A reminder of the types of attacks The diagrams above, of Interception, Modification, Interruption, and Fabrication, remind us of the routes taken."
   },
   {
    "n": 37,
@@ -419,7 +419,7 @@
    "kind": "slide",
    "title": "Types of attacks",
    "section": "Setting the stage...",
-   "text": "Types of attacks security And persuasion... Let us not forget human factors and social engineering."
+   "text": "Types of attacks The xkcd Security cartoon: crypto nerds imagine a million-dollar cluster defeated by 4096-bit RSA, while in reality someone simply hits the victim with a $5 wrench until they reveal the password. And persuasion... Let us not forget human factors and social engineering."
   },
   {
    "n": 38,
@@ -441,7 +441,7 @@
    "kind": "slide",
    "title": "Summary: the IT security landscape",
    "section": "Setting the stage...",
-   "text": "AdministriviaSetting the stage... Information warfare in the news...Context for security studiesTerms for security studies Summary: the IT security landscape polincmechass Carr (Frameworks to help) It is information warfare... Unfortunately, the landscape is that of \"Information warfare\", but the good news is that there are a wide range of activities (and hence jobs): Information Security Engineer, IT Security Architect, IT Security Specialist, IT Security Analyst, Business Security Manager, Security Research (Technical)... This session emphasized the scale of the issue, with hints as to how we can begin to address it. Hugh Anderson [Q] DADA2026, Introduction beamer nus logo"
+   "text": "AdministriviaSetting the stage... Information warfare in the news...Context for security studiesTerms for security studies Summary: the IT security landscape Ross Anderson's security framework: four boxes, Policy, Incentives, Mechanism and Assurance, each connected to the others by double-headed arrows. A diagram of six boxes around a centre of crossed arrows, Legal requirements, Policy/Strategy, Assets, Risk management, Compliance and Security architectures, showing that each influences the others. (Frameworks to help) It is information warfare... Unfortunately, the landscape is that of \"Information warfare\", but the good news is that there are a wide range of activities (and hence jobs): Information Security Engineer, IT Security Architect, IT Security Specialist, IT Security Analyst, Business Security Manager, Security Research (Technical)... This session emphasized the scale of the issue, with hints as to how we can begin to address it. Hugh Anderson [Q] DADA2026, Introduction beamer nus logo"
   }
  ]
 }
